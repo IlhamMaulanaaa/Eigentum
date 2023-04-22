@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Montserrat:wght@600&display=swap");
+/* body{
+    font-family: 'Lato', sans-serif;
+
+} */
+#image1009 {
+    display: flex;
+    margin: auto;
+    margin-right: 30px;
+    margin-top: 50px;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-end;
+    object-position: right;
+    width: 85%;
+    height: 100%;
+}
+
+input {
+    width: 600px;
+    outline-style: none;
+}
+
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
+
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 100%;
+    }
+}
+
+form {
+    margin: auto;
+    margin-top: 600px;
+}
+
+#masuk009 {
+    font-size: 65px;
+    font-weight: 900;
+}
+
+#masuk026 {
+    margin-top: -15px;
+    font-size: 20px;
+    margin-bottom: 70px;
+    font-weight: extra-bold;
+}
+
+.form-floating {
+    margin-top: 20px;
+    width: 440px;
+}
+#password {
+    margin-bottom: 60px;
+}
+
+#adkjslf {
+    font-weight: 700;
+}
+#jamal009 {
+    margin-top: 50px;
+    border: 2px solid #000;
+    background-color: white;
+    color: #000;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 12px;
+}
+#googleicon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+#privacy_police {
+    margin-top: 20px;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(143, 143, 143);
+}
+#loginbutton {
+    background-color:303F49;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    height: 60px;
+}
+#loginback {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: -40px;
+    margin-top: -880px;
+}

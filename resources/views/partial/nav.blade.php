@@ -17,6 +17,13 @@
             <li><a href="/panduan" class="active">Panduan</a></li>
             <li><a href="/kpr" class="active">KPR</a></li>
             {{-- <a href="/login/all" class="user"><i class="ri-user-fill"></i>Sign In</a> --}}
+            <li>
+                <form action="/logout" method="get">
+                    @csrf
+                    <button type="submit" class="dropdown-item"><i
+                            class="bi bi-box-arrow-right">Logout</i></button>
+                </form>
+                </li>
         </ul>
         <div class="masuk">
             <a href="/login/masuk">Masuk</a>
