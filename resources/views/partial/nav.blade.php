@@ -1,26 +1,17 @@
-<nav>
-    <div class="header">
-        <div class="logo">
-            <img src="assets/logo.png" class="img-logo" style="height:200%;
-            ">
-            <a href="/home" class="stretched-link"></a>
-            {{-- <ul class="title-logo">
-                <li><a href="/home" class="active">Eigentum</a></li>
-            </ul> --}}
-        </div>
-
-        <ul class="menu">
-            <li><a href="/dijual" class="active">Dijual</a></li>
-            <li><a href="/disewa" class="active">Disewa</a></li>
-            <li><a href="/newroperti" class="active">Properti baru</a></li>
-            <li><a href="/searchagen" class="active">Cari Agen</a></li>
-            <li><a href="/panduan" class="active">Panduan</a></li>
-            <li><a href="/kpr" class="active">KPR</a></li>
-            {{-- <a href="/login/all" class="user"><i class="ri-user-fill"></i>Sign In</a> --}}
-        </ul>
-        <div class="masuk">
-            <a href="/login/masuk">Masuk</a>
-        </div>
-
+<div class="navbar-GDD" id="4:8937">
+    <div class="group-154-311" id="I4:8937;365:23863">
+    <img class="logo-1-mBu" src="Logo.png" id="I4:8937;365:23865"/>
+    <p class="eigentum-rz3" id="I4:8937;365:23864">Eigentum</p>
     </div>
-</nav>
+    <div class="frame-140-imM" id="I4:8937;365:23854">
+    <div class="frame-139-4qD" id="I4:8937;365:23855">
+    <div class="text-PMh" id="I4:8937;365:23856">Dijual</div>
+    <div class="text-PMh" id="I4:8937;365:23857">Disewa</div>
+    <div class="text-PMh" id="I4:8937;365:23858">Properti Baru</div>
+    <div class="text-PMh" id="I4:8937;566:45875">Cari Agen</div>
+    <div class="text-PMh" id="I4:8937;566:48794">Panduan</div>
+    <div class="text-PMh" id="I4:8937;365:23860">KPR</div>
+    </div>
+    <div class="component-2-hHq" id="I4:8937;365:23862">Masuk</div>
+</div>
+</div>

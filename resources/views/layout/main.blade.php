@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="/css/nav.css">
     <script src="https://secure.exportkit.com/cdn/js/ek_googlefonts.js?v=6"></script>
 </head>
-rfrfrfr
 <body class="">
     @include('partial.nav')
     @include('partial.footer')
