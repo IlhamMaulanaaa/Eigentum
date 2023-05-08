@@ -7249,6 +7249,8 @@ body {
       }
       .group-125-BLj {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-shrink: 0;
         height: auto;
         width: auto;
@@ -7272,7 +7274,7 @@ body {
           font-family: 'Lato', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-top: 20px;
+          margin-top: 0px;
           line-height: 1;
           margin-right: 344px;
           text-align: center;
@@ -7290,10 +7292,12 @@ body {
         
         .social-Dwd {
           align-items: center;
+          justify-content: center;
           display: flex;
+          margin-bottom: 6.4px;
           flex-shrink: 0;
           height: calc(100% - 0.9rem);
-          margin: 0rem 0rem 0.4rem -60px;
+          margin: 0rem 0rem 0rem -60px;
         }
           .facebook-icon-XxK {
             flex-shrink: 0;
