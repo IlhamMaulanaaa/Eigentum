@@ -29,38 +29,69 @@
         </div>
         <div class="group-11-tab" id="4:7169">
         <div class="group-10-mPV" id="4:7171">
+        <!-- Search dan Dropdown -->
         <div class="group-70-tyu" id="4:7186">
-        <div class="group-3-FJf" id="I4:7188;252:17850">
-        <div class="frame-2-LL7" id="I4:7188;261:13370">
-        <div class="dijual-TQj" id="I4:7188;261:13371">DIJUAL</div>
-        <img class="vector-Ywy" src="dropdownjualbeli.svg" id="I4:7188;261:13372"/>
+          <div class="wrapperdropdown">
+            <div class="select-btn-dropdown">
+              <span>Semua</span>
+              <i class="uil uil-angle-down"></i>
+            </div>
+            <div class="contentdropdown">
+              
+              <ul class="optionsdropdown"></ul>
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="text" placeholder="Search here..." />
+            <button class="button">Search</button>
+          </div>
         </div>
-        </div>
-        <div class="group-4-2MM" id="4:7189">
-        <div class="group-79-PSo" id="4:7190">
-        <div class="cari-daerah-kota-atau-alamat-89V" id="4:7192">Cari daerah, kota, atau alamat</div>
-        <div class="group-78-qJo" id="4:7193">CARI</div>
-        </div>
-        </div>
-        </div>
+
+
+
+
+        <!-- Filter Home -->
         <div class="frame-61-qi7" id="4:7172">
-        <div class="component-113-xGw" id="4:7173">
-        <div class="group-6-KNP" id="I4:7173;261:10185">
-        <div class="semua-residential-5sM" id="I4:7173;261:10186">Semua Residential</div>
-        <img class="group-5-Dif" src="panahdrop.svg" id="I4:7173;261:10187"/>
+        <div class="col-lg-2 me-6">
+              <select class="form-select" style="background-color: transparent;">
+                  <option selected value="0" id="">Semua Properti</option>
+                  <option>Apartemen</option>
+                  <option>Ruko</option>
+                  <option>Rumah</option>
+                  <option>Villa</option>
+              </select>
         </div>
+        <div class="col-lg-2 me-6">
+          <select class="form-select" style="background-color: transparent;">
+                  <option value="0">Semua Harga</option>
+                  <option value="1">Dibawah 500 Juta</option>
+                  <option value="2">500 Juta - 1 Miliar</option>
+                  <option value="3">1 Miliar - 5 Miliar</option>
+                  <option value="4">5 Miliar - 10 Miliar</option>
+                  <option value="5">Lebih dari 10 Miliar</option>
+          </select>
         </div>
-        <div class="group-7-73M" id="4:7174">
-        <div class="harga-fqZ" id="4:7175">Harga</div>
-        <img class="group-5-cVu" src="panahdrop.svg" id="4:7176"/>
+        <div class="col-lg-2 me-6">
+          <select class="form-select" style="background-color: transparent;">
+              <option selected value="0" id="">Semua Kamar Tidur</option>
+              <option value="1">1 Kamar Tidur</option>
+              <option value="2">2 Kamar Tidur</option>
+              <option value="3">3 Kamar Tidur</option>
+              <option value="4">4 Kamar Tidur</option>
+              <option value="5">5 Kamar Tidur</option>
+              <option value="5">Lebih dari 5</option>
+          </select>
         </div>
-        <div class="group-8-k6K" id="4:7178">
-        <div class="kamar-tidur-iJ3" id="4:7179">Kamar Tidur</div>
-        <img class="group-5-ehV" src="panahdrop.svg" id="4:7180"/>
-        </div>
-        <div class="group-9-mGK" id="4:7182">
-        <div class="kamar-mandi-vuu" id="4:7183">Kamar Mandi</div>
-        <img class="group-5-wa7" src="panahdrop.svg" id="4:7184"/>
+        <div class="col-lg-2 me-6">
+          <select class="form-select" style="background-color: transparent;">
+              <option selected value="0" id="">Semua Kamar Mandi</option>
+              <option value="1">1 Kamar Mandi</option>
+              <option value="2">2 Kamar Mandi</option>
+              <option value="3">3 Kamar Mandi</option>
+              <option value="4">4 Kamar Mandi</option>
+              <option value="5">5 Kamar Mandi</option>
+              <option value="5">Lebih dari 5</option>
+          </select>
         </div>
         </div>
         </div>
