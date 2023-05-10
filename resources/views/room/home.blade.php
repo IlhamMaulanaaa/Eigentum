@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="css/l2.css">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
@@ -1327,4 +1328,5 @@
 
     <!-- JavaScript -->
     <script src="js/home.js"></script>
+    
 </html>
