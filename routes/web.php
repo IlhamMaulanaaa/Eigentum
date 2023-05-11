@@ -28,9 +28,6 @@ Route::get('/home', function () {
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
 });
-Route::get('/nyobadoang', function () {
-    return view('page.KPR.nyobadoang');
-});
 
 route::group(['prefix' => '/register'], function () {
     Route::get('/all', [registerController::class, 'index']);

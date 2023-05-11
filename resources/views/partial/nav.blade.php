@@ -10,8 +10,9 @@
     <div class="text-PMh" id="I4:8937;365:23858">Properti Baru</div>
     <div class="text-PMh" id="I4:8937;566:45875">Cari Agen</div>
     <div class="text-PMh" id="I4:8937;566:48794">Panduan</div>
-    <div class="text-PMh" id="I4:8937;365:23860">KPR</div>
+    <div class="text-PMh" id="I4:8937;365:23860"><a href="/kpr" style="color: #B2B2B2;" onclick="this.style.color='blue';">KPR</a>
     </div>
-    <div class="component-2-hHq" id="I4:8937;365:23862">Masuk</div>
+    </div>
+    <div class="component-2-hHq" id="I4:8937;365:23862"><a href="login/all" style="text-decoration: none; color: white;">Masuk</a></div>
 </div>
 </div>

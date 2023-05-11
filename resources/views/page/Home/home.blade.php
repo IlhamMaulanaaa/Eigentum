@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
     <!-- CSS -->
+    <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="css/l2.css">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
@@ -30,74 +30,74 @@
         </div>
         <div class="group-11-tab" id="4:7169">
         <div class="group-10-mPV" id="4:7171">
-        <!-- Search dan Dropdown -->
-        <div class="group-70-tyu" id="4:7186">
-          <div class="wrapperdropdown">
-            <div class="select-btn-dropdown">
-              <span>Semua</span>
-              <i class="uil uil-angle-down"></i>
-            </div>
-            <div class="contentdropdown">
-              
-              <ul class="optionsdropdown"></ul>
-            </div>
-          </div>
-          <div class="input-box">
-            <input type="text" placeholder="Search here..." />
-            <button class="button">Search</button>
-          </div>
+          <!-- Search dan Dropdown -->
+    <div class="group-70-tyu" id="4:7186">
+      <div class="wrapperdropdown">
+        <div class="select-btn-dropdown">
+          <span>Semua</span>
+          <i class="uil uil-angle-down"></i>
         </div>
-
-
-
-
-        <!-- Filter Home -->
-        <div class="frame-61-qi7" id="4:7172">
-        <div class="col-lg-2 me-6">
-              <select class="form-select" style="background-color: transparent;">
-                  <option selected value="0" id="">Semua Properti</option>
-                  <option>Apartemen</option>
-                  <option>Ruko</option>
-                  <option>Rumah</option>
-                  <option>Villa</option>
-              </select>
+        <div class="contentdropdown">
+          
+          <ul class="optionsdropdown"></ul>
         </div>
-        <div class="col-lg-2 me-6">
+      </div>
+      <div class="input-box">
+        <input type="text" placeholder="Search here..." />
+        <button class="button">Search</button>
+      </div>
+    </div>
+
+
+
+
+    <!-- Filter Home -->
+    <div class="frame-61-qi7" id="4:7172">
+    <div class="col-lg-2 me-6">
           <select class="form-select" style="background-color: transparent;">
-                  <option value="0">Semua Harga</option>
-                  <option value="1">Dibawah 500 Juta</option>
-                  <option value="2">500 Juta - 1 Miliar</option>
-                  <option value="3">1 Miliar - 5 Miliar</option>
-                  <option value="4">5 Miliar - 10 Miliar</option>
-                  <option value="5">Lebih dari 10 Miliar</option>
+              <option selected value="0" id="">Semua Properti</option>
+              <option>Apartemen</option>
+              <option>Ruko</option>
+              <option>Rumah</option>
+              <option>Villa</option>
           </select>
-        </div>
-        <div class="col-lg-2 me-6">
-          <select class="form-select" style="background-color: transparent;">
-              <option selected value="0" id="">Semua Kamar Tidur</option>
-              <option value="1">1 Kamar Tidur</option>
-              <option value="2">2 Kamar Tidur</option>
-              <option value="3">3 Kamar Tidur</option>
-              <option value="4">4 Kamar Tidur</option>
-              <option value="5">5 Kamar Tidur</option>
-              <option value="5">Lebih dari 5</option>
-          </select>
-        </div>
-        <div class="col-lg-2 me-6">
-          <select class="form-select" style="background-color: transparent;">
-              <option selected value="0" id="">Semua Kamar Mandi</option>
-              <option value="1">1 Kamar Mandi</option>
-              <option value="2">2 Kamar Mandi</option>
-              <option value="3">3 Kamar Mandi</option>
-              <option value="4">4 Kamar Mandi</option>
-              <option value="5">5 Kamar Mandi</option>
-              <option value="5">Lebih dari 5</option>
-          </select>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
+    </div>
+    <div class="col-lg-2 me-6">
+      <select class="form-select" style="background-color: transparent;">
+              <option value="0">Semua Harga</option>
+              <option value="1">Dibawah 500 Juta</option>
+              <option value="2">500 Juta - 1 Miliar</option>
+              <option value="3">1 Miliar - 5 Miliar</option>
+              <option value="4">5 Miliar - 10 Miliar</option>
+              <option value="5">Lebih dari 10 Miliar</option>
+      </select>
+    </div>
+    <div class="col-lg-2 me-6">
+      <select class="form-select" style="background-color: transparent;">
+          <option selected value="0" id="">Semua Kamar Tidur</option>
+          <option value="1">1 Kamar Tidur</option>
+          <option value="2">2 Kamar Tidur</option>
+          <option value="3">3 Kamar Tidur</option>
+          <option value="4">4 Kamar Tidur</option>
+          <option value="5">5 Kamar Tidur</option>
+          <option value="5">Lebih dari 5</option>
+      </select>
+    </div>
+    <div class="col-lg-2 me-6">
+      <select class="form-select" style="background-color: transparent;">
+          <option selected value="0" id="">Semua Kamar Mandi</option>
+          <option value="1">1 Kamar Mandi</option>
+          <option value="2">2 Kamar Mandi</option>
+          <option value="3">3 Kamar Mandi</option>
+          <option value="4">4 Kamar Mandi</option>
+          <option value="5">5 Kamar Mandi</option>
+          <option value="5">Lebih dari 5</option>
+      </select>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
         <div class="frame-156-pto" id="4:7196">
         <div class="group-77-FDR" id="4:7198">
         <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Rumah Baru</div>
@@ -1328,5 +1328,4 @@
 
     <!-- JavaScript -->
     <script src="js/home.js"></script>
-    
 </html>

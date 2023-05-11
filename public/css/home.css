@@ -230,7 +230,6 @@ body {
             display: none;
             padding: 0px;
             width: 123px;
-            margin-top: 10px;
             background: #fff;
             border-radius: 7px;
             border: solid 0.1rem #d0d0d0;
@@ -337,7 +336,7 @@ body {
           .contentdropdown{
             display: none;
             padding: 0px;
-            margin-top: 15px;
+            margin-top: 5px;
             background: #fff;
             border-radius: 7px;
           }

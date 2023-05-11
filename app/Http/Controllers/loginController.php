@@ -38,7 +38,7 @@ class loginController extends Controller
 
       if (Auth::attempt($infologin)) {
          // return redirect('pasien/all')->with('success', 'Berhasil Login');
-         return redirect('/kpr')->with('success', 'Berhasil Login');
+         return redirect('/')->with('success', 'Berhasil Login');
       } else {
          return redirect('/login/all')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
       }
