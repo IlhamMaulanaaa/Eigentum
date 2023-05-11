@@ -25,14 +25,21 @@ Route::get('/home', function () {
     return view('layout.main');
 });
 
+Route::get('/kpr', function () {
+    return view('page.KPR.kpr');
+});
+Route::get('/nyobadoang', function () {
+    return view('page.KPR.nyobadoang');
+});
 
 route::group(['prefix' => '/register'], function () {
-    Route::get('/all', [registerController::class, 'index'])->middleware('guest');
+    Route::get('/all', [registerController::class, 'index']);
     Route::post('/create', [registerController::class, 'store']);
 });
 route::group(['prefix' => '/login'], function () {
-    Route::get('/all', [loginController::class, 'index'])->name('login')->middleware('guest');
+    Route::get('/all', [loginController::class, 'index'])->name('login');
     Route::post('/create', [loginController::class, 'auth']);
 });
 Route::get('/logout', [sessionController::class, 'logout']);
 
+Route::post('login/{provider}/callback', 'App\Http\Controllers\loginController@handleCallback');
