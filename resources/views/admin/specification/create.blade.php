@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
-                <h3 class=" text-light">Tambah Data Specification</h3>
+                <h3 class=" text-dark">Tambah Data Specification</h3>
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">

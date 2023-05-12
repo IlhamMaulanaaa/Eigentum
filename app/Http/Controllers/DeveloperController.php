@@ -17,7 +17,6 @@ class DeveloperController extends Controller
         $data = Developer::all();
         $tables = (new Developer())->getTable();
 
-
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.developer.all', ['developers' => $data, 'tables' => $tables]);
@@ -52,8 +51,6 @@ class DeveloperController extends Controller
                 'phone_number'  => 'required',
             ]);
 
-
-
             $data = Developer::create([
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
@@ -64,16 +61,16 @@ class DeveloperController extends Controller
                 'phone_number'  => $request->phone_number,
             ]);
 
-            $developer = Developer::where('id', '=', $data->id)->get();
+            $data = Developer::where('id', '=', $data->id)->get();
 
-            if ($developer) {
-                return ApiFormatter::createApi('200', 'Data Created', $data). redirect('/admin/develop/data',);
+            if ($data) {
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/develop/data',);
                 // .redirect('/admin/unit/data',);
             } else {
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', $e);
+            return ApiFormatter::createApi('500', 'Internal Server Error', $e);
         }
     }
     /**
@@ -85,7 +82,6 @@ class DeveloperController extends Controller
             'develop' => $developer
         ]);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -101,12 +97,12 @@ class DeveloperController extends Controller
      * Update the specified resource in storage.
      */
 
-    public function update(Request $request, Developer $developer,string $id)
+    public function update(Request $request,string $id)
     {
         try {
             $request->validate([
-                'email' => 'required|email|unique:developers',
-                'password'  => 'required|min:8',
+                'email' => 'nullable|email|unique:users',
+                'password'  => 'nullable|min:8',
                 'company'   => 'required',
                 'address'  => 'required',
                 'owner' => 'required',
@@ -114,9 +110,9 @@ class DeveloperController extends Controller
                 'phone_number'  => 'required',
             ]);
 
-            $developer= Developer::findOrfail($id);
+            $data= Developer::findOrfail($id);
 
-            $developer->update([
+            $data->update([
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'company'   => $request->company,
@@ -126,11 +122,16 @@ class DeveloperController extends Controller
                 'phone_number'  => $request->phone_number
             ]);
 
-            $developer = Developer::where('id', '=', $developer->id)->get();
+            $data = Developer::where('id', '=', $data->id)->get();
+            $url = '/admin/develop/show/' . $id;
 
-            return ApiFormatter::createApi('201', 'Success', $developer);
+            if ($data) {
+                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
+            } else {
+                return ApiFormatter::createApi('400', 'Bad Request', null);
+            }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', $e);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -142,12 +143,12 @@ class DeveloperController extends Controller
     {
         try {
             $developer = Developer::findOrfail($id);
-
             $data = $developer->delete();
+
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/develop/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/develop/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
             return ApiFormatter::createApi('500', 'Internal Server Error', null);

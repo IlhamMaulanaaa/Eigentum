@@ -4,11 +4,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title fs-2 text-primary">
-                    {{ $tables }}
-                </h2>
-                <div class="col-md-10">
-                    <a agent="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                <div class="row align-items-center">
+                    <h2 class="card-title fs-2 text-primary col-md-8 text-uppercase">
+                        {{ $tables }}
+                    </h2>
+                    <div class="col-md-4 text-end">
+                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                    </div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -23,7 +25,7 @@
                             <th scope="col">Location</th>
                             <th scope="col">Ktp</th>
                             <th scope="col">Phone number</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -39,15 +41,13 @@
                                     <td class="text-start"><?= $agent->location ?></td>
                                     <td class="text-start"><?= $agent->ktp ?></td>
                                     <td class="text-start"><?= $agent->phone_number ?></td>
-                                    <td class="text-start">
+                                    <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $agent->id }}">Detail Data</a>
-                                        <a type="button" class="btn btn-outline-primary"
-                                            href="edit/{{ $agent->id }}">Edit Data</a>
+                                            href="show/{{ $agent->id }}">Detail</a>
                                         <form action="delete/{{ $agent->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete Data</button>
+                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>

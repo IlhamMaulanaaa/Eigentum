@@ -17,7 +17,6 @@ class AgentController extends Controller
         $data = Agent::all();
         $tables = (new Agent())->getTable();
 
-
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.agent.all', ['agents' => $data, 'tables' => $tables]);
@@ -49,7 +48,6 @@ class AgentController extends Controller
                 'phone_number'  => 'required',
             ]);
 
-
             $data = Agent::create([
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
@@ -60,13 +58,15 @@ class AgentController extends Controller
                 'phone_number'  => $request->phone_number,
             ]);
 
+            $data = Agent::where('id', '=', $data->id)->get();
+
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/agent/data',);
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/agent/data',);
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -76,7 +76,7 @@ class AgentController extends Controller
     public function show(Agent $agent)
     {
         return view('admin.agent.detail', [
-            "agent" => $agent
+            "agent" => $agent,
         ]);
     }
 
@@ -93,12 +93,12 @@ class AgentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Agent $agent, string $id)
+    public function update(Request $request,string $id)
     {
         try {
             $request->validate([
-                'email' => 'required|email|unique:users',
-                'password'  => 'required|min:8',
+                'email' => 'nullable|email|unique:agents',
+                'password'  => 'nullable|min:8',
                 'name'    => 'required',
                 'address'   => 'required',
                 'location'  => 'required',
@@ -118,15 +118,16 @@ class AgentController extends Controller
                 'phone_number'  => $request->phone_number,
             ]);
 
-            $agent = Agent::where('id', '=', $agent->id)->get();
+            $data = Agent::where('id', '=', $data->id)->get();
+            $url = '/admin/agent/show/' . $id;
 
-            if ($agent) {
-                return ApiFormatter::createApi('200', 'Success', $data);
+            if ($data) {
+                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -140,12 +141,12 @@ class AgentController extends Controller
             $data = $agent->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/agent/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/agent/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 }

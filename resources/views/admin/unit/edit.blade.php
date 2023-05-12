@@ -4,81 +4,113 @@
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
-                <h3 class="text-dark">Edit Data unit</h3>
+                <h3 class="text-dark">Edit unit</h3>
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/unit/update/ {{ $unit->id }}">
+                        <form method="post" action="/admin/unit/update/ {{ $unit->id }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="" class="form-label">title</label>
+                                <label for="" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title"
                                     value="{{ old('title', $unit->title) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">description</label>
+                                <label for="" class="form-label">Description</label>
                                 <input type="text" class="form-control" id="description"
                                     name="description"value="{{ old('description', $unit->description) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">price</label>
+                                <label for="" class="form-label">Price</label>
                                 <input type="number" class="form-control" id="price"
                                     name="price"value="{{ old('price', $unit->price) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">rent</label>
+                                <label for="" class="form-label">Rent</label>
                                 <input type="number" class="form-control" id="rent"
                                     name="rent"value="{{ old('rent', $unit->rent) }}" required>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">image_1</label>
-                                <input type="file" class="form-control" id="image_1"
-                                    name="image_1"value="{{ old('image_1', $unit->image_1) }}" required>
+                            <div class="col">
+                                @if ($unit->image_1)
+                                    <img src="{{ asset('storage/' . $unit->image_1) }}" alt="{{ $unit->image_1 }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Image 1</label>
+                                    <input type="file" class="form-control" id="image_1" name="image_1">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col">
+                                @if ($unit->image_2)
+                                    <img src="{{ asset('storage/' . $unit->image_2) }}" alt="{{ $unit->image_2 }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Image 2</label>
+                                    <input type="file" class="form-control" id="image_2" name="image_2"
+                                        value="{{ old('image_2', $unit->image_2) }}">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col">
+                                @if ($unit->image_3)
+                                    <img src="{{ asset('storage/' . $unit->image_3) }}" alt="{{ $unit->image_3 }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Image 3</label>
+                                    <input type="file" class="form-control" id="image_3" name="image_3">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col">
+                                @if ($unit->image_4)
+                                    <img src="{{ asset('storage/' . $unit->image_4) }}" alt="{{ $unit->image_4 }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Image 4</label>
+                                    <input type="file" class="form-control" id="image_4" name="image_4">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col">
+                                @if ($unit->image_plan)
+                                    <img src="{{ asset('storage/' . $unit->image_plan) }}" alt="{{ $unit->image_plan }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Image plan</label>
+                                    <input type="file" class="form-control" id="image_plan" name="image_plan">
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">image_2</label>
-                                <input type="file" class="form-control" id="image_2"
-                                    name="image_2"value="{{ old('image_2', $unit->image_2) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">image_3</label>
-                                <input type="file" class="form-control" id="image_3"
-                                    name="image_3"value="{{ old('image_3', $unit->image_3) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">image_4</label>
-                                <input type="file" class="form-control" id="image_4"
-                                    name="image_4"value="{{ old('image_4', $unit->image_4) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">image_plan</label>
-                                <input type="file" class="form-control" id="image_plan"
-                                    name="image_plan"value="{{ old('image_plan', $unit->image_plan) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">bloc</label>
+                                <label for="" class="form-label">Bloc</label>
                                 <input type="text" class="form-control" id="bloc"
                                     name="bloc"value="{{ old('bloc', $unit->bloc) }}" required>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">certificate</label>
-                                <input type="file" class="form-control" id="certificate"
-                                    name="certificate"value="{{ old('certificate', $unit->certificate) }}" required>
+                            <div class="col">
+                                @if ($unit->certificate)
+                                    <img src="{{ asset('storage/' . $unit->certificate) }}"
+                                        alt="{{ $unit->certificate }}" width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Certificate</label>
+                                    <input type="file" class="form-control" id="certificate" name="certificate">
+                                </div>
                             </div>
                             <br>
-                            
+
                             <div class="float-end">
-                                <a type="button" class="btn btn-warning" href="/admin/unit/data">Back</a>
+                                <a type="button" class="btn btn-warning"
+                                    href="/admin/unit/show/{{ $unit->id }}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

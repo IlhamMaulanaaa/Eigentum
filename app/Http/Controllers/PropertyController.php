@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
+use App\Models\Agent;
+use App\Models\Developer;
 use App\Models\Property;
+use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -15,11 +18,19 @@ class PropertyController extends Controller
     public function index()
     {
         $data = Property::all();
+        // $type = Type::all();
+        // $develop = Developer::all();
+        // $agent = Agent::all();
         $tables = (new Property())->getTable();
 
         if($data){
             // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.property.all', ['property' => $data, "tables" => $tables]);
+            return view('admin.property.all', 
+            ['properties' => $data, 
+            // 'types' => $type,
+            // 'developers' => $develop,
+            // 'agents' => $agent,
+            'tables' => $tables]);
         }else{
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -30,6 +41,9 @@ class PropertyController extends Controller
      */
     public function create(){
         return view('admin.property.create',[
+            // 'type' => Type::all(),
+            // 'develop' => Developer::all(),
+            // 'agent' => Agent::all(),
         ]);
     }
 
@@ -59,10 +73,12 @@ class PropertyController extends Controller
                 // 'agent_id'  => $request->agent_id,
             ]);
 
+            $data = Property::where('id', '=', $data->id)->get();
+
             if($data){
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/property/data',);
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/property/data',);
             }else{
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         }catch(Exception $e){
             return ApiFormatter::createApi('500', 'Internal Server Error', null);
@@ -86,6 +102,9 @@ class PropertyController extends Controller
     {
         return view('admin.property.edit',[
             'property' => $property,
+            'type' => Type::all(),
+            'develop' => Developer::all(),
+            'agent' => Agent::all(),
         ]);
     }
 
@@ -101,32 +120,32 @@ class PropertyController extends Controller
                 'property'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
-                // 'type_id'   => 'required',
-                // 'developer_id'  => 'required',
-                // 'agent_id'  => 'required',
+                'type_id'   => 'required',
+                'developer_id'  => 'required',
+                'agent_id'  => 'required',
             ]);
 
-            $property = Property::findOrfail($id);
+            $data = Property::findOrfail($id);
 
-            $data = Property::where('id',$property->id)->update([
+            $data->update([
                 'unit'  => $request->unit,
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
-                // 'type_id'   => $request->type_id,
-                // 'developer_id'  => $request->developer_id,
-                // 'agent_id'  => $request->agent_id,
+                'type_id'   => $request->type_id,
+                'developer_id'  => $request->developer_id,
+                'agent_id'  => $request->agent_id,
             ]);
 
-            $data = Property::where('id','=', $property->id)->get();
+            $data = Property::where('id','=', $data->id)->get();
+            $url = '/admin/property/show/' . $id;
 
-
-            if($data){
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/property/data',);
-            }else{
-                return ApiFormatter::createApi('400', 'Failed', null);
+            if ($data) {
+                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
+            } else {
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
@@ -139,12 +158,12 @@ class PropertyController extends Controller
     {
         try{
             $property = Property::findOrfail($id);
-
             $data = $property->delete();
+
             if($data){
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/unit/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/property/data',);
             }else{
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         }catch(Exception $e){
             return ApiFormatter::createApi('500', 'Internal Server Error', null);

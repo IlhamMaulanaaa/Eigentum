@@ -19,4 +19,21 @@ class Property extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    // public function type()
+    // {
+    //     return $this->hasMany(Type::class);
+    // }
+    // public function develop()
+    // {
+    //     return $this->hasMany(Developer::class);
+    // }
+
+    // public function agent()
+    // {
+    //     return $this->hasMany(Agent::class);
+    // }
+
+
+
 }

@@ -61,12 +61,12 @@ class SpecificationController extends Controller
             ]);
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/spec/data',);
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/spec/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -107,9 +107,9 @@ class SpecificationController extends Controller
                 // 'type_id'   => 'required',
             ]);
 
-            $specification = Specification::findOrfail($id);
+            $data = Specification::findOrfail($id);
 
-            $data = Specification::where('id', $specification->id)->update([
+            $data->update([
                 'bedroom' => $request->bedroom,
                 'bathroom' => $request->bathroom,
                 'surface_area'  => $request->surface_area,
@@ -118,10 +118,11 @@ class SpecificationController extends Controller
                 // 'type_id'   => $request->type_id,
             ]);
 
-            $data = Specification::where('id', '=', $specification->id)->get();
+            $data = Specification::where('id', '=', $data->id)->get();
+            $url = '/admin/spec/show/' . $id;
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/spec/data',);
+                return ApiFormatter::createApi('200', 'Success', $data).redirect($url);
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
@@ -138,15 +139,15 @@ class SpecificationController extends Controller
     {
         try {
             $specification = Specification::findOrfail($id);
-
             $data = $specification->delete();
+
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', null). redirect('/admin/spec/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/spec/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 }

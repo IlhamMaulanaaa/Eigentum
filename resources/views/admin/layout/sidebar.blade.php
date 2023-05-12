@@ -11,7 +11,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">User</span>
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                 </a>
             </li>
 
@@ -23,7 +23,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/agent/data">
-                    <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Agent</span>
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Agent</span>
                 </a>
             </li>
 
@@ -51,25 +51,25 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/property/data">
-                    <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Property</span>
+                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Property</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/spec/data">
-                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Specification</span>
+                    <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Specification</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/type/data">
-                    <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Type</span>
+                    <i class="align-middle" data-feather="book"></i> <span class="align-middle">Type</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Guide</span>
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
                 </a>
             </li>
 

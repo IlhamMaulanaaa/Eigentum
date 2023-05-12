@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
-                <h3 align="center" class=" text-light">Detail Data</h3>
+                <h3 class="text-dark">Detail Unit</h3>
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
@@ -77,8 +77,9 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group">
+                            <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/unit/data  ">Back</a>
+                                <a type="button" class="btn btn-primary" href="edit/{{ $unit->id }}">Edit</a>
                             </div>
                         </form>
                     </div>

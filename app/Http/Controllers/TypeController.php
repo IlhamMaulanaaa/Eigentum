@@ -52,12 +52,12 @@ class TypeController extends Controller
             ]);
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/type/data',);
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/type/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -94,23 +94,24 @@ class TypeController extends Controller
                 'villa' => 'required',
             ]);
 
-            $type = Type::findOrfail($id);
+            $data = Type::findOrfail($id);
 
-            $type->update([
+            $data->update([
                 'housing'   => $request->housing,
                 'apartement'    => $request->apartement,
                 'villa' => $request->villa,
             ]);
 
-            $data = Type::where('id', '=', $type->id)->get();
+            $data = Type::where('id', '=', $data->id)->get();
+            $url = '/admin/type/show/' . $id; 
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/type/data',);
+                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 
@@ -124,12 +125,12 @@ class TypeController extends Controller
             $data = $type->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/type/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/type/data',);
             } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('400', 'Failed', null);
+            return ApiFormatter::createApi('500', 'Internal Server Error', null);
         }
     }
 }

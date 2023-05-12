@@ -4,17 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
-                <h3 align="center" class=" text-light">Detail Data typeification</h3>
+                <h3 class=" text-dark">Detail Developer</h3>
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="id" class="form-label">Id</label>
-                                <input type="text" class="form-control" id="id" name="id"
-                                    value="{{ $develop->id }}" readonly disabled>
-                            </div>
-                            <br>
 
                             <div class="form-group">
                                 <label for="email" class="form-label">Email</label>
@@ -65,8 +59,9 @@
                             </div>
                             <br>
 
-                            <div class="form-group">
-                                <a type="button" class="btn btn-warning" href="/admin/type/data  ">Back</a>
+                            <div class="form-group text-end">
+                                <a type="button" class="btn btn-warning" href="/admin/develop/data ">Back</a>
+                                <a type="button" class="btn btn-primary" href="edit/{{ $develop->id }}">Edit</a>
                             </div>
                         </form>
                     </div>

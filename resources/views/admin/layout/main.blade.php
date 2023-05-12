@@ -19,9 +19,6 @@
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
 
-    <link href="/css/dashboard.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
-
     {{-- <link href="/css/admin/dashboard.css" rel="stylesheet"> --}}
     <link href="/css/admin/app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -59,7 +56,6 @@
     </script>
 
     <script src="/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/dashboard.js"></script>
 
 </body>
 
