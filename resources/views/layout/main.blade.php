@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
     <title>eigentum</title>
-    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/Home/home.css">
     <link rel="stylesheet" href="/css/swiper-bundle.min.css">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -21,9 +21,24 @@
         @if (Auth::check())
             @include('partial.nav')
             @include('page.Home.home')
+            @include('partial.footer')
         @endif
+        @include('partial.nav')
+        @include('page.Home.home')
         @include('partial.footer')
     </div>
+
+
+    {{-- <div class="container py-1">
+        @if (Auth::check())
+        @endif
+        @include('partial.nav')
+        <div class="container">
+            @yield('container')
+        </div>
+        @include('page.Home.home')
+    </div> --}}
+
 </body>
 
 

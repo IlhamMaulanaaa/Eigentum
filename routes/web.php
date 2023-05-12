@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\sessionController;
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +19,18 @@ use App\Http\Controllers\sessionController;
 
 Route::get('/', function () {
     return view('layout.main');
-});
+})->middleware('auth');
 
 Route::get('/home', function () {
     return view('layout.main');
 });
 
+Route::get('/dijual', function () {
+    return view('page.Dijual.dijual');
+})->middleware('auth');
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
-});
+})->middleware('auth');
 
 route::group(['prefix' => '/register'], function () {
     Route::get('/all', [registerController::class, 'index']);
