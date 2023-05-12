@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,20 @@ Route::get('/', function () {
 // Route::get('/admin', function () {
 //     return view('admin.layout.main');
 // });
+
+Route::group(['prefix' => '/session'], function(){
+    Route::get('/signout', [SessionController::class, 'signout']);
+
+    Route::group(['prefix' => '/signin'], function(){
+        Route::get('/', [SessionController:: class, 'signin'])->name('login')->middleware('guest');
+        Route::post('/create', [SessionController:: class, 'postSignin']);
+    });
+
+    route::group(['prefix' => '/signup'], function(){
+        Route::get('/', [SessionController:: class, 'signup'])->middleware('guest');
+        Route::post('/create', [SessionController:: class, 'postSignup']);
+    });
+});
 
 Route::group(['prefix' => '/admin'], function(){
     
