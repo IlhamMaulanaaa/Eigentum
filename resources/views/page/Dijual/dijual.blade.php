@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Swiper CSS -->
-    <link rel="stylesheet" href="css/Lib/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
 
     <!-- Icon -->
     <script src="https://kit.fontawesome.com/your_kit_code.js" crossorigin="anonymous"></script>
@@ -20,7 +20,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="/css/Dijual/dijual.css">
+    <link rel="stylesheet" href="css/dijual.css">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
       rel="stylesheet"
@@ -2472,7 +2472,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <!-- JavaScript -->
-    <script src="js/home.js"></script>
+    <script src="js/script.js"></script>
 </html>
 
 @endsection

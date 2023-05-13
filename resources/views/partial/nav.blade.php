@@ -14,7 +14,7 @@
     </div>
     </div>
     <div class="component-2-hHq" id="I4:8937;365:23862">
-        <a href="login/all" style="text-decoration: none; color: white;">Masuk</a>
+        <a href="session/signin" style="text-decoration: none; color: white;">Masuk</a>
     
     
         {{-- @auth

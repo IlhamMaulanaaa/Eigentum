@@ -18,8 +18,12 @@ use GuzzleHttp\Middleware;
 */
 
 Route::get('/', function () {
-    return view('layout.main');
+    return view('page.Home.home');
 })->middleware('auth');
+
+Route::get('/guest', function () {
+    return view('page.Home.home');
+});
 
 Route::get('/home', function () {
     return view('page.Home.home');
