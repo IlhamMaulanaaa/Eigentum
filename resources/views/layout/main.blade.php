@@ -20,12 +20,15 @@
     <div class="container py-1">
         @if (Auth::check())
             @include('partial.nav')
-            @include('page.Home.home')
+            @endif
+            
+            {{-- @include('partial.nav')
+            @include('partial.footer') --}}
+            
+            <div class="container">
+                @yield('content')
+            </div>
             @include('partial.footer')
-        @endif
-        @include('partial.nav')
-        @include('page.Home.home')
-        @include('partial.footer')
     </div>
 
 

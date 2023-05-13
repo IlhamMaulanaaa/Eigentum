@@ -23,14 +23,14 @@
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                         <a id="loginback" href="#">Back</a>
-                        <form action="/login/create" method="POST">
+                        <form action="/session/signin/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Masuk</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a href="/register/all"
+                            <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a href="/session/signup"
                                     class="text-dark " id="adkjslf">Sign
                                     up</a></h6>
                                     <div class="form-floating">

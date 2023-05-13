@@ -22,24 +22,27 @@ Route::get('/', function () {
 })->middleware('auth');
 
 Route::get('/home', function () {
-    return view('layout.main');
-});
+    return view('page.Home.home');
+})->middleware('auth');
 
 Route::get('/dijual', function () {
     return view('page.Dijual.dijual');
 })->middleware('auth');
+
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
 })->middleware('auth');
 
-route::group(['prefix' => '/register'], function () {
-    Route::get('/all', [registerController::class, 'index']);
-    Route::post('/create', [registerController::class, 'store']);
-});
-route::group(['prefix' => '/login'], function () {
-    Route::get('/all', [loginController::class, 'index'])->name('login');
-    Route::post('/create', [loginController::class, 'auth']);
-});
-Route::get('/logout', [sessionController::class, 'logout']);
+Route::group(['prefix' => '/session'], function(){
+    Route::get('/signout', [sessionController::class, 'signout']);
 
-Route::post('login/{provider}/callback', 'App\Http\Controllers\loginController@handleCallback');
+    Route::group(['prefix' => '/signin'], function(){
+        Route::get('/', [sessionController:: class, 'signin'])->name('login')->middleware('guest');
+        Route::post('/create', [sessionController:: class, 'postSignin']);
+    });
+
+    route::group(['prefix' => '/signup'], function(){
+        Route::get('/', [sessionController:: class, 'signup'])->middleware('guest');
+        Route::post('/create', [sessionController:: class, 'postSignup']);
+    });
+});

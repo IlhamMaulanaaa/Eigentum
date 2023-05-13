@@ -23,16 +23,16 @@
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                         <a id="loginback" href="#">Back</a>
-                        <form action="/register/create" method="POST">
+                        <form action="/session/signup/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Memulai</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a href="/login/all"
+                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a href="/session/signin"
                                     class="text-dark " id="adkjslf">Sign
-                                    In</a></h6>
+                                    In</a></h6>x
                             <div class="form-floating">
                                 <input type="text" value="{{ Session::get('name') }}" name="name"
                                     class="form-control" id="name" placeholder="Username">

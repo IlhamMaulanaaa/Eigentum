@@ -1,3 +1,6 @@
+@extends('layout.main')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2471,3 +2474,5 @@
     <!-- JavaScript -->
     <script src="js/home.js"></script>
 </html>
+
+@endsection
