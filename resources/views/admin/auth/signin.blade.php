@@ -31,7 +31,7 @@
                         <div class="text-center mt-4">
                             <h1 class="h2">Welcome back</h1>
                             <p class="lead">
-                                Sign in to your account to continue or 
+                                Sign in to continue or 
                                 <a href="signup">Sign Up</a>
                             </p>
                         </div>

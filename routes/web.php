@@ -43,7 +43,7 @@ Route::group(['prefix' => '/session'], function(){
     });
 });
 
-Route::group(['prefix' => '/admin'], function(){
+Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     
     Route::get('/', [AdminController:: class, 'index']);
 
