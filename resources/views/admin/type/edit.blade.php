@@ -11,21 +11,15 @@
                         <form method="post" action="/admin/type/update/ {{ $type->id }}">
                             @csrf
                             <div class="form-group">
-                                <label for="housing" class="form-label">Housing</label>
-                                <input type="text" class="form-control" id="housing" name="housing"
-                                    value="{{ old('housing', $type->housing) }}" required>
+                                <label for="type" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="type" name="type"
+                                    value="{{ old('type', $type->type) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="apartement" class="form-label">Apartement</label>
-                                <input type="text" class="form-control" id="apartement" name="apartement"
-                                    value="{{ old('apartement', $type->apartement) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="villa" class="form-label">Villa</label>
-                                <input type="text" class="form-control" id="villa" name="villa"
-                                    value="{{ old('villa', $type->villa) }}" required>
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="description" name="description"
+                                    value="{{ old('description', $type->description) }}" required>
                             </div>
                             <!--
                                     <div class="form-group">

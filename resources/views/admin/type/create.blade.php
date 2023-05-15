@@ -11,23 +11,16 @@
                         <form method="post" action="/admin/type/add" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="housing" class="form-label">Housing</label>
-                                <input type="text" class="form-control noscroll" id="housing" name="housing"
-                                    value="{{ old('housing') }}">
+                                <label for="type" class="form-label">Type</label>
+                                <input type="text" class="form-control noscroll" id="type" name="type"
+                                    value="{{ old('type') }}">
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="apartement" class="form-label">Apartement</label>
-                                <input type="text" class="form-control noscroll" id="apartement" name="apartement"
-                                    value="{{ old('apartement') }}">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" class="form-control noscroll" id="description" name="description"
+                                    value="{{ old('description') }}">
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="villa" class="form-label">Villa</label>
-                                <input type="text" class="form-control noscroll" id="villa" name="villa"
-                                    value="{{ old('villa') }}">
-                            </div>
-                            <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning" href="/admin/type/data">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>

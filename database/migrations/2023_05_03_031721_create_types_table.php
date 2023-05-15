@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
-            $table->string("housing");
-            $table->string("apartement");
-            $table->string("villa");
+            $table->string("type");
+            $table->string("description");
             $table->softDeletes();
             $table->timestamps();
         });

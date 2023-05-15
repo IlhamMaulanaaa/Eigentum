@@ -10,21 +10,15 @@
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="" class="form-label">Housing</label>
-                                <input type="text" class="form-control" id="housing" name="housing"
-                                    value="{{ $type->housing }}" readonly disabled>
+                                <label for="" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="type" name="type"
+                                    value="{{ $type->type }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">Apartement</label>
-                                <input type="text" class="form-control" id="apartement" name="apartement"
-                                    value="{{ $type->apartement }}" readonly disabled>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">Villa</label>
-                                <input type="text" class="form-control" id="villa" name="villa"
-                                    value="{{ $type->villa }}" readonly disabled>
+                                <label for="" class="form-label">Description</label>
+                                <input type="text" class="form-control" id="description" name="description"
+                                    value="{{ $type->description }}" readonly disabled>
                             </div>
                             <br>
                             <!--

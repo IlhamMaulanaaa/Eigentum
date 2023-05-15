@@ -38,7 +38,7 @@
                                     <td class="text-start"><?= $property->property ?></td>
                                     <td class="text-start"><?= $property->description ?></td>
                                     <td class="text-start"><?= $property->address ?></td>
-                                    {{-- <td class="text-start "><?= $property->type->housing ?></td>
+                                    {{-- <td class="text-start "><?= $property->type->type ?></td>
                                     <td class="text-start "><?= $property->developer->company ?></td>
                                     <td class="text-start "><?= $property->agent->name ?></td> --}}
                                     <td class="text-end">

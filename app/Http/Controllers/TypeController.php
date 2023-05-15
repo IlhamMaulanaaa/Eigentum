@@ -40,15 +40,11 @@ class TypeController extends Controller
     {
         try {
             $request->validate([
-                'housing'   => 'required',
-                'apartement'    => 'required',
-                'villa' => 'required',
+                'type'   => 'required',
             ]);
 
             $data = Type::create([
-                'housing'   => $request->housing,
-                'apartement'    => $request->apartement,
-                'villa' => $request->villa,
+                'type'   => $request->type,
             ]);
 
             if ($data) {
@@ -89,17 +85,13 @@ class TypeController extends Controller
     {
         try {
             $request->validate([
-                'housing'   => 'required',
-                'apartement'    => 'required',
-                'villa' => 'required',
+                'type'   => 'required',
             ]);
 
             $data = Type::findOrfail($id);
 
             $data->update([
-                'housing'   => $request->housing,
-                'apartement'    => $request->apartement,
-                'villa' => $request->villa,
+                'type'   => $request->type,
             ]);
 
             $data = Type::where('id', '=', $data->id)->get();
