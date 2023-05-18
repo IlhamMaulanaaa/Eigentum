@@ -68,7 +68,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="/admin/guide/data">
                     <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
                 </a>
             </li>

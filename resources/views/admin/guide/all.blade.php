@@ -18,29 +18,29 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Bedroom</th>
-                            <th scope="col">Bathroom</th>
-                            <th scope="col">Surface area</th>
-                            <th scope="col">Building area</th>
-                            <th scope="col">Floor</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Image</th>
+                            {{-- <th scope="col">Type</th> 
+                            <th scope="col">Developer</th> 
+                            <th scope="col">Agent</th>  --}}
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($specification->count())
-                            @foreach ($specification as $spec)
+                        @if ($guides->count())
+                            @foreach ($guides as $guide)
                                 <tr align="center">
                                     <td class=""><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $spec->id ?></td> --}}
-                                    <td class="text-start"><?= $spec->bedroom ?></td>
-                                    <td class="text-start"><?= $spec->bathroom ?></td>
-                                    <td class="text-start"><?= $spec->surface_area ?></td>
-                                    <td class="text-start"><?= $spec->building_area ?></td>
-                                    <td class="text-start"><?= $spec->floor ?></td>
+                                    {{-- <td class=""><?= $guide->id ?></td> --}}
+                                    <td class="text-start"><?= $guide->title ?></td>
+                                    <td class="text-start"><?= $guide->description ?></td>
+                                    <td class="text-start"><img src="{{ asset('storage/' . $guide->image) }}" width="60"
+                                            heigth="60"></td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $spec->id }}">Detail</a>
-                                        <form action="delete/{{ $spec->id }}" method="get" class="d-inline">
+                                            href="show/{{ $guide->id }}">Detail</a>
+                                        <form action="delete/{{ $guide->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
@@ -48,9 +48,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @elseif ($specs->count())
+                            {{-- @elseif ($guides->count())
                                     <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/spec/all">Back</a>
+                                        <a type="button" class="btn btn-warning" href="/admin/guide/all">Back</a>
                                     </div> --}}
                         @else
                             <tr>

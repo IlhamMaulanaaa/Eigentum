@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\UnitController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 // Route::get('/admin', function () {
 //     return view('admin.layout.main');
@@ -157,5 +158,21 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::post('/update/{type}', [TypeController:: class, 'update']);
         Route::get('/delete/{type}',[TypeController::class,'destroy']);
         // Route::get('/search', [TypeController::class,'search']);
+    });
+
+    route::group(['prefix' => '/guide'], function(){
+        Route::get('/data', [GuideController:: class, 'index']);
+        Route::group(['prefix' => '/show'],function () {
+            Route::get('/{guide}',[GuideController::class,'show']);
+            Route::get('/edit/{guide}',[GuideController::class,'edit']);
+            // Route::post('/update/{guide}', [GuideController:: class, 'update']);
+        });
+        Route::get('/show/{guide}',[GuideController::class,'show']);
+        Route::get('/create', [GuideController:: class, 'create']);
+        Route::post('/add', [GuideController:: class, 'store']);
+        // Route::get('/edit/{guide}',[GuideController::class,'edit']);
+        Route::post('/update/{guide}', [GuideController:: class, 'update']);
+        Route::get('/delete/{guide}',[GuideController::class,'destroy']);
+        // Route::get('/search', [GuideController::class,'search']);
     });
 });
