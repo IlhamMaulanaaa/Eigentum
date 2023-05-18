@@ -33,6 +33,10 @@ Route::get('/dijual', function () {
     return view('page.Dijual.dijual');
 })->middleware('auth');
 
+Route::get('/panduan', function () {
+    return view('page.Panduan.panduan');
+})->middleware('auth');
+
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
 })->middleware('auth');
