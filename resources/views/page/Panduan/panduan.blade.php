@@ -55,7 +55,7 @@
     
     
     <!-- Carousel Start -->
-    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s" style="">
         <div class="owl-carousel header-carousel position-relative">
             <div class="owl-carousel-item position-relative" data-dot="<img src='img/'>">
                 <img class="img-fluid" src="img/" alt="" style="width: 2012px; height: 900px;">

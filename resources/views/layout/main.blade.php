@@ -56,14 +56,14 @@
 
 <body>
         @if (Auth::check())
-            @include('partial.nav')
         @endif
             
             {{-- @include('partial.nav')
             @include('partial.footer') --}}
-            
+            @include('partial.nav')
             @yield('content')
-            {{-- @include('partial.footer') --}}
+            
+            @include('partial.footer')
 
 
     {{-- <div class="container py-1">

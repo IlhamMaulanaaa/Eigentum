@@ -21,6 +21,10 @@ Route::get('/', function () {
     return view('page.Home.home');
 })->middleware('auth');
 
+Route::get('/404', function () {
+    return view('page.404.404');
+})->middleware('auth');
+
 Route::get('/guest', function () {
     return view('page.Home.home');
 });
