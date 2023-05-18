@@ -20,3 +20,21 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('layout.main');
 });
+
+Route::get('/dijual', function () {
+    return view('layout.main');
+});
+
+Route::get('/disewa', function () {
+    return view('layout.main');
+});
+
+Route::get('/propertibaru', function () {
+    return view('layout.main');
+});
+Route::get('/panduan', function () {
+    return view('layout.main');
+});
+Route::get('/kpr', function () {
+    return view('layout.main');
+});
