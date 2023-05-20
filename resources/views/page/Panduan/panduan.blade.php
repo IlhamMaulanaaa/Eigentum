@@ -15,6 +15,8 @@
 
     {{-- <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon"> --}}
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="css/Lib/swiper-bundle.min.css">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,68 +42,50 @@
 
 <body>
     <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+    {{-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border " style="width: 3rem; height: 3rem; color:#0C40E8" role="status">
             <span class="sr-only">Loading...</span>
         </div>
-    </div>
+    </div> --}}
     <!-- Spinner End -->
 
 
     
 
 
-    
-    
-    
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s" style="">
-        <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative" data-dot="<img src='img/'>">
-                <img class="img-fluid" src="img/" alt="" style="width: 2012px; height: 900px;">
-                <div class="owl-carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8" style="margin-top: -190px; margin-left : -220px">
-                                <h1 class="display-2 text-white animated slideInDown" style=" width: 900px; font-family: 'Lato', sans-serif;">Pelajari Tentang KPR</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3"  style="font-family: 'Lato', sans-serif;" >KPR memungkinkan individu atau keluarga untuk memiliki rumah sendiri tanpa harus membayar secara tunai. KPR memberikan fasilitas pembiayaan jangka panjang dengan pembayaran secara berkala, sehingga memudahkan masyarakat untuk memiliki rumah dengan cicilan yang terjangkau.</p>
-                                <a href="#oi" class="btn btn-primary rounded-pill py-3 px-5 animated slideInLeft" style="background-color: #0C40E8; border: none;">Lihat Sekarang</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    {{-- <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left: 48px;">
+            <img src="/assets/logo.svg" alt="" style="height: 46px; width: 46px; margin-right: 4px;">
+            <h2 class="m-0" style="font-size: 30px; color: #0C40E8; font-weight: 600;">Eigentum</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/dijual" class="nav-item nav-link" style="color: #000">Dijual</a>
+                <a href="about.html" class="nav-item nav-link" style="color: #000">Disewa</a>
+                <a href="service.html" class="nav-item nav-link" style="color: #000">Properti Baru</a>
+                <a href="project.html" class="nav-item nav-link" style="color: #000">Cari agen</a>
+                <a href="/panduan" class="nav-item nav-link" style="color: #000">Panduan</a>
+                <a href="/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
             </div>
-            <div class="owl-carousel-item position-relative" data-dot="<img src='img/'>">
-                <img class="img-fluid" src="img/" alt="" style="width: 2012px; height: 900px;">
-                <div class="owl-carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8" style="margin-top: -190px; margin-left : -220px">
-                                <h1 class="display-2 text-white animated slideInDown"style="width: 900px; font-family: 'Lato', sans-serif;">Pahami Tentang Cara Menjual Properti</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3"style="font-family: 'Lato', sans-serif;">Pelajari dengan baik produk atau layanan yang ingin Anda jual. Ketahui keunggulan, fitur, manfaat, dan nilai tambah yang ditawarkan. Pahami juga siapa target pasar Anda dan apa kebutuhan serta masalah yang dapat dipecahkan oleh produk atau layanan tersebut.</p>
-                                <a href="" class="btn btn-primary rounded-pill py-3 px-5 animated slideInLeft" style="background-color: #0C40E8; border: none;">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative" data-dot="<img src='/assets/coba.svg'>">
-                <img class="img-fluid" src="/assets/coba.svg" alt="" style="width: 2012px; height: 900px;">
-                <div class="owl-carousel-inner">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-10 col-lg-8" style="margin-top: -190px; margin-left : -220px">
-                                <h1 class="display-2 text-white animated slideInDown"style=" font-family: 'Lato', sans-serif;">Pelajari Cara Menyewa Properti</h1>
-                                <p class="fs-5 fw-medium text-white mb-4 pb-3"style="font-family: 'Lato', sans-serif;">Pelajari jenis-jenis properti yang umum disewakan, seperti rumah, apartemen, kantor, atau ruang komersial lainnya. Pahami karakteristik dan persyaratan khusus untuk masing-masing jenis properti tersebut.</p>
-                                <a href="" class="btn btn-primary rounded-pill py-3 px-5 animated slideInLeft" style="background-color: #0C40E8; border: none; ">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" style="background-color: #0C40E8; color: #ffffff; border: none;">Masuk<i class="fa fa-arrow-right ms-3"></i></a>
         </div>
-    </div>
-    <!-- Carousel End -->
+        
+    </nav> --}}
+    
+
+
+
+    <section class="home" id="home" style="">
+        <div class="home-text container">
+            <h2 class="home-title">Panduan Eigentum</h2>
+            <span class="home-subtitle" style="color: #000">Panduan properti yang dapat dipercaya untuk Anda</span>
+        </div>
+    </section>
+    
+    
 
 
     <!-- Feature Start -->
@@ -409,6 +393,8 @@
 
     <!-- Template Javascript -->
     <script src="/js/Panduan/panduan.js"></script>
+    <!-- Swiper JS -->
+    <script src="js/swiper-bundle.min.js"></script>
 </body>
 
 </html>

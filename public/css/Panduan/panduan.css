@@ -325,6 +325,62 @@ body{
     }
 }
 
+
+
+.imagepanduan{
+    width: 100%;
+    min-height: 440px;
+    background: url("");
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagepanduan-text{
+    color: var(--bg-color);
+    text-align: center;
+}
+
+.imagepanduan-title{
+    font-size: 3.5rem;
+}
+
+.imagepanduan-subtitle{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+@media (max-width: 1060px){
+
+    .imagepanduan-text{
+        width: 100%
+    }
+}
+
+@media (max-width: 768px){
+    .imagepanduan{
+        min-height: 380px;
+    }
+
+    .imagepanduan-title{
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 396px){
+    .imagepanduan-title{
+        font-size: 2rem;
+    }
+
+    .imagepanduan-subtitle{
+        font-size: 0.9rem;
+    }
+
+    .imagepanduan{
+        min-height: 300px;
+    }
+}
+
 .header-carousel .owl-dots {
     position: absolute;
     width: 60px;
