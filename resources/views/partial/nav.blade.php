@@ -84,7 +84,7 @@
 
 
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left: 48px;">
+    <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left: 48px;">
         <img src="/assets/logo.svg" alt="" style="height: 46px; width: 46px; margin-right: 4px;">
         <h2 class="m-0" style="font-size: 30px; color: #0C40E8; font-weight: 600;">Eigentum</h2>
     </a>

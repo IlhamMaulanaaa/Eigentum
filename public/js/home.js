@@ -111,27 +111,85 @@ document.addEventListener("mouseup", dragStop);
 
 // selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
 
-const wrapper = document.querySelector(".wrapperdropdown"),
-selectBtn = wrapper.querySelector(".select-btn-dropdown"),
-options = wrapper.querySelector(".optionsdropdown");
+const optionMenu = document.querySelector(".select-menu1"),
+     selectBtn1 = optionMenu.querySelector(".select-btn1"),
+     options1 = optionMenu.querySelectorAll(".option1"),
+     sBtn_text1 = optionMenu.querySelector(".sBtn-text1");
 
-let countries = ["Semua", "DIjual", "Disewa"];
+selectBtn1.addEventListener("click", () => optionMenu.classList.toggle("active"));       
 
-function addCountry(selectedCountry) {
-  options.innerHTML = "";
-  countries.forEach(country => {
-      let isSelected = country == selectedCountry ? "selected" : "";
-      let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
-      options.insertAdjacentHTML("beforeend", li);
+options1.forEach(option1 =>{
+  option1.addEventListener("click", ()=>{
+      let selectedOption = option1.querySelector(".option1-text").innerText;
+      sBtn_text1.innerText = selectedOption;
+
+      optionMenu.classList.remove("active");
   });
-}
-addCountry();
+});
 
-function updateName(selectedLi) {
-  addCountry(selectedLi.innerText);
-  wrapper.classList.remove("active");
-  selectBtn.firstElementChild.innerText = selectedLi.innerText;
-}
+const optionMenu1 = document.querySelector(".select-menu2"),
+     selectBtn2 = optionMenu1.querySelector(".select-btn2"),
+     options2 = optionMenu1.querySelectorAll(".option2"),
+     sBtn_text2 = optionMenu1.querySelector(".sBtn-text2");
+
+selectBtn2.addEventListener("click", () => optionMenu1.classList.toggle("active"));       
+
+options2.forEach(option2 =>{
+  option2.addEventListener("click", ()=>{
+      let selectedOption = option2.querySelector(".option2-text").innerText;
+      sBtn_text2.innerText = selectedOption;
+
+      optionMenu1.classList.remove("active");
+  });
+});
 
 
-selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+const optionMenu2 = document.querySelector(".select-menu3"),
+     selectBtn3 = optionMenu2.querySelector(".select-btn3"),
+     options3 = optionMenu2.querySelectorAll(".option3"),
+     sBtn_text3 = optionMenu2.querySelector(".sBtn-text3");
+
+selectBtn3.addEventListener("click", () => optionMenu2.classList.toggle("active"));       
+
+options3.forEach(option3 =>{
+  option3.addEventListener("click", ()=>{
+      let selectedOption = option3.querySelector(".option3-text").innerText;
+      sBtn_text3.innerText = selectedOption;
+
+      optionMenu2.classList.remove("active");
+  });
+});
+
+
+const optionMenu3 = document.querySelector(".select-menu4"),
+     selectBtn4 = optionMenu3.querySelector(".select-btn4"),
+     options4 = optionMenu3.querySelectorAll(".option4"),
+     sBtn_text4 = optionMenu3.querySelector(".sBtn-text4");
+
+selectBtn4.addEventListener("click", () => optionMenu3.classList.toggle("active"));       
+
+options4.forEach(option4 =>{
+  option4.addEventListener("click", ()=>{
+      let selectedOption = option4.querySelector(".option4-text").innerText;
+      sBtn_text4.innerText = selectedOption;
+
+      optionMenu3.classList.remove("active");
+  });
+});
+
+
+const optionMenu4 = document.querySelector(".select-menu5"),
+     selectBtn5 = optionMenu4.querySelector(".select-btn5"),
+     options5 = optionMenu4.querySelectorAll(".option5"),
+     sBtn_text5 = optionMenu4.querySelector(".sBtn-text5");
+
+selectBtn5.addEventListener("click", () => optionMenu4.classList.toggle("active"));       
+
+options5.forEach(option5 =>{
+  option5.addEventListener("click", ()=>{
+      let selectedOption = option5.querySelector(".option5-text").innerText;
+      sBtn_text5.innerText = selectedOption;
+
+      optionMenu4.classList.remove("active");
+  });
+});
