@@ -131,102 +131,82 @@
 
 
 
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h6 class="" style="font-family: 'Lato', sans-serif; color:#0C40E8">Kategori</h6>
-                <h1 class="mb-4" style="font-family: 'Lato', sans-serif;">Tips Tentang Properti</h1>
+    <!-- Category Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-5">
+                <h6 id="" class="" style="font-family: 'Lato', sans-serif; color:#0C40E8">Kategori Panduan</h6>
+                <h1>Eksplore Panduan Teratas</h1>
             </div>
-
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-home fa-3x"></i>
-                            </div>
-                                                                                  
-                            <h4 class="mb-3" style="font-family: 'Lato', sans-serif;">Beli Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="#oi">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Jual Properti</h4>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-shopping-cart fa-3x"></i>
-                            </div>                            
-                            <h4 style="font-family: 'Lato', sans-serif;" class="mb-3">Jual Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a  class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Sewa Properti</h4>
+                        </a>
                     </div>
                 </div>
-                <div  class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-key fa-3x"></i>
-                            </div>                                                        
-                            <h4 style="font-family: 'Lato', sans-serif;" class="mb-3">Sewa Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a  class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Beli Properti</h4>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-balance-scale fa-3x"></i>
-                            </div>
-                            
-                            <h4 style="font-family: 'Lato', sans-serif;" class="mb-3">Hukum Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Developer</h4>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-user-tie fa-3x"></i>
-                            </div>
-                            
-                            <h4 style="font-family: 'Lato', sans-serif;" class="mb-3">Pemilihan Agen Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a  class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">KPR</h4>
+                        </a>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item rounded overflow-hidden">
-                        <img class="img-fluid" src="/assets/coba.svg" alt="">
-                        <div class="position-relative p-4 pt-0">
-                            <div class="service-icon">
-                                <i class="fa fa-file-invoice-dollar fa-3x"></i>
-                            </div>
-                            
-                            <h4 style="font-family: 'Lato', sans-serif;" class="mb-3">Perpajakan Properti</h4>
-                            <p style="font-family: 'Lato', sans-serif;">pppppppppppppppppp</p>
-                            <a  class="small fw-medium" style="color: #0C40E8; font-family: 'Lato', sans-serif;" href="">Read More<i class="fa fa-arrow-right ms-2" style="color: #0C40E8;""></i></a>
-                        </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Hukum Properti</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Perpajakan Properti</h4>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="cat-item position-relative overflow-hidden rounded mb-2">
+                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <a class="cat-overlay text-white text-decoration-none" href="">
+                            <h4 class="text-white font-weight-medium">Jadi Agent</h4>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Service End -->
+    <!-- Category Start -->
 
 
     
@@ -364,10 +344,10 @@
                     <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
                     
                 </div>
+                <div class="pagination-panduan">
+                    <ul>  </ul>
+                </div>
             </div>
-        <div class="pagination">
-            <ul>  </ul>
-        </div>
         
     </div>
     <!-- Projects End -->

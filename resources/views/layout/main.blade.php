@@ -45,7 +45,6 @@
             @include('partial.nav')
             @yield('content')
             
-            @include('partial.footer')
 
 
     {{-- <div class="container py-1">
