@@ -25,11 +25,13 @@
                             <th scope="col">Owner</th>
                             <th scope="col">License</th>
                             <th scope="col">Phone number</th>
+                            <th scope="col">properti</th>
+                            <th scope="col">jumlah properti</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($developers->count())
+                        @if ($developers && $developers->count())
                             @foreach ($developers as $develop)
                                 <tr align="center">
                                     <td class=""><?= $loop->iteration ?></td>
@@ -41,27 +43,28 @@
                                     <td class="text-start"><?= $develop->owner ?></td>
                                     <td class="text-start"><?= $develop->license ?></td>
                                     <td class="text-start"><?= $develop->phone_number ?></td>
+                                    <td>
+                                        @foreach ($develop->properties as $bangunan)
+                                            {{ $bangunan->property }},
+                                        @endforeach
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $develop->properties->count() }}
+                                    </td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $develop->id }}">Detail</a>
                                         <form action="delete/{{ $develop->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
+                                                onclick="return confirm('Apakah Anda Yakin')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @elseif ($developers->count())
-                                    <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/develop/all">Back</a>
-                                    </div> --}}
-                        @else
-                            <tr>
-                                <td colspan="100" align="center">Data Tidak Ditemukan</td>
-                            </tr>
                         @endif
                     </tbody>
+
                 </table>
             </div>
         </div>

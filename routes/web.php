@@ -63,8 +63,10 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     //     Route::get('/delete/{user}',[UserController::class,'destroy']);
     //     // Route::get('/search', [UserController::class,'search']);
     // });
-
-    Route::group(['prefix' => '/develop'], function(){
+        Route::get("/dashboard", function(){
+        return view("admin.dashboard.all");
+        });    
+        Route::group(['prefix' => '/develop'], function(){
         Route::get('/data', [DeveloperController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
             Route::get('/{developer}',[DeveloperController::class,'show']);

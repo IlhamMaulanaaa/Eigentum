@@ -6,11 +6,22 @@
 `
         <ul class="sidebar-nav">
             <li class="sidebar-header">
+                Dashboard
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/dashboard">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Dashboard Admin</span>
+                </a>
+            </li>
+
+
+            <li class="sidebar-header">
                 Role
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
                 </a>
             </li>

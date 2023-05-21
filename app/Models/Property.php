@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Property extends Model
@@ -11,7 +14,6 @@ class Property extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'properties';
     protected $guarded = ['id'];
 
     protected $hidden = [
@@ -20,20 +22,16 @@ class Property extends Model
         'deleted_at',
     ];
 
-    // public function type()
-    // {
-    //     return $this->hasMany(Type::class);
-    // }
-    // public function develop()
-    // {
-    //     return $this->hasMany(Developer::class);
-    // }
-
-    // public function agent()
-    // {
-    //     return $this->hasMany(Agent::class);
-    // }
-
-
-
+    public function developer(): BelongsTo
+    {
+        return $this->belongsTo(Developer::class, 'developer_id');
+    }
+    public function unit(): HasMany
+    {
+        return $this->hasMany(Unit::class, 'property_id');
+    }
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class, 'agent_property');
+    }
 }

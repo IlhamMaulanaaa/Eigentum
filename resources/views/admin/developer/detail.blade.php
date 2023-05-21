@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
-                <h3 class=" text-dark">Detail Developer</h3>
+                <h3 class="text-dark">Detail Developer</h3>
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
@@ -59,8 +59,18 @@
                             </div>
                             <br>
 
+                            <div class="form-group">
+                                <label for="properties" class="form-label">Properties</label>
+                                <ul>
+                                    @foreach ($develop->properties as $property)
+                                        <li>{{ $property->property }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <br>
+
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/develop/data ">Back</a>
+                                <a type="button" class="btn btn-warning" href="/admin/develop/data">Back</a>
                                 <a type="button" class="btn btn-primary" href="edit/{{ $develop->id }}">Edit</a>
                             </div>
                         </form>
@@ -68,4 +78,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

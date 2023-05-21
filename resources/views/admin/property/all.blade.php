@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table mb-2 ">
+                <table class="table mb-2">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
@@ -22,9 +22,8 @@
                             <th scope="col">Property</th>
                             <th scope="col">Description</th>
                             <th scope="col">Address</th>
-                            {{-- <th scope="col">Type</th> 
-                            <th scope="col">Developer</th> 
-                            <th scope="col">Agent</th>  --}}
+                            <th scope="col">Developer</th>
+                            <th scope="col">Agents</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -33,29 +32,27 @@
                             @foreach ($properties as $property)
                                 <tr align="center">
                                     <td class=""><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $property->id ?></td> --}}
                                     <td class="text-start"><?= $property->unit ?></td>
                                     <td class="text-start"><?= $property->property ?></td>
                                     <td class="text-start"><?= $property->description ?></td>
                                     <td class="text-start"><?= $property->address ?></td>
-                                    {{-- <td class="text-start "><?= $property->type->type ?></td>
                                     <td class="text-start "><?= $property->developer->company ?></td>
-                                    <td class="text-start "><?= $property->agent->name ?></td> --}}
+                                    <td class="text-start">
+                                        @foreach ($property->agents as $agent)
+                                            <span>{{ $agent->name }}</span><br>
+                                        @endforeach
+                                    </td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $property->id }}">Detail</a>
                                         <form action="delete/{{ $property->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
+                                                onclick="return confirm('Apakah Anda Yakin')">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @elseif ($propertys->count())
-                                    <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/property/all">Back</a>
-                                    </div> --}}
                         @else
                             <tr>
                                 <td colspan="100" align="center">Data Tidak Ditemukan</td>

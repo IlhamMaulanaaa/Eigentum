@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string("bloc");
             $table->string("certificate");
             // $table->foreignId('specification_id');
-            // $table->foreignId('property_id');
+            $table->foreignId('property_id');
             $table->softDeletes();
             $table->timestamps();
         });
