@@ -47,14 +47,18 @@ Route::get('/kpr', function () {
 
 Route::group(['prefix' => '/session'], function(){
     Route::get('/signout', [sessionController::class, 'signout']);
-
+    
     Route::group(['prefix' => '/signin'], function(){
         Route::get('/', [sessionController:: class, 'signin'])->name('login')->middleware('guest');
         Route::post('/create', [sessionController:: class, 'postSignin']);
     });
-
+    
     route::group(['prefix' => '/signup'], function(){
         Route::get('/', [sessionController:: class, 'signup'])->middleware('guest');
         Route::post('/create', [sessionController:: class, 'postSignup']);
     });
+});
+
+Route::get('/loginagent', function () {
+    return view('auth.agent.signin');
 });
