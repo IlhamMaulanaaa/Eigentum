@@ -50,7 +50,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">2.382</h1>
+                                            <h1 class="mt-1 mb-3">{{ $agentCount }}</h1>
                                             <div class="mb-0">
                                                 <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65%
                                                 </span>
@@ -71,7 +71,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">14.212</h1>
+                                            <h1 class="mt-1 mb-3">{{ $userCount }}</h1>
                                             <div class="mb-0">
                                                 <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 5.25%
                                                 </span>
@@ -94,7 +94,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">$21.300</h1>
+                                            <h1 class="mt-1 mb-3">{{ $developerCount }}</h1>
                                             <div class="mb-0">
                                                 <span class="text-success"> <i class="mdi mdi-arrow-bottom-right"></i> 6.65%
                                                 </span>

@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('agent_property', function (Blueprint $table) {
             $table->id();
-            $table->string("unit");
-            $table->string("property");
-            $table->string("description");
-            $table->string("address");
-            $table->foreignId('developer_id');
-            $table->softDeletes();
+            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('property_id');
             $table->timestamps();
+
+            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
+            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('agent_property');
     }
 };

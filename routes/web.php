@@ -9,6 +9,7 @@ use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
 
 /*
@@ -63,9 +64,6 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     //     Route::get('/delete/{user}',[UserController::class,'destroy']);
     //     // Route::get('/search', [UserController::class,'search']);
     // });
-        Route::get("/dashboard", function(){
-        return view("admin.dashboard.all");
-        });    
         Route::group(['prefix' => '/develop'], function(){
         Route::get('/data', [DeveloperController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
@@ -177,4 +175,5 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::get('/delete/{guide}',[GuideController::class,'destroy']);
         // Route::get('/search', [GuideController::class,'search']);
     });
+        Route::get("/dashboard", [DashboardController::class, 'index']);
 });
