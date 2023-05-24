@@ -10,7 +10,7 @@
     <!-- Tambahkan link ini untuk menghubungkan library Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/Login and Register/login.css">
+    <link rel="stylesheet" href="/css/Login and Register/developer/login.css">
 </head>
 
 
@@ -30,8 +30,8 @@
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Memulai</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a href="/session/signin"
-                                    class="text-dark " id="adkjslf">Sign
+                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a
+                                    href="/session/signin" class="text-dark " id="adkjslf">Sign
                                     In</a></h6>x
                             <div class="form-floating">
                                 <input type="text" value="{{ Session::get('name') }}" name="name"

@@ -19,31 +19,32 @@ use GuzzleHttp\Middleware;
 
 Route::get('/', function () {
     return view('page.Home.home');
-})->middleware('auth');
-
-Route::get('/404', function () {
-    return view('page.404.404');
-})->middleware('auth');
+});
 
 Route::get('/guest', function () {
     return view('page.Home.home');
-});
+})->middleware('auth');
 
 Route::get('/home', function () {
     return view('page.Home.home');
-})->middleware('auth');
+});
+
+Route::get('/404', function () {
+    return view('page.404.404');
+});
+
 
 Route::get('/dijual', function () {
     return view('page.Dijual.dijual');
-})->middleware('auth');
+});
 
 Route::get('/panduan', function () {
     return view('page.Panduan.panduan');
-})->middleware('auth');
+});
 
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
-})->middleware('auth');
+});
 
 Route::group(['prefix' => '/session'], function(){
     Route::get('/signout', [sessionController::class, 'signout']);
@@ -61,4 +62,7 @@ Route::group(['prefix' => '/session'], function(){
 
 Route::get('/loginagent', function () {
     return view('auth.agent.signin');
+});
+Route::get('/registeragent', function () {
+    return view('auth.agent.signup');
 });
