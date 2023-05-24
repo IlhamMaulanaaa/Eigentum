@@ -34,19 +34,19 @@ Route::get('/dijual', function () {
 })->middleware('auth');
 
 Route::get('/kpr', function () {
-    return view('page.KPR.kpr');
-})->middleware('auth');
+    return view('page.KPR.all');
+});
 
-Route::group(['prefix' => '/session'], function(){
+Route::group(['prefix' => '/session'], function () {
     Route::get('/signout', [sessionController::class, 'signout']);
 
-    Route::group(['prefix' => '/signin'], function(){
-        Route::get('/', [sessionController:: class, 'signin'])->name('login')->middleware('guest');
-        Route::post('/create', [sessionController:: class, 'postSignin']);
+    Route::group(['prefix' => '/signin'], function () {
+        Route::get('/', [sessionController::class, 'signin'])->name('login')->middleware('guest');
+        Route::post('/create', [sessionController::class, 'postSignin']);
     });
 
-    route::group(['prefix' => '/signup'], function(){
-        Route::get('/', [sessionController:: class, 'signup'])->middleware('guest');
-        Route::post('/create', [sessionController:: class, 'postSignup']);
+    route::group(['prefix' => '/signup'], function () {
+        Route::get('/', [sessionController::class, 'signup'])->middleware('guest');
+        Route::post('/create', [sessionController::class, 'postSignup']);
     });
 });
