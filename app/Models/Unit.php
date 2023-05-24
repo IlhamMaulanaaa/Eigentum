@@ -23,13 +23,10 @@ class Unit extends Model
 
     public function specification()
     {
-        return $this->belongsTo(Specification::class);
+        return $this->belongsTo(Specification::class, 'specification_id');
     }
-    public function property()
-    {
-        return $this->belongsTo(Property::class);
-    }
-    public function properties(): BelongsTo
+
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');
     }

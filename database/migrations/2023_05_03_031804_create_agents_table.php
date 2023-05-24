@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('agents', function (Blueprint $table) {
             $table->id();
-            $table->string("email");
-            $table->string("password");
             $table->string("name");
+            $table->string("email")->unique();
+            $table->string("password");
             $table->string("address");
             $table->string("location");
             $table->string("ktp");
-            $table->bigInteger("phone_number");
+            $table->string("phone_number");
             $table->softDeletes();
             $table->timestamps();
         });

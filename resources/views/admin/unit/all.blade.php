@@ -29,7 +29,7 @@
                             <th scope="col">Image plan</th>
                             <th scope="col">Bloc</th>
                             <th scope="col">Certificate</th>
-                            <th scope="col" class="text-start">Specification</th>
+                            <th scope="col" class="text-start">Specification Id</th>
                             <th scope="col" class="text-start">Property Name</th>
                             <th scope="col"></th>
                         </tr>

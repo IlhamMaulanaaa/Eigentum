@@ -132,16 +132,28 @@
                             </div> --}}
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">specification_id</label>
+                                <label for="" class="form-label">Specification</label>
                                 <input type="number" class="form-control" id="specification_id" name="specification_id"
                                     value="{{ old('specification_id', $unit->specification_id) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">property_id</label>
-                                <input type="number" class="form-control" id="property_id"
-                                    name="property_id"value="{{ old('property_id', $unit->property_id) }}" required>
+                                <label for="" class="form-label">Property</label>
+                                <select class="form-control" id="property_id" name="property_id">
+                                    @foreach ($property as $property)
+                                        @if (old('property_id', $unit->property_id == $property->id))
+                                            <option name="property_id" value="{{ $property->id }}" selected>
+                                                {{ $property->property }}
+                                            </option>
+                                        @endif
+                                        <option name="property_id" value="{{ $property->id }}">{{ $property->property }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"

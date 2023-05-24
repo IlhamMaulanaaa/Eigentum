@@ -10,23 +10,23 @@
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ $agent->email }}" readonly disabled>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    value="{{ $agent->password }}" readonly disabled>
-                            </div>
-                            <br>
-                            <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ $agent->name }}" readonly disabled>
                             </div>
                             <br>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ $agent->email }}" readonly disabled>
+                            </div>
+                            <br>
+                            {{-- <div class="form-group">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password"
+                                    value="{{ $agent->password }}" readonly disabled>
+                            </div>
+                            <br> --}}
                             <div class="form-group">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" name="address"
@@ -41,14 +41,24 @@
                             <br>
                             <div class="form-group">
                                 <label for="ktp" class="form-label">Ktp</label>
-                                <input type="text" class="form-control" id="ktp" name="ktp"
-                                    value="{{ $agent->ktp }}" readonly disabled>
+                                <div class="image-text-wrapper">
+                                    <img src="{{ asset('storage/' . $agent->ktp) }}" alt="" width="200">
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="phone_number" class="form-label">Phone number</label>
                                 <input type="text" class="form-control" id="phone_number" name="phone_number"
                                     value="{{ $agent->phone_number }}" readonly disabled>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="properties" class="form-label">Properties</label>
+                                <ul>
+                                    @foreach ($agent->properties as $property)
+                                        <li>{{ $property->property }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                             <br>
                             <div class="form-group text-end">

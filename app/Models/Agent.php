@@ -14,8 +14,10 @@ class Agent extends Model
     use SoftDeletes;
 
     protected $guarded = ['id'];
+    protected $table = "agents";
 
     protected $hidden = [
+        'password',
         'created_at',
         'updated_at',
         'deleted_at',

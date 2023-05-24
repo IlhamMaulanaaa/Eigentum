@@ -8,53 +8,57 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/develop/update/ {{ $develop->id }}">
+                        <form method="post" action="/admin/developer/update/ {{ $developer->id }}" enctype="multipart/form-data">
                             @csrf
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company</label>
+                                <input type="text" class="form-control" id="company" name="company"
+                                    value="{{ old('company', $developer->company) }}" required>
+                            </div>
+                            <br>
                             <div class="form-group">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ old('email', $develop->email) }}" required>
+                                    value="{{ old('email', $developer->email) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="company" class="form-label">Company</label>
-                                <input type="text" class="form-control" id="company" name="company"
-                                    value="{{ old('company', $develop->company) }}" required>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    value="{{ old('address', $develop->address) }}" required>
+                                <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="owner" class="form-label">Owner</label>
                                 <input type="text" class="form-control" id="owner" name="owner"
-                                    value="{{ old('owner', $develop->owner) }}" required>
+                                    value="{{ old('owner', $developer->owner) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="license" class="form-label">License</label>
-                                <input type="text" class="form-control" id="license" name="license"
-                                    value="{{ old('license', $develop->license) }}" required>
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="{{ old('address', $developer->address) }}" required>
+                            </div>
+                            <br>
+                            <div class="col">
+                                @if ($developer->license)
+                                    <img src="{{ asset('storage/' . $developer->license) }}" alt="{{ $developer->license }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">License</label>
+                                    <input type="file" class="form-control" id="license" name="license">
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="phone_number" class="form-label">Phone number</label>
                                 <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ old('phone_number', $develop->phone_number) }}" required>
+                                    value="{{ old('phone_number', $developer->phone_number) }}" required>
                             </div>
                             <br>
-
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/develop/show/{{ $develop->id }}">Back</a>
+                                    href="/admin/developer/show/{{ $developer->id }}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

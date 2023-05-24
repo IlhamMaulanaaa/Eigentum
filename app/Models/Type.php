@@ -10,8 +10,10 @@ class Type extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table = "types";
 
     protected $guarded = ['id'];
+
 
     protected $hidden = [
         'created_at',
@@ -21,6 +23,6 @@ class Type extends Model
 
     public function property()
     {
-        return $this->hasMany(Property::class);
+        return $this->hasMany(Property::class, 'type_id');
     }
 }

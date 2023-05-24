@@ -11,7 +11,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/dashboard">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Dashboard Admin</span>
+                    <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Dashboard Admin</span>
                 </a>
             </li>
 
@@ -21,13 +21,13 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">User</span>
+                <a class="sidebar-link" href="/admin/customer/data">
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Customer</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/develop/data">
+                <a class="sidebar-link" href="/admin/developer/data">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Developer</span>
                 </a>
             </li>
@@ -67,7 +67,7 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/spec/data">
+                <a class="sidebar-link" href="/admin/specification/data">
                     <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Specification</span>
                 </a>
             </li>

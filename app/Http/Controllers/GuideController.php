@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class GuideController extends Controller
 {
@@ -46,7 +47,7 @@ class GuideController extends Controller
                 'image'   => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
             ]);
 
-            $image = $request->image->getClientOriginalName(). "." . $request->image->getClientOriginalExtension();
+            $image = Str::random(8). "." . $request->image->getClientOriginalExtension();
 
             $data = Guide::create([
                 'title'  => $request->title,
@@ -64,7 +65,7 @@ class GuideController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         }catch(Exception $e){
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -107,15 +108,6 @@ class GuideController extends Controller
             'description'   => $request->description,
         ]);
 
-        // if ($request->hasFile('image')) {
-        //     $image = $request->image->getClientOriginalName(). "." . $request->image->getClientOriginalExtension();
-        //     $image_path = Storage::disk('public')->put($image, file_get_contents($request->{$image}));
-        //                 if (File::exists($image_path)) {
-        //                     File::delete($image_path);
-        //                 }
-        //     $data->image = $image;
-        // }
-
         $images = ['image'];
         foreach ($images as $key => $image) {
             if ($request->hasFile($image)) {
@@ -138,7 +130,7 @@ class GuideController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -157,7 +149,7 @@ class GuideController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

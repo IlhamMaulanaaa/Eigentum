@@ -6,6 +6,9 @@ use App\Helper\ApiFormatter;
 use App\Models\Agent;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AgentController extends Controller
 {
@@ -39,14 +42,16 @@ class AgentController extends Controller
     {
         try {
             $request->validate([
-                'email' => 'required|email|unique:users',
+                'email' => 'required|email|unique:agents',
                 'password'  => 'required|min:8',
                 'name'    => 'required',
                 'address'   => 'required',
                 'location'  => 'required',
-                'ktp'    => 'required',
+                'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'phone_number'  => 'required',
             ]);
+
+            $ktp = Str::random(8). "." . $request->ktp->getClientOriginalExtension();
 
             $data = Agent::create([
                 'email' => $request->email,
@@ -54,9 +59,11 @@ class AgentController extends Controller
                 'name'  => $request->name,
                 'address'   => $request->address,
                 'location'  => $request->location,
-                'ktp'   => $request->ktp,
+                'ktp'   => $ktp,
                 'phone_number'  => $request->phone_number,
             ]);
+
+            Storage::disk('public')->put($ktp, file_get_contents($request->ktp));
 
             $data = Agent::where('id', '=', $data->id)->get();
 
@@ -66,7 +73,7 @@ class AgentController extends Controller
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -97,26 +104,34 @@ class AgentController extends Controller
     {
         try {
             $request->validate([
+                'name'    => 'required',
                 'email' => 'nullable|email|unique:agents',
                 'password'  => 'nullable|min:8',
-                'name'    => 'required',
                 'address'   => 'required',
                 'location'  => 'required',
-                'ktp'    => 'required',
+                'ktp'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'phone_number'  => 'required',
             ]);
 
             $data = Agent::findOrfail($id);
 
             $data->update([
+                'name'  => $request->name,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'name'  => $request->name,
                 'address'   => $request->address,
                 'location'  => $request->location,
-                'ktp'   => $request->ktp,
                 'phone_number'  => $request->phone_number,
             ]);
+
+            if ($request->hasFile(`ktp`)) {
+                $imageName = $request->ktp->getClientOriginalName(). "." . $request->ktp->getClientOriginalExtension();
+                $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->ktp));
+                if (File::exists($image_path)) {
+                    File::delete($image_path);
+                }
+                $data->ktp = $imageName;
+            }
 
             $data = Agent::where('id', '=', $data->id)->get();
             $url = '/admin/agent/show/' . $id;
@@ -127,7 +142,7 @@ class AgentController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -146,7 +161,7 @@ class AgentController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

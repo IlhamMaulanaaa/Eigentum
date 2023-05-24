@@ -19,20 +19,12 @@ class PropertyController extends Controller
     public function index()
     {
         $data = Property::all();
-        // $jumlah = Unit::count();
-        $type = Type::all();
-        // $develop = Developer::all();
-        // $agent = Agent::all();
         $tables = (new Property())->getTable();
 
         if($data){
             // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.property.all', 
             ['properties' => $data, 
-            // 'jumlah' => $jumlah,
-            'types' => $type,
-            // 'developers' => $develop,
-            // 'agents' => $agent,
             'tables' => $tables,]);
         }else{
             return ApiFormatter::createApi('404', 'Data Not Found', null);
@@ -44,8 +36,8 @@ class PropertyController extends Controller
      */
     public function create(){
         return view('admin.property.create',[
-            'types' => Type::all(),
-            // 'develop' => Developer::all(),
+            'type' => Type::all(),
+            'developer' => Developer::all(),
             // 'agent' => Agent::all(),
         ]);
     }
@@ -57,22 +49,20 @@ class PropertyController extends Controller
     {
         try{
             $request->validate([
-                // 'unit'  => 'required',
                 'property'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-                // 'developer_id'  => 'required',
+                'developer_id'  => 'required',
                 // 'agent_id'  => 'required',
             ]);
 
             $data = Property::create([
-                // 'unit'  => $request->unit,
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
-                // 'developer_id'  => $request->developer_id,
+                'developer_id'  => $request->developer_id,
                 // 'agent_id'  => $request->agent_id,
             ]);
 
@@ -84,7 +74,7 @@ class PropertyController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         }catch(Exception $e){
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -105,8 +95,8 @@ class PropertyController extends Controller
     {
         return view('admin.property.edit',[
             'property' => $property,
-            'types' => Type::all(),
-            // 'develop' => Developer::all(),
+            'type' => Type::all(),
+            'developer' => Developer::all(),
             // 'agent' => Agent::all(),
         ]);
     }
@@ -119,24 +109,22 @@ class PropertyController extends Controller
     {
         try{
             $request->validate([
-                // 'unit'  => 'required',
-                'property'  => 'required',
-                'description'   => 'required',
-                'address'   => 'required',
-                'type_id'   => 'required',
-                // 'developer_id'  => 'required',
+                'property'  => 'nullable',
+                'description'   => 'nullable',
+                'address'   => 'nullable',
+                'type_id'   => 'nullable',
+                'developer_id'  => 'nullable',
                 // 'agent_id'  => 'required',
             ]);
 
             $data = Property::findOrfail($id);
 
             $data->update([
-                // 'unit'  => $request->unit,
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
-                // 'developer_id'  => $request->developer_id,
+                'developer_id'  => $request->developer_id,
                 // 'agent_id'  => $request->agent_id,
             ]);
 
@@ -150,7 +138,7 @@ class PropertyController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -170,7 +158,7 @@ class PropertyController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         }catch(Exception $e){
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

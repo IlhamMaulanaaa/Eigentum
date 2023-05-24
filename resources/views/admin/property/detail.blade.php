@@ -9,12 +9,6 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
-                            {{-- <div class="form-group">
-                                <label for="" class="form-label">Unit</label>
-                                <input type="text" class="form-control" id="unit" name="unit"
-                                    value="{{ $property->unit }}" readonly disabled>
-                            </div>
-                            <br> --}}
                             <div class="form-group">
                                 <label for="" class="form-label">Property</label>
                                 <input type="text" class="form-control" id="property" name="property"
@@ -34,19 +28,25 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">Type</label>
-                                <input type="text" class="form-control" id="type_id" name="type_id" value="{{ $property->type->type }}" readonly disabled>
+                                <label for="" class="form-label">Developer</label>
+                                <input type="text" class="form-control" id="developer_id" name="developer_id"
+                                    value="{{ $property->developer->company }}" readonly disabled>
                             </div>
-                            
-                            {{-- <div class="form-group">
-                                <label for="" class="form-label">Developer ID</label>
-                                <input type="text" class="form-control" id="developer_id" name="developer_id" value="{{ $property->developer_id }}" readonly disabled>
-                            </div>
-                            
+                            <br>
                             <div class="form-group">
-                                <label for="" class="form-label">Agent ID</label>
-                                <input type="text" class="form-control" id="agent_id" name="agent_id" value="{{ $property->agent_id }}" readonly disabled>
-                            </div> --}}
+                                <label for="" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="type_id" name="type_id"
+                                    value="{{ $property->type->type }}" readonly disabled>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="properties" class="form-label">Agent</label>
+                                <ul>
+                                    @foreach ($property->agent as $agent)
+                                        <li>{{ $agent->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>

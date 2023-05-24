@@ -12,36 +12,36 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Bedroom</label>
                                 <input type="text" class="form-control" id="bedroom" name="bedroom"
-                                    value="{{ $spec->bedroom }}" readonly disabled>
+                                    value="{{ $specification->bedroom }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Bathroom</label>
                                 <input type="text" class="form-control" id="bathroom" name="bathroom"
-                                    value="{{ $spec->bathroom }}" readonly disabled>
+                                    value="{{ $specification->bathroom }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Surface Area</label>
                                 <input type="text" class="form-control" id="surface_area" name="surface_area"
-                                    value="{{ $spec->surface_area }}" readonly disabled>
+                                    value="{{ $specification->surface_area }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Building Area</label>
                                 <input type="text" class="form-control" id="building_area" name="building_area"
-                                    value="{{ $spec->building_area }}" readonly disabled>
+                                    value="{{ $specification->building_area }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Floor</label>
                                 <input type="text" class="form-control" id="floor" name="floor"
-                                    value="{{ $spec->floor }}" readonly disabled>
+                                    value="{{ $specification->floor }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/spec/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $spec->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="/admin/specification/data">Back</a>
+                                <a type="button" class="btn btn-primary" href="edit/{{ $specification->id }}">Edit</a>
                             </div>
                         </form>
                     </div>

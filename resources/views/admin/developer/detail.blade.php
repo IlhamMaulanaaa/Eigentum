@@ -11,58 +11,53 @@
                         <form action="" method="post" enctype="multipart/form-data">
 
                             <div class="form-group">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ $develop->email }}" readonly disabled>
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    value="{{ $develop->password }}" readonly disabled>
-                            </div>
-                            <br>
-
-                            <div class="form-group">
                                 <label for="company" class="form-label">Company</label>
                                 <input type="text" class="form-control" id="company" name="company"
-                                    value="{{ $develop->company }}" readonly disabled>
+                                    value="{{ $developer->company }}" readonly disabled>
                             </div>
                             <br>
 
                             <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    value="{{ $develop->address }}" readonly disabled>
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    value="{{ $developer->email }}" readonly disabled>
                             </div>
                             <br>
 
                             <div class="form-group">
                                 <label for="owner" class="form-label">Owner</label>
                                 <input type="text" class="form-control" id="owner" name="owner"
-                                    value="{{ $develop->owner }}" readonly disabled>
+                                    value="{{ $developer->owner }}" readonly disabled>
                             </div>
                             <br>
 
                             <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="{{ $developer->address }}" readonly disabled>
+                            </div>
+                            <br>
+
+
+                            <div class="form-group">
                                 <label for="license" class="form-label">License</label>
-                                <input type="text" class="form-control" id="license" name="license"
-                                    value="{{ $develop->license }}" readonly disabled>
+                                <div class="image-text-wrapper">
+                                    <img src="{{ asset('storage/' . $developer->license) }}" alt="" width="200">
+                                </div>
                             </div>
                             <br>
 
                             <div class="form-group">
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ $develop->phone_number }}" readonly disabled>
+                                    value="{{ $developer->phone_number }}" readonly disabled>
                             </div>
                             <br>
 
                             <div class="form-group">
-                                <label for="properties" class="form-label">Properties</label>
+                                <label for="properties" class="form-label">Property</label>
                                 <ul>
-                                    @foreach ($develop->properties as $property)
+                                    @foreach ($developer->properties as $property)
                                         <li>{{ $property->property }}</li>
                                     @endforeach
                                 </ul>
@@ -70,8 +65,8 @@
                             <br>
 
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/develop/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $develop->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="/admin/developer/data">Back</a>
+                                <a type="button" class="btn btn-primary" href="edit/{{ $developer->id }}">Edit</a>
                             </div>
                         </form>
                     </div>

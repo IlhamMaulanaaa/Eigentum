@@ -56,7 +56,7 @@ class TypeController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -88,8 +88,8 @@ class TypeController extends Controller
     {
         try {
             $request->validate([
-                'type'   => 'required',
-                'description'   => 'required',
+                'type'   => 'nullable',
+                'description'   => 'nullable',
             ]);
 
             $data = Type::findOrfail($id);
@@ -108,7 +108,7 @@ class TypeController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -127,7 +127,7 @@ class TypeController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

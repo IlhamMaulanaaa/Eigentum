@@ -83,27 +83,27 @@
                                         disabled>
                                 </div> --}}
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">bedroom</label>
+                                    <label for="" class="form-label">Bedroom</label>
                                     <input class="form-control" value="{{ $unit->specification->bedroom }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">bathroom</label>
+                                    <label for="" class="form-label">Bathroom</label>
                                     <input class="form-control" value="{{ $unit->specification->bathroom }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">surface area</label>
+                                    <label for="" class="form-label">Surface area</label>
                                     <input class="form-control" value="{{ $unit->specification->surface_area }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">building area</label>
+                                    <label for="" class="form-label">Building area</label>
                                     <input class="form-control" value="{{ $unit->specification->building_area }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">floor</label>
+                                    <label for="" class="form-label">Floor</label>
                                     <input class="form-control" value="{{ $unit->specification->floor }}" readonly
                                         disabled>
                                 </div>
@@ -111,17 +111,17 @@
                             <br>
                             <div class="row">
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">property</label>
+                                    <label for="" class="form-label">Property</label>
                                     <input class="form-control" value="{{ $unit->property->property }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">description</label>
+                                    <label for="" class="form-label">Description</label>
                                     <input class="form-control" value="{{ $unit->property->description }}" readonly
                                         disabled>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="" class="form-label">address</label>
+                                    <label for="" class="form-label">Address</label>
                                     <input class="form-control" value="{{ $unit->property->address }}" readonly
                                         disabled>
                                 </div>

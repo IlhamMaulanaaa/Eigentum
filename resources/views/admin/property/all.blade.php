@@ -23,8 +23,8 @@
                             <th scope="col">Description</th>
                             <th scope="col">Address</th>
                             <th scope="col">Developer</th>
-                            <th scope="col">Agents</th>
                             <th scope="col">Type</th> 
+                            <th scope="col">Agents</th>
                             {{-- <th scope="col">Unit</th>  --}}
                             <th scope="col"></th>
                         </tr>
@@ -39,11 +39,11 @@
                                     <td class="text-start"><?= $property->property ?></td>
                                     <td class="text-start"><?= $property->description ?></td>
                                     <td class="text-start"><?= $property->address ?></td>
-                                    <td class="text-start "><?= $property->type->type ?></td>
                                     <td class="text-start "><?= $property->developer->company ?></td>
+                                    <td class="text-start "><?= $property->type->type ?></td>
                                     <td class="text-start">
-                                        @foreach ($property->agents as $agent)
-                                            <span>{{ $agent->name }}</span><br>
+                                        @foreach ($property->agent as $agent)
+                                        <span>{{ $agent->name }},</span><br>
                                         @endforeach
                                     </td>
                                     <td class="text-end">

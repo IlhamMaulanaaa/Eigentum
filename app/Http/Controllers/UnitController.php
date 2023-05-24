@@ -23,12 +23,12 @@ class UnitController extends Controller
     public function index()
     {
         $data = Unit::all();
-        $spec = Specification::all();
-        $property = Property::all();
+        // $spec = Specification::all();
+        // $property = Property::all();
         $tables = (new Unit())->getTable();
 
         if ($data) {
-            return view('admin.unit.all', ["units" => $data, "specification" => $spec, "property" => $property,  "tables" => $tables]);
+            return view('admin.unit.all', ["units" => $data, "tables" => $tables]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -39,10 +39,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        return view('admin.unit.create', [
-            "specification" => Specification::all(),
-            "property" => Property::all()
-        ]);
+        return view('admin.unit.create');
     }
 
     /**
@@ -126,8 +123,6 @@ class UnitController extends Controller
             // return ApiFormatter::createApi('200', 'Data Created', $data);
             return view('admin.unit.detail', [
                 "unit" => $unit,
-                "spec" => Specification::all(),
-                "property" => Property::all(),
             ]);
 
     }
@@ -139,7 +134,7 @@ class UnitController extends Controller
     {
         return view('admin.unit.edit', [
             "unit" => $unit,
-            "specifications" => Specification::all(),
+            // "specification" => Specification::all(),
             "property" => Property::all(),
         ]);
     }
@@ -151,19 +146,19 @@ class UnitController extends Controller
     {
         try{
             $request->validate([
-                'title' => 'required',
-                'description' => 'required',
-                'price' => 'required',
-                'rent' => 'required',
+                'title' => 'nullable',
+                'description' => 'nullable',
+                'price' => 'nullable',
+                'rent' => 'nullable',
                 'image_1' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'image_2' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'image_3' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'image_4' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'image_plan' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'bloc' => 'required',
+                'bloc' => 'nullable',
                 'certificate' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'specification_id' => 'required',
-                'property_id' => 'required',
+                'specification_id' => 'nullable',
+                'property_id' => 'nullable',
             ]);
 
             $data = Unit::findOrfail($id);
@@ -177,8 +172,6 @@ class UnitController extends Controller
                 'specification_id' => $request->specification_id,
                 'property_id' => $request->property_id,
             ]);
-
-            // $data->specification()->update(['id' => $data->id]);
 
             $images = ['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'];
                 foreach ($images as $key => $image) {
@@ -223,7 +216,7 @@ class UnitController extends Controller
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

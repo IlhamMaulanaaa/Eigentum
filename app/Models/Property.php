@@ -14,7 +14,9 @@ class Property extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $table = "properties";
     protected $guarded = ['id'];
+
 
     protected $hidden = [
         'created_at',
@@ -30,25 +32,13 @@ class Property extends Model
     {
         return $this->belongsTo(Type::class);
     }
-    // public function develop()
-    // {
-    //     return $this->hasMany(Developer::class);
-    // }
-
-    // public function agent()
-    // {
-    //     return $this->hasMany(Agent::class);
-    // }
 
     public function developer(): BelongsTo
     {
         return $this->belongsTo(Developer::class, 'developer_id');
     }
-    public function unit(): HasMany
-    {
-        return $this->hasMany(Unit::class, 'property_id');
-    }
-    public function agents(): BelongsToMany
+
+    public function agent(): BelongsToMany
     {
         return $this->belongsToMany(Agent::class, 'agent_property');
     }

@@ -11,14 +11,17 @@ class Developer extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    
+    protected $table = "developers";
     protected $guarded = ['id'];
 
     protected $hidden = [
+        'password',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
 
     public function properties(): HasMany
     {

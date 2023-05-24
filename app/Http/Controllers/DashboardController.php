@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\Agent;
 use App\Models\User;
@@ -14,8 +15,9 @@ class DashboardController extends Controller
     {
         $developerCount = Developer::count();
         $agentCount = Agent::count();
+        $customerCount = Customer::count();
         $userCount = User::count();
-        return view('admin.dashboard.all', compact('developerCount', 'agentCount', 'userCount'));
+        return view('admin.dashboard.all', compact('developerCount', 'agentCount', 'customerCount', 'userCount',));
 
     }
 }

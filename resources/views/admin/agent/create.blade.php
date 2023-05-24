@@ -11,6 +11,11 @@
                         <form method="post" action="/admin/agent/add" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control noscroll" id="name" name="name" value="{{ old('name') }}">
+                            </div>
+                            <br>
+                            <div class="form-group">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control noscroll" id="email" name="email" value="{{ old('email') }}">
                             </div>
@@ -18,11 +23,6 @@
                             <div class="form-group">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control noscroll" id="password" name="password">
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control noscroll" id="name" name="name" value="{{ old('name') }}">
                             </div>
                             <br>
                             <div class="form-group">
@@ -37,7 +37,7 @@
                             <br>
                             <div class="form-group">
                                 <label for="ktp" class="form-label">Ktp</label>
-                                <input type="text" class="form-control noscroll" id="ktp" name="ktp" value="{{ old('ktp') }}">
+                                <input type="file" class="form-control noscroll" id="ktp" name="ktp" value="{{ old('ktp') }}">
                             </div>
                             <br>
                             <div class="form-group">

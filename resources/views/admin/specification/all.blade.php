@@ -27,20 +27,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($specification->count())
-                            @foreach ($specification as $spec)
+                        @if ($specifications->count())
+                            @foreach ($specifications as $specification)
                                 <tr align="center">
                                     <td class=""><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $spec->id ?></td> --}}
-                                    <td class="text-start"><?= $spec->bedroom ?></td>
-                                    <td class="text-start"><?= $spec->bathroom ?></td>
-                                    <td class="text-start"><?= $spec->surface_area ?></td>
-                                    <td class="text-start"><?= $spec->building_area ?></td>
-                                    <td class="text-start"><?= $spec->floor ?></td>
+                                    {{-- <td class=""><?= $specification->id ?></td> --}}
+                                    <td class="text-start"><?= $specification->bedroom ?></td>
+                                    <td class="text-start"><?= $specification->bathroom ?></td>
+                                    <td class="text-start"><?= $specification->surface_area ?></td>
+                                    <td class="text-start"><?= $specification->building_area ?></td>
+                                    <td class="text-start"><?= $specification->floor ?></td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $spec->id }}">Detail</a>
-                                        <form action="delete/{{ $spec->id }}" method="get" class="d-inline">
+                                            href="show/{{ $specification->id }}">Detail</a>
+                                        <form action="delete/{{ $specification->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>

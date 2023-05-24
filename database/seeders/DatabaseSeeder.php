@@ -4,12 +4,18 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Agent;
+use App\Models\Agent_Property;
+use App\Models\Customer;
+use App\Models\Developer;
+use App\Models\Guide;
 use App\Models\Property;
 use App\Models\Specification;
 use App\Models\Type;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +24,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // User::factory(10)->create();
 
         User::create([
             'name' => 'Admin',
@@ -62,7 +68,7 @@ class DatabaseSeeder extends Seeder
 
         Unit::create([
             "title" => "A3",
-            "description" => "Punyanya Surya Ibrahim",
+            "description" => "Punyanya Surya",
             "price" => fake()->randomFloat(2,  0, 1000),
             "rent" => fake()->randomFloat(2,  0, 1000),
             "image_1" => fake()->imageUrl(),
@@ -78,7 +84,23 @@ class DatabaseSeeder extends Seeder
 
         Unit::create([
             "title" => "A4",
-            "description" => "Punyanya Surya Ibrahim",
+            "description" => "Punyanya Ini",
+            "price" => fake()->randomFloat(2,  0, 1000),
+            "rent" => fake()->randomFloat(2,  0, 1000),
+            "image_1" => fake()->imageUrl(),
+            "image_2" => fake()->imageUrl(),
+            "image_3" => fake()->imageUrl(),
+            "image_4" => fake()->imageUrl(),
+            "image_plan" => fake()->imageUrl(),
+            "bloc" => "A",
+            "certificate" => fake()->imageUrl(),
+            "specification_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5)
+        ]);
+
+        Unit::create([
+            "title" => "A4",
+            "description" => "Punyanya Ini",
             "price" => fake()->randomFloat(2,  0, 1000),
             "rent" => fake()->randomFloat(2,  0, 1000),
             "image_1" => fake()->imageUrl(),
@@ -161,44 +183,247 @@ class DatabaseSeeder extends Seeder
             "floor" => "3",
         ]);
 
-        Property::truncate();
+        // Property::truncate();
+
         Property::create([
             // "unit" => "A1",
             "property" => "Perumahan Megawon Indah",
             "description" => "Perumahan Dekat kali",
-            "address" => " Jl. Lingkar Timur, Krasak, Ngembal Kulon, Jati, Kudus Regency, Central Java",
+            "address" => Str::limit(fake()->address(), 20),
+            "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
 
         Property::create([
             // "unit" => "A1",
             "property" => "Apartement Surya",
             "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "address" => Str::limit(fake()->address(), 20),
+            "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
             // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "property" => "Apartement Ilham",
+            "description" => "Punyanya Ilham",
+            "address" => Str::limit(fake()->address(), 20),
+            "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
             // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "property" => "Apartement Najib",
+            "description" => "Punyanya Najib",
+            "address" => Str::limit(fake()->address(), 20),
+            "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
             // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "property" => "Apartement Gataw",
+            "description" => "Punyanya Gataw",
+            "address" => Str::limit(fake()->address(), 20),
+            "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
+        ]);
+
+
+        Developer::truncate();
+        
+        Developer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "company" => fake()->company(),
+            "address" => Str::limit(fake()->address(), 20),
+            "owner" => fake()->name(),
+            "license" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Developer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "company" => fake()->company(),
+            "address" => Str::limit(fake()->address(), 20),
+            "owner" => fake()->name(),
+            "license" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Developer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "company" => fake()->company(),
+            "address" => Str::limit(fake()->address(), 20),
+            "owner" => fake()->name(),
+            "license" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Developer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "company" => fake()->company(),
+            "address" => Str::limit(fake()->address(), 20),
+            "owner" => fake()->name(),
+            "license" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Developer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "company" => fake()->company(),
+            "address" => Str::limit(fake()->address(), 20),
+            "owner" => fake()->name(),
+            "license" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+
+        // Agent::truncate();
+        Agent::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "location" => Str::limit(fake()->address(), 20),
+            "ktp" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Agent::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "location" => Str::limit(fake()->address(), 20),
+            "ktp" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Agent::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "location" => Str::limit(fake()->address(), 20),
+            "ktp" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Agent::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "location" => Str::limit(fake()->address(), 20),
+            "ktp" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
+        ]);
+        Agent::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "location" => Str::limit(fake()->address(), 20),
+            "ktp" => fake()->imageUrl(),
+            "phone_number" => fake()->phoneNumber(),
         ]);
         
+        Agent_Property::truncate();
+
+        Agent_Property::create([
+            "agent_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5),
+        ]);
+
+        Agent_Property::create([
+            "agent_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5),
+        ]);
+
+        Agent_Property::create([
+            "agent_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5),
+        ]);
+
+        Agent_Property::create([
+            "agent_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5),
+        ]);
         
+        Agent_Property::create([
+            "agent_id" => mt_rand(1,5),
+            "property_id" => mt_rand(1,5),
+        ]);
+
+        Guide::truncate();
+
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+        Guide::create([
+            "title" => fake()->title(),
+            "description" => fake()->text(),
+            "image" => fake()->imageUrl(),
+        ]);
+
+        Customer::truncate();
+        
+        Customer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "phone_number" => fake()->phoneNumber(), 
+        ]);
+        Customer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "phone_number" => fake()->phoneNumber(), 
+        ]);
+        Customer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "phone_number" => fake()->phoneNumber(), 
+        ]);
+        Customer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "phone_number" => fake()->phoneNumber(), 
+        ]);
+        Customer::create([
+            "email" => fake()->email(),
+            "password" => bcrypt(fake()->password()),
+            "name" => fake()->name(),
+            "address" => Str::limit(fake()->address(), 20),
+            "phone_number" => fake()->phoneNumber(), 
+        ]);
     }
 }

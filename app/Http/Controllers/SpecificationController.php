@@ -17,12 +17,11 @@ class SpecificationController extends Controller
     public function index()
     {
         $data = Specification::all();
-        $type = Type::all();
         $tables = (new Specification())->getTable();
 
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.specification.all' , ['specification' =>$data,'type' => $type, 'tables' => $tables ]);
+            return view('admin.specification.all' , ['specifications' =>$data, 'tables' => $tables ]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -33,9 +32,7 @@ class SpecificationController extends Controller
      */
     public function create()
     {
-        return view('admin.specification.create', [
-            'type' => Type::all(),
-        ]);
+        return view('admin.specification.create');
     }
 
     /**
@@ -63,12 +60,12 @@ class SpecificationController extends Controller
             ]);
 
             if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/spec/data',);
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/specification/data',);
             } else {
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 
@@ -79,7 +76,7 @@ class SpecificationController extends Controller
     public function show(Specification $specification)
     {
         return view('admin.specification.detail', [
-            'spec' => $specification,
+            'specification' => $specification,
         ]);
     }
 
@@ -89,7 +86,7 @@ class SpecificationController extends Controller
     public function edit(Specification $specification)
     {
         return view('admin.specification.edit', [
-            'spec' => $specification
+            'specification' => $specification
         ]);
     }
 
@@ -106,7 +103,6 @@ class SpecificationController extends Controller
                 'surface_area'  => 'required',
                 'building_area' => 'required',
                 'floor' => 'required',
-                // 'type_id'   => 'required',
             ]);
 
             $data = Specification::findOrfail($id);
@@ -117,11 +113,10 @@ class SpecificationController extends Controller
                 'surface_area'  => $request->surface_area,
                 'building_area' => $request->building_area,
                 'floor' => $request->floor,
-                // 'type_id'   => $request->type_id,
             ]);
 
             $data = Specification::where('id', '=', $data->id)->get();
-            $url = '/admin/spec/show/' . $id;
+            $url = '/admin/specification/show/' . $id;
 
             if ($data) {
                 return ApiFormatter::createApi('200', 'Success', $data).redirect($url);
@@ -144,12 +139,12 @@ class SpecificationController extends Controller
             $data = $specification->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/spec/data',);
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/specification/data',);
             } else {
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+            return $e;
         }
     }
 }

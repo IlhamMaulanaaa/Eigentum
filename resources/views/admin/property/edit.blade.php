@@ -10,12 +10,6 @@
                     <div class="card-body">
                         <form method="post" action="/admin/property/update/ {{ $property->id }}">
                             @csrf
-                            {{-- <div class="form-group">
-                                <label for="" class="form-label">unit</label>
-                                <input class="form-control" id="unit" name="unit"
-                                    value="{{ old('unit', $property->unit) }}" required>
-                            </div>
-                            <br> --}}
                             <div class="form-group">
                                 <label for="property" class="form-label">Property</label>
                                 <input class="form-control" id="property" name="property"
@@ -34,14 +28,24 @@
                             </div>
                             <br>
                             <div class="form-group">
+                                <label for="developer_id" class="form-label">Developer</label>
+                                <select class="form-control" id="developer_id" name="developer_id">
+                                    @foreach ($developer as $developer)
+                                        @if (old('developer_id', $property->developer_id == $developer->id))
+                                            <option name="developer_id" value="{{ $developer->id }}" selected>
+                                                {{ $developer->company }}
+                                            </option>
+                                        @endif
+                                        <option name="developer_id" value="{{ $developer->id }}">{{ $developer->company }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">
-                                    {{-- @foreach ($types as $type)
-                                    <option value="">{{$type->type}}</option>
-                                        <option value="{{ $type->id }}"
-                                            @if (old('type_id') == $type->id) selected @endif>{{ $type->type }}</option>
-                                    @endforeach --}}
-                                    @foreach ($types as $type)
+                                    @foreach ($type as $type)
                                         @if (old('type_id', $property->type_id == $type->id))
                                             <option name="type_id" value="{{ $type->id }}" selected>
                                                 {{ $type->type }}
@@ -51,10 +55,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                {{-- <input type="number" class="form-control" id="type_id" name="type_id"
-                                value="{{ old('type_id', $property->type_id) }}" required> --}}
                             </div>
-                            
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
