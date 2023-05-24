@@ -22,6 +22,24 @@ class Property extends Model
         'deleted_at',
     ];
 
+    public function unit()
+    {
+        return $this->hasMany(Unit::class);
+    }
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
+    // public function develop()
+    // {
+    //     return $this->hasMany(Developer::class);
+    // }
+
+    // public function agent()
+    // {
+    //     return $this->hasMany(Agent::class);
+    // }
+
     public function developer(): BelongsTo
     {
         return $this->belongsTo(Developer::class, 'developer_id');

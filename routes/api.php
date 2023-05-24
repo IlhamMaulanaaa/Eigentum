@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\PropertyController;
@@ -36,7 +37,7 @@ Route::group(['prefix' => 'property'], function () {
     Route::get('/delete/{id}',[PropertyController::class, 'destroy']);
 });
 
-Route::group(['prefix' => 'spesification'], function () {
+Route::group(['prefix' => 'specification'], function () {
     Route::get('/data',[SpecificationController::class, 'index']);
     Route::post('/store',[SpecificationController::class, 'store']);
     Route::post('/update/{id}',[SpecificationController::class, 'update']);
@@ -52,6 +53,13 @@ Route::group(['prefix' => 'type'], function () {
     Route::get('/delete/{id}',[TypeController::class, 'destroy']);
 });
 
+Route::group(['prefix' => 'guide'], function () {
+    Route::get('/data',[GuideController::class, 'index']);
+    Route::post('/store',[GuideController::class, 'store']);
+    Route::post('/update/{id}',[GuideController::class, 'update']);
+    Route::get('/show/{id}',[GuideController::class, 'show']);
+    Route::get('/delete/{id}',[GuideController::class, 'destroy']);
+});
 Route::group(['prefix' => 'developer'], function () {
     Route::get('/data',[DeveloperController::class, 'index']);
     Route::post('/store',[DeveloperController::class, 'store']);

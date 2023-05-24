@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\Developer;
 use App\Models\Property;
 use App\Models\Type;
+use App\Models\Unit;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class PropertyController extends Controller
     public function index()
     {
         $data = Property::all();
-        // $type = Type::all();
+        // $jumlah = Unit::count();
+        $type = Type::all();
         // $develop = Developer::all();
         // $agent = Agent::all();
         $tables = (new Property())->getTable();
@@ -27,10 +29,11 @@ class PropertyController extends Controller
             // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.property.all', 
             ['properties' => $data, 
-            // 'types' => $type,
+            // 'jumlah' => $jumlah,
+            'types' => $type,
             // 'developers' => $develop,
             // 'agents' => $agent,
-            'tables' => $tables]);
+            'tables' => $tables,]);
         }else{
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -41,7 +44,7 @@ class PropertyController extends Controller
      */
     public function create(){
         return view('admin.property.create',[
-            // 'type' => Type::all(),
+            'types' => Type::all(),
             // 'develop' => Developer::all(),
             // 'agent' => Agent::all(),
         ]);
@@ -54,21 +57,21 @@ class PropertyController extends Controller
     {
         try{
             $request->validate([
-                'unit'  => 'required',
+                // 'unit'  => 'required',
                 'property'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
-                // 'type_id'   => 'required',
+                'type_id'   => 'required',
                 // 'developer_id'  => 'required',
                 // 'agent_id'  => 'required',
             ]);
 
             $data = Property::create([
-                'unit'  => $request->unit,
+                // 'unit'  => $request->unit,
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
-                // 'type_id'   => $request->type_id,
+                'type_id'   => $request->type_id,
                 // 'developer_id'  => $request->developer_id,
                 // 'agent_id'  => $request->agent_id,
             ]);
@@ -102,9 +105,9 @@ class PropertyController extends Controller
     {
         return view('admin.property.edit',[
             'property' => $property,
-            'type' => Type::all(),
-            'develop' => Developer::all(),
-            'agent' => Agent::all(),
+            'types' => Type::all(),
+            // 'develop' => Developer::all(),
+            // 'agent' => Agent::all(),
         ]);
     }
 
@@ -116,26 +119,27 @@ class PropertyController extends Controller
     {
         try{
             $request->validate([
-                'unit'  => 'required',
+                // 'unit'  => 'required',
                 'property'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-                'developer_id'  => 'required',
-                'agent_id'  => 'required',
+                // 'developer_id'  => 'required',
+                // 'agent_id'  => 'required',
             ]);
 
             $data = Property::findOrfail($id);
 
             $data->update([
-                'unit'  => $request->unit,
+                // 'unit'  => $request->unit,
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
-                'developer_id'  => $request->developer_id,
-                'agent_id'  => $request->agent_id,
+                // 'developer_id'  => $request->developer_id,
+                // 'agent_id'  => $request->agent_id,
             ]);
+
 
             $data = Property::where('id','=', $data->id)->get();
             $url = '/admin/property/show/' . $id;

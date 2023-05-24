@@ -18,12 +18,14 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Unit</th>
+                            {{-- <th scope="col">Unit</th> --}}
                             <th scope="col">Property</th>
                             <th scope="col">Description</th>
                             <th scope="col">Address</th>
                             <th scope="col">Developer</th>
                             <th scope="col">Agents</th>
+                            <th scope="col">Type</th> 
+                            {{-- <th scope="col">Unit</th>  --}}
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -32,10 +34,12 @@
                             @foreach ($properties as $property)
                                 <tr align="center">
                                     <td class=""><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $property->unit ?></td>
+                                    {{-- <td class=""><?= $property->id ?></td> --}}
+                                    {{-- <td class="text-start"><?= $property->unit ?></td> --}}
                                     <td class="text-start"><?= $property->property ?></td>
                                     <td class="text-start"><?= $property->description ?></td>
                                     <td class="text-start"><?= $property->address ?></td>
+                                    <td class="text-start "><?= $property->type->type ?></td>
                                     <td class="text-start "><?= $property->developer->company ?></td>
                                     <td class="text-start">
                                         @foreach ($property->agents as $agent)

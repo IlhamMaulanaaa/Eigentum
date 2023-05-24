@@ -18,4 +18,9 @@ class Type extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function property()
+    {
+        return $this->hasMany(Property::class);
+    }
 }

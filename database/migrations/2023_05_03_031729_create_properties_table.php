@@ -13,11 +13,13 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string("unit");
+            // $table->string("unit");
             $table->string("property");
             $table->string("description");
             $table->string("address");
-            $table->foreignId('developer_id');
+            $table->foreignId('type_id');
+            // $table->foreignId('unit_id');
+            // $table->foreignId('developer_id');
             $table->softDeletes();
             $table->timestamps();
         });

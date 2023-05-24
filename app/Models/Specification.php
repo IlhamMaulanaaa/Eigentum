@@ -18,4 +18,9 @@ class Specification extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function unit()
+    {
+        return $this->hasOne(Unit::class);
+    }
 }

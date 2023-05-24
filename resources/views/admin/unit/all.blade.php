@@ -22,15 +22,15 @@
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Rent</th>
-                            <th scope="col">Image_1</th>
-                            <th scope="col">Image_2</th>
-                            <th scope="col">Image_3</th>
-                            <th scope="col">Image_4</th>
-                            <th scope="col">Image_plan</th>
+                            <th scope="col">Image 1</th>
+                            <th scope="col">Image 2</th>
+                            <th scope="col">Image 3</th>
+                            <th scope="col">Image 4</th>
+                            <th scope="col">Image plan</th>
                             <th scope="col">Bloc</th>
                             <th scope="col">Certificate</th>
-                            {{-- <th scope="col" class="text-start">specification_id</th> --}}
-                            {{-- <th scope="col" class="text-start">property_id</th> --}}
+                            <th scope="col" class="text-start">Specification</th>
+                            <th scope="col" class="text-start">Property Name</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -58,8 +58,8 @@
                                     <td class="text-start"><img src="{{ asset('storage/' . $unit->certificate) }}"
                                             width="60" heigth="60"></td>
 
-                                    {{-- <td class="text-start "><?= $unit->specification_id ?></td> --}}
-                                    {{-- <td class="text-start "><?= $unit->property_id ?></td> --}}
+                                    <td class="text-start "><?= $unit->specification->id ?></td>
+                                    <td class="text-start "><?= $unit->property->property ?></td>
 
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"

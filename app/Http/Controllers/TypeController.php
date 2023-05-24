@@ -16,6 +16,7 @@ class TypeController extends Controller
     {
         $data = Type::all();
         $tables = (new Type())->getTable();
+        
 
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
@@ -41,10 +42,12 @@ class TypeController extends Controller
         try {
             $request->validate([
                 'type'   => 'required',
+                'description'   => 'required',
             ]);
 
             $data = Type::create([
                 'type'   => $request->type,
+                'description'   => $request->description,
             ]);
 
             if ($data) {
@@ -63,7 +66,7 @@ class TypeController extends Controller
     public function show(Type $type)
     {
         return view('admin.type.detail', [
-            'type' => $type
+            'type' => $type,
         ]);
     }
 
@@ -86,12 +89,14 @@ class TypeController extends Controller
         try {
             $request->validate([
                 'type'   => 'required',
+                'description'   => 'required',
             ]);
 
             $data = Type::findOrfail($id);
 
             $data->update([
                 'type'   => $request->type,
+                'descrption'  => $request->description,
             ]);
 
             $data = Type::where('id', '=', $data->id)->get();

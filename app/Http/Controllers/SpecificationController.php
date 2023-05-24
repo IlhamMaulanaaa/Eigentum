@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Specification;
+use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
 use Symfony\Component\CssSelector\Node\Specificity;
@@ -16,11 +17,12 @@ class SpecificationController extends Controller
     public function index()
     {
         $data = Specification::all();
+        $type = Type::all();
         $tables = (new Specification())->getTable();
 
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.specification.all' , ['specification' => $data, 'tables' => $tables ]);
+            return view('admin.specification.all' , ['specification' =>$data,'type' => $type, 'tables' => $tables ]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -32,7 +34,7 @@ class SpecificationController extends Controller
     public function create()
     {
         return view('admin.specification.create', [
-
+            'type' => Type::all(),
         ]);
     }
 
@@ -77,7 +79,7 @@ class SpecificationController extends Controller
     public function show(Specification $specification)
     {
         return view('admin.specification.detail', [
-            'spec' => $specification
+            'spec' => $specification,
         ]);
     }
 

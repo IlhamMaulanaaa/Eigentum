@@ -107,7 +107,42 @@
                                 </div>
                             </div>
                             <br>
-
+                            {{-- <div class="row">
+                                <label for="specification">Specification</label>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">bedroom</label>
+                                    <input class="form-control" value="{{ $unit->specification->bedroom }}" >
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">bathroom</label>
+                                    <input class="form-control" value="{{ $unit->specification->bathroom }}" >
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">surface area</label>
+                                    <input class="form-control" value="{{ $unit->specification->surface_area }}" >
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">building area</label>
+                                    <input class="form-control" value="{{ $unit->specification->building_area }}" >
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">floor</label>
+                                    <input class="form-control" value="{{ $unit->specification->floor }}" >
+                                </div>
+                            </div> --}}
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">specification_id</label>
+                                <input type="number" class="form-control" id="specification_id" name="specification_id"
+                                    value="{{ old('specification_id', $unit->specification_id) }}" required>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">property_id</label>
+                                <input type="number" class="form-control" id="property_id"
+                                    name="property_id"value="{{ old('property_id', $unit->property_id) }}" required>
+                            </div>
+                            <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
                                     href="/admin/unit/show/{{ $unit->id }}">Back</a>

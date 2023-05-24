@@ -38,16 +38,6 @@
                                 <input type="text" class="form-control" id="floor" name="floor"
                                     value="{{ $spec->floor }}" readonly disabled>
                             </div>
-                            <!--
-                                                <div class="form-group">
-                                                    <label for="type_id" class="form-label">Property Type</label>
-                                                    <select class="form-control" id="type_id" name="type_id" readonly disabled>
-                                                        {{-- @foreach ($types as $type)
-                                        <option value="{{ $type->id }}" {{ $spec->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                                    @endforeach --}}
-                                                    </select>
-                                                </div>
-                                                -->
                             <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/spec/data">Back</a>

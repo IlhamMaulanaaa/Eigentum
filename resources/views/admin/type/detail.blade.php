@@ -20,7 +20,6 @@
                                 <input type="text" class="form-control" id="description" name="description"
                                     value="{{ $type->description }}" readonly disabled>
                             </div>
-                            <br>
                             <!--
                                         <div class="form-group">
                                             <label for="type_id" class="form-label">Property Type</label>

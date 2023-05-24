@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
+use App\Models\Property;
+use App\Models\Specification;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 use Exception;
@@ -21,11 +23,12 @@ class UnitController extends Controller
     public function index()
     {
         $data = Unit::all();
+        $spec = Specification::all();
+        $property = Property::all();
         $tables = (new Unit())->getTable();
 
         if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.unit.all', ["units" => $data, "tables" => $tables]);
+            return view('admin.unit.all', ["units" => $data, "specification" => $spec, "property" => $property,  "tables" => $tables]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
@@ -37,7 +40,8 @@ class UnitController extends Controller
     public function create()
     {
         return view('admin.unit.create', [
-            // "dokter" => Dokter::all()
+            "specification" => Specification::all(),
+            "property" => Property::all()
         ]);
     }
 
@@ -45,65 +49,74 @@ class UnitController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        try {
-            $request->validate([
-                'title' => 'required',
-                'description' => 'required',
-                'price' => 'required',
-                'rent' => 'required',
-                'image_1' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'image_2' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'image_3' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'image_4' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'image_plan' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'bloc' => 'required',
-                'certificate' =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'specification_id' => 'required',
-                // 'properties_id' => 'required',
-            ]);
+{
+    
 
-            $imageName1 = $request->image_1->getClientOriginalName(). "." . $request->image_1->getClientOriginalExtension();
-            $imageName2 = $request->image_2->getClientOriginalName(). "." . $request->image_2->getClientOriginalExtension();
-            $imageName3 = $request->image_3->getClientOriginalName(). "." . $request->image_3->getClientOriginalExtension();
-            $imageName4 = $request->image_4->getClientOriginalName(). "." . $request->image_4->getClientOriginalExtension();
-            $imageName5 = $request->image_plan->getClientOriginalName(). "." . $request->image_plan->getClientOriginalExtension();
-            $imageName6 = $request->certificate->getClientOriginalName(). "." . $request->certificate->getClientOriginalExtension();
+    $request->validate([
+        'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'rent' => 'required',
+            'image_1' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'image_2' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'image_3' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'image_4' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'image_plan' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'bloc' => 'required',
+            'certificate' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            'specification_id' => 'required',
+            'property_id' => 'required',
+        ]);
 
-            $data = Unit::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'price' => $request->price,
-                'rent' => $request->rent,   
-                'image_1' => $imageName1,
-                'image_2' => $imageName2,
-                'image_3' => $imageName3,
-                'image_4' => $imageName4,
-                'image_plan' => $imageName5,
-                'bloc' => $request->bloc,
-                'certificate' => $imageName6,
-                // 'specification_id' => $request->specification_id,
-                // 'properties_id' => $request->properties_id,
-            ]);
+        // $data = Unit::findOrfail($id);
 
-            Storage::disk('public')->put($imageName1, file_get_contents($request->image_1));
-            Storage::disk('public')->put($imageName2, file_get_contents($request->image_2));
-            Storage::disk('public')->put($imageName3, file_get_contents($request->image_3));
-            Storage::disk('public')->put($imageName4, file_get_contents($request->image_4));
-            Storage::disk('public')->put($imageName5, file_get_contents($request->image_plan));
-            Storage::disk('public')->put($imageName6, file_get_contents($request->certificate));
+        $imageNames = [];
 
-            $data = Unit::where('id', '=', $data->id)->get();
+        foreach (['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'] as $fieldName) {
+            $imageName = $request->$fieldName->getClientOriginalName() . "." . $request->$fieldName->getClientOriginalExtension();
+            $imageNames[] = $imageName;
+            $request->$fieldName->storeAs('public', $imageName);
+        }
 
-            if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/unit/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+        $data = Unit::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+            'rent' => $request->rent,
+            'image_1' => $imageNames[0],
+            'image_2' => $imageNames[1],
+            'image_3' => $imageNames[2],
+            'image_4' => $imageNames[3],
+            'image_plan' => $imageNames[4],
+            'bloc' => $request->bloc,
+            'certificate' => $imageNames[5],
+            'specification_id' => $request->specification_id,
+            'property_id' => $request->property_id,
+        ]);
+
+        
+        // $data->save();
+
+        // $spec = [
+        //     'bedroom' => $request->bedroom,
+        //     'bathroom' => $request->bathroom,
+        //     'surface_area'  => $request->surface_area,
+        //     'building_area' => $request->building_area,
+        //     'floor' => $request->floor,
+        //     // 'type_id'   => $request->type_id,
+        // ];
+
+        // $data->specification()->create($spec);
+        // $spec->unit()->associate($data);
+
+        if ($data) {
+            return redirect('/admin/unit/data');
+        } else {
+            return response()->json(['message' => 'Bad Request'], 400);
         }
     }
+
+
 
     /**
      * Display the specified resource.
@@ -112,7 +125,9 @@ class UnitController extends Controller
     {
             // return ApiFormatter::createApi('200', 'Data Created', $data);
             return view('admin.unit.detail', [
-                "unit" => $unit
+                "unit" => $unit,
+                "spec" => Specification::all(),
+                "property" => Property::all(),
             ]);
 
     }
@@ -123,7 +138,9 @@ class UnitController extends Controller
     public function edit(Unit $unit)
     {
         return view('admin.unit.edit', [
-            "unit" => $unit
+            "unit" => $unit,
+            "specifications" => Specification::all(),
+            "property" => Property::all(),
         ]);
     }
 
@@ -132,7 +149,7 @@ class UnitController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        try {
+        try{
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
@@ -145,8 +162,8 @@ class UnitController extends Controller
                 'image_plan' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'bloc' => 'required',
                 'certificate' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'specification_id' => 'required',
-                // 'properties_id' => 'required',
+                'specification_id' => 'required',
+                'property_id' => 'required',
             ]);
 
             $data = Unit::findOrfail($id);
@@ -157,9 +174,11 @@ class UnitController extends Controller
                 'price' => $request->price,
                 'rent' => $request->rent,
                 'bloc' => $request->bloc,
-                // 'specification_id' => $request->specification_id,
-                // 'properties_id' => $request->properties_id,
+                'specification_id' => $request->specification_id,
+                'property_id' => $request->property_id,
             ]);
+
+            // $data->specification()->update(['id' => $data->id]);
 
             $images = ['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'];
                 foreach ($images as $key => $image) {
@@ -183,9 +202,10 @@ class UnitController extends Controller
             } else {
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
-        } catch (Exception $e) {
-            return ApiFormatter::createApi('500', 'Internal Server Error', null);
+        }catch(Exception $e){
+            return $e;
         }
+        
     }
 
     /**

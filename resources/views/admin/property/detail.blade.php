@@ -9,12 +9,12 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="" class="form-label">Unit</label>
                                 <input type="text" class="form-control" id="unit" name="unit"
                                     value="{{ $property->unit }}" readonly disabled>
                             </div>
-                            <br>
+                            <br> --}}
                             <div class="form-group">
                                 <label for="" class="form-label">Property</label>
                                 <input type="text" class="form-control" id="property" name="property"
@@ -32,13 +32,13 @@
                                 <input class="form-control" id="address" name="address" readonly disabled
                                     value="{{ $property->address }}">
                             </div>
-
-                            {{-- <div class="form-group">
-                                <label for="" class="form-label">Type ID</label>
-                                <input type="text" class="form-control" id="type_id" name="type_id" value="{{ $property->type_id }}" readonly disabled>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="type_id" name="type_id" value="{{ $property->type->type }}" readonly disabled>
                             </div>
                             
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="" class="form-label">Developer ID</label>
                                 <input type="text" class="form-control" id="developer_id" name="developer_id" value="{{ $property->developer_id }}" readonly disabled>
                             </div>

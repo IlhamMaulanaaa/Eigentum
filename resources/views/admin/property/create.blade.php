@@ -10,12 +10,12 @@
                     <div class="card-body">
                         <form method="post" action="/admin/property/add" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="" class="form-label">Unit</label>
                                 <input class="form-control noscroll" id="unit" name="unit"
                                     value="{{ old('unit') }}">
                             </div>
-                            <br>
+                            <br> --}}
                             <div class="form-group">
                                 <label for="property" class="form-label">Property</label>
                                 <input type="text" class="form-control" id="property" name="property"
@@ -34,18 +34,18 @@
                                     value="{{ old('address') }}">
                             </div>
                             <br>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">
-                                    <option value="">-- Select a type --</option>
+                                    <option value="">Type</option>
                                     @foreach ($types as $type)
                                         <option value="{{ $type->id }}"
-                                            @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}</option>
+                                            @if (old('type_id') == $type->id) selected @endif>{{ $type->type }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <br>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="developer_id" class="form-label">Developer</label>
                                 <select class="form-control" id="developer_id" name="developer_id">
                                     <option value="">-- Select a developer --</option>

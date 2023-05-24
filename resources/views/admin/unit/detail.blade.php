@@ -69,11 +69,61 @@
                                 <input class="form-control" value="{{ $unit->bloc }}" readonly disabled>
                             </div>
                             <br>
-                            <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Certificate</label>
                                 <div class="image-text-wrapper">
                                     <img src="{{ asset('storage/' . $unit->certificate) }}" alt="" width="200">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                {{-- <div class="form-group col-md-2">
+                                    <label for="" class="form-label">id</label>
+                                    <input class="form-control" value="{{ $unit->specification->id }}" readonly
+                                        disabled>
+                                </div> --}}
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">bedroom</label>
+                                    <input class="form-control" value="{{ $unit->specification->bedroom }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">bathroom</label>
+                                    <input class="form-control" value="{{ $unit->specification->bathroom }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">surface area</label>
+                                    <input class="form-control" value="{{ $unit->specification->surface_area }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">building area</label>
+                                    <input class="form-control" value="{{ $unit->specification->building_area }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">floor</label>
+                                    <input class="form-control" value="{{ $unit->specification->floor }}" readonly
+                                        disabled>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">property</label>
+                                    <input class="form-control" value="{{ $unit->property->property }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">description</label>
+                                    <input class="form-control" value="{{ $unit->property->description }}" readonly
+                                        disabled>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="" class="form-label">address</label>
+                                    <input class="form-control" value="{{ $unit->property->address }}" readonly
+                                        disabled>
                                 </div>
                             </div>
                             <br>

@@ -20,6 +20,15 @@ class Unit extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    public function specification()
+    {
+        return $this->belongsTo(Specification::class);
+    }
+    public function property()
+    {
+        return $this->belongsTo(Property::class);
+    }
     public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');

@@ -39,16 +39,6 @@
                                 <input type="text" class="form-control" id="floor" name="floor"
                                     value="{{ old('floor', $spec->floor) }}" required>
                             </div>
-                            <!--
-                                        <div class="form-group">
-                                            <label for="type_id" class="form-label">Property Type</label>
-                                            <select class="form-control" id="type_id" name="type_id">
-                                                {{-- @foreach ($types as $type)
-                                        <option value="{{ $type->id }}" {{ $spec->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                                    @endforeach --}}
-                                            </select>
-                                        </div>
-                                        -->
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
