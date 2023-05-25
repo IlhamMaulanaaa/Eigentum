@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgentController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\TypeController;
@@ -60,6 +61,15 @@ Route::group(['prefix' => 'guide'], function () {
     Route::get('/show/{id}',[GuideController::class, 'show']);
     Route::get('/delete/{id}',[GuideController::class, 'destroy']);
 });
+
+Route::group(['prefix' => 'customer'], function () {
+    Route::get('/data',[CustomerController::class, 'index']);
+    Route::post('/store',[CustomerController::class, 'store']);
+    Route::post('/update/{id}',[CustomerController::class, 'update']);
+    Route::get('/show/{id}',[CustomerController::class, 'show']);
+    Route::get('/delete/{id}',[CustomerController::class, 'destroy']);
+});
+
 Route::group(['prefix' => 'developer'], function () {
     Route::get('/data',[DeveloperController::class, 'index']);
     Route::post('/store',[DeveloperController::class, 'store']);
@@ -67,7 +77,6 @@ Route::group(['prefix' => 'developer'], function () {
     Route::get('/show/{id}',[DeveloperController::class, 'show']);
     Route::get('/delete/{id}',[DeveloperController::class, 'destroy']);
 });
-
 Route::group(['prefix' => 'agent'], function () {
     Route::get('/data',[AgentController::class, 'index']);
     Route::post('/store',[AgentController::class, 'store']);
