@@ -25,6 +25,10 @@ Route::get('/404', function () {
     return view('page.404.404');
 })->middleware('auth');
 
+Route::get('/cariagen', function () {
+    return view('page.CariAgen.cariagen');
+});
+
 Route::get('/guest', function () {
     return view('page.Home.home');
 });

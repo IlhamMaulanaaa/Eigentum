@@ -40,10 +40,9 @@
         @if (Auth::check())
         @endif
             
-            {{-- @include('partial.nav')
-            @include('partial.footer') --}}
             @include('partial.nav')
             @yield('content')
+            @include('partial.footer')
             
 
 

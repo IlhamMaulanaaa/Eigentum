@@ -7582,6 +7582,10 @@ body {
         width: 100%;
       }
       .group-125-BLj {
+        margin: 0;
+        padding: 0;
+        align-items: center;
+        justify-content: center;
         display: flex;
         flex-shrink: 0;
         height: auto;

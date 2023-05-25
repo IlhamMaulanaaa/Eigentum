@@ -11,12 +11,12 @@ class SessionController extends Controller
 {
     public function signin()
     {
-        return view('auth.signin');
+        return view('auth.user.signin');
     }
 
     public function signup()
     {
-        return view('auth.signup');
+        return view('auth.user.signup');
     }
 
     public function postSignin(Request $request)

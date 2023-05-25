@@ -1,14 +1,9 @@
-@extends('layout.main')
-
-@section('content')
-
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Solartec - Renewable Energy Website Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -36,7 +31,7 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
+    <!-- CSS -->
     <link href="/css/Panduan/panduan.css" rel="stylesheet">
 </head>
 
@@ -136,7 +131,7 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-5">
                 <h6 id="" class="" style="font-family: 'Lato', sans-serif; color:#0C40E8">Kategori Panduan</h6>
-                <h1>Eksplore Panduan Teratas</h1>
+                <h1>Lihat Panduan Teratas</h1>
             </div>
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -374,9 +369,39 @@
     <!-- Template Javascript -->
     <script src="/js/Panduan/panduan.js"></script>
     <!-- Swiper JS -->
-    <script src="js/swiper-bundle.min.js"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/css/lib/wow/wow.min.js"></script>
+<script src="/css/lib/easing/easing.min.js"></script>
+<script src="/css/lib/waypoints/waypoints.min.js"></script>
+<script src="/css/lib/counterup/counterup.min.js"></script>
+<script src="/css/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/css/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="/js/Panduan/panduan.js"></script>
 </body>
 
 </html>
-
-@endsection
