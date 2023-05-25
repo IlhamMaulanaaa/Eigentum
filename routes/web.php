@@ -29,7 +29,9 @@ Route::get('/propertibaru', function () {
     return view('page.PropertiBaru.propertibaru');
 })->middleware('auth');
 
-
+Route::get('/disewa', function () {
+    return view('page.Disewa.disewa');
+})->middleware('auth');
 
 Route::get('/cariagen', function () {
     return view('page.CariAgen.cariagen');

@@ -94,7 +94,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
             <a href="/dijual" class="nav-item nav-link" style="color: #000">Dijual</a>
-            <a href="about.html" class="nav-item nav-link" style="color: #000">Disewa</a>
+            <a href="/disewa" class="nav-item nav-link" style="color: #000">Disewa</a>
             <a href="/propertibaru" class="nav-item nav-link" style="color: #000">Properti Baru</a>
             <a href="/cariagen" class="nav-item nav-link" style="color: #000">Cari agen</a>
             <a href="/panduan" class="nav-item nav-link" style="color: #000">Panduan</a>
