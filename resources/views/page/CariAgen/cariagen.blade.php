@@ -82,8 +82,7 @@
             </button>
             
         </div>
-    </div>
-    <!-- Navbar & Carousel End -->
+    <!--  Carousel End -->
     
 
     <!-- Full Screen Search Start -->
