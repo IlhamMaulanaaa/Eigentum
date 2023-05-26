@@ -20,8 +20,6 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="css/dijual.css">
-    <link rel="stylesheet" href="/css/Home/home.css">
     <!-- CSS -->
     <link rel="stylesheet" href="/css/Home/home.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -98,7 +96,7 @@
                   </div>
               </div>
               <div class="col-md-2">
-                  <button class="btn border-0 w-100 py-3 btn-white" style="background-color: #fff; color: #000;">Search</button>
+                  <button class="btn border-0 w-100 py-3 btn-white" style="background-color: #4070f4; color: #fff;">Search</button>
               </div>
               
           </div>

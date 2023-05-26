@@ -40,6 +40,7 @@
 
     <!-- Template Stylesheet -->
     <link href="/css/CariAgent/cariagent.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Home/home.css">
 </head>
 
 <body>
@@ -367,9 +368,11 @@
     <script src="/css/lib/owlcarousel/owl.carousel.min.js"></script>
     <script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="/js/CariAgent/cariagent.js"></script>
+    <script src="js/home.js"></script>
     <!-- Swiper JS -->
     <script src="/js/swiper-bundle.min.js"></script>
 </body>
