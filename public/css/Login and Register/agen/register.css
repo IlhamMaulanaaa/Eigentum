@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Montserrat:wght@600&display=swap");
+/* body{
+    font-family: 'Lato', sans-serif;
+
+} */
+#image1009 {
+    display: flex;
+    margin-right: 30px;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-end;
+    object-position: right;
+    width: 85%;
+    height: 94vh;
+}
+body {
+    overflow: hidden;
+}
+input {
+    width: 600px;
+    border-radius: 0;
+}
+.logo {
+    margin: 50px 0px 0px 20px;
+}
+
+.bg-image-vertical {
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: auto 100%;
+}
+
+@media (min-width: 1025px) {
+    .h-custom-2 {
+        height: 100%;
+    }
+}
+
+form {
+    margin: 180px auto auto 100px;
+    margin-top: 50px;
+}
+
+#masuk009 {
+    font-size: 65px;
+    font-weight: 900;
+}
+
+#masuk026 {
+    margin-top: -15px;
+    font-size: 20px;
+    margin-bottom: 70px;
+    font-weight: extra-bold;
+}
+
+/* .form-floating {
+    margin-top: 20px;
+    width: 440px;
+} */
+#password {
+    margin-top: 0px;
+}
+#name {
+    margin-top: -10px;
+}
+#nomerhp {
+    margin-top: -10px;
+}
+#email {
+    margin-top: 0px;
+}
+#alamat {
+    width: 500px;
+}
+.form-group {
+    margin-top: 40px;
+    width: 500px;
+    height: 40px;
+}
+.form-group input {
+    height: 52px;
+}
+.form-group input[type="text"] {
+    font-size: 18px;
+}
+/* input nomer telpon */
+.form-group input[type="number"] {
+    font-size: 18px;
+    -moz-appearance: textfield;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.form-group input[type="password"] {
+    font-size: 18px;
+}
+.form-group input[type="email"] {
+    font-size: 18px;
+}
+#adkjslf {
+    font-weight: 700;
+}
+#jamal009 {
+    margin-top: 50px;
+    border: 2px solid #000;
+    background-color: white;
+    color: #000;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 12px;
+}
+#googleicon {
+    width: 20px;
+    margin-right: 10px;
+}
+
+#privacy_police {
+    margin-top: 20px;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: rgb(143, 143, 143);
+}
+#loginbutton {
+    background-color: #000;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    height: 60px;
+}
+#loginback {
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: -40px;
+    margin-top: -880px;
+}
+.image_logo {
+    width: 10%;
+    height: 10%;
+    margin-top: 12px;
+}
+.logo {
+    margin: -50px 0px 0px -10px;
+}
+.column_2 {
+    margin-top: 175px;
+}
+.drp1 {
+    width: 500px;
+    margin-bottom: 4px;
+}
+.drp2 {
+    width: 500px;
+    margin-bottom: 4px;
+}
+.drp3 {
+    width: 500px;
+    margin-bottom: 4px;
+}
+
+.fa-upload {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+.upload_foto {
+    font-size: 11px;
+    margin: auto;
+}
+.button_upload1 {
+    height: 36px;
+    background-color: #2951a3;
+    width: 100px;
+    color: white;
+    border-radius: 0px;
+}
+.nte {
+    display: flex;
+    align-items: center;
+}
+.nce {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+.nce h5 {
+    margin-right: -90px;
+}
+.button_register {
+    height: 36px;
+    background-color: #2951a3;
+    width: 500px;
+    color: white;
+    border-radius: 0px;
+    margin-right: 445px;
+}
+.register {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+}
