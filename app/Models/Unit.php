@@ -21,12 +21,12 @@ class Unit extends Model
         'deleted_at',
     ];
 
-    public function specification()
+    public function specifications()
     {
         return $this->belongsTo(Specification::class, 'specification_id');
     }
 
-    public function property(): BelongsTo
+    public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');
     }

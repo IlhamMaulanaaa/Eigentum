@@ -42,9 +42,6 @@
                                     <td class="text-start"><?= $developer->phone_number ?></td>
                                     <td class="text-start"><?= 
                                     Str::limit($developer->properties->implode('property', ', '), 20)
-                                        // @foreach ($developer->properties as $property)
-                                        //     {{ $property->property }},
-                                        // @endforeach
                                         ?>
                                     </td>
                                     <td class="text-end">

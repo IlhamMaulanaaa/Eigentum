@@ -18,34 +18,20 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Rent</th>
-                            <th scope="col">Base Image</th>
-                            <th scope="col">Bloc</th>
-                            <th scope="col" class="text-start">Property Name</th>
+                            <th scope="col">Location</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($units->count())
-                            @foreach ($units as $unit)
+                        @if ($locations->count())
+                            @foreach ($locations as $location)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $unit->title ?></td>
-                                    <td class="text-start"><?= $unit->description ?></td>
-                                    <td class="text-start"><?= $unit->price ?></td>
-                                    <td class="text-start"><?= $unit->rent ?></td>
-                                    <td class="text-start"><img src="{{ asset('storage/' . $unit->image_1) }}"
-                                            width="60" heigth="60"></td>
-                                    <td class="text-start"><?= $unit->bloc ?></td>
-                                    <td class="text-start "><?= $unit->properties->property ?></td>
-
+                                    <td class="text-start"><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $location->location ?></td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $unit->id }}">Detail</a>
-                                        <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
+                                            href="show/{{ $location->id }}">Detail</a>
+                                        <form action="delete/{{ $location->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
@@ -53,10 +39,10 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @elseif ($units->count())
+                            @elseif ($locations->count())
                                     <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/unit/all">Back</a>
-                                    </div> --}}
+                                        <a type="button" class="btn btn-warning" href="/admin/location/all">Back</a>
+                                    </div>
                         @else
                             <tr>
                                 <td colspan="100" align="center">Data Tidak Ditemukan</td>
@@ -64,6 +50,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div class="m-lg-2">
+                    {{ $locations->links() }}
+                </div>
             </div>
         </div>
     </div>

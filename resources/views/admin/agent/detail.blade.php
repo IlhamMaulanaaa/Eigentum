@@ -21,12 +21,6 @@
                                     value="{{ $agent->email }}" readonly disabled>
                             </div>
                             <br>
-                            {{-- <div class="form-group">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" name="password"
-                                    value="{{ $agent->password }}" readonly disabled>
-                            </div>
-                            <br> --}}
                             <div class="form-group">
                                 <label for="address" class="form-label">Address</label>
                                 <input type="text" class="form-control" id="address" name="address"

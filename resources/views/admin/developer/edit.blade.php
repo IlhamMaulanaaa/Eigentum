@@ -50,10 +50,17 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ old('phone_number', $developer->phone_number) }}" required>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="property" class="form-label">Property</label>
+                                </div>
+                                <ul>
+                                    @foreach ($developer->properties as $property)
+                                        <li>{{ $property->property }} <a href="/admin/property/show/edit/{{ $property->id }}">Edit</a></li>
+                                    @endforeach
+                                </ul>
+                                <a type="button" class="btn btn-warning"
+                                    href="/admin/property/create">Create New</a>
                             </div>
                             <br>
                             <div class="float-end">

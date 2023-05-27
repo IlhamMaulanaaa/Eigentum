@@ -84,6 +84,12 @@
                 </a>
             </li>
 
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/location/data">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Location</span>
+                </a>
+            </li>
+
             <li class="sidebar-header">
                 Plugins & Addons
             </li>

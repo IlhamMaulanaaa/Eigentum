@@ -22,21 +22,16 @@ class UnitController extends Controller
      */
     public function index()
     {
-        $data = Unit::all();
-        // $spec = Specification::all();
-        // $property = Property::all();
+        $units = Unit::all();
         $tables = (new Unit())->getTable();
 
-        if ($data) {
-            return view('admin.unit.all', ["units" => $data, "tables" => $tables]);
+        if ($units) {
+            return view('admin.unit.all', compact("units", "tables"));
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.unit.create');
@@ -65,8 +60,6 @@ class UnitController extends Controller
             'property_id' => 'required',
         ]);
 
-        // $data = Unit::findOrfail($id);
-
         $imageNames = [];
 
         foreach (['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'] as $fieldName) {
@@ -89,6 +82,15 @@ class UnitController extends Controller
             'certificate' => $imageNames[5],
             'specification_id' => $request->specification_id,
             'property_id' => $request->property_id,
+        ]);
+
+        
+        $specification = Specification::create([
+            'bedroom' => $request->bedroom,
+            'bathroom' => $request->bathroom,
+            'surface_area'  => $request->surface_area,
+            'building_area' => $request->building_area,
+            'floor' => $request->floor,
         ]);
 
         

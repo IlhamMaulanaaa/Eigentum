@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     function index(){
-        return view('admin.layout.main');
+        return redirect('admin/dashboard');
     }
 }

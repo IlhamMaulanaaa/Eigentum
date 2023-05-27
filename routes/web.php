@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
@@ -18,14 +19,14 @@ use App\Http\Controllers\UnitController;
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
+| Here is where you can register web Routes for your application. These
+| Routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin/');
 })->middleware('auth');
 
 // Route::get('/admin', function () {
@@ -40,7 +41,7 @@ Route::group(['prefix' => '/session'], function(){
         Route::post('/create', [SessionController:: class, 'postSignin']);
     });
 
-    route::group(['prefix' => '/signup'], function(){
+    Route::group(['prefix' => '/signup'], function(){
         Route::get('/', [SessionController:: class, 'signup'])->middleware('guest');
         Route::post('/create', [SessionController:: class, 'postSignup']);
     });
@@ -98,7 +99,7 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::get('/delete/{unit}',[UnitController::class,'destroy']);
     });
 
-    route::group(['prefix' => '/property'], function(){
+    Route::group(['prefix' => '/property'], function(){
         Route::get('/data', [PropertyController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
             Route::get('/{property}',[PropertyController::class,'show']);
@@ -110,7 +111,7 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::get('/delete/{property}',[PropertyController::class,'destroy']);
     });
 
-    route::group(['prefix' => '/specification'], function(){
+    Route::group(['prefix' => '/specification'], function(){
         Route::get('/data', [SpecificationController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
             Route::get('/{specification}',[SpecificationController::class,'show']);
@@ -122,7 +123,7 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::get('/delete/{specification}',[SpecificationController::class,'destroy']);
     });
 
-    route::group(['prefix' => '/type'], function(){
+    Route::group(['prefix' => '/type'], function(){
         Route::get('/data', [TypeController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
             Route::get('/{type}',[TypeController::class,'show']);
@@ -134,7 +135,7 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::get('/delete/{type}',[TypeController::class,'destroy']);
     });
 
-    route::group(['prefix' => '/guide'], function(){
+    Route::group(['prefix' => '/guide'], function(){
         Route::get('/data', [GuideController:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
             Route::get('/{guide}',[GuideController::class,'show']);
@@ -145,5 +146,18 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::post('/update/{guide}', [GuideController:: class, 'update']);
         Route::get('/delete/{guide}',[GuideController::class,'destroy']);
     });
-        Route::get("/dashboard", [DashboardController::class, 'index']);
+
+    Route::group(['prefix' => '/location'], function(){
+        Route::get('/data', [LocationController:: class, 'index']);
+        Route::group(['prefix' => '/show'],function () {
+            Route::get('/{location}',[LocationController::class,'show']);
+            Route::get('/edit/{location}',[LocationController::class,'edit']);
+        });
+        Route::get('/create', [LocationController:: class, 'create']);
+        Route::post('/add', [LocationController:: class, 'store']);
+        Route::post('/update/{location}', [LocationController:: class, 'update']);
+        Route::get('/delete/{location}',[LocationController::class,'destroy']);
+    });
+
+    Route::get("/dashboard", [DashboardController::class, 'index']);
 });
