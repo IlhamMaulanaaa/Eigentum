@@ -25,6 +25,12 @@ Route::get('/404', function () {
     return view('page.404.404');
 })->middleware('auth');
 
+Route::get('/nav', function () {
+    return view('partial.nav');
+})->middleware('auth');
+
+
+
 Route::get('/propertibaru', function () {
     return view('page.PropertiBaru.propertibaru');
 })->middleware('auth');

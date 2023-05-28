@@ -51,8 +51,8 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="height: 550px;">
-                    <img class="w-100" src="img/carousel-1.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0;" >
                         <div class="p-3" style="max-width: 1200px; margin-top: -100px; font-family: 'Lato', sans-serif;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown" style="font-family: 'Lato', sans-serif;"">Agen Terpercaya</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-family: 'Lato', sans-serif; font-size: 54px;">Layanan Pencarian Agen Properti Profesional</h1>
@@ -61,7 +61,7 @@
                 </div>
                 <div class="carousel-item" style="height: 550px;">
                     <img class="w-100" src="img/carousel-2.jpg" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0;">
                         <div class="p-3" style="max-width: 1200px; margin-top: -100px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown" style="font-family: 'Lato', sans-serif;">Expertise dan Kemudahan</h5>
                             <h2 class="display-1 text-white mb-md-4 animated zoomIn" style="font-family: 'Lato', sans-serif; font-size: 54px;">Temukan Agen Properti yang Mengerti Kebutuhan Anda</h2>
@@ -108,7 +108,7 @@
 
 
     <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: -200px;">
+    <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: -200px; z-index:2000;">
         <div class="position-relative w-50 mx-auto animated slideInDown" style="margin-bottom: 70px;">
             <input class="form-control border-0 rounded-0 w-100 py-3 ps-4 pe-5" type="text" style="height: 55px" placeholder="Cari Nama Agent Atau Lokasi">
             <button type="button" class="btn  rounded-0 py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px; background-color: #0C40E8; color: #fff;">Search</button>
@@ -371,7 +371,7 @@
     <script src="js/swiper-bundle.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="/js/CariAgent/cariagent.js"></script>
+    {{-- <script src="/js/CariAgent/cariagent.js"></script> --}}
     <script src="js/home.js"></script>
     <!-- Swiper JS -->
     <script src="/js/swiper-bundle.min.js"></script>

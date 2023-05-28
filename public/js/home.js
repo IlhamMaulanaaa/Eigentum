@@ -1,195 +1,354 @@
-var swiper = new Swiper(".slide-content", {
-  slidesPerView: 4,
-  spaceBetween: 25,
-  loop: false,
-  centerSlide: 'false',
-  fade: 'false',
-  grabCursor: 'false',
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: false,
-    dynamicBullets: false,
-  },
 
-  breakpoints:{
-      0: {
-          slidesPerView: 1,
-      },
-      520: {
-          slidesPerView: 2,
-      },
-      950: {
-          slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 4,
-    }
-  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function ($) {
+  "use strict";
+
+  // Spinner
+  var spinner = function () {
+      setTimeout(function () {
+          if ($('#spinner').length > 0) {
+              $('#spinner').removeClass('show');
+          }
+      }, 1);
+  };
+  spinner();
+  
+  
+  // Initiate the wowjs
+  new WOW().init();
+
+
+
+  
+
+
+
+  // Facts counter
+  $('[data-toggle="counter-up"]').counterUp({
+      delay: 10,
+      time: 2000
+  });
+  
+  
+  // Back to top button
+  $(window).scroll(function () {
+      if ($(this).scrollTop() > 100) {
+          $('.back-to-top').fadeIn('slow');
+      } else {
+          $('.back-to-top').fadeOut('slow');
+      }
+  });
+  $('.back-to-top').click(function () {
+      $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+      return false;
+  });
+
+
+  // Testimonials carousel
+  $(".testimonial-carousel").owlCarousel({
+      autoplay: true,
+      smartSpeed: 1500,
+      dots: true,
+      loop: true,
+      center: true,
+      responsive: {
+          0:{
+              items:1
+          },
+          576:{
+              items:1
+          },
+          768:{
+              items:2
+          },
+          992:{
+              items:3
+          }
+      }
+  });
+
+
+  // Vendor carousel
+  $('.vendor-carousel').owlCarousel({
+      loop: true,
+      margin: 45,
+      dots: false,
+      loop: true,
+      autoplay: true,
+      smartSpeed: 1000,
+      responsive: {
+          0:{
+              items:2
+          },
+          576:{
+              items:4
+          },
+          768:{
+              items:6
+          },
+          992:{
+              items:8
+          }
+      }
+  });
+  
+})(jQuery);
+
+const wrapper = document.querySelector(".wrapper");
+const carousel11 = document.querySelector(".carousel11");
+const firstCardWidth = carousel11.querySelector(".card").offsetWidth;
+const arrowBtns = document.querySelectorAll(".wrapper i");
+const carousel11Childrens = [...carousel11.children];
+
+// Get the number of cards that can fit in the carousel11 at once
+let cardPerView = Math.round(carousel11.offsetWidth / firstCardWidth);
+
+// Insert copies of the last few cards to the beginning of carousel11 for infinite scrolling
+carousel11Childrens.slice(-cardPerView).reverse().forEach(card => {
+  carousel11.insertAdjacentHTML("afterbegin", card.outerHTML);
 });
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  grabCursor: true,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+// Insert copies of the first few cards to the end of carousel11 for infinite scrolling
+carousel11Childrens.slice(0, cardPerView).forEach(card => {
+  carousel11.insertAdjacentHTML("beforeend", card.outerHTML);
 });
 
-const tabsBox = document.querySelector(".tabs-box"),
-allTabs = tabsBox.querySelectorAll(".tab"),
-arrowIcons = document.querySelectorAll(".icon i");
+// Scroll the carousel11 at the appropriate position to hide the first few duplicate cards on Firefox
+carousel11.classList.add("no-transition");
+carousel11.scrollLeft = carousel11.offsetWidth;
+carousel11.classList.remove("no-transition");
 
-let isDragging = false;
-
-const handleIcons = (scrollVal) => {
-  let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-  arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-  arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-}
-
-arrowIcons.forEach(icon => {
-  icon.addEventListener("click", () => {
-      // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
-      let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
-      handleIcons(scrollWidth);
+// Add event listeners for the arrow buttons to scroll the carousel11 left and right
+arrowBtns.forEach(btn => {
+  btn.addEventListener("click", () => {
+      carousel11.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
   });
 });
 
-allTabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-      tabsBox.querySelector(".active").classList.remove("active");
-      tab.classList.add("active");
-  });
-});
+const dragStart = (e) => {
+  isDragging = true;
+  carousel11.classList.add("dragging");
+  // Records the initial cursor and scroll position of the carousel11
+  startX = e.pageX;
+  startScrollLeft = carousel11.scrollLeft;
+};
 
 const dragging = (e) => {
-  if(!isDragging) return;
-  tabsBox.classList.add("dragging");
-  tabsBox.scrollLeft -= e.movementX;
-  handleIcons(tabsBox.scrollLeft)
-}
+  if (!isDragging) return; // if isDragging is false, return from here
+  // Updates the scroll position of the carousel11 based on the cursor movement
+  carousel11.scrollLeft = startScrollLeft - (e.pageX - startX);
+};
 
 const dragStop = () => {
   isDragging = false;
-  tabsBox.classList.remove("dragging");
-}
+  carousel11.classList.remove("dragging");
+};
 
-tabsBox.addEventListener("mousedown", () => isDragging = true);
-tabsBox.addEventListener("mousemove", dragging);
+const infiniteScroll = () => {
+  // If the carousel11 is at the beginning, scroll to the end
+  if (carousel11.scrollLeft === 0) {
+      carousel11.classList.add("no-transition");
+      carousel11.scrollLeft = carousel11.scrollWidth - 2 * carousel11.offsetWidth;
+      carousel11.classList.remove("no-transition");
+  }
+  // If the carousel11 is at the end, scroll to the beginning
+  else if (Math.ceil(carousel11.scrollLeft) === carousel11.scrollWidth - carousel11.offsetWidth) {
+      carousel11.classList.add("no-transition");
+      carousel11.scrollLeft = carousel11.offsetWidth;
+      carousel11.classList.remove("no-transition");
+  }
+};
+
+
+
+carousel11.addEventListener("mousedown", dragStart);
+carousel11.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
+carousel11.addEventListener("scroll", infiniteScroll);
+wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 
 
 
-// const wrapper = document.querySelector(".wrapperteks"),
-// selectBtn = wrapper.querySelector(".select-btn-teks"),
-// options = wrapper.querySelector(".optionsteks");
 
-// let countries = ["Semua", "Rumah", "Apartemen", "Ruko", "VIlla"];
+const wrapper1 = document.querySelector(".wrapper1");
+const carousel12 = document.querySelector(".carousel12");
+const firstCardWidth1 = carousel12.querySelector(".card1").offsetWidth;
+const arrowBtns1 = document.querySelectorAll(".wrapper1 i");
+const carousel12Childrens = [...carousel12.children];
 
-// function addCountry(selectedCountry) {
-//     options.innerHTML = "";
-//     countries.forEach(country => {
-//         let isSelected = country == selectedCountry ? "selected" : "";
-//         let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
-//         options.insertAdjacentHTML("beforeend", li);
-//     });
-// }
-// addCountry();
+// Get the number of cards that can fit in the carousel12 at once
+let cardPerView1 = Math.round(carousel12.offsetWidth / firstCardWidth1);
 
-// function updateName(selectedLi) {
-//     addCountry(selectedLi.innerText);
-//     wrapper.classList.remove("active");
-//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
-// }
+// Insert copies of the last few cards to the beginning of carousel12 for infinite scrolling
+carousel12Childrens.slice(-cardPerView1).reverse().forEach(card => {
+  carousel12.insertAdjacentHTML("afterbegin", card.outerHTML);
+});
 
+// Insert copies of the first few cards to the end of carousel12 for infinite scrolling
+carousel12Childrens.slice(0, cardPerView1).forEach(card => {
+  carousel12.insertAdjacentHTML("beforeend", card.outerHTML);
+});
 
-// selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+// Scroll the carousel12 at the appropriate position to hide the first few duplicate cards on Firefox
+carousel12.classList.add("no-transition");
+carousel12.scrollLeft = carousel12.offsetWidth;
+carousel12.classList.remove("no-transition");
 
-const optionMenu = document.querySelector(".select-menu1"),
-     selectBtn1 = optionMenu.querySelector(".select-btn1"),
-     options1 = optionMenu.querySelectorAll(".option1"),
-     sBtn_text1 = optionMenu.querySelector(".sBtn-text1");
-
-selectBtn1.addEventListener("click", () => optionMenu.classList.toggle("active"));       
-
-options1.forEach(option1 =>{
-  option1.addEventListener("click", ()=>{
-      let selectedOption = option1.querySelector(".option1-text").innerText;
-      sBtn_text1.innerText = selectedOption;
-
-      optionMenu.classList.remove("active");
+// Add event listeners for the arrow buttons to scroll the carousel12 left and right
+arrowBtns1.forEach(btn => {
+  btn.addEventListener("click", () => {
+      carousel12.scrollLeft += btn.id === "left" ? -firstCardWidth1 : firstCardWidth1;
   });
 });
 
-const optionMenu1 = document.querySelector(".select-menu2"),
-     selectBtn2 = optionMenu1.querySelector(".select-btn2"),
-     options2 = optionMenu1.querySelectorAll(".option2"),
-     sBtn_text2 = optionMenu1.querySelector(".sBtn-text2");
+const dragStart1 = (e) => {
+  isDragging = true;
+  carousel12.classList.add("dragging");
+  // Records the initial cursor and scroll position of the carousel12
+  startX = e.pageX;
+  startScrollLeft = carousel12.scrollLeft;
+};
 
-selectBtn2.addEventListener("click", () => optionMenu1.classList.toggle("active"));       
+const dragging1 = (e) => {
+  if (!isDragging) return; // if isDragging is false, return from here
+  // Updates the scroll position of the carousel12 based on the cursor movement
+  carousel12.scrollLeft = startScrollLeft - (e.pageX - startX);
+};
 
-options2.forEach(option2 =>{
-  option2.addEventListener("click", ()=>{
-      let selectedOption = option2.querySelector(".option2-text").innerText;
-      sBtn_text2.innerText = selectedOption;
+const dragStop1 = () => {
+  isDragging = false;
+  carousel12.classList.remove("dragging");
+};
 
-      optionMenu1.classList.remove("active");
+const infiniteScroll1 = () => {
+  // If the carousel12 is at the beginning, scroll to the end
+  if (carousel12.scrollLeft === 0) {
+      carousel12.classList.add("no-transition");
+      carousel12.scrollLeft = carousel12.scrollWidth - 2 * carousel12.offsetWidth;
+      carousel12.classList.remove("no-transition");
+  }
+  // If the carousel12 is at the end, scroll to the beginning
+  else if (Math.ceil(carousel12.scrollLeft) === carousel12.scrollWidth - carousel12.offsetWidth) {
+      carousel12.classList.add("no-transition");
+      carousel12.scrollLeft = carousel12.offsetWidth;
+      carousel12.classList.remove("no-transition");
+  }
+};
+
+carousel12.addEventListener("mousedown", dragStart1);
+carousel12.addEventListener("mousemove", dragging1);
+document.addEventListener("mouseup", dragStop1);
+carousel12.addEventListener("scroll", infiniteScroll1);
+wrapper1.addEventListener("mouseenter", () => clearTimeout(timeoutId));
+
+
+
+const wrapper2 = document.querySelector(".wrapper2");
+const carousel13 = document.querySelector(".carousel13");
+const firstCardWidth3 = carousel13.querySelector(".card2").offsetWidth;
+const arrowBtns2 = document.querySelectorAll(".wrapper2 i");
+const carousel13Childrens = [...carousel13.children];
+
+// Get the number of cards that can fit in the carousel13 at once
+let cardPerView2 = Math.round(carousel13.offsetWidth / firstCardWidth3);
+
+// Insert copies of the last few cards to the beginning of carousel13 for infinite scrolling
+carousel13Childrens.slice(-cardPerView2).reverse().forEach(card => {
+  carousel13.insertAdjacentHTML("afterbegin", card.outerHTML);
+});
+
+// Insert copies of the first few cards to the end of carousel13 for infinite scrolling
+carousel13Childrens.slice(0, cardPerView2).forEach(card => {
+  carousel13.insertAdjacentHTML("beforeend", card.outerHTML);
+});
+
+// Scroll the carousel13 at the appropriate position to hide the first few duplicate cards on Firefox
+carousel13.classList.add("no-transition");
+carousel13.scrollLeft = carousel13.offsetWidth;
+carousel13.classList.remove("no-transition");
+
+// Add event listeners for the arrow buttons to scroll the carousel13 left and right
+arrowBtns2.forEach(btn => {
+  btn.addEventListener("click", () => {
+      carousel13.scrollLeft += btn.id === "left" ? -firstCardWidth3 : firstCardWidth3;
   });
 });
 
+const dragStart2 = (e) => {
+  isDragging = true;
+  carousel13.classList.add("dragging");
+  // Records the initial cursor and scroll position of the carousel13
+  startX = e.pageX;
+  startScrollLeft = carousel13.scrollLeft;
+};
 
-const optionMenu2 = document.querySelector(".select-menu3"),
-     selectBtn3 = optionMenu2.querySelector(".select-btn3"),
-     options3 = optionMenu2.querySelectorAll(".option3"),
-     sBtn_text3 = optionMenu2.querySelector(".sBtn-text3");
+const dragging2 = (e) => {
+  if (!isDragging) return; // if isDragging is false, return from here
+  // Updates the scroll position of the carousel13 based on the cursor movement
+  carousel13.scrollLeft = startScrollLeft - (e.pageX - startX);
+};
 
-selectBtn3.addEventListener("click", () => optionMenu2.classList.toggle("active"));       
+const dragStop2 = () => {
+  isDragging = false;
+  carousel13.classList.remove("dragging");
+};
 
-options3.forEach(option3 =>{
-  option3.addEventListener("click", ()=>{
-      let selectedOption = option3.querySelector(".option3-text").innerText;
-      sBtn_text3.innerText = selectedOption;
+const infiniteScroll2 = () => {
+  // If the carousel13 is at the beginning, scroll to the end
+  if (carousel13.scrollLeft === 0) {
+      carousel13.classList.add("no-transition");
+      carousel13.scrollLeft = carousel13.scrollWidth - 2 * carousel13.offsetWidth;
+      carousel13.classList.remove("no-transition");
+  }
+  // If the carousel13 is at the end, scroll to the beginning
+  else if (Math.ceil(carousel13.scrollLeft) === carousel13.scrollWidth - carousel13.offsetWidth) {
+      carousel13.classList.add("no-transition");
+      carousel13.scrollLeft = carousel13.offsetWidth;
+      carousel13.classList.remove("no-transition");
+  }
+};
 
-      optionMenu2.classList.remove("active");
-  });
-});
-
-
-const optionMenu3 = document.querySelector(".select-menu4"),
-     selectBtn4 = optionMenu3.querySelector(".select-btn4"),
-     options4 = optionMenu3.querySelectorAll(".option4"),
-     sBtn_text4 = optionMenu3.querySelector(".sBtn-text4");
-
-selectBtn4.addEventListener("click", () => optionMenu3.classList.toggle("active"));       
-
-options4.forEach(option4 =>{
-  option4.addEventListener("click", ()=>{
-      let selectedOption = option4.querySelector(".option4-text").innerText;
-      sBtn_text4.innerText = selectedOption;
-
-      optionMenu3.classList.remove("active");
-  });
-});
+carousel13.addEventListener("mousedown", dragStart2);
+carousel13.addEventListener("mousemove", dragging2);
+document.addEventListener("mouseup", dragStop2);
+carousel13.addEventListener("scroll", infiniteScroll2);
+wrapper2.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 
 
-const optionMenu4 = document.querySelector(".select-menu5"),
-     selectBtn5 = optionMenu4.querySelector(".select-btn5"),
-     options5 = optionMenu4.querySelectorAll(".option5"),
-     sBtn_text5 = optionMenu4.querySelector(".sBtn-text5");
 
-selectBtn5.addEventListener("click", () => optionMenu4.classList.toggle("active"));       
 
-options5.forEach(option5 =>{
-  option5.addEventListener("click", ()=>{
-      let selectedOption = option5.querySelector(".option5-text").innerText;
-      sBtn_text5.innerText = selectedOption;
 
-      optionMenu4.classList.remove("active");
-  });
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
