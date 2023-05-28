@@ -29,23 +29,26 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">Rent</label>
-                                <input type="number" class="form-control" id="rent"
-                                    name="rent"value="{{ old('rent', $unit->rent) }}" required>
+                                <label for="" class="form-label">Status</label>
+                                <select class="form-select" name="status_id[]" multiple>
+                                    @foreach ($statuses as $status)
+                                        <option value="{{ $status->id }}">{{ $status->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                             <br>
                             <div class="col">
-                                @if ($unit->image_1)
-                                    <img src="{{ asset('storage/' . $unit->image_1) }}" alt="{{ $unit->image_1 }}"
+                                @if ($unit->image)
+                                    <img src="{{ asset('storage/' . $unit->image) }}" alt="{{ $unit->image }}"
                                         width="100">
                                 @endif
                                 <div class="form-group">
-                                    <label for="" class="form-label">Image 1</label>
-                                    <input type="file" class="form-control" id="image_1" name="image_1">
+                                    <label for="" class="form-label">Image</label>
+                                    <input type="file" class="form-control" id="image" name="image">
                                 </div>
                             </div>
                             <br>
-                            <div class="col">
+                            {{-- <div class="col">
                                 @if ($unit->image_2)
                                     <img src="{{ asset('storage/' . $unit->image_2) }}" alt="{{ $unit->image_2 }}"
                                         width="100">
@@ -106,35 +109,28 @@
                                     <input type="file" class="form-control" id="certificate" name="certificate">
                                 </div>
                             </div>
-                            <br>
-                            {{-- <div class="row">
-                                <label for="specification">Specification</label>
+                            <br> --}}
+                            <div class="row">
                                 <div class="form-group col-md-2">
                                     <label for="" class="form-label">bedroom</label>
-                                    <input class="form-control" value="{{ $unit->specification->bedroom }}" >
+                                    <input class="form-control" id="bedroom" name="bedroom" value="{{ $unit->specifications->bedroom }}" >
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="" class="form-label">bathroom</label>
-                                    <input class="form-control" value="{{ $unit->specification->bathroom }}" >
+                                    <input class="form-control" id="bathroom" name="bathroom" value="{{ $unit->specifications->bathroom }}" >
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="" class="form-label">surface area</label>
-                                    <input class="form-control" value="{{ $unit->specification->surface_area }}" >
+                                    <input class="form-control" id="surface_area" name="surface_area" value="{{ $unit->specifications->surface_area }}" >
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="" class="form-label">building area</label>
-                                    <input class="form-control" value="{{ $unit->specification->building_area }}" >
+                                    <input class="form-control" id="building_area" name="building_area" value="{{ $unit->specifications->building_area }}" >
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="" class="form-label">floor</label>
-                                    <input class="form-control" value="{{ $unit->specification->floor }}" >
+                                    <input class="form-control" id="floor" name="floor" value="{{ $unit->specifications->floor }}" >
                                 </div>
-                            </div> --}}
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">Specification</label>
-                                <input type="number" class="form-control" id="specification_id" name="specification_id"
-                                    value="{{ old('specification_id', $unit->specification_id) }}" required>
                             </div>
                             <br>
                             <div class="form-group">
@@ -151,9 +147,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
-                            <br>
-                            <br>
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"

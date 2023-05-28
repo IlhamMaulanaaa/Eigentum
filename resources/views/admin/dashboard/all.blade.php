@@ -1,8 +1,8 @@
 @extends('admin.layout.main')
 
+@section('content')
 
 <body>
-    @section('content')
         <main class="content p-0">
             <div class="container-fluid p-0">
 
@@ -308,8 +308,7 @@
                 </div>
             </div>
         </footer>
-    @endsection
-
+    
     <script src="js/app.js"></script>
 
     <script>
@@ -540,3 +539,4 @@
 
 </body>
 
+@endsection

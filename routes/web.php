@@ -8,6 +8,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
@@ -157,6 +158,18 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::post('/add', [LocationController:: class, 'store']);
         Route::post('/update/{location}', [LocationController:: class, 'update']);
         Route::get('/delete/{location}',[LocationController::class,'destroy']);
+    });
+
+    Route::group(['prefix' => '/status'], function(){
+        Route::get('/data', [StatusController:: class, 'index']);
+        Route::group(['prefix' => '/show'],function () {
+            Route::get('/{status}',[StatusController::class,'show']);
+            Route::get('/edit/{status}',[StatusController::class,'edit']);
+        });
+        Route::get('/create', [StatusController:: class, 'create']);
+        Route::post('/add', [StatusController:: class, 'store']);
+        Route::post('/update/{status}', [StatusController:: class, 'update']);
+        Route::get('/delete/{status}',[StatusController::class,'destroy']);
     });
 
     Route::get("/dashboard", [DashboardController::class, 'index']);

@@ -90,6 +90,12 @@
                 </a>
             </li>
 
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/status/data">
+                    <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Status</span>
+                </a>
+            </li>
+
             <li class="sidebar-header">
                 Plugins & Addons
             </li>

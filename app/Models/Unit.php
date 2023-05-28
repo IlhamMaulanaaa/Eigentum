@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Unit extends Model
@@ -29,5 +30,10 @@ class Unit extends Model
     public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');
+    }
+
+    public function status(): BelongsToMany
+    {
+        return $this->belongsToMany(Status::class, 'unit_status', 'unit_id', 'status_id');
     }
 }

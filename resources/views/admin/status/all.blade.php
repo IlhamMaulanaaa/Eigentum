@@ -18,40 +18,20 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
-                            {{-- <th scope="col">Rent</th> --}}
-                            <th scope="col">Image</th>
-                            {{-- <th scope="col">Bloc</th> --}}
-                            <th scope="col" class="text-start">Property Name</th>
-                            <th scope="col" class="text-start">Status</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($units->count())
-                            @foreach ($units as $unit)
+                        @if ($statuses->count())
+                            @foreach ($statuses as $status)
                                 <tr align="center">
                                     <td class="text-start"><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $unit->title ?></td>
-                                    <td class="text-start"><?= $unit->description ?></td>
-                                    <td class="text-start"><?= $unit->price ?></td>
-                                    {{-- <td class="text-start"><?= $unit->rent ?></td> --}}
-                                    <td class="text-start"><img src="{{ asset('storage/' . $unit->image) }}" width="60"
-                                            heigth="60"></td>
-                                    {{-- <td class="text-start"><?= $unit->bloc ?></td> --}}
-                                    <td class="text-start "><?= $unit->properties->property ?></td>
-                                    <td class="text-start ">
-                                        @foreach ($unit->status as $role)
-                                            {{ $role->name }}
-                                        @endforeach
-                                    </td>
-
+                                    <td class="text-start"><?= $status->name ?></td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $unit->id }}">Detail</a>
-                                        <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
+                                            href="show/{{ $status->id }}">Detail</a>
+                                        <form action="delete/{{ $status->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
@@ -59,9 +39,9 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            {{-- @elseif ($units->count())
+                            {{-- @elseif ($statuses->count())
                                     <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/unit/all">Back</a>
+                                        <a type="button" class="btn btn-warning" href="/admin/status/all">Back</a>
                                     </div> --}}
                         @else
                             <tr>
@@ -70,6 +50,9 @@
                         @endif
                     </tbody>
                 </table>
+                {{-- <div class="m-lg-2">
+                    {{ $statuses->links() }}
+                </div> --}}
             </div>
         </div>
     </div>
