@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("surface_area");
             $table->string("building_area");
             $table->string("floor");
+            $table->foreignId('unit_id');
             $table->softDeletes();
             $table->timestamps();
         });

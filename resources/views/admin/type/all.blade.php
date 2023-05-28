@@ -27,7 +27,7 @@
                         @if ($types->count())
                             @foreach ($types as $type)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     {{-- <td class=""><?= $type->id ?></td> --}}
                                     <td class="text-start"><?= $type->type ?></td>
                                     <td class="text-start"><?= $type->description ?></td>

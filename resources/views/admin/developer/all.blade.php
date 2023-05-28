@@ -32,17 +32,16 @@
                         @if ($developers && $developers->count())
                             @foreach ($developers as $developer)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     <td class="text-start"><?= $developer->company ?></td>
                                     <td class="text-start"><?= $developer->email ?></td>
                                     <td class="text-start"><?= $developer->owner ?></td>
                                     <td class="text-start"><?= $developer->address ?></td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $developer->license) }}"
-                                        width="60" heigth="60"></td>
+                                            width="60" heigth="60"></td>
                                     <td class="text-start"><?= $developer->phone_number ?></td>
-                                    <td class="text-start"><?= 
-                                    Str::limit($developer->properties->implode('property', ', '), 20)
-                                        ?>
+                                    <td class="text-start">
+                                        <?= Str::limit($developer->properties->implode('property', ', '), 20) ?>
                                     </td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"

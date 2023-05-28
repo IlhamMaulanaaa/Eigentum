@@ -65,7 +65,6 @@
                                 <input type="file" class="form-control noscroll" id="certificate" name="certificate">
                             </div>
                             <br>
-                            {{-- @foreach ($specification as $spec)
                                 <div class="row">
                                     <div class="form-group col-md-2">
                                         <label for="" class="form-label">bedroom</label>
@@ -90,7 +89,6 @@
                                     
                                 </div>
                                 <br>
-                            @endforeach --}}
 
                             {{-- <div class="row">
                                 <label for="property">property</label>
@@ -112,12 +110,6 @@
                                 </div>
                             </div>
                             <br> --}}
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">Specification</label>
-                                <input type="number" class="form-control noscroll" id="specification_id"
-                                    name="specification_id">
-                            </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Property</label>

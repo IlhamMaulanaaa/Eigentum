@@ -29,7 +29,7 @@
                         @if ($customers->count())
                             @foreach ($customers as $customer)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     <td class="text-start"><?= $customer->name ?></td>
                                     <td class="text-start"><?= $customer->email ?></td>
                                     <td class="text-start"><?= $customer->address ?></td>

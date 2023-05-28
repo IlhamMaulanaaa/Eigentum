@@ -56,7 +56,6 @@ class UnitController extends Controller
             'image_plan' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
             'bloc' => 'required',
             'certificate' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-            'specification_id' => 'required',
             'property_id' => 'required',
         ]);
 
@@ -80,35 +79,31 @@ class UnitController extends Controller
             'image_plan' => $imageNames[4],
             'bloc' => $request->bloc,
             'certificate' => $imageNames[5],
-            'specification_id' => $request->specification_id,
             'property_id' => $request->property_id,
         ]);
-
         
+        $data->save();
+        
+        $request->validate([
+            'bedroom' => 'required',
+            'bathroom' => 'required',
+            'surface_area'  => 'required',
+            'building_area' => 'required',
+            'floor' => 'required',
+        ]);
+
         $specification = Specification::create([
             'bedroom' => $request->bedroom,
             'bathroom' => $request->bathroom,
             'surface_area'  => $request->surface_area,
             'building_area' => $request->building_area,
             'floor' => $request->floor,
+            'unit_id'   => $data->id,
         ]);
 
-        
-        // $data->save();
+        $specification->save();
 
-        // $spec = [
-        //     'bedroom' => $request->bedroom,
-        //     'bathroom' => $request->bathroom,
-        //     'surface_area'  => $request->surface_area,
-        //     'building_area' => $request->building_area,
-        //     'floor' => $request->floor,
-        //     // 'type_id'   => $request->type_id,
-        // ];
-
-        // $data->specification()->create($spec);
-        // $spec->unit()->associate($data);
-
-        if ($data) {
+        if ($data&&$specification) {
             return redirect('/admin/unit/data');
         } else {
             return response()->json(['message' => 'Bad Request'], 400);
@@ -171,8 +166,7 @@ class UnitController extends Controller
                 'price' => $request->price,
                 'rent' => $request->rent,
                 'bloc' => $request->bloc,
-                'specification_id' => $request->specification_id,
-                'property_id' => $request->property_id,
+                    'property_id' => $request->property_id,
             ]);
 
             $images = ['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'];

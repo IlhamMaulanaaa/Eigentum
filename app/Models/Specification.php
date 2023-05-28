@@ -23,6 +23,6 @@ class Specification extends Model
 
     public function unit()
     {
-        return $this->hasOne(Unit::class);
+        return $this->belongsTo(Unit::class);
     }
 }

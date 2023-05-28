@@ -30,7 +30,7 @@
                         @if ($specifications->count())
                             @foreach ($specifications as $specification)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     {{-- <td class=""><?= $specification->id ?></td> --}}
                                     <td class="text-start"><?= $specification->bedroom ?></td>
                                     <td class="text-start"><?= $specification->bathroom ?></td>

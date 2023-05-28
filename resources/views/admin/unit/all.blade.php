@@ -32,7 +32,7 @@
                         @if ($units->count())
                             @foreach ($units as $unit)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     <td class="text-start"><?= $unit->title ?></td>
                                     <td class="text-start"><?= $unit->description ?></td>
                                     <td class="text-start"><?= $unit->price ?></td>

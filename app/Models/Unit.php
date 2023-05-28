@@ -23,7 +23,7 @@ class Unit extends Model
 
     public function specifications()
     {
-        return $this->belongsTo(Specification::class, 'specification_id');
+        return $this->hasOne(Specification::class, 'unit_id');
     }
 
     public function properties(): BelongsTo

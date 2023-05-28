@@ -32,19 +32,20 @@
                         @if ($agents->count())
                             @foreach ($agents as $agent)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     <td class="text-start"><?= $agent->name ?></td>
                                     <td class="text-start"><?= $agent->email ?></td>
                                     <td class="text-start"><?= $agent->address ?></td>
                                     <td class="text-start"><?= $agent->location ?></td>
-                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}"
-                                        width="60" heigth="60"></td>
+                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}" width="60"
+                                            heigth="60"></td>
                                     <td class="text-start"><?= $agent->phone_number ?></td>
                                     <td class="text-start">
                                         @foreach ($agent->properties as $property)
-                                        <span>{{ $property->property }},</span><br>
+                                            <span>{{ $property->property }},</span><br>
                                         @endforeach
-                                    </td>                                    <td class="text-end">
+                                    </td>
+                                    <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $agent->id }}">Detail</a>
                                         <form action="delete/{{ $agent->id }}" method="get" class="d-inline">

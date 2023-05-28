@@ -31,7 +31,7 @@
                         @if ($guides->count())
                             @foreach ($guides as $guide)
                                 <tr align="center">
-                                    <td class=""><?= $loop->iteration ?></td>
+                                    <td class="text-start"><?= $loop->iteration ?></td>
                                     {{-- <td class=""><?= $guide->id ?></td> --}}
                                     <td class="text-start"><?= $guide->title ?></td>
                                     <td class="text-start"><?= $guide->description ?></td>
