@@ -7,23 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSS only -->
     <title>eigentum</title>
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/Lib/swiper-bundle.min.css">
 
-    <!-- Icon -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/your_kit_code.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...your_integrity_code..." crossorigin="anonymous" />
-  
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="/css/Lib/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    
+    {{-- <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon"> --}}
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <!-- Libraries Stylesheet -->
+    <link href="/css/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/css/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/css/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/Panduan/panduan.css" rel="stylesheet">
 
     
 
@@ -67,5 +74,19 @@
 <script src="/css/lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/css/lib/wow/wow.min.js"></script>
+<script src="/css/lib/easing/easing.min.js"></script>
+<script src="/css/lib/waypoints/waypoints.min.js"></script>
+<script src="/css/lib/counterup/counterup.min.js"></script>
+<script src="/css/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
+<script src="/css/lib/lightbox/js/lightbox.min.js"></script>
+
+<!-- Template Javascript -->
+<script src="/js/Panduan/panduan.js"></script>
 
 </html>

@@ -50,21 +50,29 @@
 
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active" style="height: 550px;">
-                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image">
+                <div class="carousel-item active" style="max-height: 550px;">
+                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image" >
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0;" >
-                        <div class="p-3" style="max-width: 1200px; margin-top: -100px; font-family: 'Lato', sans-serif;">
+                        <div class="p-3" style="max-width: 1200px; margin-top: 50px; font-family: 'Lato', sans-serif;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown" style="font-family: 'Lato', sans-serif;"">Agen Terpercaya</h5>
                             <h1 class="display-1 text-white mb-md-4 animated zoomIn" style="font-family: 'Lato', sans-serif; font-size: 54px;">Layanan Pencarian Agen Properti Profesional</h1>
+                            <div class="position-relative w-50 mx-auto animated slideInDown" style="margin-bottom: 70px;">
+                                <input class="form-control border-0 rounded-0 w-100 py-3 ps-4 pe-5" type="text" style="height: 55px" placeholder="Cari Nama Agent Atau Lokasi">
+                                <button type="button" class="btn  rounded-0 py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px; background-color: #0C40E8; color: #fff;">Search</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item" style="height: 550px;">
-                    <img class="w-100" src="img/carousel-2.jpg" alt="Image">
+                <div class="carousel-item" style="max-height: 550px;">
+                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; left: 0; right: 0; bottom: 0;">
-                        <div class="p-3" style="max-width: 1200px; margin-top: -100px;">
+                        <div class="p-3" style="max-width: 1200px; margin-top: 50px;">
                             <h5 class="text-white text-uppercase mb-3 animated slideInDown" style="font-family: 'Lato', sans-serif;">Expertise dan Kemudahan</h5>
                             <h2 class="display-1 text-white mb-md-4 animated zoomIn" style="font-family: 'Lato', sans-serif; font-size: 54px;">Temukan Agen Properti yang Mengerti Kebutuhan Anda</h2>
+                            <div class="position-relative w-50 mx-auto animated slideInDown" style="margin-bottom: 70px;">
+                                <input class="form-control border-0 rounded-0 w-100 py-3 ps-4 pe-5" type="text" style="height: 55px" placeholder="Cari Nama Agent Atau Lokasi">
+                                <button type="button" class="btn  rounded-0 py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px; background-color: #0C40E8; color: #fff;">Search</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,13 +116,11 @@
 
 
     <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: -200px; z-index:2000;">
-        <div class="position-relative w-50 mx-auto animated slideInDown" style="margin-bottom: 70px;">
-            <input class="form-control border-0 rounded-0 w-100 py-3 ps-4 pe-5" type="text" style="height: 55px" placeholder="Cari Nama Agent Atau Lokasi">
-            <button type="button" class="btn  rounded-0 py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px; background-color: #0C40E8; color: #fff;">Search</button>
-        </div>
+    <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: -75px;">
+        
         
         <div class="container py-5 pt-lg-0">
+            
             <div class="row gx-0">
                 <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
                     <div class=" shadow d-flex align-items-center justify-content-center p-4" style="height: 150px; background-color: #0C40E8;">
@@ -158,11 +164,12 @@
     <!-- Agent Populer Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Teratas</h6>
-                <h1 class="mb-5">Agent Profesional</h1>
-            </div>
+            
             <div class="row g-4">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h6 class="section-title bg-white text-center px-3" style="color: #0C40E8">Teratas</h6>
+                    <h1 class="mb-5">Agent Profesional</h1>
+                </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="overflow-hidden">

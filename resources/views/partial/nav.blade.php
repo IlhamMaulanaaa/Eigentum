@@ -83,7 +83,7 @@
 
 
 
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0" style="box-shadow: 0 0 5px rgba(0, 0, 0, .08);">
     <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5" style="margin-left: 48px;">
         <img src="/assets/logo.svg" alt="" style="height: 46px; width: 46px; margin-right: 4px;">
         <h2 class="m-0" style="font-size: 30px; color: #0C40E8; font-weight: 600;">Eigentum</h2>
@@ -100,7 +100,7 @@
             <a href="/panduan" class="nav-item nav-link" style="color: #000">Panduan</a>
             <a href="/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
         </div>
-        <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" style="background-color: #0C40E8; color: #ffffff; border: none;">Masuk<i class="fa fa-arrow-right ms-3"></i></a>
+        <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" style="background-color: #0C40E8; color: #ffffff; border: none;">Masuk</a>
     </div>
     
 </nav>
@@ -120,9 +120,11 @@
 <script src="/css/lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="/path/to/bootstrap.bundle.min.js"></script>
 <!-- Template Javascript -->
 <script src="/js/Panduan/panduan.js"></script>
+
 </body>
 
 </html>
