@@ -29,7 +29,9 @@ Route::get('/nav', function () {
     return view('partial.nav');
 })->middleware('auth');
 
-
+Route::get('/detailproperty', function () {
+    return view('page.DetailProperty.all');
+})->middleware('auth');
 
 Route::get('/propertibaru', function () {
     return view('page.PropertiBaru.propertibaru');
