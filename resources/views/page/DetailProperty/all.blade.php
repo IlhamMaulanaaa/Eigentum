@@ -57,83 +57,132 @@
         <div class = "product-imgs">
           <div class = "img-display">
             <div class = "img-showcase">
-              <img  src = "/assets/detail/home.jpg" alt = "shoe image">
-              <img  src = "/assets/detail/livingroom.jpg" alt = "shoe image">
-              <img  src = "/assets/detail/bathroom.jpg" alt = "shoe image">
-              <img  src = "/assets/detail/bedroom.jpg" alt = "shoe image">
-              <img  src = "/assets/detail/denah.jpg" alt = "shoe image">
-            </div>
-          </div>
-          <div class = "img-select">
-            <div class = "img-item">
-              <a href = "#" data-id = "1">
-                <img style="width: 100px; height:70px; border: 1px solid black;" src = "/assets/detail/home.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "2">
-                <img style="width: 100px; height:70px; border: 1px solid black;" src = "/assets/detail/livingroom.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "3">
-                <img style="width: 100px; height:70px; border: 1px solid black;" src = "/assets/detail/bathroom.jpg" alt = "shoe image">
-              </a>
-            </div>
-            <div class = "img-item">
-              <a href = "#" data-id = "4">
-                <img style="width: 100px; height:70px; border: 1px solid black;" src = "/assets/detail/bedroom.jpg" alt = "shoe image">
-              </a>
-            </div><div class = "img-item">
-              <a href = "#" data-id = "5">
-                <img style="width: 100px; height:70px; border: 1px solid black;" src = "/assets/detail/denah.jpg" alt = "shoe image">
-              </a>
+              <img class="img-besar" src = "/assets/detail/home.jpg" alt = "shoe image">
+              <img class="img-besar" src = "/assets/detail/livingroom.jpg" alt = "shoe image">
+              <img class="img-besar" src = "/assets/detail/bathroom.jpg" alt = "shoe image">
+              <img class="img-besar" src = "/assets/detail/bedroom.jpg" alt = "shoe image">
+              <img class="img-besar" src = "/assets/detail/denah.jpg" alt = "shoe image">
             </div>
           </div>
 
-          
 
 
-        </div>
-        <!-- card78 right -->
+
+          <!-- card78 right -->
         <div class = "product-content">
-          <h2 class = "product-title">Rumah Minimalis</h2>
-          <a href = "#" class = "product-link">Rumah</a>
+          <h2 style="margin-top: 20px;" class = "product-title">Rumah Minimalis</h2>
+          <h5 style="font-family: 'Lato', sans-serif;" class="product-title1"><i class="fas fa-map-marker-alt"></i>  Lokasi Jateng , Kudus</h5>
+          {{-- <a href = "#" class = "product-link">Rumah</a>
 
           <div class = "product-price">
             <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: normal;" class = "last-price">Harga Sebelumnya: <span>Rp. 749.000.000</span></p>
             <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: normal;" class = "new-price">Harga: <span>Rp. 711.550.000 (5%)</span></p>
-          </div>
+          </div> --}}
 
           <div class = "product-detail">
-            <h2>Tentang Produk: </h2>
-            <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Rumah ini memiliki berbagai fitur dan karakteristik yang membedakannya, seperti tipe, gaya arsitektur, dan penyesuaian dengan kebutuhan individu seperti kamar tidur, kamar mandi, ruang tamu, dapur, dan ruang keluarga.</p>
-            <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Rumah juga memiliki nilai investasi yang signifikan dengan potensi kenaikan harga dalam jangka panjang, memberikan keuntungan finansial bagi pemiliknya. Selain itu, rumah juga dapat digunakan sebagai aset untuk memperoleh pinjaman atau hipotek.</p>
-            <ul>
+            {{-- <h2>Tentang Produk: </h2> --}}
+            <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Rumah ini memiliki berbagai fitur dan karakteristik yang membedakannya, seperti tipe, gaya arsitektur, dan penyesuaian dengan kebutuhan individu seperti kamar tidur, kamar mandi, ruang tamu, dapur, dan ruang keluarga. Rumah ini juga memiliki nilai investasi yang signifikan dengan potensi kenaikan harga dalam jangka panjang, memberikan keuntungan finansial bagi pemiliknya. Selain itu, rumah juga dapat digunakan sebagai aset untuk memperoleh pinjaman atau hipotek.</p>
+            {{-- <ul>
               <li style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Design Rumah: <span>Modern</span></li>
               <li style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Luas Bangunan: <span>521 m²</span></li>
               <li style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Luas Tanah: <span>535 m²</span></li>
               <li style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Ruang Tamu : <span>1</span></li>
               <li style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Kamar Tidur : <span>2</span></li>
-            </ul>
+            </ul> --}}
           </div>
 
-          <div class = "purchase-info">
+          {{-- <div class = "purchase-info">
             <button type = "button" class = "btn">
               Ajukan <i style="margin-left: 5px;" class = "fas fa-phone"></i>
             </button>
             <button type = "button" class = "btn">Favorite <i style="margin-left: 5px;" class = "fas fa-heart"></i></button>
-          </div>
+          </div> --}}
 
           
         </div>
+
+
+
+          <div class = "img-select" style="width: 1000px; ">
+            <div class = "img-item" style="padding-right: 20px;">
+              <a href = "#" data-id = "1">
+                <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;" src = "/assets/detail/home.jpg" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item" style="padding-right: 20px;">
+              <a href = "#" data-id = "2">
+                <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;" src = "/assets/detail/livingroom.jpg" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item" style="padding-right: 20px;">
+              <a href = "#" data-id = "3">
+                <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;" src = "/assets/detail/bathroom.jpg" alt = "shoe image">
+              </a>
+            </div>
+            <div class = "img-item" style="padding-right: 20px;">
+              <a href = "#" data-id = "4">
+                <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;" src = "/assets/detail/bedroom.jpg" alt = "shoe image">
+              </a>
+            </div><div class = "img-item" style="padding-right: 20px;">
+              <a href = "#" data-id = "5">
+                <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;" src = "/assets/detail/denah.jpg" alt = "shoe image">
+              </a>
+            </div>
+          </div>
+
+          
+
+
+        </div>
+        
       </div>
     </div>
 
 
 
 
-
+<div class="group-9-g1K" id="3:42">
+        <p class="informasi-properti-hSD" id="2:4">Informasi Properti</p>
+        <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh">
+        <p class="developer--EMb" id="2:6">Developer :</p>
+        <p class="informasi-properti-LfX" id="2:7">Informasi Properti</p>
+        </div>
+        <div class="group-14-GJH" id="3:52">
+        <div class="group-4-wfK" id="3:20">
+          <i class="fas fa-bed group-5-TQh" style="color: #000" id="3:29"></i>
+        <p class=" item-2-BpZ" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="2:14">2</p>
+        </div>
+        <div class="group-6-KQy" id="3:36">
+          <i class="fas fa-bath group-5-TQh" style="color: #000" id="3:29"></i>
+        <p class=" item-1-arh" style="margin-bottom: -3px; font-family:'Lato', sans-serif;" id="3:18">1</p>
+        </div>
+        <div class="group-7-vQm" id="3:37">
+        <i class="fas fa-arrows-alt group-5-TQh" style="color: #000" id="3:29"></i>
+        <p class="m1-nhs" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:32">290 m1²</p>
+        </div>
+        <div class="group-8-iLd" id="3:38">
+          <i class="fas fa-home group-5-TQh" style="color: #000" id="3:29"></i>
+        <p class="m-QDT" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:31">305 m²</p>
+        </div>
+        </div>
+        <div class="group-13-7tZ" id="3:51">
+        <div class="group-10-Dgh" id="3:43" style="margin-top:20px; margin-left:20px;">
+        <p class="hari-sewa-a1T" style="margin-left: -80px; font-family:'Lato', sans-serif;" id="3:39">1 Hari Sewa</p>
+        <p class="rp-15jt-malam-hLy" id="3:40" style="margin-left: -30px">
+        <span class="rp-15jt-malam-hLy-sub-0" style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">Rp. 1.5jt</span>
+        <span class="rp-15jt-malam-hLy-sub-1"> / Malam</span>
+        </p>
+        </div>
+        <div class="group-11-jws" id="3:44" style="margin-top: 20px; margin-right:-10px; font-family:'Lato', sans-serif;" >
+        <p class="bulan-sewa-Vw3" id="3:45" style="margin-left: -60px; font-family:'Lato', sans-serif; ">1 Bulan Sewa</p>
+        <p class="rp-1jt-malam-dnM" id="3:46" style="margin-left: -30px">
+        <span class="rp-1jt-malam-dnM-sub-0" style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">Rp. 1jt</span>
+        <span class="rp-1jt-malam-dnM-sub-1"> / Malam</span>
+        </p>
+        </div>
+        </div>
+        <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+        </div>
 
 
 
