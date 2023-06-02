@@ -10,7 +10,7 @@
     <!-- Tambahkan link ini untuk menghubungkan library Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/Login and Register/user/login.css">
+    <link rel="stylesheet" href="/css/loginRegister/user/login.css">
 </head>
 
 
@@ -30,17 +30,19 @@
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Masuk</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a href="/session/signup"
-                                    class="text-dark " id="adkjslf">Sign
+                            <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a
+                                    href="/session/signup" class="text-dark " id="adkjslf">Sign
                                     up</a></h6>
-                                    <div class="form-floating">
-                                        <input type="email" value="{{ Session::get('email') }}" name="email" id="email" class="form-control"  placeholder="name@example.com">
-                                        <label for="email">Email address</label>
-                                    </div>
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                        <label for="password">Password</label>
-                                    </div>
+                            <div class="form-floating">
+                                <input type="email" value="{{ Session::get('email') }}" name="email" id="email"
+                                    class="form-control" placeholder="name@example.com">
+                                <label for="email">Email address</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="password" name="password"
+                                    placeholder="Password">
+                                <label for="password">Password</label>
+                            </div>
 
 
                             <button class="w-100 btn btn-lg btn-primary" id="loginbutton" type="submit">Sign
@@ -52,7 +54,7 @@
                             <pre><p id="privacy_police">you agree to be bound by these <u> Terms of Service</u> and our
 <u>Privacy Policy.</u></p></pre>
                         </form>
-                       
+
                     </div>
 
                 </div>
@@ -64,36 +66,36 @@
     </section>
     <script>
         // Daftar sumber gambar
-var daftarGambar = [
-  "/assets/login/Component 169.svg",
-  "/assets/login/Component 170.svg",
-  "/assets/login/Component 171.svg",
-  "/assets/login/Component 172.svg",
-];
+        var daftarGambar = [
+            "/assets/login/Component 169.svg",
+            "/assets/login/Component 170.svg",
+            "/assets/login/Component 171.svg",
+            "/assets/login/Component 172.svg",
+        ];
 
-// Mendapatkan elemen gambar
-var gambar = document.getElementById("image1009");
+        // Mendapatkan elemen gambar
+        var gambar = document.getElementById("image1009");
 
-// Mengatur indeks awal gambar
-var indeksGambar = 0;
+        // Mengatur indeks awal gambar
+        var indeksGambar = 0;
 
-// Fungsi untuk mengganti gambar
-function gantiGambar() {
-  // Mengatur sumber gambar baru
-  gambar.src = daftarGambar[indeksGambar];
-  
-  // Menambahkan 1 ke indeks gambar
-  indeksGambar++;
-  
-  // Jika indeks gambar melebihi jumlah gambar, kembali ke indeks awal
-  if (indeksGambar === daftarGambar.length) {
-    indeksGambar = 0;
-  }
-}
+        // Fungsi untuk mengganti gambar
+        function gantiGambar() {
+            // Mengatur sumber gambar baru
+            gambar.src = daftarGambar[indeksGambar];
 
-// Memanggil fungsi gantiGambar setiap 2 detik
-setInterval(gantiGambar, 2000);
-  // Fungsi untuk menampilkan alert pesan kesalahan
+            // Menambahkan 1 ke indeks gambar
+            indeksGambar++;
+
+            // Jika indeks gambar melebihi jumlah gambar, kembali ke indeks awal
+            if (indeksGambar === daftarGambar.length) {
+                indeksGambar = 0;
+            }
+        }
+
+        // Memanggil fungsi gantiGambar setiap 2 detik
+        setInterval(gantiGambar, 2000);
+        // Fungsi untuk menampilkan alert pesan kesalahan
         function showErrorAlert(message) {
             alert(message);
         }

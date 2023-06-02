@@ -2,102 +2,124 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Tambahkan link ini untuk menghubungkan library Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/Login and Register/developer/login.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/loginRegister/developer/login.css" />
+
+    <title>Sign in & Sign up Form</title>
 </head>
 
-
 <body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                {{-- form Sign In  --}}
+                {{-- action --}}
+                <form action="#" class="sign-in-form">
+                    {{-- end action --}}
+                    <h2 class="title">Sign in</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <input type="submit" value="Login" class="btn solid" />
+                    <p class="social-text">Or Sign in with social platforms</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
+                {{-- form Sign Up --}}
+                {{-- action --}}
+                <form action="" class="sign-up-form" id="div">
+                    {{-- end action --}}
+                    <h2 class="title ">Sign up</h2>
+                    <div class="input-field">
+                        <i class="fa-sharp fa-solid fa-building"></i>
+                        <input type="text" placeholder="Nama Perusahaan" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="validasi Password" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-sharp fa-solid fa-location-dot"></i>
+                        <input type="texarea" placeholder="Alamat" />
+                    </div>
 
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Nama Owner" />
+                    </div>
+                    <div class="input-field">
+                        <i class="fa-solid fa-mobile"></i>
+                        <input type="number" placeholder="Nomer Handphone" />
+                    </div>
+                    <label for="file-upload" class="file-label">
+                        <input type="file" id="file-upload" class="file-input">
+                        <span class="file-button">Choose a file</span>
+                        <span class="file-name">Lecense</span>
+                    </label>
+                    <button type="submit" class="btn " value="Sign up">Submit</button>
+                </form>
+            </div>
+        </div>
 
-    <section class="vh-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6 text-black">
-                    <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                        <a id="loginback" href="/guest">Back</a>
-                        <form action="/session/signin/create" method="POST">
-                            @csrf
-                            <img class="mb-4" src="/assets/login/logo_1.png" alt="">
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content welcoming">
+                    <h3>New here ?</h3>
+                    <p id="greeting" class="">sudah punya akun!</p>
+                    <button class="btn transparent" id="sign-up-btn">
+                        Sign up
+                    </button>
+                </div>
+                <img src="/assets/login/developer/img/Mortgage Broker online.svg" class="image" alt="" />
+            </div>
+            <div class="panel right-panel ">
+                <div class="content">
+                    <div class="circle">
+                        <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
-                            <h1 class="h1 fw-normal text-dark" id="masuk009">Masuk</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a href="/session/signup"
-                                    class="text-dark " id="adkjslf">Sign
-                                    up</a></h6>
-                                    <div class="form-floating">
-                                        <input type="email" value="{{ Session::get('email') }}" name="email" id="email" class="form-control"  placeholder="name@example.com">
-                                        <label for="email">Email address</label>
-                                    </div>
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-                                        <label for="password">Password</label>
-                                    </div>
-
-
-                            <button class="w-100 btn btn-lg btn-primary" id="loginbutton" type="submit">Sign
-                                In</button>
-                            <button class="w-100 mt-2 btn btn-lg btn-primary" id="jamal009" type="submit">
-                                <img id="googleicon" src="/assets/login/google.png" alt="">
-                                Lanjutkan dengan google
-                            </button>
-                            <pre><p id="privacy_police">you agree to be bound by these <u> Terms of Service</u> and our
-<u>Privacy Policy.</u></p></pre>
-                        </form>
-                       
                     </div>
-
+                    <p>
+                        Bergabunglah dengan komunitas developer terbaik dan tingkatkan penjualan properti Anda di Eigentum.
+                    </p>
+                    <button class="btn transparent " id="sign-in-btn">
+                        Sign in
+                    </button>
                 </div>
-                <div class=" col-sm-6 px-0 d-flex d-sm-block">
-                    <img id="image1009" src="/assets/login/Component 169.svg" alt="image 1">
-                </div>
+                <img src="/assets/login/developer/img/Mortgage Broker.svg" class="image" alt="" />
             </div>
         </div>
-    </section>
-    <script>
-        // Daftar sumber gambar
-var daftarGambar = [
-  "/assets/login/Component 169.svg",
-  "/assets/login/Component 170.svg",
-  "/assets/login/Component 171.svg",
-  "/assets/login/Component 172.svg",
-];
-
-// Mendapatkan elemen gambar
-var gambar = document.getElementById("image1009");
-
-// Mengatur indeks awal gambar
-var indeksGambar = 0;
-
-// Fungsi untuk mengganti gambar
-function gantiGambar() {
-  // Mengatur sumber gambar baru
-  gambar.src = daftarGambar[indeksGambar];
-  
-  // Menambahkan 1 ke indeks gambar
-  indeksGambar++;
-  
-  // Jika indeks gambar melebihi jumlah gambar, kembali ke indeks awal
-  if (indeksGambar === daftarGambar.length) {
-    indeksGambar = 0;
-  }
-}
-
-// Memanggil fungsi gantiGambar setiap 2 detik
-setInterval(gantiGambar, 2000);
-  // Fungsi untuk menampilkan alert pesan kesalahan
-        function showErrorAlert(message) {
-            alert(message);
-        }
-    </script>
+    </div>
+    <script src="https://kit.fontawesome.com/10d48cad5b.js" crossorigin="anonymous"></script>
+    <script src="/js/loginRegister/developer/login.js"></script>
+    <script src="/js/loginRegister/developer/jam.js"></script>
 </body>
 
 </html>

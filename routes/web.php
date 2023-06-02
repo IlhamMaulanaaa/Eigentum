@@ -66,3 +66,9 @@ Route::get('/loginagent', function () {
 Route::get('/registeragent', function () {
     return view('auth.agent.signup');
 });
+Route::get('/logindeveloper', function () {
+    return view('auth.developer.signin');
+});
+Route::get('/registerdeveloper', function () {
+    return view('auth.developer.signup');
+});
