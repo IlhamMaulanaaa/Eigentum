@@ -242,8 +242,23 @@ img{
 }
 .gallery .image{
   position: relative;
-  padding: 7px;
-  width: calc(100% / 3);
+}
+.image {
+  position: relative;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text {
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  margin-bottom: auto;
 }
 
 .gallery .image span{

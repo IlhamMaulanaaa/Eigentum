@@ -72,8 +72,14 @@
             <div class="wrapperimg" style="margin-top: -500px; ">
               <div class="gallery">
                 
-                <div class="image"><img src="/assets/detail/home.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                  
+                <div class="image" style="margin-left: 770px; margin-top: 310px;">
+                  <img src="/assets/detail/home.jpg" alt="" style="border-radius: 10px; filter: grayscale(90%) opacity(2.5); width: 200px; height: 120px;">
+                  <div class="text-overlay">
+                    <p class="text" >Lihat Semua</p>
+                  </div>
+                </div>
+
+                
               </div>
                 <div class="image hide"><img src="/assets/detail/livingroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
                 <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
