@@ -19,27 +19,31 @@ use GuzzleHttp\Middleware;
 
 Route::get('/', function () {
     return view('page.Home.home');
-})->middleware('auth');
+});
 
 Route::get('/404', function () {
     return view('page.404.404');
-})->middleware('auth');
+});
+
+Route::get('/detailagent', function () {
+    return view('page.DetailAgent.all');
+});
 
 Route::get('/nav', function () {
     return view('partial.nav');
-})->middleware('auth');
+});
 
 Route::get('/detailproperty', function () {
     return view('page.DetailProperty.all');
-})->middleware('auth');
+});
 
 Route::get('/propertibaru', function () {
     return view('page.PropertiBaru.propertibaru');
-})->middleware('auth');
+});
 
 Route::get('/disewa', function () {
     return view('page.Disewa.disewa');
-})->middleware('auth');
+});
 
 Route::get('/cariagen', function () {
     return view('page.CariAgen.cariagen');
@@ -51,19 +55,19 @@ Route::get('/guest', function () {
 
 Route::get('/home', function () {
     return view('page.Home.home');
-})->middleware('auth');
+});
 
 Route::get('/dijual', function () {
     return view('page.Dijual.dijual');
-})->middleware('auth');
+});
 
 Route::get('/panduan', function () {
     return view('page.Panduan.panduan');
-})->middleware('auth');
+});
 
 Route::get('/kpr', function () {
     return view('page.KPR.kpr');
-})->middleware('auth');
+});
 
 Route::group(['prefix' => '/session'], function(){
     Route::get('/signout', [sessionController::class, 'signout']);

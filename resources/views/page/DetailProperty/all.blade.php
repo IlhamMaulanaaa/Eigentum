@@ -85,11 +85,19 @@
                 <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
                 <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
                 <div class="image hide"><img src="/assets/detail/denah.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/home.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div><div class="image hide"><img src="/assets/detail/livingroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/denah.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/home.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div><div class="image hide"><img src="/assets/detail/livingroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
+                <div class="image hide"><img src="/assets/detail/denah.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
                 <div class="image hide"><img src="/assets/detail/home.jpg" alt="" style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;"></div>
               </div>
             </div>
             
-            <div class="preview-box">
+            <div class="preview-box" style="z-index: 11;">
               <div class="details">
                 <span class="title">Image <p class="current-img"></p> of <p class="total-img"></p></span>
                 <span class="icon fas fa-times"></span>
@@ -100,7 +108,7 @@
                 <img src="" alt="">
               </div>
             </div>
-            <div class="shadow"></div>
+            <div class="shadow" style="z-index:10;"></div>
           </div>
           
           

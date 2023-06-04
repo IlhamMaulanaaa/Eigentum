@@ -76,7 +76,7 @@
     <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="/css/Panduan/panduan.css" rel="stylesheet">
+    <link href="/css/Partial/nav.css" rel="stylesheet">
 </head>
 
 <body>
