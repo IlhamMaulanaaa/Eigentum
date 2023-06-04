@@ -25,7 +25,7 @@
                                 <input type="text" class="form-control" id="address" name="address">
                             </div>
                             <br>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="developer_id" class="form-label">Developer</label>
                                 <select class="form-control" id="developer_id" name="developer_id">
                                     <option value="">Developer</option>
@@ -36,7 +36,12 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br> 
+                            <br>  --}}
+                            @foreach ($developer as $developer)
+                            <input type="hidden" name="developer_id" value="{{ $developer->id }}">
+                            @endforeach
+                            
+
                             <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">

@@ -27,7 +27,7 @@
                                     value="{{ old('address', $property->address) }}" required>
                             </div>
                             <br>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="developer_id" class="form-label">Developer</label>
                                 <select class="form-control" id="developer_id" name="developer_id">
                                     @foreach ($developer as $developer)
@@ -41,7 +41,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
+                            <br> --}}
                             <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">

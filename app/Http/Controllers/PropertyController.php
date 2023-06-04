@@ -52,7 +52,7 @@ class PropertyController extends Controller
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-                'developer_id'  => 'required',
+                'developer_id' => 'required|exists:developers,id',
                 // 'agent_id'  => 'required',
             ]);
 

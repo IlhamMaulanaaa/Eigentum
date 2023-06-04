@@ -48,6 +48,18 @@
                                 </ul>
                             </div>
                             <br>
+                            <div class="form-group">
+                                <label for="unit" class="form-label">Unit</label>
+                                <ul>
+                                    @foreach ($property->units as $unit)
+                                        <li>{{ $unit->title }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <a type="button" class="btn btn-success"
+                                    href="/admin/unit/create/?property_id={{ $property->id }}">Add Unit</a>
+                            </div>
+                            <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>
                                 <a type="button" class="btn btn-primary" href="edit/{{ $property->id }}">Edit</a>

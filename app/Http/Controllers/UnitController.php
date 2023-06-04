@@ -32,8 +32,8 @@ class UnitController extends Controller
     public function create()
     {
         return view('admin.unit.create', [
-            "statuses" => Status::all(),
-            "properties" => Property::all(),
+            "status" => Status::all(),
+            "property" => Property::all(),
         ]);
     }
 
@@ -46,7 +46,7 @@ class UnitController extends Controller
                 'title' => 'required',
                 'description' => 'required',
                 'price' => 'required',
-                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'property_id' => 'required',
                 'bedroom' => 'required',
                 'bathroom' => 'required',

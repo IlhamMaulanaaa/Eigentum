@@ -43,7 +43,7 @@
                                     <div class="form-group">
                                         <label for="" class="form-label">Status</label>
                                         <select class="form-select" name="status_id[]" size="2" multiple>
-                                            @foreach ($statuses as $status)
+                                            @foreach ($status as $status)
                                                 <option value="{{ $status->id }}">{{ $status->name }}</option>
                                             @endforeach
                                         </select>
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <div class="form-group">
                                         <label for="" class="form-label">Property</label>
                                         <select name="property_id" id="property_id" class="form-select">
@@ -152,7 +152,10 @@
                                         </select>
                                     </div>
                                 </div>
-                                <br>
+                                <br> --}}
+                                @foreach ($property as $property)
+                                <input type="hidden" name="property_id" value="{{ $property->id }}">
+                                @endforeach
                                 <div class="float-end">
                                     <a type="button" class="btn btn-warning" href="/admin/unit/data">Back</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>
