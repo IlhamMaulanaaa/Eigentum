@@ -12,8 +12,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="" class="form-label">Location</label>
-                                <input class="form-control" id="location" name="location"
-                                    value="{{ old('location', $location->location) }}" required>
+                                <input class="form-control" id="name" name="name"
+                                    value="{{ old('name', $location->name) }}" required>
                             </div>
                             <br>
                             <div class="float-end">

@@ -34,34 +34,24 @@ class StatusController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Status $status)
     {
-        $status = new status();
         $status->name = $request->name;
         $status->save();
 
         return redirect("admin/status/data")->with('success', 'Status created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Status $status)
     {
         return view('admin.status.detail', compact('status'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Status $status)
     {
         return view('admin.status.edit', compact('status'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Status $status)
     {
         $status->name = $request->name;
@@ -70,9 +60,6 @@ class StatusController extends Controller
         return redirect("admin/status/data")->with('success', 'Status updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Status $status)
     {
         $status->delete();

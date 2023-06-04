@@ -30,13 +30,13 @@
                         @if ($specifications->count())
                             @foreach ($specifications as $specification)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $specification->id ?></td> --}}
-                                    <td class="text-start"><?= $specification->bedroom ?></td>
-                                    <td class="text-start"><?= $specification->bathroom ?></td>
-                                    <td class="text-start"><?= $specification->surface_area ?></td>
-                                    <td class="text-start"><?= $specification->building_area ?></td>
-                                    <td class="text-start"><?= $specification->floor ?></td>
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    {{-- <td class="">{{$specification->id }}</td> --}}
+                                    <td class="text-start">{{ $specification->bedroom }}</td>
+                                    <td class="text-start">{{ $specification->bathroom }}</td>
+                                    <td class="text-start">{{ $specification->surface_area }}</td>
+                                    <td class="text-start">{{ $specification->building_area }}</td>
+                                    <td class="text-start">{{ $specification->floor }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $specification->id }}">Detail</a>

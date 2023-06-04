@@ -11,7 +11,7 @@
                         <form method="post" action="/admin/status/update/ {{ $status->id }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="" class="form-label">status</label>
+                                <label for="" class="form-label">Status</label>
                                 <input class="form-control" id="name" name="name"
                                     value="{{ old('name', $status->name) }}" required>
                             </div>

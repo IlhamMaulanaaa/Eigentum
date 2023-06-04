@@ -70,12 +70,9 @@ class DeveloperController extends Controller
 
             $data = Developer::where('id', '=', $data->id)->get();
 
-            if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/developer/data',);
-                // .redirect('/admin/unit/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
+            
+                return redirect('/admin/developer/data',);
+            
         } catch (Exception $e) {
             return $e;
         }

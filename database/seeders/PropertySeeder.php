@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Property;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class PropertySeeder extends Seeder
 {
@@ -13,47 +14,48 @@ class PropertySeeder extends Seeder
      */
     public function run(): void
     {
-        Property::truncate();
+        // Property::truncate();
+
         Property::create([
-            // "unit" => "A1",
             "property" => "Perumahan Megawon Indah",
             "description" => "Perumahan Dekat kali",
-            "address" => " Jl. Lingkar Timur, Krasak, Ngembal Kulon, Jati, Kudus Regency, Central Java",
+            "address" => Str::limit(fake()->address(), 20),
             "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
 
         Property::create([
-            // "unit" => "A1",
             "property" => "Apartement Surya",
             "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "address" => Str::limit(fake()->address(), 20),
             "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
-            // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "property" => "Apartement Ilham",
+            "description" => "Punyanya Ilham",
+            "address" => Str::limit(fake()->address(), 20),
             "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
-            // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => "TumpangKrasak",
+            "property" => "Apartement Najib",
+            "description" => "Punyanya Najib",
+            "address" => Str::limit(fake()->address(), 20),
             "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
         Property::create([
-            // "unit" => "A1",
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-              "address" => "TumpangKrasak",
+            "property" => "Apartement Gataw",
+            "description" => "Punyanya Gataw",
+            "address" => Str::limit(fake()->address(), 20),
             "developer_id" => mt_rand(1,5),
             "type_id" => mt_rand(1,5),
+
         ]);
     }
 }

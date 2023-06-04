@@ -21,9 +21,7 @@
                             <th scope="col">Title</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
-                            {{-- <th scope="col">Rent</th> --}}
                             <th scope="col">Image</th>
-                            {{-- <th scope="col">Bloc</th> --}}
                             <th scope="col" class="text-start">Property Name</th>
                             <th scope="col" class="text-start">Status</th>
                             <th scope="col"></th>
@@ -33,15 +31,13 @@
                         @if ($units->count())
                             @foreach ($units as $unit)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $unit->title ?></td>
-                                    <td class="text-start"><?= $unit->description ?></td>
-                                    <td class="text-start"><?= $unit->price ?></td>
-                                    {{-- <td class="text-start"><?= $unit->rent ?></td> --}}
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ $unit->title }}</td>
+                                    <td class="text-start">{{ $unit->description }}</td>
+                                    <td class="text-start">{{ $unit->price }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $unit->image) }}" width="60"
                                             heigth="60"></td>
-                                    {{-- <td class="text-start"><?= $unit->bloc ?></td> --}}
-                                    <td class="text-start "><?= $unit->properties->property ?></td>
+                                    <td class="text-start ">{{ $unit->properties->property }}</td>
                                     <td class="text-start ">
                                         @foreach ($unit->status as $role)
                                             {{ $role->name }}
@@ -53,6 +49,7 @@
                                             href="show/{{ $unit->id }}">Detail</a>
                                         <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
                                             @csrf
+                                            @method('DELETE')
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
                                         </form>

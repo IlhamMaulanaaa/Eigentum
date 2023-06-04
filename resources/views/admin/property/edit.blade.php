@@ -48,10 +48,25 @@
                                     @foreach ($type as $type)
                                         @if (old('type_id', $property->type_id == $type->id))
                                             <option name="type_id" value="{{ $type->id }}" selected>
-                                                {{ $type->type }}
+                                                {{ $type->name }}
                                             </option>
                                         @endif
-                                        <option name="type_id" value="{{ $type->id }}">{{ $type->type }}
+                                        <option name="type_id" value="{{ $type->id }}">{{ $type->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="agent_id" class="form-label">Agent</label>
+                                <select class="form-control" id="agent_id" name="agent_id">
+                                    @foreach ($agent as $agent)
+                                        @if (old('agent_id', $property->agent_id == $agent->id))
+                                            <option name="agent_id" value="{{ $agent->id }}" selected>
+                                                {{ $agent->name }}
+                                            </option>
+                                        @endif
+                                        <option name="agent_id" value="{{ $agent->id }}">{{ $agent->name }}
                                         </option>
                                     @endforeach
                                 </select>

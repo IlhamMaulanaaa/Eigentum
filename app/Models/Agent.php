@@ -12,22 +12,24 @@ class Agent extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
-    protected $guarded = ['id'];
+    
     protected $table = "agents";
-
+    protected $guarded = ['id'];
+    
     protected $hidden = [
         'password',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-    // public function properties(): HasMany
-    // {
-    //     return $this->hasMany(Property::class, 'agent_id');
-    // }
+
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'agent_property');
+    }
+
+    public function locations()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
     }
 }

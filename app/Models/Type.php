@@ -21,7 +21,7 @@ class Type extends Model
         'deleted_at',
     ];
 
-    public function property()
+    public function properties()
     {
         return $this->hasMany(Property::class, 'type_id');
     }

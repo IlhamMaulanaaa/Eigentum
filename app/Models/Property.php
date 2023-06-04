@@ -24,22 +24,22 @@ class Property extends Model
         'deleted_at',
     ];
 
-    public function unit()
+    public function units()
     {
         return $this->hasMany(Unit::class);
     }
-    public function type()
+    public function types()
     {
-        return $this->belongsTo(Type::class);
+        return $this->belongsTo(Type::class, 'type_id');
     }
 
-    public function developer(): BelongsTo
+    public function developers(): BelongsTo
     {
         return $this->belongsTo(Developer::class, 'developer_id');
     }
 
-    public function agent(): BelongsToMany
+    public function agents(): BelongsToMany
     {
-        return $this->belongsToMany(Agent::class, 'agent_property');
+        return $this->belongsToMany(Agent::class, 'agent_property', 'agent_id', 'property_id');
     }
 }

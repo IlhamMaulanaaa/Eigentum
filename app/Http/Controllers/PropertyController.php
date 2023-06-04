@@ -22,7 +22,6 @@ class PropertyController extends Controller
         $tables = (new Property())->getTable();
 
         if($data){
-            // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.property.all', 
             ['properties' => $data, 
             'tables' => $tables,]);
@@ -38,7 +37,7 @@ class PropertyController extends Controller
         return view('admin.property.create',[
             'type' => Type::all(),
             'developer' => Developer::all(),
-            // 'agent' => Agent::all(),
+            'agent' => Agent::all(),
         ]);
     }
 
@@ -97,7 +96,7 @@ class PropertyController extends Controller
             'property' => $property,
             'type' => Type::all(),
             'developer' => Developer::all(),
-            // 'agent' => Agent::all(),
+            'agent' => Agent::all(),
         ]);
     }
 
@@ -114,7 +113,6 @@ class PropertyController extends Controller
                 'address'   => 'nullable',
                 'type_id'   => 'nullable',
                 'developer_id'  => 'nullable',
-                // 'agent_id'  => 'required',
             ]);
 
             $data = Property::findOrfail($id);
@@ -125,9 +123,9 @@ class PropertyController extends Controller
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
                 'developer_id'  => $request->developer_id,
-                // 'agent_id'  => $request->agent_id,
             ]);
 
+            $data->agents()->sync($request->input('agent_id'));
 
             $data = Property::where('id','=', $data->id)->get();
             $url = '/admin/property/show/' . $id;

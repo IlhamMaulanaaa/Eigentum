@@ -11,7 +11,7 @@
                         <form method="post" action="/admin/status/add" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="" class="form-label">name</label>
+                                <label for="" class="form-label">Status</label>
                                 <input class="form-control noscroll" id="name" name="name">
                             </div>
                             <br>

@@ -10,13 +10,13 @@
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="" class="form-label">name</label>
+                                <label for="" class="form-label">Status</label>
                                 <input type="text" class="form-control" id="name" name="name"
                                     value="{{ $status->name }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="" class="form-label">name</label>
+                                <label for="" class="form-label">Unit</label>
                                 <ul>
                                     @foreach ($status->unit as $unit)
                                     <li>

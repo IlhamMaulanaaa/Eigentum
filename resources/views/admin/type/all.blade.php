@@ -19,7 +19,6 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Type</th>
-                            <th scope="col">Description</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -27,10 +26,8 @@
                         @if ($types->count())
                             @foreach ($types as $type)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $type->id ?></td> --}}
-                                    <td class="text-start"><?= $type->type ?></td>
-                                    <td class="text-start"><?= $type->description ?></td>
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ $type->name }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $type->id }}">Detail</a>

@@ -43,22 +43,22 @@
                                     <option value="">Type</option>
                                     @foreach ($type as $type)
                                         <option value="{{ $type->id }}"
-                                            @if (old('type_id') == $type->id) selected @endif>{{ $type->type }}</option>
+                                            @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <br>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="agent_id" class="form-label">Agent</label>
                                 <select class="form-control" id="agent_id" name="agent_id">
-                                    <option value="">-- Select an agent --</option>
-                                    @foreach ($agents as $agent)
+                                    <option value="">Agent</option>
+                                    @foreach ($agent as $agent)
                                         <option value="{{ $agent->id }}"
                                             @if (old('agent_id') == $agent->id) selected @endif>{{ $agent->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <br> --}}
+                            <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>

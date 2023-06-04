@@ -27,6 +27,11 @@ class Unit extends Model
         return $this->hasOne(Specification::class, 'unit_id');
     }
 
+    public function images()
+    {
+        return $this->hasOne(Image::class, 'unit_id');
+    }
+
     public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');

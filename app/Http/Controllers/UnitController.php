@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\ApiFormatter;
-use App\Models\Property;
-use App\Models\Specification;
-use App\Models\Status;
-use App\Models\Unit;
-use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Unit;
+use App\Models\Image;
+use App\Models\Status;
+use App\Models\Property;
 use Illuminate\Support\Str;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Support\Facades\File;
+use App\Helper\ApiFormatter;
+use Illuminate\Http\Request;
+use App\Models\Specification;
+use Illuminate\Support\Facades\Storage;
 
 
 class UnitController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $units = Unit::all();
@@ -41,205 +37,223 @@ class UnitController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-{
     
-
-    $datavalidate = $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-            'property_id' => 'required',
-        ]);
-
-        $imageNames = [];
-
-        foreach (['image'] as $fieldName) {
-            $imageName = $request->$fieldName->getClientOriginalName() . "." . $request->$fieldName->getClientOriginalExtension();
-            $imageNames[] = $imageName;
-            $request->$fieldName->storeAs('public', $imageName);
-        }
-
-        $data = Unit::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'price' => $request->price,
-            'rent' => $request->rent,
-            'image' => $imageNames[0],
-            'property_id' => $request->property_id,
-        ]);
-        
-        $data->save();
-        
-        $request->validate([
-            'bedroom' => 'required',
-            'bathroom' => 'required',
-            'surface_area'  => 'required',
-            'building_area' => 'required',
-            'floor' => 'required',
-        ]);
-
-        $specification = Specification::create([
-            'bedroom' => $request->bedroom,
-            'bathroom' => $request->bathroom,
-            'surface_area'  => $request->surface_area,
-            'building_area' => $request->building_area,
-            'floor' => $request->floor,
-            'unit_id'   => $data->id,
-        ]);
-
-        $specification->save();
-
-        $data->status()->attach($request->input('status_id'));
-
-        if ($data&&$specification) {
-            return redirect('/admin/unit/data');
-        } else {
-            return response()->json(['message' => 'Bad Request'], 400);
-        }
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Unit $unit)
+    public function store(Request $request)
     {
-            return view('admin.unit.detail', [
-                "unit" => $unit,
+        try {
+            
+            $request->validate([
+                'title' => 'required',
+                'description' => 'required',
+                'price' => 'required',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'property_id' => 'required',
+                'bedroom' => 'required',
+                'bathroom' => 'required',
+                'surface_area' => 'required',
+                'building_area' => 'required',
+                'floor' => 'required',
+                'livingroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                'bedroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             ]);
 
+            $imageNames = [];
+            $imageFieldName = 'image';
+            
+            $imageName = Str::random(8) . "." . $request->file($imageFieldName)->getClientOriginalExtension(); 
+            $imageNames[] = $imageName;
+            $request->file($imageFieldName)->storeAs('public', $imageName);
+
+            $unit = Unit::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'price' => $request->price,
+                'image' => $imageNames[0],
+                'property_id' => $request->property_id,
+            ]);
+
+            $specification = Specification::create([
+                'bedroom' => $request->bedroom,
+                'bathroom' => $request->bathroom,
+                'surface_area' => $request->surface_area,
+                'building_area' => $request->building_area,
+                'floor' => $request->floor,
+                'unit_id' => $unit->id,
+            ]);
+
+            $images = [];
+            $columns = ['livingroomimg', 'bedroomimg', 'bathroomimg', 'kitchenimg', 'etcimg'];
+
+            foreach ($columns as $column) {
+                $file = $request->file($column);
+                if (!is_null($file)) {
+                    $imageArray = [];
+                    foreach ($file as $fieldName) {
+                        $imageFileName = Str::random(8) . "." . $fieldName->getClientOriginalExtension();
+                        $imageArray[] = $imageFileName;
+                        $fieldName->storeAs('public', $imageFileName);
+                    }
+                    $images[$column] = count($imageArray) > 0 ? implode("|", $imageArray) : null;
+                }
+            }
+
+            $images = array_filter($images);
+
+            $image = Image::create(array_merge($images, ['unit_id' => $unit->id]));
+
+
+            $unit->save();
+            $specification->save();
+            $image->save();
+
+            $unit->status()->attach($request->input('status_id'));
+
+            return redirect('/admin/unit/data');
+
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
+
+    
+    public function show(Unit $unit, Request $request)
+    {
+        $data = $request->all();
+    
+        $images = Image::where('unit_id', $unit->id)->first();
+
+        return view('admin.unit.detail', compact('unit', 'images'));
+
+    }
+
+    
     public function edit(Unit $unit)
     {
         return view('admin.unit.edit', [
             "unit" => $unit,
-            "property" => Property::all(),
+            "properties" => Property::all(),
             "statuses" => Status::all(),
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, string $id)
-    {
-        try{
+        {
+            // try {
+                $data = $request->all();
 
-            $request->validate([
-                'title' => 'nullable',
-                'description' => 'nullable',
-                'price' => 'nullable',
-                // 'rent' => 'nullable',
-                'image' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'image_2' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'image_3' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'image_4' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'image_plan' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'bloc' => 'nullable',
-                // 'certificate' => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'property_id' => 'nullable',
-            ]);
+                $unit = Unit::findOrfail($id);
 
-            $data = Unit::findOrfail($id);
+                $request->validate([
+                    'title' => 'required',
+                    'description' => 'required',
+                    'price' => 'required',
+                    'property_id' => 'required',
+                    'bedroom' => 'required',
+                    'bathroom' => 'required',
+                    'surface_area' => 'required',
+                    'building_area' => 'required',
+                    'floor' => 'required',
+                    'livingroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                    'bedroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                    'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                    'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                    'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                ]);
 
-            $data->update([
-                'title' => $request->title,
-                'description' => $request->description,
-                'price' => $request->price,
-                'rent' => $request->rent,
-                'bloc' => $request->bloc,
-                'property_id' => $request->property_id,
-            ]);
+                if ($request->hasFile('image')) {
+                    $imageFieldName = 'image';
+                    $imageName = Str::random(8) . "." . $request->file($imageFieldName)->getClientOriginalExtension();
+                    $request->file($imageFieldName)->storeAs('public', $imageName);
+                    $unit->image = $imageName;
+                }
 
-            // $images = ['image_1', 'image_2', 'image_3', 'image_4', 'image_plan', 'certificate'];
-            //     foreach ($images as $key => $image) {
-            //         if ($request->hasFile($image)) {
-            //             $imageName = $request->{$image}->getClientOriginalName(). "." . $request->{$image}->getClientOriginalExtension();
-            //             $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->{$image}));
-            //             if (File::exists($image_path)) {
-            //                 File::delete($image_path);
-            //             }
-            //             $data->{$image} = $imageName;
-            //         }
-            // }
+                $unit->update([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'price' => $request->price,
+                    'property_id' => $request->property_id,
+                ]);
 
-            $images = ['image'];
-                foreach ($images as $key => $image) {
-                    if ($request->hasFile($image)) {
-                        $imageName = $request->{$image}->getClientOriginalName(). "." . $request->{$image}->getClientOriginalExtension();
-                        $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->{$image}));
-                        if (File::exists($image_path)) {
-                            File::delete($image_path);
+                $unit->save();
+
+                $specification = Specification::findOrfail($id);
+
+                $specification->update([
+                    'bedroom' => $request->bedroom,
+                    'bathroom' => $request->bathroom,
+                    'surface_area'  => $request->surface_area,
+                    'building_area' => $request->building_area,
+                    'floor' => $request->floor,
+                    'unit_id'   => $unit->id,
+                ]);
+    
+                $specification->save();
+
+                $image = Image::findOrFail($id);
+                $columns = ['livingroomimg', 'bedroomimg', 'bathroomimg', 'kitchenimg', 'etcimg'];
+            
+                foreach ($columns as $column) {
+                    $existingImages = explode('|', $image->{$column});
+            
+                    // Looping untuk mengupdate gambar yang sudah ada
+                    foreach ($existingImages as $index => $existingImage) {
+                        if ($request->hasFile($column . '_update.' . $index)) {
+                            if (Storage::exists('public/' . $existingImage)) {
+                                Storage::delete('public/' . $existingImage);
+                            }
+            
+                            $uploadedImage = $request->file($column . '_update.' . $index);
+                            $imageName = Str::random(8) . '.' . $uploadedImage->getClientOriginalExtension();
+                            $uploadedImage->storeAs('public', $imageName);
+                            $existingImages[$index] = $imageName;
                         }
-                        $data->{$image} = $imageName;
                     }
-            }
+            
+                    // Menambahkan gambar baru jika ada
+                    if ($request->hasFile($column . '_insert')) {
+                        $uploadedImages = $request->file($column . '_insert');
+                        $newImages = [];
+            
+                        foreach ($uploadedImages as $uploadedImage) {
+                            $imageName = Str::random(8) . '.' . $uploadedImage->getClientOriginalExtension();
+                            $uploadedImage->storeAs('public', $imageName);
+                            $existingImages[] = $imageName;
+                        }
+                    }
+            
+                    $image->{$column} = implode('|', $existingImages);
+                }
+            
+                $image->save();
+                
 
-            $data->save();
 
-            $request->validate([
-                'bedroom' => 'nullable',
-                'bathroom' => 'nullable',
-                'surface_area'  => 'nullable',
-                'building_area' => 'nullable',
-                'floor' => 'nullable',
-            ]);
 
-            $specification = Specification::findOrfail($id);
+                $unit->status()->sync($request->input('status_id'));
 
-            $specification->update([
-                'bedroom' => $request->bedroom,
-                'bathroom' => $request->bathroom,
-                'surface_area'  => $request->surface_area,
-                'building_area' => $request->building_area,
-                'floor' => $request->floor,
-                'unit_id'   => $data->id,
-            ]);
-
-            $specification->save();
-
-            $data->status()->sync($request->input('status_id'));
-
-            $data = Unit::where('id', '=', $data->id)->get();
-            $specification = Specification::where('unit_id', '=', $data[0]->id)->get();
-            $url = '/admin/unit/show/' . $id;
-
-            if ($data&&$specification) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        }catch(Exception $e){
-            return $e;
+                return redirect('/admin/unit/show/' . $id);
+            // } catch (Exception $e) {
+            //     return $e;
+            // }
         }
-        
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         try {
             $unit = Unit::findOrfail($id);
-            $specification = Specification::findOrfail($id);
-            $data = $unit&&$specification->delete();
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/unit/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
+            $unit->delete();
+            $unit->status()->detach();
+            $unit->specifications()->delete();
+            $unit->images()->delete();
+
+            return redirect('/admin/unit/data')->with('success', 'Data Deleted');
         } catch (Exception $e) {
             return $e;
         }

@@ -11,16 +11,10 @@
                         <form method="post" action="/admin/type/add" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="type" class="form-label">Type</label>
-                                <input type="text" class="form-control noscroll" id="type" name="type"
-                                    value="{{ old('type') }}">
+                                <label for="name" class="form-label">Type</label>
+                                <input type="text" class="form-control noscroll" id="name" name="name">
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="description" class="form-label">Description</label>
-                                <input type="text" class="form-control noscroll" id="description" name="description"
-                                    value="{{ old('description') }}">
-                            </div>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning" href="/admin/type/data">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>

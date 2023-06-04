@@ -26,8 +26,8 @@
                         @if ($locations->count())
                             @foreach ($locations as $location)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $location->location ?></td>
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ $location->name }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $location->id }}">Detail</a>
@@ -39,10 +39,10 @@
                                     </td>
                                 </tr>
                             @endforeach
-                            @elseif ($locations->count())
-                                    <div class="form-group">
-                                        <a type="button" class="btn btn-warning" href="/admin/location/all">Back</a>
-                                    </div>
+                        @elseif ($locations->count())
+                            <div class="form-group">
+                                <a type="button" class="btn btn-warning" href="/admin/location/all">Back</a>
+                            </div>
                         @else
                             <tr>
                                 <td colspan="100" align="center">Data Tidak Ditemukan</td>

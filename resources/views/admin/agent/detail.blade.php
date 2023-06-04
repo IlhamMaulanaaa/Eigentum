@@ -30,13 +30,20 @@
                             <div class="form-group">
                                 <label for="location" class="form-label">Location</label>
                                 <input type="text" class="form-control" id="location" name="location"
-                                    value="{{ $agent->location }}" readonly disabled>
+                                    value="{{ $agent->locations->location }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="ktp" class="form-label">Ktp</label>
                                 <div class="image-text-wrapper">
                                     <img src="{{ asset('storage/' . $agent->ktp) }}" alt="" width="200">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="face" class="form-label">Face</label>
+                                <div class="image-text-wrapper">
+                                    <img src="{{ asset('storage/' . $agent->face) }}" alt="" width="200">
                                 </div>
                             </div>
                             <br>

@@ -35,14 +35,10 @@ class LocationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Location $location)
     {
-        $request->validate([
-            'location' => 'required',
-        ]);
-
-        $location = new Location();
-        $location->location = $request->location;
+    
+        $location->name = $request->name;
 
         $location->save();
 
@@ -54,9 +50,7 @@ class LocationController extends Controller
      */
     public function show(Location $location)
     {
-        return view('admin.location.detail', [
-            "location" => $location,
-        ]);
+        return view('admin.location.detail', compact('location'));
     }
 
     /**
@@ -64,9 +58,7 @@ class LocationController extends Controller
      */
     public function edit(Location $location)
     {
-        return view('admin.location.edit', [
-            "location" => $location,
-        ]);
+        return view('admin.location.edit',compact('locatino'));
     }
 
     /**
@@ -74,12 +66,7 @@ class LocationController extends Controller
      */
     public function update(Request $request, Location $location)
     {
-        $request->validate([
-            'location' => 'required',
-        ]);
-
-        $location->location = $request->location;
-
+        $location->name = $request->name;
         $location->save();
 
         return redirect('admin/location/data')->with('success', 'Location created successfully.');

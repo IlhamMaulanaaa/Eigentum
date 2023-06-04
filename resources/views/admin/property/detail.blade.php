@@ -30,19 +30,19 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Developer</label>
                                 <input type="text" class="form-control" id="developer_id" name="developer_id"
-                                    value="{{ $property->developer->company }}" readonly disabled>
+                                    value="{{ $property->developers->company }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Type</label>
                                 <input type="text" class="form-control" id="type_id" name="type_id"
-                                    value="{{ $property->type->type }}" readonly disabled>
+                                    value="{{ $property->types->name }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="properties" class="form-label">Agent</label>
                                 <ul>
-                                    @foreach ($property->agent as $agent)
+                                    @foreach ($property->agents as $agent)
                                         <li>{{ $agent->name }}</li>
                                     @endforeach
                                 </ul>

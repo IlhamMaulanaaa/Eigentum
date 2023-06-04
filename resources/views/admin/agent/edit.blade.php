@@ -52,6 +52,18 @@
                             </div>
                             <br>
                             <div class="form-group">
+                                @if ($agent->face)
+                                    <img src="{{ asset('storage/' . $agent->face) }}" alt="{{ $agent->face }}"
+                                        width="100">
+                                @endif
+                                <div class="form-group">
+                                    <label for="" class="form-label">Face</label>
+                                    <input type="file" class="form-control" id="face" name="face">
+                                </div>
+                                
+                            </div>
+                            <br>
+                            <div class="form-group">
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 <input class="form-control" id="phone_number" name="phone_number"
                                     value="{{ old('phone_number', $agent->phone_number) }}" required>

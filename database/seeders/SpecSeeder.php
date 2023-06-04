@@ -21,6 +21,7 @@ class Specseeder extends Seeder
             "surface_area" => "100",
             "building_area" => "100",
             "floor" => "1",
+            "unit_id" => mt_rand(1,5),
         ]);
 
         Specification::create([
@@ -29,6 +30,7 @@ class Specseeder extends Seeder
             "surface_area" => "500",
             "building_area" => "100",
             "floor" => "4",
+            "unit_id" => mt_rand(1,5),
         ]);
 
         Specification::create([
@@ -37,6 +39,7 @@ class Specseeder extends Seeder
             "surface_area" => "400",
             "building_area" => "100",
             "floor" => "2",
+            "unit_id" => mt_rand(1,5),
         ]);
 
         Specification::create([
@@ -45,6 +48,7 @@ class Specseeder extends Seeder
             "surface_area" => "100",
             "building_area" => "100",
             "floor" => "3",
+            "unit_id" => mt_rand(1,5),
         ]);
         
         Specification::create([
@@ -53,6 +57,7 @@ class Specseeder extends Seeder
             "surface_area" => "100",
             "building_area" => "100",
             "floor" => "3",
+            "unit_id" => mt_rand(1,5),
         ]);
     }
 }

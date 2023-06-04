@@ -26,8 +26,8 @@
                         @if ($statuses->count())
                             @foreach ($statuses as $status)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    <td class="text-start"><?= $status->name ?></td>
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ $status->name }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $status->id }}">Detail</a>

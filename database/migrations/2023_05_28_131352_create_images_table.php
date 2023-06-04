@@ -11,10 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->softDeletes();
+            $table->string('livingroomimg')->nullable();
+            $table->string('bedroomimg')->nullable();
+            $table->string('bathroomimg')->nullable();
+            $table->string('kitchenimg')->nullable();
+            $table->string('etcimg')->nullable();
+            $table->foreignId('unit_id');
             $table->timestamps();
         });
     }
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('images');
     }
 };

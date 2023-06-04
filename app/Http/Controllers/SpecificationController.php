@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Specification;
-use App\Models\Type;
 use Exception;
 use Illuminate\Http\Request;
-use Symfony\Component\CssSelector\Node\Specificity;
 
 class SpecificationController extends Controller
 {
@@ -20,7 +18,6 @@ class SpecificationController extends Controller
         $tables = (new Specification())->getTable();
 
         if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.specification.all' , ['specifications' =>$data, 'tables' => $tables ]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);

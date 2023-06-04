@@ -31,10 +31,10 @@
                         @if ($guides->count())
                             @foreach ($guides as $guide)
                                 <tr align="center">
-                                    <td class="text-start"><?= $loop->iteration ?></td>
-                                    {{-- <td class=""><?= $guide->id ?></td> --}}
-                                    <td class="text-start"><?= $guide->title ?></td>
-                                    <td class="text-start"><?= $guide->description ?></td>
+                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    {{-- <td class="">{{$guide->id }}</td> --}}
+                                    <td class="text-start">{{ $guide->title }}</td>
+                                    <td class="text-start">{{ $guide->description }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $guide->image) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-end">

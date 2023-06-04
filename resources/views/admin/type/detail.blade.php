@@ -11,25 +11,9 @@
                         <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="" class="form-label">Type</label>
-                                <input type="text" class="form-control" id="type" name="type"
-                                    value="{{ $type->type }}" readonly disabled>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ $type->name }}" readonly disabled>
                             </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="" class="form-label">Description</label>
-                                <input type="text" class="form-control" id="description" name="description"
-                                    value="{{ $type->description }}" readonly disabled>
-                            </div>
-                            <!--
-                                        <div class="form-group">
-                                            <label for="type_id" class="form-label">Property Type</label>
-                                            <select class="form-control" id="type_id" name="type_id" readonly disabled>
-                                                {{-- @foreach ($types as $type)
-                                        <option value="{{ $type->id }}" {{ $type->type_id == $type->id ? 'selected' : '' }}>{{ $type->name }}</option>
-                                    @endforeach --}}
-                                            </select>
-                                        </div>
-                                        -->
                             <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/type/data">Back</a>

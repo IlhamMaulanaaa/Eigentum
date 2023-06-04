@@ -71,19 +71,13 @@
                     <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Specification</span>
                 </a>
             </li>
-
+            
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/type/data">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Type</span>
                 </a>
             </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/guide/data">
-                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
-                </a>
-            </li>
-
+            
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/location/data">
                     <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle">Location</span>
@@ -93,6 +87,11 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/status/data">
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Status</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/guide/data">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
                 </a>
             </li>
 

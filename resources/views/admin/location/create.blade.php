@@ -12,7 +12,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="" class="form-label">Location</label>
-                                <input class="form-control noscroll" id="location" name="location">
+                                <input class="form-control noscroll" id="name" name="name">
                             </div>
                             <br>
                             <div class="float-end">

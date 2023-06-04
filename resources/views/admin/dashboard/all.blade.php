@@ -32,6 +32,7 @@
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
+                                            <a href="/admin/customer/data" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -54,6 +55,7 @@
                                                 <span class="text-muted">Since last week</span>
                                             </div>
                                         </div>
+                                        <a href="/admin/developer/data" class="stretched-link"></a>
                                     </div>
                                     
                                 </div>
@@ -76,6 +78,7 @@
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
+                                            <a href="/admin/agent/data" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -98,6 +101,7 @@
                                                 <span class="text-muted">Since last week</span>
                                             </div>
                                         </div>
+                                        <a href="#" class="stretched-link"></a>
                                     </div>
                                 </div>
                             </div>

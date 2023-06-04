@@ -17,9 +17,10 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("password");
             $table->string("address");
-            $table->string("location");
             $table->string("ktp");
+            $table->string("face");
             $table->string("phone_number");
+            $table->foreignId("location_id");
             $table->softDeletes();
             $table->timestamps();
         });
