@@ -11,12 +11,12 @@ class SessionController extends Controller
 {
     public function signin()
     {
-        return view('auth.user.signin');
+        return view('admin.auth.signin');
     }
 
     public function signup()
     {
-        return view('auth.user.signup');
+        return view('admin.auth.signup');
     }
 
     public function postSignin(Request $request)
@@ -37,7 +37,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($infologin)) {
             // return redirect('pasien/all')->with('success', 'Berhasil Login');
-            return redirect('/')->with('success', 'Berhasil Login');
+            return redirect('/admin/dashboard')->with('success', 'Berhasil Login');
         } else {
             return redirect('/session/signin/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
@@ -58,9 +58,9 @@ class SessionController extends Controller
             'name' => $request->name,
             'password' => bcrypt($request->password),
         ];
-
+        
         User::create($data);
-
+        
         $datalogin = [
             'email' => $request->email,
             'password' => $request->password
@@ -69,7 +69,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($datalogin)) {
             // return redirect('pasien/all')->with('success', Auth::user()->name . ' Berhasil Register');
-            return redirect('/')->with('success', Auth::user()->name . ' Berhasil Register');
+            return redirect('/admin/dashboard')->with('success', Auth::user()->name . ' Berhasil Register');
         } else {
             return redirect('/session/signup/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
