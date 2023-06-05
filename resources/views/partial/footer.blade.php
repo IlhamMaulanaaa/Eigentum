@@ -140,9 +140,9 @@
         <span class="apcom-all-ri-ek7-sub-2">. All Rights Reserved. </span>
         </p>
         <div class="social-Dwd" id="I4:8763;167:3422">
-        <img class="facebook-icon-XxK" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:8763;167:3432"/>
-        <img class="linkedin-icon-en3" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:8763;167:3426"/>
-        <img class="twitter-icon-16o" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:8763;167:3423"/>
+        <img class="facebook-icon-XxK" src="/assets/partial/footer-facebook.svg" id="I4:8763;167:3432"/>
+        <img class="linkedin-icon-en3" src="/assets/partial/footer-linkedin.svg" id="I4:8763;167:3426"/>
+        <img class="twitter-icon-16o" src="/assets/partial/footer-twitter.svg" id="I4:8763;167:3423"/>
                     </div>
                 </div>
             </div>

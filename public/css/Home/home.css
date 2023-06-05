@@ -115,9 +115,9 @@ body {
       align-items: center;
       
     }
-      .group-74-7F5 {
+      .group-74-7F56 {
         background-color: rgba(34, 34, 34, 0.200000003);
-        background-image: url('homeatas.png');
+        background-image: url('/assets/Home/header-home.svg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -7345,7 +7345,7 @@ body {
             }
             .tabs-box .tab.active{
               color: #fff;
-              background: #5372F0;
+              background: #0C40E8;
               border-color: transparent;
             }
           
