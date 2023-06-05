@@ -33,30 +33,31 @@ class PropertyController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(){
-        return view('admin.property.create',[
-            'type' => Type::all(),
-            'developer' => Developer::all(),
-            'agent' => Agent::all(),
-        ]);
+    public function create(Request $request, $developerId){
+
+        $developer = Developer::findOrfail($developerId);
+        $type = Type::all();
+        $agent = Agent::all();
+
+        return view('admin.property.create',compact('type','developer','agent'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, $developerId)
     {
         try{
+
+            
             $request->validate([
                 'property'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-                // 'developer_id'  => 'required',
             ]);
-
-            // buatkan function untuk mengisi otomsatis developer_id dari tabel developer
-            $developer = Developer::findOrFail($request->developer_id);
+            
+            $developer = Developer::findOrfail($developerId);
+            if (!$developer) {
+                return redirect()->back()->with('error', 'Developer tidak ditemukan');
+            }
 
             $data = Property::create([
                 'property'  => $request->property,
@@ -65,11 +66,6 @@ class PropertyController extends Controller
                 'type_id'   => $request->type_id,
                 'developer_id'  => $developer->id,
             ]);
-
-            $data->developers()->associate($developer);
-            $data->save();
-
-            $developer->properties()->save($data);
 
             $data = Property::where('id', '=', $data->id)->get();
 
@@ -154,6 +150,7 @@ class PropertyController extends Controller
     {
         try{
             $property = Property::findOrfail($id);
+            $property->units()->delete();
             $data = $property->delete();
 
             if($data){

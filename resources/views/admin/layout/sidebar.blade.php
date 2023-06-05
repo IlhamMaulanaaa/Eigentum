@@ -55,22 +55,32 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/unit/data">
-                    <i class="align-middle" data-feather="square"></i> <span class="align-middle">Unit</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/property/data">
-                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Property</span>
+                    <i class="align-middle" data-feather="square"></i> <span class="align-middle">Property</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/unit/data">
+                    <i class="align-middle" data-feather="home"></i> <span class="align-middle">Unit</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="/admin/guide/data">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Relathionship
+            </li>
+
+            {{-- <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/specification/data">
                     <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Specification</span>
                 </a>
-            </li>
+            </li> --}}
             
             <li class="sidebar-item">
                 <a class="sidebar-link" href="/admin/type/data">
@@ -89,11 +99,7 @@
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Status</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/guide/data">
-                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
-                </a>
-            </li>
+            
 
             <li class="sidebar-header">
                 Plugins & Addons

@@ -157,6 +157,8 @@ class DeveloperController extends Controller
     {
         try {
             $developer = Developer::findOrfail($id);
+            $developer->properties()->delete();
+            $developer->units()->delete();
             $data = $developer->delete();
 
             if ($data) {

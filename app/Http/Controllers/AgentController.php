@@ -37,9 +37,7 @@ class AgentController extends Controller
             'location' => Location::all()
         ]);
     }
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
         try {
@@ -77,7 +75,7 @@ class AgentController extends Controller
             $data = Agent::where('id', '=', $data->id)->get();
 
             if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/agent/data',);
+                return redirect('/admin/agent/data',);
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }

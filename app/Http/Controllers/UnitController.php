@@ -29,16 +29,15 @@ class UnitController extends Controller
         }
     }
 
-    public function create()
+    public function create(Request $request , $propertyId)
     {
-        return view('admin.unit.create', [
-            "status" => Status::all(),
-            "property" => Property::all(),
-        ]);
+        $property = Property::findOrfail($propertyId);
+        $status = Status::all();
+
+        return view('admin.unit.create', compact('property', 'status'));
     }
 
-    
-    public function store(Request $request)
+    public function store(Request $request,  $propertyId)
     {
         try {
             
@@ -47,7 +46,6 @@ class UnitController extends Controller
                 'description' => 'required',
                 'price' => 'required',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'property_id' => 'required',
                 'bedroom' => 'required',
                 'bathroom' => 'required',
                 'surface_area' => 'required',
@@ -60,7 +58,10 @@ class UnitController extends Controller
                 'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             ]);
 
-            $property = Property::first();
+            $property = Property::findOrfail($propertyId);
+            if (!$property) {
+                return redirect()->back()->with('error', 'Property tidak ditemukan');
+            }
 
             $imageNames = [];
             $imageFieldName = 'image';

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string("face");
             $table->string("phone_number");
             $table->foreignId("location_id");
-            $table->softDeletes();
             $table->timestamps();
         });
     }

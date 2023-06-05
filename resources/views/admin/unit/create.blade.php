@@ -22,7 +22,7 @@
                     <br>
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form method="post" action="/admin/unit/add" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('unit.store', $property->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <div class="form-group">
@@ -32,7 +32,7 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="" class="form-label">Description</label>
-                                        <input class="form-control noscroll" id="description" name="description">
+                                        <textarea class="form-control noscroll" id="description" name="description"></textarea>
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -153,9 +153,6 @@
                                     </div>
                                 </div>
                                 <br> --}}
-                                @foreach ($property as $property)
-                                <input type="hidden" name="property_id" value="{{ $property->id }}">
-                                @endforeach
                                 <div class="float-end">
                                     <a type="button" class="btn btn-warning" href="/admin/unit/data">Back</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>

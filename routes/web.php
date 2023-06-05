@@ -94,8 +94,8 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
             Route::get('/{unit}',[UnitController::class,'show']);
             Route::get('/edit/{unit}',[UnitController::class,'edit']);
         });
-        Route::get('/create', [UnitController:: class, 'create']);
-        Route::post('/add', [UnitController:: class, 'store']);
+        Route::get('/create/{propertyId}', [UnitController:: class, 'create'])->name('unit.create');    
+        Route::post('/add/{propertyId}', [UnitController:: class, 'store'])->name('unit.store');
         Route::post('/update/{unit}', [UnitController:: class, 'update']);
         Route::get('/delete/{unit}',[UnitController::class,'destroy']);
     });
@@ -106,8 +106,8 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
             Route::get('/{property}',[PropertyController::class,'show']);
             Route::get('/edit/{property}',[PropertyController::class,'edit']);
         });
-        Route::get('/create', [PropertyController:: class, 'create']);
-        Route::post('/add', [PropertyController:: class, 'store']);
+        Route::get('/create/{developerId}', [PropertyController:: class, 'create'])->name('property.create');
+        Route::post('/add/{developerId}', [PropertyController:: class, 'store'])->name('property.store');
         Route::post('/update/{property}', [PropertyController:: class, 'update']);
         Route::get('/delete/{property}',[PropertyController::class,'destroy']);
     });
@@ -173,4 +173,46 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     });
 
     Route::get("/dashboard", [DashboardController::class, 'index']);
+
+    // Route::group(['prefix' => '/developer'], function(){
+    //     Route::get('/data', [DeveloperController::class, 'index']);
+    
+    //     Route::group(['prefix' => '/{developer}'], function () {
+    //         Route::get('/',[DeveloperController::class,'show']);
+    //         Route::get('/edit',[DeveloperController::class,'edit']);
+            
+    //         Route::group(['prefix' => '/property'], function(){
+    //             Route::get('/', [PropertyController::class, 'index']);
+    
+    //             Route::group(['prefix' => '/{property}'],function () {
+    //                 Route::get('/',[PropertyController::class,'show']);
+    //                 Route::get('/edit',[PropertyController::class,'edit']);
+    //             });
+    
+    //             Route::get('/create', [PropertyController::class, 'create'])->name('developers.create-property');
+    //             Route::post('/add', [PropertyController::class, 'store'])->name('developers.store-property');
+    //             Route::post('/update/{property}', [PropertyController::class, 'update']);
+    //             Route::get('/delete/{property}',[PropertyController::class,'destroy']);
+    
+    //             Route::group(['prefix' => '/unit'], function(){
+    //                 Route::get('/', [UnitController::class, 'index']);
+    
+    //                 Route::group(['prefix' => '/{unit}'],function () {
+    //                     Route::get('/',[UnitController::class,'show']);
+    //                     Route::get('/edit',[UnitController::class,'edit']);
+    //                 });
+    
+    //                 Route::get('/create', [UnitController::class, 'create'])->name('properties.create-unit');
+    //                 Route::post('/add', [UnitController::class, 'store'])->name('properties.store-unit');
+    //                 Route::post('/update/{unit}', [UnitController::class, 'update']);
+    //                 Route::get('/delete/{unit}',[UnitController::class,'destroy']);
+    //             });
+    //         });
+    //     });
+    
+    //     Route::get('/create', [DeveloperController::class, 'create']);
+    //     Route::post('/add', [DeveloperController::class, 'store']);
+    //     Route::post('/update/{developer}', [DeveloperController::class, 'update']);
+    //     Route::get('/delete/{developer}',[DeveloperController::class,'destroy']);
+    // });
 });
