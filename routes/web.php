@@ -157,7 +157,24 @@ Route::get('/main', function () {
     return view('page.unit.main');
 });
 
+Route::group(['prefix' => '/admin'], function () {
+    Route::group(['prefix' => '/session'], function () {
+        Route::get('/signout', [sessionController::class, 'signout']);
+    
+        Route::group(['prefix' => '/signin'], function () {
+            Route::get('/', [sessionController::class, 'signin'])->name('login')->middleware('guest');
+            Route::post('/create', [sessionController::class, 'postSignin']);
+        });
+    
+        route::group(['prefix' => '/signup'], function () {
+            Route::get('/', [sessionController::class, 'signup'])->middleware('guest');
+            Route::post('/create', [sessionController::class, 'postSignup']);
+        });
+    });
+});
+
 Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
+    
     
     Route::get('/', [AdminController:: class, 'index']);
 
