@@ -27,8 +27,8 @@ use App\Http\Controllers\UnitController;
 */
 
 Route::get('/', function () {
-    return redirect('admin/');
-})->middleware('auth');
+    return redirect('page.Home.home');
+});
 
 // Route::get('/admin', function () {
 //     return view('admin.layout.main');
