@@ -52,23 +52,29 @@ class PropertyController extends Controller
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-                'developer_id' => 'required|exists:developers,id',
-                // 'agent_id'  => 'required',
+                // 'developer_id'  => 'required',
             ]);
+
+            // buatkan function untuk mengisi otomsatis developer_id dari tabel developer
+            $developer = Developer::findOrFail($request->developer_id);
 
             $data = Property::create([
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
-                'developer_id'  => $request->developer_id,
-                // 'agent_id'  => $request->agent_id,
+                'developer_id'  => $developer->id,
             ]);
+
+            $data->developers()->associate($developer);
+            $data->save();
+
+            $developer->properties()->save($data);
 
             $data = Property::where('id', '=', $data->id)->get();
 
             if($data){
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/property/data',);
+                return redirect('/admin/property/data',);
             }else{
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }

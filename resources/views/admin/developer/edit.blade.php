@@ -56,7 +56,7 @@
                                 </div>
                                 <ul>
                                     @foreach ($developer->properties as $property)
-                                        <li>{{ $property->property }} <a href="/admin/property/show/edit/{{ $property->id }}">Edit</a></li>
+                                        <li>{{ $property->property }}
                                     @endforeach
                                 </ul>
                                 <a type="button" class="btn btn-warning"

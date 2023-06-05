@@ -57,7 +57,7 @@
                                     @endforeach
                                 </ul>
                                 <a type="button" class="btn btn-success"
-                                    href="/admin/unit/create/?property_id={{ $property->id }}">Add Unit</a>
+                                    href="/admin/unit/create?property_id={{ $property->id }}">Add Unit</a>
                             </div>
                             <br>
                             <div class="form-group text-end">

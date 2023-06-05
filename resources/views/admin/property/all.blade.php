@@ -23,7 +23,6 @@
                             <th scope="col">Address</th>
                             <th scope="col">Developer</th>
                             <th scope="col">Type</th>
-                            <th scope="col">Agents</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -37,19 +36,14 @@
                                     <td class="text-start">{{ $property->address }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
-                                    <td class="text-start">
-                                        @foreach ($property->agents as $agent)
-                                            <span>{{ $agent->name }},</span><br>
-                                        @endforeach
-                                    </td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $property->id }}">Detail</a>
-                                        <form action="delete/{{ $property->id }}" method="get" class="d-inline">
+                                        {{-- <form action="delete/{{ $property->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

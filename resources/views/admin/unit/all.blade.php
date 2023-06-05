@@ -47,12 +47,12 @@
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $unit->id }}">Detail</a>
-                                        <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
+                                        {{-- <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

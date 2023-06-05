@@ -42,6 +42,9 @@
                                 </select>
                             </div>
                             <br> --}}
+                            @foreach ($developer as $developer)
+                            <input type="hidden" name="developer_id" value="{{ $developer->id }}">
+                            @endforeach
                             <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">

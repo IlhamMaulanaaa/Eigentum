@@ -14,6 +14,8 @@ class UnitSeeder extends Seeder
     public function run(): void
     {
         Unit::truncate();
+
+        
         
     }
 }

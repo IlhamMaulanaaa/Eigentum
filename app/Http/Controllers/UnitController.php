@@ -60,6 +60,8 @@ class UnitController extends Controller
                 'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             ]);
 
+            $property = Property::first();
+
             $imageNames = [];
             $imageFieldName = 'image';
             
@@ -72,7 +74,7 @@ class UnitController extends Controller
                 'description' => $request->description,
                 'price' => $request->price,
                 'image' => $imageNames[0],
-                'property_id' => $request->property_id,
+                'property_id' => $property->id,
             ]);
 
             $specification = Specification::create([

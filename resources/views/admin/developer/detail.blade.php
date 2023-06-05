@@ -58,12 +58,12 @@
                                 <label for="properties" class="form-label">Property</label>
                                 <ul>
                                     @foreach ($developer->properties as $property)
-                                        <li>{{ $property->property }}
-                                        </li>
+                                    <li>{{ $property->property }}<a href="/admin/property/show/{{ $property->id }}">Detail</a><a href="/admin/property/show/edit/{{ $property->id }}">Edit</a></li>
+                                    </li>
                                     @endforeach
                                 </ul>
                                 <a type="button" class="btn btn-success"
-                                    href="/admin/property/create/?developer_id={{ $developer->id }}">Add Property</a>
+                                    href="/admin/property/create?developer_id={{ $developer->id }}">Add Property</a>
                             </div>
                             <br>
 

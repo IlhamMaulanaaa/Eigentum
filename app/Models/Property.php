@@ -24,6 +24,11 @@ class Property extends Model
         'deleted_at',
     ];
 
+    public function properties()
+    {
+        return new Property();
+    }
+
     public function units()
     {
         return $this->hasMany(Unit::class);
@@ -35,7 +40,7 @@ class Property extends Model
 
     public function developers(): BelongsTo
     {
-        return $this->belongsTo(Developer::class, 'developer_id');
+        return $this->belongsTo(Developer::class, 'developer_id',);
     }
 
     public function agents(): BelongsToMany
