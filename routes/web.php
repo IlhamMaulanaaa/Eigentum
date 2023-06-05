@@ -27,7 +27,7 @@ use App\Http\Controllers\UnitController;
 */
 
 Route::get('/', function () {
-    return redirect('page.Home.home');
+    return view('page.Home.home');
 });
 
 // Route::get('/admin', function () {
