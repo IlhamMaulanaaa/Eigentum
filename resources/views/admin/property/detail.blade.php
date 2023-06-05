@@ -1,0 +1,72 @@
+@extends('admin.layout.main')
+
+@section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-ad-12">
+                <h3 class=" text-dark">Detail Property</h3>
+                <br>
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="" class="form-label">Property</label>
+                                <input type="text" class="form-control" id="property" name="property"
+                                    value="{{ $property->property }}" readonly disabled>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">Description</label>
+                                <input class="form-control" id="description" name="description" readonly disabled
+                                    value="{{ $property->description }}">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">Address</label>
+                                <input class="form-control" id="address" name="address" readonly disabled
+                                    value="{{ $property->address }}">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">Developer</label>
+                                <input type="text" class="form-control" id="developer_id" name="developer_id"
+                                    value="{{ $property->developers->company }}" readonly disabled>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="" class="form-label">Type</label>
+                                <input type="text" class="form-control" id="type_id" name="type_id"
+                                    value="{{ $property->types->name }}" readonly disabled>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="properties" class="form-label">Agent</label>
+                                <ul>
+                                    @foreach ($property->agents as $agent)
+                                        <li>{{ $agent->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="unit" class="form-label">Unit</label>
+                                <ul>
+                                    @foreach ($property->units as $unit)
+                                        <li>{{ $unit->title }}
+                                        </li>
+                                    @endforeach
+                                </ul>
+                                <a type="button" class="btn btn-success"
+                                    href="/admin/unit/create?property_id={{ $property->id }}">Add Unit</a>
+                            </div>
+                            <br>
+                            <div class="form-group text-end">
+                                <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>
+                                <a type="button" class="btn btn-primary" href="edit/{{ $property->id }}">Edit</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endsection

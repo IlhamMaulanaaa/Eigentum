@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Agent;
+use App\Models\Location;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -21,10 +22,9 @@ class AgentController extends Controller
         $tables = (new Agent())->getTable();
 
         if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.agent.all', ['agents' => $data, 'tables' => $tables]);
         } else {
-            return redirect('/admin/unit/data');
+            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
@@ -33,7 +33,9 @@ class AgentController extends Controller
      */
     public function create()
     {
-        return view('admin.agent.create', []);
+        return view('admin.agent.create', [
+            'location' => Location::all()
+        ]);
     }
     /**
      * Store a newly created resource in storage.
@@ -46,31 +48,38 @@ class AgentController extends Controller
                 'password'  => 'required|min:8',
                 'name'    => 'required',
                 'address'   => 'required',
-                'location'  => 'required',
                 'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'phone_number'  => 'required',
+                'location_id' => 'required'
             ]);
-
-            $ktp = Str::random(8). "." . $request->ktp->getClientOriginalExtension();
+            
+            $imageArray = [];
+                foreach ((['ktp', 'face']) as $fieldName) {
+                    $imageFileName = Str::random(8) . "." . $request->$fieldName->getClientOriginalExtension();
+                    $imageArray[] = $imageFileName;
+                    $request->$fieldName->storeAs('public', $imageFileName);
+                }
 
             $data = Agent::create([
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'name'  => $request->name,
                 'address'   => $request->address,
-                'location'  => $request->location,
-                'ktp'   => $ktp,
+                'ktp'   => $imageArray[0],
+                'face'   => $imageArray[1],
                 'phone_number'  => $request->phone_number,
+                'location_id' => $request->location_id
             ]);
 
-            Storage::disk('public')->put($ktp, file_get_contents($request->ktp));
-
+            $data->save();
+            
             $data = Agent::where('id', '=', $data->id)->get();
 
             if ($data) {
-                return redirect('/');
+                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/agent/data',);
             } else {
-                return redirect('/admin/unit/data');
+                return ApiFormatter::createApi('400', 'Failed', null);
             }
         } catch (Exception $e) {
             return $e;
@@ -105,12 +114,13 @@ class AgentController extends Controller
         try {
             $request->validate([
                 'name'    => 'required',
-                'email' => 'nullable|email|unique:agents',
+                'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
                 'address'   => 'required',
-                'location'  => 'required',
                 'ktp'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'phone_number'  => 'required',
+                'location_id' => 'nullable'
             ]);
 
             $data = Agent::findOrfail($id);
@@ -120,26 +130,31 @@ class AgentController extends Controller
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'address'   => $request->address,
-                'location'  => $request->location,
                 'phone_number'  => $request->phone_number,
+                'location_id'  => $request->location_id,
             ]);
 
-            if ($request->hasFile(`ktp`)) {
-                $imageName = $request->ktp->getClientOriginalName(). "." . $request->ktp->getClientOriginalExtension();
-                $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->ktp));
-                if (File::exists($image_path)) {
-                    File::delete($image_path);
-                }
-                $data->ktp = $imageName;
+            $images = ['ktp', 'face'];
+                foreach ($images as $key => $image) {
+                    if ($request->hasFile($image)) {
+                        $imageName = $request->{$image}->getClientOriginalName(). "." . $request->{$image}->getClientOriginalExtension();
+                        $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->{$image}));
+                        if (File::exists($image_path)) {
+                            File::delete($image_path);
+                        }
+                        $data->{$image} = $imageName;
+                    }
             }
+
+            $data->save();
 
             $data = Agent::where('id', '=', $data->id)->get();
             $url = '/admin/agent/show/' . $id;
 
             if ($data) {
-                return redirect('/');
+                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
             } else {
-                return redirect('/admin/unit/data');
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
             return $e;
@@ -156,9 +171,9 @@ class AgentController extends Controller
             $data = $agent->delete();
 
             if ($data) {
-                return redirect('/');
+                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/agent/data',);
             } else {
-                return redirect('/admin/unit/data');
+                return ApiFormatter::createApi('400', 'Bad Request', null);
             }
         } catch (Exception $e) {
             return $e;
