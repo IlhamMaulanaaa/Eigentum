@@ -1,6 +1,15 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: "Lato", sans-serif;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -167,17 +176,20 @@ a {
 .header__wrapper2 .cols__container .left__col .about {
   justify-content: space-between;
   position: relative;
-  margin: 35px 20px 20px 20px;
+  margin: 35px 20px 20px 0px;
+  padding: 0px 0px 0px 0px;
 }
 .header__wrapper2 .cols__container .left__col .about li {
   display: flex;
   flex-direction: column;
   color: #818181;
-  font-size: 0.9rem;
+  font-size: 14px;
+  padding: auto;
 }
 .header__wrapper2 .cols__container .left__col .about li span {
   color: #1d1d1d;
   font-weight: 600;
+  font-size: 18px;
 }
 .header__wrapper2 .cols__container .left__col .about:after {
   position: absolute;
@@ -197,7 +209,8 @@ a {
   gap: 30px;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  margin: 25px 0px 0px 0px;
+  padding: 0;
 }
 .header__wrapper2 .cols__container .content ul li {
   display: flex;

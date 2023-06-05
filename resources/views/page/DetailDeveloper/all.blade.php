@@ -27,20 +27,18 @@
             <img src="/assets/detail/home.jpg" alt="Bambang" />
             <span></span>
           </div>
-          <h2>Bambang Jono</h2>
-          <p style="color: #000">Independent Agent Property</p>
+          <h2>Fatih WIjaya</h2>
+          <p style="color: #000">PT Taruna Wijaya</p>
           <p>bambangjono95@gmail.com</p>
 
-          <ul class="about">
-            <li><span>73</span>Dijual</li>
-            <li><span>322</span>Disewa</li>
-            <li><span>20</span>Klient</li>
+          <ul class="about" style="">
+            <li><span>3</span>Aktif</li>
+            <li><span>3</span>Dijual</li>
+            <li><span>3</span>Disewa</li>
           </ul>
 
           <div class="content">
-            <p>
-Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisasi dalam rumah, apartemen, dan properti investasi. Pelayanan transparan, jujur, dan profesional. Hubungi John Doe untuk bantuan dalam mencari properti yang sesuai dengan kebutuhan Anda.
-            </p>
+            <p>Pengembangan proyek perumahan, ruko, apartemen, dan villa</p>
 
             <ul>
               <li><i class="fab fa-twitter"></i></li>
@@ -54,11 +52,10 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
             <!-- Images Filter Buttons Section -->
             <div class=" row mt-5" >
               <div class="col-12" id="filter-buttons">
-                <button class="btn mb-2 me-1 active" data-filter="all">Semuanya</button>
-                <button class="btn mb-2 mx-1" data-filter="apartemen">Apartemen</button>
-                <button class="btn mb-2 mx-1" data-filter="rumah">Rumah</button>
-                <button class="btn mb-2 mx-1" data-filter="ruko">Ruko</button>
-                <button class="btn mb-2 mx-1" data-filter="villa">Villa</button>
+                <button class="btn mb-2 me-1 active" data-filter="all">Semua</button>
+                <button class="btn mb-2 mx-1" data-filter="aktif">Aktif</button>
+                <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button>
+                <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button>
               </div>
             </div>
 
@@ -69,7 +66,7 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
       
             <!-- Filterable Images / Cards Section -->
             <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;" id="filterable-cards">
-              <div class="card p-0" data-name="rumah">
+              <div class="card p-0" data-name="aktif">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Rumah</h6>
@@ -79,15 +76,23 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
               </div>
               
               
-              <div class="card p-0" data-name="apartemen">
+              <div class="card p-0" data-name="aktif">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Apartemen</h6>
                   <!-- <p class="card-text"></p> -->
                 </div>
-                <span class="label sold">Terjual</span>
+                <span class="label sold">Aktif</span>
               </div>
-              <div class="card p-0" data-name="rumah">
+              <div class="card p-0" data-name="aktif">
+                <img src="/assets/logo.svg" alt="img" />
+                <div class="card-body">
+                  <h6 class="card-title">Apartemen</h6>
+                  <!-- <p class="card-text"></p> -->
+                </div>
+                <span class="label sold">Aktif</span>
+              </div>
+              <div class="card p-0" data-name="dijual">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Rumah</h6>
@@ -95,7 +100,7 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
                 </div>
                 <span class="label sold">Terjual</span>
               </div>
-              <div class="card p-0" data-name="apartemen">
+              <div class="card p-0" data-name="dijual">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Apartemen</h6>
@@ -103,7 +108,7 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
                 </div>
                 <span class="label sold">Tersewa</span>
               </div>
-              <div class="card p-0" data-name="ruko">
+              <div class="card p-0" data-name="disewa">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Ruko</h6>
@@ -111,7 +116,7 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
                 </div>
                 <span class="label sold">Terjual</span>
               </div>
-              <div class="card p-0" data-name="villa">
+              <div class="card p-0" data-name="disewa">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Villa</h6>
@@ -119,26 +124,10 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
                 </div>
                 <span class="label sold">Tersewa</span>
               </div>
-              <div class="card p-0" data-name="ruko">
+              <div class="card p-0" data-name="disewa">
                 <img src="/assets/logo.svg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Ruko</h6>
-                  <!-- <p class="card-text"></p> -->
-                </div>
-                <span class="label sold">Terjual</span>
-              </div>
-              <div class="card p-0" data-name="rumah">
-                <img src="/assets/logo.svg" alt="img" />
-                <div class="card-body">
-                  <h6 class="card-title">Rumah</h6>
-                  <!-- <p class="card-text"></p> -->
-                </div>
-                <span class="label sold">Tersewa</span>
-              </div>
-              <div class="card p-0" data-name="villa">
-                <img src="/assets/logo.svg" alt="img" />
-                <div class="card-body">
-                  <h6 class="card-title">Villa</h6>
                   <!-- <p class="card-text"></p> -->
                 </div>
                 <span class="label sold">Terjual</span>

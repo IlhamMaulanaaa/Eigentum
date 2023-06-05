@@ -29,6 +29,10 @@ Route::get('/detailagent', function () {
     return view('page.DetailAgent.all');
 });
 
+Route::get('/dashboard-develop', function () {
+    return view('page.DetailDeveloper.all');
+});
+
 Route::get('/nav', function () {
     return view('partial.nav');
 });
