@@ -497,8 +497,6 @@
 
 
 
-        <img class="frame-76-3KD" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;387:204950"/>
-        <img class="frame-74-LZD" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;387:215852"/>
         </div>
         </div>
         <div class="eigentum-2-dYK" id="4:7201">
