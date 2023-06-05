@@ -1129,18 +1129,32 @@ body {
                               line-height: 1;
                               white-space: nowrap;
                             }    
-                    .material-symbols-favorite-WVM {
-                      cursor: pointer;
-                      height: 2.4rem;
-                      left: 200px;
-                      object-fit: contain;
-                      position: absolute;
-                      top: 10px;
-                      vertical-align: top;
-                      width: 2.4rem;
-                    }
+                            .btn-favorite {
+                              background: transparent;
+                              border: none;
+                              margin-left: 210px;
+                              font-size: 28px;
+                              outline: none;
+                              color: grey; 
+                            }
+                            
+                            .btn-favorite i:hover {
+                              cursor: pointer;
+                            }
+                            
+                            .btn-favorite.active {
+                              color: red;
+                            }
+                              
 
-
+                            .red-color {
+                              color: red;
+                            }
+                            
+                            .grey-color {
+                              color: grey;
+                            }
+                            
 
 
 

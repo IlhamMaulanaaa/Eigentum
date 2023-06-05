@@ -192,41 +192,45 @@
         <div class="slide-container swiper">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                    <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                        <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                        <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                        <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                        <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                  <div class="card-5Ls swiper-slide">
+                    <div class="group-38-qL3">
+                      <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
+                      <div class="group-63-rF9">
+                        <div class="group-61-MBu">
+                          <div class="frame-6-gzs">
+                            <div class="rp-25-jt-Kps">
+                              <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                              <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                            </div>
+                            <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah Klasik 2 Lantai</div>
+                            <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                          </div>
+                          <div class="line-3-rLw"></div>
+                          <div class="frame-58-aXq">
+                            <div class="divflex-uq1">
+                              <div class="divattribute-grid-TLj">
+                                <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
+                                <div class="item-1-Rwm">2</div>
+                              </div>
+                              <div class="divattribute-grid-w9R">
+                                <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
+                                <div class="item-2-Cr3">4</div>
+                              </div>
+                            </div>
+                            <div class="frame-9-Y9D">
+                              <div class="lt-90m-ei3">LT : 190m²</div>
+                              <div class="lb-70m-n3Z">LB : 170m²</div>
+                            </div>
+                          </div>
                         </div>
-                        <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                        <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                        </div>
-                        <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                        <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                        <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                        <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                        <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                        </div>
-                        <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                        <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                        </div>
-                        </div>
-                        <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                        <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
-                        </div>
-                        </div>
+                      </div>
+                      
+                      <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
+                    </div>
+                  </div>
+                  
+
+                        
                         <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
                             <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
                             <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
@@ -259,7 +263,7 @@
                             </div>
                             </div>
                             </div>
-                            <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                            <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                             </div>
                             </div>
                             <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -294,7 +298,7 @@
                                 </div>
                                 </div>
                                 </div>
-                                <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                 </div>
                                 </div>
                                 <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -329,7 +333,7 @@
                                     </div>
                                     </div>
                                     </div>
-                                    <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                     </div>
                                     </div>
                                     <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -364,7 +368,7 @@
                                         </div>
                                         </div>
                                         </div>
-                                        <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                         </div>
                                         </div>
                                         <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -399,7 +403,7 @@
                                             </div>
                                             </div>
                                             </div>
-                                            <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                            <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                             </div>
                                             </div>
                                             <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -434,7 +438,7 @@
                                                 </div>
                                                 </div>
                                                 </div>
-                                                <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                 </div>
                                                 </div>
                                                 <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -469,7 +473,7 @@
                                                     </div>
                                                     </div>
                                                     </div>
-                                                    <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                     </div>
                                                     </div>
                                                     
@@ -538,7 +542,7 @@
                             </div>
                             </div>
                             </div>
-                            <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                            <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                             </div>
                             </div>
                             <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -573,7 +577,7 @@
                                 </div>
                                 </div>
                                 </div>
-                                <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                 </div>
                                 </div>
                                 <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -608,7 +612,7 @@
                                     </div>
                                     </div>
                                     </div>
-                                    <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                     </div>
                                     </div>
                                     <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -643,7 +647,7 @@
                                         </div>
                                         </div>
                                         </div>
-                                        <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                         </div>
                                         </div>
                                         <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -678,7 +682,7 @@
                                             </div>
                                             </div>
                                             </div>
-                                            <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                            <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                             </div>
                                             </div>
                                             <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -713,7 +717,7 @@
                                                 </div>
                                                 </div>
                                                 </div>
-                                                <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                 </div>
                                                 </div>
                                                 <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -748,7 +752,7 @@
                                                     </div>
                                                     </div>
                                                     </div>
-                                                    <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                     </div>
                                                     </div>
                                                     <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -783,7 +787,7 @@
                                                         </div>
                                                         </div>
                                                         </div>
-                                                        <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                         </div>
                                                         </div>
                                                         
@@ -833,7 +837,7 @@
                           </div>
                           </div>
                           </div>
-                          <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                          <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                           </div>
                           </div>
                           <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -868,7 +872,7 @@
                               </div>
                               </div>
                               </div>
-                              <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                              <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                               </div>
                               </div>
                               <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -903,7 +907,7 @@
                                   </div>
                                   </div>
                                   </div>
-                                  <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                  <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                   </div>
                                   </div>
                                   <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -938,7 +942,7 @@
                                       </div>
                                       </div>
                                       </div>
-                                      <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                      <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                       </div>
                                       </div>
                                       <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -973,7 +977,7 @@
                                           </div>
                                           </div>
                                           </div>
-                                          <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                          <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                           </div>
                                           </div>
                                           <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -1008,7 +1012,7 @@
                                               </div>
                                               </div>
                                               </div>
-                                              <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                              <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                               </div>
                                               </div>
                                               <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -1043,7 +1047,7 @@
                                                   </div>
                                                   </div>
                                                   </div>
-                                                  <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                  <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                   </div>
                                                   </div>
                                                   <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
@@ -1078,7 +1082,7 @@
                                                       </div>
                                                       </div>
                                                       </div>
-                                                      <img class="material-symbols-favorite-WVM" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54373"/>
+                                                      <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
                                                       </div>
                                                       </div>
                                                       
@@ -1235,7 +1239,6 @@
                     </div>
         </div>
         <div class="group-85-M2X" id="4:7605">
-        <div class="lihat-survey-T5Z" id="4:7606">Lihat Survey</div>
         <img class="frame-zLP" src="css/arrow.svg" id="4:7607"/>
         </div>
         </div>
@@ -1246,7 +1249,7 @@
         <div class="frame-155-uy9" id="4:7610">
         <section class="container-testimoni">
       <div class="testimonial mySwiper">
-        <div class="testi-content swiper-wrapper">
+        <div class="testi-content swiper-wrapper" style="margin-bottom: 20px;">
           <div class="slide swiper-slide">
             <img src="images/img1.jpg" alt="" class="image" />
             <p>
@@ -1330,7 +1333,7 @@
         </div>
         <div class="swiper-button-next nav-btn"></div>
         <div class="swiper-button-prev nav-btn"></div>
-        <div class="swiper-pagination"></div>
+        <div class="swiper-pagination" style="margin-bottom: 30px;"></div>
       </div>
     </section>
         </div>
@@ -1611,6 +1614,12 @@ options5.forEach(option5 =>{
       optionMenu4.classList.remove("active");
   });
 });
+
+
+
+
+
+
     </script>
 </html>
 
@@ -1626,6 +1635,7 @@ options5.forEach(option5 =>{
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="/js/Panduan/panduan.js"></script>
+{{-- <script src="/js/Panduan/panduan.js"></script> --}}
+<script src="/js/home.js"></script>
 
 @endsection

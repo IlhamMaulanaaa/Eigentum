@@ -16,6 +16,9 @@
 
 
 
+function toggleFavorite(button) {
+  button.classList.toggle("active");
+}
 
 
 
@@ -36,9 +39,6 @@
   // Initiate the wowjs
   new WOW().init();
 
-
-
-  
 
 
 
