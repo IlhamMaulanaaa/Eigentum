@@ -55,7 +55,7 @@
 
             <div class="frame-147-QbZ" id="4:7162">
                 <div class="group-75-kvK" id="4:7163">
-                    <div class="group-74-7F5" id="4:7164">
+                    <div class="group-74-7F56" id="4:7164">
                         <div class="group-71-2cw" id="4:7166">
                             <div class="segera-miliki-properti-impianmu-AUF" id="4:7167">Segera Miliki Properti Impianmu
                             </div>
@@ -253,7 +253,6 @@
                                         @endforeach
                                     </div>
 
-
                                 </div>
                             </div>
 
@@ -274,10 +273,6 @@
 
 
 
-                        <img class="frame-76-3KD" src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                            id="I4:7199;387:204950" />
-                        <img class="frame-74-LZD" src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                            id="I4:7199;387:215852" />
                     </div>
                 </div>
                 <div class="eigentum-2-dYK" id="4:7201">
@@ -1108,8 +1103,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                                <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">
-                                                                    LT : 100m²</div>
+                                                                <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT
+                                                                    : 100m²</div>
                                                                 <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">
                                                                     LB : 100m²</div>
                                                             </div>
@@ -1140,7 +1135,7 @@
                                 <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
                                     <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
                                         <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="css/Logo.png"
+                                            <img class="group-55-yNF" src="/assets/Home/search-keunggulan.svg"
                                                 id="I4:7576;138:2203;119:1189" />
                                         </div>
                                         <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
@@ -1166,16 +1161,16 @@
                                 <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
                                     <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
                                         <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="css/Logo.png"
+                                            <img class="group-55-yNF" src="/assets/Home/pilihan-keunggulan.svg"
                                                 id="I4:7576;138:2203;119:1189" />
                                         </div>
                                         <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
                                             <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
                                                 <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Kemudahan Pencarian properti</div>
+                                                    id="I4:7576;138:2203;119:1188">Lebih Banyak Pilihan</div>
                                                 <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Pengguna bisa dengan mudah mencari
-                                                    properti yang diinginkan dengan fitur pencarian yang lengkap</div>
+                                                    id="I4:7576;138:2203;119:1191">lebih banyak pilihan properti yang bisa
+                                                    dipilih, mulai dari rumah, apartemen, hingga properti komersial.</div>
                                             </div>
                                             <div class="group-85-vaK" id="I4:7576;138:2203;124:15144">
                                                 <div class="cari-properti-4wR" id="I4:7576;138:2203;124:15140">Cari
@@ -1193,16 +1188,17 @@
                                 <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
                                     <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
                                         <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="css/Logo.png"
+                                            <img class="group-55-yNF" src="/assets/Home/informasi-keunggulan.svg"
                                                 id="I4:7576;138:2203;119:1189" />
                                         </div>
                                         <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
                                             <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
                                                 <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Kemudahan Pencarian properti</div>
+                                                    id="I4:7576;138:2203;119:1188">Informasi Lengkap</div>
                                                 <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Pengguna bisa dengan mudah mencari
-                                                    properti yang diinginkan dengan fitur pencarian yang lengkap</div>
+                                                    id="I4:7576;138:2203;119:1191">Informasi lengkap tentang properti yang
+                                                    dijual, mulai dari harga, lokasi, ukuran, fasilitas, dan lain
+                                                    sebagainya.</div>
                                             </div>
                                             <div class="group-85-vaK" id="I4:7576;138:2203;124:15144">
                                                 <div class="cari-properti-4wR" id="I4:7576;138:2203;124:15140">Cari
@@ -1219,16 +1215,16 @@
                                 <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
                                     <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
                                         <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="css/Logo.png"
+                                            <img class="group-55-yNF" src="/assets/Home/waktu-keunggulan.svg"
                                                 id="I4:7576;138:2203;119:1189" />
                                         </div>
                                         <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
                                             <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
                                                 <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Kemudahan Pencarian properti</div>
+                                                    id="I4:7576;138:2203;119:1188">Efisiensi Waktu dan Biaya</div>
                                                 <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Pengguna bisa dengan mudah mencari
-                                                    properti yang diinginkan dengan fitur pencarian yang lengkap</div>
+                                                    id="I4:7576;138:2203;119:1191">Menghemat waktu untuk mencari properti,
+                                                    tidak perlu mengunjungi lokasi properti secara langsung.</div>
                                             </div>
                                             <div class="group-85-vaK" id="I4:7576;138:2203;124:15144">
                                                 <div class="cari-properti-4wR" id="I4:7576;138:2203;124:15140">Cari
@@ -1248,25 +1244,21 @@
                             <div class="frame-136-8Wb" id="4:7581">
                                 <div class="frame-137-Qyu" id="4:7582">
                                     <div class="group-128-LsZ" id="4:7583">
-                                        <img class="group-127-4Hm"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
+                                        <img class="group-127-4Hm" src="/assets/Home/survey-apartemen.svg"
                                             id="I4:7583;181:7692" />
                                     </div>
                                     <div class="group-128-LsZ" id="4:7583">
-                                        <img class="group-127-4Hm"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
+                                        <img class="group-127-4Hm" src="/assets/Home/survey-home.svg"
                                             id="I4:7583;181:7692" />
                                     </div>
                                 </div>
                                 <div class="frame-147-E5m" id="4:7585">
                                     <div class="group-128-LsZ" id="4:7583">
-                                        <img class="group-127-4Hm"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
+                                        <img class="group-127-4Hm" src="/assets/Home/survey-ruko.svg"
                                             id="I4:7583;181:7692" />
                                     </div>
                                     <div class="group-128-LsZ" id="4:7583">
-                                        <img class="group-127-4Hm"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
+                                        <img class="group-127-4Hm" src="/assets/Home/survey-villa.svg"
                                             id="I4:7583;181:7692" />
                                     </div>
                                 </div>
@@ -1288,36 +1280,33 @@
                                 <div class="auto-group-elrb-NYf" id="NC5RpADVDDFgHQMR9YELrB">
                                     <div class="group-138-XRZ" id="4:7592">
                                         <div class="group-132-4RV" id="4:7593">
-                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
+                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Apartemen</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">35 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
                                             <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">87 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
-                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
+                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Ruko</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">45 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
-                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
+                                            <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Villa</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">24 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="group-85-M2X" id="4:7605">
-                                        <img class="frame-zLP" src="css/arrow.svg" id="4:7607" />
                                     </div>
                                 </div>
                             </div>
@@ -1329,7 +1318,7 @@
                         <div class="testimonial mySwiper">
                             <div class="testi-content swiper-wrapper" style="margin-bottom: 20px;">
                                 <div class="slide swiper-slide">
-                                    <img src="images/img1.jpg" alt="" class="image" />
+                                    <img src="/assets/Home/testimoni-home.svg" alt="" class="image" />
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -1345,7 +1334,7 @@
                                     </div>
                                 </div>
                                 <div class="slide swiper-slide">
-                                    <img src="images/img2.jpg" alt="" class="image" />
+                                    <img src="/assets/Home/testimoni1-home.svg" alt="" class="image" />
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -1361,7 +1350,7 @@
                                     </div>
                                 </div>
                                 <div class="slide swiper-slide">
-                                    <img src="images/img3.jpg" alt="" class="image" />
+                                    <img src="/assets/Home/testimoni2-home.svg" alt="" class="image" />
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -1377,7 +1366,7 @@
                                     </div>
                                 </div>
                                 <div class="slide swiper-slide">
-                                    <img src="images/img1.jpg" alt="" class="image" />
+                                    <img src="/assets/Home/testimoni3-home.svg" alt="" class="image" />
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                                         saepe provident dolorem a quaerat quo error facere nihil deleniti
@@ -1393,7 +1382,7 @@
                                     </div>
                                 </div>
                                 <div class="slide swiper-slide">
-                                    <img src="images/img1.jpg" alt="" class="image" />
+                                    <img src="/assets/Home/testimoni4-home.svg" alt="" class="image" />
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
                                         saepe provident dolorem a quaerat quo error facere nihil deleniti

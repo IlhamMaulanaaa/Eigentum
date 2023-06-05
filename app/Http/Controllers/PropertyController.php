@@ -29,6 +29,7 @@ class PropertyController extends Controller
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
+    
 
     /**
      * Show the form for creating a new resource.
