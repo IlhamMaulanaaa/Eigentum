@@ -15,51 +15,64 @@ class DeveloperSeeder extends Seeder
     public function run(): void
     {
         Developer::truncate();
+
+        for ($i = 0; $i < 5; $i++) {
+            Developer::create([
+                "email" => fake()->email(),
+                "password" => bcrypt(fake()->password()),
+                "company" => fake()->company(),
+                "address" => Str::limit(fake()->address(), 20),
+                "owner" => fake()->name(),
+                "license" => fake()->imageUrl(),
+                "phone_number" => fake()->phoneNumber(),
+            ]);
+        }
         
-        Developer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "company" => fake()->company(),
-            "address" => Str::limit(fake()->address(), 20),
-            "owner" => fake()->name(),
-            "license" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Developer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "company" => fake()->company(),
-            "address" => Str::limit(fake()->address(), 20),
-            "owner" => fake()->name(),
-            "license" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Developer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "company" => fake()->company(),
-            "address" => Str::limit(fake()->address(), 20),
-            "owner" => fake()->name(),
-            "license" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Developer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "company" => fake()->company(),
-            "address" => Str::limit(fake()->address(), 20),
-            "owner" => fake()->name(),
-            "license" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Developer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "company" => fake()->company(),
-            "address" => Str::limit(fake()->address(), 20),
-            "owner" => fake()->name(),
-            "license" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
+        
+        // Developer::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "company" => fake()->company(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "owner" => fake()->name(),
+        //     "license" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Developer::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "company" => fake()->company(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "owner" => fake()->name(),
+        //     "license" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Developer::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "company" => fake()->company(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "owner" => fake()->name(),
+        //     "license" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Developer::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "company" => fake()->company(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "owner" => fake()->name(),
+        //     "license" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Developer::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "company" => fake()->company(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "owner" => fake()->name(),
+        //     "license" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
     }
 }

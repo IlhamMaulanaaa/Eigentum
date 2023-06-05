@@ -14,30 +14,13 @@ class AgentPropertySeeder extends Seeder
     {
         AgentProperty::truncate();
 
-        AgentProperty::create([
-            "agent_id" => mt_rand(1,5),
-            "property_id" => mt_rand(1,5),
-        ]);
-
-        AgentProperty::create([
-            "agent_id" => mt_rand(1,5),
-            "property_id" => mt_rand(1,5),
-        ]);
-
-        AgentProperty::create([
-            "agent_id" => mt_rand(1,5),
-            "property_id" => mt_rand(1,5),
-        ]);
-
-        AgentProperty::create([
-            "agent_id" => mt_rand(1,5),
-            "property_id" => mt_rand(1,5),
-        ]);
+        for ($i = 0; $i < 5; $i++) {
+            AgentProperty::create([
+                "agent_id" => mt_rand(1, 5),
+                "property_id" => mt_rand(1, 5),
+            ]);
+        }
         
-        AgentProperty::create([
-            "agent_id" => mt_rand(1,5),
-            "property_id" => mt_rand(1,5),
-        ]);
 
     }
 }

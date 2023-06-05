@@ -60,6 +60,8 @@ class DatabaseSeeder extends Seeder
                 "name" => $type,
             ]);
         }
+
+        Location::truncate();
         
         $provinces = [
             "Aceh",
@@ -104,7 +106,30 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        
+        // Agent::truncate();
+
+        for ($i = 0; $i < 5; $i++) {
+            Agent::create([
+                "email" => fake()->email(),
+                "password" => bcrypt(fake()->password()),
+                "name" => fake()->name(),
+                "address" => Str::limit(fake()->address(), 20),
+                "location_id" => mt_rand(1,34),
+                "ktp" => fake()->imageUrl(),
+                "face" => fake()->imageUrl(),
+                "phone_number" => fake()->phoneNumber(),
+            ]);
+        }
+
+        Guide::truncate();
+
+        for ($i = 0; $i < 6; $i++) {
+            Guide::create([
+                "title" => fake()->title(),
+                "description" => fake()->text(),
+                "image" => fake()->imageUrl(),
+            ]);
+        }
 
     }
 }

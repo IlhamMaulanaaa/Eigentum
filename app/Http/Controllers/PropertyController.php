@@ -59,15 +59,21 @@ class PropertyController extends Controller
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
             }
 
+            $agent = Agent::inRandomOrder()->first();
+            if (!$agent) {
+                return redirect()->back()->with('error', 'Tidak ada agen yang tersedia');
+            }
+    
             $data = Property::create([
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
                 'developer_id'  => $developer->id,
+                'agent_id'  => $agent->id,
             ]);
 
-            $data = Property::where('id', '=', $data->id)->get();
+            
 
             if($data){
                 return redirect('/admin/property/data',);

@@ -16,46 +16,47 @@ class PropertySeeder extends Seeder
     {
         // Property::truncate();
 
-        Property::create([
-            "property" => "Perumahan Megawon Indah",
-            "description" => "Perumahan Dekat kali",
-            "address" => Str::limit(fake()->address(), 20),
-            "developer_id" => mt_rand(1,5),
-            "type_id" => mt_rand(1,5),
-
-        ]);
-
-        Property::create([
-            "property" => "Apartement Surya",
-            "description" => "Punyanya Surya Ibrahim",
-            "address" => Str::limit(fake()->address(), 20),
-            "developer_id" => mt_rand(1,5),
-            "type_id" => mt_rand(1,5),
-
-        ]);
-        Property::create([
-            "property" => "Apartement Ilham",
-            "description" => "Punyanya Ilham",
-            "address" => Str::limit(fake()->address(), 20),
-            "developer_id" => mt_rand(1,5),
-            "type_id" => mt_rand(1,5),
-
-        ]);
-        Property::create([
-            "property" => "Apartement Najib",
-            "description" => "Punyanya Najib",
-            "address" => Str::limit(fake()->address(), 20),
-            "developer_id" => mt_rand(1,5),
-            "type_id" => mt_rand(1,5),
-
-        ]);
-        Property::create([
-            "property" => "Apartement Gataw",
-            "description" => "Punyanya Gataw",
-            "address" => Str::limit(fake()->address(), 20),
-            "developer_id" => mt_rand(1,5),
-            "type_id" => mt_rand(1,5),
-
-        ]);
+        $properties = [
+            [
+                "property" => "Perumahan Megawon Indah",
+                "description" => "Perumahan Dekat kali",
+                "address" => Str::limit(fake()->address(), 20),
+                "developer_id" => mt_rand(1, 5),
+                "type_id" => mt_rand(1, 5),
+            ],
+            [
+                "property" => "Apartement Surya",
+                "description" => "Punyanya Surya Ibrahim",
+                "address" => Str::limit(fake()->address(), 20),
+                "developer_id" => mt_rand(1, 5),
+                "type_id" => mt_rand(1, 5),
+            ],
+            [
+                "property" => "Apartement Ilham",
+                "description" => "Punyanya Ilham",
+                "address" => Str::limit(fake()->address(), 20),
+                "developer_id" => mt_rand(1, 5),
+                "type_id" => mt_rand(1, 5),
+            ],
+            [
+                "property" => "Apartement Najib",
+                "description" => "Punyanya Najib",
+                "address" => Str::limit(fake()->address(), 20),
+                "developer_id" => mt_rand(1, 5),
+                "type_id" => mt_rand(1, 5),
+            ],
+            [
+                "property" => "Apartement Gataw",
+                "description" => "Punyanya Gataw",
+                "address" => Str::limit(fake()->address(), 20),
+                "developer_id" => mt_rand(1, 5),
+                "type_id" => mt_rand(1, 5),
+            ],
+        ];
+        
+        foreach ($properties as $propertyData) {
+            Property::create($propertyData);
+        }
+        
     }
 }

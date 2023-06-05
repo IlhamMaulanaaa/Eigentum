@@ -35,7 +35,7 @@
                                     <td class="text-start">{{ $agent->name }}</td>
                                     <td class="text-start">{{ $agent->email }}</td>
                                     <td class="text-start">{{ $agent->address }}</td>
-                                    <td class="text-start">{{ $agent->location_id }}</td>
+                                    <td class="text-start">{{ $agent->locations->name }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-start">{{ $agent->phone_number }}</td>
