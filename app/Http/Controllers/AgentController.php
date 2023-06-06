@@ -166,6 +166,7 @@ class AgentController extends Controller
     {
         try {
             $agent = Agent::findOrfail($id);
+            $agent->properties()->detach();
             $data = $agent->delete();
 
             if ($data) {

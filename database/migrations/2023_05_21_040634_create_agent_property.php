@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('agent_property', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('agent_id');
-            $table->unsignedBigInteger('property_id');
+            $table->integer('agent_id');
+            $table->integer('property_id');
             $table->timestamps();
-            $table->foreign('agent_id')->references('id')->on('agents')->onDelete('cascade');
-            $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');
         });
     }
 

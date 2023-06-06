@@ -28,7 +28,7 @@
                                 <div class="form-group">
                                     <label for="" class="form-label">Status</label>
                                     <ul>
-                                        @foreach ($unit->status as $status)
+                                        @foreach ($unit->p as $status)
                                             <li>
                                                 {{ $status->name }}
                                             </li>

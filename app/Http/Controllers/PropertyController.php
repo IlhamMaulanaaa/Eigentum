@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Agent;
+use App\Models\AgentProperty;
 use App\Models\Developer;
 use App\Models\Property;
 use App\Models\Type;
@@ -59,21 +60,28 @@ class PropertyController extends Controller
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
             }
 
-            $agent = Agent::inRandomOrder()->first();
-            if (!$agent) {
-                return redirect()->back()->with('error', 'Tidak ada agen yang tersedia');
-            }
+            // $agent = Agent::inRandomOrder()->first();
+            // if (!$agent) {
+            //     return redirect()->back()->with('error', 'Tidak ada agen yang tersedia');
+            // }
     
+            $randomAgentId = Agent::pluck('id')->random();
+
             $data = Property::create([
                 'property'  => $request->property,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
                 'developer_id'  => $developer->id,
-                'agent_id'  => $agent->id,
+                // 'agent_id' => $randomAgentId,
             ]);
 
-            
+            // $data = AgentProperty::create([
+            //     'agent_id'  => $agent->id,
+            //     'property_id' => $data->id,
+            // ]);
+
+            $data->agents()->attach($randomAgentId);
 
             if($data){
                 return redirect('/admin/property/data',);

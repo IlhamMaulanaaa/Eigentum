@@ -137,11 +137,10 @@ class UnitController extends Controller
     
     public function edit(Unit $unit)
     {
-        return view('admin.unit.edit', [
-            "unit" => $unit,
-            "properties" => Property::all(),
-            "statuses" => Status::all(),
-        ]);
+        $properties = Property::all();
+        $statuses = Status::all();
+
+        return view('admin.unit.edit', compact('unit','statuses', 'properties'));
     }
 
     
@@ -234,8 +233,6 @@ class UnitController extends Controller
                 }
             
                 $image->save();
-                
-
 
 
                 $unit->status()->sync($request->input('status_id'));

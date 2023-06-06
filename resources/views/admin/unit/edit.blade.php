@@ -66,7 +66,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <div class="form-group mb-2">
+                                    <div class="form-group mb-4">
                                         <label for="livingroomimg" class="form-label">Living room</label>
                                         <div class="form-group row g-2">
                                             <div class="col-auto">
@@ -92,7 +92,7 @@
                                     </div>
                                     
 
-                                    <div class="form-group mb-2">
+                                    <div class="form-group mb-4">
                                         <label for="bedroomimg" class="form-label">Bedroom</label>
                                         <div class="form-group row g-2">
                                             <div class="col-auto">
@@ -117,7 +117,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group mb-2">
+                                    <div class="form-group mb-4">
                                         <label for="bathroomimg" class="form-label">Bathroom</label>
                                         <div class="form-group row g-2">
                                             <div class="col-auto">
@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group mb-2">
+                                    <div class="form-group mb-4">
                                         <label for="kitchenimg" class="form-label">Kitchen</label>
                                         <div class="form-group row g-2">
                                             <div class="col-auto">
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group mb-2">
+                                    <div class="form-group mb-4">
                                         <label for="etcimg" class="form-label">Etc</label>
                                         <div class="form-group row g-2">
                                             <div class="col-auto">
@@ -221,7 +221,7 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group">
+                                <div class="form-group invisible">
                                     <label for="" class="form-label">Property</label>
                                     <select class="form-control" id="property_id" name="property_id">
                                         @foreach ($properties as $property)
