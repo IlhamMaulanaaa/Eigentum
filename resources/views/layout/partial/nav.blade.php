@@ -47,12 +47,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="pages/sell" class="nav-item nav-link" style="color: #000">Dijual</a>
-            <a href="pages/rent" class="nav-item nav-link" style="color: #000">Disewa</a>
-            <a href="pages/newproperty" class="nav-item nav-link" style="color: #000">Properti Baru</a>
-            <a href="pages/searchagent" class="nav-item nav-link" style="color: #000">Cari agen</a>
-            <a href="pages/guide" class="nav-item nav-link" style="color: #000">Panduan</a>
-            <a href="pages/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
+            <a href="/pages/sell" class="nav-item nav-link" style="color: #000">Dijual</a>
+            <a href="/pages/rent" class="nav-item nav-link" style="color: #000">Disewa</a>
+            <a href="/pages/newproperty" class="nav-item nav-link" style="color: #000">Properti Baru</a>
+            <a href="/pages/searchagent" class="nav-item nav-link" style="color: #000">Cari agen</a>
+            <a href="/pages/guide" class="nav-item nav-link" style="color: #000">Panduan</a>
+            <a href="/pages/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
         </div>
         <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" style="background-color: #0C40E8; color: #ffffff; border: none;">Masuk</a>
     </div>

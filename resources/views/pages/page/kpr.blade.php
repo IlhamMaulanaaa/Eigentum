@@ -15,6 +15,8 @@
         integrity="sha512-HM/HrlGg/OUdNf9yjUVHc7L8Y1ICJf7gZkPwZb5M5J5D5X1Q2e5C5n7Qmbt3DqV7kACtIwPLIXfJ8GLzaILoXw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    {{-- <link href="/css/pages/guide.css" rel="stylesheet"> --}}
+
 </head>
 <style>
     * {

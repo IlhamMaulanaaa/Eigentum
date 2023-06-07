@@ -190,7 +190,7 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
             Route::get('/edit/{customer}',[customerAdmin::class,'edit']);
         });
         Route::get('/create', [customerAdmin:: class, 'create']);
-        Route::post('/add', [Back\customerAdmin:: class, 'store']);
+        Route::post('/add', [customerAdmin:: class, 'store']);
         Route::post('/update/{customer}', [customerAdmin:: class, 'update']);
         Route::get('/delete/{customer}',[customerAdmin::class,'destroy']);
     });
