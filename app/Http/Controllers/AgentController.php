@@ -22,7 +22,7 @@ class AgentController extends Controller
         $tables = (new Agent())->getTable();
 
         if ($data) {
-            return view('admin.agent.all', ['agents' => $data, 'tables' => $tables]);
+            return view('page.CariAgen.cariagen', ['agents' => $data, 'tables' => $tables]);
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }

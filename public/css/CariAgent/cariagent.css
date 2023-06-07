@@ -25,6 +25,12 @@ body {
     animation: sk-rotateplane 1.2s infinite ease-in-out;
 }
 
+.img-fluid{
+  width: 100px;
+  height: 120px;
+}
+
+
 @-webkit-keyframes sk-rotateplane {
     0% {
         -webkit-transform: perspective(120px)

@@ -23,7 +23,7 @@ class UnitController extends Controller
         $tables = (new Unit())->getTable();
 
         if ($units) {
-            return view('page.Home.home2', compact("units", "tables"));
+            return view('page.Home.home', compact("units", "tables"));
         } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }

@@ -63,7 +63,7 @@ Route::get('/nav', function () {
     return view('partial.nav');
 });
 
-Route::get('/detailproperty', function () {
+Route::get('/detailunit', function () {
     return view('page.DetailProperty.all');
 });
 
@@ -75,9 +75,7 @@ Route::get('/disewa', function () {
     return view('page.Disewa.disewa');
 });
 
-Route::get('/cariagen', function () {
-    return view('page.CariAgen.cariagen');
-});
+Route::get('/cariagen',['App\Http\Controllers\AgentController', 'index']);
 
 Route::get('/guest', function () {
     return view('page.Home.home');

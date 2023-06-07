@@ -246,37 +246,18 @@
     <div class="cardagent">
     <div class="wrapper" >
         <ul class="carousel11">
-          <li class="card">
-            <div class="img"><img src="images/img-1.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="images/img-2.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="images/img-5.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
+            @foreach($agents as $agent)
+            <li class="card">
+                <div class="img">
+                    <img src="images/img-1.jpg" alt="img" draggable="false">
+                </div>
+                <h2>{{ $agent->name }}</h2>
+                <span>{{ $agent->position }}</span>
+            </li>
+            @endforeach
         </ul>
+        
+        
       </div>
     </div>
     <!-- End Card Agent -->
