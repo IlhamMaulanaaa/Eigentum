@@ -174,7 +174,7 @@
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="team-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="/assets/Home/testimoni-home.svg" alt="">
+                            <img class="img-fluid" src="/assets/Home/testimoni-home.svg"  alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -182,15 +182,15 @@
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                         </div>
                         <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                            <h5 class="mb-0">Jono Bayu</h5>
+                            <small>Agent Rumah</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="team-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="/assets/Home/testimoni1-home.svg" alt="">
+                            <img class="img-fluid" src="/assets/Home/testimoni1-home.svg"  alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -198,15 +198,15 @@
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                         </div>
                         <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                            <h5 class="mb-0">Bambang Bayu</h5>
+                            <small>Agent Apartemen</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="team-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="/assets/Home/testimoni2-home.svg" alt="">
+                            <img class="img-fluid" src="/assets/Home/testimoni2-home.svg"  alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -214,15 +214,15 @@
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                         </div>
                         <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                            <h5 class="mb-0">Satoso Wijaya</h5>
+                            <small>Agent Ruko</small>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="team-item">
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="/assets/Home/testimoni3-home.svg" alt="">
+                            <img class="img-fluid" src="/assets/Home/testimoni3-home.svg"  alt="">
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -230,8 +230,8 @@
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                         </div>
                         <div class="text-center p-4">
-                            <h5 class="mb-0">Full Name</h5>
-                            <small>Designation</small>
+                            <h5 class="mb-0">Rafid Septian</h5>
+                            <small>Agent Villa</small>
                         </div>
                     </div>
                 </div>
@@ -247,32 +247,32 @@
     <div class="wrapper" >
         <ul class="carousel11">
           <li class="card">
-            <div class="img"><img src="images/img-1.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card">
-            <div class="img"><img src="images/img-2.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card">
-            <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card">
-            <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card">
-            <div class="img"><img src="images/img-5.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card">
-            <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
@@ -287,32 +287,32 @@
     <div class="wrapper1" >
         <ul class="carousel12">
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-1.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-2.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-5.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
@@ -327,32 +327,32 @@
     <div class="wrapper2" >
         <ul class="carousel13">
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-1.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-2.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-3.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-4.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-5.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>
           <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-            <div class="img"><img src="images/img-6.jpg" alt="img" draggable="false"></div>
+            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
           </li>

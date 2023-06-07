@@ -185,320 +185,388 @@
           </div>
           </div>
           </div>
-          <div class="frame-156-pto" id="4:7196">
-            <div class="group-77-FDR" id="4:7198">
-            <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Rumah Baru</div>
-            
-            <div class="slide-container swiper">
-                <div class="slide-content">
-                    <div class="card-wrapper swiper-wrapper">
-                      <div class="card-5Ls swiper-slide">
-                        <div class="group-38-qL3">
-                          <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
-                          <div class="group-63-rF9">
+        <div class="frame-156-pto" id="4:7196">
+        <div class="group-77-FDR" id="4:7198">
+        <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Rumah Baru</div>
+        
+        <div class="slide-container swiper">
+            <div class="slide-content">
+              <div class="card-wrapper swiper-wrapper">
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
                             <div class="group-61-MBu">
-                              <div class="frame-6-gzs">
-                                <div class="rp-25-jt-Kps">
-                                  <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                  <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                </div>
-                                <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah Klasik 2 Lantai</div>
-                                <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
-                              </div>
-                              <div class="line-3-rLw"></div>
-                              <div class="frame-58-aXq">
-                                <div class="divflex-uq1">
-                                  <div class="divattribute-grid-TLj">
-                                    <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
-                                    <div class="item-1-Rwm">2</div>
-                                  </div>
-                                  <div class="divattribute-grid-w9R">
-                                    <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." />
-                                    <div class="item-2-Cr3">4</div>
-                                  </div>
-                                </div>
-                                <div class="frame-9-Y9D">
-                                  <div class="lt-90m-ei3">LT : 190m²</div>
-                                  <div class="lb-70m-n3Z">LB : 170m²</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          
-                          <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                        </div>
-                      </div>
-                      
-    
-                            
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                </div>
-                                <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                </div>
-                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                </div>
-                                <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                </div>
-                                </div>
-                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                </div>
-                                </div>
-                                </div>
-                                </div>
-                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                    <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                    <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                    </div>
-                                    <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                    </div>
-                                    <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                    <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                    <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                    <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                    </div>
-                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                    <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                    <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                    </div>
-                                    </div>
-                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                    </div>
-                                    </div>
-                                    <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                        <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                        <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                        <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
                                         <span class="rp-25-jt-Kps-sub-0">Rp</span>
                                         <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
                                         </div>
-                                        <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                        <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
                                         </div>
-                                        <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                        <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                        <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                        <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                        <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                        </div>
-                                        <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                        <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                        </div>
-                                        </div>
-                                        <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                        </div>
-                                        </div>
-                                        <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                            <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                            <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                            <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                            <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                            <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                            <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                            </div>
-                                            <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                            <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                            <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                            <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                            <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                            </div>
-                                            <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                            <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                            </div>
-                                            </div>
-                                            <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                            <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                            <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            </div>
-                                            <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                            </div>
-                                            </div>
-                                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                                <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                                <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                                <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                                <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                </div>
-                                                <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                                <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                                <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                </div>
-                                                <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                                </div>
-                                                </div>
-                                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                                    <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                                    <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                    <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                                    </div>
-                                                    <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                    <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                    <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                                    <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                    <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                                    <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²</div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²</div>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                    </div>
-                                                    <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                                    </div>
-                                                    </div>
-                                                    <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                                        <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                                        <img class="rectangle-20-9rX" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54339"/>
-                                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                        <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                        <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                        </div>
-                                                        <div class="disewakan-2-ruko-daerah-bandung-maP" id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                        <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok, Jawa Barat</div>
-                                                        </div>
-                                                        <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                        <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                        <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54354"/>
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;165:3744;527:54361"/>
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 100m²</div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 100m²</div>
-                                                        </div>
-                                                        </div>
-                                                        </div>
-                                                        </div>
-                                                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i class="fas fa-heart"></i></button>
-                                                        </div>
-                                                        </div>
-                                                        
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
                     </div>
                 </div>
-    
-                
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+                <div class="card-5Ls swiper-slide">
+                    <a href="/detailunit" class="stretched-link"></a>
+                    <div class="group-38-qL3">
+                        <img class="rectangle-20-9rX" src="/assets/Home/unit1.jpg" />
+                        <div class="group-63-rF9">
+                            <div class="group-61-MBu">
+                                <div class="frame-6-gzs">
+                                    <div class="rp-25-jt-Kps">
+                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
+                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
+                                    </div>
+                                    <div class="disewakan-2-ruko-daerah-bandung-maP">Dijual Rumah
+                                        Klasik 2 Lantai</div>
+                                    <div class="bandung-jawa-barat-78T">Depok, Jawa Barat</div>
+                                </div>
+                                <div class="line-3-rLw"></div>
+                                <div class="frame-58-aXq">
+                                    <div class="divflex-uq1">
+                                        <div class="divattribute-grid-TLj">
+                                            <img class="svg-kKq" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-1-Rwm">2</div>
+                                        </div>
+                                        <div class="divattribute-grid-w9R">
+                                            <img class="svg-4zj" src="/assets/Home/unit1.jpg" />
+                                            <div class="item-2-Cr3">4</div>
+                                        </div>
+                                    </div>
+                                    <div class="frame-9-Y9D">
+                                        <div class="lt-90m-ei3">LT : 190m²</div>
+                                        <div class="lb-70m-n3Z">LB : 170m²</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="toggleFavorite(this)" class="btn-favorite"><i
+                                class="fas fa-heart"></i></button>
+                    </div>
+                </div>
+
+
             </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
             </div>
-            </div>
+
+            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        </div>
         <div class="eigentum-2-dYK" id="4:7201">
         </div>
         <div class="frame-156-pto" id="4:7196">

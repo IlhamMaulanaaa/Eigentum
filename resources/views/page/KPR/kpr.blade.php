@@ -14,499 +14,480 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-HM/HrlGg/OUdNf9yjUVHc7L8Y1ICJf7gZkPwZb5M5J5D5X1Q2e5C5n7Qmbt3DqV7kACtIwPLIXfJ8GLzaILoXw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        
-    <link rel="stylesheet" href="/css/Home/home.css">
     <title>Document</title>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style: none;
-}
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
 
-body {
-  margin: 0px;
-  padding: 0px;
-  font-family: 'Lato', sans-serif;
-  overflow-x: hidden;
-}
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 
-:root{
-  --bg-color: #fff;
-  --text-color: #B2B2B2;
-  --main-color: #0C40E8;
-}
+    .Rectangle-128 {
+        margin-right: 5px;
+        width: 620px;
+        height: 453px;
+        margin-top: 98px;
+        margin-bottom: 135px;
+        padding: 37px 33.1px 49.3px 33px;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
+        background-color: #fff;
+    }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+    .Kalkulator-KPR {
+        width: 174.9px;
+        height: 33px;
+        margin: 0 207px 22.6px 5px;
+        font-family: Lato;
+        font-size: 24px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.65;
+        letter-spacing: normal;
+        text-align: left;
+        color: #1a2258;
+    }
 
-.Rectangle-128 {
-    margin-right: 5px;
-    width: 620px;
-    height: 453px;
-    margin-top: 98px;
-    margin-bottom: 135px;
-    padding: 37px 33.1px 49.3px 33px;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.25);
-    background-color: #fff;
-}
-
-.Kalkulator-KPR {
-    width: 174.9px;
-    height: 33px;
-    margin: 0 207px 22.6px 5px;
-    font-family: Lato;
-    font-size: 24px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.65;
-    letter-spacing: normal;
-    text-align: left;
-    color: #1a2258;
-}
-
-.dropdown {
-    margin-top: 98px;
-    color: #f4f4f6;
-    width: 50px;
-}
+    .dropdown {
+        margin-top: 98px;
+        color: #f4f4f6;
+        width: 50px;
+    }
 
 
 
 
-.eigentumkprdrpdnw {
-    width: 620px;
-    text-align: left;
-}
+    .eigentumkprdrpdnw {
+        width: 620px;
+        text-align: left;
+    }
 
-.divstyle_ui-section-mortgage-program__w4KnT {
-    width: 1160px;
-    height: 409.7px;
-    display: flex;
-    flex-direction: column;
-     justify-content: flex-start;
-    align-items: center;
-    gap: 24px;
-    margin: 40px auto;
-    padding: 0;
-}
+    .divstyle_ui-section-mortgage-program__w4KnT {
+        width: 1160px;
+        height: 409.7px;
+        display: flex;
+        flex-direction: column;
+        k justify-content: flex-start;
+        align-items: center;
+        gap: 24px;
+        margin: 40px auto;
+        padding: 0;
+    }
 
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
+    #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
 
-#alertBox {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 2;
-}
+    #alertBox {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        z-index: 2;
+    }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
 
-.close:hover {
-    color: red;
-}
-
-
-.Program-Kredit-Terbaru {
-    width: 355px;
-    height: 40px;
-    margin-bottom: -30px;
-    flex-grow: 0;
-    font-family: Inter;
-    font-size: 31px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.29;
-    letter-spacing: normal;
-    text-align: center;
-    color: #222b45;
-}
-
-.divstyle_programs__TLWft {
-    width: 1129px;
-    height: 345.7px;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 10px 0;
-}
-
-.col {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
-
-}
-
-.sectionkpr-bank {
-    width: 1144px;
-    height: 613px;
-    margin: auto;
-    padding: 48px 0 84px;
-}
-
-.Pilihan-Bank {
-    width: 180px;
-    height: 40px;
-    margin: auto;
-    flex-grow: 0;
-    font-family: Inter;
-    font-size: 30px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: center;
-    color: #0d1a35;
-}
-
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup {
-    background-color: #fff;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    position: relative;
-    max-width: 80%;
-    max-height: 80%;
-    overflow-y: auto;
-}
-
-.cuks {
-    width: 80%;
-    height: 40.2px;
-    bottom: 10px;
-}
-
-.close-popup-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.close-popup-button:hover {
-    background-color: #555;
-}
-
-h2 {
-    margin-top: 0;
-}
-
-p {
-    margin-bottom: 20px;
-}
+    .close:hover {
+        color: red;
+    }
 
 
-.btn-fix-floating {
-    margin-right: 24px;
-    margin-left: 60px;
-}
+    .Program-Kredit-Terbaru {
+        width: 355px;
+        height: 40px;
+        margin-bottom: -30px;
+        flex-grow: 0;
+        font-family: Inter;
+        font-size: 31px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.29;
+        letter-spacing: normal;
+        text-align: center;
+        color: #222b45;
+    }
 
-.divbg-white {
-    width: 364.9px;
-    height: 182px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 12px;
-    margin: 0 11px 24px 11px;
-    padding: 10px 1px 13px 10px;
-    border-radius: 8px;
-    border: solid 1px #cfd1d7;
-    background-color: #fff;
-}
+    .divstyle_programs__TLWft {
+        width: 1129px;
+        height: 345.7px;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 10px 0;
+    }
 
-.input-group-text {
-    background-color: #e4e9f2;
-    /* height: 50px; */
-}
+    .col {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
 
-.BNI {
-    height: 25px;
-    margin: 0px 0px 10px 0px;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1a2258;
-}
+    }
 
-.nchan {
-    width: 101px;
-    height: 44px;
-    margin-bottom: 10px;
-    font-family: Inter;
-    font-size: 32px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.65;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1a2258;
-}
+    .sectionkpr-bank {
+        width: 1144px;
+        height: 613px;
+        margin: auto;
+        padding: 48px 0 84px;
+    }
 
-.BNII {
-    margin-top: 0px;
-    height: 22px;
-    margin: -10px 0px 10px 0px;
-    font-family: Inter;
-    font-size: 14px;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.65;
-    letter-spacing: normal;
-    text-align: center;
-    color: #1a2258;
-}
+    .Pilihan-Bank {
+        width: 180px;
+        height: 40px;
+        margin: auto;
+        flex-grow: 0;
+        font-family: Inter;
+        font-size: 30px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #0d1a35;
+    }
 
-.npc {
-    margin: auto;
-    margin-bottom: 200px;
-}
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
 
-.helper {
-    align-items: center;
-    margin-bottom: 0px;
+    .popup {
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        position: relative;
+        max-width: 80%;
+        max-height: 80%;
+        overflow-y: auto;
+    }
 
-}
+    .cuks {
+        width: 80%;
+        height: 40.2px;
+        bottom: 10px;
+    }
 
-.lph {
-    align-items: center;
-    margin-top: 40px;
-    margin-bottom: 0px;
-}
+    .close-popup-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+    }
 
-.kosongan::before {
-    content: "";
-    display: block;
-    width: 1px;
-    height: 40px;
-    margin: auto;
-    opacity: 50%;
-    background-color: darkgray;
-}
+    .close-popup-button:hover {
+        background-color: #555;
+    }
 
-.gabungan {
-    margin-left: 5px;
-}
+    h2 {
+        margin-top: 0;
+    }
 
-.northem {
-    align-items: center;
-    margin-bottom: 0px;
-
-}
-
-.cdcdcd {
-    font-size: 12px;
-    margin-top: -2px;
-}
-
-.yuhuuu {
-    width: 82px;
-    height: 42px;
-}
-
-.npmren {
-    margin: auto;
-}
-
-.logo {
-    font-size: 12px;
-    margin-right: 10px;
-    font-weight: 600w;
-}
-
-.divsection-calculator-result {
-    width: 620px;
-    height: 219px;
-    margin: auto;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex;
-    align-items: center;
-    padding: 1px 1px 25px;
-    border-radius: 12px;
-    border: solid 1px #f4f4f6;
-    background-color: #f3f7ff;
-}
-
-.card-body {
-    width: 320px;
-    height: 230px;
-    border: none;
-    padding: -60px 0px 0px 0px;
-}
-
-img {
-    display: block;
-    margin: 0 auto;
-}
-
-.Angsuranbulan-Fix {
-    height: 24px;
-    margin: 0px;
-    margin-bottom: -30px;
-    font-family: Inter;
-    font-size: 15px;
-    font-weight: 600;
-    font-stretch: normal;
-    width: 175px;
-    font-style: normal;
-    line-height: 1.8;
-    letter-spacing: normal;
-    text-align: center;
-    color: #0d1a35;
-}
-
-.Tahun-ke {
-    width: 47px;
-    height: 16px;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: column;
-    font-family: Inter;
-    font-size: 11px;
-    justify-content: left;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.45;
-    letter-spacing: normal;
-    text-align: left;
-    color: #868d9a;
-}
-
-.Bunga-0- {
-    width: 67px;
-    height: 24px;
-    flex-grow: 0;
-    font-family: Inter;
-    font-size: 13px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.85;
-    letter-spacing: normal;
-    text-align: left;
-    color: #0d1a35;
-}
-
-.divflex {
-    width: 30.2px;
-    height: 24px;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 2.2px;
-    padding: 0;
-}
-
-.Bunga {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-.ini {
-    margin-top: 10px;
-    margin-left: -400px;
-}
-
-.rowin {
-    display: flex;
-    flex-direction: row;
-}
-
-.custom-line {
-    height: 2px;
-    width: 560px;
-    background-color: black;
-    border: 8px;
-}
+    p {
+        margin-bottom: 20px;
+    }
 
 
-.popup {
-    width: 1200px;
-    margin: auto;
-    transform: translate(-50%, -100%) scale(1);
-    text-align: center;
-    padding: auto;
-    color: #333;
-}
+    .btn-fix-floating {
+        margin-right: 24px;
+        margin-left: 60px;
+    }
 
-/* .result-calculator-end {
-    width: 13px;
-    height: 24px;
-    flex-grow: 0;
-    font-family: Inter;
-    font-size: 18px;
-    font-weight: bold;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #0d1a35;
-} */
+    .divbg-white {
+        width: 364.9px;
+        height: 182px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 12px;
+        margin: 0 11px 24px 11px;
+        padding: 10px 1px 13px 10px;
+        border-radius: 8px;
+        border: solid 1px #cfd1d7;
+        background-color: #fff;
+    }
+
+    .input-group-text {
+        background-color: #e4e9f2;
+        /* height: 50px; */
+    }
+
+    .BNI {
+        height: 25px;
+        margin: 0px 0px 10px 0px;
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: center;
+        color: #1a2258;
+    }
+
+    .nchan {
+        width: 101px;
+        height: 44px;
+        margin-bottom: 10px;
+        font-family: Inter;
+        font-size: 32px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.65;
+        letter-spacing: normal;
+        text-align: center;
+        color: #1a2258;
+    }
+
+    .BNII {
+        margin-top: 0px;
+        height: 22px;
+        margin: -10px 0px 10px 0px;
+        font-family: Inter;
+        font-size: 14px;
+        font-weight: 600;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.65;
+        letter-spacing: normal;
+        text-align: center;
+        color: #1a2258;
+    }
+
+    .npc {
+        margin: auto;
+        margin-bottom: 200px;
+    }
+
+    .helper {
+        align-items: center;
+        margin-bottom: 0px;
+
+    }
+
+    .lph {
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 0px;
+    }
+
+    .kosongan::before {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 40px;
+        margin: auto;
+        opacity: 50%;
+        background-color: darkgray;
+    }
+
+    .gabungan {
+        margin-left: 5px;
+    }
+
+    .northem {
+        align-items: center;
+        margin-bottom: 0px;
+
+    }
+
+    .cdcdcd {
+        font-size: 12px;
+        margin-top: -2px;
+    }
+
+    .yuhuuu {
+        width: 82px;
+        height: 42px;
+    }
+
+    .npmren {
+        margin: auto;
+    }
+
+    .logo {
+        font-size: 12px;
+        margin-right: 10px;
+        font-weight: 600w;
+    }
+
+    .divsection-calculator-result {
+        width: 620px;
+        height: 219px;
+        margin: auto;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex;
+        align-items: center;
+        padding: 1px 1px 25px;
+        border-radius: 12px;
+        border: solid 1px #f4f4f6;
+        background-color: #f3f7ff;
+    }
+
+    .card-body {
+        width: 320px;
+        height: 230px;
+        border: none;
+        padding: -60px 0px 0px 0px;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .Angsuranbulan-Fix {
+        height: 24px;
+        margin: 0px;
+        margin-bottom: -30px;
+        font-family: Inter;
+        font-size: 15px;
+        font-weight: 600;
+        font-stretch: normal;
+        width: 175px;
+        font-style: normal;
+        line-height: 1.8;
+        letter-spacing: normal;
+        text-align: center;
+        color: #0d1a35;
+    }
+
+    .Tahun-ke {
+        width: 47px;
+        height: 16px;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: column;
+        font-family: Inter;
+        font-size: 11px;
+        justify-content: left;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.45;
+        letter-spacing: normal;
+        text-align: left;
+        color: #868d9a;
+    }
+
+    .Bunga-0- {
+        width: 67px;
+        height: 24px;
+        flex-grow: 0;
+        font-family: Inter;
+        font-size: 13px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.85;
+        letter-spacing: normal;
+        text-align: left;
+        color: #0d1a35;
+    }
+
+    .divflex {
+        width: 30.2px;
+        height: 24px;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 2.2px;
+        padding: 0;
+    }
+
+    .Bunga {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .ini {
+        margin-top: 10px;
+        margin-left: -400px;
+    }
+
+    .rowin {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .custom-line {
+        height: 2px;
+        width: 560px;
+        background-color: black;
+        border: 8px;
+    }
+
+
+    .popup {
+        width: 1200px;
+        margin: auto;
+        transform: translate(-50%, -100%) scale(1);
+        text-align: center;
+        padding: auto;
+        color: #333;
+    }
+
+    /* .result-calculator-end {
+        width: 13px;
+        height: 24px;
+        flex-grow: 0;
+        font-family: Inter;
+        font-size: 18px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.33;
+        letter-spacing: normal;
+        text-align: left;
+        color: #0d1a35;
+    } */
 </style>
 
 <body>
@@ -891,8 +872,6 @@ img {
             document.getElementById("alertBox").style.display = "none";
         }
     </script>
-    
-    <script src="js/home.js"></script>
 </body>
 
 </html>

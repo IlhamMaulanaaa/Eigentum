@@ -50,7 +50,7 @@
         <div class="group-75-kvK" id="4:7163">
         <div class="group-74-7F5" id="4:7164">
         <div class="group-71-2cw" id="4:7166">
-        <div class="segera-miliki-properti-impianmu-AUF" id="4:7167">Segera Miliki Properti Impianmu</div>
+        <div class="segera-miliki-properti-impianmu-AUF" id="4:7167">Cari Properti Yang Dijual</div>
         <div class="temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu" id="4:7168">Temukan pilihan properti terbaik untuk investasi atau tempat tinggal di website kami, dari apartemen hingga rumah mewah.</div>
         </div>
         </div>
@@ -395,7 +395,7 @@
 
       </div>
     </div>
-    <div class="eigentum-2-dYK" id="4:7201">
+    <div class="eigentum-2-dYK" style="margin-bottom: 60px" id="4:7201">
     </div>
     <div class="frame-156-pto" id="4:7196">
         <div class="group-77-FDR" id="4:7198">
@@ -691,7 +691,6 @@
         </div>
         
     </div>
-        <div class="eigentum-2-dYK" id="4:7201">
         </div>
         <div class="frame-156-pto" id="4:7196">
             <div class="group-77-FDR" id="4:7198">

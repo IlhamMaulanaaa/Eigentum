@@ -78,7 +78,7 @@
     <section class="home" id="home" style="">
         <div class="home-text container">
             <h2 class="home-title">Panduan Eigentum</h2>
-            <span class="home-subtitle" style="color: #000">Panduan properti yang dapat dipercaya untuk Anda</span>
+            <span class="home-subtitle" style="color: #fff">Panduan properti yang dapat dipercaya untuk Anda</span>
         </div>
     </section>
     
@@ -238,7 +238,7 @@
             <div class="post container">
                 <!-- Post 1 -->
                 <div class="post-box kpr">
-                    <img src="images/img1.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -247,7 +247,7 @@
                 </div>
                 <!-- Post 2 -->
                 <div class="post-box properti">
-                    <img src="images/img2.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -256,7 +256,7 @@
                 </div>
                 <!-- Post 3 -->
                 <div class="post-box properti">
-                    <img src="images/img3.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -265,7 +265,7 @@
                 </div>
                 <!-- Post 4 -->
                 <div class="post-box news">
-                    <img src="images/img4.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -274,7 +274,7 @@
                 </div>
                 <!-- Post 5 -->
                 <div class="post-box kpr">
-                    <img src="images/img5.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -283,7 +283,7 @@
                 </div>
                 <!-- Post 6 -->
                 <div class="post-box news">
-                    <img src="images/img4.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -292,7 +292,7 @@
                 </div>
                 <!-- Post 7 -->
                 <div class="post-box kpr">
-                    <img src="images/img7.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -301,7 +301,7 @@
                 </div>
                 <!-- Post 1 -->
                 <div class="post-box news">
-                    <img src="images/img8.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -310,7 +310,7 @@
                 </div>
                 <!-- Post 9 -->
                 <div class="post-box properti">
-                    <img src="images/img10.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -318,7 +318,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="images/img10.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -326,7 +326,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="images/img10.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -334,7 +334,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="images/img10.jpg" alt="" class="post-img">
+                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>

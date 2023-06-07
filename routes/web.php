@@ -65,7 +65,7 @@ Route::get('/nav', function () {
     return view('partial.nav');
 });
 
-Route::get('/detailproperty', function () {
+Route::get('/detailunit', function () {
     return view('page.DetailProperty.all');
 });
 

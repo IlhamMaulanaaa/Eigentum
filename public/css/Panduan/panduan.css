@@ -828,24 +828,31 @@ header.shadow .logo{
 }
 
 .home{
-    width: 100%;
-    min-height: 440px;
-    background: url("images/banner2.png");
-    display: grid;
-    justify-content: center;
-    align-items: center;
+  background-image: url('/assets/Panduan/header-panduan.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-shrink: 0;
+  height: 303px;
+  margin: 0rem 0px 0px 0px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: auto;
 }
 
 .home-text{
-    color: var(--bg-color);
+  color: #fff;
     text-align: center;
 }
 
 .home-title{
+  color: #fff;
     font-size: 3.5rem;
 }
 
 .home-subtitle{
+  color: #fff;
     font-size: 1rem;
     font-weight: 400;
 }
