@@ -23,7 +23,7 @@
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="/css/Home/home.css">
+        <link rel="stylesheet" href="/css/pages/home.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
@@ -48,7 +48,7 @@
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
         <!-- Template Stylesheet -->
-        <link href="/css/Panduan/panduan.css" rel="stylesheet">
+        <link href="/css/pages/guide.css" rel="stylesheet">
 
     </head>
 
@@ -1223,7 +1223,7 @@
             // selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
         </script>
 
-        <script src="js/DetailProperty/detailproperty.js"></script>
+        <script src="js/unit/detail.js"></script>
 
     </html>
 @endsection

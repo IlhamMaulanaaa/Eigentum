@@ -39,8 +39,8 @@
     
 
     <!-- Template Stylesheet -->
-    <link href="/css/CariAgent/cariagent.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/Home/home.css">
+    <link href="/css/pages/searchAgent.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/pages/home.css">
 </head>
 
 <body>
@@ -391,7 +391,7 @@
 
     <!-- Template Javascript -->
     {{-- <script src="/js/CariAgent/cariagent.js"></script> --}}
-    <script src="js/home.js"></script>
+    <script src="js/guide/home.js"></script>
     <!-- Swiper JS -->
     <script src="/js/swiper-bundle.min.js"></script>
 </body>

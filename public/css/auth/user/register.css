@@ -37,7 +37,7 @@ input {
 
 form {
     margin: auto;
-    margin-top: 600px;
+    margin-top: 60px;
 }
 
 #masuk009 {
@@ -88,7 +88,7 @@ form {
     color: rgb(143, 143, 143);
 }
 #loginbutton {
-    background-color:303F49;
+    background-color: #000;
     border-radius: 12px;
     margin-bottom: 20px;
     height: 60px;

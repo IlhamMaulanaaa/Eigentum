@@ -47,12 +47,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="/dijual" class="nav-item nav-link" style="color: #000">Dijual</a>
-            <a href="/disewa" class="nav-item nav-link" style="color: #000">Disewa</a>
-            <a href="/propertibaru" class="nav-item nav-link" style="color: #000">Properti Baru</a>
-            <a href="/cariagen" class="nav-item nav-link" style="color: #000">Cari agen</a>
-            <a href="/panduan" class="nav-item nav-link" style="color: #000">Panduan</a>
-            <a href="/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
+            <a href="pages/sell" class="nav-item nav-link" style="color: #000">Dijual</a>
+            <a href="pages/rent" class="nav-item nav-link" style="color: #000">Disewa</a>
+            <a href="pages/newproperty" class="nav-item nav-link" style="color: #000">Properti Baru</a>
+            <a href="pages/searchagent" class="nav-item nav-link" style="color: #000">Cari agen</a>
+            <a href="pages/guide" class="nav-item nav-link" style="color: #000">Panduan</a>
+            <a href="pages/kpr" class="nav-item nav-link" style="color: #000">KPR</a>
         </div>
         <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block" style="background-color: #0C40E8; color: #ffffff; border: none;">Masuk</a>
     </div>
@@ -77,7 +77,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="/path/to/bootstrap.bundle.min.js"></script>
 <!-- Template Javascript -->
-<script src="/js/Panduan/panduan.js"></script>
+<script src="/js/pages/guide.js"></script>
 
 </body>
 

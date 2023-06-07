@@ -313,7 +313,7 @@
             </div>
         </footer>
     
-    <script src="js/app.js"></script>
+    <script src="js/admin/app.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

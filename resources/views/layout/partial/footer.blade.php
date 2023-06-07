@@ -42,7 +42,7 @@
     <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="/css/Panduan/panduan.css" rel="stylesheet">
+    <link href="/css/pages/guide.css" rel="stylesheet">
 </head>
 <body>
     
@@ -161,5 +161,5 @@
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="/js/Panduan/panduan.js"></script>
+<script src="/js/pages/guide.js"></script>
 </html>

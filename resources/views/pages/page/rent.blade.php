@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/Disewa/disewa.css">
+    <link rel="stylesheet" href="/css/pages/rent.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <link
       href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
@@ -41,7 +41,7 @@
     <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="/css/Panduan/panduan.css" rel="stylesheet">
+    <link href="/css/pages/guide.css" rel="stylesheet">
 </head>
 <body>
     <div class="desktop-1-RTV" id="1:2">
@@ -2497,7 +2497,7 @@
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="/js/Panduan/panduan.js"></script>
+<script src="/js/pages/guide.js"></script>
 </html>
 
 
@@ -2714,6 +2714,6 @@
 <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
 
 <!-- Template Javascript -->
-<script src="/js/Panduan/panduan.js"></script>
+<script src="/js/pages/guide.js"></script>
 
 @endsection

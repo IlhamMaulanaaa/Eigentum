@@ -118,8 +118,8 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/10d48cad5b.js" crossorigin="anonymous"></script>
-    <script src="/js/loginRegister/developer/login.js"></script>
-    <script src="/js/loginRegister/developer/jam.js"></script>
+    <script src="/js/auth/developer/login.js"></script>
+    <script src="/js/auth/developer/jam.js"></script>
 </body>
 
 </html>

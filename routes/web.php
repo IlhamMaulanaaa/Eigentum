@@ -1,19 +1,32 @@
 <?php
 
-use App\Http\Controllers\AgentController;
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DeveloperController;
-use App\Http\Controllers\GuideController;
-use App\Http\Controllers\LocationController;
-use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\SpecificationController;
-use App\Http\Controllers\StatusController;
-use App\Http\Controllers\TypeController;
+use App\Http\Controllers\Back\AgentController as agentAdmin;
+use App\Http\Controllers\Back\CustomerController as customerAdmin;
+use App\Http\Controllers\Back\DeveloperController as developerAdmin;
+use App\Http\Controllers\Back\GuideController as guideAdmin;
+use App\Http\Controllers\Back\LocationController as locationAdmin;
+use App\Http\Controllers\Back\PropertyController as propertyAdmin;
+use App\Http\Controllers\Back\SessionController as sessionAdmin;
+use App\Http\Controllers\Back\SpecificationController as specificationAdmin;
+use App\Http\Controllers\Back\StatusController as statusAdmin;
+use App\Http\Controllers\Back\TypeController as typeAdmin;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UnitController;
+use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\Back\DashboardController as dashboardAdmin;
+use App\Http\Controllers\Back\UnitController as unitAdmin;
+
+use App\Http\Controllers\Front\AgentController;
+use App\Http\Controllers\Front\CustomerController;
+use App\Http\Controllers\Front\DeveloperController;
+use App\Http\Controllers\Front\GuideController;
+use App\Http\Controllers\Front\LocationController;
+use App\Http\Controllers\Front\PropertyController;
+use App\Http\Controllers\Front\SessionController;
+use App\Http\Controllers\Front\SpecificationController;
+use App\Http\Controllers\Front\StatusController;
+use App\Http\Controllers\Front\TypeController;
+use App\Http\Controllers\Front\DashboardController;
+use App\Http\Controllers\Front\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +40,11 @@ use App\Http\Controllers\UnitController;
 */
 
 Route::get('/', function () {
-    return view('page.Home.home');
+    return view('pages.page.home');
 });
 
-// Route::get('/admin', function () {
-//     return view('admin.layout.main');
-// });
+
+// authentication
 
 Route::group(['prefix' => '/session'], function(){
     Route::get('/signout', [SessionController::class, 'signout']);
@@ -46,73 +58,23 @@ Route::group(['prefix' => '/session'], function(){
         Route::get('/', [SessionController:: class, 'signup'])->middleware('guest');
         Route::post('/create', [SessionController:: class, 'postSignup']);
     });
-    return view('page.Home.home');
-});
-
-Route::get('/404', function () {
-    return view('page.404.all');
-});
-
-Route::get('/detailagent', function () {
-    return view('page.DetailAgent.all');
-});
-
-Route::get('/dashboard-develop', function () {
-    return view('page.DetailDeveloper.all');
-});
-
-Route::get('/nav', function () {
-    return view('partial.nav');
-});
-
-Route::get('/detailunit', function () {
-    return view('page.DetailProperty.all');
-});
-
-Route::get('/propertibaru', function () {
-    return view('page.PropertiBaru.propertibaru');
-});
-
-Route::get('/disewa', function () {
-    return view('page.Disewa.disewa');
-});
-
-Route::get('/cariagen',['App\Http\Controllers\AgentController', 'index']);
-
-Route::get('/guest', function () {
-    return view('page.Home.home');
-})->middleware('auth');
-
-Route::get('/home', function () {
-    return view('page.Home.home');
-});
-
-Route::get('/dijual', function () {
-    return view('page.Dijual.dijual');
-});
-
-Route::get('/panduan', function () {
-    return view('page.Panduan.panduan');
-});
-
-Route::get('/kpr', function () {
-    return view('page.KPR.kpr');
+    return view('pages.page.home');
 });
 
 Route::group(['prefix' => '/session'], function () {
-    Route::get('/signout', [sessionController::class, 'signout']);
+    Route::get('/signout', [SessionController::class, 'signout']);
 
     Route::group(['prefix' => '/signin'], function () {
-        Route::get('/', [sessionController::class, 'signin'])->name('login')->middleware('guest');
-        Route::post('/create', [sessionController::class, 'postSignin']);
+        Route::get('/', [SessionController::class, 'signin'])->name('login')->middleware('guest');
+        Route::post('/create', [SessionController::class, 'postSignin']);
     });
 
     route::group(['prefix' => '/signup'], function () {
-        Route::get('/', [sessionController::class, 'signup'])->middleware('guest');
-        Route::post('/create', [sessionController::class, 'postSignup']);
+        Route::get('/', [SessionController::class, 'signup'])->middleware('guest');
+        Route::post('/create', [SessionController::class, 'postSignup']);
     });
 });
-//  daftar agen dan developer
+
 Route::group(['prefix' => '/signin'], function () {
     // Route::get('/agent', [registerController::class, 'agent'])->middleware('guest');
     // Route::get('/developer', [registerController::class, 'developer'])->middleware('guest');
@@ -123,38 +85,95 @@ Route::group(['prefix' => '/signin'], function () {
         return view('auth.developer.signin');
     });
 });
-
-
-Route::get('/uploadproperti ', function () {
-    return view('page.properti.upload');
+// developer
+Route::group(['prefix' => '/developer'], function () {
+    Route::get('/dashboard', function () {
+        return view('pages.Developer.detail');
+    });
+});
+// agent
+Route::group(['prefix' => '/agent'], function () {
+    Route::get('/detail', function () {
+        return view('pages.Agent.detail');
+    });
+});
+// pages
+Route::group(['prefix' => '/pages'], function () {
+    Route::get('/searchagent',[AgentController::class, 'index']);
+    
+    Route::get('/notfound', function () {
+        return view('pages.page.notfound');
+    });
+    
+    Route::get('/newproperty', function () {
+        return view('pages.page.newProperty');
+    });
+    
+    Route::get('/rent', function () {
+        return view('pages.page.rent');
+    });
+    
+    Route::get('/home', function () {
+        return view('pages.page.home');
+    });
+    
+    Route::get('/sell', function () {
+        return view('pages.page.sell');
+    });
+    
+    Route::get('/guide', function () {
+        return view('pages.page.guide');
+    });
+    Route::get('/kpr', function () {
+    return view('pages.page.kpr');
+    });
 });
 
-// change property -> jadinya di buat overlay langsung upload property
-// Route::get('/choiceproperty', function () {
-//     return view('page.properti.change');
-// });
-Route::get('/create', function () {
-    return view('page.unit.create');
+// property
+Route::group(['prefix' => '/property'], function () {
+    Route::get('/upload ', function () {
+        return view('pages.property.create');
+    });
+
+    Route::get('/detail', function () {
+        return view('pages.property.detail');
+    });
+
+    Route::get('/choice', function () {
+        return view('pages.property.choice');
+    });
 });
-Route::get('/unit', function () {
-    return view('page.unit.unit');
+// unit
+Route::group(['prefix' => '/unit'], function () {
+    Route::get('/upload', function () {
+        return view('pages.unit.create');
+    });
+
+    Route::get('/detail', function () {
+        return view('pages.unit.detail');
+    });
 });
-Route::get('/main', function () {
-    return view('page.unit.main');
-});
+
+
+
+
+
+
+
+//  admin
 
 Route::group(['prefix' => '/admin'], function () {
     Route::group(['prefix' => '/session'], function () {
-        Route::get('/signout', [sessionController::class, 'signout']);
+        Route::get('/signout', [sessionAdmin::class, 'signout']);
     
         Route::group(['prefix' => '/signin'], function () {
-            Route::get('/', [sessionController::class, 'signin'])->name('login')->middleware('guest');
-            Route::post('/create', [sessionController::class, 'postSignin']);
+            Route::get('/', [sessionAdmin::class, 'signin'])->name('login')->middleware('guest');
+            Route::post('/create', [sessionAdmin::class, 'postSignin']);
         });
     
         route::group(['prefix' => '/signup'], function () {
-            Route::get('/', [sessionController::class, 'signup'])->middleware('guest');
-            Route::post('/create', [sessionController::class, 'postSignup']);
+            Route::get('/', [sessionAdmin::class, 'signup'])->middleware('guest');
+            Route::post('/create', [sessionAdmin::class, 'postSignup']);
         });
     });
 });
@@ -165,124 +184,124 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     Route::get('/', [AdminController:: class, 'index']);
 
     Route::group(['prefix' => '/customer'], function(){
-        Route::get('/data', [CustomerController:: class, 'index']);
+        Route::get('/data', [customerAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{customer}',[CustomerController::class,'show']);
-            Route::get('/edit/{customer}',[CustomerController::class,'edit']);
+            Route::get('/{customer}',[customerAdmin::class,'show']);
+            Route::get('/edit/{customer}',[customerAdmin::class,'edit']);
         });
-        Route::get('/create', [CustomerController:: class, 'create']);
-        Route::post('/add', [CustomerController:: class, 'store']);
-        Route::post('/update/{customer}', [CustomerController:: class, 'update']);
-        Route::get('/delete/{customer}',[CustomerController::class,'destroy']);
+        Route::get('/create', [customerAdmin:: class, 'create']);
+        Route::post('/add', [Back\customerAdmin:: class, 'store']);
+        Route::post('/update/{customer}', [customerAdmin:: class, 'update']);
+        Route::get('/delete/{customer}',[customerAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/developer'], function(){
-        Route::get('/data', [DeveloperController:: class, 'index']);
+        Route::get('/data', [developerAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{developer}',[DeveloperController::class,'show']);
-            Route::get('/edit/{developer}',[DeveloperController::class,'edit']);
+            Route::get('/{developer}',[developerAdmin::class,'show']);
+            Route::get('/edit/{developer}',[developerAdmin::class,'edit']);
         });
-        Route::get('/create', [DeveloperController:: class, 'create']);
-        Route::post('/add', [DeveloperController:: class, 'store']);
-        Route::post('/update/{developer}', [DeveloperController:: class, 'update']);
-        Route::get('/delete/{developer}',[DeveloperController::class,'destroy']);
+        Route::get('/create', [developerAdmin:: class, 'create']);
+        Route::post('/add', [developerAdmin:: class, 'store']);
+        Route::post('/update/{developer}', [developerAdmin:: class, 'update']);
+        Route::get('/delete/{developer}',[developerAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/agent'], function(){
-        Route::get('/data', [AgentController:: class, 'index']);
+        Route::get('/data', [agentAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{agent}',[AgentController::class,'show']);
-            Route::get('/edit/{agent}',[AgentController::class,'edit']);
+            Route::get('/{agent}',[agentAdmin::class,'show']);
+            Route::get('/edit/{agent}',[agentAdmin::class,'edit']);
         });
-        Route::get('/create', [AgentController:: class, 'create']);
-        Route::post('/add', [AgentController:: class, 'store']);
-        Route::post('/update/{agent}', [AgentController:: class, 'update']);
-        Route::get('/delete/{agent}',[AgentController::class,'destroy']);
+        Route::get('/create', [agentAdmin:: class, 'create']);
+        Route::post('/add', [agentAdmin:: class, 'store']);
+        Route::post('/update/{agent}', [agentAdmin:: class, 'update']);
+        Route::get('/delete/{agent}',[agentAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/unit'], function(){
-        Route::get('/data', [UnitController:: class, 'index']);
+        Route::get('/data', [unitAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{unit}',[UnitController::class,'show']);
-            Route::get('/edit/{unit}',[UnitController::class,'edit']);
+            Route::get('/{unit}',[unitAdmin::class,'show']);
+            Route::get('/edit/{unit}',[unitAdmin::class,'edit']);
         });
-        Route::get('/create', [UnitController:: class, 'create']);
-        Route::post('/add', [UnitController:: class, 'store']);
-        Route::post('/update/{unit}', [UnitController:: class, 'update']);
-        Route::get('/delete/{unit}',[UnitController::class,'destroy']);
+        Route::get('/create', [unitAdmin:: class, 'create']);
+        Route::post('/add', [unitAdmin:: class, 'store']);
+        Route::post('/update/{unit}', [unitAdmin:: class, 'update']);
+        Route::get('/delete/{unit}',[unitAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/property'], function(){
-        Route::get('/data', [PropertyController:: class, 'index']);
+        Route::get('/data', [propertyAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{property}',[PropertyController::class,'show']);
-            Route::get('/edit/{property}',[PropertyController::class,'edit']);
+            Route::get('/{property}',[propertyAdmin::class,'show']);
+            Route::get('/edit/{property}',[propertyAdmin::class,'edit']);
         });
-        Route::get('/create', [PropertyController:: class, 'create']);
-        Route::post('/add', [PropertyController:: class, 'store']);
-        Route::post('/update/{property}', [PropertyController:: class, 'update']);
-        Route::get('/delete/{property}',[PropertyController::class,'destroy']);
+        Route::get('/create', [propertyAdmin:: class, 'create']);
+        Route::post('/add', [propertyAdmin:: class, 'store']);
+        Route::post('/update/{property}', [propertyAdmin:: class, 'update']);
+        Route::get('/delete/{property}',[propertyAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/specification'], function(){
-        Route::get('/data', [SpecificationController:: class, 'index']);
+        Route::get('/data', [specificationAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{specification}',[SpecificationController::class,'show']);
-            Route::get('/edit/{specification}',[SpecificationController::class,'edit']);
+            Route::get('/{specification}',[specificationAdmin::class,'show']);
+            Route::get('/edit/{specification}',[specificationAdmin::class,'edit']);
         });
-        Route::get('/create', [SpecificationController:: class, 'create']);
-        Route::post('/add', [SpecificationController:: class, 'store']);
-        Route::post('/update/{specification}', [SpecificationController:: class, 'update']);
-        Route::get('/delete/{specification}',[SpecificationController::class,'destroy']);
+        Route::get('/create', [specificationAdmin:: class, 'create']);
+        Route::post('/add', [specificationAdmin:: class, 'store']);
+        Route::post('/update/{specification}', [specificationAdmin:: class, 'update']);
+        Route::get('/delete/{specification}',[specificationAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/type'], function(){
-        Route::get('/data', [TypeController:: class, 'index']);
+        Route::get('/data', [typeAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{type}',[TypeController::class,'show']);
-            Route::get('/edit/{type}',[TypeController::class,'edit']);
+            Route::get('/{type}',[typeAdmin::class,'show']);
+            Route::get('/edit/{type}',[typeAdmin::class,'edit']);
         });
-        Route::get('/create', [TypeController:: class, 'create']);
-        Route::post('/add', [TypeController:: class, 'store']);
-        Route::post('/update/{type}', [TypeController:: class, 'update']);
-        Route::get('/delete/{type}',[TypeController::class,'destroy']);
+        Route::get('/create', [typeAdmin:: class, 'create']);
+        Route::post('/add', [typeAdmin:: class, 'store']);
+        Route::post('/update/{type}', [typeAdmin:: class, 'update']);
+        Route::get('/delete/{type}',[typeAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/guide'], function(){
-        Route::get('/data', [GuideController:: class, 'index']);
+        Route::get('/data', [guideAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{guide}',[GuideController::class,'show']);
-            Route::get('/edit/{guide}',[GuideController::class,'edit']);
+            Route::get('/{guide}',[guideAdmin::class,'show']);
+            Route::get('/edit/{guide}',[guideAdmin::class,'edit']);
         });
-        Route::get('/create', [GuideController:: class, 'create']);
-        Route::post('/add', [GuideController:: class, 'store']);
-        Route::post('/update/{guide}', [GuideController:: class, 'update']);
-        Route::get('/delete/{guide}',[GuideController::class,'destroy']);
+        Route::get('/create', [guideAdmin:: class, 'create']);
+        Route::post('/add', [guideAdmin:: class, 'store']);
+        Route::post('/update/{guide}', [guideAdmin:: class, 'update']);
+        Route::get('/delete/{guide}',[guideAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/location'], function(){
-        Route::get('/data', [LocationController:: class, 'index']);
+        Route::get('/data', [locationAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{location}',[LocationController::class,'show']);
-            Route::get('/edit/{location}',[LocationController::class,'edit']);
+            Route::get('/{location}',[locationAdmin::class,'show']);
+            Route::get('/edit/{location}',[locationAdmin::class,'edit']);
         });
-        Route::get('/create', [LocationController:: class, 'create']);
-        Route::post('/add', [LocationController:: class, 'store']);
-        Route::post('/update/{location}', [LocationController:: class, 'update']);
-        Route::get('/delete/{location}',[LocationController::class,'destroy']);
+        Route::get('/create', [locationAdmin:: class, 'create']);
+        Route::post('/add', [locationAdmin:: class, 'store']);
+        Route::post('/update/{location}', [locationAdmin:: class, 'update']);
+        Route::get('/delete/{location}',[locationAdmin::class,'destroy']);
     });
 
     Route::group(['prefix' => '/status'], function(){
-        Route::get('/data', [StatusController:: class, 'index']);
+        Route::get('/data', [statusAdmin:: class, 'index']);
         Route::group(['prefix' => '/show'],function () {
-            Route::get('/{status}',[StatusController::class,'show']);
-            Route::get('/edit/{status}',[StatusController::class,'edit']);
+            Route::get('/{status}',[statusAdmin::class,'show']);
+            Route::get('/edit/{status}',[statusAdmin::class,'edit']);
         });
-        Route::get('/create', [StatusController:: class, 'create']);
-        Route::post('/add', [StatusController:: class, 'store']);
-        Route::post('/update/{status}', [StatusController:: class, 'update']);
-        Route::get('/delete/{status}',[StatusController::class,'destroy']);
+        Route::get('/create', [statusAdmin:: class, 'create']);
+        Route::post('/add', [statusAdmin:: class, 'store']);
+        Route::post('/update/{status}', [statusAdmin:: class, 'update']);
+        Route::get('/delete/{status}',[statusAdmin::class,'destroy']);
     });
 
-    Route::get("/dashboard", [DashboardController::class, 'index']);
+    Route::get("/dashboard", [dashboardAdmin::class, 'index']);
 });

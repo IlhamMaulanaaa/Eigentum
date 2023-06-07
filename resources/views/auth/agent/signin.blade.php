@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/loginRegister/agen/login.css" />
+    <link rel="stylesheet" href="/css/auth/agen/login.css" />
 
     <title>Sign in & Sign up Form</title>
 </head>
@@ -148,7 +148,6 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/10d48cad5b.js" crossorigin="anonymous"></script>
-    <script src="/js/loginRegister/developer/login.js"></script>
-    <script src="/js/loginRegister/developer/jam.js"></script>
+    <script src="/js/auth/developer/login.js"></script>
 </body>
 </html>

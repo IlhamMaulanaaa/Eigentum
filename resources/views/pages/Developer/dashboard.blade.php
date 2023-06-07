@@ -15,8 +15,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/DetailAgent/detailagent.css">
-    <script src="/js/DetailAgent/detailagent.js" defer></script>
+    <link rel="stylesheet" href="/css/agent/detail.css">
+    <script src="/js/agent/detail.js" defer></script>
   </head>
   <body>
     <div class="header__wrapper2">
