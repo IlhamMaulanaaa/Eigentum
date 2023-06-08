@@ -24,7 +24,7 @@
       <div class="cols__container">
         <div class="left__col">
           <div class="img__container">
-            <img src="/assets/detail/home.jpg" alt="Bambang" />
+            <img src="/assets/agent/detail/bambang.jpg" alt="Bambang" />
             <span></span>
           </div>
           <h2>Fatih WIjaya</h2>
@@ -67,7 +67,7 @@
             <!-- Filterable Images / Cards Section -->
             <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;" id="filterable-cards">
               <div class="card p-0" data-name="aktif">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Rumah</h6>
                   <!-- <p class="card-text"></p> -->
@@ -77,7 +77,7 @@
               
               
               <div class="card p-0" data-name="aktif">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Apartemen</h6>
                   <!-- <p class="card-text"></p> -->
@@ -85,7 +85,7 @@
                 <span class="label sold">Aktif</span>
               </div>
               <div class="card p-0" data-name="aktif">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Apartemen</h6>
                   <!-- <p class="card-text"></p> -->
@@ -93,7 +93,7 @@
                 <span class="label sold">Aktif</span>
               </div>
               <div class="card p-0" data-name="dijual">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Rumah</h6>
                   <!-- <p class="card-text"></p> -->
@@ -101,7 +101,7 @@
                 <span class="label sold">Terjual</span>
               </div>
               <div class="card p-0" data-name="dijual">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Apartemen</h6>
                   <!-- <p class="card-text"></p> -->
@@ -109,7 +109,7 @@
                 <span class="label sold">Tersewa</span>
               </div>
               <div class="card p-0" data-name="disewa">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Ruko</h6>
                   <!-- <p class="card-text"></p> -->
@@ -117,7 +117,7 @@
                 <span class="label sold">Terjual</span>
               </div>
               <div class="card p-0" data-name="disewa">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Villa</h6>
                   <!-- <p class="card-text"></p> -->
@@ -125,7 +125,7 @@
                 <span class="label sold">Tersewa</span>
               </div>
               <div class="card p-0" data-name="disewa">
-                <img src="/assets/logo.svg" alt="img" />
+                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
                 <div class="card-body">
                   <h6 class="card-title">Ruko</h6>
                   <!-- <p class="card-text"></p> -->
