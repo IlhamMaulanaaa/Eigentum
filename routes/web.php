@@ -77,13 +77,13 @@ Route::group(['prefix' => '/signin'], function () {
 // developer
 Route::group(['prefix' => '/developer'], function () {
     Route::get('/dashboard', function () {
-        return view('pages.Developer.detail');
+        return view('pages.Developer.dashboard');
     });
 });
 // agent
 Route::group(['prefix' => '/agent'], function () {
-    Route::get('/detail', function () {
-        return view('pages.Agent.detail');
+    Route::get('/dashboard', function () {
+        return view('pages.Agent.dashboard');
     });
 });
 // pages

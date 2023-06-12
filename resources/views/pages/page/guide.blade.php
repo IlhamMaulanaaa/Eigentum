@@ -138,7 +138,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Jual Properti</h4>
                         </a>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Sewa Properti</h4>
                         </a>
@@ -154,7 +154,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Beli Properti</h4>
                         </a>
@@ -162,7 +162,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Developer</h4>
                         </a>
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">KPR</h4>
                         </a>
@@ -178,7 +178,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Hukum Properti</h4>
                         </a>
@@ -186,7 +186,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Perpajakan Properti</h4>
                         </a>
@@ -194,7 +194,7 @@
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
                             <h4 class="text-white font-weight-medium">Jadi Agent</h4>
                         </a>
@@ -238,7 +238,7 @@
             <div class="post container">
                 <!-- Post 1 -->
                 <div class="post-box kpr">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -247,7 +247,7 @@
                 </div>
                 <!-- Post 2 -->
                 <div class="post-box properti">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -256,7 +256,7 @@
                 </div>
                 <!-- Post 3 -->
                 <div class="post-box properti">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -265,7 +265,7 @@
                 </div>
                 <!-- Post 4 -->
                 <div class="post-box news">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -274,7 +274,7 @@
                 </div>
                 <!-- Post 5 -->
                 <div class="post-box kpr">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -283,7 +283,7 @@
                 </div>
                 <!-- Post 6 -->
                 <div class="post-box news">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -292,7 +292,7 @@
                 </div>
                 <!-- Post 7 -->
                 <div class="post-box kpr">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -301,7 +301,7 @@
                 </div>
                 <!-- Post 1 -->
                 <div class="post-box news">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -310,7 +310,7 @@
                 </div>
                 <!-- Post 9 -->
                 <div class="post-box properti">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -318,7 +318,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -326,7 +326,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -334,7 +334,7 @@
                     
                 </div>
                 <div class="post-box agen">
-                    <img src="assets/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
                     <h2 class="category">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
@@ -349,7 +349,7 @@
     </div>
     <!-- Projects End -->
 
-    </div>
+
     
 
 

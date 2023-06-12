@@ -828,7 +828,7 @@ header.shadow .logo{
 }
 
 .home{
-  background-image: url('/assets/Panduan/header-panduan.jpg');
+  background-image: url('/assets/pages/Panduan/header-panduan.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
