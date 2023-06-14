@@ -262,53 +262,59 @@ body {
 
 
 
-        .select-menu2{
+        .select-menu3 {
           width: 153px;
           height: auto;
           margin-top: 0px;
-      }
-      .select-menu2 .select-btn2{
-        display: flex;
-        height: auto;
-        background: transparent;
-        font-size: 18px;
-        font-weight: 400;
-        border-radius: 8px;
-        align-items: center;
-        cursor: pointer;
-        justify-content: space-between;
-          
-      }
-      .select-btn2 i{
+        }
+        
+        .select-menu3 .select-btn3 {
+          display: flex;
+          height: auto;
+          background: transparent;
+          font-size: 18px;
+          font-weight: 400;
+          border-radius: 8px;
+          align-items: center;
+          cursor: pointer;
+          justify-content: space-between;
+          position: relative;
+        }
+        
+        .select-menu3 .select-btn3 i {
           font-size: 25px;
           transition: 0.3s;
-      }
-      .select-menu2.active .select-btn2 i{
+        }
+        
+        .select-menu3.active .select-btn3 i {
           transform: rotate(-180deg);
-      }
-      .select-menu2 .options2{
-          position: relative;
-          padding: 0px;
-          border-radius: 0px;
+        }
+        
+        .select-menu3 .options3 {
+          position: absolute;
+          top: 32px; 
+          margin-top: 150px;
+          left: 0;
+          width: 200px;
+          padding: 0;
+          border-radius: 0;
           background: #fff;
           border: solid 0.1rem #d0d0d0;
           display: none;
-      }
-       .options2{
-        position: relative;
-        padding: 0px;
-        margin-top: -310px;
-        border-radius: 0px;
-        background: #fff;
-        border: solid 0.1rem #d0d0d0;
-        display: none;
-    }
-      .select-menu2.active .options2{
+          z-index: 9999;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .options3{
+          margin-left: 270px;;
+        }
+        
+        .select-menu3.active .options3 {
           display: block;
-      }
-       .option2{
-        z-index: 100;
-        width: 197px;
+        }
+        
+        .option3 {
+          width: 197px;
           display: flex;
           height: 55px;
           cursor: pointer;
@@ -316,202 +322,185 @@ body {
           border-radius: 0px;
           align-items: center;
           background: #fff;
-      }
-      .options2 {
-        z-index: 100;
-        width: 200px;
-        box-shadow: 0 0 3px rgba(0,0,0,0.1);
-        margin-bottom: 33px;
+        }
+        
+        .options3 .option3:hover {
+          background: #f2f2f2;
+        }
+        
+        .option3 i {
+          font-size: 25px;
+          margin-right: 12px;
+        }
+        
+        .option3 .option3-text {
+          font-size: 18px;
+          color: #333;
+        }
+        
+
+
+
+
+        .select-menu2 {
+          width: 153px;
+          height: auto;
+          margin-top: 0px;
+        }
+        
+        .select-menu2 .select-btn2 {
           display: flex;
-          height: 277px;
+          height: auto;
+          background: transparent;
+          font-size: 18px;
+          font-weight: 400;
+          border-radius: 8px;
+          align-items: center;
+          cursor: pointer;
+          justify-content: space-between;
+          position: relative;
+        }
+        
+        .select-menu2 .select-btn2 i {
+          font-size: 25px;
+          transition: 0.3s;
+        }
+        
+        .select-menu2.active .select-btn2 i {
+          transform: rotate(-180deg);
+        }
+        
+        .select-menu2 .options2 {
+          position: absolute;
+          top: 32px; 
+          margin-top: 150px;
+          left: 0;
+          width: 200px;
+          padding: 0;
+          border-radius: 0;
+          background: #fff;
+          border: solid 0.1rem #d0d0d0;
+          display: none;
+          z-index: 9999;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .options2{
+          margin-left: 60px;;
+        }
+        
+        .select-menu2.active .options2 {
+          display: block;
+        }
+        
+        .option2 {
+          width: 197px;
+          display: flex;
+          height: 55px;
           cursor: pointer;
           padding: 0 16px;
           border-radius: 0px;
           align-items: center;
           background: #fff;
-      }
-      .options2 .option2:hover{
-          background: #F2F2F2;
-      }
-      .option2 i{
+        }
+        
+        .options2 .option2:hover {
+          background: #f2f2f2;
+        }
+        
+        .option2 i {
           font-size: 25px;
           margin-right: 12px;
-      }
-      .option2 .option2-text{
+        }
+        
+        .option2 .option2-text {
           font-size: 18px;
           color: #333;
-      }
+        }
 
 
 
 
-      .select-menu3{
-        width: 153px;
-        height: auto;
-        margin-top: 0px;
-    }
-    .select-menu3 .select-btn3{
-      display: flex;
-      height: auto;
-      background: transparent;
-      font-size: 18px;
-      font-weight: 400;
-      border-radius: 8px;
-      align-items: center;
-      cursor: pointer;
-      justify-content: space-between;
+
+
+
+
+
+        .select-menu4 {
+          width: 153px;
+          height: auto;
+          margin-top: 0px;
+        }
         
-    }
-    .select-btn3 i{
-        font-size: 25px;
-        transition: 0.3s;
-    }
-    .select-menu3.active .select-btn3 i{
-        transform: rotate(-180deg);
-    }
-    .select-menu3 .options3{
-        position: relative;
-        padding: 0px;
-        border-radius: 0px;
-        background: #fff;
-        border: solid 0.1rem #d0d0d0;
-        display: none;
-    }
-     .options3{
-      position: relative;
-      padding: 0px;
-      margin-top: -310px;
-      border-radius: 0px;
-      background: #fff;
-      border: solid 0.1rem #d0d0d0;
-      display: none;
-  }
-    .select-menu3.active .options3{
-        display: block;
-    }
-     .option3{
-      z-index: 100;
-      width: 157px;
-        display: flex;
-        height: 55px;
-        cursor: pointer;
-        padding: 0 16px;
-        border-radius: 0px;
-        align-items: center;
-        background: #fff;
-    }
-    .options3 {
-      z-index: 100;
-      width: 160px;
-      box-shadow: 0 0 3px rgba(0,0,0,0.1);
-      margin-bottom: 33px;
-        display: flex;
-        height: 277px;
-        cursor: pointer;
-        padding: 0 16px;
-        border-radius: 0px;
-        align-items: center;
-        background: #fff;
-    }
-    .options3 .option3:hover{
-        background: #F2F2F2;
-    }
-    .option3 i{
-        font-size: 25px;
-        margin-right: 12px;
-    }
-    .option3 .option2-text{
-        font-size: 18px;
-        color: #333;
-    }
+        .select-menu4 .select-btn4 {
+          display: flex;
+          height: auto;
+          background: transparent;
+          font-size: 18px;
+          font-weight: 400;
+          border-radius: 8px;
+          align-items: center;
+          cursor: pointer;
+          justify-content: space-between;
+          position: relative;
+        }
+        
+        .select-menu4 .select-btn4 i {
+          font-size: 25px;
+          transition: 0.3s;
+        }
+        
+        .select-menu4.active .select-btn4 i {
+          transform: rotate(-180deg);
+        }
+        
+        .select-menu4 .options4 {
+          position: absolute;
+          top: 32px; 
+          margin-top: 150px;
+          left: 0;
+          width: 200px;
+          padding: 0;
+          border-radius: 0;
+          background: #fff;
+          border: solid 0.1rem #d0d0d0;
+          display: none;
+          z-index: 9999;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
 
-
-
-
-
-
-
-
-
-    .select-menu4{
-      width: 153px;
-      height: auto;
-      margin-top: 0px;
-  }
-  .select-menu4 .select-btn4{
-      display: flex;
-      height: auto;
-      background: transparent;
-      font-size: 18px;
-      font-weight: 400;
-      border-radius: 8px;
-      align-items: center;
-      cursor: pointer;
-      justify-content: space-between;
-      
-  }
-  .select-btn4 i{
-    font-size: 25px;
-    transition: 0.3s;
-  }
-  .select-menu4.active .select-btn4 i{
-      transform: rotate(-180deg);
-  }
-  .select-menu4 .options4{
-    position: relative;
-    padding: 0px;
-    border-radius: 0px;
-    background: #fff;
-    border: solid 0.1rem #d0d0d0;
-    display: none;
-  }
-   .options4{
-    position: relative;
-    padding: 0px;
-    margin-top: -310px;
-    border-radius: 0px;
-    background: #fff;
-    border: solid 0.1rem #d0d0d0;
-    display: none;
-}
-  .select-menu4.active .options4{
-      display: block;
-  }
-   .option4{
-    z-index: 100;
-    width: 165px;
-      display: flex;
-      height: 55px;
-      cursor: pointer;
-      padding: 0 16px;
-      border-radius: 0px;
-      align-items: center;
-      background: #fff;
-  }
-  .options4 {
-    z-index: 100;
-    width: 168px;
-    box-shadow: 0 0 3px rgba(0,0,0,0.1);
-    margin-bottom: 33px;
-      display: flex;
-      height: 277px;
-      cursor: pointer;
-      padding: 0 16px;
-      border-radius: 0px;
-      align-items: center;
-      background: #fff;
-  }
-  .options4 .option4:hover{
-      background: #F2F2F2;
-  }
-  .option4 i{
-      font-size: 25px;
-      margin-right: 12px;
-  }
-  .option4 .option2-text{
-      font-size: 18px;
-      color: #333;
-  }
+        .options4{
+          margin-left: 470px;;
+        }
+        
+        .select-menu4.active .options4 {
+          display: block;
+        }
+        
+        .option4 {
+          width: 197px;
+          display: flex;
+          height: 55px;
+          cursor: pointer;
+          padding: 0 16px;
+          border-radius: 0px;
+          align-items: center;
+          background: #fff;
+        }
+        
+        .options4 .option4:hover {
+          background: #f2f2f2;
+        }
+        
+        .option4 i {
+          font-size: 25px;
+          margin-right: 12px;
+        }
+        
+        .option4 .option4-text {
+          font-size: 18px;
+          color: #333;
+        }
 
 
           

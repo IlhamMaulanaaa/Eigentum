@@ -100,11 +100,11 @@
               <div class="frame-61-qi7" id="4:7172">
                 <div class="select-menu2">
                   <div class="select-btn2">
-                      <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
+                      <span class="sBtn-text2" style="cursor: pointer; width:auto;">Semua Properti</span>
                       <i class="bx bx-chevron-down"></i>
                   </div>
     
-                  <ul class="options2">
+                  <ul class="options2" style="">
                       
                         <li class="option2">
                           <i class="bx bx-building" style="color: #0C40E8;"></i>
