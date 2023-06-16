@@ -28,6 +28,16 @@ class AgentController extends Controller
         }
     }
 
+    public function searchAgent(){
+        $data = Agent::all();
+        $tables = (new Agent())->getTable();
+
+        if ($data) {
+            return view('pages.page.searchAgent', ['agents' => $data, 'tables' => $tables]);
+        } else {
+            return ApiFormatter::createApi('404', 'Data Not Found', null);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      */

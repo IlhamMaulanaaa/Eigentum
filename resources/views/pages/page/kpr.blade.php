@@ -471,21 +471,6 @@
             padding: auto;
             color: #333;
         }
-
-        /* .result-calculator-end {
-                                                width: 13px;
-                                                height: 24px;
-                                                flex-grow: 0;
-                                                font-family: Inter;
-                                                font-size: 18px;
-                                                font-weight: bold;
-                                                font-stretch: normal;
-                                                font-style: normal;
-                                                line-height: 1.33;
-                                                letter-spacing: normal;
-                                                text-align: left;
-                                                color: #0d1a35;
-                                            } */
     </style>
 
     <body>

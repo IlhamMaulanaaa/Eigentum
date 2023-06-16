@@ -29,6 +29,18 @@ class UnitController extends Controller
         }
     }
 
+    public function honmeunit(){
+        $units = Unit::all();
+        $tables = (new Unit())->getTable();
+
+        if ($units) {
+            return view('pages.page.home', compact("units", "tables"));
+        } else {
+            return ApiFormatter::createApi('404', 'Data Not Found', null);
+        }
+    
+    }
+
 
     public function create()
     {
