@@ -28,9 +28,7 @@ use App\Http\Controllers\UnitController;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.page.home');
-});
+Route::get('/',[UnitController::class, 'honmeunit']);
 
 
 // authentication
@@ -88,7 +86,7 @@ Route::group(['prefix' => '/agent'], function () {
 });
 // pages
 Route::group(['prefix' => '/pages'], function () {
-    Route::get('/searchagent',[AgentController::class, 'index']);
+    Route::get('/searchagent',[AgentController::class, 'searchAgent']);
     
     Route::get('/notfound', function () {
         return view('pages.page.notfound');

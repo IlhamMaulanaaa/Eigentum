@@ -58,6 +58,7 @@
     <body>
         <img class="imageHero" src="/assets/properti/imgHero.svg" alt="">
         <form id="myForm">
+            @csrf
             <label for="nama_properti">Nama Properti:</label>
             <input type="text" id="nama_properti" name="nama_properti" required>
 
