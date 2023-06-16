@@ -247,21 +247,6 @@
     <div class="wrapper" >
         <ul class="carousel11">
           <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
             <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false"></div>
             <h2>Bambang Yudoyono</h2>
             <span>Agent Independen</span>
