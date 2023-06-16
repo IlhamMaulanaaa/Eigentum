@@ -53,141 +53,85 @@
         <div class="desktop-1-RTV" id="1:2">
 
             <div class="frame-147-QbZ" id="4:7162">
-                <div class="group-75-kvK" id="4:7163">
-                    <div class="group-74-7F56" id="4:7164">
-                        <div class="group-71-2cw" id="4:7166">
-                            <div class="segera-miliki-properti-impianmu-AUF" id="4:7167">Segera Miliki Properti Impianmu
-                            </div>
-                            <div class="temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu"
-                                id="4:7168">Temukan pilihan properti terbaik untuk investasi atau tempat tinggal di
-                                website kami, dari apartemen hingga rumah mewah.</div>
-                        </div>
-                    </div>
-                    <div class="group-11-tab" id="4:7169">
-                        <div class="group-10-mPV" id="4:7171">
-
-
-
-
-                            <!-- Search dan Dropdown -->
-                            <div class="group-70-tyu" id="4:7186">
-                                <div class="select-menu1">
-                                    <div class="select-btn1">
-                                        <span class="sBtn-text1">Dijual</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options1">
-                                        <li class="option1">
-                                            <i class="bx bx-tag" style="color: #0C40E8;"></i>
-                                            <span class="option1-text">Dijual</span>
-                                        </li>
-                                        <li class="option1">
-                                            <i class="bx bx-receipt" style="color: #0C40E8;"></i>
-                                            <span class="option1-text">Disewa</span>
-                                        </li>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="input-box">
-                                    <input type="text" placeholder="Cari Nama Properti atau Lokasi" />
-                                    <button class="button">Search</button>
-                                </div>
-                            </div>
-
-
-
-
-                            <!-- Filter Home -->
-                            <div class="frame-61-qi7" id="4:7172">
-                                <div class="select-menu2">
-                                    <div class="select-btn2">
-                                        <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options2">
-
-                                        <li class="option2">
-                                            <i class="bx bx-building" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Apartemen</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-home" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Rumah</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-store" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Ruko</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Villa</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-grid-alt" style="color: #171515;"></i>
-                                            <span class="option2-text">Semua Properti</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="select-menu3">
-                                    <div class="select-btn3">
-                                        <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options3">
-
-                                        <li class="option3">
-                                            <span class="option3-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Satu</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Dua</span>
-                                        </li>
-
-                                        <li class="option3">
-                                            <span class="option3-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option3">
-                                            <i class="bx bx-hotel" style="color: #171515;"></i>
-                                            <span class="option3-text">Kamar Tidur</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="select-menu4">
-                                    <div class="select-btn4">
-                                        <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options4">
-                                        <li class="option4">
-                                            <span class="option4-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Satu</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <i class="bx bx-bath" style="color: #171515;"></i>
-                                            <span class="option4-text">Kamar Mandi</span>
-                                        </li>
-
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="group-75-kvK" id="4:7163">
+            <div class="group-74-7F56" id="4:7164">
+            <div class="group-71-2cw" id="4:7166">
+            <div class="segera-miliki-properti-impianmu-AUF" id="4:7167">Segera Miliki Properti Impianmu</div>
+            <div class="temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu" id="4:7168">Temukan pilihan properti terbaik untuk investasi atau tempat tinggal di website kami, dari apartemen hingga rumah mewah.</div>
+            </div>
+            </div>
+            <div class="group-11-tab" id="4:7169">
+            <div class="group-10-mPV" id="4:7171">
+              
+              
+    
+    
+              <!-- Search dan Dropdown -->
+            <div class="group-70-tyu" id="4:7186">
+              <div class="select-menu1">
+                <div class="select-btn1">
+                    <span class="sBtn-text1">Dijual</span>
+                    <i class="bx bx-chevron-down"></i>
+                </div>
+        
+                <ul class="options1">
+                      <li class="option1">
+                        <i class="bx bx-tag" style="color: #0C40E8;"></i>
+                        <span class="option1-text">Dijual</span>
+                      </li>
+                      <li class="option1">
+                        <i class="bx bx-receipt" style="color: #0C40E8;"></i>
+                        <span class="option1-text">Disewa</span>
+                      </li>
+                      
+                    </li>
+                </ul>
+            </div>
+              <div class="input-box">
+                <input type="text" placeholder="Cari Nama Properti atau Lokasi" />
+                <button class="button">Search</button>
+              </div>
+            </div>
+    
+    
+    
+    
+              <!-- Filter Home -->
+              <div class="frame-61-qi7" id="4:7172">
+                <div class="select-menu2">
+                  <div class="select-btn2">
+                      <span class="sBtn-text2" style="cursor: pointer; width:auto;">Semua Properti</span>
+                      <i class="bx bx-chevron-down"></i>
+                  </div>
+    
+                  <ul class="options2" style="">
+                      
+                        <li class="option2">
+                          <i class="bx bx-building" style="color: #0C40E8;"></i>
+                          <span class="option2-text">Apartemen</span>
+                        </li>
+                        <li class="option2">
+                          <i class="bx bx-home" style="color: #0C40E8;"></i>
+                          <span class="option2-text">Rumah</span>
+                        </li>
+                        <li class="option2">
+                          <i class="bx bx-store" style="color: #0C40E8;"></i>
+                          <span class="option2-text">Ruko</span>
+                        </li>
+                        <li class="option2">
+                          <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
+                          <span class="option2-text">Villa</span>
+                        </li>
+                        <li class="option2">
+                          <i class="bx bx-grid-alt" style="color: #171515;"></i>
+                          <span class="option2-text">Semua Properti</span>
+                        </li>
+                  </ul>
+              </div>
+              <div class="select-menu3">
+                <div class="select-btn3">
+                    <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
+                    <i class="bx bx-chevron-down"></i>
                 </div>
                 <div class="frame-156-pto" id="4:7196">
                     <div class="group-77-FDR" id="4:7198">
