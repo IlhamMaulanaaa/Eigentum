@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = Type::all();
@@ -21,22 +19,16 @@ class TypeController extends Controller
         if ($data) {
             // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.type.all', ['types' => $data , 'tables' => $tables]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.type.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request, Type $type)
     {
         $type->name = $request->name;
@@ -45,9 +37,7 @@ class TypeController extends Controller
         return redirect("admin/type/data")->with('success', 'Status created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Type $type)
     {
         return view('admin.type.detail', [
@@ -56,9 +46,6 @@ class TypeController extends Controller
     }
 
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Type $type)
     {
         return view('admin.type.edit', [
@@ -66,9 +53,7 @@ class TypeController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, Type $type)
     {
         $type->name = $request->name;
@@ -77,9 +62,7 @@ class TypeController extends Controller
         return redirect("admin/type/data")->with('success', 'Status updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Type $type)
     {
         $type->delete();

@@ -12,34 +12,19 @@ use Illuminate\Support\Str;
 
 class DeveloperController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $data = Developer::all();
+        $developers = Developer::all();
         $tables = (new Developer())->getTable();
 
-        if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.developer.all', ['developers' => $data, 'tables' => $tables]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
-        }
+        return view('admin.developer.all', compact('developers', 'tables'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
 
     public function create()
     {
         return view('admin.developer.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
 
     public function store(Request $request)
     {
@@ -50,67 +35,62 @@ class DeveloperController extends Controller
                 'password'  => 'required|min:8',
                 'owner' => 'required',
                 'address'  => 'required',
-                'license'   => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'license.*' => 'required|file|max:10240',
                 'phone_number'  => 'required',
             ]);
 
-            $license = Str::random(8). "." . $request->license->getClientOriginalExtension();
-
+            $files = $request->file('license');
+            $fileArray = [];
+            
+                foreach ($files as $index => $file) {
+                    $license =  $file->getClientOriginalName() . "." . $file->getClientOriginalExtension();
+                    $fileArray[] = $license;
+                    Storage::disk('public')->put($license, file_get_contents($file));
+                }
+            
             $data = Developer::create([
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'owner' => $request->owner,
                 'address'   => $request->address,
-                'license'   => $license,
+                'license'   => implode("|", $fileArray),
                 'phone_number'  => $request->phone_number,
             ]);
             
-            Storage::disk('public')->put($license, file_get_contents($request->license));
 
             $data = Developer::where('id', '=', $data->id)->get();
-
             
-                return redirect('/admin/developer/data',);
-            
+            return redirect('/admin/developer/data',);
         } catch (Exception $e) {
             return $e;
         }
     }
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Developer $developer)
     {
-        return view('admin.developer.detail', [
-            'developer' => $developer
-        ]);
+        $licenseFile = explode("|", $developer->license);  
+        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        return view('admin.developer.detail', compact('developer', 'licenseFile', 'fileNames' ));
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Developer $developer)
     {
-        return view('admin.developer.edit', [
-            'developer' => $developer
-        ]);
+        $licenses = is_string($developer->license) ? explode('|', $developer->license) : []; 
+        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
 
     public function update(Request $request,string $id)
     {
-        try {
+        try{
             $request->validate([
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
                 'owner' => 'nullable',
                 'address'  => 'nullable',
-                'license'   =>  'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'license.*' => 'nullable|file|max:10240',
                 'phone_number'  => 'nullable',
             ]);
 
@@ -126,48 +106,50 @@ class DeveloperController extends Controller
             ]);
 
             if ($request->hasFile('license')) {
-                $imageName = $request->license->getClientOriginalName(). "." . $request->license->getClientOriginalExtension();
-                $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->license));
-                if (File::exists($image_path)) {
-                    File::delete($image_path);
+                $licenses = $request->file('license');
+                foreach ($licenses as $index => $license) {
+                    if ($license->isValid()) {
+                        $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
+                        $license->storeAs('public', $licenseName);
+                        $fileArray = explode('|', $data->license);
+            
+                        // Update the specific index in the array
+                        $fileArray[$index] = $licenseName;
+            
+                        // Rebuild the array and assign it back to the column
+                        $data->license = implode('|', $fileArray);
+                    }
                 }
-                $data->license = $imageName;
             }
 
             $data->save();
 
             $data = Developer::where('id', '=', $data->id)->get();
             $url = '/admin/developer/show/' . $id;
+            return redirect($url);
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
+
+        }catch(Exception $e){
             return $e;
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
 
     public function destroy(string $id)
     {
-        try {
+        try{
             $developer = Developer::findOrfail($id);
             $developer->properties()->delete();
             $developer->units()->delete();
             $data = $developer->delete();
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/developer/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
+            return  redirect('/admin/developer/data',);
+
+        }catch(Exception $e){
             return $e;
         }
+        
     }
+
 }

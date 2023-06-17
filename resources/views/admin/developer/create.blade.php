@@ -36,13 +36,24 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="license" class="form-label">License</label>
-                                <input type="file" class="form-control noscroll" id="license" name="license">
+                                <label for="nib" class="form-label">Nomor Induk Berusaha</label>
+                                <input type="file" class="form-control noscroll" id="license_nib" name="license[]" multiple>
                             </div>
                             <br>
                             <div class="form-group">
+                                <label for="npwp" class="form-label">Nomor Pokok Wajib Pajak</label>
+                                <input type="file" class="form-control noscroll" id="license_npwp" name="license[]" multiple>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label for="sbu" class="form-label">Sertifikat Badan Usaha</label>
+                                <input type="file" class="form-control noscroll" id="license_sbu" name="license[]" multiple>
+                            </div>
+                            
+                            <br>
+                            <div class="form-group">
                                 <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="tel" class="form-control noscroll" id="phone_number" name="phone_number">
+                                <input type="number" class="form-control noscroll" id="phone_number" name="phone_number">
                             </div>
                             <br>
                             

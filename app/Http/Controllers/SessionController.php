@@ -57,7 +57,7 @@ class SessionController extends Controller
             'email' => $request->email,
             'name' => $request->name,
             'password' => bcrypt($request->password),
-        ];
+        ]; 
         
         User::create($data);
         

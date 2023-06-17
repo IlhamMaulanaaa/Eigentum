@@ -9,9 +9,7 @@ use Illuminate\Http\Request;
 
 class SpecificationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = Specification::all();
@@ -19,25 +17,19 @@ class SpecificationController extends Controller
 
         if ($data) {
             return view('admin.specification.all' , ['specifications' =>$data, 'tables' => $tables ]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.specification.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        try {
+        
             $request->validate([
                 'bedroom' => 'required',
                 'bathroom' => 'required',
@@ -58,18 +50,12 @@ class SpecificationController extends Controller
 
             if ($data) {
                 return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/specification/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            } 
+        
     }
 
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Specification $specification)
     {
         return view('admin.specification.detail', [
@@ -77,9 +63,6 @@ class SpecificationController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Specification $specification)
     {
         return view('admin.specification.edit', [
@@ -87,13 +70,11 @@ class SpecificationController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
 
     public function update(Request $request, string $id)
     {
-        try {
+        
             $request->validate([
                 'bedroom' => 'required',
                 'bathroom' => 'required',
@@ -120,28 +101,20 @@ class SpecificationController extends Controller
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
-        } catch (Exception $e) {
-            return ApiFormatter::createApi('400', $e->getMessage(), null);
-        }
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
 
     public function destroy(string $id)
     {
-        try {
+        
             $specification = Specification::findOrfail($id);
             $data = $specification->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/specification/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+                return  redirect('/admin/specification/data',);
+            } 
+        
     }
 }

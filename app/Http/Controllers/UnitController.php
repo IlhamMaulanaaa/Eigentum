@@ -24,8 +24,6 @@ class UnitController extends Controller
 
         if ($units) {
             return view('admin.unit.all', compact("units", "tables"));
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
@@ -39,7 +37,7 @@ class UnitController extends Controller
 
     public function store(Request $request,  $propertyId)
     {
-        try {
+        
             
             $request->validate([
                 'title' => 'required',
@@ -63,12 +61,12 @@ class UnitController extends Controller
                 return redirect()->back()->with('error', 'Property tidak ditemukan');
             }
 
+            $imageFieldName = $request->file('image');
             $imageNames = [];
-            $imageFieldName = 'image';
-            
-            $imageName = Str::random(8) . "." . $request->file($imageFieldName)->getClientOriginalExtension(); 
+
+            $imageName = $imageFieldName->getClientOriginalName() . "." . $imageFieldName->getClientOriginalExtension(); 
             $imageNames[] = $imageName;
-            $request->file($imageFieldName)->storeAs('public', $imageName);
+            $imageFieldName->storeAs('public', $imageName);
 
             $unit = Unit::create([
                 'title' => $request->title,
@@ -95,7 +93,7 @@ class UnitController extends Controller
                 if (!is_null($file)) {
                     $imageArray = [];
                     foreach ($file as $fieldName) {
-                        $imageFileName = Str::random(8) . "." . $fieldName->getClientOriginalExtension();
+                        $imageFileName = $fieldName->getClientOriginalName()  . "." . $fieldName->getClientOriginalExtension();
                         $imageArray[] = $imageFileName;
                         $fieldName->storeAs('public', $imageFileName);
                     }
@@ -116,14 +114,9 @@ class UnitController extends Controller
 
             return redirect('/admin/unit/data');
 
-        } catch (Exception $e) {
-            return $e;
-        }
+        
     }
 
-
-
-    
     public function show(Unit $unit, Request $request)
     {
         $data = $request->all();
@@ -146,7 +139,7 @@ class UnitController extends Controller
     
     public function update(Request $request, string $id)
         {
-            // try {
+            try{
                 $data = $request->all();
 
                 $unit = Unit::findOrfail($id);
@@ -169,9 +162,9 @@ class UnitController extends Controller
                 ]);
 
                 if ($request->hasFile('image')) {
-                    $imageFieldName = 'image';
-                    $imageName = Str::random(8) . "." . $request->file($imageFieldName)->getClientOriginalExtension();
-                    $request->file($imageFieldName)->storeAs('public', $imageName);
+                    $imageFieldName = $request->file('image');
+                    $imageName = $imageFieldName->getClientOriginalExtension() . "." . $imageFieldName->getClientOriginalExtension();
+                    $imageFieldName->storeAs('public', $imageName);
                     $unit->image = $imageName;
                 }
 
@@ -211,7 +204,7 @@ class UnitController extends Controller
                             }
             
                             $uploadedImage = $request->file($column . '_update.' . $index);
-                            $imageName = Str::random(8) . '.' . $uploadedImage->getClientOriginalExtension();
+                            $imageName = $uploadedImage . '.' . $uploadedImage->getClientOriginalExtension();
                             $uploadedImage->storeAs('public', $imageName);
                             $existingImages[$index] = $imageName;
                         }
@@ -223,7 +216,7 @@ class UnitController extends Controller
                         $newImages = [];
             
                         foreach ($uploadedImages as $uploadedImage) {
-                            $imageName = Str::random(8) . '.' . $uploadedImage->getClientOriginalExtension();
+                            $imageName = Str::lmiit($uploadedImage,8) . '.' . $uploadedImage->getClientOriginalExtension();
                             $uploadedImage->storeAs('public', $imageName);
                             $existingImages[] = $imageName;
                         }
@@ -234,18 +227,18 @@ class UnitController extends Controller
             
                 $image->save();
 
-
                 $unit->status()->sync($request->input('status_id'));
 
                 return redirect('/admin/unit/show/' . $id);
-            // } catch (Exception $e) {
-            //     return $e;
-            // }
+            } catch (Exception $e) {
+                return $e;
+            }
+
         }
 
     public function destroy(string $id)
     {
-        try {
+        
             $unit = Unit::findOrfail($id);
 
             $unit->delete();
@@ -254,8 +247,6 @@ class UnitController extends Controller
             $unit->images()->delete();
 
             return redirect('/admin/unit/data')->with('success', 'Data Deleted');
-        } catch (Exception $e) {
-            return $e;
-        }
+        
     }
 }

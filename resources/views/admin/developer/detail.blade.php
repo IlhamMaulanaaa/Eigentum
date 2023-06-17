@@ -38,12 +38,16 @@
                             </div>
                             <br>
 
-
+                            
                             <div class="form-group">
                                 <label for="license" class="form-label">License</label>
-                                <div class="image-text-wrapper">
-                                    <img src="{{ asset('storage/' . $developer->license) }}" alt="" width="200">
-                                </div>
+                                @foreach ($licenseFile as $index => $file)
+                                    <div class="col-auto">
+                                        <div class="file-container">
+                                            <a href="{{ route('pdf.preview', ['file' => $file]) }}" target="_blank">Tampilkan {{ pathinfo($file, PATHINFO_FILENAME) }}</a>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                             <br>
 
@@ -60,13 +64,15 @@
                                     @foreach ($developer->properties as $property)
                                         <li>
                                             {{ $property->property }}
-                                            <a href="/admin/property/show/{{ $property->id }}" class="text-warning">Detail</a>
+                                            <a href="/admin/property/show/{{ $property->id }}"
+                                                class="text-warning">Detail</a>
                                             <a href="/admin/property/show/edit/{{ $property->id }}">Edit</a>
                                         </li>
                                     @endforeach
                                 </ul>
-                                
-                                <a href="{{ route('property.create', $developer->id) }}" class="btn btn-success">Tambah Property</a>
+
+                                <a href="{{ route('property.create', $developer->id) }}" class="btn btn-success">Tambah
+                                    Property</a>
                             </div>
                             <br>
 

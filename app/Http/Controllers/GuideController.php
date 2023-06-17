@@ -12,9 +12,7 @@ use Illuminate\Support\Str;
 
 class GuideController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = Guide::all();
@@ -27,20 +25,16 @@ class GuideController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.guide.create', ['guide']);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        try{
+        
             $request->validate([
                 'title'  => 'required',
                 'description'   => 'required',
@@ -64,14 +58,9 @@ class GuideController extends Controller
             }else{
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
-        }catch(Exception $e){
-            return $e;
-        }
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Guide $guide)
     {
         return view('admin.guide.detail', [
@@ -79,9 +68,6 @@ class GuideController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Guide $guide)
     {
         return view('admin.guide.edit', [
@@ -89,12 +75,10 @@ class GuideController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        try {
+        
         $request->validate([
             'title'  => 'required',
             'description'   => 'required',
@@ -124,32 +108,20 @@ class GuideController extends Controller
             $data = Guide::where('id', '=', $data->id)->get();
             $url = '/admin/guide/show/' . $id;
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            return redirect($url);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        try {
+        
             $guide = Guide::findOrfail($id);
             $data = $guide->delete();
 
             if ($data) {
                 return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/guide/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            } 
+        
     }
 }

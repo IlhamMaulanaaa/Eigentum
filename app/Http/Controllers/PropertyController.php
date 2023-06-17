@@ -14,9 +14,7 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = Property::all();
@@ -31,9 +29,7 @@ class PropertyController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create(Request $request, $developerId){
 
         $developer = Developer::findOrfail($developerId);
@@ -45,7 +41,7 @@ class PropertyController extends Controller
 
     public function store(Request $request, $developerId)
     {
-        try{
+        
 
             
             $request->validate([
@@ -88,14 +84,9 @@ class PropertyController extends Controller
             }else{
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
-        }catch(Exception $e){
-            return $e;
-        }
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Property $property)
     {
         return view('admin.property.detail',[
@@ -103,9 +94,6 @@ class PropertyController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Property $property)
     {
         return view('admin.property.edit',[
@@ -116,13 +104,11 @@ class PropertyController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     
     public function update(Request $request, string $id)
     {
-        try{
+        
             $request->validate([
                 'property'  => 'nullable',
                 'description'   => 'nullable',
@@ -141,39 +127,29 @@ class PropertyController extends Controller
                 'developer_id'  => $request->developer_id,
             ]);
 
-            $data->agents()->sync($request->input('agent_id'));
+            // $data->agents()->sync($request->input('agent_id'));
 
             $data = Property::where('id','=', $data->id)->get();
             $url = '/admin/property/show/' . $id;
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            return redirect($url);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     
     public function destroy(string $id)
     {
-        try{
+        
             $property = Property::findOrfail($id);
             $property->units()->delete();
             $data = $property->delete();
 
             if($data){
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/property/data',);
+                return  redirect('/admin/property/data',);
             }else{
                 return ApiFormatter::createApi('400', 'Bad Request', null);
             }
-        }catch(Exception $e){
-            return $e;
-        }
+
     }
 }

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
+use App\Http\Controllers\FilePreviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -174,45 +175,5 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
 
     Route::get("/dashboard", [DashboardController::class, 'index']);
 
-    // Route::group(['prefix' => '/developer'], function(){
-    //     Route::get('/data', [DeveloperController::class, 'index']);
-    
-    //     Route::group(['prefix' => '/{developer}'], function () {
-    //         Route::get('/',[DeveloperController::class,'show']);
-    //         Route::get('/edit',[DeveloperController::class,'edit']);
-            
-    //         Route::group(['prefix' => '/property'], function(){
-    //             Route::get('/', [PropertyController::class, 'index']);
-    
-    //             Route::group(['prefix' => '/{property}'],function () {
-    //                 Route::get('/',[PropertyController::class,'show']);
-    //                 Route::get('/edit',[PropertyController::class,'edit']);
-    //             });
-    
-    //             Route::get('/create', [PropertyController::class, 'create'])->name('developers.create-property');
-    //             Route::post('/add', [PropertyController::class, 'store'])->name('developers.store-property');
-    //             Route::post('/update/{property}', [PropertyController::class, 'update']);
-    //             Route::get('/delete/{property}',[PropertyController::class,'destroy']);
-    
-    //             Route::group(['prefix' => '/unit'], function(){
-    //                 Route::get('/', [UnitController::class, 'index']);
-    
-    //                 Route::group(['prefix' => '/{unit}'],function () {
-    //                     Route::get('/',[UnitController::class,'show']);
-    //                     Route::get('/edit',[UnitController::class,'edit']);
-    //                 });
-    
-    //                 Route::get('/create', [UnitController::class, 'create'])->name('properties.create-unit');
-    //                 Route::post('/add', [UnitController::class, 'store'])->name('properties.store-unit');
-    //                 Route::post('/update/{unit}', [UnitController::class, 'update']);
-    //                 Route::get('/delete/{unit}',[UnitController::class,'destroy']);
-    //             });
-    //         });
-    //     });
-    
-    //     Route::get('/create', [DeveloperController::class, 'create']);
-    //     Route::post('/add', [DeveloperController::class, 'store']);
-    //     Route::post('/update/{developer}', [DeveloperController::class, 'update']);
-    //     Route::get('/delete/{developer}',[DeveloperController::class,'destroy']);
-    // });
+    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
 });

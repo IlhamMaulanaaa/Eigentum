@@ -8,7 +8,8 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/developer/update/ {{ $developer->id }}" enctype="multipart/form-data">
+                        <form method="post" action="/admin/developer/update/ {{ $developer->id }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="company" class="form-label">Company</label>
@@ -39,28 +40,19 @@
                                     value="{{ old('address', $developer->address) }}" required>
                             </div>
                             <br>
-                            <div class="col">
-                                @if ($developer->license)
-                                    <img src="{{ asset('storage/' . $developer->license) }}" alt="{{ $developer->license }}"
-                                        width="100">
-                                @endif
-                                <div class="form-group">
-                                    <label for="" class="form-label">License</label>
-                                    <input type="file" class="form-control" id="license" name="license">
-                                </div>
+                            <div class="col-auto">
+                                @foreach ($licenses as $index => $license)
+                                    <div class="file-container my-2">
+                                        <a href="{{ route('pdf.preview', ['file' => $license]) }}" target="_blank">Tampilkan {{ pathinfo($license, PATHINFO_FILENAME) }}</a>
+                                    </div>
+                                    <input type="file" class="form-control noscroll" id="license" name="license[{{ $index }}]" multiple>
+                                @endforeach
                             </div>
                             <br>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="property" class="form-label">Property</label>
-                                </div>
-                                <ul>
-                                    @foreach ($developer->properties as $property)
-                                        <li>{{ $property->property }}
-                                    @endforeach
-                                </ul>
-                                <a type="button" class="btn btn-warning"
-                                    href="/admin/property/create">Create New</a>
+                            <div class="form-group">
+                                <label for="phone_number" class="form-label">Phone number</label>
+                                <input type="number" class="form-control" id="phone_number" name="phone_number"
+                                    value="{{ old('phone_number', $developer->phone_number) }}" required>
                             </div>
                             <br>
                             <div class="float-end">

@@ -13,34 +13,25 @@ use Illuminate\Support\Str;
 
 class AgentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        $data = Agent::all();
+        $agents = Agent::all();
         $tables = (new Agent())->getTable();
 
-        if ($data) {
-            return view('admin.agent.all', ['agents' => $data, 'tables' => $tables]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
+        if ($agents) {
+            return view('admin.agent.all', compact('agents', 'tables'));
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function create(Location $location)
     {
-        return view('admin.agent.create', [
-            'location' => Location::all()
-        ]);
+        return view('admin.agent.create',compact('location'));
     }
 
     public function store(Request $request)
     {
-        try {
             $request->validate([
                 'email' => 'required|email|unique:agents',
                 'password'  => 'required|min:8',
@@ -75,41 +66,27 @@ class AgentController extends Controller
             $data = Agent::where('id', '=', $data->id)->get();
 
             if ($data) {
-                return redirect('/admin/agent/data',);
+                return redirect('/admin/agent/data');
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
-        } catch (Exception $e) {
-            return $e;
-        }
+        
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Agent $agent)
     {
-        return view('admin.agent.detail', [
-            "agent" => $agent,
-        ]);
+        return view('admin.agent.detail', compact('agent'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Agent $agent)
     {
-        return view('admin.agent.edit', [
-            "agent" => $agent
-        ]);
+        return view('admin.agent.edit', compact('agent'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request,string $id)
     {
-        try {
+        
             $request->validate([
                 'name'    => 'required',
                 'email' => 'nullable|email',
@@ -149,33 +126,21 @@ class AgentController extends Controller
             $data = Agent::where('id', '=', $data->id)->get();
             $url = '/admin/agent/show/' . $id;
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            return redirect($url);
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        try {
+        
             $agent = Agent::findOrfail($id);
             $agent->properties()->detach();
             $data = $agent->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/agent/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+                return  redirect('/admin/agent/data',);
+            } 
+        
     }
 }

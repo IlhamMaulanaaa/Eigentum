@@ -23,6 +23,7 @@
                             <th scope="col">Address</th>
                             <th scope="col">Developer</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Listing</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                                     <td class="text-start">{{ $property->address }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
+                                    <td class="text-start ">{{ $property->units->count() }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $property->id }}">Detail</a>
