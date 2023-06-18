@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/loginRegister/developer/login.css" />
+    <link rel="stylesheet" href="/css/auth/developer/login.css" />
 
     <title>Sign in & Sign up Form</title>
 </head>
@@ -100,14 +100,10 @@
             </div>
             <div class="panel right-panel ">
                 <div class="content">
-                    <div class="circle">
-                        <img class="mb-4" src="/assets/login/logo_1.png" alt="">
-
-                            <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
-                            </span>
-                    </div>
+                   
                     <p>
-                        Bergabunglah dengan komunitas developer terbaik dan tingkatkan penjualan properti Anda di Eigentum.
+                        Bergabunglah dengan komunitas developer terbaik dan tingkatkan penjualan properti Anda di
+                        Eigentum.
                     </p>
                     <button class="btn transparent " id="sign-in-btn">
                         Sign in

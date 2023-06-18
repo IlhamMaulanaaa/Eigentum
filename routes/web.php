@@ -77,6 +77,9 @@ Route::group(['prefix' => '/developer'], function () {
     Route::get('/dashboard', function () {
         return view('pages.Developer.dashboard');
     });
+    Route::get('/detail', function () {
+        return view('pages.Developer.detail');
+    });
 });
 // agent
 Route::group(['prefix' => '/agent'], function () {
