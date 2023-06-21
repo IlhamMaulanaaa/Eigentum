@@ -112,7 +112,7 @@ Route::group(['prefix' => '/pages'], function () {
         return view('pages.page.guide');
     });
     Route::get('/kpr', function () {
-    return view('pages.page.kpr1');
+    return view('pages.page.kpr');
     });
 });
 
