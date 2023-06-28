@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Developer;
+use App\Models\Owner;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -30,13 +31,15 @@ class DeveloperController extends Controller
     {
         try {
             $request->validate([
+                'name'   => 'required',
                 'company'   => 'required',
                 'email' => 'required|email|unique:developers',
                 'password'  => 'required|min:8',
-                'owner' => 'required',
                 'address'  => 'required',
                 'license.*' => 'required|file|max:10240',
-                'phone_number'  => 'required',
+                'telp'  => 'required',
+                'ktp' => 'required|file|max:10240',
+                'face' => 'required|file|max:10240',
             ]);
 
             $files = $request->file('license');
@@ -48,18 +51,26 @@ class DeveloperController extends Controller
                     Storage::disk('public')->put($license, file_get_contents($file));
                 }
             
-            $data = Developer::create([
+            $developer = Developer::create([
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'owner' => $request->owner,
                 'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
-                'phone_number'  => $request->phone_number,
+                'telp'  => $request->telp,
             ]);
+
+            $owner = Owner::create([
+                'name' => $request->name,
+                'owner_email' => $request->email,
+                'owner_password' => bcrypt($request->password),
+                'ktp' => $request->ktp,
+                'face' => $request->face,
+                'developer_id' => $developer->id,
+            ]); 
             
 
-            $data = Developer::where('id', '=', $data->id)->get();
+            $developer = Developer::where('id', '=', $developer->id)->get();
             
             return redirect('/admin/developer/data',);
         } catch (Exception $e) {
@@ -91,7 +102,7 @@ class DeveloperController extends Controller
                 'owner' => 'nullable',
                 'address'  => 'nullable',
                 'license.*' => 'nullable|file|max:10240',
-                'phone_number'  => 'nullable',
+                'telp'  => 'nullable',
             ]);
 
             $data= Developer::findOrfail($id);
@@ -102,7 +113,7 @@ class DeveloperController extends Controller
                 'password'  => bcrypt($request->password),
                 'owner' => $request->owner,
                 'address'   => $request->address,
-                'phone_number'  => $request->phone_number
+                'telp'  => $request->telp
             ]);
 
             if ($request->hasFile('license')) {

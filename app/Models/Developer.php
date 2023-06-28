@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
 class Developer extends Model
@@ -30,5 +31,10 @@ class Developer extends Model
     public function units(): HasMany
     {
         return $this->hasMany(Property::class);
+    }
+
+    public function owners(): HasOne
+    {
+        return $this->hasOne(Owner::class, 'developer_id'); 
     }
 }

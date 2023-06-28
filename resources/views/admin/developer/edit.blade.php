@@ -43,16 +43,18 @@
                             <div class="col-auto">
                                 @foreach ($licenses as $index => $license)
                                     <div class="file-container my-2">
-                                        <a href="{{ route('pdf.preview', ['file' => $license]) }}" target="_blank">Tampilkan {{ pathinfo($license, PATHINFO_FILENAME) }}</a>
+                                        <a href="{{ route('pdf.preview', ['file' => $license]) }}" target="_blank">Tampilkan
+                                            {{ pathinfo($license, PATHINFO_FILENAME) }}</a>
                                     </div>
-                                    <input type="file" class="form-control noscroll" id="license" name="license[{{ $index }}]" multiple>
+                                    <input type="file" class="form-control noscroll" id="license"
+                                        name="license[{{ $index }}]" multiple>
                                 @endforeach
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="number" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ old('phone_number', $developer->phone_number) }}" required>
+                                <label for="telp" class="form-label">Phone number</label>
+                                <input type="number" class="form-control" id="telp" name="telp"
+                                    value="{{ old('telp', $developer->telp) }}" required>
                             </div>
                             <br>
                             <div class="float-end">

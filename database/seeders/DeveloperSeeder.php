@@ -24,7 +24,7 @@ class DeveloperSeeder extends Seeder
                 "address" => Str::limit(fake()->address(), 20),
                 "owner" => fake()->name(),
                 "license" => fake()->imageUrl(),
-                "phone_number" => fake()->phoneNumber(),
+                "telp" => fake()->phoneNumber(),
             ]);
         }
         
@@ -36,7 +36,7 @@ class DeveloperSeeder extends Seeder
         //     "address" => Str::limit(fake()->address(), 20),
         //     "owner" => fake()->name(),
         //     "license" => fake()->imageUrl(),
-        //     "phone_number" => fake()->phoneNumber(),
+        //     "telp" => fake()->phoneNumber(),
         // ]);
         // Developer::create([
         //     "email" => fake()->email(),
@@ -45,7 +45,7 @@ class DeveloperSeeder extends Seeder
         //     "address" => Str::limit(fake()->address(), 20),
         //     "owner" => fake()->name(),
         //     "license" => fake()->imageUrl(),
-        //     "phone_number" => fake()->phoneNumber(),
+        //     "telp" => fake()->phoneNumber(),
         // ]);
         // Developer::create([
         //     "email" => fake()->email(),
@@ -54,7 +54,7 @@ class DeveloperSeeder extends Seeder
         //     "address" => Str::limit(fake()->address(), 20),
         //     "owner" => fake()->name(),
         //     "license" => fake()->imageUrl(),
-        //     "phone_number" => fake()->phoneNumber(),
+        //     "telp" => fake()->phoneNumber(),
         // ]);
         // Developer::create([
         //     "email" => fake()->email(),
@@ -63,7 +63,7 @@ class DeveloperSeeder extends Seeder
         //     "address" => Str::limit(fake()->address(), 20),
         //     "owner" => fake()->name(),
         //     "license" => fake()->imageUrl(),
-        //     "phone_number" => fake()->phoneNumber(),
+        //     "telp" => fake()->phoneNumber(),
         // ]);
         // Developer::create([
         //     "email" => fake()->email(),
@@ -72,7 +72,7 @@ class DeveloperSeeder extends Seeder
         //     "address" => Str::limit(fake()->address(), 20),
         //     "owner" => fake()->name(),
         //     "license" => fake()->imageUrl(),
-        //     "phone_number" => fake()->phoneNumber(),
+        //     "telp" => fake()->phoneNumber(),
         // ]);
     }
 }

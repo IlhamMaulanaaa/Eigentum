@@ -38,13 +38,14 @@
                             </div>
                             <br>
 
-                            
+
                             <div class="form-group">
                                 <label for="license" class="form-label">License</label>
                                 @foreach ($licenseFile as $index => $file)
                                     <div class="col-auto">
                                         <div class="file-container">
-                                            <a href="{{ route('pdf.preview', ['file' => $file]) }}" target="_blank">Tampilkan {{ pathinfo($file, PATHINFO_FILENAME) }}</a>
+                                            <a href="{{ route('pdf.preview', ['file' => $file]) }}"
+                                                target="_blank">Tampilkan {{ pathinfo($file, PATHINFO_FILENAME) }}</a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -52,9 +53,9 @@
                             <br>
 
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ $developer->phone_number }}" readonly disabled>
+                                <label for="telp" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="telp" name="telp"
+                                    value="{{ $developer->telp }}" readonly disabled>
                             </div>
                             <br>
 

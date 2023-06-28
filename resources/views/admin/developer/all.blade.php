@@ -22,7 +22,6 @@
                             <th scope="col">Email</th>
                             <th scope="col">Owner</th>
                             <th scope="col">Address</th>
-                            {{-- <th scope="col">License</th> --}}
                             <th scope="col">Phone number</th>
                             <th scope="col"></th>
                         </tr>
@@ -35,11 +34,9 @@
                                     <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $developer->company }}</td>
                                     <td class="text-start">{{ $developer->email }}</td>
-                                    <td class="text-start">{{ $developer->owner }}</td>
+                                    <td class="text-start">{{ $developer->owners->name }}</td>
                                     <td class="text-start">{{ $developer->address }}</td>
-                                    {{-- <td class="text-start"><img src="{{ asset('storage/' . $developer->license) }}"
-                                            width="60" heigth="60"></td> --}}
-                                    <td class="text-start">{{ $developer->phone_number }}</td>
+                                    <td class="text-start">{{ $developer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $developer->id }}">Detail</a>
