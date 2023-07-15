@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #fff;
+}
+.content{
+  max-width: 1090px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+ .content .card{
+  background: #fff;
+  width: calc(33% - 20px);
+  text-align: center;
+  padding: 15px 30px  30px 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+.content .card .top{
+  height: 130px;
+  color: #fff;
+  padding: 12px 0 0 0 ;
+  clip-path: polygon(0 0, 100% 0, 100% 53%, 49% 100%, 0 53%);
+}
+
+.content .card .top .title{
+ font-size: 27px;
+ font-weight: 600;
+}
+.content .card .top .price-sec{
+  margin-top: -10px;
+  font-weight: 600;
+}
+.content .card .top .price{
+  font-size: 45px;
+}
+.content .card .info{
+  font-size: 16px;
+  margin-top: 20px;
+}
+.content .card .details .one{
+  margin-top: 25px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+.content .card .details .one::before{
+  position: absolute;
+  content: "";
+  width: 100%;
+  background: #ddd;
+  height: 1px;
+  left: 0;
+  top: -12px;
+  border-radius: 25px;
+}
+.content .card .details .one i{
+  color: #0C40E8;
+}
+.content .card .details i.fa-times{
+  color: #cd3241;
+}
+.content .card button{
+  outline: none;
+  border: none;
+  height: 42px;
+  color: #fff;
+  margin-top: 30px;
+  border-radius: 3px;
+  font-size: 18px;
+  width: 100%;
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+.content .one .top,
+.content .one button{
+  background: #4f78ff;
+}
+.content .two .top,
+.content .two button{
+  background: #0C40E8;
+}
+.content .three .top,
+.content .three button{
+  background: #4f78ff;
+}
+.content button:hover {
+  filter: brightness(90%);
+}
+.content .one ::selection{
+background: #958af5;
+}
+.content .two ::selection{
+background:  #f2b08c;
+}
+.content .three ::selection{
+background: #d0f9fb;
+}
+@media (max-width:1000px) {
+   .content .card{
+    background: #fff;
+    width: calc(50% - 20px);
+    margin-bottom: 30px;
+}
+}
+@media (max-width:715px) {
+ .content .card{
+    width: 100%;
+}
+}

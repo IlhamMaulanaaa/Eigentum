@@ -121,6 +121,9 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/kpr', function () {
     return view('pages.page.kpr');
     });
+    Route::get('/langganan', function () {
+        return view('pages.page.subscribe');
+        });
 });
 
 // property
