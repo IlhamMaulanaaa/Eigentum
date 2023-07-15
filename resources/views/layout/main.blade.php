@@ -33,9 +33,16 @@
 
     <!-- Template Stylesheet -->
     <link href="/css/pages/guide.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Partial/nav.css">
 
 
-
+        <!-- ===== CSS ===== -->
+    <link href="/css/Partial/nav.css" rel="stylesheet">
+        
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <!-- ===== Boxicons CSS ===== -->
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 

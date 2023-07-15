@@ -33,6 +33,10 @@ Route::get('/',[UnitController::class, 'honmeunit']);
 
 // authentication
 
+Route::get('/navbar', function () {
+    return view('layout.partial.nav');
+});
+
 Route::group(['prefix' => '/session'], function(){
     Route::get('/signout', [SessionController::class, 'signout']);
 

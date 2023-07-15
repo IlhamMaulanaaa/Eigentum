@@ -88,7 +88,7 @@
                 </ul>
             </div>
               <div class="input-box">
-                <input type="text" placeholder="Cari Nama Properti atau Lokasi" />
+                <input type="text" placeholder="Cari Properti" />
                 <button class="button">Search</button>
               </div>
             </div>
@@ -127,7 +127,7 @@
                           <span class="option2-text">Semua Properti</span>
                         </li>
                   </ul>
-              </div>
+                </div>
               <div class="select-menu3">
                 <div class="select-btn3">
                     <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
@@ -193,7 +193,7 @@
             <div class="slide-container swiper">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                                          <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                          <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                             <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                                 <div class="position-relative overflow-hidden">
                                                     <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -213,7 +213,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                        <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                           <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                               <div class="position-relative overflow-hidden">
                                                   <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -233,7 +233,7 @@
                                               </div>
                                           </div>
                                         </div>
-                                      <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                      <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                         <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                             <div class="position-relative overflow-hidden">
                                                 <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -253,7 +253,7 @@
                                             </div>
                                         </div>
                                       </div>
-                                    <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                       <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                           <div class="position-relative overflow-hidden">
                                               <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -273,7 +273,7 @@
                                           </div>
                                       </div>
                                     </div>
-                                  <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                  <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                     <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                         <div class="position-relative overflow-hidden">
                                             <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -293,7 +293,7 @@
                                         </div>
                                     </div>
                                   </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -313,7 +313,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -333,7 +333,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -375,8 +375,6 @@
     
     
     
-            <img class="frame-76-3KD" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;387:204950"/>
-            <img class="frame-74-LZD" src="/api/try-prod-ap-southeast-1-first-cluster/project..." id="I4:7199;387:215852"/>
             </div>
             </div>
             <div class="eigentum-2-dYK" id="4:7201">
@@ -388,7 +386,7 @@
                 <div class="slide-container swiper">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                                          <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                          <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                             <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                                 <div class="position-relative overflow-hidden">
                                                     <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -408,7 +406,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                        <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                           <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                               <div class="position-relative overflow-hidden">
                                                   <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -428,7 +426,7 @@
                                               </div>
                                           </div>
                                         </div>
-                                      <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                      <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                         <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                             <div class="position-relative overflow-hidden">
                                                 <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -448,7 +446,7 @@
                                             </div>
                                         </div>
                                       </div>
-                                    <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                       <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                           <div class="position-relative overflow-hidden">
                                               <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -468,7 +466,7 @@
                                           </div>
                                       </div>
                                     </div>
-                                  <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                  <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                     <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                         <div class="position-relative overflow-hidden">
                                             <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -488,7 +486,7 @@
                                         </div>
                                     </div>
                                   </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -508,7 +506,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -528,7 +526,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -566,7 +564,7 @@
                 <div class="slide-container swiper">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                                          <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                          <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                             <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                                 <div class="position-relative overflow-hidden">
                                                     <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -586,7 +584,7 @@
                                                 </div>
                                             </div>
                                           </div>
-                                        <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                           <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                               <div class="position-relative overflow-hidden">
                                                   <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -606,7 +604,7 @@
                                               </div>
                                           </div>
                                         </div>
-                                      <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                      <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                         <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                             <div class="position-relative overflow-hidden">
                                                 <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -626,7 +624,7 @@
                                             </div>
                                         </div>
                                       </div>
-                                    <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                       <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                           <div class="position-relative overflow-hidden">
                                               <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -646,7 +644,7 @@
                                           </div>
                                       </div>
                                     </div>
-                                  <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                  <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                     <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                         <div class="position-relative overflow-hidden">
                                             <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -666,7 +664,7 @@
                                         </div>
                                     </div>
                                   </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -686,7 +684,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
@@ -706,7 +704,7 @@
                                       </div>
                                   </div>
                                 </div>
-                                <div class="col-lg-4 col-md-2 wow fadeInUp swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
+                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
                                   <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
                                       <div class="position-relative overflow-hidden">
                                           <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>

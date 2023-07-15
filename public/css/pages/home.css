@@ -107,7 +107,7 @@ body {
     flex-shrink: 0;
     width: 100%;
   }
-    .group-75-kvK {options1
+    .group-75-kvK {
       flex-shrink: 0;
       height: 40rem;
       position: relative;
@@ -142,123 +142,284 @@ body {
           width: 100%;
           margin: auto;
         }
+        .segera-miliki-properti-impianmu-AUF {
+          font-family: 'Lato', sans-serif;
+          position: absolute;
+          top: 150px;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          margin: auto;
+          font-weight: 600;
+          color: white;
+        }
+        
+        @media (max-width: 768px) {
           .segera-miliki-properti-impianmu-AUF {
-            font-family: 'Lato', sans-serif;
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            margin: auto;
-            height: 100px;
-            font-size: 54px;
-            font-weight: 600;
-            color: white;
+            font-size: 25px;
           }
-          .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
-            color: #ffffff;
-            display: flex;
-            flex-shrink: 0;
-            font-family: 'Lato', sans-serif;
-            font-size: 20px;
-            letter-spacing: 0.01rem;
-            line-height: 0;
-            white-space: nowrap;
-          }
+        }
         
-      .group-11-tab {
-        background-color: #ffffff;
-        border-radius: 2rem;
-        box-shadow: 0 0.2rem 12rem rgba(0, 0, 0, 0.25);
-        box-sizing: border-box;
-        height: 220px;
-        padding: 50px 20px 50px 41px;
-        position: absolute;
-        top: 21rem;
-        width: 768px;
-        margin: 0 370px;
-        justify-content: center;
-        align-items: center;
-      }
-        
-          .group-70-tyu {
-            align-items: center;
-            display: flex;
-            flex-shrink: 0;
-            height: 6.2rem;
-            margin-bottom: -10px;
-            width: 100%;
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .segera-miliki-properti-impianmu-AUF {
+            font-size: 45px;
           }
-
-
-
-
-
-
-
-
-
-
+        }
+        
+        @media (min-width: 1025px) {
+          .segera-miliki-properti-impianmu-AUF {
+            font-size:50px;
+          }
+        }
+        
+        
+        .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
           
-          .select-menu1{
-            width: 133px;
-            height: 65px;
-            margin-top: -37px;
+          font-family: 'Lato', sans-serif;
+          position: absolute;
+          margin: auto;
+          top: 220px;
+          font-size: 20px;
+          color: white;
         }
-        .select-menu1 .select-btn1{
-            display: flex;
-            height: 62px;
-            background: #fff;
-            padding: 20px;
+        
+        @media (max-width: 768px) {
+          .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+            top: 190px;
+            font-size: 16px;
+            max-width: 500px;
+          }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+          .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
             font-size: 18px;
-            font-weight: 400;
-            border-radius: 8px;
-            align-items: center;
-            cursor: pointer;
-            justify-content: space-between;
-            border: solid 0.1rem #d0d0d0;
-            
+            max-width: 600px;
+          }
         }
-        .select-btn1 i{
-            font-size: 25px;
-            transition: 0.3s;
+        
+        @media (min-width: 1025px) {
+          .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+            font-size: 20px;
+            max-width: 800px;
+          }
         }
-        .select-menu1.active .select-btn1 i{
-            transform: rotate(-180deg);
+        
+        
+        
+        
+        .group-11-tab {
+          background-color: #ffffff;
+          border-radius: 2rem;
+          box-shadow: 0 0.2rem 12rem rgba(0, 0, 0, 0.25);
+          box-sizing: border-box;
+          height: 220px;
+          padding: 50px 20px 50px 41px;
+          position: absolute;
+          top: 21rem;
+          width: 768px;
+          margin: 0 370px;
+          justify-content: center;
+          align-items: center;
         }
-        .select-menu1 .options1{
-            position: relative;
-            padding: 0px;
-            margin-top: 10px;
-            border-radius: 8px;
-            background: #fff;
-            box-shadow: 0 0 3px rgba(0,0,0,0.1);
-            display: none;
+        
+        /* Media query untuk ukuran layar yang lebih kecil */
+        @media (max-width: 1024px) {
+          .group-11-tab {
+            width: 600px;
+            margin: 0 200px;
+            height: 200px;
+          }
         }
-        .select-menu1.active .options1{
-            display: block;
+        
+        @media (max-width: 768px) {
+          .group-11-tab {
+            width: 420px;
+            margin: 0 100px;
+            height: 190px;
+          }
         }
-        .options1 .option1{
+        
+        @media (max-width: 480px) {
+          .group-11-tab {
+            width: 300px;
+            margin: 0 50px;
+            height: 120px;
+          }
+        }
+        
+        @media (max-width: 320px) {
+          .group-11-tab {
+            width: 250px;
+            margin: 0 25px;
+            height: 100px;
+          }
+        }
+        
+        
+        .group-70-tyu {
+          align-items: center;
+          display: flex;
+          flex-shrink: 0;
+          height: 6.2rem;
+          margin-bottom: -10px;
+          width: 100%;
+        }
+        
+        .select-menu1 {
+          width: 133px;
+          height: 65px;
+          margin-top: -37px;
+        }
+        
+        .select-menu1 .select-btn1 {
+          display: flex;
+          height: 62px;
+          background: #fff;
+          padding: 20px;
+          font-size: 18px;
+          font-weight: 400;
+          border-radius: 8px;
+          align-items: center;
+          cursor: pointer;
+          justify-content: space-between;
+          border: solid 0.1rem #d0d0d0;
+        }
+        
+        .select-btn1 i {
+          font-size: 25px;
+          transition: 0.3s;
+        }
+        
+        .select-menu1.active .select-btn1 i {
+          transform: rotate(-180deg);
+        }
+        
+        .select-menu1 .options1 {
+          position: relative;
+          padding: 0px;
+          margin-top: 10px;
+          border-radius: 8px;
+          background: #fff;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+          display: none;
+        }
+        
+        .select-menu1.active .options1 {
+          display: block;
+        }
+        
+        .options1 .option1 {
           z-index: 1000;
-            display: flex;
-            height: 55px;
-            cursor: pointer;
-            padding: 0 16px;
-            border-radius: 8px;
-            align-items: center;
-            background: #fff;
+          display: flex;
+          height: 55px;
+          cursor: pointer;
+          padding: 0 16px;
+          border-radius: 8px;
+          align-items: center;
+          background: #fff;
         }
-        .options1 .option1:hover{
-            background: #F2F2F2;
+        
+        .options1 .option1:hover {
+          background: #f2f2f2;
         }
-        .option1 i{
-            font-size: 25px;
-            margin-right: 12px;
+        
+        .option1 i {
+          font-size: 25px;
+          margin-right: 12px;
         }
-        .option1 .option1-text{
-            font-size: 18px;
-            color: #333;
+        
+        .option1 .option1-text {
+          font-size: 18px;
+          color: #333;
         }
+        
+        @media screen and (max-width: 768px) {
+          
+          .group-70-tyu {
+            height: 4rem;
+          }
+        
+          .select-menu1 {
+            width: 100px;
+            height: 50px;
+            margin-top: -25px;
+          }
+        
+          .select-menu1 .select-btn1 {
+            height: 48px;
+            font-size: 16px;
+            padding: 15px;
+            margin-top: -6px; /* Atur nilai margin-top sesuai dengan kebutuhan */
+          }
+          
+        
+          .select-menu1 .options1 .option1 i {
+            font-size: 20px;
+            margin-right: 8px;
+          }
+        
+          .select-menu1 .options1 .option1 .option1-text {
+            font-size: 16px;
+          }
+        }
+        
+        @media screen and (max-width: 480px) {
+          .group-70-tyu {
+            height: 3.2rem;
+          }
+        
+          .select-menu1 {
+            width: 80px;
+            height: 40px;
+            margin-top: -20px;
+          }
+        
+          .select-menu1 .select-btn1 {
+            height: 38px;
+            font-size: 14px;
+            padding: 10px;
+          }
+        
+          .select-menu1 .options1 .option1 i {
+            font-size: 16px;
+            margin-right: 6px;
+          }
+        
+          .select-menu1 .options1 .option1 .option1-text {
+            font-size: 14px;
+          }
+        }
+        
+        @media screen and (max-width: 320px) {
+          .group-70-tyu {
+            height: 2.8rem;
+          }
+        
+          .select-menu1 {
+            width: 60px;
+            height: 35px;
+            margin-top: -17px;
+          }
+        
+          .select-menu1 .select-btn1 {
+            height: 32px;
+            font-size: 12px;
+            padding: 8px;
+          }
+        
+          .select-menu1 .options1 .option1 i {
+            font-size: 14px;
+            margin-right: 4px;
+          }
+        
+          .select-menu1 .options1 .option1 .option1-text {
+            font-size: 12px;
+          }
+        }
+        
+
+        
 
 
 
@@ -417,6 +578,71 @@ body {
           font-size: 18px;
           color: #333;
         }
+        @media screen and (max-width: 320px) {
+          .sBtn-text2{
+            font-size: 12px;
+          }
+          .select-menu3,
+          .select-menu2 {
+            width: 100px;
+            margin-top: -15px;
+          }
+          
+          .select-menu3 .options3,
+          .select-menu2 .options2 {
+            margin-left: 70px;
+          }
+          
+          .option3,
+          .option2 {
+            width: 97px;
+          }
+        }
+        
+        @media screen and (max-width: 480px) {
+          .sBtn-text2{
+            font-size: 12px;
+          }
+          .select-menu3,
+          .select-menu2 {
+            width: 120px;
+            margin-top: -20px;
+          }
+          
+          .select-menu3 .options3,
+          .select-menu2 .options2 {
+            margin-left: 120px;
+          }
+          
+          .option3,
+          .option2 {
+            width: 117px;
+          }
+        }
+        
+        @media screen and (max-width: 768px) {
+          .select-btn2{
+            width: 123px;
+          }
+          .sBtn-text2{
+            font-size: 14px;
+          }
+          .select-menu3,
+          .select-menu2 {
+            width: 140px;
+            margin-top: -25px;
+          }
+          
+          .select-menu3 .options3,
+          .select-menu2 .options2 {
+            margin-left: 170px;
+          }
+          
+          .option3,
+          .option2 {
+            width: 137px;
+          }
+        }
 
 
 
@@ -526,52 +752,104 @@ body {
 
 
               
-                .input-box {
-                  position: relative;
-                  height: 62px;
-                  max-width: 524px;
-                  width: 100%;
-                  background: #fff;
-                  margin: -40px 0px 0px 20px;
-                  border-radius: 7px;
-                  border: solid 0.1rem #d0d0d0;
-                }
-                .input-box i,
-                .input-box .button {
-                  position: absolute;
-                  top: 50%;
-                  transform: translateY(-50%);
-                }
-                .input-box i {
-                  left: 20px;
-                  font-size: 30px;
-                  color: #707070;
-                }
-                .input-box input {
-                  height: 100%;
-                  width: 100%;
-                  outline: none;
-                  font-size: 16px;
-                  font-weight: 300;
-                  border: none;
-                  padding: 0 155px 0 14px;
-                  background-color: transparent;
-                }
-                .input-box .button {
-                  right: 0px;
-                  font-size: 16px;
-                  font-weight: 400;
-                  color: #fff;
-                  border: none;
-                  margin-top: auto;
-                  padding: 12px 30px;
-                  border-radius: 6px;
-                  background-color: #4070f4;
-                  cursor: pointer;
-                }
-                .input-box .button:active {
-                  transform: translateY(-50%) scale(0.98);
-                }
+        .input-box {
+          position: relative;
+          height: 62px;
+          max-width: 524px;
+          width: 100%;
+          background: #fff;
+          margin: -40px 0px 0px 20px;
+          border-radius: 7px;
+          border: solid 0.1rem #d0d0d0;
+        }
+        
+        .input-box i,
+        .input-box .button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        
+        .input-box i {
+          left: 20px;
+          font-size: 30px;
+          color: #707070;
+        }
+        
+        .input-box input {
+          height: 100%;
+          width: 100%;
+          outline: none;
+          font-size: 16px;
+          font-weight: 300;
+          border: none;
+          padding: 0 155px 0 14px;
+          background-color: transparent;
+        }
+        
+        .input-box .button {
+          right: 0px;
+          font-size: 16px;
+          font-weight: 400;
+          color: #fff;
+          border: none;
+          margin-top: auto;
+          padding: 12px 30px;
+          border-radius: 6px;
+          background-color: #4070f4;
+          cursor: pointer;
+        }
+        
+        .input-box .button:active {
+          transform: translateY(-50%) scale(0.98);
+        }
+        
+        @media screen and (max-width: 768px) {
+          .input-box {
+            height: 48px;
+          }
+        
+          .input-box i {
+            font-size: 24px;
+          }
+        
+          .input-box input {
+            padding: 0 105px 0 10px;
+            font-size: 14px;
+          }
+        
+          .input-box .button {
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size: 14px;
+            padding: 10px 24px;
+            height: 30px;
+            width: 70px;
+          }
+        }
+        
+        @media screen and (max-width: 480px) {
+          .input-box {
+            height: 40px;
+            margin: -30px 0px 0px 10px;
+          }
+        
+          .input-box i {
+            font-size: 20px;
+          }
+        
+          .input-box input {
+            padding: 0 75px 0 8px;
+            font-size: 12px;
+          }
+        
+          .input-box .button {
+            font-size: 12px;
+            padding: 8px 20px;
+          }
+        }
+        
                 
                 /* Responsive */
                 @media screen and (max-width: 500px) {
