@@ -5,26 +5,33 @@ namespace App\Http\Controllers;
 use App\Helper\ApiFormatter;
 use App\Models\Developer;
 use App\Models\Owner;
+use App\Models\Province;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class DeveloperController extends Controller
 {
+
 
     public function index()
     {
         $developers = Developer::all();
         $tables = (new Developer())->getTable();
 
-        return view('admin.developer.all', compact('developers', 'tables'));
+        
+
+        return view('admin.developer.all', compact('developers', 'tables', ));
     }
 
     public function create()
     {
-        return view('admin.developer.create');
+        $provinces = Province::all();
+
+        return view('admin.developer.create', compact('provinces'));
     }
 
     public function store(Request $request)

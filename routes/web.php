@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
@@ -176,4 +177,9 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     Route::get("/dashboard", [DashboardController::class, 'index']);
 
     Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+    
 });
+
+Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
+Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
+Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');
