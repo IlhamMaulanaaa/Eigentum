@@ -1,0 +1,130 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 500px;
+}
+.form-section {
+    display: none;
+    width: 1000px;
+}
+
+.form-section.current {
+    display: block;
+}
+
+.left-section {
+    float: left;
+    width: 50%;
+}
+
+.right-section {
+    float: right;
+    width: 50%;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 800px;
+    background-color: #ccc;
+}
+
+form {
+    margin-top: 120px !important;
+    margin: auto;
+}
+
+.form2 {
+    margin: 40px 40px 20px 40px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+textarea,
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+}
+
+.sumbitBtn {
+    display: flex;
+}
+
+input[type="file"] {
+    margin-bottom: 5px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.upload-container {
+    display: flex;
+
+    align-items: start;
+}
+
+.upload-icon i {
+    font-size: 40px;
+}
+
+.upload-icon {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #0c40e8;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #0c40e8;
+}
+
+.upload-details {
+    margin-left: 20px;
+    width: 350px;
+}
+
+.upload-details h3,
+.upload-details p,
+.upload-details button {
+    margin: 0;
+}
+
+.upload-details button {
+    margin-top: 10px;
+}
+
+/* Gaya tambahan jika tombol unggah gambar aktif */
+input[type="file"]:focus + .upload-icon {
+    background-color: #999;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* make me elegant style for button next */
+.btn-next {
+    background-color: #0c40e8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    width: auto;
+}
