@@ -1,4 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
     <nav>
         <div class="nav-barq">
             <i class='bx bx-menu sidebarOpenq' ></i>
@@ -64,55 +72,60 @@
             </div>
         </div>
     </nav>
+</body>
 
 <script>
 
-const menuWrap = document.querySelector('.darkLight-searchBoxq');
-const menuProfile = document.querySelector('.profileq');
-const menu = document.querySelector('.menu-profileq');
+    const menuWrap = document.querySelector('.darkLight-searchBoxq');
+    const menuProfile = document.querySelector('.profileq');
+    const menu = document.querySelector('.menu-profileq');
+    
+    menuProfile.addEventListener('click', function(event) {
+        event.stopPropagation();
+        menu.classList.toggle('active');
+    });
+    
+    document.addEventListener('click', function() {
+        menu.classList.remove('active');
+    });
+    
+    menu.addEventListener('click', function(event) {
+        event.stopPropagation();
+    });
+    
+    const body = document.querySelector("body"),
+          nav = document.querySelector("nav"),
+          modeToggle = document.querySelector(".dark-lightq"),
+          searchToggle = document.querySelector(".searchToggleq"),
+          sidebarOpenq = document.querySelector(".sidebarOpenq"),
+          siderbarClose = document.querySelector(".siderbarCloseq");
+    
+          let getMode = localStorage.getItem("mode");
+              if(getMode && getMode === "dark-mode"){
+                body.classList.add("dark");
+              }
+    
+    
+    
+    
+     
+          
+    //   js code to toggle sidebar
+    sidebarOpenq.addEventListener("click" , () =>{
+        nav.classList.add("active");
+    });
+    
+    
+    body.addEventListener("click" , e =>{
+        let clickedElm = e.target;
+    
+        if(!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains("menuq")){
+            nav.classList.remove("active");
+        }
+    });
+    
+    </script>
+    
+</html>
+    
 
-menuProfile.addEventListener('click', function(event) {
-    event.stopPropagation();
-    menu.classList.toggle('active');
-});
-
-document.addEventListener('click', function() {
-    menu.classList.remove('active');
-});
-
-menu.addEventListener('click', function(event) {
-    event.stopPropagation();
-});
-
-const body = document.querySelector("body"),
-      nav = document.querySelector("nav"),
-      modeToggle = document.querySelector(".dark-lightq"),
-      searchToggle = document.querySelector(".searchToggleq"),
-      sidebarOpenq = document.querySelector(".sidebarOpenq"),
-      siderbarClose = document.querySelector(".siderbarCloseq");
-
-      let getMode = localStorage.getItem("mode");
-          if(getMode && getMode === "dark-mode"){
-            body.classList.add("dark");
-          }
-
-
-
-
- 
-      
-//   js code to toggle sidebar
-sidebarOpenq.addEventListener("click" , () =>{
-    nav.classList.add("active");
-});
-
-
-body.addEventListener("click" , e =>{
-    let clickedElm = e.target;
-
-    if(!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains("menuq")){
-        nav.classList.remove("active");
-    }
-});
-
-</script>
