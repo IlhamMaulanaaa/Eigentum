@@ -10,14 +10,11 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    { 
-        Schema::create('developers', function (Blueprint $table) {
+    {
+        Schema::create('developer_regencies', function (Blueprint $table) {
             $table->id();
-            $table->string("company");
-            $table->string("email")->unique();  
-            $table->string("password");
-            $table->string("license");
-            $table->bigInteger("telp");
+            $table->bigInteger('developer_id');
+            $table->bigInteger('regency_id');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('developers');
+        Schema::dropIfExists('develoeper_regencies');
     }
 };

@@ -23,7 +23,6 @@
                             <form method="post" action="/admin/developer/add" enctype="multipart/form-data">
                                 @csrf
                                 <h1>Owner</h1>
-                                <hr>
                                 <div class="form-group owner">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Name</label>
@@ -43,7 +42,7 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <label for="ktp" class="form-label">ktp</label>
+                                        <label for="ktp" class="form-label">ID card</label>
                                         <input type="file" class="form-control noscroll" id="ktp" name="ktp">
                                     </div>
                                     <br>
@@ -55,7 +54,6 @@
                                 </div>
                                 <br>
                                 <h1>Developer</h1>
-                                <hr>
                                 <div class="form-group developer">
                                     <div class="form-group">
                                         <label for="company" class="form-label">Company</label>
@@ -75,7 +73,7 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
-                                            <select class="form-select" id="provinsi" name="provinsi"
+                                            <select class="form-select" name="provinces_id" id="provinsi" 
                                                 data-placeholder="Pilih Provinsi" required>
                                                 <option>Pilih Provinsi</option>
                                                 @foreach ($provinces as $item)
@@ -85,21 +83,21 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
-                                            <select class="form-select" name="kota" id="kota"
+                                            <select class="form-select" name="regencies_id" id="kota"
                                                 data-placeholder="Pilih Kota" required>
                                                 <option></option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
-                                            <select class="form-select" name="kecamatan" id="kecamatan"
+                                            <select class="form-select" name="districts_id" id="kecamatan"
                                                 data-placeholder="Pilih kecamatan" required>
                                                 <option></option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="desa">Desa</label>
-                                            <select class="form-select" name="desa" id="desa"
+                                            <select class="form-select" name="villages_id" id="desa"
                                                 data-placeholder="Pilih Desa" required>
                                                 <option></option>
                                             </select>

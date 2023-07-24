@@ -14,28 +14,27 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table mb-2 ">
+                <table class="table mb-2">
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Company</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Company Email</th>
                             <th scope="col">Owner</th>
-                            <th scope="col">Address</th>
+                            <th scope="col">Kota</th>
                             <th scope="col">Phone number</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($developers->count())
-                            @foreach ($developers as $key=>$developer)
+                            @foreach ($developers as $key => $developer)
                                 <tr align="center">
-                                    {{-- <td class="text-start">{{ $loop->iteration }}</td> --}}
                                     <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $developer->company }}</td>
                                     <td class="text-start">{{ $developer->email }}</td>
                                     <td class="text-start">{{ $developer->owners->name }}</td>
-                                    <td class="text-start">{{ $developer->address }}</td>
+                                    <td class="text-start">{{ implode(', ', $developer->regencies()->pluck('name')->toArray()) }}</td>
                                     <td class="text-start">{{ $developer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"

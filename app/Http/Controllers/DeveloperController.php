@@ -22,8 +22,6 @@ class DeveloperController extends Controller
         $developers = Developer::all();
         $tables = (new Developer())->getTable();
 
-        
-
         return view('admin.developer.all', compact('developers', 'tables', ));
     }
 
@@ -36,18 +34,30 @@ class DeveloperController extends Controller
 
     public function store(Request $request)
     {
-        try {
+        try{
             $request->validate([
                 'name'   => 'required',
                 'company'   => 'required',
-                'email' => 'required|email|unique:developers',
+                'email' => 'required|email|u   nique:developers',
                 'password'  => 'required|min:8',
-                'address'  => 'required',
                 'license.*' => 'required|file|max:10240',
                 'telp'  => 'required',
                 'ktp' => 'required|file|max:10240',
                 'face' => 'required|file|max:10240',
             ]);
+
+            $images = ['ktp', 'face']; 
+            $imageNames = [];
+
+            foreach ($images as $image) {
+                $imageField = $request->file($image);
+
+                if ($imageField) {
+                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                    $imageNames[] = $imageName;
+                    $imageField->storeAs('public', $imageName);
+                }
+            }
 
             $files = $request->file('license');
             $fileArray = [];
@@ -62,7 +72,6 @@ class DeveloperController extends Controller
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
                 'telp'  => $request->telp,
             ]);
@@ -71,25 +80,31 @@ class DeveloperController extends Controller
                 'name' => $request->name,
                 'owner_email' => $request->email,
                 'owner_password' => bcrypt($request->password),
-                'ktp' => $request->ktp,
-                'face' => $request->face,
+                'ktp' => $imageNames[0],
+                'face' => $imageNames[1],
                 'developer_id' => $developer->id,
             ]); 
-            
+
+            $developer->provinces()->attach($request->provinces_id);
+            $developer->regencies()->attach($request->regencies_id);
+            $developer->districts()->attach($request->districts_id);
+            $developer->villages()->attach($request->villages_id);
 
             $developer = Developer::where('id', '=', $developer->id)->get();
             
             return redirect('/admin/developer/data',);
-        } catch (Exception $e) {
+        }catch(Exception $e){
             return $e;
         }
+        
+        
     }
 
-    public function show(Developer $developer)
+    public function show(Developer $developer, Owner $owner)
     {
-        $licenseFile = explode("|", $developer->license);  
+        $licenseFile = explode("|", $developer->license); 
         $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
-        return view('admin.developer.detail', compact('developer', 'licenseFile', 'fileNames' ));
+        return view('admin.developer.detail', compact('developer', 'licenseFile',  'fileNames' , ));
     }
     
     public function edit(Developer $developer)
@@ -158,8 +173,13 @@ class DeveloperController extends Controller
     {
         try{
             $developer = Developer::findOrfail($id);
+            $developer->owners()->delete();
             $developer->properties()->delete();
             $developer->units()->delete();
+            $developer->provinces()->detach();
+            $developer->regencies()->detach();
+            $developer->districts()->detach();
+            $developer->villages()->detach();
             $data = $developer->delete();
 
             return  redirect('/admin/developer/data',);

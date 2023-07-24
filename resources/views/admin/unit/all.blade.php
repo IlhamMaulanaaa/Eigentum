@@ -40,7 +40,7 @@
                                     <td class="text-start ">{{ $unit->properties->property }}</td>
                                     <td class="text-start ">
                                         @foreach ($unit->status as $role)
-                                            {{ $role->name }}
+                                            {{ $role->name }} 
                                         @endforeach
                                     </td>
 

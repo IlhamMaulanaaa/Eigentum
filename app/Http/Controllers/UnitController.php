@@ -37,9 +37,7 @@ class UnitController extends Controller
 
     public function store(Request $request,  $propertyId)
     {
-        
-            
-            $request->validate([
+        $request->validate([
                 'title' => 'required',
                 'description' => 'required',
                 'price' => 'required',

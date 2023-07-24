@@ -13,6 +13,7 @@ use AzisHapidin\IndoRegion\Traits\DistrictTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Regency;
 use App\Models\Village;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * District Model.
@@ -55,5 +56,10 @@ class District extends Model
     public function villages()
     {
         return $this->hasMany(Village::class);
+    }
+
+    public function districts(): BelongsToMany
+    {
+        return $this->belongsToMany(District::class,'developer_districts', 'district_id', 'developer_id');
     }
 }
