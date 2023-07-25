@@ -201,6 +201,23 @@ body {
         max-width: 800px;
     }
 }
+.filter-jualsewa button {
+    margin: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-jualsewa button.active {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
 .filter-jualsewa {
     display: flex;
     justify-content: center;
@@ -460,8 +477,7 @@ body {
 
 .select-menu3 .options3 {
     position: absolute;
-    top: 32px;
-    margin-top: 150px;
+    margin-top: 41px;
     left: 0;
     width: 200px;
     padding: 0;
@@ -474,7 +490,7 @@ body {
 }
 
 .options3 {
-    margin-left: 270px;
+    margin-left: 210px;
 }
 
 .select-menu3.active .options3 {
@@ -536,8 +552,8 @@ body {
 
 .select-menu2 .options2 {
     position: absolute;
-    top: 32px;
-    margin-top: 150px;
+    top: 0px;
+    margin-top: 90px;
     left: 0;
     width: 200px;
     padding: 0;
@@ -550,7 +566,7 @@ body {
 }
 
 .options2 {
-    margin-left: 60px;
+    margin-left: 0px;
 }
 
 .select-menu2.active .options2 {
@@ -677,8 +693,7 @@ body {
 
 .select-menu4 .options4 {
     position: absolute;
-    top: 32px;
-    margin-top: 150px;
+    margin-top: 41px;
     left: 0;
     width: 200px;
     padding: 0;
@@ -691,7 +706,7 @@ body {
 }
 
 .options4 {
-    margin-left: 470px;
+    margin-left: 420px;
 }
 
 .select-menu4.active .options4 {
@@ -7874,15 +7889,15 @@ body {
     height: 300px;
 }
 #h1Filter {
-    margin-top: 40vh;
-    margin-bottom: -370px;
+    margin-top: 390px;
+    margin-bottom: 10px;
     width: 540px;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
 }
 #pFilter {
-    margin-top: 39vh;
+    margin-top: 10px;
     margin-bottom: 0px;
     width: 800px;
     text-align: center;

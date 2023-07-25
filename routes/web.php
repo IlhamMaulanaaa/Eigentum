@@ -29,6 +29,7 @@ use App\Http\Controllers\FilePreviewController;
 */
 
 Route::get('/beranda',[UnitController::class, 'homeunit']);
+Route::get('/',[UnitController::class, 'homeunit']);
 
 
 // authentication
@@ -153,6 +154,10 @@ Route::group(['prefix' => '/property'], function () {
 Route::group(['prefix' => '/unit'], function () {
     Route::get('/upload', function () {
         return view('pages.unit.create');
+    });
+
+    Route::get('/uploadimage', function () {
+        return view('pages.unit.uploadimage');
     });
 
     Route::get('/detail', function () {
