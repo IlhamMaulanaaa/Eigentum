@@ -21,60 +21,98 @@
 
         <div class="darkLight-searchBoxq">
 
-            <a href="#" class="btnq">Masuk</a>
+                    <a href="#" class="btnq">Masuk</a>
+
+
+
+
+                    {{-- <div class="profileq" style="cursor: pointer;">
+                        <img src="user.png" alt="">
+                    </div>
+                
+                
+                    <div class="menu-profileq" >
+                        <h3>
+                            Megawati
+                            <div>
+                                Agen Properti
+                            </div>
+                        </h3>
+                        <ul style="margin: 0; padding:0;">
+                            <li>
+                                <span class="material-icons icons-size">person</span>
+                                <a href="#">Profile Saya</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">person</span>
+                                <a href="#">Profile Saya</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">person</span>
+                                <a href="#">Profile Saya</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">monetization_on</span>
+                                <a href="#">Langganan</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">person</span>
+                                <a href="#">Profile Saya</a>
+                            </li>
+                        </ul>
+                    </div> --}}
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <script>
-    const menuWrap = document.querySelector('.darkLight-searchBoxq');
-    const menuProfile = document.querySelector('.profileq');
-    const menu = document.querySelector('.menu-profileq');
 
-    menuProfile.addEventListener('click', function(event) {
-        event.stopPropagation();
-        menu.classList.toggle('active');
-    });
+const menuWrap = document.querySelector('.darkLight-searchBoxq');
+const menuProfile = document.querySelector('.profileq');
+const menu = document.querySelector('.menu-profileq');
 
-    document.addEventListener('click', function() {
-        menu.classList.remove('active');
-    });
+menuProfile.addEventListener('click', function(event) {
+    event.stopPropagation();
+    menu.classList.toggle('active');
+});
 
-    menu.addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
+document.addEventListener('click', function() {
+    menu.classList.remove('active');
+});
 
-    const body = document.querySelector("body"),
-        nav = document.querySelector("nav"),
-        modeToggle = document.querySelector(".dark-lightq"),
-        searchToggle = document.querySelector(".searchToggleq"),
-        sidebarOpenq = document.querySelector(".sidebarOpenq"),
-        siderbarClose = document.querySelector(".siderbarCloseq");
+menu.addEventListener('click', function(event) {
+    event.stopPropagation();
+});
 
-    let getMode = localStorage.getItem("mode");
-    if (getMode && getMode === "dark-mode") {
-        body.classList.add("dark");
+const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      modeToggle = document.querySelector(".dark-lightq"),
+      searchToggle = document.querySelector(".searchToggleq"),
+      sidebarOpenq = document.querySelector(".sidebarOpenq"),
+      siderbarClose = document.querySelector(".siderbarCloseq");
+
+      let getMode = localStorage.getItem("mode");
+          if(getMode && getMode === "dark-mode"){
+            body.classList.add("dark");
+          }
+
+
+
+
+ 
+      
+//   js code to toggle sidebar
+sidebarOpenq.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+
+
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+
+    if(!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains("menuq")){
+        nav.classList.remove("active");
     }
+});
 
-
-
-
-
-
-    //   js code to toggle sidebar
-    sidebarOpenq.addEventListener("click", () => {
-        nav.classList.add("active");
-    });
-
-
-    body.addEventListener("click", e => {
-        let clickedElm = e.target;
-
-        if (!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains("menuq")) {
-            nav.classList.remove("active");
-        }
-    });
-    $(document).ready(function() {
 </script>
-<!-- Add this in the head section of your HTML -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -54,7 +54,7 @@
 
     @include('layout.partial.nav')
     @yield('content')
-    {{-- @include('layout.partial.footer')    --}}
+    @include('layout.partial.footer')   
 
 
 </body>

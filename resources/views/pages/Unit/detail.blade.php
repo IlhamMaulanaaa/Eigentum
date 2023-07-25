@@ -7,7 +7,6 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Product Card/Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/DetailProperty/detailproperty.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
@@ -23,7 +22,7 @@
             integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
         <!-- CSS -->
-        <link rel="stylesheet" href="/css/pages/home.css">
+        <link rel="stylesheet" href="/css/unit/detail.css">
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
         <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
@@ -47,8 +46,6 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Template Stylesheet -->
-        <link href="/css/pages/guide.css" rel="stylesheet">
 
     </head>
 
@@ -64,11 +61,11 @@
                 <div class="product-imgs">
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
-                            <img class="img-besar" src="/assets/detail/home.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/detail/livingroom.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/detail/bathroom.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/detail/bedroom.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/detail/denah.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/home.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/denah.jpg" alt="shoe image">
 
                         </div>
 
@@ -76,7 +73,7 @@
                             <div class="gallery">
 
                                 <div class="image" style="margin-left: 770px; margin-top: 310px;">
-                                    <img src="/assets/detail/home.jpg" alt=""
+                                    <img src="/assets/unit/detailunit/home.jpg" alt=""
                                         style="border-radius: 10px; filter: grayscale(90%) opacity(2.5); width: 200px; height: 120px;">
                                     <div class="text-overlay">
                                         <p class="text">Lihat Semua</p>
@@ -85,49 +82,49 @@
 
 
                             </div>
-                            <div class="image hide"><img src="/assets/detail/livingroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/denah.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/livingroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/denah.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/livingroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bathroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/bedroom.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/denah.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/detail/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
                         </div>
@@ -171,31 +168,31 @@
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="1">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/detail/home.jpg" alt="shoe image">
+                                src="/assets/unit/detailunit/home.jpg" alt="shoe image">
                         </a>
                     </div>
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="2">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/detail/livingroom.jpg" alt="shoe image">
+                                src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
                         </a>
                     </div>
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="3">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/detail/bathroom.jpg" alt="shoe image">
+                                src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
                         </a>
                     </div>
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="4">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/detail/bedroom.jpg" alt="shoe image">
+                                src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
                         </a>
                     </div>
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="5">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/detail/denah.jpg" alt="shoe image">
+                                src="/assets/unit/detailunit/denah.jpg" alt="shoe image">
                         </a>
                     </div>
                 </div>
@@ -270,960 +267,209 @@
 
 
 
-        <div class="frame-156-pto" id="4:7196" style="">
-            <div class="group-77-FDR" id="4:7198" style="">
-                <div class="daftar-rumah-baru-ALP" id="4:7200">Properti Serupa</div>
-
-                <div class="slide-container swiper" style="">
-                    <div class="slide-content">
-                        <div class="card-wrapper swiper-wrapper">
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-                            <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                    <img class="rectangle-20-9rX"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54339" />
-                                    <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                        <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                            <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                    <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                    <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                </div>
-                                                <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                    id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">Depok,
-                                                    Jawa Barat</div>
-                                            </div>
-                                            <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                            <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                    <div class="divattribute-grid-TLj" id="I4:7199;165:3744;527:54353">
-                                                        <img class="svg-kKq"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54354" />
-                                                        <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2</div>
-                                                    </div>
-                                                    <div class="divattribute-grid-w9R" id="I4:7199;165:3744;527:54360">
-                                                        <img class="svg-4zj"
-                                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                            id="I4:7199;165:3744;527:54361" />
-                                                        <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4</div>
-                                                    </div>
-                                                </div>
-                                                <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                    <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 100m²
-                                                    </div>
-                                                    <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 100m²
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <img class="material-symbols-favorite-WVM"
-                                        src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                        id="I4:7199;165:3744;527:54373" />
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="frame-156-pto" id="4:7196" style="">
-                <div class="group-77-FDR" id="4:7198" style="">
-                    <div class="daftar-rumah-baru-ALP" id="4:7200">Properti Lainnya</div>
-
-                    <div class="slide-container swiper" style="">
-                        <div class="slide-content">
-                            <div class="card-wrapper swiper-wrapper">
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB : 170m²
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT : 190m²
-                                                        </div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB :
-                                                            170m²</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-                                <div class="card-5Ls swiper-slide" id="I4:7199;165:3744">
-                                    <div class="group-38-qL3" id="I4:7199;165:3744;527:54337">
-                                        <img class="rectangle-20-9rX"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54339" />
-                                        <div class="group-63-rF9" id="I4:7199;165:3744;527:54340">
-                                            <div class="group-61-MBu" id="I4:7199;165:3744;527:54343">
-                                                <div class="frame-6-gzs" id="I4:7199;165:3744;527:54344">
-                                                    <div class="rp-25-jt-Kps" id="I4:7199;165:3744;527:54345">
-                                                        <span class="rp-25-jt-Kps-sub-0">Rp</span>
-                                                        <span class="rp-25-jt-Kps-sub-1"> 1.5 m</span>
-                                                    </div>
-                                                    <div class="disewakan-2-ruko-daerah-bandung-maP"
-                                                        id="I4:7199;165:3744;527:54348">Dijual Rumah Klasik 2 Lantai</div>
-                                                    <div class="bandung-jawa-barat-78T" id="I4:7199;165:3744;527:54349">
-                                                        Depok, Jawa Barat</div>
-                                                </div>
-                                                <div class="line-3-rLw" id="I4:7199;165:3744;527:54350"></div>
-                                                <div class="frame-58-aXq" id="I4:7199;165:3744;527:54351">
-                                                    <div class="divflex-uq1" id="I4:7199;165:3744;527:54352">
-                                                        <div class="divattribute-grid-TLj"
-                                                            id="I4:7199;165:3744;527:54353">
-                                                            <img class="svg-kKq"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54354" />
-                                                            <div class="item-1-Rwm" id="I4:7199;165:3744;527:54359">2
-                                                            </div>
-                                                        </div>
-                                                        <div class="divattribute-grid-w9R"
-                                                            id="I4:7199;165:3744;527:54360">
-                                                            <img class="svg-4zj"
-                                                                src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                                                id="I4:7199;165:3744;527:54361" />
-                                                            <div class="item-2-Cr3" id="I4:7199;165:3744;527:54366">4
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="frame-9-Y9D" id="I4:7199;165:3744;527:54367">
-                                                        <div class="lt-90m-ei3" id="I4:7199;165:3744;527:54369">LT :
-                                                            100m²</div>
-                                                        <div class="lb-70m-n3Z" id="I4:7199;165:3744;527:54371">LB :
-                                                            100m²</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img class="material-symbols-favorite-WVM"
-                                            src="/api/try-prod-ap-southeast-1-first-cluster/project..."
-                                            id="I4:7199;165:3744;527:54373" />
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-        </div>
-        </div>
+        
+    </body>
         <!-- Swiper JS -->
         <script src="js/swiper-bundle.min.js"></script>
+        {{-- <script src="js/unit/detail.js"></script> --}}
 
         <!-- JavaScript -->
         {{-- <script src="js/home.js"></script> --}}
         <script>
-            var swiper = new Swiper(".slide-content", {
-                slidesPerView: 4,
-                spaceBetween: 25,
-                loop: false,
-                centerSlide: 'false',
-                fade: 'false',
-                grabCursor: 'false',
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: false,
-                    dynamicBullets: false,
-                },
+            const imgs = document.querySelectorAll('.img-select a');
+const imgBtns = [...imgs];
+let imgId = 1;
 
-                breakpoints: {
-                    0: {
-                        slidesPerView: 1,
-                    },
-                    520: {
-                        slidesPerView: 2,
-                    },
-                    950: {
-                        slidesPerView: 3,
-                    },
-                    1200: {
-                        slidesPerView: 4,
-                    }
-                },
-            });
+imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+    });
+});
 
-            var swiper = new Swiper(".mySwiper", {
-                slidesPerView: 1,
-                grabCursor: true,
-                loop: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-            });
+function slideImage(){
+    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
-            const tabsBox = document.querySelector(".tabs-box"),
-                allTabs = tabsBox.querySelectorAll(".tab"),
-                arrowIcons = document.querySelectorAll(".icon i");
+    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+}
 
-            let isDragging = false;
-
-            const handleIcons = (scrollVal) => {
-                let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-                arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-                arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-            }
-
-            arrowIcons.forEach(icon => {
-                icon.addEventListener("click", () => {
-                    // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
-                    let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
-                    handleIcons(scrollWidth);
-                });
-            });
-
-            allTabs.forEach(tab => {
-                tab.addEventListener("click", () => {
-                    tabsBox.querySelector(".active").classList.remove("active");
-                    tab.classList.add("active");
-                });
-            });
-
-            const dragging14 = (e) => {
-                if (!isDragging) return;
-                tabsBox.classList.add("dragging");
-                tabsBox.scrollLeft -= e.movementX;
-                handleIcons(tabsBox.scrollLeft)
-            }
-
-            const dragStop14 = () => {
-                isDragging = false;
-                tabsBox.classList.remove("dragging");
-            }
-
-            tabsBox.addEventListener("mousedown", () => isDragging = true);
-            tabsBox.addEventListener("mousemove", dragging14);
-            document.addEventListener("mouseup", dragStop14);
+window.addEventListener('resize', slideImage);
 
 
 
-            // const wrapper = document.querySelector(".wrapperteks"),
-            // selectBtn = wrapper.querySelector(".select-btn-teks"),
-            // options = wrapper.querySelector(".optionsteks");
-
-            // let countries = ["Semua", "Rumah", "Apartemen", "Ruko", "VIlla"];
-
-            // function addCountry(selectedCountry) {
-            //     options.innerHTML = "";
-            //     countries.forEach(country => {
-            //         let isSelected = country == selectedCountry ? "selected" : "";
-            //         let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
-            //         options.insertAdjacentHTML("beforeend", li);
-            //     });
-            // }
-            // addCountry();
-
-            // function updateName(selectedLi) {
-            //     addCountry(selectedLi.innerText);
-            //     wrapper.classList.remove("active");
-            //     selectBtn.firstElementChild.innerText = selectedLi.innerText;
-            // }
 
 
-            // selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+const gallery = document.querySelectorAll(".image");
+    const previewImg = document.querySelector(".image-box img");
+    const prevBtn = document.querySelector(".slide.prev");
+    const nextBtn = document.querySelector(".slide.next");
+    const currentImg = document.querySelector(".current-img");
+    const totalImg = document.querySelector(".total-img");
+    const previewBox = document.querySelector(".preview-box");
+    const closeIcon = document.querySelector(".icon");
+  
+    let currentIndex = 0;
+  
+    window.onload = () => {
+      totalImg.textContent = gallery.length;
+  
+      gallery[currentIndex].classList.add("active");
+      previewImg.src = gallery[currentIndex].querySelector("img").src;
+      currentImg.textContent = currentIndex + 1;
+  
+      prevBtn.onclick = () => {
+        currentIndex--;
+        if (currentIndex < 0) {
+          currentIndex = gallery.length - 1;
+        }
+        showImage(currentIndex);
+      };
+  
+      nextBtn.onclick = () => {
+        currentIndex++;
+        if (currentIndex >= gallery.length) {
+          currentIndex = 0;
+        }
+        showImage(currentIndex);
+      };
+  
+      gallery.forEach((image, index) => {
+        image.onclick = () => {
+          showImage(index);
+        };
+      });
+  
+      closeIcon.onclick = () => {
+        previewBox.classList.remove("show");
+      };
+    };
+  
+    function showImage(index) {
+      gallery.forEach((image) => {
+        image.classList.remove("active");
+      });
+      gallery[index].classList.add("active");
+      previewImg.src = gallery[index].querySelector("img").src;
+      currentImg.textContent = index + 1;
+      previewBox.classList.add("show");
+    }
+
+      var swiper = new Swiper(".slide-content", {
+  slidesPerView: 4,
+  spaceBetween: 25,
+  loop: false,
+  centerSlide: 'false',
+  fade: 'false',
+  grabCursor: 'false',
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: false,
+    dynamicBullets: false,
+  },
+
+  breakpoints:{
+      0: {
+          slidesPerView: 1,
+      },
+      520: {
+          slidesPerView: 2,
+      },
+      950: {
+          slidesPerView: 3,
+      },
+      1200: {
+        slidesPerView: 4,
+    }
+  },
+});
+
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  grabCursor: true,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+const tabsBox = document.querySelector(".tabs-box"),
+allTabs = tabsBox.querySelectorAll(".tab"),
+arrowIcons = document.querySelectorAll(".icon i");
+
+let isDragging = false;
+
+const handleIcons = (scrollVal) => {
+  let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+  arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+  arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
+}
+
+arrowIcons.forEach(icon => {
+  icon.addEventListener("click", () => {
+      // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
+      let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
+      handleIcons(scrollWidth);
+  });
+});
+
+allTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+      tabsBox.querySelector(".active").classList.remove("active");
+      tab.classList.add("active");
+  });
+});
+
+const dragging14 = (e) => {
+  if(!isDragging) return;
+  tabsBox.classList.add("dragging");
+  tabsBox.scrollLeft -= e.movementX;
+  handleIcons(tabsBox.scrollLeft)
+}
+
+const dragStop14 = () => {
+  isDragging = false;
+  tabsBox.classList.remove("dragging");
+}
+
+tabsBox.addEventListener("mousedown", () => isDragging = true);
+tabsBox.addEventListener("mousemove", dragging14);
+document.addEventListener("mouseup", dragStop14);
+
+
+
+// const wrapper = document.querySelector(".wrapperteks"),
+// selectBtn = wrapper.querySelector(".select-btn-teks"),
+// options = wrapper.querySelector(".optionsteks");
+
+// let countries = ["Semua", "Rumah", "Apartemen", "Ruko", "VIlla"];
+
+// function addCountry(selectedCountry) {
+//     options.innerHTML = "";
+//     countries.forEach(country => {
+//         let isSelected = country == selectedCountry ? "selected" : "";
+//         let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
+//         options.insertAdjacentHTML("beforeend", li);
+//     });
+// }
+// addCountry();
+
+// function updateName(selectedLi) {
+//     addCountry(selectedLi.innerText);
+//     wrapper.classList.remove("active");
+//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
+// }
+
+
+// selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+
         </script>
 
-        <script src="js/unit/detail.js"></script>
 
     </html>
 @endsection
