@@ -35,6 +35,12 @@ class UnitController extends Controller
         return view('admin.unit.create', compact('property', 'status'));
     }
 
+    public function homeunit()
+    {
+
+        return view('pages.page.home');
+    }
+
     public function store(Request $request,  $propertyId)
     {
         $request->validate([

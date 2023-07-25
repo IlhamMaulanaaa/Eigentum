@@ -28,7 +28,7 @@ use App\Http\Controllers\FilePreviewController;
 |
 */
 
-Route::get('/beranda',[UnitController::class, 'honmeunit']);
+Route::get('/beranda',[UnitController::class, 'homeunit']);
 
 
 // authentication
