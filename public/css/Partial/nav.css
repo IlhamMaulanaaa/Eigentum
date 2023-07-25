@@ -1,37 +1,34 @@
 /* ===== Google Font Import - Poppins ===== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    transition: all 0.4s ease;;
+    font-family: "Poppins", sans-serif;
+    transition: all 0.4s ease;
 }
 
-
 /* ===== Colours ===== */
-:root{
-    --body-color: #E4E9F7;
+:root {
+    --body-color: #e4e9f7;
     --nav-color: #fff;
     --side-nav: #fff;
     --text-color: #000;
-    --search-bar: #F2F2F2;
+    --search-bar: #f2f2f2;
     --search-text: #fff;
 }
 
-
-
-.icons-size{
+.icons-size {
     color: #333;
     font-size: 14px;
 }
-.darkLight-searchBoxq{
+.darkLight-searchBoxq {
     display: flex;
     align-items: center;
 }
 
-.darkLight-searchBoxq .profileq{
+.darkLight-searchBoxq .profileq {
     border-radius: 50%;
     cursor: pointer;
     height: 35px;
@@ -40,17 +37,17 @@
     width: 35px;
     margin-right: 15px;
 }
-.darkLight-searchBoxq .profileq img{
+.darkLight-searchBoxq .profileq img {
     width: 100%;
-    top:0;
+    top: 0;
     position: absolute;
     object-fit: cover;
     left: 0;
     height: 100%;
 }
-.darkLight-searchBoxq .menu-profileq{
-    background-color:#FFF;
-    box-sizing:0 5px 25px rgba(0,0,0,0.1);
+.darkLight-searchBoxq .menu-profileq {
+    background-color: #fff;
+    box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     padding: 10px 20px;
     position: absolute;
@@ -66,23 +63,21 @@
     top: 85px;
     visibility: visible;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .darkLight-searchBoxq .menu-profileq::before {
+}
+
+.darkLight-searchBoxq .menu-profileq::before {
     background-color: #fff;
-    content: '';
+    content: "";
     height: 20px;
     position: absolute;
     right: 30px;
     transform: rotate(225deg);
     top: -7px;
     width: 20px;
-    box-shadow: 
-      2px 2px 2px rgba(128, 128, 128, 0.2); /* box-shadow di sebelah kanan */
-  }
-  
-  
-.darkLight-searchBoxq .menu-profileq h3{
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.2); /* box-shadow di sebelah kanan */
+}
+
+.darkLight-searchBoxq .menu-profileq h3 {
     color: #555;
     font-size: 16px;
     font-weight: 600;
@@ -91,26 +86,26 @@
     text-align: left;
     width: 100%;
 }
-.darkLight-searchBoxq .menu-profileq h3 div{
+.darkLight-searchBoxq .menu-profileq h3 div {
     color: #818181;
     font-size: 14px;
     font-weight: 400;
 }
-.darkLight-searchBoxq .menu-profileq ul li{
+.darkLight-searchBoxq .menu-profileq ul li {
     align-items: center;
-    border-top:1px solid rgba(0,0,0,0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: left;
     list-style: none;
     padding: 10px 0px;
 }
-.darkLight-searchBoxq .menu-profileq ul li img{
+.darkLight-searchBoxq .menu-profileq ul li img {
     max-width: 20px;
     margin-right: 10px;
     opacity: 0.5;
-    transition:0.5s
+    transition: 0.5s;
 }
-.darkLight-searchBoxq .menu-profileq ul li a{
+.darkLight-searchBoxq .menu-profileq ul li a {
     display: inline-block;
     color: #555;
     font-size: 14px;
@@ -120,19 +115,16 @@
     text-transform: uppercase;
     transition: 0.5s;
 }
-.darkLight-searchBoxq .menu-profileq ul li:hover img{
+.darkLight-searchBoxq .menu-profileq ul li:hover img {
     opacity: 1;
 }
-.darkLight-searchBoxq .menu-profileq ul li:hover a{
-    color:#0C40E8;
+.darkLight-searchBoxq .menu-profileq ul li:hover a {
+    color: #0c40e8;
 }
-
-
-
-.btnq{
-    font-size: 16px;
+.btnq {
+    font-size: 14px;
     font-weight: bold;
-    background: #0C40E8;
+    background: #000000;
     width: 90px;
     height: 40px;
     display: flex;
@@ -144,25 +136,24 @@
     color: #fff;
     cursor: pointer;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    -webkit-transition-property: box-shadow, transform;
-    transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform, border-radius;
+    border-radius: 20px;
 }
-.btnq:hover, .btnq:focus, .btnq:active{
-    color: #FFF;
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
+
+.btnq:hover,
+.btnq:focus {
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
+    border-radius: 10px;
 }
 
-
-body{
+body {
     height: 100vh;
     background-color: var(--body-color);
 }
 
-body.dark{  
+body.dark {
     --body-color: #fff;
     --nav-color: #fff;
     --side-nav: #fff;
@@ -170,27 +161,35 @@ body.dark{
     --search-bar: #fff;
 }
 
-nav{
+nav {
     position: fixed;
     top: 0;
     left: 0;
     height: 70px;
     width: 100%;
-    background-color: var(--nav-color);
+    background-color: transparent;
     z-index: 100;
 }
 
-body.dark nav{
-    border: 1px solid #bebebe;
-
+nav.active {
+    background-color: white;
+    /* transition-delay: 0.1s; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+nav.active .nav-linksq li a {
+    color: black;
 }
 
-nav .nav-barq{
+body.dark nav {
+    border: 1px solid #bebebe;
+}
+
+nav .nav-barq {
     position: relative;
     height: 100%;
     max-width: 1700px;
     width: 100%;
-    background-color: var(--nav-color);
+    background-color: transparent;
     margin: 0 auto;
     padding: 0 30px;
     display: flex;
@@ -198,7 +197,7 @@ nav .nav-barq{
     justify-content: space-between;
 }
 
-nav .nav-barq .sidebarOpenq{
+nav .nav-barq .sidebarOpenq {
     color: var(--text-color);
     font-size: 25px;
     padding: 5px;
@@ -206,39 +205,39 @@ nav .nav-barq .sidebarOpenq{
     display: none;
 }
 
-nav .nav-barq .logoq a{
+nav .nav-barq .logoq a {
     font-size: 30px;
     font-weight: 500;
     color: var(--text-color);
     text-decoration: none;
 }
 
-.menuq .logo-toggleq{
+.menuq .logo-toggleq {
     display: none;
 }
 
-.nav-barq .nav-linksq{
+.nav-barq .nav-linksq {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.nav-barq .nav-linksq li{
+.nav-barq .nav-linksq li {
     margin: 0 5px;
     list-style: none;
 }
 
-.nav-linksq li a{
+.nav-linksq li a {
     position: relative;
     font-size: 17px;
     font-weight: 400;
-    color: var(--text-color);
+    color: white;
     text-decoration: none;
     padding: 10px;
 }
 
-.nav-linksq li a::before{
-    content: '';
+.nav-linksq li a::before {
+    content: "";
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -251,28 +250,28 @@ nav .nav-barq .logoq a{
     transition: all 0.3s ease;
 }
 
-.nav-linksq li:hover a::before{
+.nav-linksq li:hover a::before {
     opacity: 1;
 }
 
-.nav-barq .darkLight-searchBoxq{
+.nav-barq .darkLight-searchBoxq {
     display: flex;
     align-items: center;
 }
 
 .darkLight-searchBoxq .dark-light,
-.darkLight-searchBoxq .searchToggleq{
+.darkLight-searchBoxq .searchToggleq {
     position: fixed;
     height: 40px;
     width: 40px;
     display: flex;
-    align-items:flex-end;
-    justify-content:flex-end;
+    align-items: flex-end;
+    justify-content: flex-end;
     margin: 0 5px;
 }
 
 .dark-light i,
-.searchToggleq i{
+.searchToggleq i {
     position: absolute;
     color: var(--text-color);
     font-size: 22px;
@@ -280,41 +279,41 @@ nav .nav-barq .logoq a{
     transition: all 0.3s ease;
 }
 
-.dark-light i.sun{
+.dark-light i.sun {
     opacity: 0;
     pointer-events: none;
 }
 
-.dark-light.active i.sun{
+.dark-light.active i.sun {
     opacity: 1;
     pointer-events: auto;
 }
 
-.dark-light.active i.moon{
+.dark-light.active i.moon {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchToggleq i.cancel{
+.searchToggleq i.cancel {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchToggleq.active i.cancel{
+.searchToggleq.active i.cancel {
     opacity: 1;
     pointer-events: auto;
 }
 
-.searchToggleq.active i.search{
+.searchToggleq.active i.search {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchBox{
+.searchBox {
     position: relative;
 }
 
-.searchBox .search-field{
+.searchBox .search-field {
     position: absolute;
     bottom: -85px;
     right: 5px;
@@ -331,14 +330,14 @@ nav .nav-barq .logoq a{
     transition: all 0.3s ease;
 }
 
-.searchToggleq.active ~ .search-field{
+.searchToggleq.active ~ .search-field {
     bottom: -74px;
     opacity: 1;
     pointer-events: auto;
 }
 
-.search-field::before{
-    content: '';
+.search-field::before {
+    content: "";
     position: absolute;
     right: 14px;
     top: -4px;
@@ -349,7 +348,7 @@ nav .nav-barq .logoq a{
     z-index: -1;
 }
 
-.search-field input{
+.search-field input {
     height: 100%;
     width: 100%;
     padding: 0 45px 0 15px;
@@ -362,11 +361,11 @@ nav .nav-barq .logoq a{
     background-color: var(--search-bar);
 }
 
-body.dark .search-field input{
+body.dark .search-field input {
     color: var(--text-color);
 }
 
-.search-field i{
+.search-field i {
     position: absolute;
     color: var(--nav-color);
     right: 15px;
@@ -374,16 +373,16 @@ body.dark .search-field input{
     cursor: pointer;
 }
 
-body.dark .search-field i{
+body.dark .search-field i {
     color: var(--text-color);
 }
 
 @media (max-width: 790px) {
-    nav .nav-barq .sidebarOpenq{
+    nav .nav-barq .sidebarOpenq {
         display: block;
     }
 
-    .menuq{
+    .menuq {
         position: fixed;
         height: 100%;
         width: 320px;
@@ -396,16 +395,16 @@ body.dark .search-field i{
         transition: all 0.4s ease;
     }
 
-    nav.active .menuq{
+    nav.active .menuq {
         left: -0%;
     }
 
-    nav.active .nav-barq .navLogo a{
+    nav.active .nav-barq .navLogo a {
         opacity: 0;
         transition: all 0.3s ease;
     }
 
-    .menuq .logo-toggleq{
+    .menuq .logo-toggleq {
         display: block;
         width: 100%;
         display: flex;
@@ -413,18 +412,18 @@ body.dark .search-field i{
         justify-content: space-between;
     }
 
-    .logo-toggleq .siderbarClose{
+    .logo-toggleq .siderbarClose {
         color: var(--text-color);
         font-size: 24px;
         cursor: pointer;
     }
 
-    .nav-barq .nav-linksq{
+    .nav-barq .nav-linksq {
         flex-direction: column;
         padding-top: 30px;
     }
 
-    .nav-linksq li a{
+    .nav-linksq li a {
         display: block;
         margin-top: 20px;
     }
