@@ -91,6 +91,9 @@ Route::group(['prefix' => '/agent'], function () {
         return view('pages.Agent.dashboard');
     });
 });
+  
+Route::get('/home',[UnitController::class, 'honmeunit']);
+    
 // pages
 Route::group(['prefix' => '/pages'], function () {
     Route::get('/searchagent',[AgentController::class, 'searchAgent']);
@@ -106,10 +109,7 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/rent', function () {
         return view('pages.page.rent');
     });
-    
-    Route::get('/home', function () {
-        return view('pages.page.home');
-    });
+  
     
     Route::get('/sell', function () {
         return view('pages.page.sell');
