@@ -36,12 +36,14 @@ class DeveloperController extends Controller
     {
         try{
             $request->validate([
-                'name'   => 'required',
                 'company'   => 'required',
-                'email' => 'required|email|u   nique:developers',
+                'email' => 'required|email|unique:developers',
                 'password'  => 'required|min:8',
                 'license.*' => 'required|file|max:10240',
                 'telp'  => 'required',
+                'name' => 'required',
+                'owner_email' => 'required|email|unique:owners',
+                'owner_password' => 'required|min:8',
                 'ktp' => 'required|file|max:10240',
                 'face' => 'required|file|max:10240',
             ]);
@@ -58,6 +60,7 @@ class DeveloperController extends Controller
                     $imageField->storeAs('public', $imageName);
                 }
             }
+            
 
             $files = $request->file('license');
             $fileArray = [];
@@ -78,8 +81,8 @@ class DeveloperController extends Controller
 
             $owner = Owner::create([
                 'name' => $request->name,
-                'owner_email' => $request->email,
-                'owner_password' => bcrypt($request->password),
+                'owner_email' => $request->owner_email,
+                'owner_password' => bcrypt($request->owner_password),
                 'ktp' => $imageNames[0],
                 'face' => $imageNames[1],
                 'developer_id' => $developer->id,
@@ -111,7 +114,8 @@ class DeveloperController extends Controller
     {
         $licenses = is_string($developer->license) ? explode('|', $developer->license) : []; 
         $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
-        return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames'));
+        $provinces = Province::all();
+        return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames', 'provinces'));
     }
 
     public function update(Request $request,string $id)
@@ -121,10 +125,13 @@ class DeveloperController extends Controller
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
-                'owner' => 'nullable',
-                'address'  => 'nullable',
                 'license.*' => 'nullable|file|max:10240',
                 'telp'  => 'nullable',
+                'name' => 'nullable',
+                'owner_email' => 'nullable|email',
+                'owner_password' => 'nullable|min:8',
+                'ktp' => 'nullable|file|max:10240',
+                'face' => 'nullable|file|max:10240',
             ]);
 
             $data= Developer::findOrfail($id);
@@ -133,10 +140,34 @@ class DeveloperController extends Controller
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'owner' => $request->owner,
-                'address'   => $request->address,
-                'telp'  => $request->telp
+                'telp'  => $request->telp,
             ]);
+
+            $owner = Owner::findOrfail($id);
+
+            $owner->update([
+                'name' => $request->name,
+                'owner_email' => $request->owner_email,
+                'owner_password' => bcrypt($request->owner_password),
+                'developer_id' => $data->id,
+            ]); 
+
+            $images = ['ktp', 'face'];
+
+            foreach ($images as $image) {
+                if ($request->hasFile($image)) {
+                    // Hapus gambar lama jika sudah ada
+                    if ($owner->$image) {
+                        Storage::delete('public/' . $owner->$image);
+                    }
+
+                    // Simpan gambar baru
+                    $imageField = $request->file($image);
+                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                    $imageField->storeAs('public', $imageName);
+                    $owner->$image = $imageName;
+                }
+            }
 
             if ($request->hasFile('license')) {
                 $licenses = $request->file('license');
@@ -145,17 +176,18 @@ class DeveloperController extends Controller
                         $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
                         $license->storeAs('public', $licenseName);
                         $fileArray = explode('|', $data->license);
-            
-                        // Update the specific index in the array
                         $fileArray[$index] = $licenseName;
-            
-                        // Rebuild the array and assign it back to the column
                         $data->license = implode('|', $fileArray);
                     }
                 }
             }
 
+            $owner->save();
             $data->save();
+            // $data->provinces()->sync($request->input('province_id'));
+            // $data->regencies()->sync($request->input('regency_id'));
+            // $data->districts()->sync($request->input('district_id'));
+            // $data->villages()->sync($request->input('village_id'));
 
             $data = Developer::where('id', '=', $data->id)->get();
             $url = '/admin/developer/show/' . $id;
