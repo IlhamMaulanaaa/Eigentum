@@ -60,7 +60,7 @@
                                 </select>
                             </div>
                             <br>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="agent_id" class="form-label">Agent</label>
                                 <select class="form-control" id="agent_id" name="agent_id">
                                     @foreach ($agent as $agent)
@@ -74,7 +74,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
+                            <br> --}}
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
                                     href="/admin/property/show/{{ $property->id }}">Back</a>

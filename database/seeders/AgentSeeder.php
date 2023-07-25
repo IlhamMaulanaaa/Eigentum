@@ -15,50 +15,69 @@ class AgentSeeder extends Seeder
     public function run(): void
     {
         // Agent::truncate();
-        Agent::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "location" => Str::limit(fake()->address(), 20),
-            "ktp" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Agent::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "location" => Str::limit(fake()->address(), 20),
-            "ktp" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Agent::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "location" => Str::limit(fake()->address(), 20),
-            "ktp" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Agent::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "location" => Str::limit(fake()->address(), 20),
-            "ktp" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
-        Agent::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "location" => Str::limit(fake()->address(), 20),
-            "ktp" => fake()->imageUrl(),
-            "phone_number" => fake()->phoneNumber(),
-        ]);
+
+        for ($i = 0; $i < 5; $i++) {
+            Agent::create([
+                "email" => fake()->email(),
+                "password" => bcrypt(fake()->password()),
+                "name" => fake()->name(),
+                "address" => Str::limit(fake()->address(), 20),
+                "location" => mt_rand(1,34),
+                "ktp" => fake()->imageUrl(),
+                "face" => fake()->imageUrl(),
+                "phone_number" => fake()->phoneNumber(),
+            ]);
+        }
+
+        // Agent::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "name" => fake()->name(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "location" => mt_rand(1,34),
+        //     "ktp" => fake()->imageUrl(),
+        //     "face" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Agent::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "name" => fake()->name(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "location" => mt_rand(1,34),
+        //     "ktp" => fake()->imageUrl(),
+        //     "face" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Agent::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "name" => fake()->name(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "location" => mt_rand(1,34),
+        //     "ktp" => fake()->imageUrl(),
+        //     "face" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Agent::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "name" => fake()->name(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "location" => mt_rand(1,34),
+        //     "ktp" => fake()->imageUrl(),
+        //     "face" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
+        // Agent::create([
+        //     "email" => fake()->email(),
+        //     "password" => bcrypt(fake()->password()),
+        //     "name" => fake()->name(),
+        //     "address" => Str::limit(fake()->address(), 20),
+        //     "location" => mt_rand(1,34),
+        //     "ktp" => fake()->imageUrl(),
+        //     "face" => fake()->imageUrl(),
+        //     "phone_number" => fake()->phoneNumber(),
+        // ]);
     }
 }

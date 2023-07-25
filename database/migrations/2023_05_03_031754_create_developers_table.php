@@ -10,17 +10,14 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    { 
         Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string("company");
-            $table->string("email")->unique();
+            $table->string("email")->unique();  
             $table->string("password");
-            $table->string("owner");
-            $table->string("address");
             $table->string("license");
-            $table->string("phone_number");
-            $table->softDeletes();
+            $table->bigInteger("telp");
             $table->timestamps();
         });
     }

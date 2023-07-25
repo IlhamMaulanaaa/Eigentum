@@ -8,9 +8,9 @@
                     <h2 class="card-title fs-2 text-primary col-md-8 text-uppercase">
                         {{ $tables }}
                     </h2>
-                    <div class="col-md-4 text-end px-0">
+                    {{-- <div class="col-md-4 text-end px-0">
                         <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="table-responsive">
@@ -31,11 +31,11 @@
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $type->id }}">Detail</a>
-                                        <form action="delete/{{ $type->id }}" method="get" class="d-inline">
+                                        {{-- <form action="delete/{{ $type->id }}" method="get" class="d-inline">
                                             @csrf
                                             <button class="btn btn-outline-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

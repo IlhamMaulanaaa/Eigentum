@@ -8,9 +8,9 @@
                     <h2 class="card-title fs-2 text-primary col-md-8 text-uppercase">
                         {{ $tables }}
                     </h2>
-                    <div class="col-md-4 text-end px-0">
+                    {{-- <div class="col-md-4 text-end px-0">
                         <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="table-responsive">
@@ -40,7 +40,7 @@
                                     <td class="text-start ">{{ $unit->properties->property }}</td>
                                     <td class="text-start ">
                                         @foreach ($unit->status as $role)
-                                            {{ $role->name }}
+                                            {{ $role->name }} 
                                         @endforeach
                                     </td>
 

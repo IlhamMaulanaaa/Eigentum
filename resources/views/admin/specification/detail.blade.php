@@ -41,7 +41,7 @@
                             <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="/admin/specification/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $specification->id }}">Edit</a>
+                                {{-- <a type="button" class="btn btn-primary" href="edit/{{ $specification->id }}">Edit</a> --}}
                             </div>
                         </form>
                     </div>

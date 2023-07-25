@@ -28,9 +28,9 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="location" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="location" name="location"
-                                    value="{{ $agent->locations->location }}" readonly disabled>
+                                <label for="name" class="form-label">Location</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ $agent->locations->name }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">

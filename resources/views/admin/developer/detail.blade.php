@@ -1,6 +1,29 @@
 @extends('admin.layout.main')
 
 @section('content')
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            /* Pastikan parent container memiliki lebar yang sesuai */
+            .file-container {
+                max-width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+
+
+        </style>
+    </head>
+
+    <body>
+
+    </body>
     <div class="container">
         <div class="row">
             <div class="col-ad-12">
@@ -18,39 +41,92 @@
                             <br>
 
                             <div class="form-group">
-                                <label for="email" class="form-label">Email</label>
+                                <label for="owner" class="form-label">Owner</label>
+                                <input type="text" class="form-control" id="owner" name="owner"
+                                    value="{{ $developer->owners->name }}" readonly disabled>
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Company Email</label>
                                 <input type="email" class="form-control" id="email" name="email"
                                     value="{{ $developer->email }}" readonly disabled>
                             </div>
                             <br>
 
                             <div class="form-group">
-                                <label for="owner" class="form-label">Owner</label>
-                                <input type="text" class="form-control" id="owner" name="owner"
-                                    value="{{ $developer->owner }}" readonly disabled>
+                                <label for="owner" class="form-label">Owner Email</label>
+                                <input type="owner" class="form-control" id="owner" name="owner"
+                                    value="{{ $developer->owners->owner_email }}" readonly disabled>
                             </div>
                             <br>
 
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    value="{{ $developer->address }}" readonly disabled>
-                            </div>
-                            <br>
+                            <div class="form-group row">
+                                <div class="form-group col-auto">
+                                    <label for="ktp" class="form-label">Ktp</label>
+                                    <div class="image-text-wrapper">
+                                        <img src="{{ asset('storage/' . $developer->owners->ktp) }}" class="img-thumbnail"
+                                            alt="" width="120">
+                                    </div>
+                                </div>
 
-
-                            <div class="form-group">
-                                <label for="license" class="form-label">License</label>
-                                <div class="image-text-wrapper">
-                                    <img src="{{ asset('storage/' . $developer->license) }}" alt="" width="200">
+                                <div class="form-group col-auto">
+                                    <label for="face" class="form-label">Face</label>
+                                    <div class="image-text-wrapper">
+                                        <img src="{{ asset('storage/' . $developer->owners->face) }}" class="img-thumbnail"
+                                            alt="" width="120">
+                                    </div>
                                 </div>
                             </div>
                             <br>
 
+                            <div class="form-group row col-12">
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Provinces" class="form-label">Provinsi</label>
+                                    <input type="text" class="form-control" id="Provinces" name="Provinces"
+                                        value="{{ implode(', ',$developer->provinces()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Regencies" class="form-label">Kota</label>
+                                    <input type="text" class="form-control" id="Regencies" name="Regencies"
+                                        value="{{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="District" class="form-label">Kecamatan</label>
+                                    <input type="text" class="form-control" id="District" name="District"
+                                        value="{{ implode(', ',$developer->districts()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Village" class="form-label">Desa</label>
+                                    <input type="text" class="form-control" id="Village" name="Village"
+                                        value="{{ implode(', ',$developer->villages()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                            </div>
+
+
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ $developer->phone_number }}" readonly disabled>
+                                <label for="license" class="form-label">License</label>
+                                @foreach ($licenseFile as $index => $file)
+                                    <div class="col-auto">
+                                        <div class="file-container">
+                                            {{-- <embed src="{{ asset('storage/' . $file) }}" type="application/pdf"
+                                                width="40%" height="40%"/> --}}
+                                            <a href="{{ route('pdf.preview', ['file' => $file]) }}"
+                                                target="_blank">Tampilkan {{ pathinfo($file, PATHINFO_FILENAME) }}</a>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                                <label for="telp" class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" id="telp" name="telp"
+                                    value="{{ $developer->telp }}" readonly disabled>
                             </div>
                             <br>
 
@@ -58,12 +134,17 @@
                                 <label for="properties" class="form-label">Property</label>
                                 <ul>
                                     @foreach ($developer->properties as $property)
-                                    <li>{{ $property->property }}<a href="/admin/property/show/{{ $property->id }}">Detail</a><a href="/admin/property/show/edit/{{ $property->id }}">Edit</a></li>
-                                    </li>
+                                        <li>
+                                            {{ $property->property }}
+                                            <a href="/admin/property/show/{{ $property->id }}"
+                                                class="text-warning">Detail</a>
+                                            <a href="/admin/property/show/edit/{{ $property->id }}">Edit</a>
+                                        </li>
                                     @endforeach
                                 </ul>
-                                <a type="button" class="btn btn-success"
-                                    href="/admin/property/create?developer_id={{ $developer->id }}">Add Property</a>
+
+                                <a href="{{ route('property.create', $developer->id) }}" class="btn btn-success">Tambah
+                                    Property</a>
                             </div>
                             <br>
 
@@ -77,4 +158,6 @@
             </div>
         </div>
     </div>
+
+    </html>
 @endsection

@@ -24,8 +24,6 @@ class UnitController extends Controller
 
         if ($units) {
             return view('admin.unit.all', compact("units", "tables"));
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
@@ -42,25 +40,24 @@ class UnitController extends Controller
     }
 
 
-    public function create()
+    public function create(Request $request , $propertyId)
     {
-        return view('admin.unit.create', [
-            "status" => Status::all(),
-            "property" => Property::all(),
-        ]);
+        $property = Property::findOrfail($propertyId);
+        $status = Status::all();
+
+        return view('admin.unit.create', compact('property', 'status'));
     }
 
-
+    
     public function store(Request $request)
     {
         try {
-
+            
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
                 'price' => 'required',
                 'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'property_id' => 'required',
                 'bedroom' => 'required',
                 'bathroom' => 'required',
                 'surface_area' => 'required',
@@ -73,14 +70,18 @@ class UnitController extends Controller
                 'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
             ]);
 
-            $property = Property::first();
+            $property = Property::findOrfail($propertyId);
+            if (!$property) {
+                return redirect()->back()->with('error', 'Property tidak ditemukan');
+            }
 
+            $imageFieldName = $request->file('image');
             $imageNames = [];
             $imageFieldName = 'image';
 
             $imageName = Str::random(8) . "." . $request->file($imageFieldName)->getClientOriginalExtension();
             $imageNames[] = $imageName;
-            $request->file($imageFieldName)->storeAs('public', $imageName);
+            $imageFieldName->storeAs('public', $imageName);
 
             $unit = Unit::create([
                 'title' => $request->title,
@@ -107,7 +108,7 @@ class UnitController extends Controller
                 if (!is_null($file)) {
                     $imageArray = [];
                     foreach ($file as $fieldName) {
-                        $imageFileName = Str::random(8) . "." . $fieldName->getClientOriginalExtension();
+                        $imageFileName = $fieldName->getClientOriginalName()  . "." . $fieldName->getClientOriginalExtension();
                         $imageArray[] = $imageFileName;
                         $fieldName->storeAs('public', $imageFileName);
                     }
@@ -134,7 +135,7 @@ class UnitController extends Controller
 
 
 
-
+    
     public function show(Unit $unit, Request $request)
     {
         $data = $request->all();
@@ -147,11 +148,10 @@ class UnitController extends Controller
 
     public function edit(Unit $unit)
     {
-        return view('admin.unit.edit', [
-            "unit" => $unit,
-            "properties" => Property::all(),
-            "statuses" => Status::all(),
-        ]);
+        $properties = Property::all();
+        $statuses = Status::all();
+
+        return view('admin.unit.edit', compact('unit','statuses', 'properties'));
     }
 
 
@@ -258,7 +258,7 @@ class UnitController extends Controller
 
     public function destroy(string $id)
     {
-        try {
+        
             $unit = Unit::findOrfail($id);
 
             $unit->delete();
@@ -267,8 +267,6 @@ class UnitController extends Controller
             $unit->images()->delete();
 
             return redirect('/admin/unit/data')->with('success', 'Data Deleted');
-        } catch (Exception $e) {
-            return $e;
-        }
+        
     }
 }

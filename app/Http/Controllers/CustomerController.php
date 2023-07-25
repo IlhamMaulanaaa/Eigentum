@@ -9,36 +9,27 @@ use Exception;
 
 class CustomerController extends Controller
 {   
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $data = Customer::all();
         $tables = (new Customer())->getTable();
 
         if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.customer.all', ['customers' => $data , 'tables' => $tables]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         return view('admin.customer.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        try {
+        
             $request->validate([
                 'name'   => 'required',
                 'email' => 'required|email|unique:customers',
@@ -64,17 +55,11 @@ class CustomerController extends Controller
 
             if ($data) {
                 return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/customer/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            } 
+        
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(Customer $customer)
     {
         return view('admin.customer.detail', [
@@ -82,9 +67,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(Customer $customer)
     {
         return view('admin.customer.edit', [
@@ -92,12 +75,10 @@ class CustomerController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        try {
+        
             $request->validate([
                 'name'   => 'nullable',
                 'email' => 'nullable|email',
@@ -121,17 +102,11 @@ class CustomerController extends Controller
 
             if ($data) {
                 return ApiFormatter::createApi('201', 'Created', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
-            return $e;
-        }
+            } 
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(Customer $customer)
     {
         $data = Customer::where('id', $customer->id)->delete();

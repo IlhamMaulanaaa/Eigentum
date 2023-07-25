@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController as SessionController;
@@ -14,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
-
-
+use App\Http\Controllers\FilePreviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -225,8 +225,8 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
             Route::get('/{unit}',[UnitController::class,'show']);
             Route::get('/edit/{unit}',[UnitController::class,'edit']);
         });
-        Route::get('/create', [UnitController:: class, 'create']);
-        Route::post('/add', [UnitController:: class, 'store']);
+        Route::get('/create/{propertyId}', [UnitController:: class, 'create'])->name('unit.create');    
+        Route::post('/add/{propertyId}', [UnitController:: class, 'store'])->name('unit.store');
         Route::post('/update/{unit}', [UnitController:: class, 'update']);
         Route::get('/delete/{unit}',[UnitController::class,'destroy']);
     });
@@ -237,8 +237,8 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
             Route::get('/{property}',[PropertyController::class,'show']);
             Route::get('/edit/{property}',[PropertyController::class,'edit']);
         });
-        Route::get('/create', [PropertyController:: class, 'create']);
-        Route::post('/add', [PropertyController:: class, 'store']);
+        Route::get('/create/{developerId}', [PropertyController:: class, 'create'])->name('property.create');
+        Route::post('/add/{developerId}', [PropertyController:: class, 'store'])->name('property.store');
         Route::post('/update/{property}', [PropertyController:: class, 'update']);
         Route::get('/delete/{property}',[PropertyController::class,'destroy']);
     });
@@ -304,4 +304,11 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     });
 
     Route::get("/dashboard", [DashboardController::class, 'index']);
+
+    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+    
 });
+
+Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
+Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
+Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');

@@ -4,114 +4,134 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Developer;
+use App\Models\Owner;
+use App\Models\Province;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
+
 class DeveloperController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+
     public function index()
     {
-        $data = Developer::all();
+        $developers = Developer::all();
         $tables = (new Developer())->getTable();
 
-        if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
-            return view('admin.developer.all', ['developers' => $data, 'tables' => $tables]);
-        } else {
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
-        }
+        return view('admin.developer.all', compact('developers', 'tables', ));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
 
     public function create()
     {
-        return view('admin.developer.create');
-    }
+        $provinces = Province::all();
 
-    /**
-     * Store a newly created resource in storage.
-     */
+        return view('admin.developer.create', compact('provinces'));
+    }
 
     public function store(Request $request)
     {
-        try {
+        try{
             $request->validate([
                 'company'   => 'required',
                 'email' => 'required|email|unique:developers',
                 'password'  => 'required|min:8',
-                'owner' => 'required',
-                'address'  => 'required',
-                'license'   => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'phone_number'  => 'required',
+                'license.*' => 'required|file|max:10240',
+                'telp'  => 'required',
+                'name' => 'required',
+                'owner_email' => 'required|email|unique:owners',
+                'owner_password' => 'required|min:8',
+                'ktp' => 'required|file|max:10240',
+                'face' => 'required|file|max:10240',
             ]);
 
-            $license = Str::random(8). "." . $request->license->getClientOriginalExtension();
+            $images = ['ktp', 'face']; 
+            $imageNames = [];
 
-            $data = Developer::create([
+            foreach ($images as $image) {
+                $imageField = $request->file($image);
+
+                if ($imageField) {
+                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                    $imageNames[] = $imageName;
+                    $imageField->storeAs('public', $imageName);
+                }
+            }
+            
+
+            $files = $request->file('license');
+            $fileArray = [];
+            
+                foreach ($files as $index => $file) {
+                    $license =  $file->getClientOriginalName() . "." . $file->getClientOriginalExtension();
+                    $fileArray[] = $license;
+                    Storage::disk('public')->put($license, file_get_contents($file));
+                }
+            
+            $developer = Developer::create([
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'owner' => $request->owner,
-                'address'   => $request->address,
-                'license'   => $license,
-                'phone_number'  => $request->phone_number,
+                'license'   => implode("|", $fileArray),
+                'telp'  => $request->telp,
             ]);
-            
-            Storage::disk('public')->put($license, file_get_contents($request->license));
 
-            $data = Developer::where('id', '=', $data->id)->get();
+            $owner = Owner::create([
+                'name' => $request->name,
+                'owner_email' => $request->owner_email,
+                'owner_password' => bcrypt($request->owner_password),
+                'ktp' => $imageNames[0],
+                'face' => $imageNames[1],
+                'developer_id' => $developer->id,
+            ]); 
 
+            $developer->provinces()->attach($request->provinces_id);
+            $developer->regencies()->attach($request->regencies_id);
+            $developer->districts()->attach($request->districts_id);
+            $developer->villages()->attach($request->villages_id);
+
+            $developer = Developer::where('id', '=', $developer->id)->get();
             
-                return redirect('/admin/developer/data',);
-            
-        } catch (Exception $e) {
+            return redirect('/admin/developer/data',);
+        }catch(Exception $e){
             return $e;
         }
-    }
-    /**
-     * Display the specified resource.
-     */
-    public function show(Developer $developer)
-    {
-        return view('admin.developer.detail', [
-            'developer' => $developer
-        ]);
+        
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    public function show(Developer $developer, Owner $owner)
+    {
+        $licenseFile = explode("|", $developer->license); 
+        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        return view('admin.developer.detail', compact('developer', 'licenseFile',  'fileNames' , ));
+    }
+    
     public function edit(Developer $developer)
     {
-        return view('admin.developer.edit', [
-            'developer' => $developer
-        ]);
+        $licenses = is_string($developer->license) ? explode('|', $developer->license) : []; 
+        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        $provinces = Province::all();
+        return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames', 'provinces'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
 
     public function update(Request $request,string $id)
     {
-        try {
+        try{
             $request->validate([
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
-                'owner' => 'nullable',
-                'address'  => 'nullable',
-                'license'   =>  'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'phone_number'  => 'nullable',
+                'license.*' => 'nullable|file|max:10240',
+                'telp'  => 'nullable',
+                'name' => 'nullable',
+                'owner_email' => 'nullable|email',
+                'owner_password' => 'nullable|min:8',
+                'ktp' => 'nullable|file|max:10240',
+                'face' => 'nullable|file|max:10240',
             ]);
 
             $data= Developer::findOrfail($id);
@@ -120,52 +140,86 @@ class DeveloperController extends Controller
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
-                'owner' => $request->owner,
-                'address'   => $request->address,
-                'phone_number'  => $request->phone_number
+                'telp'  => $request->telp,
             ]);
 
-            if ($request->hasFile('license')) {
-                $imageName = $request->license->getClientOriginalName(). "." . $request->license->getClientOriginalExtension();
-                $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->license));
-                if (File::exists($image_path)) {
-                    File::delete($image_path);
+            $owner = Owner::findOrfail($id);
+
+            $owner->update([
+                'name' => $request->name,
+                'owner_email' => $request->owner_email,
+                'owner_password' => bcrypt($request->owner_password),
+                'developer_id' => $data->id,
+            ]); 
+
+            $images = ['ktp', 'face'];
+
+            foreach ($images as $image) {
+                if ($request->hasFile($image)) {
+                    // Hapus gambar lama jika sudah ada
+                    if ($owner->$image) {
+                        Storage::delete('public/' . $owner->$image);
+                    }
+
+                    // Simpan gambar baru
+                    $imageField = $request->file($image);
+                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                    $imageField->storeAs('public', $imageName);
+                    $owner->$image = $imageName;
                 }
-                $data->license = $imageName;
             }
 
+            if ($request->hasFile('license')) {
+                $licenses = $request->file('license');
+                foreach ($licenses as $index => $license) {
+                    if ($license->isValid()) {
+                        $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
+                        $license->storeAs('public', $licenseName);
+                        $fileArray = explode('|', $data->license);
+                        $fileArray[$index] = $licenseName;
+                        $data->license = implode('|', $fileArray);
+                    }
+                }
+            }
+
+            $owner->save();
             $data->save();
+            // $data->provinces()->sync($request->input('province_id'));
+            // $data->regencies()->sync($request->input('regency_id'));
+            // $data->districts()->sync($request->input('district_id'));
+            // $data->villages()->sync($request->input('village_id'));
 
             $data = Developer::where('id', '=', $data->id)->get();
             $url = '/admin/developer/show/' . $id;
+            return redirect($url);
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Update', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
+
+        }catch(Exception $e){
             return $e;
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
 
     public function destroy(string $id)
     {
-        try {
+        try{
             $developer = Developer::findOrfail($id);
+            $developer->owners()->delete();
+            $developer->properties()->delete();
+            $developer->units()->delete();
+            $developer->provinces()->detach();
+            $developer->regencies()->detach();
+            $developer->districts()->detach();
+            $developer->villages()->detach();
             $data = $developer->delete();
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null). redirect('/admin/developer/data',);
-            } else {
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
-        } catch (Exception $e) {
+            return  redirect('/admin/developer/data',);
+
+        }catch(Exception $e){
             return $e;
         }
+        
     }
+
 }

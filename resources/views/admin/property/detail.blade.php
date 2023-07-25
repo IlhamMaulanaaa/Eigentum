@@ -52,12 +52,14 @@
                                 <label for="unit" class="form-label">Unit</label>
                                 <ul>
                                     @foreach ($property->units as $unit)
-                                        <li>{{ $unit->title }}
+                                        <li>
+                                            {{ $unit->title }}
+                                            <a href="/admin/unit/show/{{ $unit->id }}" class="text-warning">Detail</a>
+                                            <a href="/admin/unit/show/edit/{{ $unit->id }}">Edit</a>
                                         </li>
                                     @endforeach
                                 </ul>
-                                <a type="button" class="btn btn-success"
-                                    href="/admin/unit/create?property_id={{ $property->id }}">Add Unit</a>
+                                <a href="{{ route('unit.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
                             </div>
                             <br>
                             <div class="form-group text-end">

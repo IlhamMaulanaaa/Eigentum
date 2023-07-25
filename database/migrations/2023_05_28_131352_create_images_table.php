@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('kitchenimg')->nullable();
             $table->string('etcimg')->nullable();
             $table->foreignId('unit_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

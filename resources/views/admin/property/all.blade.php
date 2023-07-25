@@ -8,9 +8,9 @@
                     <h2 class="card-title fs-2 text-primary col-md-8 text-uppercase">
                         {{ $tables }}
                     </h2>
-                    <div class="col-md-4 text-end px-0">
+                    {{-- <div class="col-md-4 text-end px-0">
                         <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="table-responsive">
@@ -23,6 +23,7 @@
                             <th scope="col">Address</th>
                             <th scope="col">Developer</th>
                             <th scope="col">Type</th>
+                            <th scope="col">Listing</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@
                                     <td class="text-start">{{ $property->address }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
+                                    <td class="text-start ">{{ $property->units->count() }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $property->id }}">Detail</a>

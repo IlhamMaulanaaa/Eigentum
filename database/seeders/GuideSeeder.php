@@ -15,35 +15,44 @@ class GuideSeeder extends Seeder
     {
         Guide::truncate();
 
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
-        Guide::create([
-            "title" => fake()->title(),
-            "description" => fake()->text(),
-            "image" => fake()->imageUrl(),
-        ]);
+        for ($i = 0; $i < 6; $i++) {
+            Guide::create([
+                "title" => fake()->title(),
+                "description" => fake()->text(),
+                "image" => fake()->imageUrl(),
+            ]);
+        }
+        
+
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
+        // Guide::create([
+        //     "title" => fake()->title(),
+        //     "description" => fake()->text(),
+        //     "image" => fake()->imageUrl(),
+        // ]);
     }
 }

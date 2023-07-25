@@ -8,7 +8,7 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/property/add" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('property.store', $developer->id) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="property" class="form-label">Property</label>
@@ -25,9 +25,6 @@
                                 <input type="text" class="form-control" id="address" name="address">
                             </div>
                             <br>
-                            @foreach ($developer as $developer)
-                            <input type="hidden" name="developer_id" value="{{ $developer->id }}">
-                            @endforeach
                             <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">
@@ -39,7 +36,7 @@
                                 </select>
                             </div>
                             <br>
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="agent_id" class="form-label">Agent</label>
                                 <select class="form-control" id="agent_id" name="agent_id">
                                     <option value="">Agent</option>
@@ -49,7 +46,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <br>
+                            <br> --}}
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
