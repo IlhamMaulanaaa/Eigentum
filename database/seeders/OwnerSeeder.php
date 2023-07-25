@@ -2,42 +2,34 @@
 
 namespace Database\Seeders;
 
-use App\Models\Agent;
-use App\Models\AgentProperty;
-use App\Models\Property;
-use App\Models\UnitStatus;
+use App\Models\Developer;
+use App\Models\Owner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
 
-
-class AgentSeeder extends Seeder
+class OwnerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        Agent::truncate();
-        AgentProperty::truncate();
+        Owner::truncate();
 
-        for ($i = 0; $i < 10; $i++) {
-            $agent = Agent::create([
+        $developerIds = Developer::pluck('id')->toArray();
+
+        foreach ($developerIds as $developerId) {
+            Owner::create([
                 'name' => fake()->name(),
-                'email' => fake()->email(),
-                'password' => bcrypt(fake()->password()),
-                'address' => Str::limit(fake()->address(), 20),
+                'owner_email' => fake()->email(),
+                'owner_password' => bcrypt(fake()->password()),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
-                'phone_number' => fake()->phoneNumber(),
-                'location_id' => mt_rand(1, 34),
+                'developer_id' => $developerId,
             ]);
-
-            $propertyIds = Property::pluck('id')->random(rand(2, 5))->toArray();
-            $agent->properties()->sync($propertyIds);
         }
     }
 

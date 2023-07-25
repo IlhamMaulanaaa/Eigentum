@@ -16,40 +16,16 @@ class CustomerSeeder extends Seeder
     {
         Customer::truncate();
         
-        Customer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "phone_number" => fake()->phoneNumber(), 
-        ]);
-        Customer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "phone_number" => fake()->phoneNumber(), 
-        ]);
-        Customer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "phone_number" => fake()->phoneNumber(), 
-        ]);
-        Customer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "phone_number" => fake()->phoneNumber(), 
-        ]);
-        Customer::create([
-            "email" => fake()->email(),
-            "password" => bcrypt(fake()->password()),
-            "name" => fake()->name(),
-            "address" => Str::limit(fake()->address(), 20),
-            "phone_number" => fake()->phoneNumber(), 
-        ]);
+        for ($i = 0; $i < 6; $i++) {
+            Customer::create([
+                "email" => fake()->email(),
+                "password" => bcrypt(fake()->password()),
+                "name" => fake()->name(),
+                "address" => Str::limit(fake()->address(), 20),
+                "phone_number" => fake()->phoneNumber(),
+            ]);
+        }
+
+        
     }
 }

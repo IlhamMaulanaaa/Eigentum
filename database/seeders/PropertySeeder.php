@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Developer;
 use App\Models\Property;
+use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -14,49 +16,28 @@ class PropertySeeder extends Seeder
      */
     public function run(): void
     {
-        // Property::truncate();
+        Property::truncate();
 
-        $properties = [
-            [
-                "property" => "Perumahan Megawon Indah",
-                "description" => "Perumahan Dekat kali",
-                "address" => Str::limit(fake()->address(), 20),
-                "developer_id" => mt_rand(1, 5),
-                "type_id" => mt_rand(1, 5),
-            ],
-            [
-                "property" => "Apartement Surya",
-                "description" => "Punyanya Surya Ibrahim",
-                "address" => Str::limit(fake()->address(), 20),
-                "developer_id" => mt_rand(1, 5),
-                "type_id" => mt_rand(1, 5),
-            ],
-            [
-                "property" => "Apartement Ilham",
-                "description" => "Punyanya Ilham",
-                "address" => Str::limit(fake()->address(), 20),
-                "developer_id" => mt_rand(1, 5),
-                "type_id" => mt_rand(1, 5),
-            ],
-            [
-                "property" => "Apartement Najib",
-                "description" => "Punyanya Najib",
-                "address" => Str::limit(fake()->address(), 20),
-                "developer_id" => mt_rand(1, 5),
-                "type_id" => mt_rand(1, 5),
-            ],
-            [
-                "property" => "Apartement Gataw",
-                "description" => "Punyanya Gataw",
-                "address" => Str::limit(fake()->address(), 20),
-                "developer_id" => mt_rand(1, 5),
-                "type_id" => mt_rand(1, 5),
-            ],
-        ];
+        $developerIds = Developer::pluck('id')->toArray();
+        $typeIds = Type::pluck('id')->toArray();
+
+        foreach ($developerIds as $developerId) {
+            
+            $randomTypeId = array_rand($typeIds);
         
-        foreach ($properties as $propertyData) {
-            Property::create($propertyData);
+            $numberOfProperties = rand(2, 5);
+
+            for ($i = 0; $i < $numberOfProperties; $i++) {
+                $randomTypeId = array_rand($typeIds);
+
+                Property::create([
+                    'property' => fake()->company(),
+                    'description' => Str::limit(fake()->text(), 20) ,
+                    'address' => Str::limit(fake()->address(), 20),
+                    'developer_id' => $developerId,
+                    'type_id' => $typeIds[$randomTypeId], 
+                ]);
+            }
         }
-        
     }
 }

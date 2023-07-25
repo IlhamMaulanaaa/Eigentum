@@ -35,9 +35,9 @@ class Developer extends Model
         return $this->hasMany(Property::class);
     }
 
-    public function owners(): HasOne
+    public function owners(): Hasone
     {
-        return $this->hasOne(Owner::class, 'developer_id'); 
+        return $this->hasone(Owner::class, 'developer_id'); 
     }
     
     public function provinces(): BelongsToMany

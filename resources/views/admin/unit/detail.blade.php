@@ -37,7 +37,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="" class="form-label">Base</label>
+                                    <label for="" class="form-label">Image</label>
                                     <div class="image-text-wrapper">
                                         <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
                                             alt="" width="360">

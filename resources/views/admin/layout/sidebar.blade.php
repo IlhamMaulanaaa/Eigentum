@@ -73,7 +73,7 @@
             </li>
 
             <li class="sidebar-header">
-                Relathionship
+                Filters
             </li>
 
             {{-- <li class="sidebar-item">
