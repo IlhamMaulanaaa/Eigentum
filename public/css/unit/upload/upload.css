@@ -128,3 +128,32 @@ input::-webkit-inner-spin-button {
     border-radius: 4px;
     width: auto;
 }
+.h1upload {
+    margin-top: -70px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+/* Add custom styles for the back button */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #0099ff, #00ccff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.back-button:hover {
+    background: linear-gradient(45deg, #0077cc, #00aaee);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.back-icon {
+    margin-right: 8px;
+}
