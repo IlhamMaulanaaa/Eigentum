@@ -28,7 +28,7 @@ use App\Http\Controllers\UnitController;
 |
 */
 
-Route::get('/',[UnitController::class, 'honmeunit']);
+Route::get('/beranda',[UnitController::class, 'honmeunit']);
 
 
 // authentication
@@ -124,8 +124,17 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
         });
+    
 });
-
+Route::get('/favorite', function () {
+    return view('pages.page.favorite');
+    });
+Route::get('/profile', function () {
+    return view('pages.page.profile');
+    });
+Route::get('/detailpanduan', function () {
+    return view('pages.page.detailguide');
+    });
 // property
 Route::group(['prefix' => '/property'], function () {
     Route::get('/upload ', function () {
