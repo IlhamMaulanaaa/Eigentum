@@ -45,6 +45,8 @@
     left: 0;
     height: 100%;
 }
+
+
 .darkLight-searchBoxq .menu-profileq {
     background-color: #fff;
     box-sizing: 0 5px 25px rgba(0, 0, 0, 0.1);
@@ -76,6 +78,13 @@
     width: 20px;
     box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.2); /* box-shadow di sebelah kanan */
 }
+/* .navLogoqu {
+    background-image: url("/assets/skins/logowhite.svg");
+}
+
+nav.active .navLogoqu {
+    background-image: url("/assets/skins/logo.svg");
+} */
 
 .darkLight-searchBoxq .menu-profileq h3 {
     color: #555;
@@ -124,7 +133,7 @@
 .btnq {
     font-size: 14px;
     font-weight: bold;
-    background: #000000;
+    background: #0c40e8;
     width: 90px;
     height: 40px;
     display: flex;
@@ -138,7 +147,7 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     transition-duration: 0.3s;
     transition-property: box-shadow, transform, border-radius;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .btnq:hover,
@@ -167,14 +176,16 @@ nav {
     left: 0;
     height: 70px;
     width: 100%;
-    background-color: transparent;
+    background-color: #fff;
     z-index: 100;
+    
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 nav.active {
     background-color: white;
     /* transition-delay: 0.1s; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 nav.active .nav-linksq li a {
     color: black;
@@ -231,7 +242,7 @@ nav .nav-barq .logoq a {
     position: relative;
     font-size: 17px;
     font-weight: 400;
-    color: white;
+    color: #000;
     text-decoration: none;
     padding: 10px;
 }

@@ -12,7 +12,6 @@ namespace App\Models;
 use AzisHapidin\IndoRegion\Traits\VillageTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\District;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Village Model.
@@ -45,10 +44,5 @@ class Village extends Model
     public function district()
     {
         return $this->belongsTo(District::class);
-    }
-
-    public function villages(): BelongsToMany
-    {
-        return $this->belongsToMany(Village::class,'developer_villages',  'village_id','developer_id');
     }
 }

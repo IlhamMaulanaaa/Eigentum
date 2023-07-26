@@ -157,6 +157,10 @@ Route::group(['prefix' => '/unit'], function () {
         return view('pages.unit.create');
     });
 
+    Route::get('/uploadimage', function () {
+        return view('pages.unit.uploadimage');
+    });
+
     Route::get('/detail', function () {
         return view('pages.unit.detail');
     });

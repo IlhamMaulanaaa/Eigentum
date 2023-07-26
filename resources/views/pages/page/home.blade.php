@@ -44,6 +44,27 @@
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
 
         <link href="/css/pages/guide.css" rel="stylesheet">
+
+
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="css/Lib/testimoni/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="css/Lib/testimoni/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/Lib/testimoni/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/Lib/testimoni/css/style.css" rel="stylesheet">
         <title>Document</title>
     </head>
 
@@ -63,10 +84,12 @@
                                 website kami, dari apartemen hingga rumah mewah.</div>
                         </div>
                     </div>
-                    <div class="filter-jualsewa">
-                        <p> <a href="#" style="">Dijual</a></p>
-                        <p> <a href="#">Disewa</a></p>
+                    <div class="filter-jualsewa" style="margin-top: 400px;">
+                        <button class="jualsewa" data-type="dijual">Dijual</button>
+                        <button class="jualsewa" data-type="disewa">Disewa</button>
                     </div>
+
+                    
                     <div class="group-11-tab" id="4:7169">
                         <div class="group-10-mPV" id="4:7171">
                             <!-- Filter Home -->
@@ -166,9 +189,8 @@
                 </div>
                 <div class="frame-365-pto" id="4:7196">
                     <div class="judulFilter">
-                        <h1 id="h1Filter">Temukan Kota Tujuan Anda</h1>
-                        <p id="pFilter">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus nostrum
-                            quasi porro atque quibusdam.</p>
+                        <h1 id="h1Filter" style="">Temukan Kota Tujuan Anda</h1>
+                        <p id="pFilter">Temukan kota-kota menarik di seluruh dunia yang siap menjadi tujuan impian Anda.</p>
                     </div>
                     <div class="filter-kota">
                         <div class="subFilter">
@@ -235,7 +257,7 @@
                     <div class="group-77-FDR" id="4:7198">
                         <div class="rumahBaru">
                             <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Rumah Terbaru</div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo, veritatis magnam </p>
+                            <p>Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan apartemen bergaya </p>
                         </div>
 
                         <div class="slide-container swiper">
@@ -510,95 +532,61 @@
 
                             </div>
                         </div>
-                        <section class="container-testimoni">
-                            <div class="testimonial mySwiper">
-                                <div class="testi-content swiper-wrapper">
-                                    <div class="slide swiper-slide">
-                                        <img src="images/img1.jpg" alt="" class="image" />
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                                            saepe provident dolorem a quaerat quo error facere nihil deleniti
-                                            eligendi ipsum adipisci, fugit, architecto amet asperiores
-                                            doloremque deserunt eum nemo.
-                                        </p>
-
-                                        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-                                        <div class="details">
-                                            <span class="name">Marnie Lotter</span>
-                                            <span class="job">Agent</span>
+                        <!-- Testimonial Start -->
+                        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="container py-5">
+                                <div class="text-center">
+                                    <h6 class=" text-uppercase" style="color: #000; font-size:24px;">Testimonial</h6>
+                                </div>
+                                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="testimonial-item p-4 my-5">
+                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <div class="d-flex align-items-end mb-4">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <div class="ms-4">
+                                                <h5 class="mb-1">Rifki Wijaya</h5>
+                                                <p class="m-0">Agen</p>
+                                            </div>
                                         </div>
+                                        <p class="mb-0">Saya sangat puas dengan layanan dari website properti ini. Informasi tentang properti yang mereka tawarkan sangat lengkap dan akurat. Transaksi jual-beli berjalan lancar.</p>
                                     </div>
-                                    <div class="slide swiper-slide">
-                                        <img src="images/img2.jpg" alt="" class="image" />
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                                            saepe provident dolorem a quaerat quo error facere nihil deleniti
-                                            eligendi ipsum adipisci, fugit, architecto amet asperiores
-                                            doloremque deserunt eum nemo.
-                                        </p>
-
-                                        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-                                        <div class="details">
-                                            <span class="name">Marnie Lotter</span>
-                                            <span class="job">Agent</span>
+                                    <div class="testimonial-item p-4 my-5">
+                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <div class="d-flex align-items-end mb-4">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <div class="ms-4">
+                                                <h5 class="mb-1">Rahmawati</h5>
+                                                <p class="m-0">Developer</p>
+                                            </div>
                                         </div>
+                                        <p class="mb-0">Website properti ini menjadi sumber informasi penting bagi saya dalam mencari peluang investasi. Saya mendapatkan data dan analisis yang akurat, sehingga saya bisa membuat keputusan investasi yang cerdas. Terima kasih atas layanan yang sangat membantu!</p>
                                     </div>
-                                    <div class="slide swiper-slide">
-                                        <img src="images/img3.jpg" alt="" class="image" />
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                                            saepe provident dolorem a quaerat quo error facere nihil deleniti
-                                            eligendi ipsum adipisci, fugit, architecto amet asperiores
-                                            doloremque deserunt eum nemo.
-                                        </p>
-
-                                        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-                                        <div class="details">
-                                            <span class="name">Marnie Lotter</span>
-                                            <span class="job">Pembeli</span>
+                                    <div class="testimonial-item p-4 my-5">
+                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <div class="d-flex align-items-end mb-4">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <div class="ms-4">
+                                                <h5 class="mb-1">Budi Utomo</h5>
+                                                <p class="m-0">Pembeli</p>
+                                            </div>
                                         </div>
+                                        <p class="mb-0">Terima kasih banyak kepada website properti ini. Rumah saya berhasil terjual dalam waktu singkat berkat layanan profesional mereka. Timnya sangat berkomitmen untuk membantu dan memberikan nasihat yang berharga. Sangat merekomendasikan!</p>
                                     </div>
-                                    <div class="slide swiper-slide">
-                                        <img src="images/img1.jpg" alt="" class="image" />
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                                            saepe provident dolorem a quaerat quo error facere nihil deleniti
-                                            eligendi ipsum adipisci, fugit, architecto amet asperiores
-                                            doloremque deserunt eum nemo.
-                                        </p>
-
-                                        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-                                        <div class="details">
-                                            <span class="name">Marnie Lotter</span>
-                                            <span class="job">Pembeli</span>
+                                    <div class="testimonial-item p-4 my-5">
+                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <div class="d-flex align-items-end mb-4">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <div class="ms-4">
+                                                <h5 class="mb-1">Bambang Putra</h5>
+                                                <p class="m-0">Agen</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="slide swiper-slide">
-                                        <img src="images/img1.jpg" alt="" class="image" />
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam,
-                                            saepe provident dolorem a quaerat quo error facere nihil deleniti
-                                            eligendi ipsum adipisci, fugit, architecto amet asperiores
-                                            doloremque deserunt eum nemo.
-                                        </p>
-
-                                        <i class="bx bxs-quote-alt-left quote-icon"></i>
-
-                                        <div class="details">
-                                            <span class="name">Marnie Lotter</span>
-                                            <span class="job">Pembeli</span>
-                                        </div>
+                                        <p class="mb-0">Saya sangat terbantu dengan layanan dari website properti ini. Tim mereka sangat profesional dan responsif dalam membantu saya menemukan hunian idaman. Proses jual-beli properti menjadi lebih mudah berkat mereka. Terima kasih!</p>
                                     </div>
                                 </div>
-                                <div class="swiper-button-next nav-btn"></div>
-                                <div class="swiper-button-prev nav-btn"></div>
-                                <div class="swiper-pagination"></div>
                             </div>
-                        </section>
+                        </div>
+                        <!-- Testimonial End -->
                         <div class="frame-139-CN3" id="4:7580">
                             <div class="frame-136-8Wb" id="4:7581">
                                 <div class="frame-137-Qyu" id="4:7582">
@@ -641,28 +629,28 @@
                                         <div class="group-132-4RV" id="4:7593">
                                             <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">20 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
                                             <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">40 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
                                             <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">10 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
                                         <div class="group-132-4RV" id="4:7593">
                                             <div class="menyukai-rumah-9Sw" id="4:7594">Menyukai Rumah</div>
                                             <div class="ribu-2md" id="4:7595">
-                                                <span class="ribu-2md-sub-0">80 </span>
+                                                <span class="ribu-2md-sub-0">30 </span>
                                                 <span class="ribu-2md-sub-1">ribu</span>
                                             </div>
                                         </div>
@@ -679,14 +667,14 @@
 
 
 
-                                <div class="wrapperpulau">
+                                {{-- <div class="wrapperpulau">
                                     <ul class="tabs-box">
                                         <li class="tab active">Rumah</li>
                                         <li class="tab">Ruko</li>
                                         <li class="tab">Apartemen</li>
                                         <li class="tab">Villa</li>
                                     </ul>
-                                </div>
+                                </div> --}}
 
 
 
@@ -766,6 +754,16 @@
     <!-- JavaScript -->
     {{-- <script src="js/home.js"></script> --}}
     <script>
+        const jualsewaItems = document.querySelectorAll('.jualsewa');
+
+        jualsewaItems.forEach(jualsewa => {
+            jualsewa.addEventListener('click', function() {
+                jualsewaItems.forEach(item => item.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        
         var swiper = new Swiper(".slide-content", {
             slidesPerView: 4,
             spaceBetween: 5,
@@ -854,21 +852,21 @@
 
 
 
-        const optionMenu = document.querySelector(".select-menu1"),
-            selectBtn1 = optionMenu.querySelector(".select-btn1"),
-            options1 = optionMenu.querySelectorAll(".option1"),
-            sBtn_text1 = optionMenu.querySelector(".sBtn-text1");
+        // const optionMenu = document.querySelector(".select-menu1"),
+        //     selectBtn1 = optionMenu.querySelector(".select-btn1"),
+        //     options1 = optionMenu.querySelectorAll(".option1"),
+        //     sBtn_text1 = optionMenu.querySelector(".sBtn-text1");
 
-        selectBtn1.addEventListener("click", () => optionMenu.classList.toggle("active"));
+        // selectBtn1.addEventListener("click", () => optionMenu.classList.toggle("active"));
 
-        options1.forEach(option1 => {
-            option1.addEventListener("click", () => {
-                let selectedOption = option1.querySelector(".option1-text").innerText;
-                sBtn_text1.innerText = selectedOption;
+        // options1.forEach(option1 => {
+        //     option1.addEventListener("click", () => {
+        //         let selectedOption = option1.querySelector(".option1-text").innerText;
+        //         sBtn_text1.innerText = selectedOption;
 
-                optionMenu.classList.remove("active");
-            });
-        });
+        //         optionMenu.classList.remove("active");
+        //     });
+        // });
 
         const optionMenu1 = document.querySelector(".select-menu2"),
             selectBtn2 = optionMenu1.querySelector(".select-btn2"),
@@ -951,6 +949,17 @@
     <script src="/css/lib/isotope/isotope.pkgd.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/css/lib/lightbox/js/lightbox.min.js"></script>
+
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="css/Lib/testimoni/lib/wow/wow.min.js"></script>
+    <script src="css/Lib/testimoni/lib/easing/easing.min.js"></script>
+    <script src="css/Lib/testimoni/lib/waypoints/waypoints.min.js"></script>
+    <script src="css/Lib/testimoni/lib/counterup/counterup.min.js"></script>
+    <script src="css/Lib/testimoni/lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
     {{-- <script src="/js/Panduan/panduan.js"></script> --}}

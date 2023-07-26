@@ -1,7 +1,7 @@
 <nav id="mainNav">
     <div class="nav-barq">
         <i class='bx bx-menu sidebarOpenq'></i>
-        <img class="nav navLogoq" style="width:160px; height:80px; margin:0; padding: 0;" src="/assets/skins/logo.svg"
+        <img class="nav navLogoqu" src="/assets/skins/logo.svg" style="width:160px; height:80px; margin:0; padding: 0;"
             alt="">
 
         <div class="menuq">
@@ -11,7 +11,7 @@
             </div>
 
             <ul class="nav-linksq" style="margin: 0; padding:0;">
-                <li><a href="/">Beranda</a></li>
+                <li><a href="/beranda">Beranda</a></li>
                 <li><a href="/pages/searchagent">Cari Agen</a></li>
                 <li><a href="/pages/guide">Panduan</a></li>
                 <li><a href="/pages/kpr">KPR</a></li>
