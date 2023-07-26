@@ -3,110 +3,220 @@
     font-family: 'Lato', sans-serif;
 
 } */
-#image1009 {
-    display: flex;
-    margin-right: 30px;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-end;
-    object-position: right;
-    width: 85%;
-    height: 94vh;
-}
 body {
-    overflow: hidden;
-}
-input {
-    width: 600px;
-    border-radius: 0;
-}
-.logo {
-    margin: 50px 0px 0px 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
-.bg-image-vertical {
-    position: relative;
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: auto 100%;
+.container {
+    max-width: 100%;
+    height: 94vh;
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
-@media (min-width: 1025px) {
-    .h-custom-2 {
-        height: 100%;
-    }
+.form-step {
+    display: none;
+    text-align: center;
 }
 
-form {
-    margin: 180px auto;
-    margin-top: 0px;
+.form-step.active {
+    display: block;
+    text-align: center;
 }
 
-#masuk009 {
-    font-size: 65px;
-    font-weight: 900;
+.form-step h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
 }
 
-#masuk026 {
-    margin-top: -15px;
-    font-size: 20px;
-    margin-bottom: 70px;
-    font-weight: extra-bold;
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.form-floating {
-    margin-top: 20px;
-    width: 440px;
+.form-group label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
 }
-#password {
-    margin-bottom: 60px;
+
+.form-group input {
+    width: 40%;
+    max-width: 250px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto;
+    /* Center the input */
+}
+
+.form-group button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
     border: none;
-    border-bottom: 2px solid #e0e0e0;
-}
-#email {
-    border: none;
-    border-bottom: 2px solid #e0e0e0;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#adkjslf {
-    font-weight: 700;
+.form-group button.previous {
+    background-color: #aaa;
 }
-#jamal009 {
-    margin-top: 50px;
-    border: 2px solid #000;
-    background-color: white;
-    color: #000;
-    height: 60px;
+
+.form-group button:hover {
+    background-color: #45a049;
+}
+
+.step-indicator {
     display: flex;
     justify-content: center;
-    align-items: center;
-    font-weight: 500;
-    border-radius: 12px;
-}
-#googleicon {
-    width: 20px;
-    margin-right: 10px;
+    margin-bottom: 30px;
 }
 
-#privacy_police {
-    margin-top: 20px;
-    font-family: "Lato", sans-serif;
-    font-size: 14px;
-    line-height: 20px;
-    color: rgb(143, 143, 143);
+.step-indicator div {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 10px;
 }
-#loginbutton {
-    background-color: #000;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    height: 60px;
+
+.step-indicator div.active {
+    background-color: #4caf50;
 }
-#loginback {
-    color: #000;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 700;
-    margin-left: -40px;
-    margin-top: -880px;
+.input-field {
+    max-width: 380px;
+    width: 100%;
+    background-color: #f0f0f0;
+    margin: 10px 0;
+    height: 55px;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+    position: relative;
+}
+
+.input-field i {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    transition: 0.5s;
+    font-size: 1.1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.file-label {
+    display: inline-block;
+    height: 30px;
+    width: 378px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+.file-labelandktp {
+    display: inline-block;
+    height: 30px;
+    width: 378px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 50px;
+    margin-top: 10px;
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-buttonandktp {
+    display: inline-block;
+    background-color: #2196f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+    color: #fff;
+    margin-left: -130px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.file-button {
+    display: inline-block;
+    background-color: #2196f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+    color: #fff;
+    margin-left: -180px;
+    padding: 4px 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.file-name {
+    display: inline-block;
+    margin-left: 10px;
+    color: #333;
+}
+
+.input-field input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.input-field input::placeholder {
+    color: #aaa;
+    font-weight: 500;
+}
+.btn {
+    width: 150px;
+    background-color: #5995fd;
+    border: none;
+    outline: none;
+    height: 49px;
+    border-radius: 49px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background-color: #4d84e2;
 }

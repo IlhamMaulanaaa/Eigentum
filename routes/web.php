@@ -8,7 +8,7 @@ use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController as SessionController;
-use App\Http\Controllers\SpecificationController ;
+use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
@@ -28,28 +28,13 @@ use App\Http\Controllers\FilePreviewController;
 |
 */
 
-Route::get('/beranda',[UnitController::class, 'homeunit']);
+Route::get('/beranda', [UnitController::class, 'homeunit']);
 
 
 // authentication
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
-});
-
-Route::group(['prefix' => '/session'], function(){
-    Route::get('/signout', [SessionController::class, 'signout']);
-
-    Route::group(['prefix' => '/signin'], function(){
-        Route::get('/', [SessionController:: class, 'signin'])->name('login')->middleware('guest');
-        Route::post('/create', [SessionController:: class, 'postSignin']);
-    });
-
-    Route::group(['prefix' => '/signup'], function(){
-        Route::get('/', [SessionController:: class, 'signup'])->middleware('guest');
-        Route::post('/create', [SessionController:: class, 'postSignup']);
-    });
-    return view('pages.page.home');
 });
 
 Route::group(['prefix' => '/session'], function () {
@@ -60,9 +45,24 @@ Route::group(['prefix' => '/session'], function () {
         Route::post('/create', [SessionController::class, 'postSignin']);
     });
 
-    route::group(['prefix' => '/signup'], function () {
+    Route::group(['prefix' => '/signup'], function () {
         Route::get('/', [SessionController::class, 'signup'])->middleware('guest');
         Route::post('/create', [SessionController::class, 'postSignup']);
+    });
+    return view('pages.page.home');
+});
+
+Route::group(['prefix' => '/session'], function () {
+    Route::get('/signout', [SessionController::class, 'signout']);
+
+    Route::group(['prefix' => '/signinuser'], function () {
+        Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
+        Route::post('/create', [SessionController::class, 'postSigninUser']);
+    });
+
+    route::group(['prefix' => '/signupuser'], function () {
+        Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
+        Route::post('/create', [SessionController::class, 'postSignupUser']);
     });
 });
 
@@ -74,6 +74,9 @@ Route::group(['prefix' => '/signin'], function () {
     });
     Route::get('/logindeveloper', function () {
         return view('auth.developer.signin');
+    });
+    Route::get('/registerdeveloper', function () {
+        return view('auth.developer.signup');
     });
 });
 // developer
@@ -91,50 +94,49 @@ Route::group(['prefix' => '/agent'], function () {
         return view('pages.Agent.dashboard');
     });
 });
-  
-Route::get('/home',[UnitController::class, 'honmeunit']);
-    
+
+Route::get('/home', [UnitController::class, 'homeunit']);
+
 // pages
 Route::group(['prefix' => '/pages'], function () {
-    Route::get('/searchagent',[AgentController::class, 'searchAgent']);
-    
+    Route::get('/searchagent', [AgentController::class, 'searchAgent']);
+
     Route::get('/notfound', function () {
         return view('pages.page.notfound');
     });
-    
+
     Route::get('/newproperty', function () {
         return view('pages.page.newProperty');
     });
-    
+
     Route::get('/rent', function () {
         return view('pages.page.rent');
     });
-  
-    
+
+
     Route::get('/sell', function () {
         return view('pages.page.sell');
     });
-    
+
     Route::get('/guide', function () {
         return view('pages.page.guide');
     });
     Route::get('/kpr', function () {
-    return view('pages.page.kpr');
+        return view('pages.page.kpr');
     });
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
-        });
-    
+    });
 });
 Route::get('/favorite', function () {
     return view('pages.page.favorite');
-    });
+});
 Route::get('/profile', function () {
     return view('pages.page.profile');
-    });
+});
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
-    });
+});
 // property
 Route::group(['prefix' => '/property'], function () {
     Route::get('/upload ', function () {
@@ -165,12 +167,12 @@ Route::group(['prefix' => '/unit'], function () {
 // Route::group(['prefix' => '/admin'], function () {
 //     Route::group(['prefix' => '/session'], function () {
 //         Route::get('/signout', [SessionController::class, 'signout']);
-    
+
 //         Route::group(['prefix' => '/signin'], function () {
 //             Route::get('/', [SessionController::class, 'signin'])->name('login')->middleware('guest');
 //             Route::post('/create', [SessionController::class, 'postSignin']);
 //         });
-    
+
 //         route::group(['prefix' => '/signup'], function () {
 //             Route::get('/', [SessionController::class, 'signup'])->middleware('guest');
 //             Route::post('/create', [SessionController::class, 'postSignup']);
@@ -178,135 +180,134 @@ Route::group(['prefix' => '/unit'], function () {
 //     });
 // });
 
-Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
-    
-    
-    Route::get('/', [AdminController:: class, 'index']);
+Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
 
-    Route::group(['prefix' => '/customer'], function(){
-        Route::get('/data', [CustomerController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{customer}',[CustomerController::class,'show']);
-            Route::get('/edit/{customer}',[CustomerController::class,'edit']);
+
+    Route::get('/', [AdminController::class, 'index']);
+
+    Route::group(['prefix' => '/customer'], function () {
+        Route::get('/data', [CustomerController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{customer}', [CustomerController::class, 'show']);
+            Route::get('/edit/{customer}', [CustomerController::class, 'edit']);
         });
-        Route::get('/create', [CustomerController:: class, 'create']);
-        Route::post('/add', [CustomerController:: class, 'store']);
-        Route::post('/update/{customer}', [CustomerController:: class, 'update']);
-        Route::get('/delete/{customer}',[CustomerController::class,'destroy']);
+        Route::get('/create', [CustomerController::class, 'create']);
+        Route::post('/add', [CustomerController::class, 'store']);
+        Route::post('/update/{customer}', [CustomerController::class, 'update']);
+        Route::get('/delete/{customer}', [CustomerController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/developer'], function(){
-        Route::get('/data', [DeveloperController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{developer}',[DeveloperController::class,'show']);
-            Route::get('/edit/{developer}',[DeveloperController::class,'edit']);
+    Route::group(['prefix' => '/developer'], function () {
+        Route::get('/data', [DeveloperController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{developer}', [DeveloperController::class, 'show']);
+            Route::get('/edit/{developer}', [DeveloperController::class, 'edit']);
         });
-        Route::get('/create', [DeveloperController:: class, 'create']);
-        Route::post('/add', [DeveloperController:: class, 'store']);
-        Route::post('/update/{developer}', [DeveloperController:: class, 'update']);
-        Route::get('/delete/{developer}',[DeveloperController::class,'destroy']);
+        Route::get('/create', [DeveloperController::class, 'create']);
+        Route::post('/add', [DeveloperController::class, 'store']);
+        Route::post('/update/{developer}', [DeveloperController::class, 'update']);
+        Route::get('/delete/{developer}', [DeveloperController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/agent'], function(){
-        Route::get('/data', [AgentController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{agent}',[AgentController::class,'show']);
-            Route::get('/edit/{agent}',[AgentController::class,'edit']);
+    Route::group(['prefix' => '/agent'], function () {
+        Route::get('/data', [AgentController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{agent}', [AgentController::class, 'show']);
+            Route::get('/edit/{agent}', [AgentController::class, 'edit']);
         });
-        Route::get('/create', [AgentController:: class, 'create']);
-        Route::post('/add', [AgentController:: class, 'store']);
-        Route::post('/update/{agent}', [AgentController:: class, 'update']);
-        Route::get('/delete/{agent}',[AgentController::class,'destroy']);
+        Route::get('/create', [AgentController::class, 'create']);
+        Route::post('/add', [AgentController::class, 'store']);
+        Route::post('/update/{agent}', [AgentController::class, 'update']);
+        Route::get('/delete/{agent}', [AgentController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/unit'], function(){
-        Route::get('/data', [UnitController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{unit}',[UnitController::class,'show']);
-            Route::get('/edit/{unit}',[UnitController::class,'edit']);
+    Route::group(['prefix' => '/unit'], function () {
+        Route::get('/data', [UnitController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{unit}', [UnitController::class, 'show']);
+            Route::get('/edit/{unit}', [UnitController::class, 'edit']);
         });
-        Route::get('/create/{propertyId}', [UnitController:: class, 'create'])->name('unit.create');    
-        Route::post('/add/{propertyId}', [UnitController:: class, 'store'])->name('unit.store');
-        Route::post('/update/{unit}', [UnitController:: class, 'update']);
-        Route::get('/delete/{unit}',[UnitController::class,'destroy']);
+        Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.create');
+        Route::post('/add/{propertyId}', [UnitController::class, 'store'])->name('unit.store');
+        Route::post('/update/{unit}', [UnitController::class, 'update']);
+        Route::get('/delete/{unit}', [UnitController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/property'], function(){
-        Route::get('/data', [PropertyController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{property}',[PropertyController::class,'show']);
-            Route::get('/edit/{property}',[PropertyController::class,'edit']);
+    Route::group(['prefix' => '/property'], function () {
+        Route::get('/data', [PropertyController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{property}', [PropertyController::class, 'show']);
+            Route::get('/edit/{property}', [PropertyController::class, 'edit']);
         });
-        Route::get('/create/{developerId}', [PropertyController:: class, 'create'])->name('property.create');
-        Route::post('/add/{developerId}', [PropertyController:: class, 'store'])->name('property.store');
-        Route::post('/update/{property}', [PropertyController:: class, 'update']);
-        Route::get('/delete/{property}',[PropertyController::class,'destroy']);
+        Route::get('/create/{developerId}', [PropertyController::class, 'create'])->name('property.create');
+        Route::post('/add/{developerId}', [PropertyController::class, 'store'])->name('property.store');
+        Route::post('/update/{property}', [PropertyController::class, 'update']);
+        Route::get('/delete/{property}', [PropertyController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/specification'], function(){
-        Route::get('/data', [SpecificationController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{specification}',[SpecificationController::class,'show']);
-            Route::get('/edit/{specification}',[SpecificationController::class,'edit']);
+    Route::group(['prefix' => '/specification'], function () {
+        Route::get('/data', [SpecificationController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{specification}', [SpecificationController::class, 'show']);
+            Route::get('/edit/{specification}', [SpecificationController::class, 'edit']);
         });
-        Route::get('/create', [SpecificationController:: class, 'create']);
-        Route::post('/add', [SpecificationController:: class, 'store']);
-        Route::post('/update/{specification}', [SpecificationController:: class, 'update']);
-        Route::get('/delete/{specification}',[SpecificationController::class,'destroy']);
+        Route::get('/create', [SpecificationController::class, 'create']);
+        Route::post('/add', [SpecificationController::class, 'store']);
+        Route::post('/update/{specification}', [SpecificationController::class, 'update']);
+        Route::get('/delete/{specification}', [SpecificationController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/type'], function(){
-        Route::get('/data', [TypeController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{type}',[TypeController::class,'show']);
-            Route::get('/edit/{type}',[TypeController::class,'edit']);
+    Route::group(['prefix' => '/type'], function () {
+        Route::get('/data', [TypeController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{type}', [TypeController::class, 'show']);
+            Route::get('/edit/{type}', [TypeController::class, 'edit']);
         });
-        Route::get('/create', [TypeController:: class, 'create']);
-        Route::post('/add', [TypeController:: class, 'store']);
-        Route::post('/update/{type}', [TypeController:: class, 'update']);
-        Route::get('/delete/{type}',[TypeController::class,'destroy']);
+        Route::get('/create', [TypeController::class, 'create']);
+        Route::post('/add', [TypeController::class, 'store']);
+        Route::post('/update/{type}', [TypeController::class, 'update']);
+        Route::get('/delete/{type}', [TypeController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/guide'], function(){
-        Route::get('/data', [GuideController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{guide}',[GuideController::class,'show']);
-            Route::get('/edit/{guide}',[GuideController::class,'edit']);
+    Route::group(['prefix' => '/guide'], function () {
+        Route::get('/data', [GuideController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{guide}', [GuideController::class, 'show']);
+            Route::get('/edit/{guide}', [GuideController::class, 'edit']);
         });
-        Route::get('/create', [GuideController:: class, 'create']);
-        Route::post('/add', [GuideController:: class, 'store']);
-        Route::post('/update/{guide}', [GuideController:: class, 'update']);
-        Route::get('/delete/{guide}',[GuideController::class,'destroy']);
+        Route::get('/create', [GuideController::class, 'create']);
+        Route::post('/add', [GuideController::class, 'store']);
+        Route::post('/update/{guide}', [GuideController::class, 'update']);
+        Route::get('/delete/{guide}', [GuideController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/location'], function(){
-        Route::get('/data', [LocationController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{location}',[LocationController::class,'show']);
-            Route::get('/edit/{location}',[LocationController::class,'edit']);
+    Route::group(['prefix' => '/location'], function () {
+        Route::get('/data', [LocationController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{location}', [LocationController::class, 'show']);
+            Route::get('/edit/{location}', [LocationController::class, 'edit']);
         });
-        Route::get('/create', [LocationController:: class, 'create']);
-        Route::post('/add', [LocationController:: class, 'store']);
-        Route::post('/update/{location}', [LocationController:: class, 'update']);
-        Route::get('/delete/{location}',[LocationController::class,'destroy']);
+        Route::get('/create', [LocationController::class, 'create']);
+        Route::post('/add', [LocationController::class, 'store']);
+        Route::post('/update/{location}', [LocationController::class, 'update']);
+        Route::get('/delete/{location}', [LocationController::class, 'destroy']);
     });
 
-    Route::group(['prefix' => '/status'], function(){
-        Route::get('/data', [StatusController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{status}',[StatusController::class,'show']);
-            Route::get('/edit/{status}',[StatusController::class,'edit']);
+    Route::group(['prefix' => '/status'], function () {
+        Route::get('/data', [StatusController::class, 'index']);
+        Route::group(['prefix' => '/show'], function () {
+            Route::get('/{status}', [StatusController::class, 'show']);
+            Route::get('/edit/{status}', [StatusController::class, 'edit']);
         });
-        Route::get('/create', [StatusController:: class, 'create']);
-        Route::post('/add', [StatusController:: class, 'store']);
-        Route::post('/update/{status}', [StatusController:: class, 'update']);
-        Route::get('/delete/{status}',[StatusController::class,'destroy']);
+        Route::get('/create', [StatusController::class, 'create']);
+        Route::post('/add', [StatusController::class, 'store']);
+        Route::post('/update/{status}', [StatusController::class, 'update']);
+        Route::get('/delete/{status}', [StatusController::class, 'destroy']);
     });
 
     Route::get("/dashboard", [DashboardController::class, 'index']);
 
     Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
-    
 });
 
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');

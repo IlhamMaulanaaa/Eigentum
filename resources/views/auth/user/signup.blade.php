@@ -30,9 +30,9 @@
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Memulai</h1>
-                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a href="/session/signin"
-                                    class="text-dark " id="adkjslf">Sign
-                                    In</a></h6>x
+                            <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a
+                                    href="/session/signinuser" class="text-dark " id="adkjslf">Sign
+                                    In</a></h6>
                             <div class="form-floating">
                                 <input type="text" value="{{ Session::get('name') }}" name="name"
                                     class="form-control" id="name" placeholder="Username">
@@ -66,7 +66,7 @@
 
                 </div>
                 <div class=" col-sm-6 px-0 d-flex d-sm-block">
-                    <img id="image1009" src="/assets/login/Component 169.svg" alt="image 1">
+                    <img id="image1009" src="/assets/pages/login/Component 169.svg" alt="image 1">
                 </div>
             </div>
         </div>
@@ -74,10 +74,10 @@
     <script>
         // Daftar sumber gambar
         var daftarGambar = [
-            "/assets/login/Component 169.svg",
-            "/assets/login/Component 170.svg",
-            "/assets/login/Component 171.svg",
-            "/assets/login/Component 172.svg",
+            "/assets/pages/login/Component 169.svg",
+            "/assets/pages/login/Component 170.svg",
+            "/assets/pages/login/Component 171.svg",
+            "/assets/pages/login/Component 172.svg",
         ];
 
         // Mendapatkan elemen gambar
