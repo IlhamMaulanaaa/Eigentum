@@ -76,7 +76,7 @@
 
 
     <section class="home" id="home" style="">
-        <div class="home-text container">
+        <div class="home-text container" style="margin-top: 90px;">
             <h2 class="home-title">Panduan Eigentum</h2>
             <span class="home-subtitle" style="color: #fff">Panduan properti yang dapat dipercaya untuk Anda</span>
         </div>
@@ -97,7 +97,7 @@
                     <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                 </div>
                 <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Customers</h5>
-                <span style="font-family: 'Lato', sans-serif;">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit</span>
+                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Customer Bergabung Disini</span>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
@@ -107,7 +107,7 @@
                     <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                 </div>
                 <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Agen</h5>
-                <span style="font-family: 'Lato', sans-serif;">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit</span>
+                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Agen Bergabung Disini</span>
             </div>
             <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
                 <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
@@ -117,7 +117,7 @@
                     <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                 </div>
                 <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Developer</h5>
-                <span style="font-family: 'Lato', sans-serif;">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit</span>
+                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Developer Bergabung Disini</span>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
 
     <!-- Category Start -->
     <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
+        <div class="container pb-3" style="padding-top: 0;">
             <div class="text-center mb-5">
                 <h6 id="" class="" style="font-family: 'Lato', sans-serif; color:#0C40E8">Kategori Panduan</h6>
                 <h1>Lihat Panduan Teratas</h1>
@@ -138,65 +138,57 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/panduanhukum1.svg" style="" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Jual Properti</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/1.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Sewa Properti</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/2.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Beli Properti</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/3.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Developer</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/4.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">KPR</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/5.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Hukum Properti</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/6.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Perpajakan Properti</h4>
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="cat-item position-relative overflow-hidden rounded mb-2">
-                        <img class="img-fluid" src="/assets/pages/Panduan/eksplore.jpg" alt="">
+                        <img class="img-fluid" src="/assets/pages/Panduan/7.svg" alt="">
                         <a class="cat-overlay text-white text-decoration-none" href="">
-                            <h4 class="text-white font-weight-medium">Jadi Agent</h4>
                         </a>
                     </div>
                 </div>
@@ -239,106 +231,106 @@
                 <!-- Post 1 -->
                 <div class="post-box kpr">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">KPR</h2>
-                    <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <h2 class="category" style="margin-top: 10px">SP3K</h2>
+                    <a href="/detailpanduan" class="post-title">Cara Melakukan SP3K dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 2 -->
                 <div class="post-box properti">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Properti</h2>
+                    <h2 class="category" style="margin-top: 10px">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 3 -->
                 <div class="post-box properti">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Properti</h2>
+                    <h2 class="category" style="margin-top: 10px">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 4 -->
                 <div class="post-box news">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Terbaru</h2>
+                    <h2 class="category" style="margin-top: 10px">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 5 -->
                 <div class="post-box kpr">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">KPR</h2>
+                    <h2 class="category" style="margin-top: 10px">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 6 -->
                 <div class="post-box news">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Terbaru</h2>
+                    <h2 class="category" style="margin-top: 10px">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 7 -->
                 <div class="post-box kpr">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">KPR</h2>
+                    <h2 class="category" style="margin-top: 10px">KPR</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 1 -->
                 <div class="post-box news">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Terbaru</h2>
+                    <h2 class="category" style="margin-top: 10px">Terbaru</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <!-- Post 9 -->
                 <div class="post-box properti">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Properti</h2>
+                    <h2 class="category" style="margin-top: 10px">Properti</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="post-box agen">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Agen</h2>
+                    <h2 class="category" style="margin-top: 10px">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="post-box agen">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Agen</h2>
+                    <h2 class="category" style="margin-top: 10px">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="post-box agen">
                     <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
-                    <h2 class="category">Agen</h2>
+                    <h2 class="category" style="margin-top: 10px">Agen</h2>
                     <a href="#" class="post-title">Cara Melakukan KPR dengan benar</a>
                     <span class="post-date">12 Mei 2023</span>
-                    <p class="post-description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, similique, rerum excepturi harum, vitae facilis corrupti vel modi debitis est perferendis aut quasi ea unde repudiandae iste architecto. Corporis, voluptates.</p>
+                    <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="pagination-panduan">

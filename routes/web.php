@@ -30,12 +30,13 @@ use App\Http\Controllers\FilePreviewController;
 
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 
-
-// authentication
-
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
 });
+
+// authentication
+
+
 
 Route::group(['prefix' => '/session'], function () {
     Route::get('/signout', [SessionController::class, 'signout']);
@@ -53,16 +54,20 @@ Route::group(['prefix' => '/session'], function () {
 });
 
 Route::group(['prefix' => '/session'], function () {
-    Route::get('/signout', [SessionController::class, 'signout']);
+    
+    Route::group(['prefix' => '/auth'], function () {
 
-    Route::group(['prefix' => '/signinuser'], function () {
-        Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
-        Route::post('/create', [SessionController::class, 'postSigninUser']);
-    });
+        Route::get('/signout', [SessionController::class, 'signoutuser']);
+        Route::group(['prefix' => '/signin'], function () {
+            Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
+            Route::post('/create', [SessionController::class, 'postSigninUser']);
+        });
+        route::group(['prefix' => '/signup'], function () {
+            Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
+            Route::post('/create', [SessionController::class, 'postSignupUser']);
+        });
 
-    route::group(['prefix' => '/signupuser'], function () {
-        Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
-        Route::post('/create', [SessionController::class, 'postSignupUser']);
+
     });
 });
 
@@ -99,10 +104,13 @@ Route::get('/home', [UnitController::class, 'homeunit']);
 
 // pages
 Route::group(['prefix' => '/pages'], function () {
-    Route::get('/searchagent', [AgentController::class, 'searchAgent']);
 
     Route::get('/notfound', function () {
         return view('pages.page.notfound');
+    });
+
+    Route::get('/searchagent', function () {
+        return view('pages.page.searchAgent');
     });
 
     Route::get('/newproperty', function () {
@@ -118,9 +126,7 @@ Route::group(['prefix' => '/pages'], function () {
         return view('pages.page.sell');
     });
 
-    Route::get('/guide', function () {
-        return view('pages.page.guide');
-    });
+    Route::get('/guide', [GuideController::class, 'guide']);
     Route::get('/kpr', function () {
         return view('pages.page.kpr');
     });

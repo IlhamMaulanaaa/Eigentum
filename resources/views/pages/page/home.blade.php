@@ -50,7 +50,8 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap"
+            rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -89,7 +90,7 @@
                         <button class="jualsewa" data-type="disewa">Disewa</button>
                     </div>
 
-                    
+
                     <div class="group-11-tab" id="4:7169">
                         <div class="group-10-mPV" id="4:7171">
                             <!-- Filter Home -->
@@ -190,7 +191,8 @@
                 <div class="frame-365-pto" id="4:7196">
                     <div class="judulFilter">
                         <h1 id="h1Filter" style="">Temukan Kota Tujuan Anda</h1>
-                        <p id="pFilter">Temukan kota-kota menarik di seluruh dunia yang siap menjadi tujuan impian Anda.</p>
+                        <p id="pFilter">Temukan kota-kota menarik di seluruh dunia yang siap menjadi tujuan impian Anda.
+                        </p>
                     </div>
                     <div class="filter-kota">
                         <div class="subFilter">
@@ -263,38 +265,55 @@
                         <div class="slide-container swiper">
                             <div class="slide-content">
                                 <div class="card-wrapper swiper-wrapper">
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
+
+
+                                    @foreach ($units as $unit)
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                                            style="max-width:330px; margin: 20px;">
+                                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                                <div class="position-relative overflow-hidden">
+                                                    <a href=""><img src="{{ asset('storage/' . $unit->image) }}"
+                                                            class="img-thumbnail" alt="" width="360"
+                                                            height="120"></a>
+                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                        style="background-color: #0C40E8">
+                                                        @foreach ($unit->status as $status)
+                                                            <li>
+                                                                {{ $status->name }}
+                                                            </li>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                        style="color: #0C40E8">{{ $unit->title }}</div>
+                                                </div>
+                                                <div class="p-0 pb-0">
+                                                    <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                                    <a class="d-block h6 mb-2" style="color: #000;"
+                                                        href="">{{ $unit->properties->property }}</a>
+                                                    <p><i class="fa fa-map-marker-alt  me-2"
+                                                            style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex border-top" style="width: 320px;">
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                                    <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}</small>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endforeach
+
+
+
+
                                     <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                         style="max-width:330px; margin: 20px;">
                                         <div class="property-item rounded overflow-hidden" style="width: 280px;">
@@ -540,48 +559,67 @@
                                 </div>
                                 <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="testimonial-item p-4 my-5">
-                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <i
+                                            class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                                style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Rifki Wijaya</h5>
                                                 <p class="m-0">Agen</p>
                                             </div>
                                         </div>
-                                        <p class="mb-0">Saya sangat puas dengan layanan dari website properti ini. Informasi tentang properti yang mereka tawarkan sangat lengkap dan akurat. Transaksi jual-beli berjalan lancar.</p>
+                                        <p class="mb-0">Saya sangat puas dengan layanan dari website properti ini.
+                                            Informasi tentang properti yang mereka tawarkan sangat lengkap dan akurat.
+                                            Transaksi jual-beli berjalan lancar.</p>
                                     </div>
                                     <div class="testimonial-item p-4 my-5">
-                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <i
+                                            class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                                style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Rahmawati</h5>
                                                 <p class="m-0">Developer</p>
                                             </div>
                                         </div>
-                                        <p class="mb-0">Website properti ini menjadi sumber informasi penting bagi saya dalam mencari peluang investasi. Saya mendapatkan data dan analisis yang akurat, sehingga saya bisa membuat keputusan investasi yang cerdas. Terima kasih atas layanan yang sangat membantu!</p>
+                                        <p class="mb-0">Website properti ini menjadi sumber informasi penting bagi saya
+                                            dalam mencari peluang investasi. Saya mendapatkan data dan analisis yang akurat,
+                                            sehingga saya bisa membuat keputusan investasi yang cerdas. Terima kasih atas
+                                            layanan yang sangat membantu!</p>
                                     </div>
                                     <div class="testimonial-item p-4 my-5">
-                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <i
+                                            class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                                style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Budi Utomo</h5>
                                                 <p class="m-0">Pembeli</p>
                                             </div>
                                         </div>
-                                        <p class="mb-0">Terima kasih banyak kepada website properti ini. Rumah saya berhasil terjual dalam waktu singkat berkat layanan profesional mereka. Timnya sangat berkomitmen untuk membantu dan memberikan nasihat yang berharga. Sangat merekomendasikan!</p>
+                                        <p class="mb-0">Terima kasih banyak kepada website properti ini. Rumah saya
+                                            berhasil terjual dalam waktu singkat berkat layanan profesional mereka. Timnya
+                                            sangat berkomitmen untuk membantu dan memberikan nasihat yang berharga. Sangat
+                                            merekomendasikan!</p>
                                     </div>
                                     <div class="testimonial-item p-4 my-5">
-                                        <i class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
+                                        <i
+                                            class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png" style="width: 80px; height: 80px;">
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                                style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Bambang Putra</h5>
                                                 <p class="m-0">Agen</p>
                                             </div>
                                         </div>
-                                        <p class="mb-0">Saya sangat terbantu dengan layanan dari website properti ini. Tim mereka sangat profesional dan responsif dalam membantu saya menemukan hunian idaman. Proses jual-beli properti menjadi lebih mudah berkat mereka. Terima kasih!</p>
+                                        <p class="mb-0">Saya sangat terbantu dengan layanan dari website properti ini.
+                                            Tim mereka sangat profesional dan responsif dalam membantu saya menemukan hunian
+                                            idaman. Proses jual-beli properti menjadi lebih mudah berkat mereka. Terima
+                                            kasih!</p>
                                     </div>
                                 </div>
                             </div>
@@ -763,7 +801,7 @@
             });
         });
 
-        
+
         var swiper = new Swiper(".slide-content", {
             slidesPerView: 4,
             spaceBetween: 5,

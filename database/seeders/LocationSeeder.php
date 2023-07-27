@@ -13,6 +13,8 @@ class LocationSeeder extends Seeder
      */
     public function run(): void
     {
+        Location::truncate();
+        
         $provinces = [
             "Aceh",
             "Bali",
@@ -52,7 +54,7 @@ class LocationSeeder extends Seeder
 
         foreach ($provinces as $province) {
             Location::create([
-                "location" => $province,
+                "name" => $province,
             ]);
         }
     }

@@ -22,8 +22,8 @@
             <div class="row">
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                        <a id="loginback" href="#">Back</a>
-                        <form action="/session/signup/create" method="POST">
+                        <a id="loginback" href="/beranda">Back</a>
+                        <form action="/session/auth/signup/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
@@ -31,17 +31,17 @@
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Memulai</h1>
                             <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a
-                                    href="/session/signinuser" class="text-dark " id="adkjslf">Sign
+                                    href="/session/auth/signin/" class="text-dark " id="adkjslf">Sign
                                     In</a></h6>
                             <div class="form-floating">
-                                <input type="text" value="{{ Session::get('name') }}" name="name"
-                                    class="form-control" id="name" placeholder="Username">
+                                <input type="text" value="" name="name" class="form-control" id="name"
+                                    placeholder="Username">
                                 <label for="name">Username</label>
                             </div>
                             <br>
                             <div class="form-floating">
-                                <input type="email" value="{{ Session::get('email') }}" name="email"
-                                    class="form-control" id="email" placeholder="name@example.com">
+                                <input type="email" value="" name="email" class="form-control" id="email"
+                                    placeholder="name@example.com">
                                 <label for="email">Email address</label>
                             </div>
                             <br>

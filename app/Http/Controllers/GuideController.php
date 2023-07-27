@@ -18,11 +18,21 @@ class GuideController extends Controller
         $data = Guide::all();
         $tables = (new Guide())->getTable();
 
-        if($data) {
-            return view('admin.guide.all' , ['guides' => $data, 'tables' => $tables]);
-        }else{
+        if ($data) {
+            return view('admin.guide.all', ['guides' => $data, 'tables' => $tables]);
+        } else {
             return ApiFormatter::createApi('404', 'Data Not Found', null);
         }
+    }
+
+    public function guide()
+    {
+        // $guide = Guide::all();
+
+        return view(
+            'pages.page.guide',
+            //  compact ( 'data')   
+        );
     }
 
 
@@ -34,30 +44,30 @@ class GuideController extends Controller
 
     public function store(Request $request)
     {
-        
-            $request->validate([
-                'title'  => 'required',
-                'description'   => 'required',
-                'image'   => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-            ]);
 
-            $image = Str::random(8). "." . $request->image->getClientOriginalExtension();
+        $request->validate([
+            'title'  => 'required',
+            'description'   => 'required',
+            'image'   => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+        ]);
 
-            $data = Guide::create([
-                'title'  => $request->title,
-                'description'   => $request->description,
-                'image'   => $image,
-            ]);
+        $image = Str::random(8) . "." . $request->image->getClientOriginalExtension();
 
-            Storage::disk('public')->put($image, file_get_contents($request->image));
+        $data = Guide::create([
+            'title'  => $request->title,
+            'description'   => $request->description,
+            'image'   => $image,
+        ]);
 
-            $data = Guide::where('id', '=', $data->id)->get();
+        Storage::disk('public')->put($image, file_get_contents($request->image));
 
-            if($data){
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/guide/data',);
-            }else{
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
+        $data = Guide::where('id', '=', $data->id)->get();
+
+        if ($data) {
+            return ApiFormatter::createApi('201', 'Created', $data) . redirect('/admin/guide/data',);
+        } else {
+            return ApiFormatter::createApi('400', 'Bad Request', null);
+        }
     }
 
 
@@ -78,7 +88,7 @@ class GuideController extends Controller
 
     public function update(Request $request, string $id)
     {
-        
+
         $request->validate([
             'title'  => 'required',
             'description'   => 'required',
@@ -95,33 +105,32 @@ class GuideController extends Controller
         $images = ['image'];
         foreach ($images as $key => $image) {
             if ($request->hasFile($image)) {
-                $imageName = $request->{$image}->getClientOriginalName(). "." . $request->{$image}->getClientOriginalExtension();
+                $imageName = $request->{$image}->getClientOriginalName() . "." . $request->{$image}->getClientOriginalExtension();
                 $image_path = Storage::disk('public')->put($imageName, file_get_contents($request->{$image}));
                 if (File::exists($image_path)) {
                     File::delete($image_path);
                 }
                 $data->{$image} = $imageName;
-            }}
-            
+            }
+        }
+
         $data->save();
 
-            $data = Guide::where('id', '=', $data->id)->get();
-            $url = '/admin/guide/show/' . $id;
+        $data = Guide::where('id', '=', $data->id)->get();
+        $url = '/admin/guide/show/' . $id;
 
-            return redirect($url);
-        
+        return redirect($url);
     }
 
 
     public function destroy(string $id)
     {
-        
-            $guide = Guide::findOrfail($id);
-            $data = $guide->delete();
 
-            if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/guide/data',);
-            } 
-        
+        $guide = Guide::findOrfail($id);
+        $data = $guide->delete();
+
+        if ($data) {
+            return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/guide/data',);
+        }
     }
 }

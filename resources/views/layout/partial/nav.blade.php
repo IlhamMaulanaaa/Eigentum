@@ -15,52 +15,55 @@
                 <li><a href="/pages/searchagent">Cari Agen</a></li>
                 <li><a href="/pages/guide">Panduan</a></li>
                 <li><a href="/pages/kpr">KPR</a></li>
-                <li><a href="/pages/kpr">FAQ</a></li>
+                {{-- <li><a href="/pages/kpr">FAQ</a></li> --}}
             </ul>
         </div>
 
         <div class="darkLight-searchBoxq">
+            @if (Auth::check())
+                <div class="profileq" style="cursor: pointer;">
+                    <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
+                </div>
 
-            <a href="/session/signuser/" class="btnq">Masuk</a>
+
+                <div class="menu-profileq">
+                    <h3>
+                        {{ Auth()->user()->name }}
+                        <div>
+                            customer
+                        </div>
+                    </h3>
+                    <ul style="margin: 0; padding:0;">
+                        <li>
+                            <span class="material-icons icons-size">person</span>
+                            <a href="#">Pengaturan Profile</a>
+                        </li>
+                        <li>
+                            <span class="material-icons icons-size">monetization_on</span>
+                            <a href="#">Langganan</a>
+                        </li>
+                        <li>
+                            <span class="material-icons icons-size">person</span>
+                            <a href="#">yang di sukai</a>
+                        </li>
+                        <li>
+                            <span class="material-icons icons-size">person</span>
+                            <a href="/signin/logindeveloper/">developer</a>
+                        </li>
+                        <li>
+                            <span class="material-icons icons-size">person</span>
+                            <a href="/session/auth/signout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            @elseif (!Auth::check())
+                <a href="/session/auth/signin/" class="btnq">Masuk</a>
+            @endif
 
 
 
 
-            {{-- <div class="profileq" style="cursor: pointer;">
-                        <img src="user.png" alt="">
-                    </div>
-                
-                
-                    <div class="menu-profileq" >
-                        <h3>
-                            Megawati
-                            <div>
-                                Agen Properti
-                            </div>
-                        </h3>
-                        <ul style="margin: 0; padding:0;">
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="#">Profile Saya</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="#">Profile Saya</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="#">Profile Saya</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">monetization_on</span>
-                                <a href="#">Langganan</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="#">Profile Saya</a>
-                            </li>
-                        </ul>
-                    </div> --}}
+
         </div>
     </div>
 </nav>

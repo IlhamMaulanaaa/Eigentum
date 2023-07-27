@@ -37,8 +37,12 @@ class UnitController extends Controller
 
     public function homeunit()
     {
+        $units = Unit::all();
 
-        return view('pages.page.home');
+        if ($units) {
+            return view('pages.page.home', compact('units')) ;
+        }
+        
     }
 
     public function store(Request $request,  $propertyId)

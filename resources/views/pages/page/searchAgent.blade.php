@@ -48,10 +48,10 @@
 
 
 
-        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" style="margin-top: 0px;">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="max-height: 550px;">
-                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image">
+                    <img class="w-100" src="/assets/pages/Panduan/banner1.svg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center"
                         style="top: 0; left: 0; right: 0; bottom: 0;">
                         <div class="p-3"
@@ -71,8 +71,8 @@
 
                     </div>
                 </div>
-                <div class="carousel-item" style="max-height: 550px;">
-                    <img class="w-100" src="assets/Panduan/eksplore.jpg" alt="Image">
+                {{-- <div class="carousel-item" style="max-height: 550px;">
+                    <img class="w-100" src="/assets/pages/Panduan/eksplore.jpg" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center"
                         style="top: 0; left: 0; right: 0; bottom: 0;">
                         <div class="p-3" style="max-width: 1200px; margin-top: 50px; text-align: center;">
@@ -89,18 +89,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
-            <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
-            </button>
+            </button> --}}
 
         </div>
         <!--  Carousel End -->
@@ -130,7 +130,7 @@
 
 
         <!-- Facts Start -->
-        <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: -75px;">
+        <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 100px;">
 
 
             <div class="container py-5 pt-lg-0">
@@ -193,7 +193,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/Home/testimoni-home.svg" alt="">
+                                <img class="img-fluid" src="/assets/pages/Home/testimoni1-home.svg" alt="">
                             </div>
                             <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                                 <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -209,7 +209,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/Home/testimoni1-home.svg" alt="">
+                                <img class="img-fluid" src="/assets/pages/Home/testimoni2-home.svg" alt="">
                             </div>
                             <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                                 <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -225,7 +225,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/Home/testimoni2-home.svg" alt="">
+                                <img class="img-fluid" src="/assets/pages/Home/testimoni3-home.svg" alt="">
                             </div>
                             <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                                 <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -241,7 +241,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="team-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/Home/testimoni3-home.svg" alt="">
+                                <img class="img-fluid" src="/assets/pages/Home/testimoni-home.svg" alt="">
                             </div>
                             <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                                 <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
@@ -249,7 +249,7 @@
                                 <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                             </div>
                             <div class="text-center p-4">
-                                <h5 class="mb-0">Rafid Septian</h5>
+                                <h5 class="mb-0">Fitri Putri</h5>
                                 <small>Agent Villa</small>
                             </div>
                         </div>
@@ -260,12 +260,12 @@
         <!-- Agent End -->
 
 
-    <!-- Card Agent -->
-    <h1 class="subtitle-agent" >Agent Terpercaya</h1>
-    <div class="cardagent">
-    <div class="wrapper" >
-        <ul class="carousel11">
-            @foreach ($agents as $agent)
+        <!-- Card Agent -->
+        <h1 class="subtitle-agent">Agent Terpercaya</h1>
+        <div class="cardagent">
+            <div class="wrapper">
+                <ul class="carousel11">
+                    {{-- @foreach ($agents as $agent)
                         <li class="card">
                             <div class="img">
                                 <img src="{{ $agent->face }}" alt="img" draggable="false">
@@ -273,38 +273,58 @@
                             <h2>{{ $agent->name }}</h2>
                             <span>{{ $agent->locations->name }}, {{ Str::limit($agent->address) }}</span>
                         </li>
-                    @endforeach
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-          <li class="card">
-            <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img" draggable="false"></div>
-            <h2>Bambang Yudoyono</h2>
-            <span>Agent Independen</span>
-          </li>
-            @foreach($agents as $agent)
+            @endforeach --}}
+                    <a href="/agent/dashboard">
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Jono</h2>
+                            <span>Agent Independen</span>
+                        </li>
+                    </a>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    <li class="card">
+                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                draggable="false"></div>
+                        <h2>Bambang Yudoyono</h2>
+                        <span>Agent Independen</span>
+                    </li>
+                    {{-- @foreach ($agents as $agent)
             <li class="card">
                 <div class="img">
                     <img src="images/img-1.jpg" alt="img" draggable="false">
@@ -312,51 +332,54 @@
                 <h2>{{ $agent->name }}</h2>
                 <span>{{ $agent->position }}</span>
             </li>
-            @endforeach
-        </ul>
-        
-        
-      </div>
-    </div>
-    <!-- End Card Agent -->
+            @endforeach --}}
+                </ul>
+
+
+            </div>
+        </div>
+        <!-- End Card Agent -->
 
         <!-- Card Agent -->
         <h1 class="subtitle-agent1">Agent Terbaik</h1>
         <div class="cardagent1">
             <div class="wrapper1">
                 <ul class="carousel12">
+                    <a href="/agent/dashboard">
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
+                    </a>
                     <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false">
+                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                draggable="false">
                         </div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
@@ -372,37 +395,38 @@
             <div class="wrapper2">
                 <ul class="carousel13">
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni2-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni-home.svg" alt="img" draggable="false">
+                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                draggable="false">
                         </div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni3-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>
                     </li>
                     <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/Home/testimoni1-home.svg" alt="img"
+                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
                                 draggable="false"></div>
                         <h2>Bambang Yudoyono</h2>
                         <span>Agent Independen</span>

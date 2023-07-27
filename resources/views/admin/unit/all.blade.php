@@ -22,8 +22,8 @@
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Image</th>
-                            <th scope="col" class="text-start">Property Name</th>
-                            <th scope="col" class="text-start">Status</th>
+                            <th scope="col">Property Name</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

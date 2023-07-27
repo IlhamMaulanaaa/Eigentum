@@ -35,6 +35,7 @@
     overflow: hidden;
     position: relative;
     width: 35px;
+    color: #000;
     margin-right: 15px;
 }
 .darkLight-searchBoxq .profileq img {
@@ -43,9 +44,9 @@
     position: absolute;
     object-fit: cover;
     left: 0;
+    margin-right: -90px;
     height: 100%;
 }
-
 
 .darkLight-searchBoxq .menu-profileq {
     background-color: #fff;
@@ -178,7 +179,7 @@ nav {
     width: 100%;
     background-color: #fff;
     z-index: 100;
-    
+
     box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
 }
 

@@ -22,8 +22,8 @@
             <div class="row">
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                        <a id="loginback" href="/guest">Back</a>
-                        <form action="/session/signinuser/create/" method="POST">
+                        <a id="loginback" href="/beranda">Back</a>
+                        <form action="/session/auth/signin/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
@@ -31,7 +31,7 @@
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Masuk</h1>
                             <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a
-                                    href="/session/signupuser" class="text-dark " id="adkjslf">Sign
+                                    href="/session/auth/signup/" class="text-dark " id="adkjslf">Sign
                                     up</a></h6>
                             <div class="form-floating">
                                 <input type="email" value="{{ Session::get('email') }}" name="email" id="email"
