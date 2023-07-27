@@ -33,7 +33,7 @@
                                 <tr align="center">
                                     <td class="text-start">{{ $loop->iteration }}</td>
                                     <td class="text-start">{{ $unit->title }}</td>
-                                    <td class="text-start">{{ $unit->description }}</td>
+                                    <td class="text-start">{{ Str::limit($unit->description ,20)}}</td>
                                     <td class="text-start">{{ $unit->price }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $unit->image) }}" width="60"
                                             heigth="60"></td>

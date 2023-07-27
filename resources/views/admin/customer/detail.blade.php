@@ -28,9 +28,9 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ $customer->phone_number }}" readonly disabled>
+                                <label for="telp" class="form-label">Telephone</label>
+                                <input type="text" class="form-control" id="telp" name="telp"
+                                    value="{{ $customer->telp }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group text-end">

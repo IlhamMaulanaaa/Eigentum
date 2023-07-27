@@ -34,9 +34,9 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ old('phone_number', $customer->phone_number) }}" required>
+                                <label for="telp" class="form-label">Phone Number</label>
+                                <input class="form-control" id="telp" name="telp"
+                                    value="{{ old('telp', $customer->telp) }}" required>
                             </div>
                             <br>
                             <div class="float-end">

@@ -29,10 +29,10 @@ class AgentSeeder extends Seeder
                 'name' => fake()->name(),
                 'email' => fake()->email(),
                 'password' => bcrypt(fake()->password()),
-                'address' => Str::limit(fake()->address(), 20),
+                'address' => Str::limit(fake()->address()),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
-                'phone_number' => fake()->phoneNumber(),
+                'telp' => fake()->phoneNumber(),
                 'location_id' => mt_rand(1, 34),
             ]);
 

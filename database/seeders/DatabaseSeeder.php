@@ -6,7 +6,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,6 +24,12 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(LocationSeeder::class);
+        $this->call(GuideSeeder::class);
+
+        $this->call(IndoRegionProvinceSeeder::class);
+        $this->call(IndoRegionRegencySeeder::class);
+        $this->call(IndoRegionDistrictSeeder::class);
+        $this->call(IndoRegionVillageSeeder::class);
         
         $this->call(DeveloperSeeder::class);
         $this->call(OwnerSeeder::class);
@@ -33,11 +38,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AgentSeeder::class);
 
         $this->call(UnitSeeder::class);
-
-        $this->call(IndoRegionProvinceSeeder::class);
-        $this->call(IndoRegionRegencySeeder::class);
-        $this->call(IndoRegionDistrictSeeder::class);
-        $this->call(IndoRegionVillageSeeder::class);
-
+        
     }
 }

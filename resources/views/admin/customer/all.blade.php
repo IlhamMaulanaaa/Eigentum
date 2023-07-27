@@ -21,7 +21,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Phone number</th>
+                            <th scope="col">Telephone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -33,7 +33,7 @@
                                     <td class="text-start">{{ $customer->name }}</td>
                                     <td class="text-start">{{ $customer->email }}</td>
                                     <td class="text-start">{{ $customer->address }}</td>
-                                    <td class="text-start">{{ $customer->phone_number }}</td>
+                                    <td class="text-start">{{ $customer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="show/{{ $customer->id }}">Detail</a>

@@ -12,7 +12,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control noscroll" id="name" name="name" >
+                                <input type="text" class="form-control noscroll" id="name" name="name">
                             </div>
                             <br>
                             <div class="form-group">
@@ -27,12 +27,12 @@
                             <br>
                             <div class="form-group">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control noscroll" id="address" name="address" >
+                                <input type="text" class="form-control noscroll" id="address" name="address">
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="text" class="form-control noscroll" id="phone_number" name="phone_number" >
+                                <label for="telp" class="form-label">Telephone</label>
+                                <input type="text" class="form-control noscroll" id="telp" name="telp">
                             </div>
                             <br>
                             <div class="float-end">

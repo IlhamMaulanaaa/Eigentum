@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("address");
             $table->string("ktp");
             $table->string("face");
-            $table->string("phone_number");
+            $table->string("telp");
             $table->foreignId("location_id");
             $table->timestamps();
         });

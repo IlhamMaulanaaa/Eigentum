@@ -39,7 +39,7 @@ class AgentController extends Controller
                 'address'   => 'required',
                 'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'phone_number'  => 'required',
+                'telp'  => 'required',
                 'location_id' => 'required'
             ]);
             
@@ -57,7 +57,7 @@ class AgentController extends Controller
                 'address'   => $request->address,
                 'ktp'   => $imageArray[0],
                 'face'   => $imageArray[1],
-                'phone_number'  => $request->phone_number,
+                'telp'  => $request->telp,
                 'location_id' => $request->location_id
             ]);
 
@@ -94,7 +94,7 @@ class AgentController extends Controller
                 'address'   => 'required',
                 'ktp'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'phone_number'  => 'required',
+                'telp'  => 'required',
                 'location_id' => 'nullable'
             ]);
 
@@ -105,7 +105,7 @@ class AgentController extends Controller
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'address'   => $request->address,
-                'phone_number'  => $request->phone_number,
+                'telp'  => $request->telp,
                 'location_id'  => $request->location_id,
             ]);
 

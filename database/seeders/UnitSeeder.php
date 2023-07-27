@@ -47,7 +47,7 @@ class UnitSeeder extends Seeder
                 $assetString = implode('|', $assetsImages); 
                 $unit = Unit::create([
                     'title' => fake()->company(),
-                    'description' => Str::limit(fake()->text(), 20),
+                    'description' => Str::limit(fake()->text()),
                     'price' => fake()->randomFloat(7, 10, 10000),
                     'image' => $this->getImageUrl('house'),
                     'property_id' => $propertyId,
@@ -56,7 +56,6 @@ class UnitSeeder extends Seeder
                 $units[] = $unit; // Simpan object unit untuk digunakan di hubungan many-to-many
             }
 
-            // Hubungkan unit dengan status secara acak menggunakan pivot table
             $statuses = Status::pluck('id')->random(rand(1, 2))->toArray();
             foreach ($units as $unit) {
                 UnitStatus::create([
@@ -65,7 +64,7 @@ class UnitSeeder extends Seeder
                 ]);
 
                 $image = Image::create([
-                    'livingroomimg' => $livingroomString, // Ganti dengan cara Anda untuk mendapatkan URL gambar
+                    'livingroomimg' => $livingroomString,
                     'bedroomimg' => $bedroomString,
                     'bathroomimg' => $bathroomString,
                     'kitchenimg' => $kitchenString,
@@ -94,27 +93,21 @@ class UnitSeeder extends Seeder
         $imageUrls = [];
         
         for ($i = 0; $i < $count; $i++) {
-            // Ambil gambar dari folder public/$folderName
             $files = File::files(public_path($folderName));
             $randomImagePath = Arr::random($files);
         
-            // Ubah path relatif gambar menjadi path absolut di folder storage
             $imagePath = $randomImagePath->getRealPath();
         
-            // Ambil nama file dari path
             $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
         
-            // Tambahkan nama file ke dalam array imageUrls
             $imageUrls[] = $imageName;
         }
 
-        // Pindahkan semua gambar ke folder storage
         foreach ($imageUrls as $imageName) {
             $imagePath = public_path($folderName . '/' . $imageName);
 
             Storage::delete('public/' . $folderName . '/' . $imageName);
 
-            // Pindahkan gambar ke folder storage
             Storage::putFileAs('public/' , $imagePath, $imageName);
         }
         
@@ -123,24 +116,17 @@ class UnitSeeder extends Seeder
 
     private function getImageUrl($folderName, $width = 400, $height = 300)
     {
-        // Ambil gambar dari folder public/$folderName
         $files = File::files(public_path($folderName));
         $randomImagePath = Arr::random($files);
     
-        // Ubah path relatif gambar menjadi path absolut di folder storage
         $imagePath = $randomImagePath->getRealPath();
     
-        // Ambil nama file dari path
         $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
     
-        // Hapus file image yang sudah ada dengan nama yang sama di dalam folder storage
         Storage::delete('public/' . $folderName . '/' . $imageName);
     
-        // Pindahkan gambar ke folder storage
         Storage::putFileAs('public/' , $imagePath, $imageName);
     
-        // Membangun URL gambar berdasarkan path relatif dari folder storage
-        // $imageUrl = Storage::url($folderName . '/' . $imageName);
     
         return $imageName;
     }

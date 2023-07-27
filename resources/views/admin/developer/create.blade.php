@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
-                                            <select class="form-select" name="provinces_id" id="provinsi" 
+                                            <select class="form-select" name="provinces_id" id="provinsi"
                                                 data-placeholder="Pilih Provinsi" required>
                                                 <option>Pilih Provinsi</option>
                                                 @foreach ($provinces as $item)
@@ -123,7 +123,7 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <label for="telp" class="form-label">Phone number</label>
+                                        <label for="telp" class="form-label">Telephone</label>
                                         <input type="number" class="form-control noscroll" id="telp"
                                             name="telp">
                                     </div>

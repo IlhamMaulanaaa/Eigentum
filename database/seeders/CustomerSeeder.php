@@ -21,8 +21,8 @@ class CustomerSeeder extends Seeder
                 "email" => fake()->email(),
                 "password" => bcrypt(fake()->password()),
                 "name" => fake()->name(),
-                "address" => Str::limit(fake()->address(), 20),
-                "phone_number" => fake()->phoneNumber(),
+                "address" => Str::limit(fake()->address()),
+                "telp" => fake()->phoneNumber(),
             ]);
         }
 

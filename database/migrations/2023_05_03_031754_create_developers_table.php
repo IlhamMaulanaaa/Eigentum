@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("email")->unique();  
             $table->string("password");
             $table->string("license");
-            $table->bigInteger("telp");
+            $table->string("telp");
             $table->timestamps();
         });
     }

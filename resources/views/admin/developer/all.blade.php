@@ -22,7 +22,7 @@
                             <th scope="col">Company Email</th>
                             <th scope="col">Owner</th>
                             <th scope="col">Kota</th>
-                            <th scope="col">Phone number</th>
+                            <th scope="col">Telephone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -34,7 +34,8 @@
                                     <td class="text-start">{{ $developer->company }}</td>
                                     <td class="text-start">{{ $developer->email }}</td>
                                     <td class="text-start">{{ $developer->owners->name }}</td>
-                                    <td class="text-start">{{ implode(', ', $developer->regencies()->pluck('name')->toArray()) }}</td>
+                                    <td class="text-start">
+                                        {{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}</td>
                                     <td class="text-start">{{ $developer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"

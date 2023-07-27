@@ -52,8 +52,8 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="text" class="form-control noscroll" id="phone_number" name="phone_number">
+                                <label for="telp" class="form-label">Telephone</label>
+                                <input type="text" class="form-control noscroll" id="telp" name="telp">
                             </div>
                             <br>
                             <div class="float-end">

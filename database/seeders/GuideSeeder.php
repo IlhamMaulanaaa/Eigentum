@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Guide;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 class GuideSeeder extends Seeder
 {
@@ -19,40 +23,20 @@ class GuideSeeder extends Seeder
             Guide::create([
                 "title" => fake()->title(),
                 "description" => fake()->text(),
-                "image" => fake()->imageUrl(),
+                "image" => $this->getImageUrl('house'),
             ]);
         }
-        
+    }
 
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
-        // Guide::create([
-        //     "title" => fake()->title(),
-        //     "description" => fake()->text(),
-        //     "image" => fake()->imageUrl(),
-        // ]);
+    private function getImageUrl($folderName, $width = 400, $height = 300)
+    {
+        $files = File::files(public_path($folderName));
+        $randomImagePath = Arr::random($files);
+        $imagePath = $randomImagePath->getRealPath();
+        $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
+        Storage::delete('public/' . $folderName . '/' . $imageName);
+        Storage::putFileAs('public/' , $imagePath, $imageName);
+
+        return $imageName;
     }
 }

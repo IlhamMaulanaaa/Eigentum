@@ -57,7 +57,8 @@
                                     <br>
                                     <div class="form-group col-auto">
                                         <label for="owner_password" class="form-label">Owner Password</label>
-                                        <input type="password" class="form-control" id="owner_password" name="owner_password">
+                                        <input type="password" class="form-control" id="owner_password"
+                                            name="owner_password">
                                     </div>
                                     <br>
                                 </div>
@@ -138,7 +139,7 @@
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <label for="telp" class="form-label">Phone number</label>
+                                    <label for="telp" class="form-label">Telephone</label>
                                     <input type="number" class="form-control" id="telp" name="telp"
                                         value="{{ old('telp', $developer->telp) }}" required>
                                 </div>

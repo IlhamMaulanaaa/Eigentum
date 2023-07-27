@@ -32,8 +32,8 @@ class PropertySeeder extends Seeder
 
                 Property::create([
                     'property' => fake()->company(),
-                    'description' => Str::limit(fake()->text(), 20) ,
-                    'address' => Str::limit(fake()->address(), 20),
+                    'description' => Str::limit(fake()->text()) ,
+                    'address' => Str::limit(fake()->address()),
                     'developer_id' => $developerId,
                     'type_id' => $typeIds[$randomTypeId], 
                 ]);

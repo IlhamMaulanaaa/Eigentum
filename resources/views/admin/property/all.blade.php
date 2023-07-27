@@ -33,8 +33,8 @@
                                 <tr align="center">
                                     <td class="text-start">{{ $loop->iteration }}</td>
                                     <td class="text-start">{{ $property->property }}</td>
-                                    <td class="text-start">{{ $property->description }}</td>
-                                    <td class="text-start">{{ $property->address }}</td>
+                                    <td class="text-start">{{ Str::limit($property->description, 20 )  }}</td>
+                                    <td class="text-start">{{ Str::limit($property->address, 20) }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
                                     <td class="text-start ">{{ $property->units->count() }}</td>

@@ -35,7 +35,7 @@ class CustomerController extends Controller
                 'email' => 'required|email|unique:customers',
                 'password'  => 'required|min:8',
                 'address'  => 'nullable',
-                'phone_number'   => 'nullable',
+                'telp'   => 'nullable',
             ],[
                 'name.required' => 'Nama harus diisi',
                 'email.required' => 'Email harus diisi',
@@ -50,7 +50,7 @@ class CustomerController extends Controller
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'address'   => $request->address,
-                'phone_number'   => $request->phone_number,
+                'telp'   => $request->telp,
             ]);
 
             if ($data) {
@@ -84,7 +84,7 @@ class CustomerController extends Controller
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
                 'address'  => 'nullable',
-                'phone_number'   => 'nullable',
+                'telp'   => 'nullable',
             ]);
 
             $data = Customer::findOrfail($id);
@@ -94,7 +94,7 @@ class CustomerController extends Controller
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'address'   => $request->address,
-                'phone_number'   => $request->phone_number,
+                'telp'   => $request->telp,
             ]);
 
             $data = Customer::where('id', '=', $data->id)->get();
