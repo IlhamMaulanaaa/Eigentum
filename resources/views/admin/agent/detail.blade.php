@@ -27,10 +27,31 @@
                                     value="{{ $agent->address }}" readonly disabled>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="name" class="form-label">Location</label>
-                                <input type="text" class="form-control" id="name" name="name"
-                                    value="{{ $agent->locations->name }}" readonly disabled>
+                            <div class="form-group row col-12">
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Provinces" class="form-label">Provinsi</label>
+                                    <input type="text" class="form-control" id="Provinces" name="Provinces"
+                                        value="{{ implode(', ',$agent->provinces()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Regencies" class="form-label">Kota</label>
+                                    <input type="text" class="form-control" id="Regencies" name="Regencies"
+                                        value="{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="District" class="form-label">Kecamatan</label>
+                                    <input type="text" class="form-control" id="District" name="District"
+                                        value="{{ implode(', ',$agent->districts()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Village" class="form-label">Desa</label>
+                                    <input type="text" class="form-control" id="Village" name="Village"
+                                        value="{{ implode(', ',$agent->villages()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
                             </div>
                             <br>
                             <div class="form-group">

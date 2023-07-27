@@ -33,11 +33,7 @@
                                     value="{{ old('address', $agent->address) }}" required>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="location" class="form-label">Location</label>
-                                <input class="form-control" id="location" name="location"
-                                    value="{{ old('location', $agent->location) }}" required>
-                            </div>
+                           
                             <br>
                             <div class="form-group">
                                 @if ($agent->ktp)

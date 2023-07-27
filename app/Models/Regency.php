@@ -9,6 +9,8 @@
 
 namespace App\Models;
 
+use App\Models\Agent;
+use App\Models\Developer;
 use AzisHapidin\IndoRegion\Traits\RegencyTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -60,4 +62,15 @@ class Regency extends Model
     {
         return $this->belongsToMany(Regency::class,'developer_regencies',  'regency_id','developer_id');
     }
+
+    public function developers(): BelongsToMany
+    {
+        return $this->belongsToMany(Developer::class, 'developer_regencies', 'regency_id', 'developer_id');
+    }
+
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class, 'agent_regencies', 'regency_id', 'agent_id');
+    }
+
 }

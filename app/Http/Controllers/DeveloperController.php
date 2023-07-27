@@ -46,6 +46,7 @@ class DeveloperController extends Controller
                 'owner_password' => 'required|min:8',
                 'ktp' => 'required|file|max:10240',
                 'face' => 'required|file|max:10240',
+                'address'   => 'required',
             ]);
 
             $images = ['ktp', 'face']; 
@@ -75,6 +76,7 @@ class DeveloperController extends Controller
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
+                'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
                 'telp'  => $request->telp,
             ]);
@@ -95,7 +97,7 @@ class DeveloperController extends Controller
 
             $developer = Developer::where('id', '=', $developer->id)->get();
             
-            return redirect('/admin/developer/data',);
+            return redirect('/admin/developer/developer',);
         }catch(Exception $e){
             return $e;
         }
@@ -132,11 +134,12 @@ class DeveloperController extends Controller
                 'owner_password' => 'nullable|min:8',
                 'ktp' => 'nullable|file|max:10240',
                 'face' => 'nullable|file|max:10240',
+                'address'   => 'nullable',
             ]);
 
-            $data= Developer::findOrfail($id);
+            $developer= Developer::findOrfail($id);
 
-            $data->update([
+            $developer->update([
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
@@ -149,7 +152,7 @@ class DeveloperController extends Controller
                 'name' => $request->name,
                 'owner_email' => $request->owner_email,
                 'owner_password' => bcrypt($request->owner_password),
-                'developer_id' => $data->id,
+                'developer_id' => $developer->id,
             ]); 
 
             $images = ['ktp', 'face'];
@@ -175,21 +178,21 @@ class DeveloperController extends Controller
                     if ($license->isValid()) {
                         $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
                         $license->storeAs('public', $licenseName);
-                        $fileArray = explode('|', $data->license);
+                        $fileArray = explode('|', $developer->license);
                         $fileArray[$index] = $licenseName;
-                        $data->license = implode('|', $fileArray);
+                        $developer->license = implode('|', $fileArray);
                     }
                 }
             }
 
             $owner->save();
-            $data->save();
-            // $data->provinces()->sync($request->input('province_id'));
-            // $data->regencies()->sync($request->input('regency_id'));
-            // $data->districts()->sync($request->input('district_id'));
-            // $data->villages()->sync($request->input('village_id'));
+            $developer->save();
+            // $developer->provinces()->sync($request->input('province_id'));
+            // $developer->regencies()->sync($request->input('regency_id'));
+            // $developer->districts()->sync($request->input('district_id'));
+            // $developer->villages()->sync($request->input('village_id'));
 
-            $data = Developer::where('id', '=', $data->id)->get();
+            $developer = Developer::where('id', '=', $developer->id)->get();
             $url = '/admin/developer/show/' . $id;
             return redirect($url);
 
@@ -212,7 +215,7 @@ class DeveloperController extends Controller
             $developer->regencies()->detach();
             $developer->districts()->detach();
             $developer->villages()->detach();
-            $data = $developer->delete();
+            $developer = $developer->delete();
 
             return  redirect('/admin/developer/data',);
 

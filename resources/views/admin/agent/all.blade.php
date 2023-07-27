@@ -21,7 +21,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Location</th>
+                            <th scope="col">Kota</th>
                             <th scope="col">Ktp</th>
                             <th scope="col">Telephone</th>
                             <th scope="col"></th>
@@ -35,7 +35,9 @@
                                     <td class="text-start">{{ $agent->name }}</td>
                                     <td class="text-start">{{ $agent->email }}</td>
                                     <td class="text-start">{{ Str::limit($agent->address, 20) }}</td>
-                                    <td class="text-start">{{ $agent->locations->name }}</td>
+                                    <td class="text-start">
+                                        {{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</td>
+                                    </td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-start">{{ $agent->telp }}</td>

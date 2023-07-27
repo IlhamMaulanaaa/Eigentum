@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agents', function (Blueprint $table) {
+        Schema::create('agent_provinces', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("email")->unique();
-            $table->string("password");
-            $table->string("address");
-            $table->string("ktp");
-            $table->string("face");
-            $table->string("telp");
+            $table->bigInteger('agent_id');
+            $table->bigInteger('province_id');
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agents');
+        Schema::dropIfExists('agent_provinces');
     }
 };

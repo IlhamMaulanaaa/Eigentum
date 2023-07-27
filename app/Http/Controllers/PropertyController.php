@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Agent;
-use App\Models\AgentProperty;
+use App\Models\PropertyAgent;
 use App\Models\Developer;
 use App\Models\Property;
 use App\Models\Type;
@@ -72,7 +72,7 @@ class PropertyController extends Controller
                 // 'agent_id' => $randomAgentId,
             ]);
 
-            // $data = AgentProperty::create([
+            // $data = PropertyAgent::create([
             //     'agent_id'  => $agent->id,
             //     'property_id' => $data->id,
             // ]);

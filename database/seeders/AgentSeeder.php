@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Agent;
-use App\Models\AgentProperty;
+use App\Models\PropertyAgent;
 use App\Models\Property;
+use App\Models\Province;
 use App\Models\UnitStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,22 +23,42 @@ class AgentSeeder extends Seeder
     public function run()
     {
         Agent::truncate();
-        AgentProperty::truncate();
+        PropertyAgent::truncate();
 
         for ($i = 0; $i < 10; $i++) {
             $agent = Agent::create([
                 'name' => fake()->name(),
                 'email' => fake()->email(),
                 'password' => bcrypt(fake()->password()),
-                'address' => Str::limit(fake()->address()),
+                'address' => fake()->address(),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
                 'telp' => fake()->phoneNumber(),
-                'location_id' => mt_rand(1, 34),
             ]);
 
-            $propertyIds = Property::pluck('id')->random(rand(2, 5))->toArray();
-            $agent->properties()->sync($propertyIds);
+        // Ambil satu data province secara acak
+        $province = Province::inRandomOrder()->first();
+
+        // Hubungkan developer dengan province menggunakan attach()
+        $agent->provinces()->attach($province->id);
+
+        // Ambil satu data regency yang terhubung dengan province tersebut secara acak
+        $regency = $province->regencies()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan regency menggunakan attach()
+        $agent->regencies()->attach($regency->id);
+
+        // Ambil satu data district yang terhubung dengan regency tersebut secara acak
+        $district = $regency->districts()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan district menggunakan attach()
+        $agent->districts()->attach($district->id);
+
+        // Ambil satu data village yang terhubung dengan district tersebut secara acak
+        $village = $district->villages()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan village menggunakan attach()
+        $agent->villages()->attach($village->id);
         }
     }
 

@@ -105,6 +105,11 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
+                                        <label for="address" class="form-label">Address</label>
+                                        <input type="text" class="form-control noscroll" id="address" name="address">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
                                         <label for="nib" class="form-label">Nomor Induk Berusaha</label>
                                         <input type="file" class="form-control noscroll" id="license_nib"
                                             name="license[]" multiple>

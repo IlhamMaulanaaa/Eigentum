@@ -45,6 +45,6 @@ class Property extends Model
 
     public function agents(): BelongsToMany
     {
-        return $this->belongsToMany(Agent::class, 'agent_property', 'agent_id', 'property_id');
+        return $this->belongsToMany(Agent::class, 'property_agent', 'agent_id', 'property_id');
     }
 }

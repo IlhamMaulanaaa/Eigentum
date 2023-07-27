@@ -23,21 +23,19 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerSeeder::class);
         $this->call(TypeSeeder::class);
         $this->call(StatusSeeder::class);
-        $this->call(LocationSeeder::class);
         $this->call(GuideSeeder::class);
-
+        
         $this->call(IndoRegionProvinceSeeder::class);
         $this->call(IndoRegionRegencySeeder::class);
         $this->call(IndoRegionDistrictSeeder::class);
         $this->call(IndoRegionVillageSeeder::class);
         
+        $this->call(AgentSeeder::class);
+
         $this->call(DeveloperSeeder::class);
         $this->call(OwnerSeeder::class);
         
         $this->call(PropertySeeder::class);
-        $this->call(AgentSeeder::class);
-
         $this->call(UnitSeeder::class);
-        
     }
 }

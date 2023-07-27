@@ -9,8 +9,11 @@
 
 namespace App\Models;
 
+use App\Models\Agent;
+use App\Models\Developer;
 use AzisHapidin\IndoRegion\Traits\ProvinceTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * Province Model.
@@ -43,8 +46,14 @@ class Province extends Model
         return $this->hasMany(Regency::class);
     }
 
-    public function developers()
+    public function developers(): BelongsToMany
     {
         return $this->belongsToMany(Developer::class, 'developer_provinces', 'province_id', 'developer_id');
     }
+
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class, 'agent_provinces', 'province_id', 'agent_id');
+    }
 }
+

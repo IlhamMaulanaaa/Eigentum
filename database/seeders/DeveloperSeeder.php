@@ -30,6 +30,7 @@ class DeveloperSeeder extends Seeder
             'company' => fake()->company(),
             'email' => fake()->email(),
             'password' => bcrypt(fake()->password()),
+            'address' => fake()->address(),
             'license' => $licenseString,
             'telp' => fake()->phoneNumber(),
         ]);

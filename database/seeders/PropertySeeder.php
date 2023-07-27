@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
 use App\Models\Developer;
 use App\Models\Property;
 use App\Models\Type;
@@ -30,13 +31,16 @@ class PropertySeeder extends Seeder
             for ($i = 0; $i < $numberOfProperties; $i++) {
                 $randomTypeId = array_rand($typeIds);
 
-                Property::create([
+                $property = Property::create([
                     'property' => fake()->company(),
                     'description' => Str::limit(fake()->text()) ,
-                    'address' => Str::limit(fake()->address()),
+                    'address' => fake()->address(),
                     'developer_id' => $developerId,
                     'type_id' => $typeIds[$randomTypeId], 
                 ]);
+
+                $agentIds = Agent::pluck('id')->random(rand(2, 5))->toArray();
+                $property->agents()->sync($agentIds);
             }
         }
     }

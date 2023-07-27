@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('agent_property', function (Blueprint $table) {
+        Schema::create('property_agent', function (Blueprint $table) {
             $table->id();
             $table->integer('agent_id');
             $table->integer('property_id');
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('agent_property');
+        Schema::dropIfExists('property_agent');
     }
 };

@@ -9,6 +9,8 @@
 
 namespace App\Models;
 
+use App\Models\Agent;
+use App\Models\Developer;
 use AzisHapidin\IndoRegion\Traits\VillageTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\District;
@@ -51,4 +53,16 @@ class Village extends Model
     {
         return $this->belongsToMany(Village::class,'developer_villages',  'village_id','developer_id');
     }
+
+    public function developers(): BelongsToMany
+    {
+        return $this->belongsToMany(Developer::class,'developer_villages',  'village_id','developer_id');
+    }
+    
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class,'agent_villages',  'village_id','agent_id');
+    }
+
+
 }

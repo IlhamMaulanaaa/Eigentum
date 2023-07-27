@@ -5,7 +5,6 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\IndoregionController;
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
@@ -148,18 +147,6 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
         Route::post('/add', [GuideController:: class, 'store']);
         Route::post('/update/{guide}', [GuideController:: class, 'update']);
         Route::get('/delete/{guide}',[GuideController::class,'destroy']);
-    });
-
-    Route::group(['prefix' => '/location'], function(){
-        Route::get('/data', [LocationController:: class, 'index']);
-        Route::group(['prefix' => '/show'],function () {
-            Route::get('/{location}',[LocationController::class,'show']);
-            Route::get('/edit/{location}',[LocationController::class,'edit']);
-        });
-        Route::get('/create', [LocationController:: class, 'create']);
-        Route::post('/add', [LocationController:: class, 'store']);
-        Route::post('/update/{location}', [LocationController:: class, 'update']);
-        Route::get('/delete/{location}',[LocationController::class,'destroy']);
     });
 
     Route::group(['prefix' => '/status'], function(){

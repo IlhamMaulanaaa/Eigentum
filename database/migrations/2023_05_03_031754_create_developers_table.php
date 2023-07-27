@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("company");
             $table->string("email")->unique();  
             $table->string("password");
+            $table->string("address");
             $table->string("license");
             $table->string("telp");
             $table->timestamps();

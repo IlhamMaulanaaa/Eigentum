@@ -9,6 +9,8 @@
 
 namespace App\Models;
 
+use App\Models\Agent;
+use App\Models\Developer;
 use AzisHapidin\IndoRegion\Traits\DistrictTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Regency;
@@ -58,8 +60,15 @@ class District extends Model
         return $this->hasMany(Village::class);
     }
 
-    public function districts(): BelongsToMany
+    public function developers(): BelongsToMany
     {
-        return $this->belongsToMany(District::class,'developer_districts', 'district_id', 'developer_id');
+        return $this->belongsToMany(Developer::class, 'developer_districts', 'district_id', 'developer_id');
     }
+    
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class, 'agent_districts', 'district_id', 'agent_id');
+    }
+
+    
 }

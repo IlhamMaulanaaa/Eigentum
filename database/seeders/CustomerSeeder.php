@@ -16,12 +16,12 @@ class CustomerSeeder extends Seeder
     {
         Customer::truncate();
         
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             Customer::create([
                 "email" => fake()->email(),
                 "password" => bcrypt(fake()->password()),
                 "name" => fake()->name(),
-                "address" => Str::limit(fake()->address()),
+                "address" => fake()->address(),
                 "telp" => fake()->phoneNumber(),
             ]);
         }

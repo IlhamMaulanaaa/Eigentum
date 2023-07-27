@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Agent;
-use App\Models\Location;
+use App\Models\Province;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -25,13 +25,16 @@ class AgentController extends Controller
     }
 
 
-    public function create(Location $location)
+    public function create()
     {
-        return view('admin.agent.create',compact('location'));
+        $provinces = Province::all();
+        
+        return view('admin.agent.create', compact('provinces'));
     }
 
     public function store(Request $request)
     {
+        try{
             $request->validate([
                 'email' => 'required|email|unique:agents',
                 'password'  => 'required|min:8',
@@ -40,7 +43,6 @@ class AgentController extends Controller
                 'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'telp'  => 'required',
-                'location_id' => 'required'
             ]);
             
             $imageArray = [];
@@ -50,7 +52,7 @@ class AgentController extends Controller
                     $request->$fieldName->storeAs('public', $imageFileName);
                 }
 
-            $data = Agent::create([
+            $agent = Agent::create([
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'name'  => $request->name,
@@ -58,18 +60,27 @@ class AgentController extends Controller
                 'ktp'   => $imageArray[0],
                 'face'   => $imageArray[1],
                 'telp'  => $request->telp,
-                'location_id' => $request->location_id
             ]);
 
-            $data->save();
+            $agent->save();
             
-            $data = Agent::where('id', '=', $data->id)->get();
-
-            if ($data) {
+            
+            $agent->provinces()->attach($request->provinces_id);
+            $agent->regencies()->attach($request->regencies_id);
+            $agent->districts()->attach($request->districts_id);
+            $agent->villages()->attach($request->villages_id);
+            
+            $agent = Agent::where('id', '=', $agent->id)->get();
+            
+            if ($agent) {
                 return redirect('/admin/agent/data');
             } else {
                 return ApiFormatter::createApi('400', 'Failed', null);
             }
+
+        } catch (Exception $e) {
+            return $e;
+        }
         
     }
 
@@ -95,18 +106,16 @@ class AgentController extends Controller
                 'ktp'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'telp'  => 'required',
-                'location_id' => 'nullable'
             ]);
 
-            $data = Agent::findOrfail($id);
+            $agent = Agent::findOrfail($id);
 
-            $data->update([
+            $agent->update([
                 'name'  => $request->name,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
                 'address'   => $request->address,
                 'telp'  => $request->telp,
-                'location_id'  => $request->location_id,
             ]);
 
             $images = ['ktp', 'face'];
@@ -117,13 +126,14 @@ class AgentController extends Controller
                         if (File::exists($image_path)) {
                             File::delete($image_path);
                         }
-                        $data->{$image} = $imageName;
+                        $agent->{$image} = $imageName;
                     }
             }
 
-            $data->save();
+            $agent->save();
 
-            $data = Agent::where('id', '=', $data->id)->get();
+
+            $agent = Agent::where('id', '=', $agent->id)->get();
             $url = '/admin/agent/show/' . $id;
 
             return redirect($url);
@@ -136,9 +146,13 @@ class AgentController extends Controller
         
             $agent = Agent::findOrfail($id);
             $agent->properties()->detach();
-            $data = $agent->delete();
+            $agent->provinces()->detach();
+            $agent->regencies()->detach();
+            $agent->districts()->detach();
+            $agent->villages()->detach();
+            $agent = $agent->delete();
 
-            if ($data) {
+            if ($agent) {
                 return  redirect('/admin/agent/data',);
             } 
         
