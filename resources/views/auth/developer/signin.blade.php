@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/auth/developer/login.css" />
 
-    <title>Sign in & Sign up Form</title>
+    <title>Eigentum</title>
 </head>
 
 <body>
@@ -15,16 +15,17 @@
             <div class="signin-signup">
                 {{-- form Sign In  --}}
                 {{-- action --}}
-                <form action="" class="sign-in-form">
+                <form method="POST" action="/session/auth/developer/signin/create" class="sign-in-form">
+                    @csrf
                     {{-- end action --}}
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" placeholder="Email" />
+                        <input type="email" placeholder="Email" name="email" />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
+                        <input type="password" placeholder="Password" name="password" />
                     </div>
                     <input type="submit" value="Login" class="btn solid" />
                     <p class="social-text">Or Sign in with social platforms</p>
@@ -45,14 +46,14 @@
                 </form>
                 {{-- form Sign Up --}}
                 {{-- action --}}
-                <form action="/signin/registerdeveloper" class="sign-up-form" id="div">
+                <form action="/session/auth/developer/signup" class="sign-up-form" id="div">
                     <h1 class="title ">igin mendaftar menjadi developer?</h1>
                     {{-- end action --}}
                     <h2>dokumen yang harus disiapkan</h2>
                     <h3>1. KTP pemilik perusahaan</h3>
                     <h3>2. nomer induk usaha</h3>
                     <h3>3. sertifikat badan usaha</h3>
-                   
+
                     <button type="submit" class="btn " value="Sign up">DAFTAR</button>
 
                 </form>

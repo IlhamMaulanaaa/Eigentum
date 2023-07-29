@@ -40,6 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'developer' => [
+            'driver' => 'session',
+            'provider' => 'developer',
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agent',
+        ],
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admin',
+        // ],
     ],
 
     /*
@@ -65,10 +77,15 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'developer' => [
+            'driver' => 'database',
+            'model' => App\Models\Developer::class,
+        ],
+        'agent' => [
+            'driver' => 'database',
+            'model' => App\Models\Agent::class,
+        ],
+ 
     ],
 
     /*
@@ -93,6 +110,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'developer' => [
+            'provider' => 'developer',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

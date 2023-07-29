@@ -23,15 +23,15 @@
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                         <a id="loginback" href="/beranda">Back</a>
-                        <form action="/session/auth/signin/create" method="POST">
+                        <form action="/session/auth/user/signin/create" method="POST">
                             @csrf
-                            <img class="mb-4" src="/assets/login/logo_1.png" alt="">
+                            <img class="mb-4" src="/assets/pages/login/logo_1.png" alt="">
 
                             <span class="h1 fw-regular mb-0" style="color: #0c40e8;">Eigentum
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Masuk</h1>
                             <h6 class="h6 fw-normal text-dark" id="masuk026">Belum punya akun? <a
-                                    href="/session/auth/signup/" class="text-dark " id="adkjslf">Sign
+                                    href="/session/auth/user/signup/" class="text-dark " id="adkjslf">Sign
                                     up</a></h6>
                             <div class="form-floating">
                                 <input type="email" value="{{ Session::get('email') }}" name="email" id="email"
@@ -48,7 +48,7 @@
                             <button class="w-100 btn btn-lg btn-primary" id="loginbutton" type="submit">Sign
                                 In</button>
                             <button class="w-100 mt-2 btn btn-lg btn-primary" id="jamal009" type="submit">
-                                <img id="googleicon" src="/assets/login/google.png" alt="">
+                                <img id="googleicon" src="/assets/pages/login/google.png" alt="">
                                 Lanjutkan dengan google
                             </button>
                             <pre><p id="privacy_police">you agree to be bound by these <u> Terms of Service</u> and our
@@ -59,7 +59,7 @@
 
                 </div>
                 <div class=" col-sm-6 px-0 d-flex d-sm-block">
-                    <img id="image1009" src="/assets/pages/login/Component 169.svg" alt="image 1">
+                    <img id="image1009" src="/assets/pages/login/Component 169-min-min.svg" alt="image 1">
                 </div>
             </div>
         </div>
@@ -67,10 +67,10 @@
     <script>
         // Daftar sumber gambar
         var daftarGambar = [
-            "/assets/pages/login/Component 169.svg",
-            "/assets/pages/login/Component 170.svg",
-            "/assets/pages/login/Component 171.svg",
-            "/assets/pages/login/Component 172.svg",
+            "/assets/pages/login/Component 169-min-min.svg",
+            "/assets/pages/login/Component 170-min-min.svg",
+            "/assets/pages/login/Component 171-min-min.svg",
+            "/assets/pages/login/Component 172-min-min.svg",
         ];
 
         // Mendapatkan elemen gambar

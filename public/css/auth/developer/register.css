@@ -22,22 +22,28 @@ body {
 .form-step {
     display: none;
     text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 180px;
 }
 
 .form-step.active {
     display: block;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
 .form-step h2 {
     margin-bottom: 20px;
     text-align: center;
+    align-items: center;
     color: #333;
 }
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center;
 }
 
 .form-group label {
@@ -48,8 +54,8 @@ body {
 }
 
 .form-group input {
-    width: 40%;
-    max-width: 250px;
+    width: 100%;
+    max-width: 380px;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -100,8 +106,8 @@ body {
     margin: 10px 0;
     height: 55px;
     border-radius: 55px;
-    display: grid;
-    grid-template-columns: 15% 85%;
+    display: flex; /* Use flexbox */
+    align-items: center; /* Vertically center the items */
     padding: 0 0.4rem;
     position: relative;
 }
@@ -121,9 +127,9 @@ input::-webkit-inner-spin-button {
 }
 
 .file-label {
-    display: inline-block;
-    height: 30px;
-    width: 378px;
+    display: block;
+    height: 35px;
+    width: 358px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
@@ -133,13 +139,15 @@ input::-webkit-inner-spin-button {
     margin-top: 10px;
 }
 .file-labelandktp {
-    display: inline-block;
-    height: 30px;
-    width: 378px;
+    display: block;
+    height: 35px;
+    align-items: center;
+    width: 318px;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    padding: 10px;
+    padding-left: 180px;
+    padding: 8px 30px;
     border: 2px solid #ddd;
     border-radius: 50px;
     margin-top: 10px;
@@ -163,9 +171,48 @@ input::-webkit-inner-spin-button {
     text-align: center;
     height: 22px;
     color: #fff;
-    margin-left: -130px;
-    padding: 4px 10px;
-    border-radius: 50px;
+    margin-left: -105px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.file-buttonNIU {
+    display: inline-block;
+    background-color: #2196f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+    color: #fff;
+    margin-left: -70px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.file-buttonNPWP {
+    display: inline-block;
+    background-color: #2196f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+    color: #fff;
+    margin-left: -30px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.file-buttonSBU {
+    display: inline-block;
+    background-color: #2196f3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 22px;
+    color: #fff;
+    margin-left: -50px;
+    padding: 5px 15px;
+    border-radius: 30px;
     cursor: pointer;
 }
 .file-button {
@@ -176,9 +223,9 @@ input::-webkit-inner-spin-button {
     text-align: center;
     height: 22px;
     color: #fff;
-    margin-left: -180px;
-    padding: 4px 10px;
-    border-radius: 50px;
+    margin-left: -165px;
+    padding: 5px 15px;
+    border-radius: 30px;
     cursor: pointer;
 }
 
@@ -196,6 +243,8 @@ input::-webkit-inner-spin-button {
     font-weight: 600;
     font-size: 1.1rem;
     color: #333;
+    width: 900px;
+    padding-left: 20px;
 }
 
 .input-field input::placeholder {
@@ -219,4 +268,53 @@ input::-webkit-inner-spin-button {
 
 .btn:hover {
     background-color: #4d84e2;
+}
+.input-field.dropdown {
+    position: relative;
+}
+
+.input-field.dropdown .select-wrapper {
+    position: relative;
+    cursor: pointer;
+    width: 368px;
+}
+
+.input-field.dropdown .select-wrapper .selected-option {
+    display: block;
+    background-color: #f0f0f0;
+    border-radius: 55px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    color: #333;
+}
+
+.input-field.dropdown .select-wrapper .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none;
+}
+
+.input-field.dropdown .select-wrapper .dropdown-list li {
+    width: 328px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+}
+
+.input-field.dropdown .select-wrapper .dropdown-list li:hover {
+    background-color: #ccc;
+}
+
+.input-field.dropdown .select-wrapper.open .dropdown-list {
+    display: block;
 }

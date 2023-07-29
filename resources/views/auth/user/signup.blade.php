@@ -23,7 +23,7 @@
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
                         <a id="loginback" href="/beranda">Back</a>
-                        <form action="/session/auth/signup/create" method="POST">
+                        <form action="/session/auth/user/signup/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">
 
@@ -31,7 +31,7 @@
                             </span>
                             <h1 class="h1 fw-normal text-dark" id="masuk009">Memulai</h1>
                             <h6 class="h6 fw-normal text-dark" id="masuk026">Sudah punya akun? <a
-                                    href="/session/auth/signin/" class="text-dark " id="adkjslf">Sign
+                                    href="/session/auth/user/signin/" class="text-dark " id="adkjslf">Sign
                                     In</a></h6>
                             <div class="form-floating">
                                 <input type="text" value="" name="name" class="form-control" id="name"
@@ -66,7 +66,7 @@
 
                 </div>
                 <div class=" col-sm-6 px-0 d-flex d-sm-block">
-                    <img id="image1009" src="/assets/pages/login/Component 169.svg" alt="image 1">
+                    <img id="image1009" src="/assets/pages/login/Component 169-min-min.svg" alt="image 1">
                 </div>
             </div>
         </div>
@@ -74,10 +74,10 @@
     <script>
         // Daftar sumber gambar
         var daftarGambar = [
-            "/assets/pages/login/Component 169.svg",
-            "/assets/pages/login/Component 170.svg",
-            "/assets/pages/login/Component 171.svg",
-            "/assets/pages/login/Component 172.svg",
+            "/assets/pages/login/Component 169-min-min.svg",
+            "/assets/pages/login/Component 170-min-min.svg",
+            "/assets/pages/login/Component 171-min-min.svg",
+            "/assets/pages/login/Component 172-min-min.svg",
         ];
 
         // Mendapatkan elemen gambar

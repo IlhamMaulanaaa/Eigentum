@@ -28,6 +28,10 @@ class SessionController extends Controller
         return view('auth.user.signup');
     }
 
+    public function anu(){
+        Auth::guard('developer')->user();
+        return view('pages.Developer.dashboard');
+    }
 
     public function postSignin(Request $request)
     {
@@ -156,7 +160,7 @@ class SessionController extends Controller
     {
         auth()->logout();
 
-        return redirect('/session/auth/signin/');
+        return redirect('/beranda');
     }
     // this is the endpoints
 }

@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\ApiFormatter;
+use Exception;
 use App\Models\Agent;
 use App\Models\Location;
-use Exception;
+use App\Models\Province;
+use Illuminate\Support\Str;
+use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class AgentController extends Controller
 {
@@ -25,11 +27,85 @@ class AgentController extends Controller
     }
 
 
+    public function signinAgent ()
+    {
+        return view('auth.agent.signin');
+    }
+    public function signupAgent ()
+    {
+        $provinces = Province::all();
+     
+        return view('auth.agent.signin',compact('location'));
+    }
+    public function postSigninAgent(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ], [
+            'email.required' => 'email wajib diisi',
+            'password.required' => 'password wajib diisi'
+        ]);
+
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if(Auth::attempt($infologin)) {
+            return redirect('/agent/dashboard');
+        } else {
+            return redirect('/session/auth/agent/signin/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
+        }
+
+    }
     public function create(Location $location)
     {
         return view('admin.agent.create',compact('location'));
     }
 
+    public function storeFront(Request $request)
+    {
+            $request->validate([
+                'email' => 'required|email|unique:agents',
+                'password'  => 'required|min:8',
+                'name'    => 'required',
+                'address'   => 'required',
+                'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'phone_number'  => 'required',
+                'location_id' => 'required'
+            ]);
+            
+            $imageArray = [];
+                foreach ((['ktp', 'face']) as $fieldName) {
+                    $imageFileName = Str::random(8) . "." . $request->$fieldName->getClientOriginalExtension();
+                    $imageArray[] = $imageFileName;
+                    $request->$fieldName->storeAs('public', $imageFileName);
+                }
+
+            $data = Agent::create([
+                'email' => $request->email,
+                'password'  => bcrypt($request->password),
+                'name'  => $request->name,
+                'address'   => $request->address,
+                'ktp'   => $imageArray[0],
+                'face'   => $imageArray[1],
+                'phone_number'  => $request->phone_number,
+                'location_id' => $request->location_id
+            ]);
+
+            $data->save();
+            
+            $data = Agent::where('id', '=', $data->id)->get();
+
+            if ($data) {
+                return redirect('/admin/agent/data');
+            } else {
+                return ApiFormatter::createApi('400', 'Failed', null);
+            }
+        
+    }
     public function store(Request $request)
     {
             $request->validate([

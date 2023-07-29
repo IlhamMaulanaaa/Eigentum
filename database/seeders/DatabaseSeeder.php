@@ -24,10 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusSeeder::class);
         $this->call(LocationSeeder::class);
         $this->call(GuideSeeder::class);
-        
+
         $this->call(DeveloperSeeder::class);
         $this->call(OwnerSeeder::class);
-        
+
         $this->call(PropertySeeder::class);
         $this->call(AgentSeeder::class);
 
@@ -37,6 +37,5 @@ class DatabaseSeeder extends Seeder
         $this->call(IndoRegionRegencySeeder::class);
         $this->call(IndoRegionDistrictSeeder::class);
         $this->call(IndoRegionVillageSeeder::class);
-
     }
 }

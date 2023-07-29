@@ -2,27 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\ApiFormatter;
-use App\Models\Developer;
+use Exception;
 use App\Models\Owner;
 use App\Models\Province;
-use Exception;
-use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Developer;
 use Illuminate\Support\Str;
+use App\Helper\ApiFormatter;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 
 class DeveloperController extends Controller
 {
 
+    public function SigninDeveloper()
+    {
+        return view('auth.developer.signin');
+    }
+    public function SignupDeveloper()
+    {
+        $provinces = Province::all();
+
+        return view('auth.developer.signup', compact('provinces'));
+    }
 
     public function index()
     {
         $developers = Developer::all();
         $tables = (new Developer())->getTable();
 
-        return view('admin.developer.all', compact('developers', 'tables', ));
+        return view('admin.developer.all', compact('developers', 'tables',));
     }
 
     public function create()
@@ -34,7 +45,7 @@ class DeveloperController extends Controller
 
     public function store(Request $request)
     {
-        try{
+        try {
             $request->validate([
                 'company'   => 'required',
                 'email' => 'required|email|unique:developers',
@@ -48,7 +59,7 @@ class DeveloperController extends Controller
                 'face' => 'required|file|max:10240',
             ]);
 
-            $images = ['ktp', 'face']; 
+            $images = ['ktp', 'face'];
             $imageNames = [];
 
             foreach ($images as $image) {
@@ -60,17 +71,17 @@ class DeveloperController extends Controller
                     $imageField->storeAs('public', $imageName);
                 }
             }
-            
+
 
             $files = $request->file('license');
             $fileArray = [];
-            
-                foreach ($files as $index => $file) {
-                    $license =  $file->getClientOriginalName() . "." . $file->getClientOriginalExtension();
-                    $fileArray[] = $license;
-                    Storage::disk('public')->put($license, file_get_contents($file));
-                }
-            
+
+            foreach ($files as $index => $file) {
+                $license =  $file->getClientOriginalName() . "." . $file->getClientOriginalExtension();
+                $fileArray[] = $license;
+                Storage::disk('public')->put($license, file_get_contents($file));
+            }
+
             $developer = Developer::create([
                 'company'   => $request->company,
                 'email' => $request->email,
@@ -86,7 +97,7 @@ class DeveloperController extends Controller
                 'ktp' => $imageNames[0],
                 'face' => $imageNames[1],
                 'developer_id' => $developer->id,
-            ]); 
+            ]);
 
             $developer->provinces()->attach($request->provinces_id);
             $developer->regencies()->attach($request->regencies_id);
@@ -94,33 +105,99 @@ class DeveloperController extends Controller
             $developer->villages()->attach($request->villages_id);
 
             $developer = Developer::where('id', '=', $developer->id)->get();
-            
+
             return redirect('/admin/developer/data',);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return $e;
         }
-        
-        
+    }
+    public function storeFront(Request $request)
+    {
+        try {
+            $request->validate([
+                'company'   => 'required',
+                'email' => 'required|email|unique:developers',
+                'password'  => 'required|min:8',
+                'license.*' => 'required|file|max:10240',
+                'telp'  => 'required',
+                'name' => 'required',
+                'owner_email' => 'required|email|unique:owners',
+                'owner_password' => 'required|min:8',
+                'ktp' => 'required|file|max:10240',
+                'face' => 'required|file|max:10240',
+            ]);
+
+            $images = ['ktp', 'face'];
+            $imageNames = [];
+
+            foreach ($images as $image) {
+                $imageField = $request->file($image);
+
+                if ($imageField) {
+                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                    $imageNames[] = $imageName;
+                    $imageField->storeAs('public', $imageName);
+                }
+            }
+
+
+            $files = $request->file('license');
+            $fileArray = [];
+
+            foreach ($files as $index => $file) {
+                $license =  $file->getClientOriginalName() . "." . $file->getClientOriginalExtension();
+                $fileArray[] = $license;
+                Storage::disk('public')->put($license, file_get_contents($file));
+            }
+
+            $developer = Developer::create([
+                'company'   => $request->company,
+                'email' => $request->email,
+                'password'  => bcrypt($request->password),
+                'license'   => implode("|", $fileArray),
+                'telp'  => $request->telp,
+            ]);
+
+            $owner = Owner::create([
+                'name' => $request->name,
+                'owner_email' => $request->owner_email,
+                'owner_password' => bcrypt($request->owner_password),
+                'ktp' => $imageNames[0],
+                'face' => $imageNames[1],
+                'developer_id' => $developer->id,
+            ]);
+
+            $developer->provinces()->attach($request->provinces_id);
+            $developer->regencies()->attach($request->regencies_id);
+            $developer->districts()->attach($request->districts_id);
+            $developer->villages()->attach($request->villages_id);
+
+            $developer = Developer::where('id', '=', $developer->id)->get();
+
+            return redirect('/developer/dashboard',);
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     public function show(Developer $developer, Owner $owner)
     {
-        $licenseFile = explode("|", $developer->license); 
+        $licenseFile = explode("|", $developer->license);
         $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
-        return view('admin.developer.detail', compact('developer', 'licenseFile',  'fileNames' , ));
+        return view('admin.developer.detail', compact('developer', 'licenseFile',  'fileNames',));
     }
-    
+
     public function edit(Developer $developer)
     {
-        $licenses = is_string($developer->license) ? explode('|', $developer->license) : []; 
+        $licenses = is_string($developer->license) ? explode('|', $developer->license) : [];
         $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
         $provinces = Province::all();
         return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames', 'provinces'));
     }
 
-    public function update(Request $request,string $id)
+    public function update(Request $request, string $id)
     {
-        try{
+        try {
             $request->validate([
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
@@ -134,7 +211,7 @@ class DeveloperController extends Controller
                 'face' => 'nullable|file|max:10240',
             ]);
 
-            $data= Developer::findOrfail($id);
+            $data = Developer::findOrfail($id);
 
             $data->update([
                 'company'   => $request->company,
@@ -150,7 +227,7 @@ class DeveloperController extends Controller
                 'owner_email' => $request->owner_email,
                 'owner_password' => bcrypt($request->owner_password),
                 'developer_id' => $data->id,
-            ]); 
+            ]);
 
             $images = ['ktp', 'face'];
 
@@ -192,9 +269,7 @@ class DeveloperController extends Controller
             $data = Developer::where('id', '=', $data->id)->get();
             $url = '/admin/developer/show/' . $id;
             return redirect($url);
-
-
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return $e;
         }
     }
@@ -203,7 +278,7 @@ class DeveloperController extends Controller
 
     public function destroy(string $id)
     {
-        try{
+        try {
             $developer = Developer::findOrfail($id);
             $developer->owners()->delete();
             $developer->properties()->delete();
@@ -215,11 +290,29 @@ class DeveloperController extends Controller
             $data = $developer->delete();
 
             return  redirect('/admin/developer/data',);
-
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return $e;
         }
-        
     }
+    public function postSigninDeveloper(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ], [
+            'email.required' => 'email wajib diisi',
+            'password.required' => 'password wajib diisi'
+        ]);
 
+        $infologin = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        if (Auth::attempt($infologin)) {
+            return redirect('/beranda');
+        } else {
+            return redirect('/session/auth/developer/signin')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
+        }
+    }
 }

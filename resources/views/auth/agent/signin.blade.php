@@ -2,152 +2,139 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/auth/agent/login.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
-    <title>Sign in & Sign up Form</title>
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f5f5f5;
+        }
+
+        .login-section {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .login-section h1 {
+            margin-bottom: 20px;
+        }
+
+        .input-field {
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .input-field label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .login-options {
+            margin-top: 20px;
+        }
+
+        .login-option-btn {
+            background-color: white;
+            height: 50px;
+            color: #000;
+            display: block;
+            width: 600px;
+            margin-top: 20px;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 15px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .login-option-btn:hover {
+            background-color: #b3b3b3;
+        }
+
+        .image-section {
+            flex: 1;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
-        <div class="forms-container">
-            <div class="signin-signup">
-                {{-- form Sign In  --}}
-                {{-- action --}}
-                <form action="#" class="sign-in-form">
-                    {{-- end action --}}
-                    <h2 class="title">Sign in</h2>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="email" placeholder="Email" />
-                    </div>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" />
-                    </div>
-                    <input type="submit" value="Login" class="btn solid" />
-                    <p class="social-text">Or Sign in with social platforms</p>
-                    <div class="social-media">
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-google"></i>
-                        </a>
-                        <a href="#" class="social-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </form>
-                {{-- form Sign Up --}}
-                {{-- action --}}
-                <form action="" class="sign-up-form" id="div">
-                    {{-- end action --}}
-                    <h2 class="title signupTitle">Sign up</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Nama" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" placeholder="Email" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Password" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fa-sharp fa-solid fa-location-dot"></i>
-                                <input type="texarea" placeholder="Alamat" />
-                            </div>
-                            <div class="input-field">
-                                <i class="fa-solid fa-mobile"></i>
-                                <input type="number" placeholder="Nomer Handphone" />
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            {{-- <div class="input-field">
-                                <i class="fas fa-user"></i>
-                                <input type="text" placeholder="drpdwn provinsi" />
-                            </div> --}}
-                            
-                            <div class="dropdown">
-                                <select class="dropdown-select" style="height: 55px; width: 378px; border-radius: 50px;">
-                                  <option value="" selected disabled>Select an Provinsi </option>
-                                  <option value="option1">Option 1</option>
-                                  <option value="option2">Option 2</option>
-                                  <option value="option3">Option 3</option>
-                                </select>
-                              </div>
-                              <div class="dropdown">
-                                <select class="dropdown-select" style="height: 55px; width: 378px; border-radius: 50px;">
-                                  <option value="" selected disabled>Select an Kota</option>
-                                  <option value="option1">Option 1</option>
-                                  <option value="option2">Option 2</option>
-                                  <option value="option3">Option 3</option>
-                                </select>
-                              </div>
-                              <div class="dropdown">
-                                <select class="dropdown-select" style="height: 55px; width: 378px; border-radius: 50px; 
-                                margin-bottom: 10px;">
-                                  <option value="" selected disabled>Select an Distrik</option>
-                                  <option value="option1">Option 1</option>
-                                  <option value="option2">Option 2</option>
-                                  <option value="option3">Option 3</option>
-                                </select>
-                              </div>
-                                                            
-
-                            <label for="file-upload" class="file-label">
-                                <input type="file" id="file-upload" class="file-input">
-                                <span class="file-button">Choose a file</span>
-                                <span class="file-name">Foto KTP</span>
-                              </label>
-                            <label for="file-upload" class="file-label">
-                                <input type="file" id="file-upload" class="file-input">
-                                <span class="file-button">Choose a file</span>
-                                <span class="file-name">Foto selfie dengan KTP</span>
-                              </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn signupButton" value="Sign up" style="margin-left: 30px;">Submit</button>
-                </form>
-            </div>
+        <div class="login-section">
+            <h1>Create an account</h1>
+            <form>
+                <div class="login-options">
+                    <button class="login-option-btn">Continue with Google</button>
+                    <button class="login-option-btn">Continue with Facebook</button>
+                </div>
+                <div class="input-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="input-field">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button class="login-btn">Login</button>
+            </form>
         </div>
-
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content welcoming">
-                    <h3>New here ?</h3>
-                    <p id="greeting" class="">sudah punya akun!</p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        Sign up
-                    </button>
-                </div>
-                <img src="/assets/login/developer/img/Mortgage Broker online.svg" class="image" alt="" />
-            </div>
-            <div class="panel right-panel ">
-                <div class="content">
-                    <h3>One of us ?</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                        laboriosam ad deleniti.
-                    </p>
-                    <button class="btn transparent " id="sign-in-btn">
-                        Sign in
-                    </button>
-                </div>
-                <img src="/assets/login/developer/img/Mortgage Broker.svg" class="image" alt="" />
-            </div>
+        <div class="image-section">
+            <img src="/assets/pages/Home/bannerTesting.png" alt="Rounded Image">
         </div>
     </div>
-    <script src="https://kit.fontawesome.com/10d48cad5b.js" crossorigin="anonymous"></script>
-    <script src="/js/auth/developer/login.js"></script>
 </body>
+
 </html>

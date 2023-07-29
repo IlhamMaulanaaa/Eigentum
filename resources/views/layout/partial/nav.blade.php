@@ -25,6 +25,7 @@
                     <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
                 </div>
 
+                {{ Auth()->user()->name }}
 
                 <div class="menu-profileq">
                     <h3>
@@ -35,7 +36,7 @@
                     </h3>
                     <ul style="margin: 0; padding:0;">
                         <li>
-                            <span class="material-icons icons-size">person</span>
+                            <span class="materiaz`l-icons icons-size">person</span>
                             <a href="#">Pengaturan Profile</a>
                         </li>
                         <li>
@@ -48,21 +49,17 @@
                         </li>
                         <li>
                             <span class="material-icons icons-size">person</span>
-                            <a href="/signin/logindeveloper/">developer</a>
+                            <a href="/session/auth/developer/signin/">developer</a>
                         </li>
                         <li>
                             <span class="material-icons icons-size">person</span>
-                            <a href="/session/auth/signout">Logout</a>
+                            <a href="/session/auth/user/signout">Logout</a>
                         </li>
                     </ul>
                 </div>
             @elseif (!Auth::check())
-                <a href="/session/auth/signin/" class="btnq">Masuk</a>
+                <a href="/session/auth/user/signin" class="btnq">Masuk</a>
             @endif
-
-
-
-
 
         </div>
     </div>

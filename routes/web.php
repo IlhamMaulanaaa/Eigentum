@@ -54,44 +54,57 @@ Route::group(['prefix' => '/session'], function () {
 });
 
 Route::group(['prefix' => '/session'], function () {
-    
+
     Route::group(['prefix' => '/auth'], function () {
 
-        Route::get('/signout', [SessionController::class, 'signoutuser']);
-        Route::group(['prefix' => '/signin'], function () {
-            Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
-            Route::post('/create', [SessionController::class, 'postSigninUser']);
+        Route::group(['prefix' => '/user'], function(){
+            Route::get('/signout', [SessionController::class, 'signoutuser']);
+
+            Route::group(['prefix' => '/signin'], function () {
+                Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
+                Route::post('/create', [SessionController::class, 'postSigninUser']);
+            });
+            route::group(['prefix' => '/signup'], function () {
+                Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
+                Route::post('/create', [SessionController::class, 'postSignupUser']);
+            });
         });
-        route::group(['prefix' => '/signup'], function () {
-            Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
-            Route::post('/create', [SessionController::class, 'postSignupUser']);
+
+        Route::group(['prefix'=>'/developer'], function(){
+            Route::get('/signout', [SessionController::class, 'signoutuser']);
+
+            Route::group(['prefix'=>'/signin'], function(){
+                Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
+                Route::post('/create', [DeveloperController::class, 'postSigninDeveloper']);
+            });
+            Route::group(['prefix'=>'/signup'], function(){
+                Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
+                Route::post('/create', [DeveloperController::class, 'storeFront']);
+            });
         });
 
+        Route::group(['prefix'=>'/agent'], function(){
+            Route::get('/signout', [SessionController::class, 'signoutuser']);
 
-    });
-});
+            Route::group(['prefix' => '/signin'], function () {
+                Route::get('/', [AgentController::class, 'signinAgent']);
+                Route::post('/create', [AgentController::class, 'postSigninAgent']);
+            });
+            Route::group(['prefix' => '/signup'], function () {
+                Route::get('/', [AgentController::class, 'SignupAgent']);
+                Route::post('/create', [AgentController::class, 'storeFront']);
+            });
+            
+        });
 
-Route::group(['prefix' => '/signin'], function () {
-    // Route::get('/agent', [registerController::class, 'agent'])->middleware('guest');
-    // Route::get('/developer', [registerController::class, 'developer'])->middleware('guest');
-    Route::get('/loginagent', function () {
-        return view('auth.agent.signin');
-    });
-    Route::get('/logindeveloper', function () {
-        return view('auth.developer.signin');
-    });
-    Route::get('/registerdeveloper', function () {
-        return view('auth.developer.signup');
     });
 });
 // developer
 Route::group(['prefix' => '/developer'], function () {
-    Route::get('/dashboard', function () {
-        return view('pages.Developer.dashboard');
-    });
-    Route::get('/detail', function () {
-        return view('pages.Developer.detail');
-    });
+    Route::get('/dashboard', [SessionController::class, 'anu']);
+});
+Route::get('/detail', function () {
+    return view('pages.Developer.detail');
 });
 // agent
 Route::group(['prefix' => '/agent'], function () {
