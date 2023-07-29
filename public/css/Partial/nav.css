@@ -156,6 +156,7 @@ nav.active .navLogoqu {
     box-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
     transform: scale(1.1);
     border-radius: 10px;
+    color: #fff;
 }
 
 body {

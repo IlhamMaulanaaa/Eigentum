@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/css/pages/kpr.css">
   </head>
   <body>
-    <div class="loan-calculator" style="margin-bottom: 60px;">
+    <div class="loan-calculator" style="margin-top: 90px;">
       <div class="top">
         <h2 style="color: #fff">Simulasi Kalkulator KPR</h2>
 

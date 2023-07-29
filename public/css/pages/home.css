@@ -7497,7 +7497,7 @@ body {
     white-space: nowrap;
 }
 
-.wrapperpulau {
+/* .wrapperpulau {
     padding: 30px 0px 0px 0px;
     display: flex;
     align-items: center;
@@ -7522,7 +7522,7 @@ body {
     list-style: none;
     overflow-x: hidden;
     scroll-behavior: smooth;
-}
+} */
 .tabs-box.dragging {
     scroll-behavior: auto;
     cursor: grab;

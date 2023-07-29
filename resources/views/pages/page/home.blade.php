@@ -96,90 +96,90 @@
                             <!-- Filter Home -->
                             <div class="frame-61-qi7" id="4:7172">
                                 <div class="select-menu2">
-                                    <div class="select-btn2">
-                                        <span class="sBtn-text2" style="cursor: pointer; width:auto;">Semua Properti</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options2" style="">
-
+                                  <div class="select-btn2">
+                                      <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
+                                      <i class="bx bx-chevron-down"></i>
+                                  </div>
+                    
+                                  <ul class="options2">
+                                      
                                         <li class="option2">
-                                            <i class="bx bx-building" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Apartemen</span>
+                                          <i class="bx bx-building" style="color: #0C40E8;"></i>
+                                          <span class="option2-text">Apartemen</span>
                                         </li>
                                         <li class="option2">
-                                            <i class="bx bx-home" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Rumah</span>
+                                          <i class="bx bx-home" style="color: #0C40E8;"></i>
+                                          <span class="option2-text">Rumah</span>
                                         </li>
                                         <li class="option2">
-                                            <i class="bx bx-store" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Ruko</span>
+                                          <i class="bx bx-store" style="color: #0C40E8;"></i>
+                                          <span class="option2-text">Ruko</span>
                                         </li>
                                         <li class="option2">
-                                            <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Villa</span>
+                                          <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
+                                          <span class="option2-text">Villa</span>
                                         </li>
                                         <li class="option2">
-                                            <i class="bx bx-grid-alt" style="color: #171515;"></i>
-                                            <span class="option2-text">Semua Properti</span>
+                                          <i class="bx bx-grid-alt" style="color: #171515;"></i>
+                                          <span class="option2-text">Semua Properti</span>
                                         </li>
-                                    </ul>
+                                  </ul>
+                              </div>
+                              <div class="select-menu3">
+                                <div class="select-btn3">
+                                    <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
+                                    <i class="bx bx-chevron-down"></i>
                                 </div>
-                                <div class="select-menu3">
-                                    <div class="select-btn3">
-                                        <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options3">
-
-                                        <li class="option3">
-                                            <span class="option3-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Satu</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Dua</span>
-                                        </li>
-
-                                        <li class="option3">
-                                            <span class="option3-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option3">
-                                            <i class="bx bx-hotel" style="color: #171515;"></i>
-                                            <span class="option3-text">Kamar Tidur</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="select-menu4">
-                                    <div class="select-btn4">
-                                        <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
-                                        <i class="bx bx-chevron-down"></i>
-                                    </div>
-
-                                    <ul class="options4">
-                                        <li class="option4">
-                                            <span class="option4-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Satu</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <i class="bx bx-bath" style="color: #171515;"></i>
-                                            <span class="option4-text">Kamar Mandi</span>
-                                        </li>
-
-                                        </li>
-                                    </ul>
-                                </div>
+                    
+                                <ul class="options3">
+                                    
+                                      <li class="option3">
+                                        <span class="option3-text">Tidak Ada</span>
+                                      </li>
+                                      <li class="option3">
+                                        <span class="option3-text">Satu</span>
+                                      </li>                
+                                      <li class="option3">
+                                        <span class="option3-text">Dua</span>
+                                      </li>
+                                      
+                                      <li class="option3">
+                                        <span class="option3-text">Lebih Dari Dua</span>
+                                      </li>
+                                      <li class="option3">
+                                        <i class="bx bx-hotel" style="color: #171515;"></i>
+                                        <span class="option3-text">Kamar Tidur</span>
+                                      </li>
+                                </ul>
                             </div>
+                            <div class="select-menu4">
+                              <div class="select-btn4">
+                                  <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
+                                  <i class="bx bx-chevron-down"></i>
+                              </div>
+                    
+                              <ul class="options4">
+                                  <li class="option4">
+                                      <span class="option4-text">Tidak Ada</span>
+                                    </li>
+                                    <li class="option4">
+                                      <span class="option4-text">Satu</span>
+                                    </li>
+                                    <li class="option4">
+                                      <span class="option4-text">Dua</span>
+                                    </li>
+                                    <li class="option4">
+                                      <span class="option4-text">Lebih Dari Dua</span>
+                                    </li>
+                                    <li class="option4">
+                                      <i class="bx bx-bath" style="color: #171515;"></i>
+                                      <span class="option4-text">Kamar Mandi</span>
+                                    </li>
+                                    
+                                  </li>
+                              </ul>
+                          </div>
+                              </div>
                         </div>
 
                         <div class="search-container">
@@ -262,7 +262,7 @@
                             <p>Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan apartemen bergaya </p>
                         </div>
 
-                        <div class="slide-container swiper">
+                        <div class="slide-container swiper" style="margin-bottom: 0px;">
                             <div class="slide-content">
                                 <div class="card-wrapper swiper-wrapper">
 
@@ -271,10 +271,12 @@
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                                <a href="/unit/detail">
                                                 <div class="position-relative overflow-hidden">
-                                                    <a href=""><img src="{{ asset('storage/' . $unit->image) }}"
+                                                    <a href="/unit/detail"><img src="{{ asset('storage/' . $unit->image) }}"
                                                             class="img-thumbnail" alt="" width="360"
                                                             height="120"></a>
+                                                    
                                                     <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
                                                         style="background-color: #0C40E8">
                                                         @foreach ($unit->status as $status)
@@ -285,16 +287,17 @@
                                                     </div>
                                                     <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
                                                         style="color: #0C40E8">{{ $unit->title }}</div>
-                                                </div>
+                                                    </div>
+                                                </a>
                                                 <div class="p-0 pb-0">
                                                     <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
                                                     <a class="d-block h6 mb-2" style="color: #000;"
-                                                        href="">{{ $unit->properties->property }}</a>
+                                                        href="/unit/detail">{{ $unit->properties->property }}</a>
                                                     <p><i class="fa fa-map-marker-alt  me-2"
                                                             style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
                                                     </p>
                                                 </div>
-                                                <div class="d-flex border-top" style="width: 320px;">
+                                                <div class="d-flex border-top" style="width: 280px; ">
                                                     <small class="flex-fill text-center border-end py-2"
                                                         style="color: #000;"><i
                                                             class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
@@ -305,7 +308,7 @@
                                                         style="color: #000;"><i
                                                             class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
                                                     <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}</small>
+                                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,7 +336,7 @@
                                                         style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
                                                 </p>
                                             </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
+                                            <div class="d-flex border-top" style="width: 280px;">
                                                 <small class="flex-fill text-center border-end py-2"
                                                     style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
                                                 <small class="flex-fill text-center border-end py-2"
@@ -341,7 +344,7 @@
                                                 <small class="flex-fill text-center border-end py-2"
                                                     style="color: #000;"><i
                                                         class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                <small class="flex-fill text-center py-2" style="color: #000; "><i
                                                         class="fa fa-square  me-2"></i>350m²</small>
                                             </div>
                                         </div>
@@ -845,48 +848,48 @@
             },
         });
 
-        const tabsBox = document.querySelector(".tabs-box"),
-            allTabs = tabsBox.querySelectorAll(".tab"),
-            arrowIcons = document.querySelectorAll(".icon i");
+        // const tabsBox = document.querySelector(".tabs-box"),
+        //     allTabs = tabsBox.querySelectorAll(".tab"),
+        //     arrowIcons = document.querySelectorAll(".icon i");
 
-        let isDragging = false;
+        // let isDragging = false;
 
-        const handleIcons = (scrollVal) => {
-            let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-            arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-            arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-        }
+        // const handleIcons = (scrollVal) => {
+        //     let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+        //     arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+        //     arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
+        // }
 
-        arrowIcons.forEach(icon => {
-            icon.addEventListener("click", () => {
-                // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
-                let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
-                handleIcons(scrollWidth);
-            });
-        });
+        // arrowIcons.forEach(icon => {
+        //     icon.addEventListener("click", () => {
+        //         // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
+        //         let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
+        //         handleIcons(scrollWidth);
+        //     });
+        // });
 
-        allTabs.forEach(tab => {
-            tab.addEventListener("click", () => {
-                tabsBox.querySelector(".active").classList.remove("active");
-                tab.classList.add("active");
-            });
-        });
+        // allTabs.forEach(tab => {
+        //     tab.addEventListener("click", () => {
+        //         tabsBox.querySelector(".active").classList.remove("active");
+        //         tab.classList.add("active");
+        //     });
+        // });
 
-        const dragging14 = (e) => {
-            if (!isDragging) return;
-            tabsBox.classList.add("dragging");
-            tabsBox.scrollLeft -= e.movementX;
-            handleIcons(tabsBox.scrollLeft)
-        }
+        // const dragging14 = (e) => {
+        //     if (!isDragging) return;
+        //     tabsBox.classList.add("dragging");
+        //     tabsBox.scrollLeft -= e.movementX;
+        //     handleIcons(tabsBox.scrollLeft)
+        // }
 
-        const dragStop14 = () => {
-            isDragging = false;
-            tabsBox.classList.remove("dragging");
-        }
+        // const dragStop14 = () => {
+        //     isDragging = false;
+        //     tabsBox.classList.remove("dragging");
+        // }
 
-        tabsBox.addEventListener("mousedown", () => isDragging = true);
-        tabsBox.addEventListener("mousemove", dragging14);
-        document.addEventListener("mouseup", dragStop14);
+        // tabsBox.addEventListener("mousedown", () => isDragging = true);
+        // tabsBox.addEventListener("mousemove", dragging14);
+        // document.addEventListener("mouseup", dragStop14);
 
 
 
