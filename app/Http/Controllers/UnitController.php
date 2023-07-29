@@ -19,7 +19,7 @@ class UnitController extends Controller
     
     public function index()
     {
-        $units = Unit::all();
+        $units = Unit::paginate(10);
         $tables = (new Unit())->getTable();
 
         if ($units) {
@@ -52,6 +52,29 @@ class UnitController extends Controller
                 'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
                 'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
                 'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                'status_id' => 'required',
+            ],[
+                'title.required' => 'Nama unit tidak boleh kosong',
+                'description.required' => 'Deskripsi tidak boleh kosong',
+                'price.required' => 'Harga tidak boleh kosong',
+                'image.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'image.max' => 'Ukuran gambar maksimal 10MB',
+                'bedroom.required' => 'Jumlah kamar tidur tidak boleh kosong',
+                'bathroom.required' => 'Jumlah kamar mandi tidak boleh kosong',
+                'surface_area.required' => 'Luas tanah tidak boleh kosong',
+                'building_area.required' => 'Luas bangunan tidak boleh kosong',
+                'floor.required' => 'Lantai tidak boleh kosong',
+                'livingroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'livingroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                'bedroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'bedroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                'bathroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'bathroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                'kitchenimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'kitchenimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                'etcimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                'etcimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                'status_id.required' => 'Status tidak boleh kosong',
             ]);
 
             $property = Property::findOrfail($propertyId);
@@ -108,7 +131,7 @@ class UnitController extends Controller
             $specification->save();
             $image->save();
 
-            $unit->status()->attach($request->input('status_id'));
+            $unit->statuses()->attach($request->input('status_id'));
 
             return redirect('/admin/unit/data');
 
@@ -225,9 +248,9 @@ class UnitController extends Controller
             
                 $image->save();
 
-                $unit->status()->sync($request->input('status_id'));
+                $unit->statuses()->sync($request->input('status_id'));
 
-                return redirect('/admin/unit/show/' . $id);
+                return redirect(route('unit.show', $id));
             } catch (Exception $e) {
                 return $e;
             }
@@ -236,15 +259,14 @@ class UnitController extends Controller
 
     public function destroy(string $id)
     {
-        
             $unit = Unit::findOrfail($id);
 
             $unit->delete();
-            $unit->status()->detach();
+            $unit->statuses()->detach();
             $unit->specifications()->delete();
             $unit->images()->delete();
 
-            return redirect('/admin/unit/data')->with('success', 'Data Deleted');
+            return redirect(route('unit.index'))->with('success', 'Data Deleted');
         
     }
 }

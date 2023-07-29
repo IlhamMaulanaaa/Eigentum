@@ -24,16 +24,17 @@
                     </thead>
                     <tbody>
                         @if ($statuses->count())
-                            @foreach ($statuses as $status)
+                            @foreach ($statuses as $key => $status)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $status->name }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $status->id }}">Detail</a>
+                                            href="{{ route('status.show', $status->id) }}">Detail</a>
                                         {{-- <form action="delete/{{ $status->id }}" method="get" class="d-inline">
                                             @csrf
-                                            <button class="btn btn-outline-danger"
+                                            @method('DELETE')
+                                    <button class="btn btn-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
                                         </form> --}}
                                     </td>

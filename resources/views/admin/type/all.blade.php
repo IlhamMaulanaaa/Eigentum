@@ -24,16 +24,17 @@
                     </thead>
                     <tbody>
                         @if ($types->count())
-                            @foreach ($types as $type)
+                            @foreach ($types as $key => $type)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $type->name }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $type->id }}">Detail</a>
+                                            href="{{ route('type.show', $type->id) }}">Detail</a>
                                         {{-- <form action="delete/{{ $type->id }}" method="get" class="d-inline">
                                             @csrf
-                                            <button class="btn btn-outline-danger"
+                                            @method('DELETE')
+                                    <button class="btn btn-danger"
                                                 onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
                                         </form> --}}
                                     </td>

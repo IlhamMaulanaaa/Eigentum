@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Agent;
+use App\Models\District;
 use App\Models\PropertyAgent;
 use App\Models\Developer;
 use App\Models\Property;
+use App\Models\Province;
+use App\Models\Regency;
 use App\Models\Type;
 use App\Models\Unit;
+use App\Models\Village;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -17,15 +21,11 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $data = Property::all();
+        $properties = Property::paginate(10);
         $tables = (new Property())->getTable();
 
-        if($data){
-            return view('admin.property.all', 
-            ['properties' => $data, 
-            'tables' => $tables,]);
-        }else{
-            return ApiFormatter::createApi('404', 'Data Not Found', null);
+        if($properties){
+            return view('admin.property.all', compact('properties','tables'));
         }
     }
 
@@ -35,20 +35,25 @@ class PropertyController extends Controller
         $developer = Developer::findOrfail($developerId);
         $type = Type::all();
         $agent = Agent::all();
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
 
-        return view('admin.property.create',compact('type','developer','agent'));
+        return view('admin.property.create',compact('type','developer','agent', 'provinces', 'regencies', 'districts', 'villages'));
     }
 
     public function store(Request $request, $developerId)
     {
-        
-
-            
             $request->validate([
-                'property'  => 'required',
+                'title'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
+            ],[
+                'title.required' => 'Nama property tidak boleh kosong',
+                'description.required' => 'Deskripsi tidak boleh kosong',
+                'address.required' => 'Alamat tidak boleh kosong',
             ]);
             
             $developer = Developer::findOrfail($developerId);
@@ -56,15 +61,18 @@ class PropertyController extends Controller
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
             }
 
-            // $agent = Agent::inRandomOrder()->first();
-            // if (!$agent) {
-            //     return redirect()->back()->with('error', 'Tidak ada agen yang tersedia');
-            // }
-    
-            $randomAgentId = Agent::pluck('id')->random();
+            // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
+            $regencyId = $request->regencies_id;
+            $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('regency_id', $regencyId);
+            })->inRandomOrder()->first();
 
-            $data = Property::create([
-                'property'  => $request->property,
+            if (!$randomAgent) {
+                return redirect()->back()->with('error', 'Tidak ada agen yang tersedia untuk properti ini');
+            }
+
+            $property = Property::create([
+                'title'  => $request->title,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
@@ -72,17 +80,19 @@ class PropertyController extends Controller
                 // 'agent_id' => $randomAgentId,
             ]);
 
-            // $data = PropertyAgent::create([
+            // $property = PropertyAgent::create([
             //     'agent_id'  => $agent->id,
-            //     'property_id' => $data->id,
+            //     'property_id' => $property->id,
             // ]);
 
-            $data->agents()->attach($randomAgentId);
+            $property->agents()->attach($randomAgent->id);
+            $developer->provinces()->attach($request->provinces_id);
+            $developer->regencies()->attach($request->regencies_id);
+            $developer->districts()->attach($request->districts_id);
+            $developer->villages()->attach($request->villages_id);
 
-            if($data){
-                return redirect('/admin/property/data',);
-            }else{
-                return ApiFormatter::createApi('400', 'Bad Request', null);
+            if($property){
+                return redirect(route('property.index'));
             }
     }
 
@@ -110,26 +120,26 @@ class PropertyController extends Controller
     {
         
             $request->validate([
-                'property'  => 'nullable',
+                'title'  => 'nullable',
                 'description'   => 'nullable',
                 'address'   => 'nullable',
                 'type_id'   => 'nullable',
                 'developer_id'  => 'nullable',
             ]);
 
-            $data = Property::findOrfail($id);
+            $property = Property::findOrfail($id);
 
-            $data->update([
-                'property'  => $request->property,
+            $property->update([
+                'title'  => $request->title,
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
                 'developer_id'  => $request->developer_id,
             ]);
 
-            // $data->agents()->sync($request->input('agent_id'));
+            // $property->agents()->sync($request->input('agent_id'));
 
-            $data = Property::where('id','=', $data->id)->get();
+            $property = Property::where('id','=', $property->id)->get();
             $url = '/admin/property/show/' . $id;
 
             return redirect($url);
@@ -143,13 +153,11 @@ class PropertyController extends Controller
         
             $property = Property::findOrfail($id);
             $property->units()->delete();
-            $data = $property->delete();
+            $property->agents()->detach();
+            $property->delete();
 
-            if($data){
-                return  redirect('/admin/property/data',);
-            }else{
-                return ApiFormatter::createApi('400', 'Bad Request', null);
-            }
+            return  redirect(route('property.index'));
+            
 
     }
 }

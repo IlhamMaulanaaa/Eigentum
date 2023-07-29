@@ -8,8 +8,9 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/property/update/ {{ $property->id }}">
+                        <form method="post" action="{{route('property.update' , $property->id)}}">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="property" class="form-label">Property</label>
                                 <input class="form-control" id="property" name="property"
@@ -77,7 +78,7 @@
                             <br> --}}
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/property/show/{{ $property->id }}">Back</a>
+                                    href="{{ route('property.show', $property->id) }}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

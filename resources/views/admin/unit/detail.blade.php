@@ -11,13 +11,13 @@
                         <form method="get" enctype="multipart/form-data">
                             <div class="form-group">
                                 <div class="form-group">
-                                    <label for="" class="form-label">Title</label>
+                                    <label for="" class="form-label">Unit</label>
                                     <input class="form-control" value="{{ $unit->title }}" readonly disabled>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="" class="form-label">Description</label>
-                                    <input class="form-control" value="{{ $unit->description }}" readonly disabled>
+                                    <textarea class="form-control" value="" readonly disabled>  {{ $unit->description }}</textarea>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -25,10 +25,15 @@
                                     <input class="form-control" value="{{ $unit->price }}" readonly disabled>
                                 </div>
                                 <br>
+                                <div class="form-group col-auto">
+                                    <label for="" class="form-label">Property</label>
+                                    <input class="form-control" value="{{ $unit->properties->title }}" readonly disabled>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="" class="form-label">Status</label>
                                     <ul>
-                                        @foreach ($unit->status as $status)
+                                        @foreach ($unit->statuses as $status)
                                             <li>
                                                 {{ $status->name }}
                                             </li>
@@ -43,6 +48,7 @@
                                             alt="" width="360">
                                     </div>
                                 </div>
+
                             </div>
                             <br>
                             <div class="form-group">
@@ -82,7 +88,7 @@
                                                         </div>
                                                     </div>
                                                 @endforeach
-                                            @endif 
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -176,32 +182,26 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group row">
-                                <div class="form-group col-auto">
-                                    <label for="" class="form-label">Property</label>
-                                    <input class="form-control" value="{{ $unit->properties->property }}" readonly
-                                        disabled>
-                                </div>
-                                <div class="form-group col-auto">
-                                    <label for="" class="form-label">Address</label>
-                                    <input class="form-control" value="{{ $unit->properties->address }}" readonly
-                                        disabled>
-                                </div>
+                            <div class="form-group col-auto">
+                                <label for="" class="form-label">Address</label>
+                                <input class="form-control" value="{{ $unit->properties->address }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/unit/data">Back</a>
-                                {{-- <form action="{{ url('/unit/delete', $unit->id) }}" method="post" class="d-inline">
+                                <a type="button" class="btn btn-warning" href="{{ route('unit.index') }}">Back</a>
+                                <form action="{{ route('unit.destroy', $unit->id) }}" method="post" class="d-inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                </form>                                                               --}}
-                                <a type="button" class="btn btn-primary" href="edit/{{ $unit->id }}">Edit</a>
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary"
+                                    href="{{ route('unit.edit', $unit->id) }}">Edit</a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        
+
     @endsection

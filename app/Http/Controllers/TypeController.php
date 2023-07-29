@@ -17,7 +17,6 @@ class TypeController extends Controller
         
 
         if ($data) {
-            // return ApiFormatter::createApi('200', 'Success', $data);
             return view('admin.type.all', ['types' => $data , 'tables' => $tables]);
         }
     }

@@ -29,6 +29,7 @@
             <main class="content">
                 <div class="container-fluid p-0">
                     <section class="my-4">
+                        {{-- @include('admin.layout.message') --}}
                         @yield('content')
                     </section>
                 </div>

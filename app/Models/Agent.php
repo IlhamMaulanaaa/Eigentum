@@ -26,9 +26,7 @@ class Agent extends Model
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'property_agent', 'property_id', 'agent_id');
-    }
-
-    
+    }   
 
     public function provinces(): BelongsToMany
     {
@@ -50,10 +48,28 @@ class Agent extends Model
         return $this->belongsToMany(Village::class, 'agent_villages', 'agent_id', 'village_id');
     }
 
-    
+    public function scopefilter($query, array $filters){
 
+        if(isset($filters['search']) ? $filters['search'] : false){
+            $query->where('name','like','%'.$filters['search'].'%')
+                ->orWhere('email','like','%'.$filters['search'].'%');
+            // ->orWhere('telepon','like','%'.$filters['search'].'%')
+            // ->orWhere('alamat','like','%'.$filters['search'].'%');
+        }
 
-    
+        // $query->when($filters['search'] ?? false, function($query, $search){
+        //     $query->where('name','like','%'.$search.'%')
+        //     ->orWhere('email','like','%'.$search.'%')
+        //     ->orWhere('alamat','like','%'.$search.'%');
+        // });
 
-    
+        if(isset($filters['property_id']) ? $filters['property_id'] : false){
+            $query->Where('id',$filters['property_id']);
+        }
+
+        // $query->when($filters['property_id'] ?? false, function($query, $property_id){
+        //     $query->where('id',$property_id);
+        // });
+    }
+
 }

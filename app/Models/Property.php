@@ -47,4 +47,24 @@ class Property extends Model
     {
         return $this->belongsToMany(Agent::class, 'property_agent', 'agent_id', 'property_id');
     }
+
+    public function provinces(): BelongsToMany
+    {
+        return $this->belongsToMany(Province::class,'property_province', 'property_id', 'province_id');
+    }
+
+    public function regencies(): BelongsToMany
+    {
+        return $this->belongsToMany(Regency::class,'property_regency', 'property_id', 'regency_id');
+    }
+
+    public function districts(): BelongsToMany
+    {
+        return $this->belongsToMany(District::class,'property_district', 'property_id', 'district_id');
+    }
+
+    public function villages(): BelongsToMany
+    {
+        return $this->belongsToMany(Village::class,'property_village', 'property_id', 'village_id');
+    }
 }

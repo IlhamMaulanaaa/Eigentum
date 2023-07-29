@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('guide.create') }}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -29,22 +29,16 @@
                     </thead>
                     <tbody>
                         @if ($guides->count())
-                            @foreach ($guides as $guide)
+                            @foreach ($guides as $key => $guide)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
-                                    {{-- <td class="">{{$guide->id }}</td> --}}
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $guide->title }}</td>
                                     <td class="text-start">{{ $guide->description }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $guide->image) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $guide->id }}">Detail</a>
-                                        <form action="delete/{{ $guide->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                            href="{{ route('guide.show', $guide->id) }}">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

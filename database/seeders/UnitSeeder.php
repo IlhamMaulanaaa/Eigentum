@@ -29,8 +29,16 @@ class UnitSeeder extends Seeder
 
         $propertyIds = Property::pluck('id')->toArray();
 
+        $descriptions = [
+            'Rumah dengan taman yang luas di depan dan belakang.',
+            'Rumah dengan dua kamar tidur dan satu kamar mandi.',
+            'Rumah minimalis dengan desain modern.',
+            'Rumah dengan akses mudah ke pusat kota.',
+            'Rumah dengan pemandangan pegunungan yang indah.',
+        ];
+
         foreach ($propertyIds as $propertyId) {
-            $numberOfUnits = rand(2, 4);
+            $numberOfUnits = rand(2, 5);
             $units = [];
 
             for ($i = 0; $i < $numberOfUnits; $i++) {
@@ -46,8 +54,8 @@ class UnitSeeder extends Seeder
                 $kitchenString = implode('|', $kitchenImages);
                 $assetString = implode('|', $assetsImages); 
                 $unit = Unit::create([
-                    'title' => fake()->company(),
-                    'description' => Str::limit(fake()->text()),
+                    'title' => 'Unit ' . ($i + 1),
+                    'description' => $descriptions[array_rand($descriptions)],
                     'price' => fake()->randomFloat(7, 10, 10000),
                     'image' => $this->getImageUrl('house'),
                     'property_id' => $propertyId,
@@ -56,12 +64,27 @@ class UnitSeeder extends Seeder
                 $units[] = $unit; // Simpan object unit untuk digunakan di hubungan many-to-many
             }
 
-            $statuses = Status::pluck('id')->random(rand(1, 2))->toArray();
+            $statuses = Status::pluck('id')->toArray();
+
             foreach ($units as $unit) {
-                UnitStatus::create([
-                    'unit_id' => $unit->id,
-                    'status_id' => Arr::random($statuses),
-                ]);
+                // Tentukan jumlah status yang akan dihubungkan (misalnya, antara 1 hingga 3 status)
+                $numberOfStatuses = rand(1, 2);
+    
+                // Ambil status secara acak dari daftar status
+                $randomStatuses = array_rand($statuses, $numberOfStatuses);
+    
+                // Jika hanya satu status yang diambil, konversi ke array agar dapat diiterasi
+                if (!is_array($randomStatuses)) {
+                    $randomStatuses = [$randomStatuses];
+                }
+    
+                // Hubungkan unit dengan status menggunakan metode attach()
+                foreach ($randomStatuses as $statusId) {
+                    $unit->statuses()->attach($statuses[$statusId]);
+                }
+            }
+
+            foreach ($units as $unit) {
 
                 $image = Image::create([
                     'livingroomimg' => $livingroomString,
@@ -85,8 +108,6 @@ class UnitSeeder extends Seeder
             }
         }
     }
-
-
 
     private function getImageUrls($folderName, $count, $width = 400, $height = 300)
     {

@@ -16,8 +16,6 @@
                 height: auto;
                 overflow: hidden;
             }
-
-
         </style>
     </head>
 
@@ -33,34 +31,33 @@
                     <div class="card-body">
                         <form action="" method="post" enctype="multipart/form-data">
 
-                            <div class="form-group">
-                                <label for="company" class="form-label">Company</label>
-                                <input type="text" class="form-control" id="company" name="company"
-                                    value="{{ $developer->company }}" readonly disabled>
+                            <div class="form-group col-auto row">
+                                <div class="form-group col-6">
+                                    <label for="company" class="form-label">Company</label>
+                                    <input type="text" class="form-control" id="company" name="company"
+                                        value="{{ $developer->company }}" readonly disabled>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label for="email" class="form-label">Company Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        value="{{ $developer->email }}" readonly disabled>
+                                </div>
                             </div>
                             <br>
+                            <div class="form-group col-auto row">
+                                <div class="form-group col-6">
+                                    <label for="owner" class="form-label">Owner</label>
+                                    <input type="text" class="form-control" id="owner" name="owner"
+                                        value="{{ $developer->owners->name }}" readonly disabled>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="owner" class="form-label">Owner</label>
-                                <input type="text" class="form-control" id="owner" name="owner"
-                                    value="{{ $developer->owners->name }}" readonly disabled>
+                                <div class="form-group col-6">
+                                    <label for="owner" class="form-label">Owner Email</label>
+                                    <input type="owner" class="form-control" id="owner" name="owner"
+                                        value="{{ $developer->owners->owner_email }}" readonly disabled>
+                                </div>
                             </div>
                             <br>
-
-                            <div class="form-group">
-                                <label for="email" class="form-label">Company Email</label>
-                                <input type="email" class="form-control" id="email" name="email"
-                                    value="{{ $developer->email }}" readonly disabled>
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-                                <label for="owner" class="form-label">Owner Email</label>
-                                <input type="owner" class="form-control" id="owner" name="owner"
-                                    value="{{ $developer->owners->owner_email }}" readonly disabled>
-                            </div>
-                            <br>
-
                             <div class="form-group row">
                                 <div class="form-group col-auto">
                                     <label for="ktp" class="form-label">Ktp</label>
@@ -135,10 +132,10 @@
                                 <ul>
                                     @foreach ($developer->properties as $property)
                                         <li>
-                                            {{ $property->property }}
-                                            <a href="/admin/property/show/{{ $property->id }}"
+                                            {{ $property->title }}
+                                            <a href="{{ route('property.show', $property->id) }}"
                                                 class="text-warning">Detail</a>
-                                            <a href="/admin/property/show/edit/{{ $property->id }}">Edit</a>
+                                            <a href="{{ route('property.edit', $property->id) }}">Edit</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -149,8 +146,16 @@
                             <br>
 
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/developer/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $developer->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
+                                <form action="{{ route('developer.destroy', $developer->id) }}" method="get"
+                                    class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"
+                                        onclick="return confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary"
+                                    href="{{ route('developer.edit', $developer->id) }}">Edit</a>
                             </div>
                         </form>
                     </div>

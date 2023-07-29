@@ -37,7 +37,7 @@ class Unit extends Model
         return $this->belongsTo(Property::class, 'property_id');
     }
 
-    public function status(): BelongsToMany
+    public function statuses(): BelongsToMany
     {
         return $this->belongsToMany(Status::class, 'unit_status', 'unit_id', 'status_id');
     }

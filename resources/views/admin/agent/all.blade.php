@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{route('agent.create')}}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -29,9 +29,9 @@
                     </thead>
                     <tbody>
                         @if ($agents->count())
-                            @foreach ($agents as $agent)
+                            @foreach ($agents as $key => $agent)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $agent->name }}</td>
                                     <td class="text-start">{{ $agent->email }}</td>
                                     <td class="text-start">{{ Str::limit($agent->address, 20) }}</td>
@@ -43,12 +43,7 @@
                                     <td class="text-start">{{ $agent->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $agent->id }}">Detail</a>
-                                        <form action="delete/{{ $agent->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                            href="{{ route('agent.show', $agent->id) }}">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,6 +58,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div>
+                    {{ $agents->links() }}
+                </div>
             </div>
         </div>
     </div>

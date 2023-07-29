@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Developer;
+use App\Models\District;
 use App\Models\Owner;
 use App\Models\Province;
+use App\Models\Regency;
+use App\Models\Village;
 use Exception;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -19,34 +22,59 @@ class DeveloperController extends Controller
 
     public function index()
     {
-        $developers = Developer::all();
+        $developers = Developer::paginate(5);
         $tables = (new Developer())->getTable();
 
-        return view('admin.developer.all', compact('developers', 'tables', ));
+        return view('admin.developer.all', compact('developers', 'tables' ));
     }
 
     public function create()
     {
         $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
 
-        return view('admin.developer.create', compact('provinces'));
+        return view('admin.developer.create', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
     public function store(Request $request)
     {
-        try{
             $request->validate([
                 'company'   => 'required',
                 'email' => 'required|email|unique:developers',
                 'password'  => 'required|min:8',
+                'address'   => 'required',
                 'license.*' => 'required|file|max:10240',
-                'telp'  => 'required',
+                'telp' => 'required|regex:/^[0-9+\-() ]+$/',
                 'name' => 'required',
                 'owner_email' => 'required|email|unique:owners',
                 'owner_password' => 'required|min:8',
                 'ktp' => 'required|file|max:10240',
                 'face' => 'required|file|max:10240',
-                'address'   => 'required',
+            ],[
+                'company.required' => 'Nama Perusahaan tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.unique' => 'Email sudah terdaftar',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password minimal 8 karakter',
+                'address.required' => 'Alamat tidak boleh kosong',
+                'license.*.required' => 'Lisensi tidak boleh kosong',
+                'license.*.file' => 'Lisensi harus berupa file',
+                'license.*.max' => 'Ukuran lisensi maksimal 10MB',
+                'telp.required' => 'Nomor telepon tidak boleh kosong',
+                'telp.regex' => 'Nomor telepon tidak valid',
+                'name.required' => 'Nama tidak boleh kosong',
+                'owner_email.required' => 'Email tidak boleh kosong',
+                'owner_email.unique' => 'Email sudah terdaftar',
+                'owner_password.required' => 'Password tidak boleh kosong',
+                'owner_password.min' => 'Password minimal 8 karakter',
+                'ktp.required' => 'KTP tidak boleh kosong',
+                'ktp.file' => 'KTP harus berupa file',
+                'ktp.max' => 'Ukuran KTP maksimal 10MB',
+                'face.required' => 'Foto tidak boleh kosong',
+                'face.file' => 'Foto harus berupa file',
+                'face.max' => 'Ukuran foto maksimal 10MB',
             ]);
 
             $images = ['ktp', 'face']; 
@@ -97,11 +125,7 @@ class DeveloperController extends Controller
 
             $developer = Developer::where('id', '=', $developer->id)->get();
             
-            return redirect('/admin/developer/developer',);
-        }catch(Exception $e){
-            return $e;
-        }
-        
+            return redirect(route('developer.index'));
         
     }
 
@@ -127,14 +151,14 @@ class DeveloperController extends Controller
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
+                'address'   => 'nullable',
                 'license.*' => 'nullable|file|max:10240',
-                'telp'  => 'nullable',
+                'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
                 'name' => 'nullable',
                 'owner_email' => 'nullable|email',
                 'owner_password' => 'nullable|min:8',
                 'ktp' => 'nullable|file|max:10240',
                 'face' => 'nullable|file|max:10240',
-                'address'   => 'nullable',
             ]);
 
             $developer= Developer::findOrfail($id);
@@ -193,8 +217,7 @@ class DeveloperController extends Controller
             // $developer->villages()->sync($request->input('village_id'));
 
             $developer = Developer::where('id', '=', $developer->id)->get();
-            $url = '/admin/developer/show/' . $id;
-            return redirect($url);
+            return redirect(route('developer.show', $id));
 
 
         }catch(Exception $e){
@@ -207,17 +230,20 @@ class DeveloperController extends Controller
     public function destroy(string $id)
     {
         try{
+
             $developer = Developer::findOrfail($id);
             $developer->owners()->delete();
+            foreach ($developer->properties as $property) {
+                $property->units()->delete();
+            }
             $developer->properties()->delete();
-            $developer->units()->delete();
             $developer->provinces()->detach();
             $developer->regencies()->detach();
             $developer->districts()->detach();
             $developer->villages()->detach();
-            $developer = $developer->delete();
+            $developer->delete();
 
-            return  redirect('/admin/developer/data',);
+            return  redirect(route('developer.index'));
 
         }catch(Exception $e){
             return $e;

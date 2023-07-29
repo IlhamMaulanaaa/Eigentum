@@ -22,7 +22,7 @@ class GuideSeeder extends Seeder
         for ($i = 0; $i < 6; $i++) {
             Guide::create([
                 "title" => fake()->title(),
-                "description" => fake()->text(),
+                "description" => fake()->paragraph(),
                 "image" => $this->getImageUrl('house'),
             ]);
         }

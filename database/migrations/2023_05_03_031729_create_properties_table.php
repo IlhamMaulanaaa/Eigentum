@@ -13,13 +13,37 @@ return new class extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->string("property");
-            $table->string("description");
+            $table->string("title");
+            $table->text("description");
             $table->string("address");
             $table->foreignId('developer_id');
             $table->foreignId('type_id');
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::create('property_province', function (Blueprint $table) {
+            $table->bigInteger('property_id');
+            $table->bigInteger('province_id');
+            $table->primary(['property_id', 'province_id']);
+        });
+    
+        Schema::create('property_regency', function (Blueprint $table) {
+            $table->bigInteger('property_id');
+            $table->bigInteger('regency_id');
+            $table->primary(['property_id', 'regency_id']);
+        });
+    
+        Schema::create('property_district', function (Blueprint $table) {
+            $table->bigInteger('property_id');
+            $table->bigInteger('district_id');
+            $table->primary(['property_id', 'district_id']);
+        });
+    
+        Schema::create('property_village', function (Blueprint $table) {
+            $table->bigInteger('property_id');
+            $table->bigInteger('village_id');
+            $table->primary(['property_id', 'village_id']);
         });
     }
 

@@ -8,7 +8,7 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/status/update/ {{ $status->id }}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('status.update' , $status->id)}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="" class="form-label">Status</label>
@@ -18,7 +18,7 @@
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/status/show/{{ $status->id }}">Back</a>
+                                    href="{{ route('status.show', $status->id) }}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

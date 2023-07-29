@@ -12,11 +12,11 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $data = Customer::all();
+        $customers = Customer::all();
         $tables = (new Customer())->getTable();
 
-        if ($data) {
-            return view('admin.customer.all', ['customers' => $data , 'tables' => $tables]);
+        if ($customers) {
+            return view('admin.customer.all', compact('customers','tables'));
         }
     }
 
@@ -34,8 +34,8 @@ class CustomerController extends Controller
                 'name'   => 'required',
                 'email' => 'required|email|unique:customers',
                 'password'  => 'required|min:8',
-                'address'  => 'nullable',
-                'telp'   => 'nullable',
+                'address'  => 'required',
+                'telp' => 'required|regex:/^[0-9+\-() ]+$/',
             ],[
                 'name.required' => 'Nama harus diisi',
                 'email.required' => 'Email harus diisi',
@@ -45,7 +45,7 @@ class CustomerController extends Controller
                 'password.min' => 'Password minimal 8 karakter',
             ]);
 
-            $data = Customer::create([
+            $customer = Customer::create([
                 'name'   => $request->name,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
@@ -53,8 +53,8 @@ class CustomerController extends Controller
                 'telp'   => $request->telp,
             ]);
 
-            if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/customer/data',);
+            if ($customer) {
+                return redirect(route('customer.index'));
             } 
         
     }
@@ -67,7 +67,6 @@ class CustomerController extends Controller
         ]);
     }
 
-   
     public function edit(Customer $customer)
     {
         return view('admin.customer.edit', [
@@ -84,12 +83,12 @@ class CustomerController extends Controller
                 'email' => 'nullable|email',
                 'password'  => 'nullable|min:8',
                 'address'  => 'nullable',
-                'telp'   => 'nullable',
+                'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
             ]);
 
-            $data = Customer::findOrfail($id);
+            $customer = Customer::findOrfail($id);
 
-            $data->update([
+            $customer->update([
                 'name'   => $request->name,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
@@ -97,24 +96,19 @@ class CustomerController extends Controller
                 'telp'   => $request->telp,
             ]);
 
-            $data = Customer::where('id', '=', $data->id)->get();
-            $url = '/admin/customer/show/' . $id;
-
-            if ($data) {
-                return ApiFormatter::createApi('201', 'Created', $data).redirect($url);
+            $customer = Customer::where('id', '=', $customer->id)->get();
+            if ($customer) {
+                return redirect(route('customer.show', $id));
             } 
         
     }
 
 
-    public function destroy(Customer $customer)
+    public function destroy($id)
     {
-        $data = Customer::where('id', $customer->id)->delete();
+        $customer = Customer::findOrfail($id);
+        $customer->delete();
 
-        if ($data) {
-            return ApiFormatter::createApi('200', 'Success', $data). redirect('/admin/unit/data',);
-        } else {
-            return ApiFormatter::createApi('400', 'Bad Request', null);
-        }
+        return redirect(route('customer.index'));
     }
 }

@@ -19,48 +19,54 @@
                     <br>
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form method="post" action="/admin/developer/update/ {{ $developer->id }}"
+                            <form method="post" action="{{ route('developer.update', $developer->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group row">
+                                @method('PUT')
+                                <div class="form-group">
                                     <div class="form-group col-auto">
                                         <label for="company" class="form-label">Company</label>
                                         <input type="text" class="form-control" id="company" name="company"
                                             value="{{ old('company', $developer->company) }}" required>
                                     </div>
                                     <br>
-                                    <div class="form-group col-auto">
-                                        <label for="email" class="form-label">Oompany Email</label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            value="{{ old('email', $developer->email) }}" required>
+                                    <div class="form-group row col-12">
+                                        <div class="form-group col-6">
+                                            <label for="email" class="form-label">Oompany Email</label>
+                                            <input type="email" class="form-control" id="email" name="email"
+                                                value="{{ old('email', $developer->email) }}" required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group col-6">
+                                            <label for="password" class="form-label">Password</label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                        </div>
+                                        <br>
                                     </div>
-                                    <br>
-                                    <div class="form-group col-auto">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password">
-                                    </div>
-                                    <br>
                                 </div>
                                 <br>
-                                <div class="form-group row">
+                                <div class="form-group col-auto">
                                     <div class="form-group col-auto">
                                         <label for="name" class="form-label">Owner</label>
                                         <input type="text" class="form-control" id="name" name="name"
                                             value="{{ old('name', $developer->owners->name) }}" required>
                                     </div>
                                     <br>
-                                    <div class="form-group col-auto">
-                                        <label for="owner_email" class="form-label">Owner Email</label>
-                                        <input type="text" class="form-control" id="owner_email" name="owner_email"
-                                            value="{{ old('owner_email', $developer->owners->owner_email) }}" required>
+                                    <div class="form-group row col-12">
+                                        <br>
+                                        <div class="form-group col-6">
+                                            <label for="owner_email" class="form-label">Owner Email</label>
+                                            <input type="text" class="form-control" id="owner_email" name="owner_email"
+                                                value="{{ old('owner_email', $developer->owners->owner_email) }}" required>
+                                        </div>
+                                        <br>
+                                        <div class="form-group col-6">
+                                            <label for="owner_password" class="form-label">Owner Password</label>
+                                            <input type="password" class="form-control" id="owner_password"
+                                                name="owner_password">
+                                        </div>
+                                        <br>
                                     </div>
-                                    <br>
-                                    <div class="form-group col-auto">
-                                        <label for="owner_password" class="form-label">Owner Password</label>
-                                        <input type="password" class="form-control" id="owner_password"
-                                            name="owner_password">
-                                    </div>
-                                    <br>
                                 </div>
                                 <br>
                                 <div class="form-group row">
@@ -140,13 +146,13 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="telp" class="form-label">Telephone</label>
-                                    <input type="number" class="form-control" id="telp" name="telp"
+                                    <input type="text" class="form-control" id="telp" name="telp"
                                         value="{{ old('telp', $developer->telp) }}" required>
                                 </div>
                                 <br>
                                 <div class="float-end">
                                     <a type="button" class="btn btn-warning"
-                                        href="/admin/developer/show/{{ $developer->id }}">Back</a>
+                                        href="{{ route('developer.show', $developer->id) }}">Back</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>

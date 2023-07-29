@@ -31,41 +31,44 @@
                                 <div class="form-group col-auto mb-3">
                                     <label for="Provinces" class="form-label">Provinsi</label>
                                     <input type="text" class="form-control" id="Provinces" name="Provinces"
-                                        value="{{ implode(', ',$agent->provinces()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
+                                        value="{{ implode(', ',$agent->provinces()->pluck('name')->toArray()) }}" readonly
+                                        disabled>
                                 </div>
                                 <div class="form-group col-auto mb-3">
                                     <label for="Regencies" class="form-label">Kota</label>
                                     <input type="text" class="form-control" id="Regencies" name="Regencies"
-                                        value="{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
+                                        value="{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}" readonly
+                                        disabled>
                                 </div>
                                 <div class="form-group col-auto mb-3">
                                     <label for="District" class="form-label">Kecamatan</label>
                                     <input type="text" class="form-control" id="District" name="District"
-                                        value="{{ implode(', ',$agent->districts()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
+                                        value="{{ implode(', ',$agent->districts()->pluck('name')->toArray()) }}" readonly
+                                        disabled>
                                 </div>
                                 <div class="form-group col-auto mb-3">
                                     <label for="Village" class="form-label">Desa</label>
                                     <input type="text" class="form-control" id="Village" name="Village"
-                                        value="{{ implode(', ',$agent->villages()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
+                                        value="{{ implode(', ',$agent->villages()->pluck('name')->toArray()) }}" readonly
+                                        disabled>
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="ktp" class="form-label">Ktp</label>
-                                <div class="image-text-wrapper">
-                                    <img src="{{ asset('storage/' . $agent->ktp) }}" alt="" width="200">
+                            <div class="form-group col-auto row">
+                                <div class="form-group col-auto">
+                                    <label for="ktp" class="form-label">Ktp</label>
+                                    <div class="image-text-wrapper">
+                                        <img src="{{ asset('storage/' . $agent->ktp) }}" alt="" width="120">
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="face" class="form-label">Face</label>
-                                <div class="image-text-wrapper">
-                                    <img src="{{ asset('storage/' . $agent->face) }}" alt="" width="200">
+                                <br>
+                                <div class="form-group col-auto">
+                                    <label for="face" class="form-label">Face</label>
+                                    <div class="image-text-wrapper">
+                                        <img src="{{ asset('storage/' . $agent->face) }}" alt="" width="120">
+                                    </div>
                                 </div>
+                                <br>
                             </div>
                             <br>
                             <div class="form-group">
@@ -78,14 +81,21 @@
                                 <label for="properties" class="form-label">Properties</label>
                                 <ul>
                                     @foreach ($agent->properties as $property)
-                                        <li>{{ $property->property }}</li>
+                                        <li>{{ $property->title }}</li>
                                     @endforeach
                                 </ul>
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/agent/data  ">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $agent->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{ route('agent.index') }}">Back</a>
+                                <form action="{{ route('agent.destroy', $agent->id) }}" method="get" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"
+                                        onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary"
+                                    href="{{ route('agent.edit', $agent->id) }}">Edit</a>
                             </div>
                         </form>
                     </div>

@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{route('developer.create')}}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -39,12 +39,8 @@
                                     <td class="text-start">{{ $developer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $developer->id }}">Detail</a>
-                                        <form action="delete/{{ $developer->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                            href="{{route('developer.show', $developer->id) }}">Detail</a>
+                                        
                                     </td>
                                 </tr>
                             @endforeach
@@ -54,8 +50,10 @@
                             </tr>
                         @endif
                     </tbody>
-
                 </table>
+                <div class="mx-10">
+                    {{ $developers->links() }}
+                </div>
             </div>
         </div>
     </div>

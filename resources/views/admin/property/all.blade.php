@@ -29,23 +29,19 @@
                     </thead>
                     <tbody>
                         @if ($properties->count())
-                            @foreach ($properties as $property)
+                            @foreach ($properties as $key => $property)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
-                                    <td class="text-start">{{ $property->property }}</td>
-                                    <td class="text-start">{{ Str::limit($property->description, 20 )  }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
+                                    <td class="text-start">{{ $property->title }}</td>
+                                    <td class="text-start">{{ Str::limit($property->description, 20) }}</td>
                                     <td class="text-start">{{ Str::limit($property->address, 20) }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
                                     <td class="text-start ">{{ $property->units->count() }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $property->id }}">Detail</a>
-                                        {{-- <form action="delete/{{ $property->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form> --}}
+                                            href="{{ route('property.show', $property->id) }}">Detail</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,6 +52,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div>
+                    {{ $properties->links() }}
+                </div>
             </div>
         </div>
     </div>

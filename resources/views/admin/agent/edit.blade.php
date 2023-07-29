@@ -8,8 +8,9 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/agent/update/ {{ $agent->id }}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('agent.update', $agent->id)}}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
                                 <input class="form-control" id="name" name="name"
@@ -33,7 +34,6 @@
                                     value="{{ old('address', $agent->address) }}" required>
                             </div>
                             <br>
-                           
                             <br>
                             <div class="form-group">
                                 @if ($agent->ktp)
@@ -67,7 +67,7 @@
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/agent/show/{{ $agent->id }}">Back</a>
+                                    href="{{route('agent.show',$agent->id)}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

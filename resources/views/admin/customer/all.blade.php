@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('customer.create') }}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -27,21 +27,16 @@
                     </thead>
                     <tbody>
                         @if ($customers->count())
-                            @foreach ($customers as $customer)
+                            @foreach ($customers as $key => $customer)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $customer->name }}</td>
                                     <td class="text-start">{{ $customer->email }}</td>
                                     <td class="text-start">{{ $customer->address }}</td>
                                     <td class="text-start">{{ $customer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $customer->id }}">Detail</a>
-                                        <form action="delete/{{ $customer->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                            href="{{ route('customer.show', $customer->id) }}">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach

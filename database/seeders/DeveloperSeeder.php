@@ -19,79 +19,79 @@ class DeveloperSeeder extends Seeder
      * Run the database seeds.
      */
     public function run(): void
-{
-    Developer::truncate();
+    {
+        Developer::truncate();
+        $numberOfDevelopers = rand(2, 5);
+        for ($i = 0; $i < $numberOfDevelopers; $i++) {
+            $licenseImages = $this->getImageUrls('license', 3);
+            $licenseString = implode('|', $licenseImages); // Menggabungkan array nama file gambar menjadi satu string dipisahkan koma
 
-    for ($i = 0; $i < 10; $i++) {
-        $licenseImages = $this->getImageUrls('license', 3);
-        $licenseString = implode('|', $licenseImages); // Menggabungkan array nama file gambar menjadi satu string dipisahkan koma
+            $developer = Developer::create([
+                'company' => fake()->company(),
+                'email' => fake()->email(),
+                'password' => bcrypt(fake()->password()),
+                'address' => fake()->address(),
+                'license' => $licenseString,
+                'telp' =>fake()->phoneNumber(),
+            ]);
+            // // Ambil data province secara urut
+            // $provinces = Province::all();
 
-        $developer = Developer::create([
-            'company' => fake()->company(),
-            'email' => fake()->email(),
-            'password' => bcrypt(fake()->password()),
-            'address' => fake()->address(),
-            'license' => $licenseString,
-            'telp' => fake()->phoneNumber(),
-        ]);
-        // // Ambil data province secara urut
-        // $provinces = Province::all();
+            // // Hubungkan developer dengan province menggunakan sync()
+            // $developer->provinces()->sync($provinces->pluck('id'));
 
-        // // Hubungkan developer dengan province menggunakan sync()
-        // $developer->provinces()->sync($provinces->pluck('id'));
+            // // Loop melalui setiap province
+            // foreach ($provinces as $province) {
+            //     // Ambil data regency yang terhubung dengan province tertentu
+            //     $regencies = $province->regencies;
 
-        // // Loop melalui setiap province
-        // foreach ($provinces as $province) {
-        //     // Ambil data regency yang terhubung dengan province tertentu
-        //     $regencies = $province->regencies;
+            //     // Hubungkan developer dengan regency menggunakan sync()
+            //     $developer->regencies()->sync($regencies->pluck('id'));
 
-        //     // Hubungkan developer dengan regency menggunakan sync()
-        //     $developer->regencies()->sync($regencies->pluck('id'));
+            //     // Loop melalui setiap regency
+            //     foreach ($regencies as $regency) {
+            //         // Ambil data district yang terhubung dengan regency tertentu
+            //         $districts = $regency->districts;
 
-        //     // Loop melalui setiap regency
-        //     foreach ($regencies as $regency) {
-        //         // Ambil data district yang terhubung dengan regency tertentu
-        //         $districts = $regency->districts;
+            //         // Hubungkan developer dengan district menggunakan sync()
+            //         $developer->districts()->sync($districts->pluck('id'));
 
-        //         // Hubungkan developer dengan district menggunakan sync()
-        //         $developer->districts()->sync($districts->pluck('id'));
+            //         // Loop melalui setiap district
+            //         foreach ($districts as $district) {
+            //             // Ambil data village yang terhubung dengan district tertentu
+            //             $villages = $district->villages;
 
-        //         // Loop melalui setiap district
-        //         foreach ($districts as $district) {
-        //             // Ambil data village yang terhubung dengan district tertentu
-        //             $villages = $district->villages;
+            //             // Hubungkan developer dengan village menggunakan sync()
+            //             $developer->villages()->sync($villages->pluck('id'));
+            //         }
+            //     }
+            // }
 
-        //             // Hubungkan developer dengan village menggunakan sync()
-        //             $developer->villages()->sync($villages->pluck('id'));
-        //         }
-        //     }
-        // }
+            // Ambil satu data province secara acak
+            $province = Province::inRandomOrder()->first();
 
-        // Ambil satu data province secara acak
-        $province = Province::inRandomOrder()->first();
+            // Hubungkan developer dengan province menggunakan attach()
+            $developer->provinces()->attach($province->id);
 
-        // Hubungkan developer dengan province menggunakan attach()
-        $developer->provinces()->attach($province->id);
+            // Ambil satu data regency yang terhubung dengan province tersebut secara acak
+            $regency = $province->regencies()->inRandomOrder()->first();
 
-        // Ambil satu data regency yang terhubung dengan province tersebut secara acak
-        $regency = $province->regencies()->inRandomOrder()->first();
+            // Hubungkan developer dengan regency menggunakan attach()
+            $developer->regencies()->attach($regency->id);
 
-        // Hubungkan developer dengan regency menggunakan attach()
-        $developer->regencies()->attach($regency->id);
+            // Ambil satu data district yang terhubung dengan regency tersebut secara acak
+            $district = $regency->districts()->inRandomOrder()->first();
 
-        // Ambil satu data district yang terhubung dengan regency tersebut secara acak
-        $district = $regency->districts()->inRandomOrder()->first();
+            // Hubungkan developer dengan district menggunakan attach()
+            $developer->districts()->attach($district->id);
 
-        // Hubungkan developer dengan district menggunakan attach()
-        $developer->districts()->attach($district->id);
+            // Ambil satu data village yang terhubung dengan district tersebut secara acak
+            $village = $district->villages()->inRandomOrder()->first();
 
-        // Ambil satu data village yang terhubung dengan district tersebut secara acak
-        $village = $district->villages()->inRandomOrder()->first();
-
-        // Hubungkan developer dengan village menggunakan attach()
-        $developer->villages()->attach($village->id);
+            // Hubungkan developer dengan village menggunakan attach()
+            $developer->villages()->attach($village->id);
+        }
     }
-}
 
 private function getImageUrls($folderName, $count, $width = 400, $height = 300)
 {
@@ -124,5 +124,12 @@ private function getImageUrls($folderName, $count, $width = 400, $height = 300)
     
     return $imageUrls;
 }
+
+// private function generatePhoneNumber()
+// {
+//     // Buat nomor telepon dengan format yang sesuai, misalnya: +62 812-3456-7890
+//     // Anda juga bisa menggunakan library lain seperti libphonenumber untuk membuat format yang lebih kompleks
+//     return '+62 ' . rand(800, 899) . '-' . rand(1000, 9999) . '-' . rand(1000, 9999);
+// }
 
 }

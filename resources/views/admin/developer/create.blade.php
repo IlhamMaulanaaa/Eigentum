@@ -20,19 +20,28 @@
                     <br>
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form method="post" action="/admin/developer/add" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('developer.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <h1>Owner</h1>
                                 <div class="form-group owner">
                                     <div class="form-group">
                                         <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control noscroll" id="name" name="name">
+                                        <input type="text"
+                                            class="form-control noscroll @error('name') is-invalid @enderror" id="name"
+                                            name="name" value="{{ old('name') }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control noscroll" id="email"
-                                            name="owner_email">
+                                        <input type="text"
+                                            class="form-control noscroll @error('owner_email') is-invalid @enderror"
+                                            id="email" name="owner_email" value="{{ old('owner_email') }}">
+                                        @error('owner_email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -42,13 +51,23 @@
                                     </div>
                                     <br>
                                     <div class="form-group">
-                                        <label for="ktp" class="form-label">ID card</label>
-                                        <input type="file" class="form-control noscroll" id="ktp" name="ktp">
+                                        <label for="ktp" class="form-label">Ktp</label>
+                                        <input type="file"
+                                            class="form-control noscroll @error('ktp') is-invalid @enderror" id="ktp"
+                                            name="ktp">
+                                        @error('ktp')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="face" class="form-label">Face</label>
-                                        <input type="file" class="form-control noscroll" id="face" name="face">
+                                        <input type="file"
+                                            class="form-control noscroll @error('face') is-invalid @enderror" id="face"
+                                            name="face">
+                                        @error('face')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                 </div>
@@ -57,12 +76,22 @@
                                 <div class="form-group developer">
                                     <div class="form-group">
                                         <label for="company" class="form-label">Company</label>
-                                        <input type="text" class="form-control noscroll" id="company" name="company">
+                                        <input type="text"
+                                            class="form-control noscroll @error('company') is-invalid @enderror"
+                                            id="company" name="company" value="{{ old('company') }}">
+                                        @error('company')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control noscroll" id="email" name="email">
+                                        <input type="email"
+                                            class="form-control noscroll @error('email') is-invalid @enderror"
+                                            id="email" name="email" value="{{ old('email') }}">
+                                        @error('email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
@@ -77,7 +106,9 @@
                                                 data-placeholder="Pilih Provinsi" required>
                                                 <option>Pilih Provinsi</option>
                                                 @foreach ($provinces as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    <option value="{{ $item->id }}"
+                                                        {{ old('provinces_id') == $item->id ? 'selected' : '' }}>
+                                                        {{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -86,6 +117,13 @@
                                             <select class="form-select" name="regencies_id" id="kota"
                                                 data-placeholder="Pilih Kota" required>
                                                 <option></option>
+                                                @if (old('provinces_id'))
+                                                    @foreach ($regencies as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ old('regencies_id') == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -93,6 +131,13 @@
                                             <select class="form-select" name="districts_id" id="kecamatan"
                                                 data-placeholder="Pilih kecamatan" required>
                                                 <option></option>
+                                                @if (old('regencies_id'))
+                                                    @foreach ($districts as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ old('districts_id') == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -100,42 +145,73 @@
                                             <select class="form-select" name="villages_id" id="desa"
                                                 data-placeholder="Pilih Desa" required>
                                                 <option></option>
+                                                @if (old('districts_id'))
+                                                    @foreach ($villages as $item)
+                                                        <option value="{{ $item->id }}"
+                                                            {{ old('villages_id') == $item->id ? 'selected' : '' }}>
+                                                            {{ $item->name }}</option>
+                                                    @endforeach
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
+
                                     <br>
+
                                     <div class="form-group">
                                         <label for="address" class="form-label">Address</label>
-                                        <input type="text" class="form-control noscroll" id="address" name="address">
+                                        <input type="text"
+                                            class="form-control noscroll @error('address') is-invalid @enderror"
+                                            id="address" name="address" value="{{ old('address') }}">
+                                        @error('address')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="nib" class="form-label">Nomor Induk Berusaha</label>
-                                        <input type="file" class="form-control noscroll" id="license_nib"
-                                            name="license[]" multiple>
+                                        <input type="file"
+                                            class="form-control noscroll @error('license') is-invalid @enderror"
+                                            id="license_nib" name="license" multiple>
+                                        @error('license')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="npwp" class="form-label">Nomor Pokok Wajib Pajak</label>
-                                        <input type="file" class="form-control noscroll" id="license_npwp"
-                                            name="license[]" multiple>
+                                        <input type="file"
+                                            class="form-control noscroll @error('license') is-invalid @enderror"
+                                            id="license_npwp" name="license" multiple>
+                                        @error('license')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="sbu" class="form-label">Sertifikat Badan Usaha</label>
-                                        <input type="file" class="form-control noscroll" id="license_sbu"
-                                            name="license[]" multiple>
+                                        <input type="file"
+                                            class="form-control noscroll @error('license') is-invalid @enderror"
+                                            id="license_sbu" name="license" multiple>
+                                        @error('license')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="telp" class="form-label">Telephone</label>
-                                        <input type="number" class="form-control noscroll" id="telp"
-                                            name="telp">
+                                        <input type="text"
+                                            class="form-control noscroll @error('telp') is-invalid @enderror"
+                                            id="telp" name="telp" value="{{ old('telp') }}">
+                                        @error('telp')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <br>
                                 <div class="float-end">
-                                    <a type="button" class="btn btn-warning" href="/admin/developer/data">Back</a>
+                                    <a type="button" class="btn btn-warning"
+                                        href="{{ route('developer.index') }}">Back</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>

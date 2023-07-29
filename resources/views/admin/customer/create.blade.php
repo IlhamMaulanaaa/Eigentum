@@ -8,7 +8,7 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/customer/add" enctype="multipart/form-data">
+                        <form method="post" action="{{route('customer.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
@@ -36,7 +36,7 @@
                             </div>
                             <br>
                             <div class="float-end">
-                                <a type="button" class="btn btn-warning" href="/admin/customer/data">Back</a>
+                                <a type="button" class="btn btn-warning" href="{{route('customer.index')}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

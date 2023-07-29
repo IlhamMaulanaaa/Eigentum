@@ -54,9 +54,7 @@ class GuideController extends Controller
             $data = Guide::where('id', '=', $data->id)->get();
 
             if($data){
-                return ApiFormatter::createApi('201', 'Created', $data).redirect('/admin/guide/data',);
-            }else{
-                return ApiFormatter::createApi('400', 'Bad Request', null);
+                return redirect(route('guide.index'));
             }
     }
 
@@ -106,9 +104,9 @@ class GuideController extends Controller
         $data->save();
 
             $data = Guide::where('id', '=', $data->id)->get();
-            $url = '/admin/guide/show/' . $id;
+            
 
-            return redirect($url);
+            return redirect(route('guide.show', $id));
         
     }
 
@@ -120,7 +118,7 @@ class GuideController extends Controller
             $data = $guide->delete();
 
             if ($data) {
-                return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/guide/data',);
+                return redirect(route('guide.index'));
             } 
         
     }
