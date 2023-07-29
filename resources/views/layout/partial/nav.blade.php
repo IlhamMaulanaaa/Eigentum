@@ -36,16 +36,16 @@
                     </h3>
                     <ul style="margin: 0; padding:0;">
                         <li>
-                            <span class="materiaz`l-icons icons-size">person</span>
-                            <a href="#">Pengaturan Profile</a>
+                            <span class="material-icons icons-size">person</span>
+                            <a href="/profile">Pengaturan Profile</a>
                         </li>
                         <li>
                             <span class="material-icons icons-size">monetization_on</span>
-                            <a href="#">Langganan</a>
+                            <a href="/pages/langganan">Langganan</a>
                         </li>
                         <li>
                             <span class="material-icons icons-size">person</span>
-                            <a href="#">yang di sukai</a>
+                            <a href="/favorite">yang di sukai</a>
                         </li>
                         <li>
                             <span class="material-icons icons-size">person</span>

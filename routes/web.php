@@ -146,13 +146,19 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
     });
+    
+    
 });
-Route::get('/favorite', function () {
-    return view('pages.page.favorite');
-});
+
+//klo ditaruh di dalam pages css nya tidak nampil
 Route::get('/profile', function () {
     return view('pages.page.profile');
 });
+
+Route::get('/favorite', function () {
+    return view('pages.page.favorite');
+});
+
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
 });
