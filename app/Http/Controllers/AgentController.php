@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password;
 
 class AgentController extends Controller
 {
@@ -42,14 +43,26 @@ class AgentController extends Controller
 
     public function store(Request $request)
     {
+        // try {
             $request->validate([
                 'email' => 'required|email|unique:agents',
-                'password'  => 'required|min:8',
+                'password'  =>  [
+                    'required',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
                 'name'    => 'required',
                 'address'   => 'required',
                 'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'telp' => 'required|regex:/^[0-9+\-() ]+$/',
+                // 'province_id' => 'required',
+                // 'regency_id' => 'required',
+                // 'district_id' => 'required',
+                // 'village_id' => 'required',
             ],[
                 'email.required' => 'Email tidak boleh kosong',
                 'email.unique' => 'Email sudah terdaftar',
@@ -66,7 +79,11 @@ class AgentController extends Controller
                 'face.mimes' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'face.max' => 'Ukuran Foto maksimal 10MB',
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
-                'telp.regex' => 'Nomor telepon tidak valid',
+                'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
+                // 'province_id.required' => 'Provinsi tidak boleh kosong',
+                // 'regency_id.required' => 'Kota tidak boleh kosong',
+                // 'district_id.required' => 'Kecamatan tidak boleh kosong',
+                // 'village_id.required' => 'Desa tidak boleh kosong',
             ]);
             
             $imageArray = [];
@@ -75,16 +92,6 @@ class AgentController extends Controller
                     $imageArray[] = $imageFileName;
                     $request->$fieldName->storeAs('public', $imageFileName);
                 }
-
-            // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
-            $regencyId = $request->regencies_id;
-            $randomProperty = Property::whereHas('regencies', function ($query) use ($regencyId) {
-                $query->where('regency_id', $regencyId);
-            })->inRandomOrder()->first();
-
-            if (!$randomProperty) {
-                return redirect()->back()->with('error', 'Tidak ada agen yang tersedia untuk properti ini');
-            }
 
             $agent = Agent::create([
                 'email' => $request->email,
@@ -96,9 +103,19 @@ class AgentController extends Controller
                 'telp'  => $request->telp,
             ]);
 
+            // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
+            $regencyId = $request->regencies_id;
+            $randomProperty = Property::whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('regency_id', $regencyId);
+            })->inRandomOrder()->first();
+
+            if ($randomProperty) {
+                $agent->properties()->attach($randomProperty->id);
+            } else {
+                $agent->save();
+            }
+
             $agent->save();
-            
-            $agent->properties()->attach($randomProperty->id);
             $agent->provinces()->attach($request->provinces_id);
             $agent->regencies()->attach($request->regencies_id);
             $agent->districts()->attach($request->districts_id);
@@ -106,10 +123,10 @@ class AgentController extends Controller
             
             $agent = Agent::where('id', '=', $agent->id)->get();
             
-            if ($agent) {
-                return redirect(route('agent.index'));
-            } 
-
+            return redirect(route('agent.index'));
+        // } catch (Exception $e) {
+        //     return $e;
+        // }
         
     }
 
@@ -126,15 +143,35 @@ class AgentController extends Controller
 
     public function update(Request $request,string $id)
     {
-        
+        try{
             $request->validate([
-                'name'    => 'required',
+                'name'    => 'nullable',
                 'email' => 'nullable|email',
-                'password'  => 'nullable|min:8',
-                'address'   => 'required',
+                'password'  => [
+                    'nullable',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
+                'address'   => 'nullable',
                 'ktp'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face'    => 'nullable|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
+            ],[
+                'email.email' => 'Email tidak valid',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'password.numbers' => 'Password harus mengandung angka',
+                'password.symbols' => 'Password harus mengandung simbol',
+                'ktp.image' => 'KTP harus berupa gambar',
+                'ktp.mimes' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'ktp.max' => 'Ukuran KTP maksimal 10MB',
+                'face.image' => 'Foto harus berupa gambar',
+                'face.mimes' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'face.max' => 'Ukuran Foto maksimal 10MB',
+                'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
             ]);
 
             $agent = Agent::findOrfail($id);
@@ -160,11 +197,11 @@ class AgentController extends Controller
             }
 
             $agent->save();
-
-
             $agent = Agent::where('id', '=', $agent->id)->get();
             return redirect(route('agent.show', $id));
-        
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
 

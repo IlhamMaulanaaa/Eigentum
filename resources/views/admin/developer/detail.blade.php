@@ -103,8 +103,11 @@
                                         readonly disabled>
                                 </div>
                             </div>
-
-
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control noscroll" id="address" name="address"
+                                    value="{{ $developer->address }}" readonly disabled>
+                            </div><br>
                             <div class="form-group">
                                 <label for="license" class="form-label">License</label>
                                 @foreach ($licenseFile as $index => $file)
@@ -140,7 +143,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a href="{{ route('property.create', $developer->id) }}" class="btn btn-success">Tambah
+                                <a href="{{ route('propertyid.create', $developer->id) }}" class="btn btn-success">Tambah
                                     Property</a>
                             </div>
                             <br>

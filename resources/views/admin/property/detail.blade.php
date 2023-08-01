@@ -47,7 +47,6 @@
                                         readonly disabled>
                                 </div>
                             </div>
-                            <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Address</label>
                                 <input class="form-control" id="address" name="address" readonly disabled
@@ -70,7 +69,9 @@
                                 <label for="properties" class="form-label">Agent</label>
                                 <ul>
                                     @foreach ($property->agents as $agent)
-                                        <li>{{ $agent->name }}</li>
+                                        <li>{{ $agent->name }}
+                                            <a href="{{ route('agent.show', $agent->id) }}" class="text-warning">Detail</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -86,7 +87,7 @@
                                         </li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('unit.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
+                                <a href="{{ route('unitid.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
                             </div>
                             <br>
                             <div class="form-group text-end">

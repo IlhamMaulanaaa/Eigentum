@@ -52,7 +52,6 @@
                                             </div>
                                         @endforeach
                                     </div>
-
                                     <br>
                                     <div class="col">
                                         <div class="form-group">
@@ -192,7 +191,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="form-group mb-4">
                                         <label for="etcimg" class="form-label">Etc</label>
                                         <div class="form-group row g-2">
@@ -252,22 +251,6 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group invisible">
-                                    <label for="" class="form-label">Property</label>
-                                    <select class="form-control" id="property_id" name="property_id">
-                                        @foreach ($properties as $property)
-                                            @if (old('property_id', $unit->property_id == $property->id))
-                                                <option name="property_id" value="{{ $property->id }}" selected>
-                                                    {{ $property->title }}
-                                                </option>
-                                            @endif
-                                            <option name="property_id" value="{{ $property->id }}">
-                                                {{ $property->title }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <br>
                                 <div class="float-end">
                                     <a type="button" class="btn btn-warning"
                                         href="{{ route('unit.show', $unit->id) }}">Back</a>
@@ -304,11 +287,8 @@
 
                 function btnsuccess(elementClass) {
                     var html =
-                        '<div class="row g-2 remove"><div class="col-auto"><input type="file" class="form-control noscroll" id="' +
-                        elementClass.substr(1) + '" name="' + elementClass.substr(1) +
-                        '_insert[]" multiple></div><div class="input-group-btn col-auto">@method('DELETE') <
-                    button class = "btn btn-danger"
-                    type = "button" > Remove < /button></div > < /div>';
+                        '<div class="row g-2 remove"><div class="col-auto"><input type="file" class="form-control noscroll" id="' + elementClass.substr(1) + '" name="' + elementClass.substr(1) +
+                        '_insert[]" multiple></div><div class="input-group-btn col-auto"><button class = "btn btn-danger" type = "button"> Remove </button></div> </div>';
                     $(elementClass).append(html);
                 }
 

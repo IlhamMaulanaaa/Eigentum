@@ -7,7 +7,6 @@ use App\Models\Property;
 use App\Models\Specification;
 use App\Models\Status;
 use App\Models\Unit;
-use App\Models\UnitStatus;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -23,7 +22,6 @@ class UnitSeeder extends Seeder
     public function run()
     {
         Unit::truncate();
-        UnitStatus::truncate();
         Image::truncate();
         Specification::truncate();
 
@@ -67,7 +65,7 @@ class UnitSeeder extends Seeder
             $statuses = Status::pluck('id')->toArray();
 
             foreach ($units as $unit) {
-                // Tentukan jumlah status yang akan dihubungkan (misalnya, antara 1 hingga 3 status)
+                // Tentukan jumlah status yang akan dihubungkan (misalnya, antara 1 hingga 2 status)
                 $numberOfStatuses = rand(1, 2);
     
                 // Ambil status secara acak dari daftar status

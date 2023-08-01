@@ -19,7 +19,7 @@ class OwnerSeeder extends Seeder
     {
         Owner::truncate();
 
-        $developerIds = Developer::pluck('id')->toArray();
+        $developerIds = Developer::all();
 
         foreach ($developerIds as $developerId) {
             Owner::create([
@@ -28,7 +28,7 @@ class OwnerSeeder extends Seeder
                 'owner_password' => bcrypt(fake()->password()),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
-                'developer_id' => $developerId,
+                'developer_id' => $developerId->id,
             ]);
         }
     }

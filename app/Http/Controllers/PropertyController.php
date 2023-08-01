@@ -15,6 +15,7 @@ use App\Models\Unit;
 use App\Models\Village;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -45,30 +46,21 @@ class PropertyController extends Controller
 
     public function store(Request $request, $developerId)
     {
+        try {
             $request->validate([
                 'title'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
                 'type_id'   => 'required',
-            ],[
-                'title.required' => 'Nama property tidak boleh kosong',
-                'description.required' => 'Deskripsi tidak boleh kosong',
-                'address.required' => 'Alamat tidak boleh kosong',
+                // 'province_id' => 'required',
+                // 'regency_id' => 'required',
+                // 'district_id' => 'required',
+                // 'village_id' => 'required',
             ]);
             
             $developer = Developer::findOrfail($developerId);
             if (!$developer) {
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
-            }
-
-            // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
-            $regencyId = $request->regencies_id;
-            $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
-                $query->where('regency_id', $regencyId);
-            })->inRandomOrder()->first();
-
-            if (!$randomAgent) {
-                return redirect()->back()->with('error', 'Tidak ada agen yang tersedia untuk properti ini');
             }
 
             $property = Property::create([
@@ -80,20 +72,28 @@ class PropertyController extends Controller
                 // 'agent_id' => $randomAgentId,
             ]);
 
-            // $property = PropertyAgent::create([
-            //     'agent_id'  => $agent->id,
-            //     'property_id' => $property->id,
-            // ]);
-
-            $property->agents()->attach($randomAgent->id);
-            $developer->provinces()->attach($request->provinces_id);
-            $developer->regencies()->attach($request->regencies_id);
-            $developer->districts()->attach($request->districts_id);
-            $developer->villages()->attach($request->villages_id);
-
-            if($property){
-                return redirect(route('property.index'));
+            $regencyId = $request->regencies_id;
+            $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('regency_id', $regencyId);
+            })->inRandomOrder()->first();
+            
+            if ($randomAgent) {
+                $property->agents()->attach($randomAgent->id);
+            } else {
+                $property->save();
             }
+
+            $property->save();
+            $property->provinces()->attach($request->provinces_id);
+            $property->regencies()->attach($request->regencies_id);
+            $property->districts()->attach($request->districts_id);
+            $property->villages()->attach($request->villages_id);
+
+            return redirect(route('property.index'));
+
+        }catch (Exception $e) {
+            return $e;
+        }
     }
 
 
@@ -124,7 +124,6 @@ class PropertyController extends Controller
                 'description'   => 'nullable',
                 'address'   => 'nullable',
                 'type_id'   => 'nullable',
-                'developer_id'  => 'nullable',
             ]);
 
             $property = Property::findOrfail($id);
@@ -134,15 +133,12 @@ class PropertyController extends Controller
                 'description'   => $request->description,
                 'address'   => $request->address,
                 'type_id'   => $request->type_id,
-                'developer_id'  => $request->developer_id,
             ]);
 
             // $property->agents()->sync($request->input('agent_id'));
 
             $property = Property::where('id','=', $property->id)->get();
-            $url = '/admin/property/show/' . $id;
-
-            return redirect($url);
+            return redirect(route('property.show', $id));
         
     }
 
@@ -150,9 +146,22 @@ class PropertyController extends Controller
     
     public function destroy(string $id)
     {
-        
             $property = Property::findOrfail($id);
-            $property->units()->delete();
+            foreach ($property->units as $unit) {
+                foreach ($unit->images() as $image) {
+                    $imagePath = 'storage/' . $image->image; 
+                    Storage::delete($imagePath);
+                    $image->delete();
+                }
+                $unit->specifications()->delete();
+                $unit->statuses()->detach();
+                $unit->delete();
+            }
+            // $property->types()->delete();
+            $property->provinces()->detach();
+            $property->regencies()->detach();
+            $property->districts()->detach();
+            $property->villages()->detach();
             $property->agents()->detach();
             $property->delete();
 

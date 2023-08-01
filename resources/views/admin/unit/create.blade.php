@@ -22,7 +22,7 @@
                     <br>
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form method="post" action="{{ route('unit.store', $property->id) }}"
+                            <form method="post" action="{{ route('unitid.store', $property->id) }}"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
@@ -209,6 +209,19 @@
                 </div>
             </div>
         </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                    $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.invalid-feedback').remove();
+                        if ($(this).hasClass('form-check-input')) {
+                            $(this).closest('.form-check').find('.invalid-feedback').remove();
+                        }
+                    });
+                });
+        </script>
 
         <script type="text/javascript">
             $('.btn-livingroomimg').on('click', function() {

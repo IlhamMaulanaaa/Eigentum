@@ -23,7 +23,6 @@ class AgentSeeder extends Seeder
     public function run()
     {
         Agent::truncate();
-        PropertyAgent::truncate();
 
         for ($i = 0; $i < 10; $i++) {
             $agent = Agent::create([

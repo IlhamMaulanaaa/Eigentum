@@ -32,14 +32,23 @@
                                     <br>
                                     <div class="form-group row col-12">
                                         <div class="form-group col-6">
-                                            <label for="email" class="form-label">Oompany Email</label>
-                                            <input type="email" class="form-control" id="email" name="email"
-                                                value="{{ old('email', $developer->email) }}" required>
+                                            <label for="email" class="form-label">Company Email</label>
+                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                                id="email" name="email" value="{{ old('email', $developer->email) }}"
+                                                required>
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <br>
                                         <div class="form-group col-6">
                                             <label for="password" class="form-label">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password">
+                                            <input type="password"
+                                                class="form-control @error('password') is-invalid @enderror" id="password"
+                                                name="password">
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <br>
                                     </div>
@@ -56,14 +65,23 @@
                                         <br>
                                         <div class="form-group col-6">
                                             <label for="owner_email" class="form-label">Owner Email</label>
-                                            <input type="text" class="form-control" id="owner_email" name="owner_email"
+                                            <input type="text"
+                                                class="form-control @error('owner_email') is-invalid @enderror"
+                                                id="owner_email" name="owner_email"
                                                 value="{{ old('owner_email', $developer->owners->owner_email) }}" required>
+                                            @error('owner_email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <br>
                                         <div class="form-group col-6">
                                             <label for="owner_password" class="form-label">Owner Password</label>
-                                            <input type="password" class="form-control" id="owner_password"
-                                                name="owner_password">
+                                            <input type="password"
+                                                class="form-control noscroll @error('owner_password') is-invalid @enderror"
+                                                id="password" name="owner_password">
+                                            @error('owner_password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <br>
                                     </div>
@@ -72,7 +90,7 @@
                                 <div class="form-group row">
                                     <div class="col-auto">
                                         <div class="form-group">
-                                            <label for="ktp" class="form-label">Id Card</label>
+                                            <label for="ktp" class="form-label">Ktp</label>
                                             @if ($developer->owners->ktp)
                                                 <div class="mb-3">
                                                     <img src="{{ asset('storage/' . $developer->owners->ktp) }}"
@@ -98,42 +116,14 @@
                                     </div>
                                 </div>
                                 <br>
-                                {{-- <div class="form-group">
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
-                                        <select class="form-select" name="provinces_id" id="provinsi" 
-                                            data-placeholder="Pilih Provinsi">
-                                            <option value=""></option>
-                                            @foreach ($provinces as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
-                                        <select class="form-select" name="regencies_id" id="kota"
-                                            data-placeholder="Pilih Kota">
-                                            <option></option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
-                                        <select class="form-select" name="districts_id" id="kecamatan"
-                                            data-placeholder="Pilih kecamatan">
-                                            <option></option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 col-form-label" for="desa">Desa</label>
-                                        <select class="form-select" name="villages_id" id="desa"
-                                            data-placeholder="Pilih Desa">
-                                            <option></option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control noscroll" id="address" name="address"
+                                        value="{{ old('address', $developer->address) }}">
                                 </div>
-                                <br> --}}
+                                <br>
                                 <div class="col-auto">
-                                    @foreach ($licenses as $index => $license)
+                                    @foreach ($licenseFile as $index => $license)
                                         <div class="file-container my-2">
                                             <a href="{{ route('pdf.preview', ['file' => $license]) }}"
                                                 target="_blank">Tampilkan
@@ -146,8 +136,12 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="telp" class="form-label">Telephone</label>
-                                    <input type="text" class="form-control" id="telp" name="telp"
-                                        value="{{ old('telp', $developer->telp) }}" required>
+                                    <input type="text" class="form-control @error('telp') is-invalid @enderror"
+                                        id="telp" name="telp" value="{{ old('telp', $developer->telp) }}"
+                                        required>
+                                    @error('telp')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <br>
                                 <div class="float-end">
@@ -172,6 +166,18 @@
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.invalid-feedback').remove();
+                        if ($(this).hasClass('form-check-input')) {
+                            $(this).closest('.form-check').find('.invalid-feedback').remove();
+                        }
+                    });
+                });
+            </script>
 
             {{-- <script>
                 $(document).ready(function() {

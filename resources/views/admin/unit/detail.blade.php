@@ -30,6 +30,11 @@
                                     <input class="form-control" value="{{ $unit->properties->title }}" readonly disabled>
                                 </div>
                                 <br>
+                                <div class="form-group col-auto">
+                                    <label for="" class="form-label">Address</label>
+                                    <input class="form-control" value="{{ $unit->properties->address }}" readonly disabled>
+                                </div>
+                                <br>
                                 <div class="form-group">
                                     <label for="" class="form-label">Status</label>
                                     <ul>
@@ -48,7 +53,6 @@
                                             alt="" width="360">
                                     </div>
                                 </div>
-
                             </div>
                             <br>
                             <div class="form-group">
@@ -180,11 +184,6 @@
                                     <input class="form-control" value="{{ $unit->specifications->floor }}" readonly
                                         disabled>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="form-group col-auto">
-                                <label for="" class="form-label">Address</label>
-                                <input class="form-control" value="{{ $unit->properties->address }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group text-end">

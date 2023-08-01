@@ -22,6 +22,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('unit_status', function (Blueprint $table) {
+            $table->bigInteger('unit_id');
+            $table->bigInteger('status_id');
+            $table->primary(['unit_id', 'status_id']);
+            $table->softDeletes();
+        });
     }
 
     /**

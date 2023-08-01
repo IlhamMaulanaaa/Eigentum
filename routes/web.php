@@ -58,11 +58,11 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     Route::resource('agent', AgentController::class);
     Route::resource('developer', DeveloperController::class);
     Route::resource('property', PropertyController::class);
-    Route::get('/property/create/{developerId}', [PropertyController::class, 'create'])->name('property.create');
-    Route::post('/property/add/{developerId}', [PropertyController::class, 'store'])->name('property.store');
+    Route::get('/property/create/{developerId}', [PropertyController::class, 'create'])->name('propertyid.create');
+    Route::post('/property/{developerId}', [PropertyController::class, 'store'])->name('propertyid.store');
     Route::resource('unit', UnitController::class);
-    Route::get('/unit/create/{propertyId}', [UnitController::class, 'create'])->name('unit.create');
-    Route::post('/unit/add/{propertyId}', [UnitController::class, 'store'])->name('unit.store');
+    Route::get('/unit/create/{propertyId}', [UnitController::class, 'create'])->name('unitid.create');
+    Route::post('/unit/{propertyId}', [UnitController::class, 'store'])->name('unitid.store');
     Route::resource('specification', SpecificationController::class);
     Route::resource('type', TypeController::class);
     Route::resource('guide', GuideController::class);

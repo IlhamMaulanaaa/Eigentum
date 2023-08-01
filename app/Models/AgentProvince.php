@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class AgentProvince extends Model
+class AgentProvince extends Pivot
 {
-    use HasFactory;
-
-    protected $table = 'agent_provinces';
+    use SoftDeletes;
+    protected $table = 'agent_province';
+    protected $fillable = ['agent_id', 'province_id'];
 }

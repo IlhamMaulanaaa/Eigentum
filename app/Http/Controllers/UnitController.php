@@ -8,10 +8,10 @@ use App\Models\Image;
 use App\Models\Status;
 use App\Models\Property;
 use Illuminate\Support\Str;
-use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
 use App\Models\Specification;
 use Illuminate\Support\Facades\Storage;
+
 
 
 class UnitController extends Controller
@@ -37,13 +37,14 @@ class UnitController extends Controller
 
     public function store(Request $request,  $propertyId)
     {
+        try{
         $request->validate([
                 'title' => 'required',
                 'description' => 'required',
-                'price' => 'required',
-                'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'price' => 'required|max:7',
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'bedroom' => 'required',
-                'bathroom' => 'required',
+                'bathroom' => 'required',  
                 'surface_area' => 'required',
                 'building_area' => 'required',
                 'floor' => 'required',
@@ -57,6 +58,9 @@ class UnitController extends Controller
                 'title.required' => 'Nama unit tidak boleh kosong',
                 'description.required' => 'Deskripsi tidak boleh kosong',
                 'price.required' => 'Harga tidak boleh kosong',
+                'price.numbers' => 'Harga harus berupa angka',
+                'price.max' => 'Harga harus 7 digit',
+                'image.required' => 'Gambar tidak boleh kosong',
                 'image.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
                 'image.max' => 'Ukuran gambar maksimal 10MB',
                 'bedroom.required' => 'Jumlah kamar tidur tidak boleh kosong',
@@ -133,9 +137,10 @@ class UnitController extends Controller
 
             $unit->statuses()->attach($request->input('status_id'));
 
-            return redirect('/admin/unit/data');
-
-        
+            return redirect(route('unit.index'))->with('success', 'Data Created');
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 
     public function show(Unit $unit, Request $request)
@@ -169,7 +174,6 @@ class UnitController extends Controller
                     'title' => 'required',
                     'description' => 'required',
                     'price' => 'required',
-                    'property_id' => 'required',
                     'bedroom' => 'required',
                     'bathroom' => 'required',
                     'surface_area' => 'required',
@@ -180,6 +184,25 @@ class UnitController extends Controller
                     'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
                     'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
                     'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+                ],[
+                    'title.required' => 'Nama unit tidak boleh kosong',
+                    'description.required' => 'Deskripsi tidak boleh kosong',
+                    'price.required' => 'Harga tidak boleh kosong',
+                    'bedroom.required' => 'Jumlah kamar tidur tidak boleh kosong',
+                    'bathroom.required' => 'Jumlah kamar mandi tidak boleh kosong',
+                    'surface_area.required' => 'Luas tanah tidak boleh kosong',
+                    'building_area.required' => 'Luas bangunan tidak boleh kosong',
+                    'floor.required' => 'Lantai tidak boleh kosong',
+                    'livingroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                    'livingroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                    'bedroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                    'bedroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                    'bathroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                    'bathroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                    'kitchenimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                    'kitchenimg.*.max' => 'Ukuran gambar maksimal 10MB',
+                    'etcimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+                    'etcimg.*.max' => 'Ukuran gambar maksimal 10MB',
                 ]);
 
                 if ($request->hasFile('image')) {
@@ -193,7 +216,6 @@ class UnitController extends Controller
                     'title' => $request->title,
                     'description' => $request->description,
                     'price' => $request->price,
-                    'property_id' => $request->property_id,
                 ]);
 
                 $unit->save();
@@ -225,7 +247,7 @@ class UnitController extends Controller
                             }
             
                             $uploadedImage = $request->file($column . '_update.' . $index);
-                            $imageName = $uploadedImage . '.' . $uploadedImage->getClientOriginalExtension();
+                            $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8)  . '.' . $uploadedImage->getClientOriginalExtension();
                             $uploadedImage->storeAs('public', $imageName);
                             $existingImages[$index] = $imageName;
                         }
@@ -237,7 +259,7 @@ class UnitController extends Controller
                         $newImages = [];
             
                         foreach ($uploadedImages as $uploadedImage) {
-                            $imageName = Str::lmiit($uploadedImage,8) . '.' . $uploadedImage->getClientOriginalExtension();
+                            $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8)  . '.' . $uploadedImage->getClientOriginalExtension();
                             $uploadedImage->storeAs('public', $imageName);
                             $existingImages[] = $imageName;
                         }

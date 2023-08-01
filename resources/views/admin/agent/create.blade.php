@@ -41,69 +41,88 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control noscroll" id="password" name="password">
+                                    <input type="password"
+                                        class="form-control noscroll @error('password') is-invalid @enderror" id="password"
+                                        name="password" value="{{ old('password') }}">
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
-                                        <select class="form-select" name="provinces_id" id="provinsi"
-                                            data-placeholder="Pilih Provinsi" required>
+                                        <select class="form-select"
+                                            name="provinces_id" id="provinsi" data-placeholder="Pilih Provinsi" required>
                                             <option>Pilih Provinsi</option>
                                             @foreach ($provinces as $item)
                                                 <option value="{{ $item->id }}"
-                                                    {{ old('provinces_id') == $item->id ? 'selected' : '' }}>
+                                                    {{ old('provinces_id') == $item->id }}>
                                                     {{ $item->name }}</option>
                                             @endforeach
+                                            @error('province_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
-                                        <select class="form-select" name="regencies_id" id="kota"
+                                        <select class="form-select " name="regencies_id" id="kota"
                                             data-placeholder="Pilih Kota" required>
                                             <option></option>
                                             @if (old('provinces_id'))
                                                 @foreach ($regencies as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ old('regencies_id') == $item->id ? 'selected' : '' }}>
+                                                        {{ old('regencies_id') == $item->id }}>
                                                         {{ $item->name }}</option>
                                                 @endforeach
                                             @endif
+                                            @error('regency_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
-                                        <select class="form-select" name="districts_id" id="kecamatan"
+                                        <select class="form-select " name="districts_id" id="kecamatan"
                                             data-placeholder="Pilih kecamatan" required>
                                             <option></option>
                                             @if (old('regencies_id'))
                                                 @foreach ($districts as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ old('districts_id') == $item->id ? 'selected' : '' }}>
+                                                        {{ old('districts_id') == $item->id }}>
                                                         {{ $item->name }}</option>
                                                 @endforeach
                                             @endif
+                                            @error('district_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 col-form-label" for="desa">Desa</label>
-                                        <select class="form-select" name="villages_id" id="desa"
+                                        <select class="form-select " name="villages_id" id="desa"
                                             data-placeholder="Pilih Desa" required>
                                             <option></option>
                                             @if (old('districts_id'))
                                                 @foreach ($villages as $item)
                                                     <option value="{{ $item->id }}"
-                                                        {{ old('villages_id') == $item->id ? 'selected' : '' }}>
+                                                        {{ old('villages_id') == $item->id }}>
                                                         {{ $item->name }}</option>
                                                 @endforeach
                                             @endif
+                                            @error('village_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </select>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="address" class="form-label">Address</label>
-                                    <input type="text" class="form-control noscroll @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}">
+                                    <input type="text"
+                                        class="form-control noscroll @error('address') is-invalid @enderror" id="address"
+                                        name="address" value="{{ old('address') }}">
                                     @error('address')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -111,7 +130,8 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="ktp" class="form-label">Ktp</label>
-                                    <input type="file" class="form-control noscroll @error('ktp') is-invalid @enderror" id="ktp" name="ktp">
+                                    <input type="file" class="form-control noscroll @error('ktp') is-invalid @enderror"
+                                        id="ktp" name="ktp">
                                     @error('ktp')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -119,7 +139,8 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="face" class="form-label">Face</label>
-                                    <input type="file" class="form-control noscroll @error('face') is-invalid @enderror" id="face" name="face">
+                                    <input type="file" class="form-control noscroll @error('face') is-invalid @enderror"
+                                        id="face" name="face">
                                     @error('face')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -127,7 +148,9 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="telp" class="form-label">Telephone</label>
-                                    <input type="text" class="form-control noscroll @error('telp') is-invalid @enderror" id="telp" name="telp" value="{{ old('telp') }}">
+                                    <input type="text"
+                                        class="form-control noscroll @error('telp') is-invalid @enderror" id="telp"
+                                        name="telp" value="{{ old('telp') }}">
                                     @error('telp')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -155,6 +178,18 @@
 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.invalid-feedback').remove();
+                        if ($(this).hasClass('form-check-input')) {
+                            $(this).closest('.form-check').find('.invalid-feedback').remove();
+                        }
+                    });
+                });
+            </script>
 
             <script>
                 $(document).ready(function() {

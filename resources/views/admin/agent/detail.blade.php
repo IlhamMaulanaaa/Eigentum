@@ -21,12 +21,6 @@
                                     value="{{ $agent->email }}" readonly disabled>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" name="address"
-                                    value="{{ $agent->address }}" readonly disabled>
-                            </div>
-                            <br>
                             <div class="form-group row col-12">
                                 <div class="form-group col-auto mb-3">
                                     <label for="Provinces" class="form-label">Provinsi</label>
@@ -52,6 +46,11 @@
                                         value="{{ implode(', ',$agent->villages()->pluck('name')->toArray()) }}" readonly
                                         disabled>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="address" name="address"
+                                    value="{{ $agent->address }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group col-auto row">
@@ -81,7 +80,11 @@
                                 <label for="properties" class="form-label">Properties</label>
                                 <ul>
                                     @foreach ($agent->properties as $property)
-                                        <li>{{ $property->title }}</li>
+                                        <li>{{ $property->title }}
+                                            <a href="{{ route('property.show', $property->id) }}"
+                                                class="text-warning">Detail</a>
+                                            <a href="{{ route('property.edit', $property->id) }}">Edit</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>

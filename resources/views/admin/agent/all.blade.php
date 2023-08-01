@@ -22,7 +22,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
                             <th scope="col">Kota</th>
-                            <th scope="col">Ktp</th>
+                            <th scope="col">Face</th>
                             <th scope="col">Telephone</th>
                             <th scope="col"></th>
                         </tr>
@@ -38,7 +38,7 @@
                                     <td class="text-start">
                                         {{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</td>
                                     </td>
-                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}" width="60"
+                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->face) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-start">{{ $agent->telp }}</td>
                                     <td class="text-end">

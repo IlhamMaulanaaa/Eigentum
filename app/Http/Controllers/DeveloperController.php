@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password;
 
 
 class DeveloperController extends Controller
@@ -40,43 +41,74 @@ class DeveloperController extends Controller
 
     public function store(Request $request)
     {
+        try{
             $request->validate([
                 'company'   => 'required',
                 'email' => 'required|email|unique:developers',
-                'password'  => 'required|min:8',
+                'password'  => [
+                    'required',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
                 'address'   => 'required',
                 'license.*' => 'required|file|max:10240',
                 'telp' => 'required|regex:/^[0-9+\-() ]+$/',
                 'name' => 'required',
                 'owner_email' => 'required|email|unique:owners',
-                'owner_password' => 'required|min:8',
-                'ktp' => 'required|file|max:10240',
-                'face' => 'required|file|max:10240',
+                'owner_password' => [
+                    'required',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
+                'ktp' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                // 'province_id' => 'required',
+                // 'regency_id' => 'required',
+                // 'district_id' => 'required',
+                // 'village_id' => 'required',
             ],[
                 'company.required' => 'Nama Perusahaan tidak boleh kosong',
                 'email.required' => 'Email tidak boleh kosong',
+                'email.email' => 'Email harus mengandung @',
                 'email.unique' => 'Email sudah terdaftar',
                 'password.required' => 'Password tidak boleh kosong',
                 'password.min' => 'Password minimal 8 karakter',
+                'password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'password.numbers' => 'Password harus mengandung angka',
+                'password.symbols' => 'Password harus mengandung simbol',
                 'address.required' => 'Alamat tidak boleh kosong',
                 'license.*.required' => 'Lisensi tidak boleh kosong',
                 'license.*.file' => 'Lisensi harus berupa file',
                 'license.*.max' => 'Ukuran lisensi maksimal 10MB',
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
-                'telp.regex' => 'Nomor telepon tidak valid',
+                'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
                 'name.required' => 'Nama tidak boleh kosong',
                 'owner_email.required' => 'Email tidak boleh kosong',
+                'owner_email.email' => 'Email harus mengandung @',
                 'owner_email.unique' => 'Email sudah terdaftar',
                 'owner_password.required' => 'Password tidak boleh kosong',
                 'owner_password.min' => 'Password minimal 8 karakter',
+                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'owner_password.numbers' => 'Password harus mengandung angka',
+                'owner_password.symbols' => 'Password harus mengandung simbol',
                 'ktp.required' => 'KTP tidak boleh kosong',
-                'ktp.file' => 'KTP harus berupa file',
+                'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'ktp.max' => 'Ukuran KTP maksimal 10MB',
                 'face.required' => 'Foto tidak boleh kosong',
-                'face.file' => 'Foto harus berupa file',
+                'face.file' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'face.max' => 'Ukuran foto maksimal 10MB',
+                // 'province_id.required' => 'Provinsi harus dipilih.',
+                // 'regency_id.required' => 'Kabupaten / Kota harus dipilih.',
+                // 'district_id.required' => 'Kecamatan harus dipilih.',
+                // 'village_id.required' => 'Desa harus dipilih.',
             ]);
-
+            
             $images = ['ktp', 'face']; 
             $imageNames = [];
 
@@ -126,22 +158,24 @@ class DeveloperController extends Controller
             $developer = Developer::where('id', '=', $developer->id)->get();
             
             return redirect(route('developer.index'));
-        
+        }catch(Exception $e){
+            return $e;
+        }
     }
 
     public function show(Developer $developer, Owner $owner)
     {
         $licenseFile = explode("|", $developer->license); 
-        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
-        return view('admin.developer.detail', compact('developer', 'licenseFile',  'fileNames' , ));
+        // $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        return view('admin.developer.detail', compact('developer', 'licenseFile',  ));
     }
     
     public function edit(Developer $developer)
     {
-        $licenses = is_string($developer->license) ? explode('|', $developer->license) : []; 
-        $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
+        $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : []; 
+        // $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
         $provinces = Province::all();
-        return view('admin.developer.edit', compact('developer', 'licenses', 'fileNames', 'provinces'));
+        return view('admin.developer.edit', compact('developer', 'licenseFile','provinces'));
     }
 
     public function update(Request $request,string $id)
@@ -150,15 +184,58 @@ class DeveloperController extends Controller
             $request->validate([
                 'company'   => 'nullable',
                 'email' => 'nullable|email',
-                'password'  => 'nullable|min:8',
+                'password'  => [
+                    'nullable',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
                 'address'   => 'nullable',
                 'license.*' => 'nullable|file|max:10240',
                 'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
                 'name' => 'nullable',
                 'owner_email' => 'nullable|email',
-                'owner_password' => 'nullable|min:8',
-                'ktp' => 'nullable|file|max:10240',
-                'face' => 'nullable|file|max:10240',
+                'owner_password' => [
+                    'nullable',
+                    'string',
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols(), 
+                ],
+                'ktp' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+            ],[
+                'company.required' => 'Nama Perusahaan tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.email' => 'Email harus mengandung @',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'password.numbers' => 'Password harus mengandung angka',
+                'password.symbols' => 'Password harus mengandung simbol',
+                'address.required' => 'Alamat tidak boleh kosong',
+                'license.*.required' => 'Lisensi tidak boleh kosong',
+                'license.*.file' => 'Lisensi harus berupa file',
+                'license.*.max' => 'Ukuran lisensi maksimal 10MB',
+                'telp.required' => 'Nomor telepon tidak boleh kosong',
+                'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
+                'name.required' => 'Nama tidak boleh kosong',
+                'owner_email.required' => 'Email tidak boleh kosong',
+                'owner_email.email' => 'Email harus mengandung @',
+                'owner_password.required' => 'Password tidak boleh kosong',
+                'owner_password.min' => 'Password minimal 8 karakter',
+                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'owner_password.numbers' => 'Password harus mengandung angka',
+                'owner_password.symbols' => 'Password harus mengandung simbol',
+                'ktp.required' => 'KTP tidak boleh kosong',
+                'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'ktp.max' => 'Ukuran KTP maksimal 10MB',
+                'face.required' => 'Foto tidak boleh kosong',
+                'face.file' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'face.max' => 'Ukuran foto maksimal 10MB',
             ]);
 
             $developer= Developer::findOrfail($id);
@@ -167,6 +244,7 @@ class DeveloperController extends Controller
                 'company'   => $request->company,
                 'email' => $request->email,
                 'password'  => bcrypt($request->password),
+                'address'   => $request->address,
                 'telp'  => $request->telp,
             ]);
 
@@ -234,9 +312,26 @@ class DeveloperController extends Controller
             $developer = Developer::findOrfail($id);
             $developer->owners()->delete();
             foreach ($developer->properties as $property) {
+                foreach ($property->units as $unit) {
+                    foreach ($unit->images() as $image) {
+                        $imagePath = 'storage/' . $image->image;
+                        Storage::delete($imagePath);
+                        $image->delete();
+                    }
+                    $unit->specifications()->delete();
+                    $unit->statuses()->detach();
+                    $unit->delete();
+                }
+        
                 $property->units()->delete();
+                // $property->types()->delete();
+                $property->agents()->detach();
+                $property->provinces()->detach();
+                $property->regencies()->detach();
+                $property->districts()->detach();
+                $property->villages()->detach();
+                $property->delete();
             }
-            $developer->properties()->delete();
             $developer->provinces()->detach();
             $developer->regencies()->detach();
             $developer->districts()->detach();

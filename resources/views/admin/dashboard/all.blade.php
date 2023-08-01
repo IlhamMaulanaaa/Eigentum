@@ -17,7 +17,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col mt-0">
-                                                    <h5 class="card-title">Customer</h5>
+                                                    <h5 class="card-title">Unit</h5>
                                                 </div>
 
                                                 <div class="col-auto">
@@ -26,13 +26,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">{{$customerCount}}</h1>
+                                            <h1 class="mt-1 mb-3">{{$unitCount}}</h1>
                                             <div class="mb-0">
                                                 <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25%
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
-                                            <a href="/admin/customer/data" class="stretched-link"></a>
+                                            <a href="{{route('unit.index')}}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -41,7 +41,6 @@
                                                 <div class="col mt-0">
                                                     <h5 class="card-title">Developers</h5>
                                                 </div>
-    
                                                 <div class="col-auto">
                                                     <div class="stat text-primary">
                                                         <i class="align-middle" data-feather="dollar-sign"></i>
@@ -55,7 +54,7 @@
                                                 <span class="text-muted">Since last week</span>
                                             </div>
                                         </div>
-                                        <a href="/admin/developer/data" class="stretched-link"></a>
+                                        <a href="{{route('developer.index')}}" class="stretched-link"></a>
                                     </div>
                                     
                                 </div>
@@ -64,7 +63,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col mt-0">
-                                                    <h5 class="card-title">Agents</h5>
+                                                    <h5 class="card-title">Property</h5>
                                                 </div>
                                                 <div class="col-auto">
                                                     <div class="stat text-primary">
@@ -72,13 +71,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">{{ $agentCount }}</h1>
+                                            <h1 class="mt-1 mb-3">{{ $propertyCount }}</h1>
                                             <div class="mb-0">
                                                 <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -3.65%
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
-                                            <a href="/admin/agent/data" class="stretched-link"></a>
+                                            <a href="{{route('property.index')}}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">

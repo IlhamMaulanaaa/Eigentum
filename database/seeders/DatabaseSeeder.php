@@ -30,12 +30,12 @@ class DatabaseSeeder extends Seeder
         $this->call(IndoRegionDistrictSeeder::class);
         $this->call(IndoRegionVillageSeeder::class);
         
-        $this->call(AgentSeeder::class);
+        // $this->call(AgentSeeder::class);
 
-        $this->call(DeveloperSeeder::class);
-        $this->call(OwnerSeeder::class);
+        // $this->call(DeveloperSeeder::class);
+        // $this->call(OwnerSeeder::class);
         
-        $this->call(PropertySeeder::class);
-        $this->call(UnitSeeder::class);
+        // $this->call(PropertySeeder::class);
+        // $this->call(UnitSeeder::class);
     }
 }
