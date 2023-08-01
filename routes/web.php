@@ -13,6 +13,7 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\FilePreviewController;
@@ -57,12 +58,12 @@ Route::group(['prefix' => '/session'], function () {
 
     Route::group(['prefix' => '/auth'], function () {
 
-        Route::group(['prefix' => '/user'], function(){
+        Route::group(['prefix' => '/user'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
 
             Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
-                Route::post('/create', [SessionController::class, 'postSigninUser']);
+                Route::post('/create', [AuthController::class, 'postSignin']);
             });
             route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
@@ -70,20 +71,20 @@ Route::group(['prefix' => '/session'], function () {
             });
         });
 
-        Route::group(['prefix'=>'/developer'], function(){
+        Route::group(['prefix' => '/developer'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
 
-            Route::group(['prefix'=>'/signin'], function(){
+        Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
-                Route::post('/create', [DeveloperController::class, 'postSigninDeveloper']);
+                Route::post('/create', [AuthController::class, 'postSignin']);
             });
-            Route::group(['prefix'=>'/signup'], function(){
+            Route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
                 Route::post('/create', [DeveloperController::class, 'storeFront']);
             });
         });
 
-        Route::group(['prefix'=>'/agent'], function(){
+        Route::group(['prefix' => '/agent'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
 
             Route::group(['prefix' => '/signin'], function () {
@@ -94,14 +95,14 @@ Route::group(['prefix' => '/session'], function () {
                 Route::get('/', [AgentController::class, 'SignupAgent']);
                 Route::post('/create', [AgentController::class, 'storeFront']);
             });
-            
         });
-
     });
 });
-// developer
-Route::group(['prefix' => '/developer'], function () {
-    Route::get('/dashboard', [SessionController::class, 'anu']);
+Route::middleware(['checkrole'])->group(function () {
+    // developer
+    Route::group(['prefix' => '/developer'], function () {
+        Route::get('/dashboard', [SessionController::class, 'anu']);
+    });
 });
 Route::get('/detail', function () {
     return view('pages.Developer.detail');
@@ -146,8 +147,6 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
     });
-    
-    
 });
 
 //klo ditaruh di dalam pages css nya tidak nampil

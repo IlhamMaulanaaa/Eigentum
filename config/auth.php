@@ -48,6 +48,14 @@ return [
             'driver' => 'session',
             'provider' => 'agent',
         ],
+        'user' => [
+            'driver' => 'session',
+            'provider' => 'user',
+        ],
+        // 'admin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admin',
+        // ],
         // 'admin' => [
         //     'driver' => 'session',
         //     'provider' => 'admin',
@@ -78,14 +86,18 @@ return [
         ],
 
         'developer' => [
-            'driver' => 'database',
+            'driver' => 'eloquent', 
             'model' => App\Models\Developer::class,
         ],
         'agent' => [
             'driver' => 'database',
             'model' => App\Models\Agent::class,
         ],
- 
+        'user' => [
+            'driver' => 'database',
+            'model' => App\Models\User::class,
+        ],
+
     ],
 
     /*
@@ -120,6 +132,20 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        
+        'admin' => [
+            'provider' => 'admin',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'user' => [
+            'provider' => 'user',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*

@@ -15,7 +15,7 @@
             <div class="signin-signup">
                 {{-- form Sign In  --}}
                 {{-- action --}}
-                <form method="POST" action="/session/auth/developer/signin/create" class="sign-in-form">
+                <form  action="/session/auth/developer/signin/create" method="POST" class="sign-in-form">
                     @csrf
                     {{-- end action --}}
                     <h2 class="title">Sign in</h2>
@@ -27,7 +27,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" placeholder="Password" name="password" />
                     </div>
-                    <input type="submit" value="Login" class="btn solid" />
+                    <button type="submit" value="Login" class="btn solid"></button>
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">
@@ -43,19 +43,6 @@
                             <i class="fab fa-linkedin-in"></i>
                         </a>
                     </div>
-                </form>
-                {{-- form Sign Up --}}
-                {{-- action --}}
-                <form action="/session/auth/developer/signup" class="sign-up-form" id="div">
-                    <h1 class="title ">igin mendaftar menjadi developer?</h1>
-                    {{-- end action --}}
-                    <h2>dokumen yang harus disiapkan</h2>
-                    <h3>1. KTP pemilik perusahaan</h3>
-                    <h3>2. nomer induk usaha</h3>
-                    <h3>3. sertifikat badan usaha</h3>
-
-                    <button type="submit" class="btn " value="Sign up">DAFTAR</button>
-
                 </form>
 
             </div>

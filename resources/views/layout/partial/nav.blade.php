@@ -31,7 +31,8 @@
                     <h3>
                         {{ Auth()->user()->name }}
                         <div>
-                            customer
+                            {{-- sesuai nama role --}}
+                            {{ session('role') }}
                         </div>
                     </h3>
                     <ul style="margin: 0; padding:0;">

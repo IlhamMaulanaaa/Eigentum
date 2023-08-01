@@ -16,16 +16,19 @@ class CheckRoleMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
-        if(Auth::guard('developer')->check()) {
+        if (Auth::guard('developer')->check()) {
             return $next($request);
         }
         if (Auth::guard('agent')->check()) {
             return $next($request);
         }
-        // if(Auth::guard('admin')->check()) {
+        // if (Auth::guard('admin')->check()) {
         //     return $next($request);
         // }
-        return redirect('/beranda');
+        if (Auth::guard('user')->check()) {
+            return $next($request);
+        }
+
+        return redirect('/');
     }
 }

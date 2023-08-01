@@ -4,18 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Agent extends Model
+class Agent extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     
     
-    protected $table = "agents";
-    protected $guarded = ['id'];
-    
+    protected $table = 'agents';
+    protected $guarded = ['developer'];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];  
     protected $hidden = [
         'password',
         'created_at',

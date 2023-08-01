@@ -11,6 +11,7 @@ use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -295,24 +296,25 @@ class DeveloperController extends Controller
         }
     }
     public function postSigninDeveloper(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required|min:6'
-        ], [
-            'email.required' => 'email wajib diisi',
-            'password.required' => 'password wajib diisi'
-        ]);
+{
+    Session::flash('emaild', $request->email);
+    $this->validate($request, [
+        'email' => 'required|email',
+        'password' => 'required|min:6'
+    ], [
+        'email.required' => 'Email wajib diisi',
+        'password.required' => 'Password wajib diisi'
+    ]);
 
-        $infologin = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+    $infologin = [
+        'email' => $request->email,
+        'password' => $request->password
+    ];
 
-        if (Auth::attempt($infologin)) {
-            return redirect('/beranda');
-        } else {
-            return redirect('/session/auth/developer/signin')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
-        }
+    if (Auth::guard('developer')->attempt($infologin)) {
+        return redirect('/beranda');
+    } else {
+        return redirect('/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
     }
+}
 }
