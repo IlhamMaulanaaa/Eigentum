@@ -61,13 +61,9 @@ class GuideController extends Controller
 
         Storage::disk('public')->put($image, file_get_contents($request->image));
 
-        $data = Guide::where('id', '=', $data->id)->get();
-
-        if ($data) {
-            return ApiFormatter::createApi('201', 'Created', $data) . redirect('/admin/guide/data',);
-        } else {
-            return ApiFormatter::createApi('400', 'Bad Request', null);
-        }
+            if($data){
+                return redirect(route('guide.index'));
+            }
     }
 
 
@@ -116,21 +112,23 @@ class GuideController extends Controller
 
         $data->save();
 
-        $data = Guide::where('id', '=', $data->id)->get();
-        $url = '/admin/guide/show/' . $id;
+            $data = Guide::where('id', '=', $data->id)->get();
+            
 
-        return redirect($url);
+            return redirect(route('guide.show', $id));
+        
     }
 
 
     public function destroy(string $id)
     {
+        
+            $guide = Guide::findOrfail($id);
+            $data = $guide->delete();
 
-        $guide = Guide::findOrfail($id);
-        $data = $guide->delete();
-
-        if ($data) {
-            return ApiFormatter::createApi('200', 'Data Deleted', null) . redirect('/admin/guide/data',);
-        }
+            if ($data) {
+                return redirect(route('guide.index'));
+            } 
+        
     }
 }

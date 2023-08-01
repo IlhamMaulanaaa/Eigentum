@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Id</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">Unit</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
                             <th scope="col">Image</th>
@@ -29,30 +29,25 @@
                     </thead>
                     <tbody>
                         @if ($units->count())
-                            @foreach ($units as $unit)
+                            @foreach ($units as $key => $unit)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $unit->title }}</td>
-                                    <td class="text-start">{{ $unit->description }}</td>
-                                    <td class="text-start">{{ $unit->price }}</td>
+                                    <td class="text-start">{{ Str::limit($unit->description, 20) }}</td>
+                                    <td class="text-start">Rp. {{ $unit->price }}</td>
                                     <td class="text-start"><img src="{{ asset('storage/' . $unit->image) }}" width="60"
                                             heigth="60"></td>
-                                    <td class="text-start ">{{ $unit->properties->property }}</td>
+                                    <td class="text-start ">{{ $unit->properties->title }}</td>
                                     <td class="text-start ">
-                                        @foreach ($unit->status as $role)
-                                            {{ $role->name }} 
+                                        @foreach ($unit->statuses as $role)
+                                            {{ $role->name }}
                                         @endforeach
                                     </td>
 
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $unit->id }}">Detail</a>
-                                        {{-- <form action="delete/{{ $unit->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form> --}}
+                                            href="{{ route('unit.show', $unit->id) }}">Detail</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -67,6 +62,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div>
+                    {{ $units->links() }}
+                </div>
             </div>
         </div>
     </div>

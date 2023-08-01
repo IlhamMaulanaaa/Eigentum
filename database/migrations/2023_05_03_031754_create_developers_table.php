@@ -16,9 +16,39 @@ return new class extends Migration
             $table->string("company");
             $table->string("email")->unique();  
             $table->string("password");
+            $table->string("address");
             $table->string("license");
-            $table->bigInteger("telp");
+            $table->string("telp");
+            $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::create('developer_provinces', function (Blueprint $table) {
+            $table->bigInteger('developer_id');
+            $table->bigInteger('province_id');
+            $table->primary(['developer_id', 'province_id']);
+            $table->softDeletes();
+        });
+
+        Schema::create('developer_regencies', function (Blueprint $table) {
+            $table->bigInteger('developer_id');
+            $table->bigInteger('regency_id');
+            $table->primary(['developer_id', 'regency_id']);
+            $table->softDeletes();
+        });
+
+        Schema::create('developer_districts', function (Blueprint $table) {
+            $table->bigInteger('developer_id');
+            $table->bigInteger('district_id');
+            $table->primary(['developer_id', 'district_id']);
+            $table->softDeletes();
+        });
+
+        Schema::create('developer_villages', function (Blueprint $table) {
+            $table->bigInteger('developer_id');
+            $table->bigInteger('village_id');
+            $table->primary(['developer_id', 'village_id']);
+            $table->softDeletes();
         });
     }
 

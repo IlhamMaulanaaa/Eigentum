@@ -27,8 +27,8 @@
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/status/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $status->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{route('status.index')}}">Back</a>
+                                <a type="button" class="btn btn-primary" href="{{route('status.edit', $status->id)}}">Edit</a>
                             </div>
                         </form>
                     </div>

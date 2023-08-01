@@ -20,8 +20,8 @@
                             <th scope="col">Id</th>
                             <th scope="col">Property</th>
                             <th scope="col">Description</th>
-                            <th scope="col">Address</th>
                             <th scope="col">Developer</th>
+                            <th scope="col">Kota</th>
                             <th scope="col">Type</th>
                             <th scope="col">Listing</th>
                             <th scope="col"></th>
@@ -29,23 +29,21 @@
                     </thead>
                     <tbody>
                         @if ($properties->count())
-                            @foreach ($properties as $property)
+                            @foreach ($properties as $key => $property)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
-                                    <td class="text-start">{{ $property->property }}</td>
-                                    <td class="text-start">{{ $property->description }}</td>
-                                    <td class="text-start">{{ $property->address }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
+                                    <td class="text-start">{{ $property->title }}</td>
+                                    <td class="text-start">{{ Str::limit($property->description, 20) }}</td>
                                     <td class="text-start ">{{ $property->developers->company }}</td>
+                                    <td class="text-start">
+                                        {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</td>
+                                    </td>
                                     <td class="text-start ">{{ $property->types->name }}</td>
                                     <td class="text-start ">{{ $property->units->count() }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $property->id }}">Detail</a>
-                                        {{-- <form action="delete/{{ $property->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form> --}}
+                                            href="{{ route('property.show', $property->id) }}">Detail</a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,6 +54,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div>
+                    {{ $properties->links() }}
+                </div>
             </div>
         </div>
     </div>

@@ -16,8 +16,8 @@
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/type/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $type->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{route('type.index')}}">Back</a>
+                                <a type="button" class="btn btn-primary" href="{{route('type.edit',$type->id)}}">Edit</a>
                             </div>
                         </form>
                     </div>

@@ -17,12 +17,12 @@
                     <br>
                     <div class="card bg-light">
                         <div class="card-body">
-                            <form method="post" action="/admin/unit/update/ {{ $unit->id }}"
-                                enctype="multipart/form-data">
+                            <form method="post" action="{{ route('unit.update', $unit->id) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <div class="form-group">
-                                        <label for="" class="form-label">Title</label>
+                                        <label for="" class="form-label">Unit</label>
                                         <input type="text" class="form-control" id="title" name="title"
                                             value="{{ old('title', $unit->title) }}" required>
                                     </div>
@@ -41,15 +41,17 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="" class="form-label">Status</label>
-                                        <select class="form-select" name="status_id[]" size="2" multiple>
-                                            @foreach ($statuses as $status)
-                                                <option value="{{ $status->id }}" {{ in_array($status->id,$unit->status->pluck('id')->toArray()) ? 'selected' : '' }}>
-                                                    {{ $status->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                        @foreach ($statuses as $statusItem)
+                                            <div class="form-check">
+                                                <input class="form-check-input @error('status_id') is-invalid @enderror"
+                                                    type="checkbox" name="status_id[]" value="{{ $statusItem->id }}"
+                                                    id="status_{{ $statusItem->id }}"
+                                                    {{ in_array($statusItem->id, old('status_id', $unit->statuses->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                <label class="form-check-label"
+                                                    for="status_{{ $statusItem->id }}">{{ $statusItem->name }}</label>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    
                                     <br>
                                     <div class="col">
                                         <div class="form-group">
@@ -75,22 +77,28 @@
                                                 @endphp
                                                 @foreach ($livingroomImgs as $index => $livingroomImg)
                                                     <div class="image-container my-2">
-                                                        <img src="{{ asset('storage/' . $livingroomImg) }}" alt="{{ $livingroomImg }}" class="img-thumbnail" width="200">
+                                                        <img src="{{ asset('storage/' . $livingroomImg) }}"
+                                                            alt="{{ $livingroomImg }}" class="img-thumbnail"
+                                                            width="200">
                                                     </div>
-                                                    <input type="file" class="form-control noscroll" id="livingroomimg_update{{ $index }}" name="livingroomimg_update[{{ $index }}]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="livingroomimg_update{{ $index }}"
+                                                        name="livingroomimg_update[{{ $index }}]" multiple>
                                                 @endforeach
                                             </div>
                                             <div class="livingroomimg row g-2">
                                                 <div class="col-auto">
-                                                    <input type="file" class="form-control noscroll" id="livingroomimg_insert" name="livingroomimg_insert[]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="livingroomimg_insert" name="livingroomimg_insert[]" multiple>
                                                 </div>
                                                 <div class="input-group-btn col-auto">
-                                                    <button class="btn btn-success btn-livingroomimg" type="button">Add</button>
+                                                    <button class="btn btn-success btn-livingroomimg"
+                                                        type="button">Add</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
 
                                     <div class="form-group mb-4">
                                         <label for="bedroomimg" class="form-label">Bedroom</label>
@@ -101,22 +109,27 @@
                                                 @endphp
                                                 @foreach ($bedroomImgs as $index => $bedroomImg)
                                                     <div class="image-container my-2">
-                                                        <img src="{{ asset('storage/' . $bedroomImg) }}" alt="{{ $bedroomImg }}" class="img-thumbnail" width="200">
+                                                        <img src="{{ asset('storage/' . $bedroomImg) }}"
+                                                            alt="{{ $bedroomImg }}" class="img-thumbnail" width="200">
                                                     </div>
-                                                    <input type="file" class="form-control noscroll" id="bedroomimg_update{{ $index }}" name="bedroomimg_update[{{ $index }}]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="bedroomimg_update{{ $index }}"
+                                                        name="bedroomimg_update[{{ $index }}]" multiple>
                                                 @endforeach
                                             </div>
                                             <div class="bedroomimg row g-2">
                                                 <div class="col-auto">
-                                                    <input type="file" class="form-control noscroll" id="bedroomimg_insert" name="bedroomimg_insert[]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="bedroomimg_insert" name="bedroomimg_insert[]" multiple>
                                                 </div>
                                                 <div class="input-group-btn col-auto">
-                                                    <button class="btn btn-success btn-bedroomimg" type="button">Add</button>
+                                                    <button class="btn btn-success btn-bedroomimg"
+                                                        type="button">Add</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group mb-4">
                                         <label for="bathroomimg" class="form-label">Bathroom</label>
                                         <div class="form-group row g-2">
@@ -126,22 +139,28 @@
                                                 @endphp
                                                 @foreach ($bathroomImgs as $index => $bathroomImg)
                                                     <div class="image-container my-2">
-                                                        <img src="{{ asset('storage/' . $bathroomImg) }}" alt="{{ $bathroomImg }}" class="img-thumbnail" width="200">
+                                                        <img src="{{ asset('storage/' . $bathroomImg) }}"
+                                                            alt="{{ $bathroomImg }}" class="img-thumbnail"
+                                                            width="200">
                                                     </div>
-                                                    <input type="file" class="form-control noscroll" id="bathroomimg_update{{ $index }}" name="bathroomimg_update[{{ $index }}]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="bathroomimg_update{{ $index }}"
+                                                        name="bathroomimg_update[{{ $index }}]" multiple>
                                                 @endforeach
                                             </div>
                                             <div class="bathroomimg row g-2">
                                                 <div class="col-auto">
-                                                    <input type="file" class="form-control noscroll" id="bathroomimg_insert" name="bathroomimg_insert[]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="bathroomimg_insert" name="bathroomimg_insert[]" multiple>
                                                 </div>
                                                 <div class="input-group-btn col-auto">
-                                                    <button class="btn btn-success btn-bathroomimg" type="button">Add</button>
+                                                    <button class="btn btn-success btn-bathroomimg"
+                                                        type="button">Add</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group mb-4">
                                         <label for="kitchenimg" class="form-label">Kitchen</label>
                                         <div class="form-group row g-2">
@@ -151,17 +170,23 @@
                                                 @endphp
                                                 @foreach ($kitchenImgs as $index => $kitchenImg)
                                                     <div class="image-container my-2">
-                                                        <img src="{{ asset('storage/' . $kitchenImg) }}" alt="{{ $kitchenImg }}" class="img-thumbnail" width="200">
+                                                        <img src="{{ asset('storage/' . $kitchenImg) }}"
+                                                            alt="{{ $kitchenImg }}" class="img-thumbnail"
+                                                            width="200">
                                                     </div>
-                                                    <input type="file" class="form-control noscroll" id="kitchenimg_update{{ $index }}" name="kitchenimg_update[{{ $index }}]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="kitchenimg_update{{ $index }}"
+                                                        name="kitchenimg_update[{{ $index }}]" multiple>
                                                 @endforeach
                                             </div>
                                             <div class="kitchenimg row g-2">
                                                 <div class="col-auto">
-                                                    <input type="file" class="form-control noscroll" id="kitchenimg_insert" name="kitchenimg_insert[]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="kitchenimg_insert" name="kitchenimg_insert[]" multiple>
                                                 </div>
                                                 <div class="input-group-btn col-auto">
-                                                    <button class="btn btn-success btn-kitchenimg" type="button">Add</button>
+                                                    <button class="btn btn-success btn-kitchenimg"
+                                                        type="button">Add</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -176,14 +201,19 @@
                                                 @endphp
                                                 @foreach ($etcImgs as $index => $etcImg)
                                                     <div class="image-container my-2">
-                                                        <img src="{{ asset('storage/' . $etcImg) }}" alt="{{ $etcImg }}" class="img-thumbnail" width="200">
+                                                        <img src="{{ asset('storage/' . $etcImg) }}"
+                                                            alt="{{ $etcImg }}" class="img-thumbnail"
+                                                            width="200">
                                                     </div>
-                                                    <input type="file" class="form-control noscroll" id="etcimg_update{{ $index }}" name="etcimg_update[{{ $index }}]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="etcimg_update{{ $index }}"
+                                                        name="etcimg_update[{{ $index }}]" multiple>
                                                 @endforeach
                                             </div>
                                             <div class="etcimg row g-2">
                                                 <div class="col-auto">
-                                                    <input type="file" class="form-control noscroll" id="etcimg_insert" name="etcimg_insert[]" multiple>
+                                                    <input type="file" class="form-control noscroll"
+                                                        id="etcimg_insert" name="etcimg_insert[]" multiple>
                                                 </div>
                                                 <div class="input-group-btn col-auto">
                                                     <button class="btn btn-success btn-etcimg" type="button">Add</button>
@@ -191,7 +221,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                    
+                                </div>
                                 <br>
                                 <div class="form-group row">
                                     <div class="form-group col-auto mb-2">
@@ -221,25 +251,9 @@
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group invisible">
-                                    <label for="" class="form-label">Property</label>
-                                    <select class="form-control" id="property_id" name="property_id">
-                                        @foreach ($properties as $property)
-                                            @if (old('property_id', $unit->property_id == $property->id))
-                                                <option name="property_id" value="{{ $property->id }}" selected>
-                                                    {{ $property->property }}
-                                                </option>
-                                            @endif
-                                            <option name="property_id" value="{{ $property->id }}">
-                                                {{ $property->property }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <br>
                                 <div class="float-end">
                                     <a type="button" class="btn btn-warning"
-                                        href="/admin/unit/show/{{ $unit->id }}">Back</a>
+                                        href="{{ route('unit.show', $unit->id) }}">Back</a>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
@@ -273,9 +287,8 @@
 
                 function btnsuccess(elementClass) {
                     var html =
-                        '<div class="row g-2 remove"><div class="col-auto"><input type="file" class="form-control noscroll" id="' +
-                        elementClass.substr(1) + '" name="' + elementClass.substr(1) +
-                        '_insert[]" multiple></div><div class="input-group-btn col-auto"><button class="btn btn-danger" type="button">Remove</button></div></div>';
+                        '<div class="row g-2 remove"><div class="col-auto"><input type="file" class="form-control noscroll" id="' + elementClass.substr(1) + '" name="' + elementClass.substr(1) +
+                        '_insert[]" multiple></div><div class="input-group-btn col-auto"><button class = "btn btn-danger" type = "button"> Remove </button></div> </div>';
                     $(elementClass).append(html);
                 }
 

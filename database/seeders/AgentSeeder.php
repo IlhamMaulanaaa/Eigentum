@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Agent;
-use App\Models\AgentProperty;
+use App\Models\PropertyAgent;
 use App\Models\Property;
+use App\Models\Province;
 use App\Models\UnitStatus;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,22 +23,41 @@ class AgentSeeder extends Seeder
     public function run()
     {
         Agent::truncate();
-        AgentProperty::truncate();
 
         for ($i = 0; $i < 10; $i++) {
             $agent = Agent::create([
                 'name' => fake()->name(),
                 'email' => fake()->email(),
                 'password' => bcrypt(fake()->password()),
-                'address' => Str::limit(fake()->address(), 20),
+                'address' => fake()->address(),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
-                'phone_number' => fake()->phoneNumber(),
-                'location_id' => mt_rand(1, 34),
+                'telp' =>fake()->phoneNumber(),
             ]);
 
-            $propertyIds = Property::pluck('id')->random(rand(2, 5))->toArray();
-            $agent->properties()->sync($propertyIds);
+        // Ambil satu data province secara acak
+        $province = Province::inRandomOrder()->first();
+
+        // Hubungkan developer dengan province menggunakan attach()
+        $agent->provinces()->attach($province->id);
+
+        // Ambil satu data regency yang terhubung dengan province tersebut secara acak
+        $regency = $province->regencies()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan regency menggunakan attach()
+        $agent->regencies()->attach($regency->id);
+
+        // Ambil satu data district yang terhubung dengan regency tersebut secara acak
+        $district = $regency->districts()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan district menggunakan attach()
+        $agent->districts()->attach($district->id);
+
+        // Ambil satu data village yang terhubung dengan district tersebut secara acak
+        $village = $district->villages()->inRandomOrder()->first();
+
+        // Hubungkan agent dengan village menggunakan attach()
+        $agent->villages()->attach($village->id);
         }
     }
 
@@ -63,5 +83,12 @@ class AgentSeeder extends Seeder
         // $imageUrl = Storage::url($folderName . '/' . $imageName);
     
         return $imageName;
+    }
+
+    private function generatePhoneNumber()
+    {
+        // Buat nomor telepon dengan format yang sesuai, misalnya: +62 812-3456-7890
+        // Anda juga bisa menggunakan library lain seperti libphonenumber untuk membuat format yang lebih kompleks
+        return '+62 ' . rand(800, 899) . '-' . rand(1000, 9999) . '-' . rand(1000, 9999);
     }
 }

@@ -28,14 +28,21 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone number</label>
-                                <input type="text" class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ $customer->phone_number }}" readonly disabled>
+                                <label for="telp" class="form-label">Telephone</label>
+                                <input type="text" class="form-control" id="telp" name="telp"
+                                    value="{{ $customer->telp }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/customer/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $customer->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{route('customer.index')}}">Back</a>
+                                <form action="{{ route('customer.destroy', $customer->id) }}" method="POST"
+                                    class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"
+                                        onclick="return confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary" href="{{route('customer.edit' ,$customer->id )}}">Edit</a>
                             </div>
                         </form>
                     </div>

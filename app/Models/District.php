@@ -9,10 +9,13 @@
 
 namespace App\Models;
 
-use AzisHapidin\IndoRegion\Traits\DistrictTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Agent;
 use App\Models\Regency;
 use App\Models\Village;
+use App\Models\Developer;
+use Illuminate\Database\Eloquent\Model;
+use AzisHapidin\IndoRegion\Traits\DistrictTrait;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
  * District Model.
@@ -56,4 +59,16 @@ class District extends Model
     {
         return $this->hasMany(Village::class);
     }
+
+    public function developers(): BelongsToMany
+    {
+        return $this->belongsToMany(Developer::class, 'developer_districts', 'district_id', 'developer_id');
+    }
+    
+    public function agents(): BelongsToMany
+    {
+        return $this->belongsToMany(Agent::class, 'agent_districts', 'district_id', 'agent_id');
+    }
+
+    
 }

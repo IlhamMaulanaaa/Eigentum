@@ -19,7 +19,7 @@ class OwnerSeeder extends Seeder
     {
         Owner::truncate();
 
-        $developerIds = Developer::pluck('id')->toArray();
+        $developerIds = Developer::all();
 
         foreach ($developerIds as $developerId) {
             Owner::create([
@@ -28,32 +28,20 @@ class OwnerSeeder extends Seeder
                 'owner_password' => bcrypt(fake()->password()),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
-                'developer_id' => $developerId,
+                'developer_id' => $developerId->id,
             ]);
         }
     }
 
     private function getImageUrl($folderName, $width = 400, $height = 300)
     {
-        // Ambil gambar dari folder public/$folderName
         $files = File::files(public_path($folderName));
         $randomImagePath = Arr::random($files);
-    
-        // Ubah path relatif gambar menjadi path absolut di folder storage
         $imagePath = $randomImagePath->getRealPath();
-    
-        // Ambil nama file dari path
         $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
-    
-        // Hapus file image yang sudah ada dengan nama yang sama di dalam folder storage
         Storage::delete('public/' . $folderName . '/' . $imageName);
-    
-        // Pindahkan gambar ke folder storage
         Storage::putFileAs('public/' , $imagePath, $imageName);
-    
-        // Membangun URL gambar berdasarkan path relatif dari folder storage
-        // $imageUrl = Storage::url($folderName . '/' . $imageName);
-    
+
         return $imageName;
     }
 }

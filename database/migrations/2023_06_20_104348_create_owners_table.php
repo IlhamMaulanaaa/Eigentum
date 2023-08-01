@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string("ktp");
             $table->string("face");
             $table->string("developer_id");
+            $table->softDeletes();
             $table->timestamps();
         });
     }

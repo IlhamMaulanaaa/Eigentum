@@ -21,19 +21,19 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/customer/data">
+                <a class="sidebar-link" href="{{route('customer.index')}}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Customer</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/developer/data">
+                <a class="sidebar-link" href="{{route('developer.index')}}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Developer</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/agent/data">
+                <a class="sidebar-link" href="{{route('agent.index')}}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Agent</span>
                 </a>
             </li>
@@ -55,19 +55,19 @@
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/property/data">
+                <a class="sidebar-link" href="{{route('property.index')}}">
                     <i class="align-middle" data-feather="square"></i> <span class="align-middle">Property</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/unit/data">
+                <a class="sidebar-link" href="{{route('unit.index')}}">
                     <i class="align-middle" data-feather="home"></i> <span class="align-middle">Unit</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/guide/data">
+                <a class="sidebar-link" href="{{route('guide.index')}}">
                     <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Guide</span>
                 </a>
             </li>
@@ -83,19 +83,14 @@
             </li> --}}
             
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/type/data">
+                <a class="sidebar-link" href="{{route('type.index')}}">
                     <i class="align-middle" data-feather="book"></i> <span class="align-middle">Type</span>
                 </a>
             </li>
             
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/location/data">
-                    <i class="align-middle" data-feather="map-pin"></i> <span class="align-middle">Location</span>
-                </a>
-            </li>
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/admin/status/data">
+                <a class="sidebar-link" href="{{route('status.index')}}">
                     <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Status</span>
                 </a>
             </li>

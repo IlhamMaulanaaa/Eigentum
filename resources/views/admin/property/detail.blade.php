@@ -12,15 +12,41 @@
                             <div class="form-group">
                                 <label for="" class="form-label">Property</label>
                                 <input type="text" class="form-control" id="property" name="property"
-                                    value="{{ $property->property }}" readonly disabled>
+                                    value="{{ $property->title }}" readonly disabled>
                             </div>
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Description</label>
-                                <input class="form-control" id="description" name="description" readonly disabled
-                                    value="{{ $property->description }}">
+                                <textarea class="form-control" id="description" name="description" readonly disabled
+                                    value="">{{ $property->description }}</textarea>
                             </div>
                             <br>
+                            <div class="form-group row col-12">
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Provinces" class="form-label">Provinsi</label>
+                                    <input type="text" class="form-control" id="Provinces" name="Provinces"
+                                        value="{{ implode(', ',$property->provinces()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Regencies" class="form-label">Kota</label>
+                                    <input type="text" class="form-control" id="Regencies" name="Regencies"
+                                        value="{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="District" class="form-label">Kecamatan</label>
+                                    <input type="text" class="form-control" id="District" name="District"
+                                        value="{{ implode(', ',$property->districts()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                                <div class="form-group col-auto mb-3">
+                                    <label for="Village" class="form-label">Desa</label>
+                                    <input type="text" class="form-control" id="Village" name="Village"
+                                        value="{{ implode(', ',$property->villages()->pluck('name')->toArray()) }}"
+                                        readonly disabled>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="" class="form-label">Address</label>
                                 <input class="form-control" id="address" name="address" readonly disabled
@@ -43,7 +69,9 @@
                                 <label for="properties" class="form-label">Agent</label>
                                 <ul>
                                     @foreach ($property->agents as $agent)
-                                        <li>{{ $agent->name }}</li>
+                                        <li>{{ $agent->name }}
+                                            <a href="{{ route('agent.show', $agent->id) }}" class="text-warning">Detail</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -54,17 +82,25 @@
                                     @foreach ($property->units as $unit)
                                         <li>
                                             {{ $unit->title }}
-                                            <a href="/admin/unit/show/{{ $unit->id }}" class="text-warning">Detail</a>
-                                            <a href="/admin/unit/show/edit/{{ $unit->id }}">Edit</a>
+                                            <a href="{{ route('unit.show', $unit->id) }}" class="text-warning">Detail</a>
+                                            <a href="{{route('unit.edit', $unit->id)}}">Edit</a>
                                         </li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('unit.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
+                                <a href="{{ route('unitid.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/property/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $property->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{ route('property.index') }}">Back</a>
+                                <form action="{{ route('property.destroy', $property->id) }}" method="get"
+                                    class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"
+                                        onclick="return confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary"
+                                    href="{{ route('property.edit', $property->id) }}">Edit</a>
                             </div>
                         </form>
                     </div>

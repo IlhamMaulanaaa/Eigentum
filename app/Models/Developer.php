@@ -9,16 +9,18 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Developer extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes, HasFactory;
+
     public $timestamps = false;
     protected $table = 'developers';
     protected $guarded = ['developer'];
-    protected $fillable = [
-        'name', 'email', 'password', // Kolom yang digunakan untuk otentikasi
-    ];
+    // protected $fillable = [
+    //     'name', 'email', 'password', // Kolom yang digunakan untuk otentikasi
+    // ];
     public function getAuthPassword()
     {
         return $this->password;
@@ -33,7 +35,7 @@ class Developer extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-    ];  
+    ];
 
     public function properties(): HasMany
     {

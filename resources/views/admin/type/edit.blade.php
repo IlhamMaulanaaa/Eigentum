@@ -8,8 +8,9 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/type/update/ {{ $type->id }}">
+                        <form method="post" action="{{route('type.update' , $type->id)}}">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name" class="form-label">Type</label>
                                 <input type="text" class="form-control" id="name" name="name"
@@ -17,7 +18,7 @@
                             </div>
                             <br>
                             <div class="float-end">
-                                <a type="button" class="btn btn-warning" href="/admin/type/show/{{$type->id}}">Back</a>
+                                <a type="button" class="btn btn-warning" href="{{route('type.show', $type->id)}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

@@ -48,14 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'agent',
         ],
-        'user' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'user',
+            'provider' => 'admin',
         ],
-        // 'admin' => [
-        //     'driver' => 'session',
-        //     'provider' => 'admin',
-        // ],
         // 'admin' => [
         //     'driver' => 'session',
         //     'provider' => 'admin',
@@ -93,9 +89,9 @@ return [
             'driver' => 'database',
             'model' => App\Models\Agent::class,
         ],
-        'user' => [
+        'admin' => [
             'driver' => 'database',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Admin::class,
         ],
 
     ],
@@ -133,14 +129,14 @@ return [
             'throttle' => 60,
         ],
         
-        'admin' => [
-            'provider' => 'admin',
+        'agent' => [
+            'provider' => 'agent',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
-        'user' => [
-            'provider' => 'user',
+        'admin' => [
+            'provider' => 'admin',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

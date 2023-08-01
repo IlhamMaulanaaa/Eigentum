@@ -33,8 +33,8 @@ class AuthController extends Controller
             session(['role' => $user->role]);
         }elseif (Auth::guard('developer')->attempt($credentials)) {
             return redirect('/developer/dashboard')->with('success', 'Berhasil Login');
-        // } elseif (Auth::guard('admin')->attempt($credentials)) {
-        //     return redirect('/admin/dashboard')->with('success', 'Berhasil Login');
+        } elseif (Auth::guard('admin')->attempt($credentials)) {
+            return redirect('/admin/dashboard')->with('success', 'Berhasil Login');
         } elseif (Auth::guard('web')->attempt($credentials)) {
             return redirect('/beranda')->with('success', 'Berhasil Login');
         } else {

@@ -8,8 +8,9 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/customer/update/ {{ $customer->id }}">
+                        <form method="POST" action="{{route('customer.update', $customer->id)}}">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="name" class="form-label">Name</label>
                                 <input class="form-control" id="name" name="name"
@@ -34,14 +35,14 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <label for="phone_number" class="form-label">Phone Number</label>
-                                <input class="form-control" id="phone_number" name="phone_number"
-                                    value="{{ old('phone_number', $customer->phone_number) }}" required>
+                                <label for="telp" class="form-label">Phone Number</label>
+                                <input class="form-control" id="telp" name="telp"
+                                    value="{{ old('telp', $customer->telp) }}" required>
                             </div>
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/customer/show/{{ $customer->id }}">Back</a>
+                                    href="{{route('customer.show' , $customer->id)}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

@@ -29,8 +29,15 @@
                             </div>
                             <br>
                             <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="/admin/guide/data">Back</a>
-                                <a type="button" class="btn btn-primary" href="edit/{{ $guide->id }}">Edit</a>
+                                <a type="button" class="btn btn-warning" href="{{ route('guide.index') }}">Back</a>
+                                <form action="{{ route('guide.destroy', $guide->id) }}" method="get" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger"
+                                        onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
+                                </form>
+                                <a type="button" class="btn btn-primary"
+                                    href="{{ route('guide.edit', $guide->id) }}">Edit</a>
                             </div>
                         </form>
                     </div>

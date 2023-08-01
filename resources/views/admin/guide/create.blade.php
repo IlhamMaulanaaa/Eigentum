@@ -8,7 +8,7 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/guide/add" enctype="multipart/form-data">
+                        <form method="post" action="{{route('guide.store')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="" class="form-label">Title</label>
@@ -30,7 +30,7 @@
                             <br>
                             
                             <div class="float-end">
-                                <a type="button" class="btn btn-warning" href="/admin/guide/data">Back</a>
+                                <a type="button" class="btn btn-warning" href="{{route('guide.index')}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

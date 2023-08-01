@@ -8,8 +8,9 @@
                 <br>
                 <div class="card bg-light">
                     <div class="card-body">
-                        <form method="post" action="/admin/guide/update/ {{ $guide->id }}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('guide.update', $guide->id)}}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="form-group">
                                 <label for="" class="form-label">Title</label>
                                 <input class="form-control" id="title" name="title"
@@ -34,7 +35,7 @@
                             <br>
                             <div class="float-end">
                                 <a type="button" class="btn btn-warning"
-                                    href="/admin/guide/show/{{ $guide->id }}">Back</a>
+                                    href="{{ route('guide.show' ,$guide->id )}}">Back</a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>

@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DeveloperProvince extends Model
+class DeveloperProvince extends Pivot
 {
-    use HasFactory;
-
-    protected $table = 'developer_provinces';
-    protected $guarded = ['id'];
-
-    
+    use SoftDeletes;
+    protected $table = 'developer_province';
+    protected $fillable = ['developer_id', 'province_id'];
 }

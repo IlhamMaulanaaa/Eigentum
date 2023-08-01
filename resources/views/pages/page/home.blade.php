@@ -96,90 +96,90 @@
                             <!-- Filter Home -->
                             <div class="frame-61-qi7" id="4:7172">
                                 <div class="select-menu2">
-                                  <div class="select-btn2">
-                                      <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
-                                      <i class="bx bx-chevron-down"></i>
-                                  </div>
-                    
-                                  <ul class="options2">
-                                      
+                                    <div class="select-btn2">
+                                        <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
+                                        <i class="bx bx-chevron-down"></i>
+                                    </div>
+
+                                    <ul class="options2">
+
                                         <li class="option2">
-                                          <i class="bx bx-building" style="color: #0C40E8;"></i>
-                                          <span class="option2-text">Apartemen</span>
+                                            <i class="bx bx-building" style="color: #0C40E8;"></i>
+                                            <span class="option2-text">Apartemen</span>
                                         </li>
                                         <li class="option2">
-                                          <i class="bx bx-home" style="color: #0C40E8;"></i>
-                                          <span class="option2-text">Rumah</span>
+                                            <i class="bx bx-home" style="color: #0C40E8;"></i>
+                                            <span class="option2-text">Rumah</span>
                                         </li>
                                         <li class="option2">
-                                          <i class="bx bx-store" style="color: #0C40E8;"></i>
-                                          <span class="option2-text">Ruko</span>
+                                            <i class="bx bx-store" style="color: #0C40E8;"></i>
+                                            <span class="option2-text">Ruko</span>
                                         </li>
                                         <li class="option2">
-                                          <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
-                                          <span class="option2-text">Villa</span>
+                                            <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
+                                            <span class="option2-text">Villa</span>
                                         </li>
                                         <li class="option2">
-                                          <i class="bx bx-grid-alt" style="color: #171515;"></i>
-                                          <span class="option2-text">Semua Properti</span>
+                                            <i class="bx bx-grid-alt" style="color: #171515;"></i>
+                                            <span class="option2-text">Semua Properti</span>
                                         </li>
-                                  </ul>
-                              </div>
-                              <div class="select-menu3">
-                                <div class="select-btn3">
-                                    <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
-                                    <i class="bx bx-chevron-down"></i>
+                                    </ul>
                                 </div>
-                    
-                                <ul class="options3">
-                                    
-                                      <li class="option3">
-                                        <span class="option3-text">Tidak Ada</span>
-                                      </li>
-                                      <li class="option3">
-                                        <span class="option3-text">Satu</span>
-                                      </li>                
-                                      <li class="option3">
-                                        <span class="option3-text">Dua</span>
-                                      </li>
-                                      
-                                      <li class="option3">
-                                        <span class="option3-text">Lebih Dari Dua</span>
-                                      </li>
-                                      <li class="option3">
-                                        <i class="bx bx-hotel" style="color: #171515;"></i>
-                                        <span class="option3-text">Kamar Tidur</span>
-                                      </li>
-                                </ul>
+                                <div class="select-menu3">
+                                    <div class="select-btn3">
+                                        <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
+                                        <i class="bx bx-chevron-down"></i>
+                                    </div>
+
+                                    <ul class="options3">
+
+                                        <li class="option3">
+                                            <span class="option3-text">Tidak Ada</span>
+                                        </li>
+                                        <li class="option3">
+                                            <span class="option3-text">Satu</span>
+                                        </li>
+                                        <li class="option3">
+                                            <span class="option3-text">Dua</span>
+                                        </li>
+
+                                        <li class="option3">
+                                            <span class="option3-text">Lebih Dari Dua</span>
+                                        </li>
+                                        <li class="option3">
+                                            <i class="bx bx-hotel" style="color: #171515;"></i>
+                                            <span class="option3-text">Kamar Tidur</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="select-menu4">
+                                    <div class="select-btn4">
+                                        <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
+                                        <i class="bx bx-chevron-down"></i>
+                                    </div>
+
+                                    <ul class="options4">
+                                        <li class="option4">
+                                            <span class="option4-text">Tidak Ada</span>
+                                        </li>
+                                        <li class="option4">
+                                            <span class="option4-text">Satu</span>
+                                        </li>
+                                        <li class="option4">
+                                            <span class="option4-text">Dua</span>
+                                        </li>
+                                        <li class="option4">
+                                            <span class="option4-text">Lebih Dari Dua</span>
+                                        </li>
+                                        <li class="option4">
+                                            <i class="bx bx-bath" style="color: #171515;"></i>
+                                            <span class="option4-text">Kamar Mandi</span>
+                                        </li>
+
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="select-menu4">
-                              <div class="select-btn4">
-                                  <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
-                                  <i class="bx bx-chevron-down"></i>
-                              </div>
-                    
-                              <ul class="options4">
-                                  <li class="option4">
-                                      <span class="option4-text">Tidak Ada</span>
-                                    </li>
-                                    <li class="option4">
-                                      <span class="option4-text">Satu</span>
-                                    </li>
-                                    <li class="option4">
-                                      <span class="option4-text">Dua</span>
-                                    </li>
-                                    <li class="option4">
-                                      <span class="option4-text">Lebih Dari Dua</span>
-                                    </li>
-                                    <li class="option4">
-                                      <i class="bx bx-bath" style="color: #171515;"></i>
-                                      <span class="option4-text">Kamar Mandi</span>
-                                    </li>
-                                    
-                                  </li>
-                              </ul>
-                          </div>
-                              </div>
                         </div>
 
                         <div class="search-container">
@@ -272,21 +272,22 @@
                                             style="max-width:330px; margin: 20px;">
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
                                                 <a href="/unit/detail">
-                                                <div class="position-relative overflow-hidden">
-                                                    <a href="/unit/detail"><img src="{{ asset('storage/' . $unit->image) }}"
-                                                            class="img-thumbnail" alt="" width="360"
-                                                            height="120"></a>
-                                                    
-                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                        style="background-color: #0C40E8">
-                                                        @foreach ($unit->status as $status)
-                                                            <li>
-                                                                {{ $status->name }}
-                                                            </li>
-                                                        @endforeach
-                                                    </div>
-                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                        style="color: #0C40E8">{{ $unit->title }}</div>
+                                                    <div class="position-relative overflow-hidden">
+                                                        <a href="/unit/detail"><img
+                                                                src="{{ asset('storage/' . $unit->image) }}"
+                                                                class="img-thumbnail" alt="" width="360"
+                                                                height="120"></a>
+
+                                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                            style="background-color: #0C40E8">
+                                                            @foreach ($unit->statuses as $status)
+                                                                <li>
+                                                                    {{ $status->name }}
+                                                                </li>
+                                                            @endforeach
+                                                        </div>
+                                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                            style="color: #0C40E8">{{ $unit->title }}</div>
                                                     </div>
                                                 </a>
                                                 <div class="p-0 pb-0">

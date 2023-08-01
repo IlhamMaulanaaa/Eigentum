@@ -98,9 +98,7 @@ class SpecificationController extends Controller
 
             if ($data) {
                 return ApiFormatter::createApi('200', 'Success', $data).redirect($url);
-            } else {
-                return ApiFormatter::createApi('400', 'Failed', null);
-            }
+            } 
 
     }
 

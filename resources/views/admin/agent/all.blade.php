@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{route('agent.create')}}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -21,32 +21,29 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Address</th>
-                            <th scope="col">Location</th>
-                            <th scope="col">Ktp</th>
-                            <th scope="col">Phone number</th>
+                            <th scope="col">Kota</th>
+                            <th scope="col">Face</th>
+                            <th scope="col">Telephone</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @if ($agents->count())
-                            @foreach ($agents as $agent)
+                            @foreach ($agents as $key => $agent)
                                 <tr align="center">
-                                    <td class="text-start">{{ $loop->iteration }}</td>
+                                    <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $agent->name }}</td>
                                     <td class="text-start">{{ $agent->email }}</td>
-                                    <td class="text-start">{{ $agent->address }}</td>
-                                    <td class="text-start">{{ $agent->locations->name }}</td>
-                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->ktp) }}" width="60"
+                                    <td class="text-start">{{ Str::limit($agent->address, 20) }}</td>
+                                    <td class="text-start">
+                                        {{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</td>
+                                    </td>
+                                    <td class="text-start"><img src="{{ asset('storage/' . $agent->face) }}" width="60"
                                             heigth="60"></td>
-                                    <td class="text-start">{{ $agent->phone_number }}</td>
+                                    <td class="text-start">{{ $agent->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="show/{{ $agent->id }}">Detail</a>
-                                        <form action="delete/{{ $agent->id }}" method="get" class="d-inline">
-                                            @csrf
-                                            <button class="btn btn-outline-danger"
-                                                onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
-                                        </form>
+                                            href="{{ route('agent.show', $agent->id) }}">Detail</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,6 +58,9 @@
                         @endif
                     </tbody>
                 </table>
+                <div>
+                    {{ $agents->links() }}
+                </div>
             </div>
         </div>
     </div>

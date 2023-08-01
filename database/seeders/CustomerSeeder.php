@@ -16,16 +16,21 @@ class CustomerSeeder extends Seeder
     {
         Customer::truncate();
         
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             Customer::create([
                 "email" => fake()->email(),
                 "password" => bcrypt(fake()->password()),
                 "name" => fake()->name(),
-                "address" => Str::limit(fake()->address(), 20),
-                "phone_number" => fake()->phoneNumber(),
+                "address" => fake()->address(),
+                'telp' =>fake()->phoneNumber(),
             ]);
         }
+    }
 
-        
+    private function generatePhoneNumber()
+    {
+        // Buat nomor telepon dengan format yang sesuai, misalnya: +62 812-3456-7890
+        // Anda juga bisa menggunakan library lain seperti libphonenumber untuk membuat format yang lebih kompleks
+        return '+62 ' . rand(800, 899) . '-' . rand(1000, 9999) . '-' . rand(1000, 9999);
     }
 }
