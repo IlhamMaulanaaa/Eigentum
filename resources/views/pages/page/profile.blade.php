@@ -1,3 +1,8 @@
+@extends('layout.main')
+
+@section('content')
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +15,12 @@
 	<link rel="stylesheet" type="text/css" href="css/pages/profile.css">
 </head>
 <body>
-		<div class="">
+		<div class="" style="margin-top: 90px">
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
 						<div class="img-circle text-center mb-3">
-							<img src="img/profile.png" alt="Image" class="shadow">
+							<img src="/assets/pages/profile/developer.jpg" alt="Image" class="shadow">
 						</div>
 						<h4 class="text-center">Jono Wicaksono</h4>
 					</div>
@@ -41,6 +46,7 @@
 							Notifikasi
 						</a>
 					</div>
+					
 				</div>
 				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 					<div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
@@ -417,3 +423,5 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+@endsection

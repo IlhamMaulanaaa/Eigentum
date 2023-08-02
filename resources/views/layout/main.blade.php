@@ -34,6 +34,7 @@
     <!-- Template Stylesheet -->
     <link href="/css/pages/guide.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/Partial/nav.css">
+    {{-- <link rel="stylesheet" href="/css/Partial/footer.css"> --}}
 
 
     <!-- ===== CSS ===== -->
@@ -54,7 +55,7 @@
 
     @include('layout.partial.nav')
     @yield('content')
-    {{-- @include('layout.partial.footer')    --}}
+    @include('layout.partial.footer')   
 
 
 </body>

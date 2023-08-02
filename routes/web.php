@@ -29,6 +29,7 @@ use App\Http\Controllers\SpecificationController;
 */
 
 Route::get('/beranda', [UnitController::class, 'homeunit']);
+Route::get('/', [UnitController::class, 'homeunit']);
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
@@ -148,7 +149,15 @@ Route::group(['prefix' => '/pages'], function () {
     });
 });
 
-//klo ditaruh di dalam pages css nya tidak nampil
+
+Route::get('/filterproperti', function () {
+    return view('pages.page.propertyfilter');
+});
+
+Route::get('/konfirmasipembayaran', function () {
+    return view('pages.page.confirmpayment');
+});
+
 Route::get('/profile', function () {
     return view('pages.page.profile');
 });
