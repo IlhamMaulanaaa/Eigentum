@@ -47,7 +47,6 @@
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="{{ route('unit.show', $unit->id) }}">Detail</a>
-
                                     </td>
                                 </tr>
                             @endforeach

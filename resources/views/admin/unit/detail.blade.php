@@ -194,6 +194,12 @@
                                     <button type="submit" class="btn btn-danger"
                                         onclick="return confirm('Apakah Anda Yakin')">Delete</button>
                                 </form>
+                                <form action="{{ route('favorite.add', $unit->id) }}" method="POST" class="d-inline"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary"
+                                    onclick="return confirm('Apakah Anda Yakin')">Favorite</button>
+                                </form>
                                 <a type="button" class="btn btn-primary"
                                     href="{{ route('unit.edit', $unit->id) }}">Edit</a>
                             </div>
