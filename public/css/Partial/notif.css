@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Trade+Winds&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Lato';
+}
+
+
+
+.wrapper{
+  width: 100%;
+  height: 100%;
+}
+
+.nav-barq{
+  background: #fff;
+  width: 100%;
+  height: 60px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.nav-barq .nav-barq_left .logo a{
+   font-family: 'Trade Winds';
+   font-size: 20px;
+}
+
+.nav-barq .notif_nav{
+   display: flex;
+}
+
+.nav-barq .notif_nav img{
+  width: 35px;
+}
+
+.nav-barq .notif_nav .icon_wrap{
+  cursor: pointer;
+}
+
+.nav-barq .notif_nav .notifications{
+  margin-right: 25px;
+}
+
+.nav-barq .notif_nav .notifications .icon_wrap{
+  font-size: 28px;
+}
+
+.nav-barq .notif_nav .profile,
+.nav-barq .notif_nav .notifications{
+  position: relative;
+}
+
+.nav-barq .profile .profile_dd,
+.notification_dd{
+  position: absolute;
+  top: 68px;
+  right: -15px;
+  user-select: none;
+  background: #fff;
+  border: 1px solid #c7d8e2;
+  width: 350px;
+  height: auto;
+  display: none;
+  border-radius: 3px;
+  box-shadow: 
+    2px 2px 2px rgba(128, 128, 128, 0.2);
+}
+
+.nav-barq .profile .profile_dd:before,
+.notification_dd:before{
+  background-color: #fff;
+  content: '';
+  height: 20px;
+  position: absolute;
+  right: 30px;
+  transform: rotate(225deg);
+  top: -7px;
+  width: 20px;
+  box-shadow: 
+    2px 2px 2px rgba(128, 128, 128, 0.2);
+}
+
+.notification_dd li {
+    border-bottom: 1px solid #f1f2f4;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+}
+
+.notification_dd li .notify_icon{
+  display: flex;
+}
+
+.notification_dd li .notify_icon .icon img {
+  display: inline-block;
+  width: 40px;
+  height: 40px; /* Mengubah tinggi menjadi 40px untuk membuatnya lingkaran */
+  border-radius: 50%; /* Menambahkan border-radius untuk membuatnya lingkaran */
+  object-fit: cover; /* Mengatur objek gambar agar mencakup seluruh area lingkaran */
+}
+
+
+/* .notification_dd li.baskin_robbins .notify_icon .icon{
+  background-position: 0 -43px;
+}
+
+.notification_dd li.mcd .notify_icon .icon{
+  background-position: 0 -86px;
+}
+
+.notification_dd li.pizzahut .notify_icon .icon{
+  background-position: 0 -129px;
+} */
+
+.notification_dd li.kfc .notify_icon .icon{
+  background-position: 0 -178px;
+}
+
+.notification_dd li .notify_data{
+  margin: 0 10px;
+  width: 185px;
+}
+
+.notification_dd li .notify_data .title{
+  color: #000;
+  font-weight: 600;
+}
+
+.notification_dd li .notify_data .sub_title{
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 5px;
+}
+
+
+
+.notification_dd li .notify_status p{
+  font-size: 12px;
+}
+
+.notification_dd li.success .notify_status p{
+  color: #47da89;
+}
+
+.notification_dd li.failed .notify_status p{
+  color: #fb0001;
+}
+
+.notification_dd li.status .notify_status p{
+  color: #0c40e8;
+}
+
+.notification_dd li.show_all{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.notification_dd li.show_all p{
+  font-weight: 700;
+  color: #0c40e8;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.notification_dd li.show_all p:hover{
+  text-decoration: none;
+}
+
+.nav-barq .notif_nav .profile .icon_wrap{
+  display: flex;
+  align-items: center;
+}
+
+.nav-barq .notif_nav .profile .name{
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.nav-barq .notif_nav .icon_wrap:hover,
+.nav-barq .notif_nav .profile.active .icon_wrap,
+.nav-barq .notif_nav .notifications.active .icon_wrap{
+  color: #3b80f9;
+}
+ 
+.nav-barq .profile .profile_dd{
+  width: 225px;
+}
+.nav-barq .profile .profile_dd:before{
+  rigth: 10px;
+}
+
+.nav-barq .profile .profile_dd ul li {
+    border-bottom: 1px solid #f1f2f4;
+}
+
+.nav-barq .profile .profile_dd ul li  a{
+    display: block;
+    padding: 15px 35px;
+    position: relative;
+}
+
+.nav-barq .profile .profile_dd ul li  a .picon{
+  display: inline-block;
+  width: 30px;
+}
+
+.nav-barq .profile .profile_dd ul li  a:hover{
+  color: #3b80f9;
+  background: #f0f5ff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.nav-barq .profile .profile_dd ul li.profile_li a:hover {
+    background: transparent;
+    cursor: default;
+    color: #7f8db0;
+}
+
+.nav-barq .profile .profile_dd ul li .btn{
+    height: 32px;
+    padding: 7px 10px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+    background: #3b80f9;
+    width: 125px;
+    margin: 5px auto 15px;
+}
+
+.nav-barq .profile .profile_dd ul li .btn:hover{
+  background: #6593e4;
+}
+
+.nav-barq .profile.active .profile_dd,
+.nav-barq .notifications.active .notification_dd{
+  display: block;
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s ease;
+    display: none;
+}
+
+.popup .shadow {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+}
+
+.popup .inner_popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: auto;
+}
+
+.popup .notification_dd{
+  display: block;
+  position: static;
+  margin: 0 auto;
+  height: 357px;
+  overflow: auto;
+}
+
+.popup .notification_dd:before{
+   display: none;
+}
+
+.popup .notification_dd li.title{
+  font-weight: 700;
+  color: #3b80f9;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.popup .notification_dd li.title .close{
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.popup .notification_dd li.title .close:hover{
+  opacity: 0.5;
+}

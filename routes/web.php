@@ -35,6 +35,10 @@ Route::get('/navbar', function () {
     return view('layout.partial.nav');
 });
 
+Route::get('/footer', function () {
+    return view('layout.partial.footer');
+});
+
 // authentication
 
 
@@ -146,6 +150,9 @@ Route::group(['prefix' => '/pages'], function () {
     });
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
+    });
+    Route::get('/notifikasi', function () {
+        return view('pages.page.notification');
     });
 });
 
