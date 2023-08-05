@@ -30,6 +30,7 @@
                             @foreach ($customers as $key => $customer)
                                 <tr align="center">
                                     <td class="text-start">{{ ++$key }}</td>
+                                
                                     <td class="text-start">{{ $customer->name }}</td>
                                     <td class="text-start">{{ $customer->email }}</td>
                                     <td class="text-start">{{ $customer->address }}</td>

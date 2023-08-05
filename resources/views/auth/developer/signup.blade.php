@@ -21,6 +21,10 @@
             <div class="form-step active">
                 <div class="input-field">
                     <i class="fa-sharp fa-solid fa-building"></i>
+                    <input type="text" placeholder="Id" name="id" />
+                </div>
+                <div class="input-field">
+                    <i class="fa-sharp fa-solid fa-building"></i>
                     <input type="text" placeholder="Nama" name="name" />
                 </div>
                 <div class="input-field">

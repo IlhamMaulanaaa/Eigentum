@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link href="/css/Partial/nav.css" rel="stylesheet">
     <link href="/css/Partial/notif.css" rel="stylesheet">
-    <script src="/js/pages/partial.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link
@@ -44,9 +43,12 @@
             </ul>
         </div>
 
+        
         <div class="darkLight-searchBoxq">
+            
+            @if (Auth::check())
 
-            <div class="notif_nav" style="margin-right: 10px;">
+            <div class="notif_nav">
                 <div class="notifications">
                     <div class="icon_wrap"><i class="far fa-bell"></i></div>
                     
@@ -100,8 +102,6 @@
                     
                 </div>
             </div>
-            @if (Auth::check())
-
                 
 
                 <div class="profileq" style="cursor: pointer;">
@@ -128,15 +128,15 @@
                             <a href="/pages/langganan">Langganan</a>
                         </li>
                         <li>
-                            <span class="material-icons icons-size">person</span>
+                            <span class="material-icons icons-size">favorite</span>
                             <a href="/favorite">yang di sukai</a>
                         </li>
                         <li>
-                            <span class="material-icons icons-size">person</span>
+                            <span class="material-icons icons-size">business_center</span>
                             <a href="/session/auth/developer/signin/">developer</a>
                         </li>
                         <li>
-                            <span class="material-icons icons-size">person</span>
+                            <span class="material-icons icons-size">exit_to_app</span>
                             <a href="/session/auth/user/signout">Logout</a>
                         </li>
                     </ul>

@@ -39,10 +39,10 @@
 
           <div class="content">
             <p>
-Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisasi dalam rumah, apartemen, dan properti investasi. Pelayanan transparan, jujur, dan profesional. Hubungi John Doe untuk bantuan dalam mencari properti yang sesuai dengan kebutuhan Anda.
+              Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisasi dalam rumah, apartemen, dan properti investasi. Pelayanan transparan, jujur, dan profesional. Hubungi John Doe untuk bantuan dalam mencari properti yang sesuai dengan kebutuhan Anda.
             </p>
 
-            <ul>
+            <ul class="abc">
               <li><i class="fab fa-twitter"></i></li>
               <i class="fab fa-instagram"></i>
               <i class="fab fa-facebook"></i>
@@ -148,8 +148,9 @@ Saya adalah agen properti berpengalaman dengan 10+ tahun pengalaman. Spesialisas
         
         </div>
         
-        
-      </div>
+    </div>
+  </div>
+      
   </body>
 </html>
 

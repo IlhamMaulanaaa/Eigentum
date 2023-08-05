@@ -49,11 +49,11 @@
 
     </head>
 
-    <body>
+    <body style="background-color: #fff;">
 
 
 
-        <div class="card78-wrapper">
+        <div class="card78-wrapper" style="margin-top: 90px;">
 
             <div class="card78">
                 <!-- card78 left -->

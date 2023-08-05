@@ -39,7 +39,7 @@
 
 
     <!-- ===== CSS ===== -->
-    <link href="/css/Partial/footer.css" rel="stylesheet">
+    {{-- <link href="/css/Partial/footer.css" rel="stylesheet">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link href="/css/Partial/nav.css" rel="stylesheet">
@@ -49,7 +49,7 @@
         href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
         rel="stylesheet">
     <!-- ===== Boxicons CSS ===== -->
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'> --}}
 
 </head>
 
@@ -59,7 +59,7 @@
 
     @include('layout.partial.nav')
     @yield('content')
-    {{-- @include('layout.partial.footer') --}}
+    @include('layout.partial.footer')
 
 
 </body>

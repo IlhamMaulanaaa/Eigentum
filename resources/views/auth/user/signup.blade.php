@@ -34,6 +34,12 @@
                                     href="/session/auth/user/signin/" class="text-dark " id="adkjslf">Sign
                                     In</a></h6>
                             <div class="form-floating">
+                                <input type="text" value="" name="id" class="form-control" id="name"
+                                    placeholder="1" disabled>
+                                <label for="name">1</label>
+                            </div>
+                            <br>
+                            <div class="form-floating">
                                 <input type="text" value="" name="name" class="form-control" id="name"
                                     placeholder="Username">
                                 <label for="name">Username</label>

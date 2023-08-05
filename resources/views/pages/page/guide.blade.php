@@ -87,41 +87,41 @@
 
     <!-- Feature Start -->
     <div class="container-xxl py-5" style="text-align: left;">
-    <div class="container" style="margin: 0 auto;">
-        <div class="row g-5" style="text-align: center; justify-content: center;">
-            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
-                    <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
-                        <i class="fa fa-users" style="color: #fff;"></i>
+        <div class="container" style="margin: 0 auto;">
+            <div class="row g-5" style="text-align: center; justify-content: center;">
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
+                        <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
+                            <i class="fa fa-users" style="color: #fff;"></i>
+                        </div>
+                        <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                     </div>
-                    <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
+                    <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Customers</h5>
+                    <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Customer Bergabung Disini</span>
                 </div>
-                <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Customers</h5>
-                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Customer Bergabung Disini</span>
-            </div>
-            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
-                    <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
-                        <i class="fa fa-users" style="color: #fff;"></i>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
+                        <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
+                            <i class="fa fa-users" style="color: #fff;"></i>
+                        </div>
+                        <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                     </div>
-                    <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
+                    <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Agen</h5>
+                    <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Agen Bergabung Disini</span>
                 </div>
-                <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Agen</h5>
-                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Agen Bergabung Disini</span>
-            </div>
-            <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
-                    <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
-                        <i class="fa fa-users" style="color: #fff;"></i>
+                <div class="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="d-flex align-items-center mb-4" style="text-align: center; justify-content: center;">
+                        <div class="btn-lg-square rounded-circle me-3" style="background-color: #0C40E8;">
+                            <i class="fa fa-users" style="color: #fff;"></i>
+                        </div>
+                        <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
                     </div>
-                    <h1 class="mb-0" data-toggle="counter-up" style="font-family: 'Lato', sans-serif;">3453</h1>
+                    <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Developer</h5>
+                    <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Developer Bergabung Disini</span>
                 </div>
-                <h5 class="mb-3" style="font-family: 'Lato', sans-serif;">Developer</h5>
-                <span style="font-family: 'Lato', sans-serif;">Lebih Dari 100 Developer Bergabung Disini</span>
             </div>
         </div>
     </div>
-</div>
 
     <!-- Feature Start -->
 
@@ -360,7 +360,7 @@
                     <ul>  </ul>
                 </div>
             </div>
-        
+        </div>
     </div>
     <!-- Projects End -->
 
