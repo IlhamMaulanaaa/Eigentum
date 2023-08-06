@@ -52,7 +52,7 @@
                                 Lanjutkan dengan google
                             </button>
                             <pre><p id="privacy_police">you agree to be bound by these <u> Terms of Service</u> and our
-<u>Privacy Policy.</u></p></pre>
+                                <u>Privacy Policy.</u></p></pre>
                         </form>
 
                     </div>

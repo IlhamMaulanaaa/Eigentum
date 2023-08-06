@@ -12,9 +12,9 @@
         <link rel="stylesheet" href="css/lib/bootstrap.css">
         <link rel="stylesheet" href="css/pages/favorite.css">
         <link rel="stylesheet" href="/css/pages/home.css">
-        
 
-        
+
+
         <!-- Swiper CSS -->
         <link rel="stylesheet" href="css/Lib/swiper-bundle.min.css">
 
@@ -54,189 +54,104 @@
     <body>
         <section class="banner-area organic-breadcrumb" style="background-image: url('assets/pages/favorite/baner.svg');">
             <div class="container">
-              <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-                <div class="col-first">
-                  <h1>Favorite</h1>
-                  <div class="d-flex align-items-center">
-                    <a href="index.html" style="margin-right: 10px; color:#fff">Home</a>
-                    <a style="margin-right: 10px; color:#fff;">/</a>
-                    <a href="single-product.html" style="color: #fff">Favorite</a>
-                  </div>
+                <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                    <div class="col-first">
+                        <h1>Favorite</h1>
+                        <div class="d-flex align-items-center">
+                            <a href="index.html" style="margin-right: 10px; color:#fff">Home</a>
+                            <a style="margin-right: 10px; color:#fff;">/</a>
+                            <a href="single-product.html" style="color: #fff">Favorite</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </section>
-          
-            
-          <div class="slide-container swiper" style="margin-top: 90px;">
+        </section>
+
+
+        <div class="slide-container swiper" style="margin-top: 90px;">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                                      <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                                        <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                      </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                                      <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                          <div class="position-relative overflow-hidden">
-                                              <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                              <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                              <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                          </div>
-                                          <div class="p-0 pb-0">
-                                              <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                              <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                              <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                          </div>
-                                          <div class="d-flex border-top" style="width: 320px;">
-                                              <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                              <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                              <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                              <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                          </div>
-                                      </div>
-                                    </div>
-                                  <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                                    <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                        <div class="position-relative overflow-hidden">
-                                            <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                            <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                            <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                        </div>
-                                        <div class="p-0 pb-0">
-                                            <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                            <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                            <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                        </div>
-                                        <div class="d-flex border-top" style="width: 320px;">
-                                            <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                            <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                            <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                            <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                        </div>
-                                    </div>
-                                  </div>
-                                <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                                  <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                      <div class="position-relative overflow-hidden">
-                                          <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                          <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                          <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                      </div>
-                                      <div class="p-0 pb-0">
-                                          <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                          <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                          <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                      </div>
-                                      <div class="d-flex border-top" style="width: 320px;">
-                                          <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                          <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                          <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                          <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                      </div>
-                                  </div>
-                                </div>
-                              <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                                <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
+                    
+                    @foreach ($favorite as $fav)
+                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width: 330px; margin: 20px;">
+                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                @if ($fav->units->isNotEmpty())
                                     <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
+                                        <a href="/fav/detail">
+                                            <img src="{{ asset('storage/' . $fav->units[0]->image) }}" class="img-thumbnail" alt=""
+                                                width="360" height="120">
+                                        </a>
+                                        <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
+                                            <button type="submit" onclick="Toggle1()" id="btnh1z" class="btnz"><i
+                                                    class="fas fa-heart"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="p-0 pb-0">
-                                        <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                        <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                        <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
+                                    <div class="bg-white rounded-top position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                        style="color: #0C40E8">
+                                        @foreach ($fav->units as $unit)
+                                            <div>{{ $unit->title }}</div>
+                                        @endforeach
                                     </div>
-                                    <div class="d-flex border-top" style="width: 320px;">
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                        <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                    </div>
+                                @endif
+                                <div class="p-0 pb-0">
+                                    @foreach ($fav->units as $unit)
+                                        <h5 class="mb-1 mt-3" style="color: #000;">
+                                            {{ $unit->price }}
+                                        </h5>
+                                    @endforeach
+                                    @foreach ($fav->units as $unit)
+                                        <a class="d-block h6 mb-2" style="color: #000;" href="/fav->units/detail">
+                                            {{ $unit->properties->property }}
+                                        </a>
+                                    @endforeach
+                                    <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>
+                                        Jawa Tengah, Semarang, Kedurungan
+                                    </p>
                                 </div>
-                              </div>
-                            <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                              <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                  <div class="position-relative overflow-hidden">
-                                      <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                      <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                      <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                  </div>
-                                  <div class="p-0 pb-0">
-                                      <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                      <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                      <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                  </div>
-                                  <div class="d-flex border-top" style="width: 320px;">
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                      <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                  </div>
-                              </div>
+                                <div class="d-flex border-top" style="width: 280px; ">
+                                    @foreach ($fav->units as $unit)
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-bath me-2"></i>
+                                            {{ $unit->specifications->bathroom }}
+                                        </small>
+                                    @endforeach
+                                    @foreach ($fav->units as $unit)
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-bed me-2"></i>
+                                            {{ $unit->specifications->bedroom }}
+                                        </small>
+                                    @endforeach
+                                    @foreach ($fav->units as $unit)
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-ruler-combined me-2"></i>
+                                            {{ $unit->specifications->building_area }}m²
+                                        </small>
+                                    @endforeach
+                                    @foreach ($fav->units as $unit)
+                                        <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-signal me-2"></i>
+                                            {{ $unit->specifications->floor }}m²
+                                        </small>
+                                    @endforeach
+                                </div>
                             </div>
-                            <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                              <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                  <div class="position-relative overflow-hidden">
-                                      <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                      <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                      <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                  </div>
-                                  <div class="p-0 pb-0">
-                                      <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                      <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                      <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                  </div>
-                                  <div class="d-flex border-top" style="width: 320px;">
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                      <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                  </div>
-                              </div>
-                            </div>
-                            <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width:330px; margin: 20px;" >
-                              <div class="property-item rounded overflow-hidden"  style="width: 330px;" >
-                                  <div class="position-relative overflow-hidden">
-                                      <a href=""><img class="img-fluid" src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                      <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" style="background-color: #0C40E8">Dijual</div>
-                                      <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3" style="color: #0C40E8">Appartment</div>
-                                  </div>
-                                  <div class="p-0 pb-0">
-                                      <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                      <a class="d-block h5 mb-2" style="color: #000;" href="">Apartemen Sido Moro</a>
-                                      <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>Jawa Tengah, Semarang, Kedurungan</p>
-                                  </div>
-                                  <div class="d-flex border-top" style="width: 320px;">
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath  me-2"></i>2 Bath</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed  me-2"></i>3 Bed</small>
-                                      <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                      <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square  me-2"></i>350m²</small>
-                                  </div>
-                              </div>
-                            </div>
-                                            
-                                                    
+                        </div>
+                    @endforeach
+
+
+
+
+
+                
+                
+
+                
+                    {{-- @endforeach --}}
+
+
                 </div>
             </div>
 
-            
+
         </div>
     </body>
 
@@ -297,7 +212,7 @@
 
         const handleIcons = (scrollVal) => {
             let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-            arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+            arrowIcons.parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
             arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
         }
 

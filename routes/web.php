@@ -10,6 +10,7 @@ use App\Http\Controllers\GuideController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -17,8 +18,7 @@ use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
 use App\Http\Controllers\SpecificationController;
-use App\Http\Controllers\Auth\SocialiteController;
-use App\Http\Middleware\CheckRoleMiddleware;
+use App\Http\Controllers\PaymentCallbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +49,10 @@ Route::get('/', [AdminController::class, 'page']);
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
+});
+
+Route::get('/footer', function () {
+    return view('layout.partial.footer');
 });
 
 // authentication
@@ -163,6 +167,9 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/langganan', function () {
         return view('pages.page.subscribe');
     });
+    Route::get('/notifikasi', function () {
+        return view('pages.page.notification');
+    });
 });
 
 
@@ -178,9 +185,7 @@ Route::get('/profile', function () {
     return view('pages.page.profile');
 });
 
-Route::get('/favorite', function () {
-    return view('pages.page.favorite');
-});
+Route::get('/favorite', [FavoriteController::class, 'index']);
 
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
@@ -233,7 +238,7 @@ Route::group(['prefix' => '/unit'], function () {
 // });
 
 
-Route::middleware(['auth', 'IsAdmin:1'])->group(function () {
+Route::middleware(['auth', 'IsAdmin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
 
         Route::get('/', [AdminController::class, 'index']);
@@ -261,3 +266,7 @@ Route::middleware(['auth', 'IsAdmin:1'])->group(function () {
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
 Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
 Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');
+
+Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
+Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
+Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

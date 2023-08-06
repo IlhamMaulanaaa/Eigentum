@@ -72,6 +72,17 @@
                 </a>
             </li>
 
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('subscribe.index')}}">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Subscribe</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{route('order.index')}}">
+                    <i class="align-middle" data-feather="globe"></i> <span class="align-middle">Order</span>
+                </a>
+            </li>
+
             <li class="sidebar-header">
                 Filters
             </li>
