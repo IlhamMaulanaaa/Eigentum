@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -29,7 +31,6 @@ class SessionController extends Controller
     }
 
     public function anu(){
-        Auth::guard('developer')->user();
         return view('pages.Developer.dashboard');
     }
 
@@ -141,13 +142,14 @@ class SessionController extends Controller
             'password' => bcrypt($request->password),
         ];
 
-        User::create($data);
+        $users = User::create($data);
 
         $datalogin = [
             'email' => $request->email,
             'password' => $request->password
         ];
 
+        $users->roles()->attach($request->role_id);
 
         if (Auth::attempt($datalogin)) {
             // return redirect('pasien/all')->with('success', Auth::user()->name . ' Berhasil Register');

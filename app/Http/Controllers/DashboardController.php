@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use App\Models\User;
+use App\Models\Agent;
 use App\Models\Customer;
 use App\Models\Property;
-use Illuminate\Http\Request;
-use App\Models\Agent;
-use App\Models\User;
 use App\Models\Developer;
-use App\Models\Unit;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    //     public function __construct()
+    // {
+    //     $this->middleware('IsAdmin:1');
+    // }
+
     public function index()
     {
         $developerCount = Developer::count();
@@ -20,6 +27,5 @@ class DashboardController extends Controller
         $unitCount = Unit::count();
         $userCount = User::count();
         return view('admin.dashboard.all', compact('developerCount', 'agentCount', 'unitCount', 'userCount', 'propertyCount'));
-
     }
 }

@@ -495,7 +495,7 @@ class DeveloperController extends Controller
         if (Auth::guard('developer')->attempt($infologin)) {
             return redirect('/beranda');
         } else {
-            return redirect('/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
+            return redirect('/beranda')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
 }

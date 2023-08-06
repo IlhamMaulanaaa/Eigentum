@@ -15,19 +15,23 @@
             <div class="signin-signup">
                 {{-- form Sign In  --}}
                 {{-- action --}}
-                <form  action="/session/auth/developer/signin/create" method="POST" class="sign-in-form">
+                <form action="/register" method="POST" class="sign-in-form">
                     @csrf
                     {{-- end action --}}
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="email" placeholder="Email" name="email" />
+                        <input type="text" placeholder="Name" name="name" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="email" placeholder="Email" name="email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Password" name="password" />
+                        <input type="password" placeholder="Password" name="password" required />
                     </div>
-                    <button type="submit" value="Login" class="btn solid"></button>
+                    <button type="submit" value="Login" class="btn solid">login</button>
                     <p class="social-text">Or Sign in with social platforms</p>
                     <div class="social-media">
                         <a href="#" class="social-icon">

@@ -29,10 +29,10 @@
 
                 <div class="menu-profileq">
                     <h3>
-                        {{ Auth()->user()->name }}
+                        {{ Auth()->user()->email }}
                         <div>
                             {{-- sesuai nama role --}}
-                            {{ session('role') }}
+                            {{-- {{ session('role') }} --}}
                         </div>
                     </h3>
                     <ul style="margin: 0; padding:0;">

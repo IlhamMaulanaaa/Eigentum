@@ -14,21 +14,23 @@ class CheckRoleMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if (Auth::guard('developer')->check()) {
-            return $next($request);
-        }
-        if (Auth::guard('agent')->check()) {
-            return $next($request);
-        }
+
+
+        // if (Auth::guard('developer')->check()) {
+        //     return $next($request);
+        // }
+        // if (Auth::guard('agent')->check()) {
+        //     return $next($request);
+        // }
         // if (Auth::guard('admin')->check()) {
         //     return $next($request);
         // }
-        if (Auth::guard('user')->check()) {
-            return $next($request);
-        }
+        // if (Auth::guard('web')->check()) {
+        //     return $next($request);
+        // }
 
-        return redirect('/');
+        return redirect('/session/auth/user/signin');
     }
 }

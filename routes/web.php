@@ -1,7 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
@@ -11,11 +11,14 @@ use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
 use App\Http\Controllers\SpecificationController;
+use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Middleware\CheckRoleMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,8 +31,21 @@ use App\Http\Controllers\SpecificationController;
 |
 */
 
+
+
+// routes/web.php
+// Route::get('/user/{user}/attach-role', 'UserController@attachRoleForm');
+// Route::post('/user/{user}/attach-role', 'UserController@attachRole');
+// Route::get('/user/{user}/detach-role', 'UserController@detachRoleForm');
+// Route::post('/user/{user}/detach-role', 'UserController@detachRole');
+
+
+
+
 Route::get('/beranda', [UnitController::class, 'homeunit']);
-Route::get('/', [UnitController::class, 'homeunit']);
+Route::get('/beranda', [UnitController::class, 'homeunit']);
+Route::post('/register', [AdminController::class, 'register']);
+Route::get('/', [AdminController::class, 'page']);
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
@@ -63,7 +79,7 @@ Route::group(['prefix' => '/session'], function () {
 
             Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
-                Route::post('/create', [AuthController::class, 'postSignin']);
+                Route::post('/create', [AuthController::class, 'login']);
             });
             route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
@@ -74,9 +90,9 @@ Route::group(['prefix' => '/session'], function () {
         Route::group(['prefix' => '/developer'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
 
-        Route::group(['prefix' => '/signin'], function () {
+            Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
-                Route::post('/create', [AuthController::class, 'postSignin']);
+                // Route::post('/create', [AuthController::class, 'postSignin']);
             });
             Route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
@@ -98,12 +114,12 @@ Route::group(['prefix' => '/session'], function () {
         });
     });
 });
-Route::middleware(['checkrole'])->group(function () {
-    // developer
-    Route::group(['prefix' => '/developer'], function () {
-        Route::get('/dashboard', [SessionController::class, 'anu']);
-    });
+// Route::middleware(['checkrole'])->group(function () {
+// developer
+Route::group(['prefix' => '/developer'], function () {
+    Route::get('/dashboard', [SessionController::class, 'anu']);
 });
+// });
 Route::get('/detail', function () {
     return view('pages.Developer.detail');
 });
@@ -217,27 +233,29 @@ Route::group(['prefix' => '/unit'], function () {
 // });
 
 
+Route::middleware(['auth', 'IsAdmin:1'])->group(function () {
+    Route::group(['prefix' => '/admin'], function () {
 
-Route::group(['prefix' => '/admin','middleware' => 'checkrole'], function(){
-    
-    Route::get('/', [AdminController:: class, 'index']);
-    Route::get("/dashboard", [DashboardController::class, 'index']);
+        Route::get('/', [AdminController::class, 'index']);
+        Route::get("/dashboard", [DashboardController::class, 'index']);
 
-    Route::resource('customer', CustomerController::class);
-    Route::resource('agent', AgentController::class);
-    Route::resource('developer', DeveloperController::class);
-    Route::resource('property', PropertyController::class);
-    Route::get('/property/create/{developerId}', [PropertyController::class, 'create'])->name('propertyid.create');
-    Route::post('/property/{developerId}', [PropertyController::class, 'store'])->name('propertyid.store');
-    Route::resource('unit', UnitController::class);
-    Route::get('/unit/create/{propertyId}', [UnitController::class, 'create'])->name('unitid.create');
-    Route::post('/unit/{propertyId}', [UnitController::class, 'store'])->name('unitid.store');
-    Route::resource('specification', SpecificationController::class);
-    Route::resource('type', TypeController::class);
-    Route::resource('guide', GuideController::class);
-    Route::resource('status', StatusController::class);
-    
-    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+
+        Route::resource('customer', CustomerController::class);
+        Route::resource('agent', AgentController::class);
+        Route::resource('developer', DeveloperController::class);
+        Route::resource('property', PropertyController::class);
+        Route::get('/property/create/{developerId}', [PropertyController::class, 'create'])->name('propertyid.create');
+        Route::post('/property/{developerId}', [PropertyController::class, 'store'])->name('propertyid.store');
+        Route::resource('unit', UnitController::class);
+        Route::get('/unit/create/{propertyId}', [UnitController::class, 'create'])->name('unitid.create');
+        Route::post('/unit/{propertyId}', [UnitController::class, 'store'])->name('unitid.store');
+        Route::resource('specification', SpecificationController::class);
+        Route::resource('type', TypeController::class);
+        Route::resource('guide', GuideController::class);
+        Route::resource('status', StatusController::class);
+
+        Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+    });
 });
 
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');

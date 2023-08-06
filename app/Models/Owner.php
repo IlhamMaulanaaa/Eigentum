@@ -25,4 +25,9 @@ class Owner extends Model
     {
         return $this->belongsTo(Developer::class);
     }
+    
+    public function users()
+    {
+        return $this->belongsTo(Property::class);
+    }
 }

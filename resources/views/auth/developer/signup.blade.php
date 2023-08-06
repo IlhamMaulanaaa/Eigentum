@@ -21,15 +21,30 @@
             <div class="form-step active">
                 <div class="input-field">
                     <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="text" placeholder="Nama" name="name" />
+                    <input type="text"
+                                            class="form-control noscroll @error('name') is-invalid @enderror" id="name"
+                                            name="name" value="{{ old('name') }}">
+                                        @error('name')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="owner_emal" />
+                    <input type="text"
+                                            class="form-control noscroll @error('owner_email') is-invalid @enderror"
+                                            id="email" name="owner_email" value="{{ old('owner_email') }}">
+                                        @error('owner_email')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="owner_password" />
+                    <input type="password"
+                                            class="form-control noscroll @error('owner_password') is-invalid @enderror"
+                                            id="password" name="owner_password" value="{{old('owner_password')}}">
+                                        @error('owner_password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -37,12 +52,22 @@
                 </div>
 
                 <label for="file-upload" class="file-label">
-                    <input type="file" id="file-upload" class="file-input" name="ktp">
+                    <input type="file"
+                                            class="file-input form-control noscroll @error('ktp') is-invalid @enderror" id="file-upload" name="
+                                            name="ktp" value="{{ old('ktp') }}">
+                                        @error('ktp')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                     <span class="file-button">Choose a file</span>
                     <span class="file-name">foto ktp</span>
                 </label>
                 <label for="file-uploadandktp" class="file-labelandktp">
-                    <input type="file" id="file-uploadandktp" class="file-input" name="face">
+                    <input type="file"
+                                            class="file-input form-control noscroll @error('face') is-invalid @enderror" id="file-uploadandktp"
+                                            name="face">
+                                        @error('face')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                     <span class="file-buttonandktp">Choose a file</span>
                     <span class="file-name">foto dengan ktp</span>
                 </label>
@@ -56,7 +81,12 @@
             <div class="form-step">
                 <div class="input-field">
                     <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="text" placeholder="Nama Perusahaan" name="company" />
+                    <input type="text"
+                                            class="form-control noscroll @error('company') is-invalid @enderror"
+                                            id="company" name="company" value="{{ old('company') }}">
+                                        @error('company')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                 </div>
                 <div class="input-field">
                     <i class="fa-sharp fa-solid fa-building"></i>
@@ -64,11 +94,21 @@
                 </div>
                 <div class="input-field">
                     <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email" />
+                    <input type="email"
+                    class="form-control noscroll @error('email') is-invalid @enderror"
+                    id="email" name="email" value="{{ old('email') }}">
+                @error('email')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" />
+                    <input type="password"
+                                            class="form-control noscroll @error('password') is-invalid @enderror"
+                                            id="password" name="password" value="{{ old('password') }}">
+                                        @error('password')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
                 </div>
                 <div class="input-field">
                     <i class="fas fa-lock"></i>
@@ -94,60 +134,157 @@
                     <span class="file-buttonNPWP">Choose a file</span>
                     <span class="file-name">Nomer Pokok Wajib Pajak</span>
                 </label><br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Provinsi</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
+                        <select class="form-select"
+                            name="provinces_id" id="provinsi" data-placeholder="Pilih Provinsi"
+                            required>
+                            <option>Pilih Provinsi</option>
+                            @foreach ($provinces as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ old('provinces_id') == $item->id  }}>
+                                    {{ $item->name }}</option>
+                            @endforeach
+                            @error('province_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
+                        <select class="form-select " name="regencies_id" id="kota"
+                            data-placeholder="Pilih Kota" required>
+                            <option></option>
+                            @if (old('provinces_id'))
+                                @foreach ($regencies as $item)
+                                    <option value="{{ $item->id }}"
+                                        {{ old('regencies_id') == $item->id  }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('regency_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
+                        <select class="form-select " name="districts_id" id="kecamatan"
+                            data-placeholder="Pilih kecamatan" required>
+                            <option></option>
+                            @if (old('regencies_id'))
+                                @foreach ($districts as $item)
+                                    <option value="{{ $item->id }}"
+                                        {{ old('districts_id') == $item->id  }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('district_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="desa">Desa</label>
+                        <select class="form-select " name="villages_id" id="desa"
+                            data-placeholder="Pilih Desa" required>
+                            <option></option>
+                            @if (old('districts_id'))
+                                @foreach ($villages as $item)
+                                    <option value="{{ $item->id }}"
+                                        {{ old('villages_id') == $item->id  }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('village_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
                     </div>
                 </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kabupaten</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kecamatan</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Desa</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br><br>
 
                 <button class="previous btn">Previous</button>
                 <button type="submit" class="btn">Submit</button>
             </div>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            function onChangeSelect(url, id, name) {
+                // send ajax request to get the regency of the selected province and append to the select tag
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        let target = $('#' + name);
+                        target.attr('disabled', false);
+                        target.empty()
+                        target.attr('placeholder', target.data('placeholder'))
+                        target.append(`<option> ${target.data('placeholder')} </option>`)
+                        $.each(data, function(key, value) {
+                            target.append(`<option value="${key}">${value}</option>`)
+                        });
+                    }
+                });
+            }
+
+            $('#kota').prop('disabled', true);
+            $('#kecamatan').prop('disabled', true);
+            $('#desa').prop('disabled', true);
+
+
+            $('#provinsi').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.regency') }}`;
+                $('#kota').empty().prop('disabled', false);
+                $('#kecamatan').empty().prop('disabled', true);
+                $('#desa').empty().prop('disabled', true);
+                onChangeSelect(url, id, 'kota');
+            });
+
+            $('#kota').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.districts') }}`;
+                $('#kecamatan').empty().prop('disabled', false);
+                $('#desa').empty().prop('disabled', true);
+                onChangeSelect(url, id, 'kecamatan');
+            });
+
+            $('#kecamatan').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.villages') }}`;
+                $('#desa').empty().prop('disabled', false);
+                onChangeSelect(url, id, 'desa');
+            });
+
+            // $('.single-select-field').select2({
+            //     theme: "bootstrap-5",
+            //     width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+            //         'style',
+            //     placeholder: $(this).data('placeholder'),
+            // });
+
+        });
+    </script>
 
     <script>
         const form = document.getElementById('cool-form');
