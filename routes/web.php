@@ -32,9 +32,14 @@ use App\Models\Subcribe;
 |
 */
 
-Route::get('/', function () {
-    return redirect('admin/');
-})->middleware('auth');
+Route::get('/beranda', function () {
+    return view('welcome');
+});
+
+// Route::get('/', function () {
+//     return redirect('admin/');
+// })->middleware('auth');
+
 
 // Route::get('/admin', function () {
 //     return view('admin.layout.main');
@@ -49,12 +54,12 @@ Route::group(['prefix' => '/session'], function(){
     });
 
     Route::group(['prefix' => '/signup'], function(){
-        Route::get('/', [SessionController:: class, 'signup'])->middleware('guest');
+        Route::get('/', [SessionController:: class, 'signup'])->name('register')->middleware('guest');
         Route::post('/create', [SessionController:: class, 'postSignup']);
     });
 });
 
-Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
+Route::group(['prefix' => '/admin', 'middleware' => 'role:admin' ], function(){
     
     Route::get('/', [AdminController:: class, 'index']);
     Route::get("/dashboard", [DashboardController::class, 'index']);
