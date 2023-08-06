@@ -66,31 +66,32 @@
 								</div>
 							</div>
 							<div class="col-md-6 form-group">
-								<label>KTP</label>
+								<label>Wajah</label>
 								<div class="container-upload">
-									<div class="wrapper wrapper4">
-									   <div class="image">
-										  <img src="" alt="">
-									   </div>
-									   <div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-										  <div class="icon">
-											 <i class="fas fa-photo"></i>
-										  </div>
-										  <div class="text">
-											 No file chosen, yet!
-										  </div>
-									   </div>
-									   <div id="cancel-btn">
-										  <i class="fas fa-times"></i>
-									   </div>
-									   <div class="file-name">
-										  File name here
-									   </div>
+									<div class="wrapper wrapper5">
+										<div class="image">
+											<video id="video" autoplay></video>
+										</div>
+										<div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
+											<div class="icon">
+												<i class="fas fa-camera"></i>
+											</div>
+											<div class="text">
+												Click to Start Camera
+											</div>
+										</div>
+										<div id="cancel-btn">
+											<i class="fas fa-times"></i>
+										</div>
+										<div class="file-name">
+											Camera Stream
+										</div>
 									</div>
-									<button onclick="defaultBtnActive(5)" class="custom-btn" id="custom-btn">Upload</button>
-									<input id="default-btn5" type="file" hidden>
-								 </div>
+									<button onclick="startCamera()" class="custom-btn" id="custom-btn">Start Camera</button>
+									<button onclick="captureSnapshot()" class="custom-btn" id="capture-btn">Capture</button>
+								</div>
 							</div>
+						
 							<div class="col-md-6 form-group">
 								<label>Wajah</label>
 								<div class="container-upload">
@@ -412,6 +413,71 @@
             }
         });
         }
+
+
+		const video = document.getElementById("video");
+const startButton = document.getElementById("start-btn");
+const captureButton = document.getElementById("capture-btn");
+const cancelCaptureButton = document.getElementById("cancel-capture-btn");
+
+let stream;
+
+function startCamera() {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(mediaStream => {
+        stream = mediaStream;
+        video.srcObject = stream;
+        startButton.style.display = "none";
+        captureButton.style.display = "block";
+        cancelCaptureButton.style.display = "block";
+        document.querySelector(".content").style.display = "none";
+        document.querySelector(".image").style.display = "block";
+    })
+    .catch(error => {
+        console.error("Error accessing camera:", error);
+    });
+}
+
+function captureSnapshot() {
+    const canvas = document.createElement("canvas");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    const image = document.createElement("img");
+    image.src = canvas.toDataURL();
+    document.querySelector(".image").innerHTML = "";
+    document.querySelector(".image").appendChild(image);
+
+    // Stop camera stream
+    if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+    }
+
+    captureButton.style.display = "none";
+    startButton.style.display = "block";
+    cancelCaptureButton.style.display = "none";
+}
+
+function cancelCapture() {
+    // Stop camera stream
+    if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+    }
+
+    // Reset UI
+    startButton.style.display = "block";
+    captureButton.style.display = "none";
+    cancelCaptureButton.style.display = "none";
+    document.querySelector(".content").style.display = "block";
+    document.querySelector(".image").style.display = "none";
+}
+
+// Menambahkan event listener untuk tombol "Cancel"
+cancelCaptureButton.addEventListener("click", cancelCapture);
+
+
 
 
       </script>

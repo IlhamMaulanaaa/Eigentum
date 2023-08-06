@@ -18,6 +18,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('12345678'),
         ]);
 
+        // User::create([
+        //     'name' => 'Admin',
+        //     'email' => 'admin345@gmail.com',
+        //     'password' => bcrypt('12345678'),
+        // ]);
+
         $this->call(CustomerSeeder::class);
         $this->call(TypeSeeder::class);
         $this->call(StatusSeeder::class);

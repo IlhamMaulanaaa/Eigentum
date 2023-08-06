@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
 use App\Http\Controllers\SpecificationController;
@@ -169,9 +170,7 @@ Route::get('/profile', function () {
     return view('pages.page.profile');
 });
 
-Route::get('/favorite', function () {
-    return view('pages.page.favorite');
-});
+Route::get('/favorite', [FavoriteController::class, 'index']);
 
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
@@ -250,3 +249,6 @@ Route::group(['prefix' => '/admin','middleware' => 'checkrole'], function(){
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
 Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
 Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');
+
+Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
+Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');

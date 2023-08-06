@@ -19,15 +19,15 @@ class CheckRoleMiddleware
         if (Auth::guard('developer')->check()) {
             return $next($request);
         }
-        if (Auth::guard('agent')->check()) {
-            return $next($request);
-        }
+        // if (Auth::guard('agent')->check()) {
+        //     return $next($request);
+        // }
         // if (Auth::guard('admin')->check()) {
         //     return $next($request);
         // }
-        if (Auth::guard('user')->check()) {
-            return $next($request);
-        }
+        // if (Auth::guard('user')->check()) {
+        //     return $next($request);
+        // }
 
         return redirect('/');
     }

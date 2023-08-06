@@ -22,6 +22,24 @@ body {
     --text-primary: #000;
 }
 
+.btnsz{
+    position: absolute;
+    display: flex;
+}
+
+.btnz{
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    outline: none;
+    color: grey;
+    top: -70px;
+}
+
+.btnz i:hover{
+    cursor: pointer;
+}
+
 .desktop-1-RTV {
     background-color: #ffffff;
     display: flex;
