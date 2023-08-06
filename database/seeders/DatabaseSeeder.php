@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeSeeder::class);
         $this->call(StatusSeeder::class);
         $this->call(GuideSeeder::class);
+        $this->call(SubscribeSeeder::class);
         
         $this->call(IndoRegionProvinceSeeder::class);
         $this->call(IndoRegionRegencySeeder::class);
@@ -41,5 +42,6 @@ class DatabaseSeeder extends Seeder
         
         $this->call(PropertySeeder::class);
         $this->call(UnitSeeder::class);
+
     }
 }
