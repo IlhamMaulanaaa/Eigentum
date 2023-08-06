@@ -6,16 +6,20 @@ use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\IndoregionController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\TypeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\FilePreviewController;
+use App\Models\Subcribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,8 +70,15 @@ Route::group(['prefix' => '/admin','middleware' => 'auth'], function(){
     Route::post('/unit/{propertyId}', [UnitController::class, 'store'])->name('unitid.store');
     Route::resource('specification', SpecificationController::class);
     Route::resource('type', TypeController::class);
-    Route::resource('guide', GuideController::class);
+    Route::resource('guide', GuideController::class);  
     Route::resource('status', StatusController::class);
+    Route::resource('subscribe', SubscribeController::class);
+    Route::resource('order', OrderController::class);
+    Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
+
+    // Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
+
+
     
     Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
 });
@@ -78,3 +89,4 @@ Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.
 
 Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
 Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
+Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);

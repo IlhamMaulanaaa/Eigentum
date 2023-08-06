@@ -4,6 +4,7 @@ use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\PropertyController;
@@ -90,4 +91,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
