@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class DeveloperMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,13 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && Auth::user()->role == 'admin') {
+
+        if (Auth::check() && Auth::user()->role == 'developer') {
             return $next($request);
-        }else{
+        } else {
             return abort(403, 'Unauthorized action.');
         }
-        return redirect('/beranda');
+
+        return redirect('/session/auth/developer/signup');
     }
 }

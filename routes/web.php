@@ -120,19 +120,24 @@ Route::group(['prefix' => '/session'], function () {
 });
 // Route::middleware(['checkrole'])->group(function () {
 // developer
-Route::group(['prefix' => '/developer'], function () {
-    Route::get('/dashboard', [SessionController::class, 'anu']);
-});
 // });
-Route::get('/detail', function () {
-    return view('pages.Developer.detail');
-});
-// agent
-Route::group(['prefix' => '/agent'], function () {
-    Route::get('/dashboard', function () {
-        return view('pages.Agent.dashboard');
+Route::middleware(['auth', 'IsDeveloper'])->group(function () {
+    Route::group(['prefix' => '/developer'], function () {
+        Route::get('/dashboard', [SessionController::class, 'anu']);
+        Route::get('/detail', function () {
+        return view('pages.Developer.detail');
+    });
     });
 });
+// agent
+Route::middleware(['auth', 'IsAgent'])->group(function () {
+    Route::group(['prefix' => '/agent'], function () {
+        Route::get('/dashboard', function () {
+            return view('pages.Agent.dashboard');
+        });
+    });
+});
+
 
 Route::get('/home', [UnitController::class, 'homeunit']);
 

@@ -140,16 +140,17 @@ class SessionController extends Controller
             'email' => $request->email,
             'name' => $request->name,
             'password' => bcrypt($request->password),
+            'role_id' => $request->role_id,
         ];
 
-        $users = User::create($data);
+        User::create($data);
 
         $datalogin = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $request->password,
+            'role_id' => $request->role_id
         ];
 
-        $users->roles()->attach($request->role_id);
 
         if (Auth::attempt($datalogin)) {
             // return redirect('pasien/all')->with('success', Auth::user()->name . ' Berhasil Register');

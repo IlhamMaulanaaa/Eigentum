@@ -49,10 +49,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favorite::class);
     }
-    public function roles()
-    {
-        return $this->belongsToMany(role::class, 'role_users', 'user_id', 'role_id');
-    }
+    // public function roles()
+    // {
+    //     return $this->belongsTo(Role::class);
+    // }
     public function agents()
     {
         return $this->hasMany(Agent::class);
