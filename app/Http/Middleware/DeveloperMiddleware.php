@@ -20,7 +20,7 @@ class DeveloperMiddleware
         if (Auth::check() && Auth::user()->role == 'developer') {
             return $next($request);
         } else {
-            return abort(403, 'Unauthorized action.');
+            return redirect('/beranda');
         }
 
         return redirect('/session/auth/developer/signup');

@@ -142,7 +142,7 @@
                     </ul>
                 </div>
             @elseif (!Auth::check())
-                <a href="/session/auth/user/signin" class="btnq">Masuk</a>
+                <a href="/" class="btnq">Masuk</a>
             @endif
 
         </div>

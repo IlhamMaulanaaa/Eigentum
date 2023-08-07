@@ -22,7 +22,7 @@ class SessionController extends Controller
 
     public function signinUser()
     {
-        return view('auth.user.signin');
+        return view('auth.developer.signin');
     }
 
     public function signupUser()
@@ -139,16 +139,14 @@ class SessionController extends Controller
         $data = [
             'email' => $request->email,
             'name' => $request->name,
-            'password' => bcrypt($request->password),
-            'role_id' => $request->role_id,
+            'password' => bcrypt($request->password)
         ];
 
         User::create($data);
 
         $datalogin = [
             'email' => $request->email,
-            'password' => $request->password,
-            'role_id' => $request->role_id
+            'password' => $request->password
         ];
 
 

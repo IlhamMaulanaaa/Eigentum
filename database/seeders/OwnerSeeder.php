@@ -23,9 +23,9 @@ class OwnerSeeder extends Seeder
 
         foreach ($developerIds as $developerId) {
             Owner::create([
-                'name' => fake()->name(),
-                'owner_email' => fake()->email(),
-                'owner_password' => bcrypt(fake()->password()),
+                // 'name' => fake()->name(),
+                // 'owner_email' => fake()->email(),
+                // 'owner_password' => bcrypt(fake()->password()),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),
                 'developer_id' => $developerId->id,

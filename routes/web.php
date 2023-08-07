@@ -17,8 +17,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
+use App\Http\Controllers\SubscribeController;
+use App\Models\Subscribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,21 +34,12 @@ use App\Http\Controllers\PaymentCallbackController;
 |
 */
 
-
-
-// routes/web.php
-// Route::get('/user/{user}/attach-role', 'UserController@attachRoleForm');
-// Route::post('/user/{user}/attach-role', 'UserController@attachRole');
-// Route::get('/user/{user}/detach-role', 'UserController@detachRoleForm');
-// Route::post('/user/{user}/detach-role', 'UserController@detachRole');
-
-
-
-
-Route::get('/beranda', [UnitController::class, 'homeunit']);
+Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 Route::post('/register', [AdminController::class, 'register']);
-Route::get('/', [AdminController::class, 'page']);
+Route::get('/create', [AuthController::class, 'login']);
+Route::get('/create', [AuthController::class, 'register']);
+
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');
@@ -112,7 +106,7 @@ Route::group(['prefix' => '/session'], function () {
                 Route::post('/create', [AgentController::class, 'postSigninAgent']);
             });
             Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [AgentController::class, 'SignupAgent']);
+                Route::get('/', [AgentController::class, 'signup']);
                 Route::post('/create', [AgentController::class, 'storeFront']);
             });
         });
@@ -125,8 +119,8 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
         Route::get('/dashboard', [SessionController::class, 'anu']);
         Route::get('/detail', function () {
-        return view('pages.Developer.detail');
-    });
+            return view('pages.Developer.detail');
+        });
     });
 });
 // agent
@@ -243,7 +237,7 @@ Route::group(['prefix' => '/unit'], function () {
 // });
 
 
-Route::middleware(['auth', 'IsAdmin'])->group(function () {
+Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
 
         Route::get('/', [AdminController::class, 'index']);
@@ -263,6 +257,8 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
         Route::resource('type', TypeController::class);
         Route::resource('guide', GuideController::class);
         Route::resource('status', StatusController::class);
+        Route::resource('subscribe', SubscribeController::class);
+        Route::resource('order', OrderController::class);
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
     });
