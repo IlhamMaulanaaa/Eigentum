@@ -14,6 +14,8 @@ class Favorite extends Model
 
     protected $tables = 'favorites';
 
+    protected $guard = [];
+
 
     public function user()
     {

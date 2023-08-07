@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,7 +13,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Developer extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasFactory, HasRoles;
+    use Notifiable, SoftDeletes, HasFactory;
 
     public $timestamps = false;
     protected $table = 'developers';

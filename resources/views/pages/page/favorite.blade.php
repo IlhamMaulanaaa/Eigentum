@@ -73,9 +73,10 @@
                 <div class="card-wrapper swiper-wrapper">
                     
                     @foreach ($favorite as $fav)
+
                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width: 330px; margin: 20px;">
                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                @if ($fav->units->isNotEmpty())
+                                
                                     <div class="position-relative overflow-hidden">
                                         <a href="/fav/detail">
                                             <img src="{{ asset('storage/' . $fav->units[0]->image) }}" class="img-thumbnail" alt=""
@@ -83,7 +84,7 @@
                                         </a>
                                         <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
                                             <button type="submit" onclick="Toggle1()" id="btnh1z" class="btnz"><i
-                                                    class="fas fa-heart"></i></button>
+                                                class="fas fa-heart"></i></button>
                                         </div>
                                     </div>
                                     <div class="bg-white rounded-top position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
@@ -92,7 +93,6 @@
                                             <div>{{ $unit->title }}</div>
                                         @endforeach
                                     </div>
-                                @endif
                                 <div class="p-0 pb-0">
                                     @foreach ($fav->units as $unit)
                                         <h5 class="mb-1 mt-3" style="color: #000;">

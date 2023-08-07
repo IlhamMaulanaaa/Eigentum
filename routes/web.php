@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
@@ -8,11 +7,13 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\IndoregionController;
@@ -263,6 +264,10 @@ Route::middleware(['auth', 'IsAdmin'])->group(function () {
         Route::resource('type', TypeController::class);
         Route::resource('guide', GuideController::class);
         Route::resource('status', StatusController::class);
+        Route::resource('subscribe', SubscribeController::class);
+        Route::resource('order', OrderController::class);
+        Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
+
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
     });
