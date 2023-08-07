@@ -32,13 +32,13 @@ use App\Models\Subcribe;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/beranda');
+})->middleware('auth');
+
 Route::get('/beranda', function () {
     return view('welcome');
-});
-
-// Route::get('/', function () {
-//     return redirect('admin/');
-// })->middleware('auth');
+})->middleware('auth');
 
 
 // Route::get('/admin', function () {
@@ -46,7 +46,7 @@ Route::get('/beranda', function () {
 // });
 
 Route::group(['prefix' => '/session'], function(){
-    Route::get('/signout', [SessionController::class, 'signout']);
+    Route::get('/signout', [SessionController::class, 'signout'])->name('logout');
 
     Route::group(['prefix' => '/signin'], function(){
         Route::get('/', [SessionController:: class, 'signin'])->name('login')->middleware('guest');
