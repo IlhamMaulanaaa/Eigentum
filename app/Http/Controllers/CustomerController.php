@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
 use App\Models\Customer;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -12,11 +13,11 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $customers = Customer::all();
-        $tables = (new Customer())->getTable();
+        $users = User::all();
+        $tables = (new User())->getTable();
 
-        if ($customers) {
-            return view('admin.customer.all', compact('customers','tables'));
+        if ($users) {
+            return view('admin.customer.all', compact('users','tables'));
         }
     }
 

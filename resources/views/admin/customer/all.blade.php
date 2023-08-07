@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="{{ route('customer.create') }}">Tambah Data Baru</a>
+                        {{-- <a type="button" class="btn btn-primary" href="{{ route('customer.create') }}">Tambah Data Baru</a> --}}
                     </div>
                 </div>
             </div>
@@ -20,20 +20,20 @@
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
-                            <th scope="col">Address</th>
-                            <th scope="col">Telephone</th>
+                            <th scope="col">Role</th>
+                            {{-- <th scope="col">Telephone</th> --}}
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if ($customers->count())
-                            @foreach ($customers as $key => $customer)
+                        @if ($users->count())
+                            @foreach ($users as $key => $customer)
                                 <tr align="center">
                                     <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $customer->name }}</td>
                                     <td class="text-start">{{ $customer->email }}</td>
-                                    <td class="text-start">{{ $customer->address }}</td>
-                                    <td class="text-start">{{ $customer->telp }}</td>
+                                    <td class="text-start">{{ $customer->role }}</td>
+                                    {{-- <td class="text-start">{{ $customer->telp }}</td> --}}
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="{{ route('customer.show', $customer->id) }}">Detail</a>
