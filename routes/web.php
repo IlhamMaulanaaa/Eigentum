@@ -18,8 +18,10 @@ use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -252,10 +254,6 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('type', TypeController::class);
         Route::resource('guide', GuideController::class);
         Route::resource('status', StatusController::class);
-        Route::resource('subscribe', SubscribeController::class);
-        Route::resource('order', OrderController::class);
-        Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
-
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
     });

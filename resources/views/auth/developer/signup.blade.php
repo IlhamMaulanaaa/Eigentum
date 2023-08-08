@@ -352,38 +352,36 @@
             <p>Sudah Punya Akun Develop? <a class="linkmasuk" style=" text-decoration: none;"
                     href="http://127.0.0.1:8000/session/auth/developer/signin">Masuk</a></p>
         </div>
-        <form id="cool-form" action="/admin/developer/add" method="POST">
-            <div class="form-step active">
-                <div class="input-field">
-                    <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="text" placeholder="Nama" name="name" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="owner_emal" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="owner_password" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="validasi Password" />
-                </div>
 
-                <label for="file-upload" class="file-label">
-                    <input type="file" id="file-upload" class="file-input" name="ktp">
-                    <span class="file-button">Choose a file</span>
-                    <span class="file-name">foto ktp</span>
-                </label>
-                <label for="file-uploadandktp" class="file-labelandktp">
-                    <input type="file" id="file-uploadandktp" class="file-input" name="face">
-                    <span class="file-buttonandktp">Choose a file</span>
-                    <span class="file-name">foto dengan ktp</span>
-                </label>
-                <br>
-                <br>
-                <br>
+        <form action="/session/auth/developer/signup/create" method="post">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Owner</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nama Lengkap</label>
+                            <input type="text" placeholder="Nama Lengkap" required name="name">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" placeholder="Alamat Email"required name="email">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Password</label>
+                            <input type="text" placeholder="Kata Sandi"required name="password">
+                        </div>
+                        <div class="input-field">
+                            <label>Wajah</label>
+                            <input type="file" placeholder="Foto Wajah"required name="face">
+                        </div>
+                        <div class="input-field">
+                            <label>KTP</label>
+                            <input type="file" placeholder="Foto KTP"required name="ktp">
+                        </div>
+
 
 
 
@@ -399,115 +397,156 @@
                 </div>
             </div>
 
-            <div class="form-step">
-                <div class="input-field">
-                    <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="text" placeholder="Nama Perusahaan" name="company" />
-                </div>
-                <div class="input-field">
-                    <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="number" placeholder="Nomer Telp Perusahaan" name="telp" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-envelope"></i>
-                    <input type="email" placeholder="Email" name="email" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="Password" name="password" />
-                </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="validasi Password" />
-                </div>
-                <label for="file-uploadandktp" class="file-labelandktp">
-                    <input type="file" id="file-uploadandktp" class="file-input" name="license[]">
-                    <span class="file-buttonSBU">Choose a file</span>
-                    <span class="file-name">Sertifikat Badan Usaha</span>
-                </label>
-                <label for="file-uploadandktp" class="file-labelandktp">
-                    <input type="file" id="file-uploadandktp" class="file-input" name="license[]">
-                    <span class="file-buttonNIU">Choose a file</span>
-                    <span class="file-name">Nomer Induk Usaha</span>
-                </label>
-                <button class="previous btn">Previous</button>
-                <button class="next btn">Next</button>
-            </div>
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Developer</span>
 
-            <div class="form-step">
-                <label for="file-uploadandktp" class="file-labelandktp">
-                    <input type="file" id="file-uploadandktp" class="file-input" name="license[]">
-                    <span class="file-buttonNPWP">Choose a file</span>
-                    <span class="file-name">Nomer Pokok Wajib Pajak</span>
-                </label><br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Provinsi</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kabupaten</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kecamatan</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Desa</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br><br>
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Perusahaan</label>
+                            <input type="text" placeholder="Nama Perussahaan" name="company">
+                        </div>
 
-                <button class="previous btn">Previous</button>
-                <button type="submit" class="btn">Submit</button>
+                        <div class="input-field">
+                            <label>Email Perusahaan</label>
+                            <input type="text" placeholder="Email Perusahaan" name="cmail">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Kata Sandi</label>
+                            <input type="text" placeholder="Kata Sandi Perusahaan" name="cpassword">
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
+                                <select class="form-select" name="provinces_id" id="provinsi"
+                                    data-placeholder="Pilih Provinsi" required>
+                                    <option>Pilih Provinsi</option>
+                                    @foreach ($provinces as $item)
+                                        <option value="{{ $item->id }}" {{ old('provinces_id') == $item->id }}>
+                                            {{ $item->name }}</option>
+                                    @endforeach
+                                    @error('province_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
+                                <select class="form-select " name="regencies_id" id="kota"
+                                    data-placeholder="Pilih Kota" required>
+                                    <option></option>
+                                    @if (old('provinces_id'))
+                                        @foreach ($regencies as $item)
+                                            <option value="{{ $item->id }}" {{ old('regencies_id') == $item->id }}>
+                                                {{ $item->name }}</option>
+                                        @endforeach
+                                    @endif
+                                    @error('regency_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
+                                <select class="form-select " name="districts_id" id="kecamatan"
+                                    data-placeholder="Pilih kecamatan" required>
+                                    <option></option>
+                                    @if (old('regencies_id'))
+                                        @foreach ($districts as $item)
+                                            <option value="{{ $item->id }}" {{ old('districts_id') == $item->id }}>
+                                                {{ $item->name }}</option>
+                                        @endforeach
+                                    @endif
+                                    @error('district_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 col-form-label" for="desa">Desa</label>
+                                <select class="form-select " name="villages_id" id="desa"
+                                    data-placeholder="Pilih Desa" required>
+                                    <option></option>
+                                    @if (old('districts_id'))
+                                        @foreach ($villages as $item)
+                                            <option value="{{ $item->id }}"
+                                                {{ old('villages_id') == $item->id }}>
+                                                {{ $item->name }}</option>
+                                        @endforeach
+                                    @endif
+                                    @error('village_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Alamat</label>
+                            <input type="text" placeholder="Enter block number" name="address">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nomor Induk Berusaha</label>
+                            <input type="text" placeholder="Enter ward number" name="license[]">
+                        </div>
+                        <div class="input-field">
+                            <label>Nomor Pokok Wajib</label>
+                            <input type="text" placeholder="Enter ward number" name="license[]">
+                        </div>
+                        <div class="input-field">
+                            <label>Sertifikat Badan Usaha</label>
+                            <input type="text" placeholder="Enter ward number" name="license[]">
+                        </div>
+                        <div class="input-field">
+                            <label>Telephone</label>
+                            <input type="tel" placeholder="Enter ward number">
+                        </div>
+                    </div>
+                </div>
+                <div class="details family">
+
+
+                    <div class="buttons">
+                        <button class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </button>
+                        <button type="submit" class="submit" formaction="/beranda">
+                            <span class="btnText">Submit</span>
+                            <i class="uil uil-navigator"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
-</script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').remove();
+                if ($(this).hasClass('form-check-input')) {
+                    $(this).closest('.form-check').find('.invalid-feedback').remove();
+                }
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function() {
@@ -570,7 +609,6 @@
 
         });
     </script>
-
     <script>
         const form = document.querySelector("form");
         const nextBtn = form.querySelector(".nextBtn");
