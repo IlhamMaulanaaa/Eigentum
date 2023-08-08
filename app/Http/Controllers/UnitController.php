@@ -27,6 +27,14 @@ class UnitController extends Controller
         }
     }
 
+    public function storeFront(Request $request , $propertyId){
+        $property = Property::findOrfail($propertyId);
+        $status = Status::all();
+
+        return view('pages.unit.create', compact('property', 'status'));
+
+    }
+
     public function create(Request $request , $propertyId)
     {
         $property = Property::findOrfail($propertyId);

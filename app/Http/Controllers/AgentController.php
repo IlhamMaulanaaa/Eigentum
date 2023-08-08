@@ -22,7 +22,13 @@ class AgentController extends Controller
 {
     public function signup()
     {
-        return view('auth.agent.signup');
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+
+
+        return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
     public function index()
@@ -36,6 +42,16 @@ class AgentController extends Controller
     }
 
 
+    public function createfront()
+    {
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+
+
+        return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
+    }
     public function create()
     {
         $provinces = Province::all();
@@ -49,11 +65,47 @@ class AgentController extends Controller
 
     public function storeFront(Request $request)
     {
+        // try {
         $request->validate([
+            'email' => 'required|email|unique:agents',
+            'password'  =>  [
+                'required',
+                'string',
+                Password::min(8)
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols(),
+            ],
+            'name'    => 'required',
             'address'   => 'required',
             'ktp'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
             'face'    => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-            'phone_number'  => 'required',
+            'telp' => 'required|regex:/^[0-9+\-() ]+$/',
+            // 'province_id' => 'required',
+            // 'regency_id' => 'required',
+            // 'district_id' => 'required',
+            // 'village_id' => 'required',
+        ], [
+            'email.required' => 'Email tidak boleh kosong',
+            'email.unique' => 'Email sudah terdaftar',
+            'password.required' => 'Password tidak boleh kosong',
+            'password.min' => 'Password minimal 8 karakter',
+            'name.required' => 'Nama tidak boleh kosong',
+            'address.required' => 'Alamat tidak boleh kosong',
+            'ktp.required' => 'KTP tidak boleh kosong',
+            'ktp.image' => 'KTP harus berupa gambar',
+            'ktp.mimes' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
+            'ktp.max' => 'Ukuran KTP maksimal 10MB',
+            'face.required' => 'Foto tidak boleh kosong',
+            'face.image' => 'Foto harus berupa gambar',
+            'face.mimes' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
+            'face.max' => 'Ukuran Foto maksimal 10MB',
+            'telp.required' => 'Nomor telepon tidak boleh kosong',
+            'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
+            // 'province_id.required' => 'Provinsi tidak boleh kosong',
+            // 'regency_id.required' => 'Kota tidak boleh kosong',
+            // 'district_id.required' => 'Kecamatan tidak boleh kosong',
+            // 'village_id.required' => 'Desa tidak boleh kosong',
         ]);
 
         $imageArray = [];
@@ -63,22 +115,41 @@ class AgentController extends Controller
             $request->$fieldName->storeAs('public', $imageFileName);
         }
 
-        $data = Agent::create([
+        $agent = Agent::create([
+            'email' => $request->email,
+            'password'  => bcrypt($request->password),
+            'name'  => $request->name,
             'address'   => $request->address,
             'ktp'   => $imageArray[0],
             'face'   => $imageArray[1],
-            'phone_number'  => $request->phone_number,
+            'telp'  => $request->telp,
         ]);
 
-        $data->save();
+        // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
+        $regencyId = $request->regencies_id;
+        $randomProperty = Property::whereHas('regencies', function ($query) use ($regencyId) {
+            $query->where('regency_id', $regencyId);
+        })->inRandomOrder()->first();
 
-        $data = Agent::where('id', '=', $data->id)->get();
-
-        if ($data) {
-            return redirect('/admin/agent/data');
+        if ($randomProperty) {
+            $agent->properties()->attach($randomProperty->id);
         } else {
-            return redirect('/beranda');
+            $agent->save();
         }
+
+        $agent->save();
+        $agent->provinces()->attach($request->provinces_id);
+        $agent->regencies()->attach($request->regencies_id);
+        $agent->districts()->attach($request->districts_id);
+        $agent->villages()->attach($request->villages_id);
+
+        $agent = Agent::where('id', '=', $agent->id)->get();
+
+
+        return redirect(route('agent.index'));
+        // } catch (Exception $e) {
+        //     return $e;
+        // }
     }
     public function store(Request $request)
     {

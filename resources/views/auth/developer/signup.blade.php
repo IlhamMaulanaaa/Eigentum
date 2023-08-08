@@ -756,12 +756,8 @@
             <div></div>
             <div></div>
         </div>
-        <form id="cool-form" action="/admin/developer/add" method="POST">
+        <form id="cool-form" action="/session/auth/developer/signup/create" method="POST">
             <div class="form-step active">
-                <div class="input-field">
-                    <i class="fa-sharp fa-solid fa-building"></i>
-                    <input type="text" placeholder="Id" name="id" />
-                </div>
                 <div class="input-field">
                     <i class="fa-sharp fa-solid fa-building"></i>
                     <input type="text" placeholder="Nama" name="name" />
@@ -774,11 +770,6 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" name="owner_password" />
                 </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="validasi Password" />
-                </div>
-
                 <label for="file-upload" class="file-label">
                     <input type="file" id="file-upload" class="file-input" name="ktp">
                     <span class="file-button">Choose a file</span>
@@ -813,10 +804,6 @@
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" name="password" />
                 </div>
-                <div class="input-field">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" placeholder="validasi Password" />
-                </div>
                 <label for="file-uploadandktp" class="file-labelandktp">
                     <input type="file" id="file-uploadandktp" class="file-input" name="license[]">
                     <span class="file-buttonSBU">Choose a file</span>
@@ -837,43 +824,72 @@
                     <span class="file-buttonNPWP">Choose a file</span>
                     <span class="file-name">Nomer Pokok Wajib Pajak</span>
                 </label><br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Provinsi</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
+                <div class="form-group">
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
+                        <select class="form-select" name="provinces_id" id="provinsi"
+                            data-placeholder="Pilih Provinsi" required>
+                            <option>Pilih Provinsi</option>
+                            @foreach ($provinces as $item)
+                                <option value="{{ $item->id }}" {{ old('provinces_id') == $item->id }}>
+                                    {{ $item->name }}</option>
+                            @endforeach
+                            @error('province_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
+                        <select class="form-select " name="regencies_id" id="kota"
+                            data-placeholder="Pilih Kota" required>
+                            <option></option>
+                            @if (old('provinces_id'))
+                                @foreach ($regencies as $item)
+                                    <option value="{{ $item->id }}" {{ old('regencies_id') == $item->id }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('regency_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
+                        <select class="form-select " name="districts_id" id="kecamatan"
+                            data-placeholder="Pilih kecamatan" required>
+                            <option></option>
+                            @if (old('regencies_id'))
+                                @foreach ($districts as $item)
+                                    <option value="{{ $item->id }}" {{ old('districts_id') == $item->id }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('district_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3 col-form-label" for="desa">Desa</label>
+                        <select class="form-select " name="villages_id" id="desa" data-placeholder="Pilih Desa"
+                            required>
+                            <option></option>
+                            @if (old('districts_id'))
+                                @foreach ($villages as $item)
+                                    <option value="{{ $item->id }}" {{ old('villages_id') == $item->id }}>
+                                        {{ $item->name }}</option>
+                                @endforeach
+                            @endif
+                            @error('village_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </select>
                     </div>
                 </div>
                 <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kabupaten</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <div class="select-wrapper">
-                        <span class="selected-option">Choose an Kecamatan</span>
-                        <ul class="dropdown-list">
-                            <li>Option 1</li>
-                            <li>Option 2</li>
-                            <li>Option 3</li>
-                        </ul>
-                    </div>
-                </div>
-                <br>
-                <div class="input-field dropdown">
+                {{-- <div class="input-field dropdown">
                     <i class="fa-solid fa-location-dot"></i>
                     <div class="select-wrapper">
                         <span class="selected-option">Choose an Desa</span>
@@ -883,34 +899,119 @@
                             <li>Option 3</li>
                         </ul>
                     </div>
-                </div>
-                <br><br>
+                </div> --}}
 
                 <button class="previous btn">Previous</button>
                 <button type="submit" class="btn">Submit</button>
             </div>
         </form>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').remove();
+                if ($(this).hasClass('form-check-input')) {
+                    $(this).closest('.form-check').find('.invalid-feedback').remove();
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            function onChangeSelect(url, id, name) {
+                // send ajax request to get the regency of the selected province and append to the select tag
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        let target = $('#' + name);
+                        target.attr('disabled', false);
+                        target.empty()
+                        target.attr('placeholder', target.data('placeholder'))
+                        target.append(`<option> ${target.data('placeholder')} </option>`)
+                        $.each(data, function(key, value) {
+                            target.append(`<option value="${key}">${value}</option>`)
+                        });
+                    }
+                });
+            }
+
+            $('#kota').prop('disabled', true);
+            $('#kecamatan').prop('disabled', true);
+            $('#desa').prop('disabled', true);
+
+
+            $('#provinsi').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.regency') }}`;
+                $('#kota').empty().prop('disabled', false);
+                $('#kecamatan').empty().prop('disabled', true);
+                $('#desa').empty().prop('disabled', true);
+                onChangeSelect(url, id, 'kota');
+            });
+
+            $('#kota').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.districts') }}`;
+                $('#kecamatan').empty().prop('disabled', false);
+                $('#desa').empty().prop('disabled', true);
+                onChangeSelect(url, id, 'kecamatan');
+            });
+
+            $('#kecamatan').on('change', function() {
+                var id = $(this).val();
+                var url = `{{ route('get.villages') }}`;
+                $('#desa').empty().prop('disabled', false);
+                onChangeSelect(url, id, 'desa');
+            });
+
+            // $('.single-select-field').select2({
+            //     theme: "bootstrap-5",
+            //     width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+            //         'style',
+            //     placeholder: $(this).data('placeholder'),
+            // });
+
+        });
+    </script>
     <script>
         const form = document.getElementById('cool-form');
         const formSteps = Array.from(form.querySelectorAll('.form-step'));
         // Add an event listener to toggle the dropdown
-        const dropdownWrapper = document.querySelector('.input-field.dropdown .select-wrapper');
-        dropdownWrapper.addEventListener('click', () => {
-            dropdownWrapper.classList.toggle('open');
-        });
+        // const dropdownWrapper = document.querySelector('.input-field.dropdown .select-wrapper');
+        // dropdownWrapper.addEventListener('click', () => {
+        //     dropdownWrapper.classList.toggle('open');
+        // });
 
         // Add event listeners to handle dropdown option selection
-        const dropdownOptions = document.querySelectorAll('.input-field.dropdown .dropdown-list li');
-        dropdownOptions.forEach((option) => {
-            option.addEventListener('click', () => {
-                const selectedOption = option.textContent;
-                const selectedOptionElement = dropdownWrapper.querySelector('.selected-option');
-                selectedOptionElement.textContent = selectedOption;
-                dropdownWrapper.classList.remove('open');
-            });
-        });
+        // const dropdownOptions = document.querySelectorAll('.input-field.dropdown .dropdown-list li');
+        // dropdownOptions.forEach((option) => {
+        //     option.addEventListener('click', () => {
+        //         const selectedOption = option.textContent;
+        //         const selectedOptionElement = dropdownWrapper.querySelector('.selected-option');
+        //         selectedOptionElement.textContent = selectedOption;
+        //         dropdownWrapper.classList.remove('open');
+        //     });
+        // });
 
         let currentStep = 0;
 
@@ -941,20 +1042,20 @@
             showStep(currentStep);
         }
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Handle form submission here
-            // You can use JavaScript or send the data to a server using fetch/axios, etc.
-            // Example:
-            // const formData = new FormData(form);
-            // fetch('your-server-url', {
-            //     method: 'POST',
-            //     body: formData
-            // })
-            // .then(response => response.json())
-            // .then(data => console.log(data))
-            // .catch(error => console.error(error));
-        });
+        // form.addEventListener('submit', (e) => {
+        //     e.preventDefault();
+        //     // Handle form submission here
+        //     // You can use JavaScript or send the data to a server using fetch/axios, etc.
+        //     // Example:
+        //     // const formData = new FormData(form);
+        //     // fetch('your-server-url', {
+        //     //     method: 'POST',
+        //     //     body: formData
+        //     // })
+        //     // .then(response => response.json())
+        //     // .then(data => console.log(data))
+        //     // .catch(error => console.error(error));
+        // });
 
         const previousBtns = form.querySelectorAll('.previous');
         previousBtns.forEach((btn) => {

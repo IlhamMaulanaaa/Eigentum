@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="{{route('developer.create')}}">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('developer.create') }}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -20,7 +20,7 @@
                             <th scope="col">Id</th>
                             <th scope="col">Company</th>
                             <th scope="col">Company Email</th>
-                            <th scope="col">Owner</th>
+                            {{-- <th scope="col">Owner</th> --}}
                             <th scope="col">Kota</th>
                             <th scope="col">Telephone</th>
                             <th scope="col"></th>
@@ -33,14 +33,14 @@
                                     <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $developer->company }}</td>
                                     <td class="text-start">{{ $developer->email }}</td>
-                                    <td class="text-start">{{ $developer->owners->name }}</td>
+                                    {{-- <td class="text-start">{{ $developer->users->name }}</td> --}}
                                     <td class="text-start">
                                         {{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}</td>
                                     <td class="text-start">{{ $developer->telp }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
-                                            href="{{route('developer.show', $developer->id) }}">Detail</a>
-                                        
+                                            href="{{ route('developer.show', $developer->id) }}">Detail</a>
+
                                     </td>
                                 </tr>
                             @endforeach

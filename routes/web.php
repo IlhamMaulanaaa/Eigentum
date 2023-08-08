@@ -37,8 +37,8 @@ use App\Models\Subscribe;
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 Route::post('/register', [AdminController::class, 'register']);
-Route::get('/create', [AuthController::class, 'login']);
-Route::get('/create', [AuthController::class, 'register']);
+Route::get('/createL', [AuthController::class, 'login']);
+Route::get('/createR', [AuthController::class, 'register']);
 
 
 Route::get('/navbar', function () {
@@ -191,9 +191,8 @@ Route::get('/detailpanduan', function () {
 });
 // property
 Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload ', function () {
-        return view('pages.property.create');
-    });
+    Route::get('/upload ',[PropertyController::class, 'storeFront']);
+   
 
     Route::get('/detail', function () {
         return view('pages.property.detail');
@@ -205,9 +204,8 @@ Route::group(['prefix' => '/property'], function () {
 });
 // unit
 Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload', function () {
-        return view('pages.unit.create');
-    });
+    Route::get('/upload',[UnitController::class, 'storeFront']);
+    
 
     Route::get('/uploadimage', function () {
         return view('pages.unit.uploadimage');

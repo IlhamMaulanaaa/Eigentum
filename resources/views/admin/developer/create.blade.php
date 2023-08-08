@@ -37,9 +37,9 @@
                                     <div class="form-group">
                                         <label for="email" class="form-label">Email</label>
                                         <input type="text"
-                                            class="form-control noscroll @error('owner_email') is-invalid @enderror"
-                                            id="email" name="owner_email" value="{{ old('owner_email') }}">
-                                        @error('owner_email')
+                                            class="form-control noscroll @error('email') is-invalid @enderror"
+                                            id="email" name="email" value="{{ old('email') }}">
+                                        @error('email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -47,9 +47,9 @@
                                     <div class="form-group">
                                         <label for="password" class="form-label">Password</label>
                                         <input type="password"
-                                            class="form-control noscroll @error('owner_password') is-invalid @enderror"
-                                            id="password" name="owner_password" value="{{old('owner_password')}}">
-                                        @error('owner_password')
+                                            class="form-control noscroll @error('password') is-invalid @enderror"
+                                            id="password" name="password" value="{{old('password')}}">
+                                        @error('password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -91,9 +91,9 @@
                                     <div class="form-group">
                                         <label for="email" class="form-label">Company Email</label>
                                         <input type="email"
-                                            class="form-control noscroll @error('email') is-invalid @enderror"
-                                            id="email" name="email" value="{{ old('email') }}">
-                                        @error('email')
+                                            class="form-control noscroll @error('company_email') is-invalid @enderror"
+                                            id="company_email" name="company_email" value="{{ old('company_email') }}">
+                                        @error('company_email')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -101,9 +101,9 @@
                                     <div class="form-group">
                                         <label for="password" class="form-label">Company Password</label>
                                         <input type="password"
-                                            class="form-control noscroll @error('password') is-invalid @enderror"
-                                            id="password" name="password" value="{{ old('password') }}">
-                                        @error('password')
+                                            class="form-control noscroll @error('company_password') is-invalid @enderror"
+                                            id="company_password" name="company_password" value="{{ old('company_password') }}">
+                                        @error('company_password')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

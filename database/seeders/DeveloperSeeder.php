@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Models\Developer;
-use App\Models\District;
-use App\Models\Province;
+use App\Models\User;
 use App\Models\Regency;
 use App\Models\Village;
-use Illuminate\Database\Seeder;
+use App\Models\District;
+use App\Models\Province;
+use App\Models\Developer;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,6 +33,8 @@ class DeveloperSeeder extends Seeder
                 'company_password' => bcrypt(fake()->password()),
                 'address' => fake()->address(),
                 'license' => $licenseString,
+                'ktp' => $this->getImageUrls('ktp', 1)[0],
+                'face' => $this->getImageUrls('face', 1)[0],
                 'telp' =>fake()->phoneNumber(),
             ]);
             // // Ambil data province secara urut
@@ -90,6 +93,11 @@ class DeveloperSeeder extends Seeder
 
             // Hubungkan developer dengan village menggunakan attach()
             $developer->villages()->attach($village->id);
+
+            $users = User::inRandomOrder()->first();
+
+            $developer->users()->attach($users->id);
+
         }
     }
 

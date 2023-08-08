@@ -412,7 +412,7 @@
         <div class="box">
             <div class="inner-box">
                 <div class="forms-wrap">
-                    <form action="/create" autocomplete="off" class="sign-in-form">
+                    <form action="/createL" autocomplete="off" class="sign-in-form">
                         <div class="logo">
                             <img src="/assets/skins/logo.svg" alt="" />
                         </div>
@@ -440,7 +440,7 @@
 
                             <p class="text">
                                 Forgotten your password or you login datails?
-                                <a href="/session/auth/user/signin/create">Get help</a> signing in
+                                <a href="/session/auth/user/signin/createL">Get help</a> signing in
                             </p>
                         </div>
                     </form>
@@ -454,17 +454,19 @@
 
                         <div class="actual-form">
                             <div class="input-wrap">
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" required name="name"/>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" required
+                                    name="name" />
                                 <label>Name</label>
                             </div>
 
                             <div class="input-wrap">
-                                <input type="email" class="input-field" autocomplete="off" required name="email"/>
+                                <input type="email" class="input-field" autocomplete="off" required name="email" />
                                 <label>Email</label>
                             </div>
 
                             <div class="input-wrap">
-                                <input type="password" minlength="4" class="input-field" autocomplete="off" required name="password"/>
+                                <input type="password" minlength="4" class="input-field" autocomplete="off" required
+                                    name="password" />
                                 <label>Password</label>
                             </div>
 
@@ -476,12 +478,13 @@
                                 <a href="#">Privacy Policy</a>
                             </p>
                         </div>
+                        <a href="/session/auth/developer/signup"></a>
                     </form>
 
                 </div>
 
                 <div class="carousel">
-                    <div class="images-wrapper" se>
+                    <div class="images-wrapper">
                         <img height="600px;" src="/assets/pages/login/Component 169-min-min.svg"
                             class="image img-1 show" alt="" />
                         <img height="600px;" src="/assets/pages/login/Component 170-min-min.svg" class="image img-2"

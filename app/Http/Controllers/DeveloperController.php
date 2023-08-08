@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Helper\ApiFormatter;
-use App\Models\District;
+use App\Models\User;
 use App\Models\Owner;
 use App\Models\Regency;
 use App\Models\Village;
+use App\Models\District;
 use App\Models\Province;
 use App\Models\Developer;
 use Illuminate\Support\Str;
+use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -37,6 +38,8 @@ class DeveloperController extends Controller
     {
         $developers = Developer::paginate(5);
         $tables = (new Developer())->getTable();
+        $users = User::all();
+        
 
         return view('admin.developer.all', compact('developers', 'tables'));
     }
@@ -69,8 +72,8 @@ class DeveloperController extends Controller
                 'license.*' => 'required|file|max:10240',
                 'telp' => 'required|regex:/^[0-9+\-() ]+$/',
                 'name' => 'required',
-                'owner_email' => 'required|email|unique:owners',
-                'owner_password' => [
+                'company_email' => 'required|email|unique:owners',
+                'company_password' => [
                     'required',
                     'string',
                     // Password::min(8)
@@ -101,14 +104,14 @@ class DeveloperController extends Controller
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
                 'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
                 'name.required' => 'Nama tidak boleh kosong',
-                'owner_email.required' => 'Email tidak boleh kosong',
-                'owner_email.email' => 'Email harus mengandung @',
-                'owner_email.unique' => 'Email sudah terdaftar',
-                'owner_password.required' => 'Password tidak boleh kosong',
-                'owner_password.min' => 'Password minimal 8 karakter',
-                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
-                'owner_password.numbers' => 'Password harus mengandung angka',
-                'owner_password.symbols' => 'Password harus mengandung simbol',
+                'company_email.required' => 'Email tidak boleh kosong',
+                'company_email.email' => 'Email harus mengandung @',
+                'company_email.unique' => 'Email sudah terdaftar',
+                'company_password.required' => 'Password tidak boleh kosong',
+                'company_password.min' => 'Password minimal 8 karakter',
+                'company_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'company_password.numbers' => 'Password harus mengandung angka',
+                'company_password.symbols' => 'Password harus mengandung simbol',
                 'ktp.required' => 'KTP tidak boleh kosong',
                 'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'ktp.max' => 'Ukuran KTP maksimal 10MB',
@@ -146,21 +149,24 @@ class DeveloperController extends Controller
 
             $developer = Developer::create([
                 'company'   => $request->company,
-                'email' => $request->email,
-                'password'  => bcrypt($request->password),
+                'company_email' => $request->company_email,
+                'company_password'  => bcrypt($request->company_password),
                 'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
                 'telp'  => $request->telp,
-            ]);
-
-            $owner = Owner::create([
-                'name' => $request->name,
-                'owner_email' => $request->owner_email,
-                'owner_password' => bcrypt($request->owner_password),
                 'ktp' => $imageNames[0],
                 'face' => $imageNames[1],
+            ]);
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 'developer',
                 'developer_id' => $developer->id,
             ]);
+
+           $user->developers()->attach($request->developer_id);
 
             $developer->provinces()->attach($request->provinces_id);
             $developer->regencies()->attach($request->regencies_id);
