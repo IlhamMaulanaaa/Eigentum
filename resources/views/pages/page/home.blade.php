@@ -66,7 +66,7 @@
 
         <!-- Template Stylesheet -->
         <link href="css/Lib/testimoni/css/style.css" rel="stylesheet">
-        <title>Document</title>
+        <title>EIgentum</title>
     </head>
 
     <body>
@@ -184,8 +184,11 @@
 
                         <div class="search-container">
                             <input type="text" id="search-input" placeholder="Search...">
-                            <button type="submit" id="search-button">Search</button>
+                            <a href="/filterproperti" id="home-link">
+                                <button type="submit" id="search-button">Search</button>
+                            </a>
                         </div>
+                        
                     </div>
                 </div>
                 <div class="frame-365-pto" id="4:7196">
@@ -566,7 +569,7 @@
                                         <i
                                             class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/agent1.jpg"
                                                 style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Rifki Wijaya</h5>
@@ -581,7 +584,7 @@
                                         <i
                                             class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/agent2.jpg"
                                                 style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Rahmawati</h5>
@@ -597,7 +600,7 @@
                                         <i
                                             class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/agent3.jpg"
                                                 style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Budi Utomo</h5>
@@ -613,7 +616,7 @@
                                         <i
                                             class="fa fa-quote-right fa-3x text-light position-absolute top-0 end-0 mt-n3 me-4"></i>
                                         <div class="d-flex align-items-end mb-4">
-                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/profile.png"
+                                            <img class="img-fluid flex-shrink-0" src="/assets/pages/home/agent4.jpg"
                                                 style="width: 80px; height: 80px;">
                                             <div class="ms-4">
                                                 <h5 class="mb-1">Bambang Putra</h5>

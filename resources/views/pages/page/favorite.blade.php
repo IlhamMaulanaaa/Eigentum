@@ -79,8 +79,10 @@
                                 
                                     <div class="position-relative overflow-hidden">
                                         <a href="/fav/detail">
-                                            <img src="{{ asset('storage/' . $fav->units[0]->image) }}" class="img-thumbnail" alt=""
+                                            @foreach ($fav->units as  $unit)
+                                            <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail" alt=""
                                                 width="360" height="120">
+                                            @endforeach
                                         </a>
                                         <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
                                             <button type="submit" onclick="Toggle1()" id="btnh1z" class="btnz"><i

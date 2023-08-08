@@ -22,7 +22,7 @@
 						<div class="img-circle text-center mb-3">
 							<img src="/assets/pages/profile/developer.jpg" alt="Image" class="shadow">
 						</div>
-						<h4 class="text-center">Jono Wicaksono</h4>
+						<h4 class="text-center">{{ Auth()->user()->name }}</h4>
 					</div>
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 						<a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="account" aria-selected="true">
@@ -56,13 +56,13 @@
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Nama Lengkap</label>
-								  	<input type="text" class="form-control" value="Jono Wicaksono">
+								  	<input type="text" class="form-control" value="{{$developer->company}}">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
 								  	<label>Email</label>
-								  	<input type="text" class="form-control" value="jonowicaksono@gmail.com">
+								  	<input type="text" class="form-control" value=" {{ auth()->user()->email }}">
 								</div>
 							</div>
 							<div class="col-md-6 form-group">

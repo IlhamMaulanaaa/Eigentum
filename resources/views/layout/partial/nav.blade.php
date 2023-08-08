@@ -52,7 +52,7 @@
                 <div class="notifications">
                     <div class="icon_wrap"><i class="far fa-bell"></i></div>
                     
-                    <div class="notification_dd" style="margin: 0; padding:0;">
+                    {{-- <div class="notification_dd" style="margin: 0; padding:0;">
                         <ul class="notification_ul" style="margin: 0; padding:0;">
                             <li class="kfc success">
                                 <div class="notify_icon">
@@ -98,7 +98,7 @@
                                 <p class="link" style="margin: 0; padding:0;"><a href="/pages/notifikasi" style="color:black; text-decoration: none;">Tampilkan Semua Notifikasi</a></p>
                             </li> 
                         </ul>
-                    </div>
+                    </div> --}}
                     
                 </div>
             </div>
@@ -142,7 +142,7 @@
                     </ul>
                 </div>
             @elseif (!Auth::check())
-                <a href="/session/auth/user/signin" class="btnq">Masuk</a>
+                <a href="/" class="btnq">Masuk</a>
             @endif
 
         </div>

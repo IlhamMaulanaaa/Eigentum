@@ -300,9 +300,15 @@ class DeveloperController extends Controller
 
     public function show(Developer $developer, Owner $owner)
     {
+        $developer = Developer::all();
         $licenseFile = explode("|", $developer->license);
         // $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
         return view('admin.developer.detail', compact('developer', 'licenseFile',));
+    }
+
+    public function showFront(){
+        $developer = Developer::all();
+        return view('pages.page.profile', compact('developer'));
     }
 
     public function edit(Developer $developer)

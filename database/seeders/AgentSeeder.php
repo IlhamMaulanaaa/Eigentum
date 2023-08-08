@@ -26,9 +26,9 @@ class AgentSeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             $agent = Agent::create([
-                'name' => fake()->name(),
-                'email' => fake()->email(),
-                'password' => bcrypt(fake()->password()),
+                // 'name' => fake()->name(),
+                // 'email' => fake()->email(),
+                // 'password' => bcrypt(fake()->password()),
                 'address' => fake()->address(),
                 'ktp' => $this->getImageUrl('ktp'),
                 'face' => $this->getImageUrl('face'),

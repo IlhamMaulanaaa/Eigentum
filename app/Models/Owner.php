@@ -28,6 +28,6 @@ class Owner extends Model
     
     public function users()
     {
-        return $this->belongsTo(Property::class);
+        return $this->belongsToMany(Property::class);
     }
 }

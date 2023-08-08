@@ -28,8 +28,8 @@ class DeveloperSeeder extends Seeder
 
             $developer = Developer::create([
                 'company' => fake()->company(),
-                'email' => fake()->email(),
-                'password' => bcrypt(fake()->password()),
+                'company_email' => fake()->email(),
+                'company_password' => bcrypt(fake()->password()),
                 'address' => fake()->address(),
                 'license' => $licenseString,
                 'telp' =>fake()->phoneNumber(),

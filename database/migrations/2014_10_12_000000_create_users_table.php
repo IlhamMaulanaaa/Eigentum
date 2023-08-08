@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,15 +17,20 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string("role");
-            $table->string("admin_id")->nullable();
-            $table->string("agent_id")->nullable();
-            $table->string("owner_id")->nullable();
+            $table->string("role")->default('user');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('google_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+        
+        Schema::create('users_agent', function (Blueprint $table) {
+            $table->bigInteger('user_id');
+            $table->bigInteger('agent_id');
+            $table->primary(['user_id', 'agent_id']);
+            $table->softDeletes();
+            });
+        
     }
 
     /**

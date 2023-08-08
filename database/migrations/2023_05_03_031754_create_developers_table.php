@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('developers', function (Blueprint $table) {
             $table->id();
             $table->string("company");
-            $table->string("email")->unique();  
-            $table->string("password");
+            $table->string("company_email")->unique();  
+            $table->string("company_password");
             $table->string("address");
             $table->string("license");
             $table->string("telp");

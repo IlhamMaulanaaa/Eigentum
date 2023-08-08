@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('owners', function (Blueprint $table) {
             $table->id();
             // $table->string("name");
-            // $table->string("owner_email");
-            // $table->string("owner_password");
             $table->string("ktp");
             $table->string("face");
             $table->string("developer_id");

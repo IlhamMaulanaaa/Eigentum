@@ -48,10 +48,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favorite::class);
     }
-    // public function roles()
-    // {
-    //     return $this->belongsTo(Role::class);
-    // }
     public function agents()
     {
         return $this->hasMany(Agent::class);
@@ -60,8 +56,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(Owner::class);
     }
-    public function admins()
-    {
-        return $this->hasMany(Admin::class);
-    }
+
 }
