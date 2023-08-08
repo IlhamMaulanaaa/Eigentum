@@ -19,7 +19,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\FilePreviewController;
-use App\Models\Subcribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +61,7 @@ Route::group(['prefix' => '/session'], function(){
 Route::group(['prefix' => '/admin', 'middleware' => 'role:admin' ], function(){
     
     Route::get('/', [AdminController:: class, 'index']);
+    Route::get('/profile', [AdminController:: class, 'show'])->name('profile.show');
     Route::get("/dashboard", [DashboardController::class, 'index']);
 
     Route::resource('customer', CustomerController::class);
@@ -82,8 +82,6 @@ Route::group(['prefix' => '/admin', 'middleware' => 'role:admin' ], function(){
     Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
 
     // Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
-
-
     
     Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
 });

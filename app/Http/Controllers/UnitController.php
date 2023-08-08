@@ -19,11 +19,13 @@ class UnitController extends Controller
     
     public function index()
     {
-        $units = Unit::paginate(10);
+        $units = Unit::filter(request(['search','property_id', 'status_id']))->paginate(10);
+        $properties = Property::all();
+        $statuses = Status::all();
         $tables = (new Unit())->getTable();
 
         if ($units) {
-            return view('admin.unit.all', compact("units", "tables"));
+            return view('admin.unit.all', compact("units", "tables", "properties", "statuses"));
         }
     }
 
