@@ -340,6 +340,7 @@ class DeveloperController extends Controller
 
     public function show(Developer $developer)
     {
+        $developer = Developer::all();
         $licenseFile = explode("|", $developer->license);
         return view('admin.developer.detail', compact('developer', 'licenseFile'));
     }
