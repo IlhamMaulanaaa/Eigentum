@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Regency;
+use App\Models\Type;
 use Exception;
 use App\Models\Unit;
 use App\Models\Image;
@@ -24,6 +25,9 @@ class UnitController extends Controller
         $filteredUnits = Unit::filter($request->all())->paginate(10);
         $units = Unit::all();
         $property = Property::all();
+        $types = Type::all();
+        $statuses = Status::all();
+        $specification = Specification::all();
         $pivotTable = (new Property())->regencies()->getTable();
 
         $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
@@ -35,16 +39,17 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('admin.searchfilter', compact('property','units','filteredUnits','regencies'));
+        return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
-        $units = Unit::filter(request(['search', 'property_id', 'status_id', 'regency_id', 'bedroom', 'bathroom', 'surface_area', 'building_area', 'floor', 'price_range']))->paginate(10);
+        $units = Unit::filter($request->all())->paginate(10);
         $properties = Property::all()->pluck('title', 'id');;
         $statuses = Status::all();
         $tables = (new Unit())->getTable();
+        $types = Type::all();
 
         $pivotTable = (new Property())->regencies()->getTable();
 
@@ -55,10 +60,8 @@ class UnitController extends Controller
 
         $specifications = Specification::all();
 
-
-
         if ($units) {
-            return view('admin.unit.all', compact("units", "tables", "properties", "statuses", 'regencies', 'specifications'));
+            return view('admin.unit.all', compact('types',"units", "tables", "properties", "statuses", 'regencies', 'specifications'));
         }
     }
 

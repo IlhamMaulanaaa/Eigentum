@@ -25,7 +25,7 @@
                                 <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
                             </div> --}}
                         <div class="col-md-10">
-                            <form action="{{ route('unit.filter') }}" method="GET" role="search">
+                            <form action="{{ route('unit.index') }}" method="GET" role="search">
                                 <div class="column col-auto">
                                     <div class="row">
                                         <div class="col-md-2">
@@ -67,11 +67,11 @@
                                         <div class="col-md-2">
                                             <select name="type_id" id="type_id" class="form-select">
                                                 <option value=""{{ request('type_id') ? '' : 'selected' }}>
-                                                    Status</option>
-                                                @foreach ($statuses as $status)
-                                                    <option value="{{ $status->id }}"
-                                                        {{ request('type_id') == $status->id ? 'selected' : '' }}>
-                                                        {{ $status->name }}
+                                                    Type</option>
+                                                @foreach ($types as $type)
+                                                    <option value="{{ $type->id }}"
+                                                        {{ request('type_id') == $type->id ? 'selected' : '' }}>
+                                                        {{ $type->name }}
                                                     </option>
                                                 @endforeach
                                             </select>

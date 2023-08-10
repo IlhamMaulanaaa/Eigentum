@@ -118,7 +118,7 @@
                             <br>
                             <div class="col-md-2">
                                 <label>Status:</label>
-                                <div class="form-check">
+                                {{-- <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="statusDijual" name="status[]" value="Dijual"
                                         {{ in_array('Dijual', request('status', [])) ? 'checked' : '' }}>
                                     <label class="form-check-label">Dijual</label>
@@ -127,14 +127,42 @@
                                     <input type="checkbox" class="form-check-input" id="statusDisewa" name="status[]" value="Disewa"
                                         {{ in_array('Disewa', request('status', [])) ? 'checked' : '' }}>
                                     <label class="form-check-label">Disewa</label>
+                                </div> --}}
+                                @foreach ($statuses as $status)
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="status{{ $status->id }}" name="status[]"
+                                        value="{{ $status->id }}" {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label">{{ $status->name }}</label>
                                 </div>
+                            @endforeach
                             </div>
-                            <div class="col-md-4">
+                            {{-- <div class="col-md-4">
                                 <label>Rentang Harga:</label>
                                 <input type="range" class="form-range" id="hargaSlider" name="harga_range"
                                     min="{{ $minPrice }}" max="{{ $maxPrice }}" value="{{ request('harga_range') }}">
                                 <span id="hargaLabel">Rp {{ request('harga_range', $minPrice) }}</span>
                             </div>
+                            --}}
+                            <div class="col-md-2">
+                                <label>Type</label>
+                                @foreach ($types as $type)
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}" name="types[]"
+                                            value="{{ $type->id }}" {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label">{{ $type->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div>
+                            {{-- <div class="col-md-2">
+                                <label>Specification</label>
+                                @foreach ($specification as $spec)
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="type{{ $spec->id }}" name="spec[]"
+                                            value="{{ $spec->id }}" {{ in_array($spec->id, request('spec', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label">{{ $spec->name }}</label>
+                                    </div>
+                                @endforeach
+                            </div> --}}
                             
                             
                             
@@ -345,16 +373,21 @@
 
 <script>
     // Dapatkan elemen checkbox berdasarkan ID
-    const statusDijual = document.getElementById('statusDijual');
-    const statusDisewa = document.getElementById('statusDisewa');
+    const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
+    const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
 
-    // Tambahkan event listener saat checkbox diubah
-    statusDijual.addEventListener('change', function() {
-        this.form.submit(); // Kirim form saat checkbox diubah
+
+    statusCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.form.submit(); // Kirim form saat checkbox diubah
+        });
     });
 
-    statusDisewa.addEventListener('change', function() {
-        this.form.submit(); // Kirim form saat checkbox diubah
+
+    typeCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.form.submit(); // Kirim form saat checkbox diubah
+        });
     });
 </script>
 

@@ -19,8 +19,6 @@ use Illuminate\Validation\Rules\Password;
 
 class DeveloperController extends Controller
 {
-
-
     public function index()
     {
         $developers = Developer::filter(request(['search', 'regency_id']))->paginate(5);

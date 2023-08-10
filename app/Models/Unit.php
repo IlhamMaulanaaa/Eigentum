@@ -111,10 +111,16 @@ class Unit extends Model
 
         $query->when($filters['status'] ?? false, function ($query, $statuses) {
             $query->whereHas('statuses', function ($query) use ($statuses) {
-                $query->whereIn('name', $statuses);
+                $query->where('id', $statuses);
             });
         });
         
+
+        $query->when($filters['types'] ?? false, function ($query, $types) {
+            return $query->whereHas('properties.types', function ($query) use ($types) {
+                $query->where('id', $types);
+            });
+        });
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regency_id) {
             return $query->whereHas('regencies', function ($query) use ($regency_id) {
