@@ -18,7 +18,35 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
+.form-group {
+    margin-bottom: 20px;
+}
 
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 30px; /* Rounded corners */
+    font-size: 14px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.invalid-feedback {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+}
 .form-step {
     display: none;
     text-align: center;

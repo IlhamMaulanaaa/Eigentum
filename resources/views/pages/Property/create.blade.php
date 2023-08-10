@@ -1,5 +1,4 @@
-@extends('layout.main')
-
+@extends('admin.layout.main')
 
 @section('content')
     <!DOCTYPE html>
@@ -10,145 +9,223 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Document</title>
-        <style>
-            form {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            label {
-                display: block;
-                margin-top: 10px;
-                font-weight: bold;
-            }
-
-            input[type="text"],
-            textarea,
-            select {
-                width: 100%;
-                padding: 8px;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-            }
-
-            input[type="submit"] {
-                display: block;
-                width: 100%;
-                padding: 10px;
-                margin-top: 10px;
-                background-color: #2951A;
-                color: #fff;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-            }
-
-            input[type="submit"]:hover {
-                background-color: #1C395D;
-            }
-
-            .error-message {
-                color: red;
-                font-size: 12px;
-                margin-top: 5px;
-            }
-        </style>
     </head>
 
     <body>
-        <img class="imageHero" src="/assets/properti/imgHero.svg" alt="">
-        <form id="myForm">
-            @csrf
-            <label for="nama_properti">Nama Properti:</label>
-            <input type="text" id="nama_properti" name="nama_properti" required>
+        <div class="container">
+            <div class="row">
+                <div class="col-ad-12">
+                    <h3 class="text-dark">Tambah Data Property</h3>
+                    <br>
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <form method="post" action="{{ route('propertyid.store', $developer->id) }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="title" class="form-label">Property</label>
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror"
+                                        id="title" name="title" value="{{ old('title') }}">
+                                    @error('title')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="description" class="form-label">Description</label>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description') }}</textarea>
+                                    @error('description')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
+                                        <select class="form-select" name="provinces_id" id="provinsi"
+                                            data-placeholder="Pilih Provinsi" required>
+                                            <option>Pilih Provinsi</option>
+                                            @foreach ($provinces as $item)
+                                                <option value="{{ $item->id }}" {{ old('provinces_id') == $item->id }}>
+                                                    {{ $item->name }}</option>
+                                            @endforeach
+                                            @error('province_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-form-label" for="kota">Kabupaten / Kota</label>
+                                        <select class="form-select " name="regencies_id" id="kota"
+                                            data-placeholder="Pilih Kota" required>
+                                            <option></option>
+                                            @if (old('provinces_id'))
+                                                @foreach ($regencies as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ old('regencies_id') == $item->id }}>
+                                                        {{ $item->name }}</option>
+                                                @endforeach
+                                            @endif
+                                            @error('regency_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-form-label" for="kecamatan">Kecamatan</label>
+                                        <select class="form-select  " name="districts_id" id="kecamatan"
+                                            data-placeholder="Pilih kecamatan" required>
+                                            <option></option>
+                                            @if (old('regencies_id'))
+                                                @foreach ($districts as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ old('districts_id') == $item->id }}>
+                                                        {{ $item->name }}</option>
+                                                @endforeach
+                                            @endif
+                                            @error('district_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-form-label" for="desa">Desa</label>
+                                        <select class="form-select  " name="villages_id" id="desa"
+                                            data-placeholder="Pilih Desa" required>
+                                            <option></option>
+                                            @if (old('districts_id'))
+                                                @foreach ($villages as $item)
+                                                    <option value="{{ $item->id }}"
+                                                        {{ old('villages_id') == $item->id }}>
+                                                        {{ $item->name }}</option>
+                                                @endforeach
+                                            @endif
+                                            @error('village_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="address" class="form-label">Address</label>
+                                    <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                        id="address" name="address" value="{{ old('address') }}">
+                                    @error('address')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <label for="type_id" class="form-label">Type</label>
+                                    <select class="form-control @error('type_id') is-invalid @enderror" id="type_id"
+                                        name="type_id">
+                                        <option value="">Type</option>
+                                        @foreach ($type as $type)
+                                            <option value="{{ $type->id }}" {{ old('type_id') == $type->id }}>
+                                                {{ $type->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('type_id')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <br>
+                                <div class="float-end">
+                                    <a type="button" class="btn btn-warning" href="{{ route('property.index') }}">Back</a>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+            </script>
 
-            <label for="deskripsi_properti">Deskripsi Properti:</label>
-            <textarea id="deskripsi_properti" name="deskripsi_properti" required></textarea>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-            <label for="alamat_properti">Alamat Properti:</label>
-            <input type="text" id="alamat_properti" name="alamat_properti" required>
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                        $(this).removeClass('is-invalid');
+                        $(this).next('.invalid-feedback').remove();
+                        if ($(this).hasClass('form-check-input')) {
+                            $(this).closest('.form-check').find('.invalid-feedback').remove();
+                        }
+                    });
+                });
+            </script>
 
-            <label for="provinsi">Provinsi:</label>
-            <select id="provinsi" name="provinsi" required>
-                <option value="">Pilih Provinsi</option>
-                <!-- Tambahkan opsi provinsi di sini -->
-                <option value="provinsi1">Provinsi 1</option>
-                <option value="provinsi2">Provinsi 2</option>
-                <option value="provinsi3">Provinsi 3</option>
-            </select>
+            <script>
+                $(document).ready(function() {
+                    function onChangeSelect(url, id, name) {
+                        // send ajax request to get the regency of the selected province and append to the select tag
+                        $.ajax({
+                            url: url,
+                            type: 'GET',
+                            data: {
+                                id: id
+                            },
+                            success: function(data) {
+                                let target = $('#' + name);
+                                target.attr('disabled', false);
+                                target.empty()
+                                target.attr('placeholder', target.data('placeholder'))
+                                target.append(`<option> ${target.data('placeholder')} </option>`)
+                                $.each(data, function(key, value) {
+                                    target.append(`<option value="${key}">${value}</option>`)
+                                });
+                            }
+                        });
+                    }
 
-            <label for="kota">Kota:</label>
-            <select id="kota" name="kota" required>
-                <option value="">Pilih Kota</option>
-                <!-- Tambahkan opsi kota di sini -->
-                <option value="kota1">Kota 1</option>
-                <option value="kota2">Kota 2</option>
-                <option value="kota3">Kota 3</option>
-            </select>
+                    $('#kota').prop('disabled', true);
+                    $('#kecamatan').prop('disabled', true);
+                    $('#desa').prop('disabled', true);
 
-            <label for="distrik">Distrik:</label>
-            <select id="distrik" name="distrik" required>
-                <option value="">Pilih Distrik</option>
-                <!-- Tambahkan opsi distrik di sini -->
-                <option value="distrik1">Distrik 1</option>
-                <option value="distrik2">Distrik 2</option>
-                <option value="distrik3">Distrik 3</option>
-            </select>
 
-            <input type="submit" value="Submit">
-        </form>
+                    $('#provinsi').on('change', function() {
+                        var id = $(this).val();
+                        var url = `{{ route('get.regency') }}`;
+                        $('#kota').empty().prop('disabled', false);
+                        $('#kecamatan').empty().prop('disabled', true);
+                        $('#desa').empty().prop('disabled', true);
+                        onChangeSelect(url, id, 'kota');
+                    });
 
-<script>
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-    var isValid = this.checkValidity();
-    if (!isValid) {
-        event.preventDefault();
-        displayErrorMessages();
-    }
-});
+                    $('#kota').on('change', function() {
+                        var id = $(this).val();
+                        var url = `{{ route('get.districts') }}`;
+                        $('#kecamatan').empty().prop('disabled', false);
+                        $('#desa').empty().prop('disabled', true);
+                        onChangeSelect(url, id, 'kecamatan');
+                    });
 
-function displayErrorMessages() {
-    var inputs = document.getElementsByTagName("input");
-    var textareas = document.getElementsByTagName("textarea");
-    var selects = document.getElementsByTagName("select");
+                    $('#kecamatan').on('change', function() {
+                        var id = $(this).val();
+                        var url = `{{ route('get.villages') }}`;
+                        $('#desa').empty().prop('disabled', false);
+                        onChangeSelect(url, id, 'desa');
+                    });
 
-    clearErrorMessages();
-
-    for (var i = 0; i < inputs.length; i++) {
-        if (!inputs[i].checkValidity()) {
-            showErrorMessage(inputs[i].id, "Field ini harus diisi.");
-        }
-    }
-
-    for (var i = 0; i < textareas.length; i++) {
-        if (!textareas[i].checkValidity()) {
-            showErrorMessage(textareas[i].id, "Field ini harus diisi.");
-        }
-    }
-
-    for (var i = 0; i < selects.length; i++) {
-        if (!selects[i].checkValidity()) {
-            showErrorMessage(selects[i].id, "Pilihan harus dipilih.");
-        }
-    }
-}
-
-function showErrorMessage(elementId, message) {
-    var element = document.getElementById(elementId);
-    var errorMessage = document.createElement("span");
-    errorMessage.className = "error-message";
-    errorMessage.textContent = message;
-    element.parentNode.appendChild(errorMessage);
-}
-
-function clearErrorMessages() {
-    var errorMessages = document.getElementsByClassName("error-message");
-    while (errorMessages.length > 0) {
-        errorMessages[0].parentNode.removeChild(errorMessages[0]);
-    }
-}
-
-</script>
+                    // $('.single-select-field').select2({
+                    //     theme: "bootstrap-5",
+                    //     width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' :
+                    //         'style',
+                    //     placeholder: $(this).data('placeholder'),
+                    // });
+                });
+            </script>
     </body>
 
     </html>

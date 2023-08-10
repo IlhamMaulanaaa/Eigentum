@@ -46,15 +46,14 @@ class User extends Authenticatable
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(Favorite::class);
     }
     public function agents()
     {
-        return $this->hasMany(Agent::class);
+        return $this->belongsToMany(Agent::class, 'users_agent', 'user_id', 'agent_id');
     }
-    public function owners()
+    public function developers()
     {
-        return $this->hasMany(Owner::class);
+        return $this->belongsToMany(Developer::class, 'users_developer', 'user_id', 'developer_id');
     }
-
 }

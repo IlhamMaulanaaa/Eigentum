@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Helper\ApiFormatter;
-use App\Models\District;
+use App\Models\User;
 use App\Models\Owner;
 use App\Models\Regency;
 use App\Models\Village;
+use App\Models\District;
 use App\Models\Province;
 use App\Models\Developer;
 use Illuminate\Support\Str;
+use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -22,6 +23,13 @@ use Illuminate\Validation\Rules\Password;
 class DeveloperController extends Controller
 {
 
+    public function approval()
+    {
+        $developer = Developer::all();
+
+        return view('admin.developer.approval', compact('developer'));
+    }
+
     public function SigninDeveloper()
     {
         return view('auth.developer.signin');
@@ -32,14 +40,42 @@ class DeveloperController extends Controller
 
         return view('auth.developer.signup', compact('provinces'));
     }
+    public function approve($id)
+    {
+        $developer = Developer::findOrFail($id);
+        return view('admin.developer.approve', compact('developer'));
+    }
+
+    public function updateApproved($id)
+    {
+        $data = Developer::find($id);
+
+        $data->status = 'approved';
+        $data->save();
+
+        return redirect('admin/developer');
+    }
+    public function updateRejected($id)
+    {
+        $data = Developer::find($id);
+
+        $data->status = 'rejected';
+        $data->save();
+
+        return redirect('admin/developer');
+    }
+
 
     public function index()
     {
-        $developers = Developer::paginate(5);
+        $developers = Developer::with('users')->paginate(5);
         $tables = (new Developer())->getTable();
+        $users = User::all();
 
-        return view('admin.developer.all', compact('developers', 'tables'));
+
+        return view('admin.developer.all', compact('users', 'developers', 'tables',));
     }
+
 
     public function create()
     {
@@ -56,7 +92,7 @@ class DeveloperController extends Controller
         try {
             $request->validate([
                 'company'   => 'required',
-                'email' => 'required|email|unique:developers',
+                'email' => 'required|email',
                 'password'  => [
                     'required',
                     'string',
@@ -69,8 +105,8 @@ class DeveloperController extends Controller
                 'license.*' => 'required|file|max:10240',
                 'telp' => 'required|regex:/^[0-9+\-() ]+$/',
                 'name' => 'required',
-                'owner_email' => 'required|email|unique:owners',
-                'owner_password' => [
+                'company_email' => 'required|email',
+                'company_password' => [
                     'required',
                     'string',
                     // Password::min(8)
@@ -101,14 +137,14 @@ class DeveloperController extends Controller
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
                 'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
                 'name.required' => 'Nama tidak boleh kosong',
-                'owner_email.required' => 'Email tidak boleh kosong',
-                'owner_email.email' => 'Email harus mengandung @',
-                'owner_email.unique' => 'Email sudah terdaftar',
-                'owner_password.required' => 'Password tidak boleh kosong',
-                'owner_password.min' => 'Password minimal 8 karakter',
-                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
-                'owner_password.numbers' => 'Password harus mengandung angka',
-                'owner_password.symbols' => 'Password harus mengandung simbol',
+                'company_email.required' => 'Email tidak boleh kosong',
+                'company_email.email' => 'Email harus mengandung @',
+                'company_email.unique' => 'Email sudah terdaftar',
+                'company_password.required' => 'Password tidak boleh kosong',
+                'company_password.min' => 'Password minimal 8 karakter',
+                'company_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'company_password.numbers' => 'Password harus mengandung angka',
+                'company_password.symbols' => 'Password harus mengandung simbol',
                 'ktp.required' => 'KTP tidak boleh kosong',
                 'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'ktp.max' => 'Ukuran KTP maksimal 10MB',
@@ -146,21 +182,23 @@ class DeveloperController extends Controller
 
             $developer = Developer::create([
                 'company'   => $request->company,
-                'email' => $request->email,
-                'password'  => bcrypt($request->password),
+                'company_email' => $request->company_email,
+                'company_password'  => bcrypt($request->company_password),
                 'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
                 'telp'  => $request->telp,
-            ]);
-
-            $owner = Owner::create([
-                'name' => $request->name,
-                'owner_email' => $request->owner_email,
-                'owner_password' => bcrypt($request->owner_password),
                 'ktp' => $imageNames[0],
                 'face' => $imageNames[1],
-                'developer_id' => $developer->id,
             ]);
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 'developer',
+            ]);
+            // dd($developer);
+            $user->developers()->attach($developer->id);
 
             $developer->provinces()->attach($request->provinces_id);
             $developer->regencies()->attach($request->regencies_id);
@@ -179,27 +217,27 @@ class DeveloperController extends Controller
         try {
             $request->validate([
                 'company'   => 'required',
-                'email' => 'required|email|unique:developers',
+                'email' => 'required|email',
                 'password'  => [
                     'required',
                     'string',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols(),
+                    // Password::min(8)
+                    //     ->mixedCase()
+                    //     ->numbers()
+                    //     ->symbols(), 
                 ],
                 'address'   => 'required',
                 'license.*' => 'required|file|max:10240',
                 'telp' => 'required|regex:/^[0-9+\-() ]+$/',
                 'name' => 'required',
-                'owner_email' => 'required|email|unique:owners',
-                'owner_password' => [
+                'company_email' => 'required|email',
+                'company_password' => [
                     'required',
                     'string',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols(),
+                    // Password::min(8)
+                    //     ->mixedCase()
+                    //     ->numbers()
+                    //     ->symbols(), 
                 ],
                 'ktp' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
@@ -224,14 +262,14 @@ class DeveloperController extends Controller
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
                 'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
                 'name.required' => 'Nama tidak boleh kosong',
-                'owner_email.required' => 'Email tidak boleh kosong',
-                'owner_email.email' => 'Email harus mengandung @',
-                'owner_email.unique' => 'Email sudah terdaftar',
-                'owner_password.required' => 'Password tidak boleh kosong',
-                'owner_password.min' => 'Password minimal 8 karakter',
-                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
-                'owner_password.numbers' => 'Password harus mengandung angka',
-                'owner_password.symbols' => 'Password harus mengandung simbol',
+                'company_email.required' => 'Email tidak boleh kosong',
+                'company_email.email' => 'Email harus mengandung @',
+                'company_email.unique' => 'Email sudah terdaftar',
+                'company_password.required' => 'Password tidak boleh kosong',
+                'company_password.min' => 'Password minimal 8 karakter',
+                'company_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'company_password.numbers' => 'Password harus mengandung angka',
+                'company_password.symbols' => 'Password harus mengandung simbol',
                 'ktp.required' => 'KTP tidak boleh kosong',
                 'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'ktp.max' => 'Ukuran KTP maksimal 10MB',
@@ -269,21 +307,23 @@ class DeveloperController extends Controller
 
             $developer = Developer::create([
                 'company'   => $request->company,
-                'email' => $request->email,
-                'password'  => bcrypt($request->password),
+                'company_email' => $request->company_email,
+                'company_password'  => bcrypt($request->company_password),
                 'address'   => $request->address,
                 'license'   => implode("|", $fileArray),
                 'telp'  => $request->telp,
-            ]);
-
-            $owner = Owner::create([
-                'name' => $request->name,
-                'owner_email' => $request->owner_email,
-                'owner_password' => bcrypt($request->owner_password),
                 'ktp' => $imageNames[0],
                 'face' => $imageNames[1],
-                'developer_id' => $developer->id,
             ]);
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => 'developer',
+            ]);
+
+            $user->developers()->attach($request->developer_id);
 
             $developer->provinces()->attach($request->provinces_id);
             $developer->regencies()->attach($request->regencies_id);
@@ -292,21 +332,22 @@ class DeveloperController extends Controller
 
             $developer = Developer::where('id', '=', $developer->id)->get();
 
-            return redirect(route('developer.index'));
+            return redirect('beranda');
         } catch (Exception $e) {
             return $e;
         }
     }
 
-    public function show(Developer $developer, Owner $owner)
+    public function show(Developer $developer)
     {
         $developer = Developer::all();
         $licenseFile = explode("|", $developer->license);
-        // $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
-        return view('admin.developer.detail', compact('developer', 'licenseFile',));
+        return view('admin.developer.detail', compact('developer', 'licenseFile'));
     }
 
-    public function showFront(){
+
+    public function showFront()
+    {
         $developer = Developer::all();
         return view('pages.page.profile', compact('developer'));
     }

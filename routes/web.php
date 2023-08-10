@@ -18,7 +18,6 @@ use App\Http\Controllers\DeveloperController;
 use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
 
@@ -36,8 +35,8 @@ use App\Http\Controllers\PaymentCallbackController;
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 Route::post('/register', [AdminController::class, 'register']);
-Route::get('/create', [AuthController::class, 'login']);
-Route::get('/create', [AuthController::class, 'register']);
+Route::get('/createL', [AuthController::class, 'login']);
+Route::get('/createR', [AuthController::class, 'register']);
 
 
 Route::get('/navbar', function () {
@@ -106,7 +105,7 @@ Route::group(['prefix' => '/session'], function () {
             });
             Route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [AgentController::class, 'signup']);
-                Route::post('/create', [AgentController::class, 'storeFront']);
+                Route::post('/create', [AgentController::class, 'storeFront'])->middleware('guest');
             });
         });
     });
@@ -188,9 +187,8 @@ Route::get('/detailpanduan', function () {
 });
 // property
 Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload ', function () {
-        return view('pages.property.create');
-    });
+    Route::get('/upload ', [PropertyController::class, 'storeFront']);
+
 
     Route::get('/detail', function () {
         return view('pages.property.detail');
@@ -202,9 +200,8 @@ Route::group(['prefix' => '/property'], function () {
 });
 // unit
 Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload', function () {
-        return view('pages.unit.create');
-    });
+    Route::get('/upload', [UnitController::class, 'storeFront']);
+
 
     Route::get('/uploadimage', function () {
         return view('pages.unit.uploadimage');
@@ -236,7 +233,10 @@ Route::group(['prefix' => '/unit'], function () {
 
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
-
+        Route::post('/developers/reject/{id}', [DeveloperController::class, 'updateRejected'])->name('developer.reject');
+        Route::post('/developers/approve/{id}', [DeveloperController::class, 'updateApproved'])->name('developer.approve');
+        Route::post('/agents/reject/{id}', [AgentController::class, 'updateRejected'])->name('agent.reject');
+        Route::post('/agents/approve/{id}', [AgentController::class, 'updateApproved'])->name('agent.approve');
         Route::get('/', [AdminController::class, 'index']);
         Route::get("/dashboard", [DashboardController::class, 'index']);
 
@@ -254,6 +254,8 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('type', TypeController::class);
         Route::resource('guide', GuideController::class);
         Route::resource('status', StatusController::class);
+        Route::resource('subscribe', SubscribeController::class);
+        Route::resource('order', OrderController::class);
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
     });

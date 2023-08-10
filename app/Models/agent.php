@@ -23,6 +23,14 @@ class Agent extends Model
         'updated_at',
         'deleted_at',
     ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function properties(): BelongsToMany
     {

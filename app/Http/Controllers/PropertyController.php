@@ -25,14 +25,15 @@ class PropertyController extends Controller
         $properties = Property::paginate(10);
         $tables = (new Property())->getTable();
 
-        if($properties){
-            return view('admin.property.all', compact('properties','tables'));
+        if ($properties) {
+            return view('admin.property.all', compact('properties', 'tables'));
         }
     }
-    
 
 
-    public function create(Request $request, $developerId){
+
+    public function create(Request $request, $developerId)
+    {
 
         $developer = Developer::findOrfail($developerId);
         $type = Type::all();
@@ -42,7 +43,20 @@ class PropertyController extends Controller
         $districts = District::all();
         $villages = Village::all();
 
-        return view('admin.property.create',compact('type','developer','agent', 'provinces', 'regencies', 'districts', 'villages'));
+        return view('admin.property.create', compact('type', 'developer', 'agent', 'provinces', 'regencies', 'districts', 'villages'));
+    }
+    public function storeFront(Request $request, $developerId)
+    {
+
+        $developer = Developer::findOrfail($developerId);
+        $type = Type::all();
+        $agent = Agent::all();
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+
+        return view('pages.property.create', compact('type', 'developer', 'agent', 'provinces', 'regencies', 'districts', 'villages'));
     }
 
     public function store(Request $request, $developerId)
@@ -58,7 +72,7 @@ class PropertyController extends Controller
                 // 'district_id' => 'required',
                 // 'village_id' => 'required',
             ]);
-            
+
             $developer = Developer::findOrfail($developerId);
             if (!$developer) {
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
@@ -77,7 +91,7 @@ class PropertyController extends Controller
             $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
                 $query->where('regency_id', $regencyId);
             })->inRandomOrder()->first();
-            
+
             if ($randomAgent) {
                 $property->agents()->attach($randomAgent->id);
             } else {
@@ -91,8 +105,7 @@ class PropertyController extends Controller
             $property->villages()->attach($request->villages_id);
 
             return redirect(route('property.index'));
-
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             return $e;
         }
     }
@@ -100,14 +113,14 @@ class PropertyController extends Controller
 
     public function show(Property $property)
     {
-        return view('admin.property.detail',[
+        return view('admin.property.detail', [
             'property' => $property,
         ]);
     }
 
     public function edit(Property $property)
     {
-        return view('admin.property.edit',[
+        return view('admin.property.edit', [
             'property' => $property,
             'type' => Type::all(),
             'developer' => Developer::all(),
@@ -116,58 +129,55 @@ class PropertyController extends Controller
     }
 
 
-    
+
     public function update(Request $request, string $id)
     {
-        
-            $request->validate([
-                'title'  => 'nullable',
-                'description'   => 'nullable',
-                'address'   => 'nullable',
-                'type_id'   => 'nullable',
-            ]);
 
-            $property = Property::findOrfail($id);
+        $request->validate([
+            'title'  => 'nullable',
+            'description'   => 'nullable',
+            'address'   => 'nullable',
+            'type_id'   => 'nullable',
+        ]);
 
-            $property->update([
-                'title'  => $request->title,
-                'description'   => $request->description,
-                'address'   => $request->address,
-                'type_id'   => $request->type_id,
-            ]);
+        $property = Property::findOrfail($id);
 
-            // $property->agents()->sync($request->input('agent_id'));
+        $property->update([
+            'title'  => $request->title,
+            'description'   => $request->description,
+            'address'   => $request->address,
+            'type_id'   => $request->type_id,
+        ]);
 
-            $property = Property::where('id','=', $property->id)->get();
-            return redirect(route('property.show', $id));
-        
+        // $property->agents()->sync($request->input('agent_id'));
+
+        $property = Property::where('id', '=', $property->id)->get();
+        return redirect(route('property.show', $id));
     }
 
 
-    
+
     public function destroy(string $id)
     {
-            $property = Property::findOrfail($id);
-            foreach ($property->units as $unit) {
-                foreach ($unit->images() as $image) {
-                    $imagePath = 'storage/' . $image->image; 
-                    Storage::delete($imagePath);
-                    $image->delete();
-                }
-                $unit->specifications()->delete();
-                $unit->statuses()->detach();
-                $unit->delete();
+        $property = Property::findOrfail($id);
+        foreach ($property->units as $unit) {
+            foreach ($unit->images() as $image) {
+                $imagePath = 'storage/' . $image->image;
+                Storage::delete($imagePath);
+                $image->delete();
             }
-            // $property->types()->delete();
-            $property->provinces()->detach();
-            $property->regencies()->detach();
-            $property->districts()->detach();
-            $property->villages()->detach();
-            $property->agents()->detach();
-            $property->delete();
+            $unit->specifications()->delete();
+            $unit->statuses()->detach();
+            $unit->delete();
+        }
+        // $property->types()->delete();
+        $property->provinces()->detach();
+        $property->regencies()->detach();
+        $property->districts()->detach();
+        $property->villages()->detach();
+        $property->agents()->detach();
+        $property->delete();
 
-            return  redirect(route('property.index'));
-            
-
+        return  redirect(route('property.index'));
     }
 }

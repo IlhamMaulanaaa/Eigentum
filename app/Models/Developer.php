@@ -18,14 +18,30 @@ class Developer extends Authenticatable
     public $timestamps = false;
     protected $table = 'developers';
     protected $guarded = ['developer'];
+    protected $fillable = [
+        'approved',
+        'company',
+        'company_email',
+        'company_password',
+        'address',
+        'license',
+        'telp',
+        'ktp',
+        'face',
+
+
+    ];
     // protected $fillable = [
-    //     'name', 'email', 'password', // Kolom yang digunakan untuk otentikasi
+    //     // 'license' // Kolom yang digunakan untuk otentikasi
     // ];
     public function getAuthPassword()
     {
         return $this->password;
     }
-
+    public function developer()
+    {
+        return $this->hasOne(Developer::class)->through('developers');
+    }
     protected $hidden = [
         'password',
         'created_at',
@@ -46,9 +62,9 @@ class Developer extends Authenticatable
         return $this->hasMany(Property::class);
     }
 
-    public function owners(): Hasone
+    public function users()
     {
-        return $this->hasone(Owner::class, 'developer_id');
+        return $this->belongsToMany(User::class, 'users_developer', 'user_id', 'developer_id');
     }
 
     public function provinces(): BelongsToMany

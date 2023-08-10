@@ -25,11 +25,18 @@ return new class extends Migration
         });
         
         Schema::create('users_agent', function (Blueprint $table) {
-            $table->bigInteger('user_id');
-            $table->bigInteger('agent_id');
-            $table->primary(['user_id', 'agent_id']);
-            $table->softDeletes();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('agent_id');
+            $table->timestamps();
             });
+        Schema::create('users_developer', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('developer_id');
+            $table->timestamps();
+            });
+        
         
     }
 
