@@ -39,10 +39,7 @@ class SessionController extends Controller
         return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
-    public function anu()
-    {
-        return view('pages.Developer.dashboard');
-    }
+
 
     public function postSignin(Request $request)
     {

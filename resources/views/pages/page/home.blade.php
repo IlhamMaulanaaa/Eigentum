@@ -94,103 +94,106 @@
 
 
                     <div class="group-11-tab" id="4:7169">
-                        <div class="group-10-mPV" id="4:7171">
-                            <!-- Filter Home -->
-                            <div class="frame-61-qi7" id="4:7172">
-                                <div class="select-menu2">
-                                    <div class="select-btn2">
-                                        <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
-                                        <i class="bx bx-chevron-down"></i>
+                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+
+                            <div class="group-10-mPV" id="4:7171">
+                                <!-- Filter Home -->
+                                <div class="frame-61-qi7" id="4:7172">
+                                    <div class="select-menu2">
+                                        <div class="select-btn2">
+                                            <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
+                                            <i class="bx bx-chevron-down"></i>
+                                        </div>
+
+                                        <ul class="options2">
+
+                                            <li class="option2">
+                                                <i class="bx bx-building" style="color: #0C40E8;"></i>
+                                                <span class="option2-text">Apartemen</span>
+                                            </li>
+                                            <li class="option2">
+                                                <i class="bx bx-home" style="color: #0C40E8;"></i>
+                                                <span class="option2-text">Rumah</span>
+                                            </li>
+                                            <li class="option2">
+                                                <i class="bx bx-store" style="color: #0C40E8;"></i>
+                                                <span class="option2-text">Ruko</span>
+                                            </li>
+                                            <li class="option2">
+                                                <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
+                                                <span class="option2-text">Villa</span>
+                                            </li>
+                                            <li class="option2">
+                                                <i class="bx bx-grid-alt" style="color: #171515;"></i>
+                                                <span class="option2-text">Semua Properti</span>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div class="select-menu3">
+                                        <div class="select-btn3">
+                                            <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
+                                            <i class="bx bx-chevron-down"></i>
+                                        </div>
 
-                                    <ul class="options2">
+                                        <ul class="options3">
 
-                                        <li class="option2">
-                                            <i class="bx bx-building" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Apartemen</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-home" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Rumah</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-store" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Ruko</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-home-heart" style="color: #0C40E8;"></i>
-                                            <span class="option2-text">Villa</span>
-                                        </li>
-                                        <li class="option2">
-                                            <i class="bx bx-grid-alt" style="color: #171515;"></i>
-                                            <span class="option2-text">Semua Properti</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="select-menu3">
-                                    <div class="select-btn3">
-                                        <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
-                                        <i class="bx bx-chevron-down"></i>
+                                            <li class="option3">
+                                                <span class="option3-text">Tidak Ada</span>
+                                            </li>
+                                            <li class="option3">
+                                                <span class="option3-text">Satu</span>
+                                            </li>
+                                            <li class="option3">
+                                                <span class="option3-text">Dua</span>
+                                            </li>
+
+                                            <li class="option3">
+                                                <span class="option3-text">Lebih Dari Dua</span>
+                                            </li>
+                                            <li class="option3">
+                                                <i class="bx bx-hotel" style="color: #171515;"></i>
+                                                <span class="option3-text">Kamar Tidur</span>
+                                            </li>
+                                        </ul>
                                     </div>
+                                    <div class="select-menu4">
+                                        <div class="select-btn4">
+                                            <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
+                                            <i class="bx bx-chevron-down"></i>
+                                        </div>
 
-                                    <ul class="options3">
+                                        <ul class="options4">
+                                            <li class="option4">
+                                                <span class="option4-text">Tidak Ada</span>
+                                            </li>
+                                            <li class="option4">
+                                                <span class="option4-text">Satu</span>
+                                            </li>
+                                            <li class="option4">
+                                                <span class="option4-text">Dua</span>
+                                            </li>
+                                            <li class="option4">
+                                                <span class="option4-text">Lebih Dari Dua</span>
+                                            </li>
+                                            <li class="option4">
+                                                <i class="bx bx-bath" style="color: #171515;"></i>
+                                                <span class="option4-text">Kamar Mandi</span>
+                                            </li>
 
-                                        <li class="option3">
-                                            <span class="option3-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Satu</span>
-                                        </li>
-                                        <li class="option3">
-                                            <span class="option3-text">Dua</span>
-                                        </li>
-
-                                        <li class="option3">
-                                            <span class="option3-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option3">
-                                            <i class="bx bx-hotel" style="color: #171515;"></i>
-                                            <span class="option3-text">Kamar Tidur</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="select-menu4">
-                                    <div class="select-btn4">
-                                        <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
-                                        <i class="bx bx-chevron-down"></i>
+                                            </li>
+                                        </ul>
                                     </div>
-
-                                    <ul class="options4">
-                                        <li class="option4">
-                                            <span class="option4-text">Tidak Ada</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Satu</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <span class="option4-text">Lebih Dari Dua</span>
-                                        </li>
-                                        <li class="option4">
-                                            <i class="bx bx-bath" style="color: #171515;"></i>
-                                            <span class="option4-text">Kamar Mandi</span>
-                                        </li>
-
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="search-container">
-                            <input type="text" id="search-input" placeholder="Search...">
-                            <a href="/filterproperti" id="home-link">
+                            <div class="search-container">
+                                <input type="text" name="search" class="form-control" placeholder="Search name.."
+                                    aria-label="Search username" aria-describedby="basic-addon2"
+                                    value="{{ request('search') }}">
                                 <button type="submit" id="search-button">Search</button>
-                            </a>
-                        </div>
-                        
+                            </div>
+
+                        </form>
                     </div>
                 </div>
                 <div class="frame-365-pto" id="4:7196">
@@ -276,7 +279,7 @@
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                                <a href="/unit/detail">
+                                                <a href="/unit/detail/{{ $unit->id }}}">
                                                     <div class="position-relative overflow-hidden">
                                                         <a href="/unit/detail"><img
                                                                 src="{{ asset('storage/' . $unit->image) }}"

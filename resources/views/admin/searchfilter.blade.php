@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('admin.layout.main')
 
 @section('content')
     <!DOCTYPE html>
@@ -107,7 +107,7 @@
             <div class="row my-4 my-md-5">
                 <div class="col-12 col-md-4 col-lg-3">
                     <div class="fables-store-search mb-4">
-                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                        <form action="{{ route('unit.filter') }}" method="GET" role="search">
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control" placeholder="Search name.."
                                     aria-label="Search username" aria-describedby="basic-addon2"
@@ -129,13 +129,12 @@
                                     <label class="form-check-label">Disewa</label>
                                 </div> --}}
                                 @foreach ($statuses as $status)
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="status{{ $status->id }}"
-                                            name="status[]" value="{{ $status->id }}"
-                                            {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ $status->name }}</label>
-                                    </div>
-                                @endforeach
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="status{{ $status->id }}" name="status[]"
+                                        value="{{ $status->id }}" {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label">{{ $status->name }}</label>
+                                </div>
+                            @endforeach
                             </div>
                             {{-- <div class="col-md-4">
                                 <label>Rentang Harga:</label>
@@ -148,9 +147,8 @@
                                 <label>Type</label>
                                 @foreach ($types as $type)
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}"
-                                            name="types[]" value="{{ $type->id }}"
-                                            {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
+                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}" name="types[]"
+                                            value="{{ $type->id }}" {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label">{{ $type->name }}</label>
                                     </div>
                                 @endforeach
@@ -165,9 +163,9 @@
                                     </div>
                                 @endforeach
                             </div> --}}
-
-
-
+                            
+                            
+                            
                         </form>
                     </div>
                     {{-- <div class="rage-slider">
@@ -342,12 +340,11 @@
                             </div>
                         @endforeach
                     </div>
-                    {{-- <div aria-label="Page navigation">
+                    <div aria-label="Page navigation">
                         {{ $filteredUnits->links() }}
-                    </div> --}}
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         <!-- /End page content -->
 
@@ -374,25 +371,25 @@
             inputMax.addEventListener("input", updateValueWithCommas);
         </script>
 
-        <script>
-            // Dapatkan elemen checkbox berdasarkan ID
-            const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
-            const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
+<script>
+    // Dapatkan elemen checkbox berdasarkan ID
+    const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
+    const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
 
 
-            statusCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    this.form.submit(); // Kirim form saat checkbox diubah
-                });
-            });
+    statusCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.form.submit(); // Kirim form saat checkbox diubah
+        });
+    });
 
 
-            typeCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    this.form.submit(); // Kirim form saat checkbox diubah
-                });
-            });
-        </script>
+    typeCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            this.form.submit(); // Kirim form saat checkbox diubah
+        });
+    });
+</script>
 
 
         <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>

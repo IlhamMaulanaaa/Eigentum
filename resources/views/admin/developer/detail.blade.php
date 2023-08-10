@@ -48,13 +48,13 @@
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner</label>
                                     <input type="text" class="form-control" id="owner" name="owner"
-                                        value="{{ $developer->name }}" readonly disabled>
+                                        value="{{ $user->name }}" readonly disabled>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner Email</label>
                                     <input type="owner" class="form-control" id="owner" name="owner"
-                                        value="{{ $developer->email }}" readonly disabled>
+                                        value="{{ $user->email }}" readonly disabled>
                                 </div>
                             </div>
                             <br>
@@ -148,23 +148,24 @@
                             </div>
                             <br>
 
-                            
 
-                        </form><div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
 
-                                <form action="{{ url('admin/developers/reject', $developer->id) }}" method="POST"
-                                    class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger">Reject</button>
-                                </form>
+                        </form>
+                        <div class="form-group text-end">
+                            <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
 
-                                <form action="{{ url('admin/developers/approve', $developer->id) }}" method="POST"
-                                    class="d-inline">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Approve</button>
-                                </form>
-                            </div>
+                            <form action="{{ url('admin/developers/reject', $developer->id) }}" method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </form>
+
+                            <form action="{{ url('admin/developers/approve', $developer->id) }}" method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Approve</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

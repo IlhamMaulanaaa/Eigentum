@@ -35,7 +35,7 @@
                     <button class="back-button" onclick="goBack()" style="">
                         Back
                     </button>   
-                    <h1 class="h1upload">Upload Unit</h1>
+                    <h1 class="h1upload">Edit Unit</h1>
                     <label for="lebar">Status :</label>
                      <div class="dropdown" style="border-color: #fff">
                             <select required style="width:100%; height:42px;">

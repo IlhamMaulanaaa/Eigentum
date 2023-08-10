@@ -30,9 +30,15 @@ class DeveloperController extends Controller
         return view('admin.developer.approval', compact('developer'));
     }
 
+    public function dashboard($id)
+    {
+        $developer = Developer::findOrfail($id);
+        return view('pages.Developer.dashboard', compact('developer'));
+    }
+
     public function SigninDeveloper()
     {
-        return view('auth.developer.signin');
+        return view('auth.signin');
     }
     public function SignupDeveloper()
     {
@@ -68,12 +74,17 @@ class DeveloperController extends Controller
 
     public function index()
     {
-        $developers = Developer::with('users')->paginate(5);
+        $developers = Developer::filter(request(['search', 'regency_id']))->paginate(5);
         $tables = (new Developer())->getTable();
-        $users = User::all();
+        // Mendapatkan nama tabel pivot antara developers dan regencies
+        $pivotTable = (new Developer())->regencies()->getTable();
 
-
-        return view('admin.developer.all', compact('users', 'developers', 'tables',));
+        // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot
+        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
+            $query->select('regency_id')
+                ->from($pivotTable);
+        })->pluck('name', 'id');
+        return view('admin.developer.all', compact('developers', 'tables', 'regencies'));
     }
 
 
@@ -212,6 +223,7 @@ class DeveloperController extends Controller
             return $e;
         }
     }
+
     public function storeFront(Request $request)
     {
         try {
@@ -338,12 +350,18 @@ class DeveloperController extends Controller
         }
     }
 
-    public function show(Developer $developer)
+    public function show($id)
     {
-        $developer = Developer::all();
+        $developer = Developer::findOrFail($id);
+        $user = User::findOrFail($id);
+    
+        // Assuming each developer has a license property
         $licenseFile = explode("|", $developer->license);
-        return view('admin.developer.detail', compact('developer', 'licenseFile'));
+    
+        return view('admin.developer.detail', compact('developer', 'licenseFile', 'user'));
     }
+    
+    
 
 
     public function showFront()

@@ -35,64 +35,53 @@
                     <button class="back-button" onclick="goBack()" style="">
                         Back
                     </button>   
-                    <h1 class="h1upload">Upload Unit</h1>
-                    <label for="lebar">Status :</label>
-                     <div class="dropdown" style="border-color: #fff">
-                            <select required style="width:100%; height:42px;">
-                                <option disabled selected>Pilih Status Unit</option>
-                                <option>Jual</option>
-                                <option>Beli</option>
-                            </select>
+                    <h1 class="h1upload">Edit Properti</h1>
+                    
+                    <label for="perusahaan">Nama Perusahaan :</label>
+                    <input type="text" id="perusahaan" name="perusahaan" required> 
+
+                    <label for="properti">Nama Properti :</label>
+                    <input type="text" id="judul" name="judul" required>
+                    
+                    <label for="lebar">Harga :</label>
+                     <div class="input-group" style="width: 100%;">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">.00</span>
                      </div>
-                     <label for="lebar">Tipe Unit :</label>
+
+                     <label for="lokasi">Lokasi:</label>
+                     <input type="text" id="lokasi" name="lokasi" required>
+
+                     <label for="lebar">Tipe Tersedia :</label>
+                     <input type="text" id="jumlah" name="jumlah" required>
+
+
+                     
+                     <label for="lebar">Tipe Properti :</label>
                      <div class="dropdown">
                             <select required style="width:100%; height:42px;">
-                                <option disabled selected>Pilih Tipe Unit</option>
+                                <option disabled selected>Pilih Tipe Properti</option>
                                 <option>Apartemen</option>
                                 <option>Rumah</option>
                                 <option>Ruko</option>
                                 <option>Villa</option>
                             </select>
                      </div>
-                     <label for="lebar">Harga:</label>
-                     <div class="input-group" style="width: 100%;">
-                        <span class="input-group-text">Rp.</span>
-                        <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
-                        <span class="input-group-text">.00</span>
-                     </div>
-                    <label for="deskripsi">Nama Unit:</label>
-                    <input type="text" id="judul" name="judul" required>
 
-                    <label for="lokasi">Lokasi:</label>
-                     <input type="text" id="lokasi" name="lokasi" required>
-
-                     <label for="lokasi">Deskripsi:</label>
+                    <label for="lokasi">Deskripsi:</label>
                     <textarea type="text" id="lokasi" name="lokasi" required style=" resize: none; height: 100px;"></textarea>
 
-                    
+
 
                     
 
-                    <label for="luas_tanah">Luas Tanah:</label>
-                    <div class="input-group" style="width: 100%;">
-                     <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
-                     <span class="input-group-text">m²</span>
-                   </div>
+                    
 
-                    <label for="luas_bangunan">Luas Bangunan:</label>
-                    <div class="input-group" style="width: 100%;">
-                     <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
-                     <span class="input-group-text">m²</span>
-                   </div>
-
-                    <label for="kamar_mandi">Kamar Mandi:</label>
-                    <input type="number" id="kamar_mandi" name="kamar_mandi" required>
-
-                    <label for="kamar_tidur">Kamar Tidur:</label>
-                    <input type="number" id="kamar_tidur" name="kamar_tidur" required>
+                    
                     <br>
                     <br>
-                    <button type="button" style="margin-bottom: 90px;" class="btn-next" onclick="nextSection(2)">Berikutnya</button>
+                    <button style="margin-bottom: 90px;" type="button" class="btn-next" onclick="nextSection(2)">Berikutnya</button>
                 </div>
 
                 <div class="form-section" id="section2" style="margin-top: -70px;">
@@ -100,7 +89,7 @@
                         Back
                     </button> 
                     <h1 class="h1uploadimage" style="margin-top:-70px; 
-                    text-align: center; margin-bottom:50px;">Unggah Unit</h1>
+                    text-align: center; margin-bottom:50px;">Unggah Properti</h1>
                     <div class="left-section">
                         {{-- <div class="upload-container" style="margin-bottom: 90px;"">
                             <div class="container-upload">
@@ -158,8 +147,8 @@
                                 <input id="default-btn6" type="file" hidden>
                              </div>
                             <div class="upload-details">
-                                <h3>Unggah Rumah</h3>
-                                <p>Unggah Rumah bagian samping dengan kualitas HD dan ukuran file foto Maks 10 MB
+                                <h3>Unggah Properti</h3>
+                                <p>Unggah Properti dengan kualitas HD dan ukuran file foto Maks 10 MB
                                 </p>
                             </div>
                         </div>
@@ -220,8 +209,8 @@
                                 <input id="default-btn8" type="file" hidden>
                              </div>
                             <div class="upload-details">
-                                <h3>Unggah Ruang Tamu</h3>
-                                <p>Unggah Ruang Tamu dengan kualitas HD dan ukuran file foto Maks 10 MB
+                                <h3>Unggah Video Properti</h3>
+                                <p>Unggah Denah dengan kualitas HD dan ukuran file video Maks 10 MB
                                 </p>
                             </div>
                         </div>
@@ -250,8 +239,8 @@
                                <input id="default-btn1" type="file" hidden>
                             </div>
                            <div class="upload-details">
-                               <h3>Unggah Kamar Tidur</h3>
-                               <p>Unggah Kamar Tidur bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
+                               <h3>Unggah Denah</h3>
+                               <p>Unggah Denah dengan kualitas HD dan ukuran file foto Maks 10 MB
                                </p>
                            </div>
                        </div>
@@ -284,8 +273,8 @@
                                 <input id="default-btn2" type="file" hidden>
                              </div>
                             <div class="upload-details">
-                                <h3>Unggah Kamar Mandi</h3>
-                                <p>Unggah Kamar Mandi bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
+                                <h3>Unggah Fasilitas 1</h3>
+                                <p>Unggah Fasilitas 1 dengan kualitas HD dan ukuran file foto Maks 10 MB
                                 </p>
                             </div>
                         </div>
@@ -314,8 +303,8 @@
                                 <input id="default-btn3" type="file" hidden>
                              </div>
                             <div class="upload-details">
-                                <h3>Unggah Ruang Dapur</h3>
-                                <p>Unggah Ruang Dapur bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
+                                <h3>Unggah Fasilitas 2</h3>
+                                <p>Unggah Fasilitas 2 dengan kualitas HD dan ukuran file foto Maks 10 MB
                                 </p>
                             </div>
                         </div>
@@ -345,8 +334,8 @@
                                 <input id="default-btn4" type="file" hidden>
                              </div>
                             <div class="upload-details">
-                                <h3>Unggah Denah Rumah</h3>
-                                <p>Unggah Denah Rumah bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
+                                <h3>Unggah Fasilitas 3</h3>
+                                <p>Unggah Fasilitas 3 dengan kualitas HD dan ukuran file foto Maks 10 MB
                                 </p>
                             </div>
                         </div>

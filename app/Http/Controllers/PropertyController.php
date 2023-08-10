@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\ApiFormatter;
-use App\Models\Agent;
-use App\Models\District;
-use App\Models\PropertyAgent;
-use App\Models\Developer;
-use App\Models\Property;
-use App\Models\Province;
-use App\Models\Regency;
+use Exception;
 use App\Models\Type;
 use App\Models\Unit;
+use App\Models\Agent;
+use App\Models\Regency;
 use App\Models\Village;
-use Exception;
+use App\Models\District;
+use App\Models\Property;
+use App\Models\Province;
+use App\Models\Developer;
+use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
+use App\Models\PropertyAgent;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
@@ -22,11 +24,19 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = Property::paginate(10);
+        $properties = Property::filter(request(['search', 'developer_id', 'regency_id']))->paginate(10);
         $tables = (new Property())->getTable();
+        $developers = Developer::all()->pluck('company', 'id');;;
+        $pivotTable = (new Property())->regencies()->getTable();
 
-        if ($properties) {
-            return view('admin.property.all', compact('properties', 'tables'));
+        // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot
+        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
+            $query->select('regency_id')
+                ->from($pivotTable);
+        })->pluck('name', 'id');
+        
+        if($properties){
+            return view('admin.property.all', compact('properties','tables', 'developers', 'regencies'));
         }
     }
 
@@ -45,7 +55,8 @@ class PropertyController extends Controller
 
         return view('admin.property.create', compact('type', 'developer', 'agent', 'provinces', 'regencies', 'districts', 'villages'));
     }
-    public function storeFront(Request $request, $developerId)
+
+    public function createFront(Request $request, $developerId)
     {
 
         $developer = Developer::findOrfail($developerId);
@@ -105,6 +116,13 @@ class PropertyController extends Controller
             $property->villages()->attach($request->villages_id);
 
             return redirect(route('property.index'));
+
+            if (Auth::user()->role == "admin"){
+                return redirect(route('property.index'));
+            }else{
+                return redirect(route('developer.dashboard'));
+            }
+            
         } catch (Exception $e) {
             return $e;
         }

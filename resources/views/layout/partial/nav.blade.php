@@ -49,44 +49,47 @@
             <div class="darkLight-searchBoxq">
 
                 @if (Auth::check())
-                        <div class="profileq" style="cursor: pointer;">
+                    <div class="profileq" style="cursor: pointer;">
                         <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
-                        </div>
+                    </div>
 
-                        {{ Auth()->user()->name }}
+                    {{ Auth()->user()->name }}
 
-                        <div class="menu-profileq">
-                            <h3>
-                                {{ Auth()->user()->email }}
-                                <div>
-                                    {{-- sesuai nama role --}}
-                                    {{-- {{ session('role') }} --}}
-                                </div>
-                            </h3>
-                            <ul style="margin: 0; padding:0;">
-                                <li>
-                                    <span class="material-icons icons-size">person</span>
-                                    <a href="/profile">Pengaturan Profile user</a>
-                                </li>
-                                <li>
-                                    <span class="material-icons icons-size">monetization_on</span>
-                                    <a href="/pages/langganan">Langganan</a>
-                                </li>
-                                <li>
-                                    <span class="material-icons icons-size">favorite</span>
-                                    <a href="/favorite">yang di sukai</a>
-                                </li>
-                                <li>
-                                    <span class="material-icons icons-size">business_center</span>
-                                    <a href="/session/auth/developer/signin/">developer</a>
-                                </li>
-                                <li>
-                                    <span class="material-icons icons-size">exit_to_app</span>
-                                    <a href="/session/auth/user/signout">Logout</a>
-                                </li>
-                            </ul>
-                        </div>
-                    
+                    <div class="menu-profileq">
+                        <h3>
+                            {{ Auth()->user()->email }}
+                            <div>
+                                {{-- sesuai nama role --}}
+                                {{-- {{ session('role') }} --}}
+                            </div>
+                        </h3>
+                        <ul style="margin: 0; padding:0;">
+                            <li>
+                                <span class="material-icons icons-size">person</span>
+                                <a href="/profile">Pengaturan Profile user</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">monetization_on</span>
+                                <a href="/pages/langganan">Langganan</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">favorite</span>
+                                <a href="/favorite">yang di sukai</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">business_center</span>
+                                <a href="/developer/dashboard/">developer</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">business_center</span>
+                                <a href="/admin/dashboard/">Admin</a>
+                            </li>
+                            <li>
+                                <span class="material-icons icons-size">exit_to_app</span>
+                                <a href="/session/auth/user/signout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
                 @elseif (!Auth::check())
                     <a href="/" class="btnq">Masuk</a>
                 @endif

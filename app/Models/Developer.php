@@ -19,7 +19,7 @@ class Developer extends Authenticatable
     protected $table = 'developers';
     protected $guarded = ['developer'];
     protected $fillable = [
-        'approved',
+        'status',
         'company',
         'company_email',
         'company_password',
@@ -28,8 +28,6 @@ class Developer extends Authenticatable
         'telp',
         'ktp',
         'face',
-
-
     ];
     // protected $fillable = [
     //     // 'license' // Kolom yang digunakan untuk otentikasi
@@ -85,5 +83,23 @@ class Developer extends Authenticatable
     public function villages(): BelongsToMany
     {
         return $this->belongsToMany(Village::class, 'developer_villages', 'developer_id', 'village_id');
+    }
+
+    public function scopefilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('comipany', 'like', '%' . $search . '%')
+                // ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
+            return $query->whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('id', $regencyId);
+            });
+        });
+
+        return $query;
     }
 }
