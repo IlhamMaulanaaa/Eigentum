@@ -18,11 +18,16 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('12345678'),
         // ]);
 
-        // User::create([
-        //     'name' => 'Admin',
-        //     'email' => 'admin345@gmail.com',
-        //     'password' => bcrypt('12345678'),
-        // ]);
+        User::create([
+            'name' => 'User',
+            'email' => 'ibrahimbtaz@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
+        User::create([
+            'name' => 'Developer',
+            'email' => 'developer@gmail.com',
+            'password' => bcrypt('12345678'),
+        ]);
 
         $this->call(UsersTableSeeder::class);
         $this->call(CustomerSeeder::class);
@@ -30,17 +35,17 @@ class DatabaseSeeder extends Seeder
         $this->call(StatusSeeder::class);
         $this->call(GuideSeeder::class);
         $this->call(SubscribeSeeder::class);
-
+        
         $this->call(IndoRegionProvinceSeeder::class);
         $this->call(IndoRegionRegencySeeder::class);
         $this->call(IndoRegionDistrictSeeder::class);
         $this->call(IndoRegionVillageSeeder::class);
-
+        
         $this->call(AgentSeeder::class);
 
         $this->call(DeveloperSeeder::class);
         $this->call(OwnerSeeder::class);
-
+        
         $this->call(PropertySeeder::class);
         $this->call(UnitSeeder::class);
     }

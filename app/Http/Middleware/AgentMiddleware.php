@@ -17,11 +17,12 @@ class AgentMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check() && Auth::user()->role == 'agent') {
-            return $next($request);
-        } else {
-            return redirect('/beranda');
-        }
+            $agentStatus = Auth::user()->agents->first()->status;
 
-        return redirect('/session/auth/agent/signup');
+            if ($agentStatus === 'approved') {
+                return $next($request);
+            }
+        } 
+        return redirect('/beranda');
     }
 }

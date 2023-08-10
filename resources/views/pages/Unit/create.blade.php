@@ -1,5 +1,5 @@
-{{-- @extends('layout.main') --}}
-{{-- @section('content') --}}
+@extends('layout.main')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/unit/upload/upload.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -15,6 +16,7 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 	<link rel="stylesheet" type="text/css" href="css/pages/profile.css">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
@@ -25,7 +27,7 @@
 <body>
      
 
-    <div class="form-container" >
+    <div class="form-container" style="margin-top: 90px; height:auto;">
         
         <div class="left-section">
             <form id="multi-page-form">
@@ -34,33 +36,63 @@
                         Back
                     </button>   
                     <h1 class="h1upload">Upload Unit</h1>
-                    <label for="deskripsi">Judul:</label>
+                    <label for="lebar">Status :</label>
+                     <div class="dropdown" style="border-color: #fff">
+                            <select required style="width:100%; height:42px;">
+                                <option disabled selected>Pilih Status Unit</option>
+                                <option>Jual</option>
+                                <option>Beli</option>
+                            </select>
+                     </div>
+                     <label for="lebar">Tipe Unit :</label>
+                     <div class="dropdown">
+                            <select required style="width:100%; height:42px;">
+                                <option disabled selected>Pilih Tipe Unit</option>
+                                <option>Apartemen</option>
+                                <option>Rumah</option>
+                                <option>Ruko</option>
+                                <option>Villa</option>
+                            </select>
+                     </div>
+                     <label for="lebar">Harga:</label>
+                     <div class="input-group" style="width: 100%;">
+                        <span class="input-group-text">Rp.</span>
+                        <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text">.00</span>
+                     </div>
+                    <label for="deskripsi">Nama Unit:</label>
                     <input type="text" id="judul" name="judul" required>
 
-                    <label for="deskripsi">Deskripsi:</label>
-                    <textarea id="deskripsi" name="deskripsi" required></textarea>
+                    <label for="lokasi">Lokasi:</label>
+                     <input type="text" id="lokasi" name="lokasi" required>
 
-                    <label for="lebar">Lebar:</label>
-                    <input type="number" id="lebar" name="lebar" required>
+                     <label for="lokasi">Deskripsi:</label>
+                    <textarea type="text" id="lokasi" name="lokasi" required style=" resize: none; height: 100px;"></textarea>
 
-                    <label for="panjang">Panjang:</label>
-                    <input type="number" id="panjang" name="panjang" required>
+                    
+
+                    
 
                     <label for="luas_tanah">Luas Tanah:</label>
-                    <input type="number" id="luas_tanah" name="luas_tanah" required>
+                    <div class="input-group" style="width: 100%;">
+                     <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
+                     <span class="input-group-text">m²</span>
+                   </div>
 
                     <label for="luas_bangunan">Luas Bangunan:</label>
-                    <input type="number" id="luas_bangunan" name="luas_bangunan" required>
+                    <div class="input-group" style="width: 100%;">
+                     <input type="number" style="margin:0;" class="form-control" aria-label="Amount (to the nearest dollar)">
+                     <span class="input-group-text">m²</span>
+                   </div>
 
                     <label for="kamar_mandi">Kamar Mandi:</label>
                     <input type="number" id="kamar_mandi" name="kamar_mandi" required>
 
                     <label for="kamar_tidur">Kamar Tidur:</label>
                     <input type="number" id="kamar_tidur" name="kamar_tidur" required>
-                    {{-- make me button next for next form --}}
                     <br>
                     <br>
-                    <button type="button" class="btn-next" onclick="nextSection(2)">Berikutnya</button>
+                    <button type="button" style="margin-bottom: 90px;" class="btn-next" onclick="nextSection(2)">Berikutnya</button>
                 </div>
 
                 <div class="form-section" id="section2" style="margin-top: -70px;">
@@ -70,9 +102,9 @@
                     <h1 class="h1uploadimage" style="margin-top:-70px; 
                     text-align: center; margin-bottom:50px;">Unggah Unit</h1>
                     <div class="left-section">
-                        <div class="upload-container" style="margin-bottom: 90px;"">
+                        {{-- <div class="upload-container" style="margin-bottom: 90px;"">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper5">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -91,19 +123,19 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(5)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn5" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Video 360°</h3>
                                 <p>Unggah Video bagian depan dengan kualitas HD dan ukuran file video Maks 10 MB
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper6">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -122,8 +154,8 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(6)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn6" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Rumah</h3>
@@ -132,9 +164,9 @@
                             </div>
                         </div>
 
-                        <div class="upload-container" style="margin-bottom: 90px;">
+                        {{-- <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper7">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -153,19 +185,19 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(7)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn7" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Rumah</h3>
                                 <p>Unggah Rumah bagian belakang dengan kualitas HD dan ukuran file foto Maks 10 MB
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper8">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -184,8 +216,8 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(8)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn8" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Ruang Tamu</h3>
@@ -193,38 +225,39 @@
                                 </p>
                             </div>
                         </div>
+                        <div class="upload-container" style="margin-bottom: 90px;">
+                           <div class="container-upload">
+                               <div class="wrapper wrapper1">
+                                  <div class="image">
+                                     <img src="" alt="">
+                                  </div>
+                                  <div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
+                                     <div class="icon">
+                                        <i class="fas fa-photo"></i>
+                                     </div>
+                                     <div class="text">
+                                        No file chosen, yet!
+                                     </div>
+                                  </div>
+                                  <div id="cancel-btn">
+                                     <i class="fas fa-times"></i>
+                                  </div>
+                                  <div class="file-name">
+                                     File name here
+                                  </div>
+                               </div>
+                               <button onclick="defaultBtnActive(1)" class="custom-btn" id="custom-btn">Upload</button>
+                               <input id="default-btn1" type="file" hidden>
+                            </div>
+                           <div class="upload-details">
+                               <h3>Unggah Kamar Tidur</h3>
+                               <p>Unggah Kamar Tidur bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
+                               </p>
+                           </div>
+                       </div>
                     </div>
                     <div class="right-section">
-                        <div class="upload-container" style="margin-bottom: 90px;">
-                            <div class="container-upload">
-                                <div class="wrapper wrapper2">
-                                   <div class="image">
-                                      <img src="" alt="">
-                                   </div>
-                                   <div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                      <div class="icon">
-                                         <i class="fas fa-photo"></i>
-                                      </div>
-                                      <div class="text">
-                                         No file chosen, yet!
-                                      </div>
-                                   </div>
-                                   <div id="cancel-btn">
-                                      <i class="fas fa-times"></i>
-                                   </div>
-                                   <div class="file-name">
-                                      File name here
-                                   </div>
-                                </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
-                             </div>
-                            <div class="upload-details">
-                                <h3>Unggah Kamar Tidur</h3>
-                                <p>Unggah Kamar Tidur bagian depan dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                </p>
-                            </div>
-                        </div>
+                        
 
                         <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
@@ -258,7 +291,7 @@
                         </div>
                         <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper3">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -277,8 +310,8 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(3)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn3" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Ruang Dapur</h3>
@@ -289,7 +322,7 @@
 
                         <div class="upload-container" style="margin-bottom: 90px;">
                             <div class="container-upload">
-                                <div class="wrapper wrapper2">
+                                <div class="wrapper wrapper4">
                                    <div class="image">
                                       <img src="" alt="">
                                    </div>
@@ -308,8 +341,8 @@
                                       File name here
                                    </div>
                                 </div>
-                                <button onclick="defaultBtnActive(2)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn2" type="file" hidden>
+                                <button onclick="defaultBtnActive(4)" class="custom-btn" id="custom-btn">Upload</button>
+                                <input id="default-btn4" type="file" hidden>
                              </div>
                             <div class="upload-details">
                                 <h3>Unggah Denah Rumah</h3>
@@ -324,7 +357,7 @@
                     <br>
                     <br>
                     <br>
-                    <button type="button" class="btn-next"  style="margin-top: 0px;">Buat</button>
+                    <button type="button" class="btn-next"  style="margin-bottom:90px; margin-top: 0px;">Buat</button>
                 </div>
             </form>
 
@@ -332,6 +365,40 @@
 
     </div>
     <script>
+      function defaultBtnActive(wrapperNumber) {
+        const wrapper = document.querySelector(".wrapper" + wrapperNumber);
+        const fileName = wrapper.querySelector(".file-name");
+        const defaultBtn = document.querySelector("#default-btn" + wrapperNumber);
+        const customBtn = wrapper.querySelector(".custom-btn");
+        const MembatalkanBtn = wrapper.querySelector("#Membatalkan-btn i");
+        const img = wrapper.querySelector("img");
+        let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
+
+        defaultBtn.click();
+
+        defaultBtn.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const result = reader.result;
+                img.src = result;
+                wrapper.classList.add("active");
+            };
+            MembatalkanBtn.addEventListener("click", function () {
+                img.src = "";
+                wrapper.classList.remove("active");
+            });
+            reader.readAsDataURL(file);
+            }
+            if (this.value) {
+            let valueStore = this.value.match(regExp);
+            fileName.textContent = valueStore;
+            }
+        });
+        }
+
+
         function goBack() {
             window.history.back();
         }
@@ -427,9 +494,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 </body>
 
 </html>
-{{-- @endsection --}}
+@endsection

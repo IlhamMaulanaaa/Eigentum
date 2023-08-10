@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CustomerController;
@@ -15,13 +15,11 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
-use App\Http\Controllers\SubscribeController;
-use App\Models\Subscribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +35,8 @@ use App\Models\Subscribe;
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 Route::post('/register', [AdminController::class, 'register']);
-Route::get('/create', [AuthController::class, 'login']);
-Route::get('/create', [AuthController::class, 'register']);
+Route::get('/createL', [AuthController::class, 'login']);
+Route::get('/createR', [AuthController::class, 'register']);
 
 
 Route::get('/navbar', function () {
@@ -107,7 +105,7 @@ Route::group(['prefix' => '/session'], function () {
             });
             Route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [AgentController::class, 'signup']);
-                Route::post('/create', [AgentController::class, 'storeFront']);
+                Route::post('/create', [AgentController::class, 'storeFront'])->middleware('guest');
             });
         });
     });
@@ -117,11 +115,14 @@ Route::group(['prefix' => '/session'], function () {
 // });
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
-        Route::get('/dashboard', [SessionController::class, 'anu']);
+        Route::get('/dashboard/{id}', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
         Route::get('/detail', function () {
             return view('pages.Developer.detail');
         });
     });
+});
+Route::get('/dashboarddev', function () {
+    return view('pages.Developer.dashboard');
 });
 // agent
 Route::middleware(['auth', 'IsAgent'])->group(function () {
@@ -172,17 +173,14 @@ Route::group(['prefix' => '/pages'], function () {
 });
 
 
-Route::get('/filterproperti', function () {
-    return view('pages.page.propertyfilter');
-});
+Route::get('/filterproperti', [UnitController::class, 'filterFront'])->name('filterproperti');;
 
 Route::get('/konfirmasipembayaran', function () {
     return view('pages.page.confirmpayment');
 });
 
-Route::get('/profile', function () {
-    return view('pages.page.profile');
-});
+
+Route::get('/profile', [DeveloperController::class, 'showFront']);
 
 Route::get('/favorite', [FavoriteController::class, 'index']);
 
@@ -191,16 +189,15 @@ Route::get('/detailpanduan', function () {
 });
 // property
 Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload ', function () {
-        return view('pages.property.create');
-    });
+    Route::get('/upload/{developerId}', [PropertyController::class, 'createFront']);
+
 
     Route::get('/detail', function () {
         return view('pages.property.detail');
     });
 
-    Route::get('/choice', function () {
-        return view('pages.property.choice');
+    Route::get('/edit', function () {
+        return view('pages.property.edit');
     });
 });
 // unit
@@ -209,12 +206,11 @@ Route::group(['prefix' => '/unit'], function () {
         return view('pages.unit.create');
     });
 
-    Route::get('/uploadimage', function () {
-        return view('pages.unit.uploadimage');
-    });
 
-    Route::get('/detail', function () {
-        return view('pages.unit.detail');
+    Route::get('/detail', [UnitController::class, 'showFront']);
+
+    Route::get('/edit', function () {
+        return view('pages.unit.edit');
     });
 });
 
@@ -239,9 +235,13 @@ Route::group(['prefix' => '/unit'], function () {
 
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
-
+        Route::post('/developers/reject/{id}', [DeveloperController::class, 'updateRejected'])->name('developer.reject');
+        Route::post('/developers/approve/{id}', [DeveloperController::class, 'updateApproved'])->name('developer.approve');
+        Route::post('/agents/reject/{id}', [AgentController::class, 'updateRejected'])->name('agent.reject');
+        Route::post('/agents/approve/{id}', [AgentController::class, 'updateApproved'])->name('agent.approve');
         Route::get('/', [AdminController::class, 'index']);
         Route::get("/dashboard", [DashboardController::class, 'index']);
+        Route::get('/profile', [AdminController::class, 'show'])->name('profile.show');
 
 
         Route::resource('customer', CustomerController::class);
@@ -259,9 +259,14 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('status', StatusController::class);
         Route::resource('subscribe', SubscribeController::class);
         Route::resource('order', OrderController::class);
+        // Route::resource('profile', OrderController::class);
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+        Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
+        Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
     });
+
+    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
 });
 
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');

@@ -89,18 +89,21 @@
                                 </ul>
                             </div>
                             <br>
-                            <div class="form-group text-end">
+                           
+                        </form> <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="{{ route('agent.index') }}">Back</a>
-                                <form action="{{ route('agent.destroy', $agent->id) }}" method="get" class="d-inline">
+                               <form action="{{ url('admin/agents/reject', $agent->id) }}" method="POST"
+                                    class="d-inline">
                                     @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"
-                                        onclick="return  confirm('Apakah Anda Yakin')">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Reject</button>
                                 </form>
-                                <a type="button" class="btn btn-primary"
-                                    href="{{ route('agent.edit', $agent->id) }}">Edit</a>
+
+                                <form action="{{ url('admin/agents/approve', $agent->id) }}" method="POST"
+                                    class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Approve</button>
+                                </form>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>

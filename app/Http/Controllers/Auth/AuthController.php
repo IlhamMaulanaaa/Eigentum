@@ -33,14 +33,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials) && Auth::user()->role == "admin") {
             return redirect('/admin')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($credentials) && Auth::user()->role == "developer") {
+        } elseif (Auth::attempt($credentials) && Auth::user()->role == "developer") {
             return redirect('/developer/dashboard')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($credentials) && Auth::user()->role == "agent") {
+        } elseif (Auth::attempt($credentials) && Auth::user()->role == "agent") {
             return redirect('/agent/dashboard')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($credentials) && Auth::user()->role == "user") {
+        } elseif (Auth::attempt($credentials) && Auth::user()->role == "user") {
             return redirect('/beranda')->with('success', 'Berhasil Login');
-        }else {
-            return redirect('/beranda');
+        } else {
+            return redirect('/');
         }
     }
     public function register(Request $request)
@@ -69,13 +69,13 @@ class AuthController extends Controller
 
         if (Auth::attempt($datalogin) && Auth::user()->role == "admin") {
             return redirect('/admin')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($datalogin) && Auth::user()->role == "developer") {
+        } elseif (Auth::attempt($datalogin) && Auth::user()->role == "developer") {
             return redirect('/developer/dashboard')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($datalogin) && Auth::user()->role == "agent") {
+        } elseif (Auth::attempt($datalogin) && Auth::user()->role == "agent") {
             return redirect('/agent/dashboard')->with('success', 'Berhasil Login');
-        }elseif (Auth::attempt($datalogin) && Auth::user()->role == "user") {
+        } elseif (Auth::attempt($datalogin) && Auth::user()->role == "user") {
             return redirect('/beranda')->with('success', 'Berhasil Login');
-        }else {
+        } else {
             return redirect('/beranda');
         }
     }

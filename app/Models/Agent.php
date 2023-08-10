@@ -24,6 +24,11 @@ class Agent extends Model
         'deleted_at',
     ];
 
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'agent_user', 'agent_id', 'user_id');
+    }
+
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'property_agent', 'property_id', 'agent_id');
@@ -51,26 +56,19 @@ class Agent extends Model
 
     public function scopefilter($query, array $filters){
 
-        if(isset($filters['search']) ? $filters['search'] : false){
-            $query->where('name','like','%'.$filters['search'].'%')
-                ->orWhere('email','like','%'.$filters['search'].'%');
-            // ->orWhere('telepon','like','%'.$filters['search'].'%')
-            // ->orWhere('alamat','like','%'.$filters['search'].'%');
-        }
+        $query->when($filters['search'] ?? false, function($query, $search){
+            $query->where('name','like','%'.$search.'%')
+            // ->orWhere('description','like','%'.$search.'%')
+            ->orWhere('email','like','%'.$search.'%');
+        });
 
-        // $query->when($filters['search'] ?? false, function($query, $search){
-        //     $query->where('name','like','%'.$search.'%')
-        //     ->orWhere('email','like','%'.$search.'%')
-        //     ->orWhere('alamat','like','%'.$search.'%');
-        // });
+        $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
+            return $query->whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('id', $regencyId);
+            });
+        });
 
-        if(isset($filters['property_id']) ? $filters['property_id'] : false){
-            $query->Where('id',$filters['property_id']);
-        }
-
-        // $query->when($filters['property_id'] ?? false, function($query, $property_id){
-        //     $query->where('id',$property_id);
-        // });
+        return $query;
     }
 
 }

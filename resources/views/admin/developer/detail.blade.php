@@ -40,7 +40,7 @@
                                 <div class="form-group col-6">
                                     <label for="email" class="form-label">Company Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ $developer->email }}" readonly disabled>
+                                        value="{{ $developer->company_email }}" readonly disabled>
                                 </div>
                             </div>
                             <br>
@@ -48,13 +48,13 @@
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner</label>
                                     <input type="text" class="form-control" id="owner" name="owner"
-                                        value="{{ $developer->owners->name }}" readonly disabled>
+                                        value="{{ $user->name }}" readonly disabled>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner Email</label>
                                     <input type="owner" class="form-control" id="owner" name="owner"
-                                        value="{{ $developer->owners->owner_email }}" readonly disabled>
+                                        value="{{ $user->email }}" readonly disabled>
                                 </div>
                             </div>
                             <br>
@@ -62,7 +62,7 @@
                                 <div class="form-group col-auto">
                                     <label for="ktp" class="form-label">Ktp</label>
                                     <div class="image-text-wrapper">
-                                        <img src="{{ asset('storage/' . $developer->owners->ktp) }}" class="img-thumbnail"
+                                        <img src="{{ asset('storage/' . $developer->ktp) }}" class="img-thumbnail"
                                             alt="" width="120">
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                 <div class="form-group col-auto">
                                     <label for="face" class="form-label">Face</label>
                                     <div class="image-text-wrapper">
-                                        <img src="{{ asset('storage/' . $developer->owners->face) }}" class="img-thumbnail"
+                                        <img src="{{ asset('storage/' . $developer->face) }}" class="img-thumbnail"
                                             alt="" width="120">
                                     </div>
                                 </div>
@@ -148,19 +148,24 @@
                             </div>
                             <br>
 
-                            <div class="form-group text-end">
-                                <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
-                                <form action="{{ route('developer.destroy', $developer->id) }}" method="get"
-                                    class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"
-                                        onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                </form>
-                                <a type="button" class="btn btn-primary"
-                                    href="{{ route('developer.edit', $developer->id) }}">Edit</a>
-                            </div>
+
+
                         </form>
+                        <div class="form-group text-end">
+                            <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
+
+                            <form action="{{ url('admin/developers/reject', $developer->id) }}" method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-danger">Reject</button>
+                            </form>
+
+                            <form action="{{ url('admin/developers/approve', $developer->id) }}" method="POST"
+                                class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Approve</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

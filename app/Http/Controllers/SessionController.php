@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\role;
 use App\Models\User;
+use App\Models\Regency;
+use App\Models\Village;
+use App\Models\District;
+use App\Models\Province;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -27,12 +31,15 @@ class SessionController extends Controller
 
     public function signupUser()
     {
-        return view('auth.user.signup');
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
+
+        return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
-    public function anu(){
-        return view('pages.Developer.dashboard');
-    }
+
 
     public function postSignin(Request $request)
     {

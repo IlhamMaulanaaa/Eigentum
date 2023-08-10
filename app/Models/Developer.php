@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,19 +13,33 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Developer extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasFactory, HasRoles;
+    use Notifiable, SoftDeletes, HasFactory;
 
     public $timestamps = false;
     protected $table = 'developers';
     protected $guarded = ['developer'];
+    protected $fillable = [
+        'status',
+        'company',
+        'company_email',
+        'company_password',
+        'address',
+        'license',
+        'telp',
+        'ktp',
+        'face',
+    ];
     // protected $fillable = [
-    //     'name', 'email', 'password', // Kolom yang digunakan untuk otentikasi
+    //     // 'license' // Kolom yang digunakan untuk otentikasi
     // ];
     public function getAuthPassword()
     {
         return $this->password;
     }
-
+    public function developer()
+    {
+        return $this->hasOne(Developer::class)->through('developers');
+    }
     protected $hidden = [
         'password',
         'created_at',
@@ -47,9 +60,9 @@ class Developer extends Authenticatable
         return $this->hasMany(Property::class);
     }
 
-    public function owners(): Hasone
+    public function users()
     {
-        return $this->hasone(Owner::class, 'developer_id');
+        return $this->belongsToMany(User::class, 'users_developer', 'user_id', 'developer_id');
     }
 
     public function provinces(): BelongsToMany
@@ -70,5 +83,23 @@ class Developer extends Authenticatable
     public function villages(): BelongsToMany
     {
         return $this->belongsToMany(Village::class, 'developer_villages', 'developer_id', 'village_id');
+    }
+
+    public function scopefilter($query, array $filters)
+    {
+
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('comipany', 'like', '%' . $search . '%')
+                // ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
+            return $query->whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('id', $regencyId);
+            });
+        });
+
+        return $query;
     }
 }

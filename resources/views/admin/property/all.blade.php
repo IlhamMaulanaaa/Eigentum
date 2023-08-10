@@ -1,6 +1,17 @@
 @extends('admin.layout.main')
 
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -11,6 +22,44 @@
                     {{-- <div class="col-md-4 text-end px-0">
                         <a type="button" class="btn btn-primary" href="create">Tambah Data Baru</a>
                     </div> --}}
+                    <div class="col-md-10">
+                        <form action="{{ route('property.index') }}" method="GET" role="search">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <select name="regency_id" id="regency" class="form-select">
+                                        <option value=" "{{ request('regency_id') ? '' : 'selected' }}>Pilih Regency</option>
+                                        @foreach ($regencies as $id => $name)
+                                            <option value="{{ $id }}"
+                                                {{ request('regency_id') == $id ? ' selected' : '' }}>
+                                                {{ $name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <select name="developer_id" id="developers" class="form-select">
+                                        <option value=""{{ request('developer_id') ? '' : 'selected' }} >
+                                            Developers</option>
+                                        @foreach ($developers as $id => $company)
+                                            <option value="{{ $id }}"
+                                                {{ request('developer_id') == $id ? 'selected' : '' }}>
+                                                {{ $company }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control"
+                                            placeholder="Search name.." aria-label="Search username"
+                                            aria-describedby="basic-addon2" value="{{ request('search') }}">
+                                        <button class="btn btn-outline-secondary" id="searchButton"
+                                            type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="table-responsive">
@@ -60,4 +109,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var searchButton = document.getElementById("searchButton");
+            var searchForm = document.getElementById("searchForm");
+    
+            searchButton.addEventListener("click", function () {
+                searchForm.submit();
+            });
+        });
+    </script>
+    
+</body>
+</html>
 @endsection
