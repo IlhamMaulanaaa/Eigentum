@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Developer;
 use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
@@ -16,13 +17,16 @@ class DeveloperMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         if (Auth::check() && Auth::user()->role == 'developer') {
-            return $next($request);
-        } else {
-            return redirect('/beranda');
+            $developerStatus = Auth::user()->developers->first()->status;
+
+            if ($developerStatus === 'approved') {
+                return $next($request);
+            } else {
+                return redirect('/beranda')->with('rejected', true);
+            }
         }
 
-        return redirect('/session/auth/developer/signup');
+        return redirect('/beranda');
     }
 }

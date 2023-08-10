@@ -49,107 +49,140 @@
             <div class="darkLight-searchBoxq">
 
                 @if (Auth::check())
-                    {{-- <div class="notif_nav">
-                <div class="notifications">
-                    <div class="icon_wrap"><i class="far fa-bell"></i></div>
-                    
-                    <div class="notification_dd" style="margin: 0; padding:0;">
-                        <ul class="notification_ul" style="margin: 0; padding:0;">
-                            <li class="kfc success">
-                                <div class="notify_icon">
-                                    <span class="icon"><img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="Icon"></span>  
-                                </div>
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Judul  
-                                    </div>
-                                    <div class="sub_title">
-                                        Isi Notifikasi
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="kfc success">
-                                <div class="notify_icon">
-                                    <span class="icon"><img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="Icon"></span>  
-                                </div>
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Judul  
-                                    </div>
-                                    <div class="sub_title">
-                                        Isi Notifikasi
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="kfc success">
-                                <div class="notify_icon">
-                                    <span class="icon"><img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="Icon"></span>  
-                                </div>
-                                <div class="notify_data">
-                                    <div class="title">
-                                        Judul  
-                                    </div>
-                                    <div class="sub_title">
-                                        Isi Notifikasi
-                                    </div>
-                                </div>
-                            </li>
-                            <!-- ... Daftar notifikasi lainnya ... -->
-                            <li class="show_all" >
-                                <p class="link" style="margin: 0; padding:0;"><a href="/pages/notifikasi" style="color:black; text-decoration: none;">Tampilkan Semua Notifikasi</a></p>
-                            </li> 
-                        </ul>
-                    </div>
-                    
-                </div>
-            </div> --}}
+                    @if (session('role') == 'user')
+                        <div class="profileq" style="cursor: pointer;">
+                            <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
+                        </div>
 
+                        {{ Auth()->user()->name }}
 
-                    <div class="profileq" style="cursor: pointer;">
-                        <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
-                    </div>
+                        <div class="menu-profileq">
+                            <h3>
+                                {{ Auth()->user()->email }}
+                                <div>
+                                    {{-- sesuai nama role --}}
+                                    {{-- {{ session('role') }} --}}
+                                </div>
+                            </h3>
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="/profile">Pengaturan Profile user</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">monetization_on</span>
+                                    <a href="/pages/langganan">Langganan</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">yang di sukai</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="/session/auth/developer/signin/">developer</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="/session/auth/user/signout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('role') == 'developer')
+                        <div class="profileq" style="cursor: pointer;">
+                            <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
+                        </div>
 
-                    {{ Auth()->user()->name }}
+                        {{ Auth()->user()->name }}
 
-                    <div class="menu-profileq">
-                        <h3>
-                            {{ Auth()->user()->email }}
-                            <div>
-                                {{-- sesuai nama role --}}
-                                {{-- {{ session('role') }} --}}
-                            </div>
-                        </h3>
-                        <ul style="margin: 0; padding:0;">
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="/profile">Pengaturan Profile</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">monetization_on</span>
-                                <a href="/pages/langganan">Langganan</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">favorite</span>
-                                <a href="/favorite">yang di sukai</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">business_center</span>
-                                <a href="/session/auth/developer/signin/">developer</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">exit_to_app</span>
-                                <a href="/session/auth/user/signout">Logout</a>
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="menu-profileq">
+                            <h3>
+                                {{ Auth()->user()->email }}
+                                <div>
+                                    {{-- sesuai nama role --}}
+                                    {{-- {{ session('role') }} --}}
+                                </div>
+                            </h3>
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="/profile">Pengaturan Profile developer</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">monetization_on</span>
+                                    <a href="/pages/langganan">Langganan</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">yang di sukai</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="/session/auth/developer/signin/">developer</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="/session/auth/user/signout">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                 @elseif (!Auth::check())
                     <a href="/" class="btnq">Masuk</a>
                 @endif
 
             </div>
         </div>
-    </nav>
+        @if (session('rejected'))
+            <div class="alert alert-danger text-center smooth-alert">
+                Akun Anda masih ditangguhkan. Mohon tunggu selama 24 jam.
+            </div>
+        @endif
 
+    </nav>
+    <script>
+        // Fungsi untuk menampilkan alert dengan animasi turun dari atas
+        function showAlert() {
+            var alertElement = document.querySelector('.alert');
+            if (alertElement) {
+                alertElement.classList.add('smooth-alert');
+                setTimeout(function() {
+                    alertElement.style.transform = 'translateY(0)';
+                    alertElement.style.opacity = '1';
+                }, 100); // Waktu dalam milidetik (0.1 detik dalam contoh ini)
+            }
+        }
+
+        // Fungsi untuk menghilangkan alert dengan animasi mengecil dan naik
+        function hideAlert() {
+            var alertElement = document.querySelector('.alert');
+            if (alertElement) {
+                alertElement.style.transform = 'translateY(-100%)';
+                alertElement.style.opacity = '0';
+                setTimeout(function() {
+                    alertElement.style.width = '300px';
+                    alertElement.remove();
+                }, 500); // Waktu dalam milidetik (0.5 detik dalam contoh ini)
+            }
+        }
+
+        // Fungsi untuk mengatur timer penutupan otomatis
+        function autoCloseAlert() {
+            showAlert(); // Tampilkan alert dengan animasi turun dari atas
+            setTimeout(function() {
+                var alertElement = document.querySelector('.alert');
+                if (alertElement) {
+                    alertElement.style.width = '100%'; // Lebarkan alert
+                    setTimeout(function() {
+                        hideAlert(); // Sembunyikan alert dengan animasi mengecil dan naik
+                    }, 2000); // Waktu dalam milidetik (2 detik dalam contoh ini)
+                }
+            }, 4000); // Waktu dalam milidetik (4 detik dalam contoh ini)
+        }
+
+        // Panggil fungsi autoCloseAlert saat halaman dimuat
+        window.onload = autoCloseAlert;
+    </script>
     <script>
         const menuWrap = document.querySelector('.darkLight-searchBoxq');
         const menuProfile = document.querySelector('.profileq');

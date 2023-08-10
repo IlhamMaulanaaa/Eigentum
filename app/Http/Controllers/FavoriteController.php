@@ -14,6 +14,7 @@ class FavoriteController extends Controller
     public function index()
     {
         $favorite = Favorite::all();
+        // dd($favorite);
         return view('pages.page.favorite',compact('favorite'));
     }
 

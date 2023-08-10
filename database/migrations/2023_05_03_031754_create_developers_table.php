@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("telp");
             $table->string("ktp");
             $table->string("face");
+            $table->string('status')->default('pending');
             $table->softDeletes();
             $table->timestamps();
         });

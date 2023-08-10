@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,19 +13,35 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Developer extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasFactory, HasRoles;
+    use Notifiable, SoftDeletes, HasFactory;
 
     public $timestamps = false;
     protected $table = 'developers';
     protected $guarded = ['developer'];
+    protected $fillable = [
+        'approved',
+        'company',
+        'company_email',
+        'company_password',
+        'address',
+        'license',
+        'telp',
+        'ktp',
+        'face',
+
+
+    ];
     // protected $fillable = [
-    //     'name', 'email', 'password', // Kolom yang digunakan untuk otentikasi
+    //     // 'license' // Kolom yang digunakan untuk otentikasi
     // ];
     public function getAuthPassword()
     {
         return $this->password;
     }
-
+    public function developer()
+    {
+        return $this->hasOne(Developer::class)->through('developers');
+    }
     protected $hidden = [
         'password',
         'created_at',

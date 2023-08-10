@@ -208,7 +208,7 @@
                 <h6 id="" class="" style="font-family: 'Lato', sans-serif; color:#0C40E8">Daftar Panduan</h6>
                 <h1 class="mb-4">Panduan Tentang Properti</h1>
             </div>
-            <div class="container-search-panduan">
+            {{-- <div class="container-search-panduan">
                 <div class="search_wrap search_wrap_1">
                   <div class="search_box">
                     <input type="text" class="input" placeholder="search...">
@@ -218,14 +218,14 @@
                   </div>
                 </div>
                 
-              </div>
-              <div class="post-filter container">
+              </div> --}}
+              {{-- <div class="post-filter container">
                 <span class="filter-item active-filter" data-filter="all">Semua</span>
                 <span class="filter-item" data-filter="kpr">KPR</span>
                 <span class="filter-item" data-filter="properti">Properti</span>
                 <span class="filter-item" data-filter="agen">Agen</span>
                 <span class="filter-item" data-filter="news">Terbaru</span>
-            </div>
+            </div> --}}
             
             <div class="post container">
                 <!-- Post 1 -->
@@ -241,10 +241,10 @@
                 <!-- Post 2 -->
                 <div class="post-box properti">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/eksplore.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Properti</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Pahami Kebutuhan dan Kemampuan Keuangan Anda</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -252,10 +252,10 @@
                 <!-- Post 3 -->
                 <div class="post-box properti">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan6.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Properti</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Cari Informasi Tentang Bank atau Lembaga Keuangan</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -263,10 +263,10 @@
                 <!-- Post 4 -->
                 <div class="post-box news">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan5.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Terbaru</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Siapkan Dokumen Penting</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -274,10 +274,10 @@
                 <!-- Post 5 -->
                 <div class="post-box kpr">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan4.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">KPR</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Hitung Besar Cicilan yang Dapat Dibayar</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -285,10 +285,10 @@
                 <!-- Post 6 -->
                 <div class="post-box news">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan3.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Terbaru</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Periksa Riwayat Kredit Anda</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -296,10 +296,10 @@
                 <!-- Post 7 -->
                 <div class="post-box kpr">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan2.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">KPR</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Lakukan Simulasi KPR</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -307,10 +307,10 @@
                 <!-- Post 1 -->
                 <div class="post-box news">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan1.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Terbaru</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Beri Uang Muka yang Cukup</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
@@ -318,7 +318,7 @@
                 <!-- Post 9 -->
                 <div class="post-box properti">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan4.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Properti</h2>
                     <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
@@ -328,30 +328,30 @@
                 </div>
                 <div class="post-box agen">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan3.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Agen</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Pastikan Anda Bisa Mengelola Pembayaran</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="post-box agen">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan6.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Agen</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Baca dan Pahami Kontrak dengan Seksama</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     
                 </div>
                 <div class="post-box agen">
                     <a href="/detailpanduan">
-                    <img src="/assets/pages/Panduan/kpr.jpg" alt="" class="post-img">
+                    <img src="/assets/pages/Panduan/panduan2.jpg" alt="" class="post-img">
                     </a>
                     <h2 class="category" style="margin-top: 10px">Agen</h2>
-                    <a href="/detailpanduan" style="color: #000" class="post-title">Cara Melakukan KPR dengan benar</a>
+                    <a href="/detailpanduan" style="color: #000" class="post-title">Pilih Jangka Waktu KPR yang Tepat</a>
                     <span class="post-date">12 Mei 2023</span>
                     <p class="post-description">Anda sudah tahu ya betapa pentingnya istilah satu ini. Tidak perlu khawatir lagi jika Anda hendak mengajukan KPR dan tidak tahu hasil apa yang harus diharapkan. Jika Anda sudah memegang SP3K, niscaya proses pencairan KPR Anda juga akan berjalan mulus.</p>
                     

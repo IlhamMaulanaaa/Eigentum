@@ -20,10 +20,12 @@
                             <th scope="col">Id</th>
                             <th scope="col">Company</th>
                             <th scope="col">Company Email</th>
-                            {{-- <th scope="col">Owner</th> --}}
+                            <th scope="col">Owner</th>
                             <th scope="col">Kota</th>
                             <th scope="col">Telephone</th>
+                            <th scope="col">status</th>
                             <th scope="col"></th>
+                            {{-- <th scope="col"></th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -32,16 +34,35 @@
                                 <tr align="center">
                                     <td class="text-start">{{ ++$key }}</td>
                                     <td class="text-start">{{ $developer->company }}</td>
-                                    <td class="text-start">{{ $developer->email }}</td>
-                                    {{-- <td class="text-start">{{ $developer->users->name }}</td> --}}
+                                    <td class="text-start">{{ $developer->company_email }}</td>
+                                    <td class="text-start">
+                                        @foreach ($developer->users as $user)
+                                            {{ $user->name }}
+                                        @endforeach
+                                    </td>
+
                                     <td class="text-start">
                                         {{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}</td>
                                     <td class="text-start">{{ $developer->telp }}</td>
+                                    <td>{{ $developer->status }}</td>
+
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="{{ route('developer.show', $developer->id) }}">Detail</a>
 
                                     </td>
+                                    {{-- <td>
+                                        <form action="{{ url('admin/developers/approve', $developer->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary mx-2">Approve</button>
+                                        </form>
+                                        <form action="{{ url('admin/developers/reject', $developer->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Reject</button>
+                                        </form>
+
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         @else

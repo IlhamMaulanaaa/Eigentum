@@ -61,7 +61,7 @@
                 <div class="product-imgs">
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
-                            <img class="img-besar" src="/assets/unit/detailunit/home.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/pages/Home/unit1.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
@@ -73,7 +73,7 @@
                             <div class="gallery">
 
                                 <div class="image" style="margin-left: 770px; margin-top: 310px;">
-                                    <img src="/assets/unit/detailunit/home.jpg" alt=""
+                                    <img src="/assets/pages/Home/unit1.jpg" alt=""
                                         style="border-radius: 10px; filter: grayscale(90%) opacity(2.5); width: 200px; height: 120px;">
                                     <div class="text-overlay">
                                         <p class="text">Lihat Semua</p>
@@ -94,7 +94,7 @@
                             <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
                             <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
@@ -109,7 +109,7 @@
                             <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
                             <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
@@ -124,7 +124,7 @@
                             <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/home.jpg" alt=""
+                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="1">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/unit/detailunit/home.jpg" alt="shoe image">
+                                src="/assets/pages/Home/unit1.jpg" alt="shoe image">
                         </a>
                     </div>
                     <div class="img-item" style="padding-right: 20px;">
@@ -260,7 +260,7 @@
                     </p>
                 </div>
             </div>
-            <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+            <a href="https://web.whatsapp.com/"><div class="group-12-pM3" id="3:50">Tanya Agent</div></a>
         </div>
 
 

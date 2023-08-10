@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\GuideController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CustomerController;
@@ -15,13 +15,11 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeveloperController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
-use App\Http\Controllers\SubscribeController;
-use App\Models\Subscribe;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,7 +105,7 @@ Route::group(['prefix' => '/session'], function () {
             });
             Route::group(['prefix' => '/signup'], function () {
                 Route::get('/', [AgentController::class, 'signup']);
-                Route::post('/create', [AgentController::class, 'storeFront']);
+                Route::post('/create', [AgentController::class, 'storeFront'])->middleware('guest');
             });
         });
     });
@@ -180,9 +178,7 @@ Route::get('/konfirmasipembayaran', function () {
     return view('pages.page.confirmpayment');
 });
 
-Route::get('/profile', function () {
-    return view('pages.page.profile');
-});
+Route::get('/profile', [DeveloperController::class, 'showFront']);
 
 Route::get('/favorite', [FavoriteController::class, 'index']);
 
@@ -191,8 +187,8 @@ Route::get('/detailpanduan', function () {
 });
 // property
 Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload ',[PropertyController::class, 'storeFront']);
-   
+    Route::get('/upload ', [PropertyController::class, 'storeFront']);
+
 
     Route::get('/detail', function () {
         return view('pages.property.detail');
@@ -204,8 +200,8 @@ Route::group(['prefix' => '/property'], function () {
 });
 // unit
 Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload',[UnitController::class, 'storeFront']);
-    
+    Route::get('/upload', [UnitController::class, 'storeFront']);
+
 
     Route::get('/uploadimage', function () {
         return view('pages.unit.uploadimage');
@@ -237,7 +233,10 @@ Route::group(['prefix' => '/unit'], function () {
 
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
-
+        Route::post('/developers/reject/{id}', [DeveloperController::class, 'updateRejected'])->name('developer.reject');
+        Route::post('/developers/approve/{id}', [DeveloperController::class, 'updateApproved'])->name('developer.approve');
+        Route::post('/agents/reject/{id}', [AgentController::class, 'updateRejected'])->name('agent.reject');
+        Route::post('/agents/approve/{id}', [AgentController::class, 'updateApproved'])->name('agent.approve');
         Route::get('/', [AdminController::class, 'index']);
         Route::get("/dashboard", [DashboardController::class, 'index']);
 

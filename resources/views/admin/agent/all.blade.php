@@ -9,7 +9,7 @@
                         {{ $tables }}
                     </h2>
                     <div class="col-md-4 text-end px-0">
-                        <a type="button" class="btn btn-primary" href="{{route('agent.create')}}">Tambah Data Baru</a>
+                        <a type="button" class="btn btn-primary" href="{{ route('agent.create') }}">Tambah Data Baru</a>
                     </div>
                 </div>
             </div>
@@ -24,6 +24,7 @@
                             <th scope="col">Kota</th>
                             <th scope="col">Face</th>
                             <th scope="col">Telephone</th>
+                            <th scope="col">status</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -41,10 +42,13 @@
                                     <td class="text-start"><img src="{{ asset('storage/' . $agent->face) }}" width="60"
                                             heigth="60"></td>
                                     <td class="text-start">{{ $agent->telp }}</td>
+                                    <td>{{ $agent->status }}</td>
                                     <td class="text-end">
                                         <a type="button" class="btn btn-outline-warning"
                                             href="{{ route('agent.show', $agent->id) }}">Detail</a>
                                     </td>
+
+
                                 </tr>
                             @endforeach
                             {{-- @elseif ($agents->count())

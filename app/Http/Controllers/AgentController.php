@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Exception;
+use App\Models\User;
 use App\Models\Agent;
 use App\Models\Regency;
 use App\Models\Village;
@@ -30,7 +31,24 @@ class AgentController extends Controller
 
         return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
+    public function updateApproved($id)
+    {
+        $data = Agent::find($id);
 
+        $data->status = 'approved';
+        $data->save();
+
+        return redirect('admin/agent');
+    }
+    public function updateRejected($id)
+    {
+        $data = Agent::find($id);
+
+        $data->status = 'rejected';
+        $data->save();
+
+        return redirect('admin/agent');
+    }
     public function index()
     {
         $agents = Agent::paginate(5);
@@ -63,18 +81,19 @@ class AgentController extends Controller
         return view('admin.agent.create', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
+    
     public function storeFront(Request $request)
     {
         // try {
         $request->validate([
-            'email' => 'required|email|unique:agents',
+            'email' => 'required|email',
             'password'  =>  [
                 'required',
                 'string',
                 Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols(),
+                    // ->mixedCase()
+                    // ->numbers()
+                    // ->symbols(),
             ],
             'name'    => 'required',
             'address'   => 'required',
@@ -116,14 +135,19 @@ class AgentController extends Controller
         }
 
         $agent = Agent::create([
-            'email' => $request->email,
-            'password'  => bcrypt($request->password),
-            'name'  => $request->name,
             'address'   => $request->address,
             'ktp'   => $imageArray[0],
             'face'   => $imageArray[1],
             'telp'  => $request->telp,
         ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'developer',
+        ]);
+
+        $user->agents()->attach($agent->id);
 
         // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
         $regencyId = $request->regencies_id;
@@ -146,23 +170,24 @@ class AgentController extends Controller
         $agent = Agent::where('id', '=', $agent->id)->get();
 
 
-        return redirect(route('agent.index'));
+        return redirect('/beranda');
         // } catch (Exception $e) {
         //     return $e;
         // }
+
     }
     public function store(Request $request)
     {
         // try {
         $request->validate([
-            'email' => 'required|email|unique:agents',
+            'email' => 'required|email',
             'password'  =>  [
                 'required',
                 'string',
                 Password::min(8)
-                    ->mixedCase()
-                    ->numbers()
-                    ->symbols(),
+                    // ->mixedCase()
+                    // ->numbers()
+                    // ->symbols(),
             ],
             'name'    => 'required',
             'address'   => 'required',
@@ -204,14 +229,19 @@ class AgentController extends Controller
         }
 
         $agent = Agent::create([
-            'email' => $request->email,
-            'password'  => bcrypt($request->password),
-            'name'  => $request->name,
             'address'   => $request->address,
             'ktp'   => $imageArray[0],
             'face'   => $imageArray[1],
             'telp'  => $request->telp,
         ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'role' => 'developer',
+        ]);
+
+        $user->agents()->attach($agent->id);
 
         // Ambil province_id dari tabel pivot agent_province berdasarkan agent_id
         $regencyId = $request->regencies_id;

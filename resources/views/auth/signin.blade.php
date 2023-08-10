@@ -87,7 +87,7 @@
             align-items: center;
         }
 
-        .logo img {
+        /* .logo img {
             width: 150px;
             height: 150px;
             margin-right: 0.3rem;
@@ -105,7 +105,7 @@
             font-size: 2.1rem;
             font-weight: 600;
             color: #151111;
-        }
+        } */
 
         .heading h6 {
             color: #000000;
@@ -187,6 +187,7 @@
         .text {
             color: #bbb;
             font-size: 0.7rem;
+            margin-top: 2rem;
         }
 
         .text a {
@@ -349,6 +350,11 @@
                 transform: translateX(100%);
             }
 
+            form.sign-in-form {
+                top: 90;
+            }
+
+
             main.sign-up-mode form.sign-in-form {
                 transform: translateX(-100%);
             }
@@ -404,6 +410,24 @@
                 padding: 1rem 2rem 1.5rem;
             }
         }
+
+        .agent {
+            margin-left: 0px;
+            font-size: 12px;
+        }
+
+        .dev-signup-link {
+            font-size: 12px;
+            margin-left: 50px;
+        }
+
+        .register-btn {
+            margin-bottom: 0px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -413,41 +437,41 @@
             <div class="inner-box">
                 <div class="forms-wrap">
                     <form action="/createL" autocomplete="off" class="sign-in-form">
-                        <div class="logo">
+                        {{-- <div class="logo">
                             <img src="/assets/skins/logo.svg" alt="" />
-                        </div>
+                        </div> --}}
 
                         <div class="heading">
-                            <h2>Welcome Back</h2>
-                            <h6>Not registred yet?</h6>
-                            <a href="#" class="toggle">Sign up</a>
+                            <h2>Selamat Datang!!</h2>
+                            <h6>belum pumya akun?</h6>
+                            <a href="#" class="toggle underline">Mendaftar</a>
                         </div>
 
                         <div class="actual-form">
                             <div class="input-wrap">
                                 <input name="email" type="text" minlength="4" class="input-field"
                                     autocomplete="off" required />
-                                <label>Name</label>
+                                <label>Surel (e-mail)</label>
                             </div>
 
                             <div class="input-wrap">
                                 <input name="password" type="password" minlength="4" class="input-field"
                                     autocomplete="off" required />
-                                <label>Password</label>
+                                <label>kata sandi (Password)</label>
                             </div>
 
-                            <input type="submit" value="Sign In" class="sign-btn" />
+                            <input type="submit" value="Masuk" class="sign-btn" />
 
                             <p class="text">
-                                Forgotten your password or you login datails?
-                                <a href="/session/auth/user/signin/createL">Get help</a> signing in
+                                Lupa password Anda atau Anda login datails?
+                                <a href="/session/auth/user/signin/createL">Dapatkan bantuan</a> masuk
                             </p>
                         </div>
                     </form>
                     <form action="index.html" autocomplete="off" class="sign-up-form">
 
                         <div class="heading">
-                            <h2>Get Started</h2>
+                            <h2>Daftarkan Sekarang!!</h2>
                             <h6>Already have an account?</h6>
                             <a href="#" class="toggle">Sign in</a>
                         </div>
@@ -470,7 +494,9 @@
                                 <label>Password</label>
                             </div>
 
-                            <input type="submit" value="Sign Up" class="sign-btn" />
+                            <input type="submit" value="Sign Up" class="sign-btn register-btn" />
+                            <a href="/session/auth/developer/signup" class="dev-signup-link"> signup
+                                developer / </a><a href="/session/auth/agent/signup" class=" agent">agent</a>
 
                             <p class="text">
                                 By signing up, I agree to the
@@ -478,7 +504,6 @@
                                 <a href="#">Privacy Policy</a>
                             </p>
                         </div>
-                        <a href="/session/auth/developer/signup"></a>
                     </form>
 
                 </div>

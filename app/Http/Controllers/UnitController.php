@@ -7,9 +7,11 @@ use App\Models\Unit;
 use App\Models\Image;
 use App\Models\Status;
 use App\Models\Property;
+use App\Models\Developer;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Specification;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -46,9 +48,10 @@ class UnitController extends Controller
     public function homeunit()
     {
         $units = Unit::all();
+        $developer = Developer::all();
 
         if ($units) {
-            return view('pages.page.home', compact('units')) ;
+            return view('pages.page.home', compact('units', 'developer')); ;
         }
         
     }

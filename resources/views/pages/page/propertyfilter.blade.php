@@ -117,9 +117,14 @@
                    <form> 
                          <div class="input-icon">
                              <span class="fables-iconsearch-icon fables-input-icon"></span>
-                             <input type="text" class="form-control rounded-0 form-control rounded-0 font-14 fables-store-input pl-5 py-2" style="width: 307px;"  placeholder="Search Product">
+                             <input type="text" class="form-control rounded-0 form-control rounded-0 font-14 fables-store-input pl-5 py-2" style="width: 307px;"  value="Rumah">
                          </div>
- 
+                         <div class="form-group mb-0" style="margin-top: 30px;">
+                            <label>Status:</label>
+                            <button type="button" class="btn btn-outline-primary" style="color: #0C40E8" id="dijualButton">Dijual</button>
+                            <button type="button" class="btn btn-primary" style="background-color: #0C40E8" id="dibeliButton">Dibeli</button>
+                        </div>
+                        
                   </form>
                </div>
                <div class="rage-slider">
@@ -143,44 +148,46 @@
                </div>
                <h2 class="font-16 semi-font fables-forth-text-color fables-light-gary-background  p-3 mb-4">Kategori Properti</h2>
                <ul class="nav fables-forth-text-color fables-forth-before fables-store-left-list">
-                <li><input type="checkbox" id="apartemen"><label style="margin-left: 5px;" for="apartemen">Apartemen</label></li>
-                <li><input type="checkbox" id="rumah"><label style="margin-left: 5px;" for="rumah">Rumah</label></li>
+                <li><input type="checkbox" id="Rumah Minimalis style="margin-left: 5px;" for="Rumah Minimalis></li>
+                <li><input type="checkbox" id="rumah" checked><label style="margin-left: 5px;" for="rumah">Rumah</label></li>
                 <li><input type="checkbox" id="ruko"><label style="margin-left: 5px;" for="ruko">Ruko</label></li>
                 <li><input type="checkbox" id="villa"><label style="margin-left: 5px;" for="villa">Villa</label></li>
                </ul>
-
-               <div class="col-12 col-lg-4" >
-                <form class="form-container" style="margin-left: 0px;"> 
-                    <div class="form-group mb-0"> 
-                        <select class="form-control rounded-0">
-                          <option value="" selected>Kamar Tidur</option>
-                          <option value="harga-terendah">1</option>
-                          <option value="harga-tertinggi">2</option>
-                          <option value="luas-terkecil">3</option>
-                          <option value="luas-terbesar">4</option>
+               <label style="margin-left: 40px;" for="kamarTidur">Kamar Tidur</label>
+               
+               <label style="margin-left: 45px;" for="kamarmandi">Kamar Mandi</label>
+               <div class="col-12 col-lg-4">
+                <form class="form-container" style="margin-left: 0px;">
+                    <div class="form-group mb-0">
+                        <select id="kamarTidur" class="form-control rounded-0">
+                            {{-- <option value="" selected>Kamar Tidur</option> --}}
+                            <option value="harga-terendah">1</option>
+                            <option value="harga-tertinggi" selected>2</option>
+                            <option value="luas-terkecil">3</option>
+                            <option value="luas-terbesar">4</option>
                         </select>
                         <i class="fas fa-chevron-down"></i>
-                      </div>
-                    
-                    <div class="form-group mb-0"> 
-                      <select class="form-control rounded-0">
-                        <option value="" selected>Kamar Mandi</option>
-                        <option value="harga-terendah">1</option>
-                        <option value="harga-tertinggi">2</option>
-                        <option value="luas-terkecil">3</option>
-                        <option value="luas-terbesar">4</option>
-                      </select>
-                      <i class="fas fa-chevron-down"></i>
                     </div>
-                  </form>
-                </div>
+                    <div class="form-group mb-0">
+                        <select id="kamarMandi" class="form-control rounded-0">
+                            <option value="" selected>Kamar Mandi</option>
+                            <option value="harga-terendah" selected>1</option>
+                            <option value="harga-tertinggi">2</option>
+                            <option value="luas-terkecil">3</option>
+                            <option value="luas-terbesar">4</option>
+                        </select>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </form>
+            </div>
+            
                
                <button type="submit" class="btn btn-block fables-second-background-color rounded-0 white-color white-color-hover p-2 font-15 " style="color: #fff; margin-bottom: 0;">Filter</button>
 
                <h2 class="font-16 semi-font fables-forth-text-color fables-light-gary-background  p-3 my-4">Top Properti</h2> 
                <div class="row mb-3">
                    <div class="col-4 pr-0">
-                       <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                       <a href="#"><img  src="/assets/pages/Home/unit7.jpg" alt="" class="w-100"></a>
                    </div>
                    <div class="col-8">
                        <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -189,7 +196,7 @@
                </div> 
                <div class="row mb-3">
                    <div class="col-4 pr-0">
-                       <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                       <a href="#"><img src="/assets/pages/Home/unit1.jpg" alt="" class="w-100"></a>
                    </div>
                    <div class="col-8">
                        <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -198,7 +205,7 @@
                </div> 
                <div class="row mb-3">
                 <div class="col-4 pr-0">
-                    <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                    <a href="#"><img src="/assets/pages/Home/unit2.jpg" alt="" class="w-100"></a>
                 </div>
                 <div class="col-8">
                     <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -207,7 +214,7 @@
                 </div> 
                 <div class="row mb-3">
                     <div class="col-4 pr-0">
-                        <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                        <a href="#"><img src="/assets/pages/Home/unit3.jpg" alt="" class="w-100"></a>
                     </div>
                     <div class="col-8">
                         <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -216,7 +223,7 @@
                 </div> 
                 <div class="row mb-3">
                 <div class="col-4 pr-0">
-                    <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                    <a href="#"><img src="/assets/pages/Home/unit4.jpg" alt="" class="w-100"></a>
                 </div>
                 <div class="col-8">
                     <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -225,7 +232,7 @@
                 </div> 
                 <div class="row mb-3">
                     <div class="col-4 pr-0">
-                        <a href="#"><img src="/assets/pages/Home/apartemen1.jpg" alt="" class="w-100"></a>
+                        <a href="#"><img src="/assets/pages/Home/unit5.jpg" alt="" class="w-100"></a>
                     </div>
                     <div class="col-8">
                         <a href="#" class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text" style="text-decoration: none;">Perumahan Inti Sari</a>
@@ -259,13 +266,34 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img class="img-fluid" style="width: 300px; height:180px;" src="/assets/pages/Home/unit1.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Rembang...</p>
+                            </div>
+                            <div class="d-flex border-top" style="width: 240px;">
+                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
+                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed me-2"></i>3</small>
+                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined me-2"></i>400m²</small>
+                                <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square me-2"></i>350m²</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
+                        <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
+                            <div class="position-relative overflow-hidden">
+                                <a href="/unit/detail"><img class="img-fluid" style="width: 300px; height:180px;" src="/assets/pages/Home/unit2.jpg" alt=""></a>
+                                <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
+                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
+                            </div>
+                            <div class="p-0 pb-0" style="margin-left: 10px;">
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 750JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
                                 <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
@@ -280,14 +308,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img class="img-fluid" style="width: 300px; height:180px;" src="/assets/pages/Home/unit3.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 900JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Barat, Jakarta...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -301,14 +329,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit4.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 870JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Ungaran...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -322,14 +350,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit5.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 580JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Wonosobo...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -343,14 +371,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit6.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 890JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Jepara...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -364,14 +392,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit7.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 830JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Salatiga...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -385,14 +413,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit8.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 790JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Timur, Surabaya...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -406,14 +434,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit9.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Kudus...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -427,14 +455,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit10.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Barat, Depok...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -448,14 +476,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit11.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Pati...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -469,14 +497,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit1.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Solo...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
@@ -490,35 +518,14 @@
                     <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
                         <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                             <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
+                                <a href="/unit/detail"><img style="width: 300px; height:180px;" class="img-fluid" src="/assets/pages/Home/unit3.jpg" alt=""></a>
                                 <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
                                 <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
                             </div>
                             <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
-                            </div>
-                            <div class="d-flex border-top" style="width: 240px;">
-                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
-                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bed me-2"></i>3</small>
-                                <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-ruler-combined me-2"></i>400m²</small>
-                                <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-square me-2"></i>350m²</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
-                        <div class="property-item rounded overflow-hidden" style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
-                            <div class="position-relative overflow-hidden">
-                                <a href=""><img class="img-fluid" src="/assets/pages/Home/apartemen1.jpg" alt=""></a>
-                                <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2" style="background-color: #0C40E8">Dijual</div>
-                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2" style="color: #0C40E8">Appartment</div>
-                            </div>
-                            <div class="p-0 pb-0" style="margin-left: 10px;">
-                                <h5 class="mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Apartemen Sido Moro</a>
-                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Semarang...</p>
+                                <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920JT</h5>
+                                <a class="d-block h6 mb-2" style="color: #000; text-decoration: none;" href="">Rumah Minimalis</a>
+                                <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>Jawa Tengah, Magelang...</p>
                             </div>
                             <div class="d-flex border-top" style="width: 240px;">
                                 <small class="flex-fill text-center border-end py-2" style="color: #000;"><i class="fa fa-bath me-2"></i>2</small>
