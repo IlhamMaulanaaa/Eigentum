@@ -119,7 +119,11 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
         Route::get('/detail', function () {
             return view('pages.Developer.detail');
         });
+        
     });
+});
+Route::get('/dashboarddev', function () {
+    return view('pages.Developer.dashboard');
 });
 // agent
 Route::middleware(['auth', 'IsAgent'])->group(function () {
@@ -187,28 +191,30 @@ Route::get('/detailpanduan', function () {
 });
 // property
 Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload ', [PropertyController::class, 'storeFront']);
+    Route::get('/upload/{developerId}', [PropertyController::class, 'storeFront']);
 
 
     Route::get('/detail', function () {
         return view('pages.property.detail');
     });
 
-    Route::get('/choice', function () {
-        return view('pages.property.choice');
+    Route::get('/edit', function () {
+        return view('pages.property.edit');
     });
 });
 // unit
 Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload', [UnitController::class, 'storeFront']);
-
-
-    Route::get('/uploadimage', function () {
-        return view('pages.unit.uploadimage');
+    Route::get('/upload', function () {
+        return view('pages.unit.create');
     });
+
 
     Route::get('/detail', function () {
         return view('pages.unit.detail');
+    });
+
+    Route::get('/edit', function () {
+        return view('pages.unit.edit');
     });
 });
 

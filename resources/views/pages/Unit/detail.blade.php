@@ -45,7 +45,23 @@
 
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .btn-status {
+                position: relative;
+                top: 70px;
+                left: 20px;
+                width: 80px;
+                padding: 10px 20px;
+                background-color: #0c40e8; /* Warna latar belakang tombol */
+                color: rgb(255, 255, 255); /* Warna teks tombol */
+                border: none;
+                border-radius: 4px;
+                font-size: 14px;
+                cursor: pointer;
+                z-index: 12; /* Pastikan tombol berada di atas gambar */
+            }
 
+        </style>
 
     </head>
 
@@ -59,6 +75,7 @@
                 <!-- card78 left -->
 
                 <div class="product-imgs">
+                    <button class="btn-status" style="">Disewa</button>
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
                             <img class="img-besar" src="/assets/pages/Home/unit1.jpg" alt="shoe image">
@@ -240,17 +257,9 @@
                 </div>
             </div>
             <div class="group-13-7tZ" id="3:51">
-                <div class="group-10-Dgh" id="3:43" style="margin-top:20px; margin-left:20px;">
-                    <p class="hari-sewa-a1T" style="margin-left: -80px; font-family:'Lato', sans-serif;" id="3:39">1
-                        Hari Sewa</p>
-                    <p class="rp-15jt-malam-hLy" id="3:40" style="margin-left: -30px">
-                        <span class="rp-15jt-malam-hLy-sub-0"
-                            style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">Rp. 1.5jt</span>
-                        <span class="rp-15jt-malam-hLy-sub-1"> / Malam</span>
-                    </p>
-                </div>
+                
                 <div class="group-11-jws" id="3:44"
-                    style="margin-top: 20px; margin-right:-10px; font-family:'Lato', sans-serif;">
+                    style="margin-top: 20px; margin-right:170px; font-family:'Lato', sans-serif;">
                     <p class="bulan-sewa-Vw3" id="3:45"
                         style="margin-left: -60px; font-family:'Lato', sans-serif; ">1 Bulan Sewa</p>
                     <p class="rp-1jt-malam-dnM" id="3:46" style="margin-left: -30px">
@@ -264,7 +273,7 @@
         </div>
 
 
-
+        
 
 
         

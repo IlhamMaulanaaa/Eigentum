@@ -7,7 +7,8 @@
     font-family: 'Lato', sans-serif;
 }
 body{
-    line-height: 1.5;
+  height: 100%;
+  margin: 0;
 }
 .card78-wrapper{
     max-width: 1000px;
@@ -184,6 +185,9 @@ img{
     background: #000;
     border-color: transparent;
     color: #fff;
+}
+.card78{
+  height: 100%;
 }
 
 @media screen and (min-width: 992px){
@@ -392,17 +396,190 @@ img{
 
 
 
+.cardproperty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  height: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: 'Lato', sans-serif;
+}
+
+.developer {
+  font-size: 20px;
+  margin: 0;
+}
+
+.official {
+  margin-left: 10px;
+}
+
+.property-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.property-item {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.property-icon {
+  color: #000;
+}
+
+.property-value {
+  margin: 5px 0 0;
+}
+
+.rent-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.rent-label {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.rent-price {
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+.ask-agent {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.ask-agent:hover {
+  background-color: #0056b3;
+}
 
 
 
+.cardproperty{
+  margin-top: -350px;
+  margin-left: 600px;
+}
 
 
+.cardproperty {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  max-width: 400px;
+}
+
+.developer {
+  font-size: 20px;
+  margin: 0;
+}
+
+.official-label {
+  font-size: 14px;
+  color: #777;
+}
+
+.property-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.property-item {
+  text-align: center;
+}
+
+.property-icon {
+  color: #000;
+  font-size: 24px;
+}
+
+.property-value {
+  margin: 5px 0 0;
+}
+
+.rent-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.rent-label {
+  font-size: 14px;
+  color: #777;
+}
+
+.rent-price {
+  font-weight: 600;
+  margin-right: 3px;
+}
+
+.ask-agent {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 15px;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.ask-agent:hover {
+  background-color: #0056b3;
+}
 
 
+.cardproperty1 {
+  margin-top: 10px;
+  margin-left: 0px;
+  width: 140px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.tipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.property-icon {
+  font-size: 24px;
+  color: #0c40e8; /* or any color you prefer */
+}
 
+.tipe-text {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
+}
 
+.unit-text {
+  font-size: 14px;
+  margin: 0;
+  color: #555;
+}
 
 
 
