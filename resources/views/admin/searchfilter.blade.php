@@ -118,23 +118,14 @@
                             <br>
                             <div class="col-md-2">
                                 <label>Status:</label>
-                                {{-- <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="statusDijual" name="status[]" value="Dijual"
-                                        {{ in_array('Dijual', request('status', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label">Dijual</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="statusDisewa" name="status[]" value="Disewa"
-                                        {{ in_array('Disewa', request('status', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label">Disewa</label>
-                                </div> --}}
                                 @foreach ($statuses as $status)
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="status{{ $status->id }}" name="status[]"
-                                        value="{{ $status->id }}" {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label">{{ $status->name }}</label>
-                                </div>
-                            @endforeach
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="status{{ $status->id }}"
+                                            name="status[]" value="{{ $status->id }}"
+                                            {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
+                                        <label class="form-check-label">{{ $status->name }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                             {{-- <div class="col-md-4">
                                 <label>Rentang Harga:</label>
@@ -147,8 +138,9 @@
                                 <label>Type</label>
                                 @foreach ($types as $type)
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}" name="types[]"
-                                            value="{{ $type->id }}" {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
+                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}"
+                                            name="types[]" value="{{ $type->id }}"
+                                            {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
                                         <label class="form-check-label">{{ $type->name }}</label>
                                     </div>
                                 @endforeach
@@ -163,9 +155,9 @@
                                     </div>
                                 @endforeach
                             </div> --}}
-                            
-                            
-                            
+
+
+
                         </form>
                     </div>
                     {{-- <div class="rage-slider">
@@ -371,25 +363,25 @@
             inputMax.addEventListener("input", updateValueWithCommas);
         </script>
 
-<script>
-    // Dapatkan elemen checkbox berdasarkan ID
-    const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
-    const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
+        <script>
+            // Dapatkan elemen checkbox berdasarkan ID
+            const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
+            const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
 
 
-    statusCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            this.form.submit(); // Kirim form saat checkbox diubah
-        });
-    });
+            statusCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    this.form.submit(); // Kirim form saat checkbox diubah
+                });
+            });
 
 
-    typeCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            this.form.submit(); // Kirim form saat checkbox diubah
-        });
-    });
-</script>
+            typeCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    this.form.submit(); // Kirim form saat checkbox diubah
+                });
+            });
+        </script>
 
 
         <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
