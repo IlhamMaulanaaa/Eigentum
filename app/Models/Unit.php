@@ -89,7 +89,7 @@ class Unit extends Model
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where('title', 'like', '%' . $search . '%')
-                // ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('description','like','%'.$search.'%')
                 ->orWhere('price', 'like', '%' . $search . '%');
         });
 
@@ -98,11 +98,23 @@ class Unit extends Model
             $query->where('property_id', $property_id);
         });
 
-        $query->when($filters['status_id'] ?? false, function ($query, $status_id) {
-            return $query->whereHas('statuses', function ($query) use ($status_id) {
-                $query->where('id', $status_id);
+        // $query->when($filters['status_id'] ?? false, function ($query, $status_id) {
+        //     return $query->whereHas('statuses', function ($query) use ($status_id) {
+        //         $query->where('id', $status_id);
+        //     });
+        // });
+
+        // $query->when(isset($filters['status_id']) && !empty($filters['status_id']), function ($query, $statusIds) {
+        //     $statusIds = explode(',', $statusIds);
+        //     $query->whereIn('status_id', $statusIds);
+        // });
+
+        $query->when($filters['status'] ?? false, function ($query, $statuses) {
+            $query->whereHas('statuses', function ($query) use ($statuses) {
+                $query->whereIn('name', $statuses);
             });
         });
+        
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regency_id) {
             return $query->whereHas('regencies', function ($query) use ($regency_id) {
@@ -144,6 +156,6 @@ class Unit extends Model
             [$minPrice, $maxPrice] = explode('-', $price_range);
 
             $query->whereBetween('price', [$minPrice, $maxPrice]);
-        });
+        });        
     }
 }

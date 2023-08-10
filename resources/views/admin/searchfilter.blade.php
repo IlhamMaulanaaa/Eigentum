@@ -79,15 +79,6 @@
     </head>
 
     <body>
-
-
-
-
-
-
-
-
-
         <!-- Start Header -->
         <div class="fables-header fables-after-overlay">
             <div class="container">
@@ -125,17 +116,32 @@
                                     type="submit">Search</button>
                             </div>
                             <br>
-                            <div class="form-group">
-                                <div class="col-md-12">Status:</div>
-                                <ul style="list-style-type: none" class="px-0" >
-                                    <li><input type="checkbox" class="btn btn-outline-primary">Dijual</input></li>
-                                    <li><input type="checkbox" class="btn btn-outline-primary">Disewa</input></li>
-                                </ul>
+                            <div class="col-md-2">
+                                <label>Status:</label>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="statusDijual" name="status[]" value="Dijual"
+                                        {{ in_array('Dijual', request('status', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label">Dijual</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="statusDisewa" name="status[]" value="Disewa"
+                                        {{ in_array('Disewa', request('status', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label">Disewa</label>
+                                </div>
                             </div>
+                            <div class="col-md-4">
+                                <label>Rentang Harga:</label>
+                                <input type="range" class="form-range" id="hargaSlider" name="harga_range"
+                                    min="{{ $minPrice }}" max="{{ $maxPrice }}" value="{{ request('harga_range') }}">
+                                <span id="hargaLabel">Rp {{ request('harga_range', $minPrice) }}</span>
+                            </div>
+                            
+                            
+                            
                         </form>
                     </div>
-                    <div class="rage-slider">
-                        <h2 class="font-16 semi-font fables-forth-text-color fables-light-gary-background  p-3 mb-4">Filter
+                    {{-- <div class="rage-slider">
+                        <h2 class="col-md-12">Filter
                             Harga</h2>
                         <form action="{{ route('unit.filter') }}" method="GET" role="search">
                             <div class="price-input">
@@ -151,8 +157,8 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <h2 class="font-16 semi-font fables-forth-text-color fables-light-gary-background  p-3 mb-4">Kategori
+                    </div> --}}
+                    {{-- <h2 class="col-md-12">Kategori
                         Properti</h2>
                     <ul class="nav fables-forth-text-color fables-forth-before fables-store-left-list">
                         <li><input type="checkbox" id="Rumah">
@@ -171,7 +177,7 @@
                         <form class="form-container" style="margin-left: 0px;">
                             <div class="form-group mb-0">
                                 <select id="kamarTidur" class="form-control rounded-0">
-                                    {{-- <option value="" selected>Kamar Tidur</option> --}}
+                                    <option value="" selected>Kamar Tidur</option>
                                     <option value="harga-terendah">1</option>
                                     <option value="harga-tertinggi" selected>2</option>
                                     <option value="luas-terkecil">3</option>
@@ -190,9 +196,7 @@
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </form>
-                    </div>
-
-
+                    </div> --}}
                     {{-- <button type="submit"
                         class="btn btn-block fables-second-background-color rounded-0 white-color white-color-hover p-2 font-15 "
                         style="color: #000; margin-bottom: 0;">Filter</button> --}}
@@ -288,20 +292,20 @@
                                             style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
                                     </div>
                                     <div class="p-0 pb-0" style="margin-left: 10px;">
-                                        <h5 class="mb-1 mt-3" style="color: #000;">Rp. {{ $unit->price }}</h5>
+                                        <h5 class="mb-1 mt-3">Rp. {{ $unit->price }}</h5>
                                         <p>{{ $unit->title }}</p>
-                                        <p><i class="fa fa-map-marker-alt me-2"
-                                                style="color: #000;"></i>{{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
+                                        <p><i
+                                                class="fa fa-map-marker-alt me-2"></i>{{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
                                         </p>
                                     </div>
                                     <div class="d-flex border-top" style="width: 240px;">
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                        <small class="flex-fill text-center border-end py-2"><i
                                                 class="fa fa-bath me-2"></i>{{ $unit->specifications->bathroom }}</small>
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                        <small class="flex-fill text-center border-end py-2"><i
                                                 class="fa fa-bed me-2"></i>{{ $unit->specifications->bedroom }}</small>
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                        <small class="flex-fill text-center border-end py-2"><i
                                                 class="fa fa-ruler-combined me-2"></i>{{ $unit->specifications->surface_area }}</small>
-                                        <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                        <small class="flex-fill text-center py-2"><i
                                                 class="fa fa-square me-2"></i>{{ $unit->specifications->building_area }}</small>
                                     </div>
                                 </div>
@@ -313,7 +317,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- /End page content -->
 
@@ -340,35 +343,20 @@
             inputMax.addEventListener("input", updateValueWithCommas);
         </script>
 
-        <script>
-            // Membuat event listener untuk tombol-tombol filter
-            const filterButtons = document.querySelectorAll('.filter-button');
+<script>
+    // Dapatkan elemen checkbox berdasarkan ID
+    const statusDijual = document.getElementById('statusDijual');
+    const statusDisewa = document.getElementById('statusDisewa');
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const statusId = this.getAttribute('data-status-id');
-                    const form = document.querySelector('#filter-form');
+    // Tambahkan event listener saat checkbox diubah
+    statusDijual.addEventListener('change', function() {
+        this.form.submit(); // Kirim form saat checkbox diubah
+    });
 
-                    // Set nilai input dengan nama 'status_id' sesuai dengan status yang dipilih
-                    const input = document.createElement('input');
-                    input.setAttribute('type', 'hidden');
-                    input.setAttribute('name', 'status_id');
-                    input.setAttribute('value', statusId);
-
-                    // Memastikan input dengan nama 'status_id' hanya ada satu di dalam form
-                    const existingInput = form.querySelector('input[name="status_id"]');
-                    if (existingInput) {
-                        form.removeChild(existingInput);
-                    }
-
-                    // Menambahkan input ke dalam form dan submit form
-                    form.appendChild(input);
-                    form.submit();
-                });
-            });
-        </script>
-
-
+    statusDisewa.addEventListener('change', function() {
+        this.form.submit(); // Kirim form saat checkbox diubah
+    });
+</script>
 
 
         <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
