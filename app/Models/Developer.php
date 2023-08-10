@@ -86,4 +86,22 @@ class Developer extends Authenticatable
     {
         return $this->belongsToMany(Village::class, 'developer_villages', 'developer_id', 'village_id');
     }
+
+    public function scopefilter($query, array $filters){
+
+        $query->when($filters['search'] ?? false, function($query, $search){
+            $query->where('comipany','like','%'.$search.'%')
+            // ->orWhere('description','like','%'.$search.'%')
+            ->orWhere('email','like','%'.$search.'%');
+        });
+
+        $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
+            return $query->whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('id', $regencyId);
+            });
+        });
+
+        return $query;
+    }
+
 }

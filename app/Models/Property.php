@@ -68,4 +68,25 @@ class Property extends Model
     {
         return $this->belongsToMany(Village::class,'property_village', 'property_id', 'village_id');
     }
+
+    public function scopefilter($query, array $filters){
+
+        $query->when($filters['search'] ?? false, function($query, $search){
+            $query->where('title','like','%'.$search.'%')
+            // ->orWhere('description','like','%'.$search.'%')
+            ->orWhere('description','like','%'.$search.'%');
+        });
+
+        $query->when($filters['developer_id'] ?? false, function($query, $developer_id){
+            $query->where('developer_id',$developer_id);
+        });
+
+        $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
+            return $query->whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('id', $regencyId);
+            });
+        });
+
+        return $query;
+    }
 }

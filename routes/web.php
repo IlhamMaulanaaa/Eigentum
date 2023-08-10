@@ -264,7 +264,12 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('order', OrderController::class);
 
         Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+        Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
     });
+    
+    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+    Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
+
 });
 
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');

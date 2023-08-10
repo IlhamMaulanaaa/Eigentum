@@ -22,11 +22,19 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = Property::paginate(10);
+        $properties = Property::filter(request(['search', 'developer_id', 'regency_id']))->paginate(10);
         $tables = (new Property())->getTable();
+        $developers = Developer::all()->pluck('company', 'id');;;
+        $pivotTable = (new Property())->regencies()->getTable();
 
-        if ($properties) {
-            return view('admin.property.all', compact('properties', 'tables'));
+        // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot
+        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
+            $query->select('regency_id')
+                ->from($pivotTable);
+        })->pluck('name', 'id');
+        
+        if($properties){
+            return view('admin.property.all', compact('properties','tables', 'developers', 'regencies'));
         }
     }
 
