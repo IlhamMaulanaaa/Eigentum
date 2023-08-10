@@ -58,7 +58,7 @@ Route::group(['prefix' => '/session'], function(){
     });
 });
 
-Route::group(['prefix' => '/admin', 'middleware' => 'role:admin' ], function(){
+Route::group(['prefix' => '/admin', 'middleware' => ['auth', 'role:admin'] ], function(){
     
     Route::get('/', [AdminController:: class, 'index']);
     Route::get('/profile', [AdminController:: class, 'show'])->name('profile.show');
@@ -84,6 +84,8 @@ Route::group(['prefix' => '/admin', 'middleware' => 'role:admin' ], function(){
     // Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
     
     Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+    Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
+
 });
 
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');

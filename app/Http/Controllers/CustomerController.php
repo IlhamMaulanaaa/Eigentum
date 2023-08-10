@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helper\ApiFormatter;
+use App\Models\User;
 use App\Models\Customer;
-use Illuminate\Foundation\Auth\User;
+// use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -13,7 +14,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $users = User::all();
+        $users = User::filter(request(['search']))->get();
         $tables = (new User())->getTable();
 
         if ($users) {

@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favorite::class);
     }
+
+    public function scopefilter($query, array $filters){
+
+        $query->when($filters['search'] ?? false, function($query, $search){
+            $query->where('name','like','%'.$search.'%')
+            // ->orWhere('description','like','%'.$search.'%')
+            ->orWhere('role','like','%'.$search.'%');
+        });
+    }
 }

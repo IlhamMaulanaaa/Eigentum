@@ -8,8 +8,24 @@
                     <h2 class="card-title fs-2 text-primary col-md-8 text-uppercase">
                         {{ $tables }}
                     </h2>
-                    <div class="col-md-4 text-end px-0">
-                        {{-- <a type="button" class="btn btn-primary" href="{{ route('customer.create') }}">Tambah Data Baru</a> --}}
+                    {{-- <div class="col-md-4 text-end px-0">
+                        <a type="button" class="btn btn-primary" href="{{ route('customer.create') }}">Tambah Data Baru</a>
+                    </div> --}}
+
+                    <div class="col-md-10">
+                        <form action="{{ route('customer.index') }}" method="GET" role="search">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <input type="text" name="search" class="form-control"
+                                            placeholder="Search name.." aria-label="Search username"
+                                            aria-describedby="basic-addon2" value="{{ request('search') }}">
+                                        <button class="btn btn-outline-secondary" id="searchButton"
+                                            type="submit">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

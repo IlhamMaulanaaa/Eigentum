@@ -23,10 +23,17 @@ class DeveloperController extends Controller
 
     public function index()
     {
-        $developers = Developer::paginate(5);
+        $developers = Developer::filter(request(['search', 'regency_id']))->paginate(5);
         $tables = (new Developer())->getTable();
+        // Mendapatkan nama tabel pivot antara developers dan regencies
+        $pivotTable = (new Developer())->regencies()->getTable();
 
-        return view('admin.developer.all', compact('developers', 'tables' ));
+        // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot
+        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
+            $query->select('regency_id')
+                ->from($pivotTable);
+        })->pluck('name', 'id');
+        return view('admin.developer.all', compact('developers', 'tables' ,'regencies'));
     }
 
     public function create()
