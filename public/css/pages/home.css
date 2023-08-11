@@ -272,7 +272,19 @@ body {
     justify-content: left;
     align-items: center;
 }
-
+.formsearch{
+    background-color: #ffffff;
+    border-radius: 45px;
+    box-shadow: 0 0.2rem 12rem rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    height: 70px;
+    position: absolute;
+    top: 34rem;
+    width: 1000px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
 /* Media query untuk ukuran layar yang lebih kecil */
 @media (max-width: 1024px) {
     .group-11-tab {

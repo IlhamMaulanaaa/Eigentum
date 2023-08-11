@@ -66,7 +66,7 @@
                         <ul style="margin: 0; padding:0;">
                             <li>
                                 <span class="material-icons icons-size">person</span>
-                                <a href="/profile">Pengaturan Profile user</a>
+                                <a href="/developer/profile">Pengaturan Profile user</a>
                             </li>
                             <li>
                                 <span class="material-icons icons-size">monetization_on</span>

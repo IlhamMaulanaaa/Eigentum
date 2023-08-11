@@ -28,7 +28,6 @@ class AgentController extends Controller
         $districts = District::all();
         $villages = Village::all();
 
-
         return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
     public function updateApproved($id)
@@ -182,7 +181,7 @@ class AgentController extends Controller
         $agent = Agent::where('id', '=', $agent->id)->get();
 
 
-        return redirect('/beranda');
+        return redirect('/');
         // } catch (Exception $e) {
         //     return $e;
         // }

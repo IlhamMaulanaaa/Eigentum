@@ -96,14 +96,7 @@ class SessionController extends Controller
             return redirect('/session/signup/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
-
-    public function signout()
-    {
-        auth()->logout();
-
-        return redirect('/session/signin');
-    }
-
+    
     // belongs to the front end
     // login, register, logout user 
 
@@ -130,9 +123,6 @@ class SessionController extends Controller
             return redirect('/session/auth/signin/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
-
-
-
     public function postSignupUser(Request $request)
     {
         Session::flash('name', $request->name);
@@ -164,7 +154,7 @@ class SessionController extends Controller
             return redirect('/session/signupuser/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
-    public function signoutuser()
+    public function signoutUser()
     {
         auth()->logout();
 

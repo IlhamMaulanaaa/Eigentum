@@ -38,93 +38,102 @@ Route::post('/register', [AdminController::class, 'register']);
 Route::get('/createL', [AuthController::class, 'login']);
 Route::get('/createR', [AuthController::class, 'register']);
 
-
-Route::get('/navbar', function () {
-    return view('layout.partial.nav');
-});
-
-Route::get('/footer', function () {
-    return view('layout.partial.footer');
-});
-
-// authentication
-
-
-
 Route::group(['prefix' => '/session'], function () {
-    Route::get('/signout', [SessionController::class, 'signout']);
-
-    Route::group(['prefix' => '/signin'], function () {
-        Route::get('/', [SessionController::class, 'signin'])->name('login')->middleware('guest');
-        Route::post('/create', [SessionController::class, 'postSignin']);
-    });
-
-    Route::group(['prefix' => '/signup'], function () {
-        Route::get('/', [SessionController::class, 'signup'])->middleware('guest');
-        Route::post('/create', [SessionController::class, 'postSignup']);
-    });
-    return view('pages.page.home');
-});
-
-Route::group(['prefix' => '/session'], function () {
-
     Route::group(['prefix' => '/auth'], function () {
-
+        //user
         Route::group(['prefix' => '/user'], function () {
-            Route::get('/signout', [SessionController::class, 'signoutuser']);
-
+            Route::get('/signout', [SessionController::class, 'signoutUser'])->name('signout.user');
             Route::group(['prefix' => '/signin'], function () {
-                Route::get('/', [SessionController::class, 'signinUser'])->name('loginUser')->middleware('guest');
+                Route::get('/', [SessionController::class, 'signinUser'])->name('signin.user')->middleware('guest');
                 Route::post('/create', [AuthController::class, 'login']);
             });
             route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [SessionController::class, 'signupuser'])->middleware('guest');
+                Route::get('/', [SessionController::class, 'signupuser'])->name('signup.user')->middleware('guest');
                 Route::post('/create', [SessionController::class, 'postSignupUser']);
             });
         });
-
+        //developerj
         Route::group(['prefix' => '/developer'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
-
             Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
                 // Route::post('/create', [AuthController::class, 'postSignin']);
             });
             Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
+                Route::get('/', [DeveloperController::class, 'SignupDeveloper'])->middleware('guest');
                 Route::post('/create', [DeveloperController::class, 'storeFront']);
             });
         });
-
+        //agent
         Route::group(['prefix' => '/agent'], function () {
             Route::get('/signout', [SessionController::class, 'signoutuser']);
-
             Route::group(['prefix' => '/signin'], function () {
                 Route::get('/', [AgentController::class, 'signinAgent']);
                 Route::post('/create', [AgentController::class, 'postSigninAgent']);
             });
             Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [AgentController::class, 'signup']);
-                Route::post('/create', [AgentController::class, 'storeFront'])->middleware('guest');
+                Route::get('/', [AgentController::class, 'signup'])->middleware('guest');
+                Route::post('/create', [AgentController::class, 'storeFront']);
             });
         });
     });
 });
-// Route::middleware(['checkrole'])->group(function () {
+
 // developer
-// });
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
-        Route::get('/dashboard/{id}', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
+        Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
+        Route::get('/profile', [DeveloperController::class, 'showFront'])->name('developer.profile');
+        Route::put('/update/{developer}', [DeveloperController::class, 'update'])->name('developer.memperbarui');
+
+        Route::group(['prefix' => '/property'], function () {
+            Route::get('/create', [PropertyController::class, 'createFront'])->name('property.buat');
+            Route::post('/store', [PropertyController::class, 'storeFront'])->name('property.upload');
+            Route::get('/{property}', [PropertyController::class, 'showFront'])->name('property.detail');
+            Route::get('/edit', function () {
+                return view('pages.property.edit');
+            });
+        }); 
+        Route::group(['prefix' => '/unit'], function () {
+            Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.buat');
+            Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.upload');
+            Route::get('/{unit}', [UnitController::class, 'showFront'])->name('unit.detail');
+            Route::get('/edit', function () {
+                return view('pages.unit.edit');
+            });
+        });
+
+
+    });
+});
+// Route::group(['prefix' => '/property'], function () {
+//     Route::get('/upload/{developerId}', [PropertyController::class, 'createFront']);
+
+
+//     Route::get('/detail', function () {
+//         return view('pages.property.detail');
+//     });
+
+//     Route::get('/edit', function () {
+//         return view('pages.property.edit');
+//     });
+// });
+// unit
+Route::group(['prefix' => '/unit'], function () {
+    Route::get('/upload', function () {
+        return view('pages.unit.create');
+    });
+
+
+    Route::get('/{unit}', [UnitController::class, 'showFront']);
+
+    Route::get('/edit', function () {
+        return view('pages.unit.edit');
     });
 });
 
-Route::get('/detail', function () {
-    return view('pages.Developer.detail');
-});
-Route::get('/dashboarddev', function () {
-    return view('pages.Developer.');
-});
+
+
 // agent
 // Route::middleware(['auth', 'IsAgent'])->group(function () {
 Route::group(['prefix' => '/agent'], function () {
@@ -172,14 +181,13 @@ Route::group(['prefix' => '/pages'], function () {
 });
 
 
-Route::get('/filterproperti', [UnitController::class, 'filterFront'])->name('filterproperti');;
+Route::get('/filterproperti', [UnitController::class, 'filter'])->name('filterproperti');;
 
 Route::get('/konfirmasipembayaran', function () {
     return view('pages.page.confirmpayment');
 });
 
 
-Route::get('/profile', [DeveloperController::class, 'showFront']);
 
 Route::get('/favorite', [FavoriteController::class, 'index']);
 
@@ -240,7 +248,6 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::get("/dashboard", [DashboardController::class, 'index']);
         Route::get('/profile', [AdminController::class, 'show'])->name('profile.show');
 
-
         Route::resource('customer', CustomerController::class);
         Route::resource('agent', AgentController::class);
         Route::resource('developer', DeveloperController::class);
@@ -256,10 +263,9 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('status', StatusController::class);
         Route::resource('subscribe', SubscribeController::class);
         Route::resource('order', OrderController::class);
-        // Route::resource('profile', OrderController::class);
+        Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
 
-        Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
-        Route::post('subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
+        // Route::post('/subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
         Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
     });
 
@@ -273,3 +279,11 @@ Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.
 Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
 Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
 Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+
+Route::get('/navbar', function () {
+    return view('layout.partial.nav');
+});
+
+Route::get('/footer', function () {
+    return view('layout.partial.footer');
+});
