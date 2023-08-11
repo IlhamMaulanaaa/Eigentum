@@ -237,6 +237,7 @@ class UnitController extends Controller
         return view('admin.unit.detail', compact('unit', 'images'));
     }
 
+    
     public function showFront(Unit $unit, Request $request)
     {
         $data = $request->all();

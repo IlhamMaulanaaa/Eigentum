@@ -344,7 +344,7 @@ class DeveloperController extends Controller
 
             $developer = Developer::where('id', '=', $developer->id)->get();
 
-            return redirect('beranda');
+            return redirect('/');
         } catch (Exception $e) {
             return $e;
         }

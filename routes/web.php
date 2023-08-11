@@ -91,7 +91,7 @@ Route::group(['prefix' => '/session'], function () {
                 // Route::post('/create', [AuthController::class, 'postSignin']);
             });
             Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
+                Route::get('/', [DeveloperController::class, 'SignupDeveloper'])->middleware('guest');
                 Route::post('/create', [DeveloperController::class, 'storeFront']);
             });
         });
@@ -104,8 +104,8 @@ Route::group(['prefix' => '/session'], function () {
                 Route::post('/create', [AgentController::class, 'postSigninAgent']);
             });
             Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [AgentController::class, 'signup']);
-                Route::post('/create', [AgentController::class, 'storeFront'])->middleware('guest');
+                Route::get('/', [AgentController::class, 'signup'])->middleware('guest');
+                Route::post('/create', [AgentController::class, 'storeFront']);
             });
         });
     });
