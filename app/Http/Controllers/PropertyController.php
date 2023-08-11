@@ -44,7 +44,6 @@ class PropertyController extends Controller
 
     public function create(Request $request, $developerId)
     {
-
         $developer = Developer::findOrfail($developerId);
         $type = Type::all();
         $agent = Agent::all();
@@ -56,10 +55,9 @@ class PropertyController extends Controller
         return view('admin.property.create', compact('type', 'developer', 'agent', 'provinces', 'regencies', 'districts', 'villages'));
     }
 
-    public function createFront(Request $request, $developerId)
+    public function createFront(Request $request)
     {
 
-        $developer = Developer::findOrfail($developerId);
         $type = Type::all();
         $agent = Agent::all();
         $provinces = Province::all();
@@ -67,7 +65,7 @@ class PropertyController extends Controller
         $districts = District::all();
         $villages = Village::all();
 
-        return view('pages.property.create', compact('type', 'developer', 'agent', 'provinces', 'regencies', 'districts', 'villages'));
+        return view('pages.property.create', compact('type',  'agent', 'provinces', 'regencies', 'districts', 'villages'));
     }
 
     public function store(Request $request, $developerId)
@@ -127,6 +125,59 @@ class PropertyController extends Controller
             return $e;
         }
     }
+    public function storeFront(Request $request)
+    {
+        try {
+            $request->validate([
+                'title'  => 'required',
+                'description'   => 'required',
+                'address'   => 'required',
+                'type_id'   => 'required',
+                // 'province_id' => 'required',
+                // 'regency_id' => 'required',
+                // 'district_id' => 'required',
+                // 'village_id' => 'required',
+            ]);
+
+            // $user = Auth::user();
+                $developer = Auth::user()->developers;
+
+                $property = Property::create([
+                    'title' => $request->title,
+                    'description' => $request->description,
+                    'address'   => $request->address,
+                    'type_id'   => $request->type_id,
+                    'developer_id'  => $developer->pluck('id')->first(),
+                ]);
+
+
+            $regencyId = $request->regencies_id;
+            $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
+                $query->where('regency_id', $regencyId);
+            })->inRandomOrder()->first();
+
+            if ($randomAgent) {
+                $property->agents()->attach($randomAgent->id);
+            } else {
+                $property->save();
+            }
+
+            $property->save();
+            $property->provinces()->attach($request->provinces_id);
+            $property->regencies()->attach($request->regencies_id);
+            $property->districts()->attach($request->districts_id);
+            $property->villages()->attach($request->villages_id);
+
+            if (Auth::user()->role == "admin"){
+                return redirect(route('property.index'));
+            }else{
+                return redirect(route('developer.dashboard'));
+            }
+            
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 
 
     public function show(Property $property)
@@ -134,6 +185,17 @@ class PropertyController extends Controller
         return view('admin.property.detail', [
             'property' => $property,
         ]);
+    }
+
+    public function showFront(Property $property)
+    {
+        // if (Auth::user()->developer->id !== $property->developer_id) {
+        //     return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses ke property ini.');
+        // }
+        // $property = Property::where('id', $property->id);
+        $units = Unit::where('property_id', $property->id)->get();
+
+        return view('pages.property.detail', compact('property', 'units'));
     }
 
     public function edit(Property $property)

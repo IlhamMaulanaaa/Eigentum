@@ -70,8 +70,6 @@
     </head>
 
     <body>
-
-
         <div class="desktop-1-RTV" id="1:2">
             <div class="frame-147-QbZ" id="4:7162">
                 <div class="group-75-kvK" id="4:7163">
@@ -88,15 +86,16 @@
                     </div>
 
                     <div class="filter-jualsewa" style="margin-top: 400px;">
-                        <button class="jualsewa" data-type="dijual">Dijual</button>
-                        <button class="jualsewa" data-type="disewa">Disewa</button>
+                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                            <input type="hidden" name="status" id="status" value="">
+                            <button type="submit" class="jualsewa" data-status="{{ $status->pluck('id')->first() }}" onclick="setStatus('dijual')">Dijual</button>
+                            <button type="submit" class="jualsewa" data-status="{{ $status->pluck('id')->first() }}" onclick="setStatus('disewa')">Disewa</button>
+                        </form>
                     </div>
 
-
                     <div class="group-11-tab" id="4:7169">
-                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
-
-                            <div class="group-10-mPV" id="4:7171">
+                        <div class="group-10-mPV" id="4:7171">
+                            <form action="{{ route('filterproperti') }}" method="GET" role="search">
                                 <!-- Filter Home -->
                                 <div class="frame-61-qi7" id="4:7172">
                                     <div class="select-menu2">
@@ -104,9 +103,7 @@
                                             <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
                                             <i class="bx bx-chevron-down"></i>
                                         </div>
-
                                         <ul class="options2">
-
                                             <li class="option2">
                                                 <i class="bx bx-building" style="color: #0C40E8;"></i>
                                                 <span class="option2-text">Apartemen</span>
@@ -184,15 +181,15 @@
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
-
+                            </form>
+                        </div>
+                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
                             <div class="search-container">
-                                <input type="text" name="search" class="form-control" placeholder="Search name.."
+                                <input type="text" id="search-input" name="search" placeholder="Search.."
                                     aria-label="Search username" aria-describedby="basic-addon2"
                                     value="{{ request('search') }}">
                                 <button type="submit" id="search-button">Search</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -273,45 +270,39 @@
                         <div class="slide-container swiper" style="margin-bottom: 0px;">
                             <div class="slide-content">
                                 <div class="card-wrapper swiper-wrapper">
-
-
                                     @foreach ($units as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
+                                            <a href="/unit/detail" class="stretched-link"></a>
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                                <a href="/unit/detail/{{ $unit->id }}}">
-                                                    <div class="position-relative overflow-hidden">
-                                                        <a href="/unit/detail"><img
-                                                                src="{{ asset('storage/' . $unit->image) }}"
-                                                                class="img-thumbnail" alt="" width="360"
-                                                                height="120"></a>
-                                                        <form action="{{ route('favorite.add', $unit->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <div class="btnsz"
-                                                                style="position: absolute; top: 18px; right: 20px;">
-                                                                <button type="submit" onclick="Toggle1()" id="btnh1z"
-                                                                    class="btnz"><i class="fas fa-heart"></i></button>
-                                                            </div>
-                                                        </form>
-                                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                            style="background-color: #0C40E8">
-                                                            @foreach ($unit->statuses as $status)
-                                                                <li>
-                                                                    {{ $status->name }}
-                                                                </li>
-                                                            @endforeach
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt="" width="360"
+                                                        height="120">
+                                                    <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="btnsz"
+                                                            style="position: absolute; top: 18px; right: 20px;">
+                                                            <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                                class="btnz"><i class="fas fa-heart"></i></button>
                                                         </div>
-                                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                            style="color: #0C40E8">{{ $unit->title }}</div>
+                                                    </form>
+                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                        style="background-color: #0C40E8">
+                                                        @foreach ($unit->statuses as $status)
+                                                            <li>
+                                                                {{ $status->name }}
+                                                            </li>
+                                                        @endforeach
                                                     </div>
-                                                </a>
+                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                        style="color: #0C40E8">{{ $unit->title }}</div>
+                                                </div>
                                                 <div class="p-0 pb-0">
                                                     <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
-                                                    <a class="d-block h6 mb-2" style="color: #000;"
-                                                        href="/unit/detail">{{ $unit->properties->property }}</a>
-                                                    <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
-                                                        {{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
+                                                    {{ $unit->properties->property }}
+                                                    {{-- <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                                        {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</p> --}}
                                                 </div>
                                                 <div class="d-flex border-top" style="width: 280px; ">
                                                     <small class="flex-fill text-center border-end py-2"
@@ -329,138 +320,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-
-
-
-
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 280px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000; "><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
@@ -469,43 +328,37 @@
                         <div class="slide-container swiper" style="margin-bottom: 0px;">
                             <div class="slide-content">
                                 <div class="card-wrapper swiper-wrapper">
-
-
                                     @foreach ($units as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
+                                            <a href="/unit/detail" class="stretched-link"></a>
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                                <a href="/unit/detail">
-                                                    <div class="position-relative overflow-hidden">
-                                                        <a href="/unit/detail"><img
-                                                                src="{{ asset('storage/' . $unit->image) }}"
-                                                                class="img-thumbnail" alt="" width="360"
-                                                                height="120"></a>
-                                                        <form action="{{ route('favorite.add', $unit->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            <div class="btnsz"
-                                                                style="position: absolute; top: 18px; right: 20px;">
-                                                                <button type="submit" onclick="Toggle1()" id="btnh1z"
-                                                                    class="btnz"><i class="fas fa-heart"></i></button>
-                                                            </div>
-                                                        </form>
-                                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                            style="background-color: #0C40E8">
-                                                            @foreach ($unit->statuses as $status)
-                                                                <li>
-                                                                    {{ $status->name }}
-                                                                </li>
-                                                            @endforeach
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt="" width="360"
+                                                        height="120">
+                                                    <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="btnsz"
+                                                            style="position: absolute; top: 18px; right: 20px;">
+                                                            <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                                class="btnz"><i class="fas fa-heart"></i></button>
                                                         </div>
-                                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                            style="color: #0C40E8">{{ $unit->title }}</div>
+                                                    </form>
+                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                        style="background-color: #0C40E8">
+                                                        @foreach ($unit->statuses as $status)
+                                                            <li>
+                                                                {{ $status->name }}
+                                                            </li>
+                                                        @endforeach
                                                     </div>
-                                                </a>
+                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                        style="color: #0C40E8">{{ $unit->title }}</div>
+                                                </div>
                                                 <div class="p-0 pb-0">
                                                     <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
-                                                    <a class="d-block h6 mb-2" style="color: #000;"
-                                                        href="/unit/detail">{{ $unit->properties->property }}</a>
+                                                    {{ $unit->properties->property }}
                                                     <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
                                                         {{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
                                                 </div>
@@ -525,152 +378,11 @@
                                             </div>
                                         </div>
                                     @endforeach
-
-
-
-
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 280px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000; "><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <a href=""><img class="img-fluid"
-                                                        src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">Dijual</div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">Appartment</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">Rp.1.5M</h5>
-                                                <a class="d-block h6 mb-2" style="color: #000;" href="">Apartemen
-                                                    Sido Moro</a>
-                                                <p><i class="fa fa-map-marker-alt  me-2"
-                                                        style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}
-                                                </p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 320px;">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-square  me-2"></i>350m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-
-
                         </div>
-
-
-
-
-
                     </div>
                 </div>
-
-
                 {{-- banner disini --}}
                 <div class="eigentum-2-dYK" id="4:7201">
                 </div>
@@ -1201,6 +913,12 @@
             });
         });
     </script>
+
+<script>
+    function setStatus(status) {
+        document.getElementById('status').value = status;
+    }
+</script>
 
     </html>
 

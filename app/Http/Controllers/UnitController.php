@@ -10,6 +10,7 @@ use App\Models\Image;
 use App\Models\Status;
 use App\Models\Property;
 use App\Models\Developer;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Specification;
@@ -20,7 +21,6 @@ use Illuminate\Support\Facades\Storage;
 
 class UnitController extends Controller
 {
-
     public function filter(Request $request)
     {
         // Proses filter dan ambil hasil sesuai parameter
@@ -41,34 +41,12 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
-    }
-
-    public function filterFront(Request $request)
-    {
-        // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->paginate(10);
-        $units = Unit::all();
-        $property = Property::all();
-        $types = Type::all();
-        $statuses = Status::all();
-        $specification = Specification::all();
-        $pivotTable = (new Property())->regencies()->getTable();
-
-        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
-            $query->select('regency_id')
-                ->from($pivotTable);
-        })->pluck('name', 'id');
-
-        if ($request->wantsJson()) {
-            return response()->json($filteredUnits);
+        if (Auth::user()->role == "admin"){
+            return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
+        }else{
+            return view('pages.page.propertyfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
         }
-
-        return view('pages.page.propertyfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
     }
-
-
-
 
     public function index(Request $request)
     {
@@ -106,16 +84,35 @@ class UnitController extends Controller
         $property = Property::findOrfail($propertyId);
         $status = Status::all();
 
-        return view('admin.unit.create', compact('property', 'status'));
+        if (Auth::user()->role == "admin"){
+            return view('admin.unit.create', compact('property', 'status'));
+        }else{
+            return view('pages.unit.create', compact('property', 'status'));
+        }
+        
+
+        
     }
 
-    public function homeunit()
+    public function homeunit(Request $request)
     {
-        $units = Unit::all();
+        
+        $units = Unit::filter($request->all())->paginate(10);
+        $property = Property::all()->pluck('title', 'id');;
+        $status = Status::all();
+        $tables = (new Unit())->getTable();
+        $types = Type::all();
         $developer = Developer::all();
 
+        $pivotTable = (new Property())->regencies()->getTable();
+
+        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
+            $query->select('regency_id')
+                ->from($pivotTable);
+        })->pluck('name', 'id');
+
         if ($units) {
-            return view('pages.page.home', compact('units', 'developer')); ;
+            return view('pages.page.home', compact('units', 'developer', 'property','status','types','regencies'));
         }
         
     }
@@ -222,11 +219,20 @@ class UnitController extends Controller
 
             $unit->statuses()->attach($request->input('status_id'));
 
-            return redirect(route('unit.index'))->with('success', 'Data Created');
+            // return redirect(route('unit.index'))->with('success', 'Data Created');
+
+            if (Auth::user()->role == "admin"){
+                return redirect(route('property.index'));
+            }else{
+                return redirect(route('developer.dashboard'));
+            }
+            
         } catch (Exception $e) {
             return $e;
         }
     }
+
+
 
     public function show(Unit $unit, Request $request)
     {

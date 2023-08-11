@@ -33,27 +33,26 @@
         <div class="form-container" style="margin-top: 90px; height:auto;">
 
             <div class="left-section">
-                <form id="multi-page-form">
+                <form id="multi-page-form" method="post" action="{{ route('property.upload') }}"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="form-section current" id="section1" style="margin-top: -70px;">
                         {{-- <button class="back-button" onclick="goBack()" style="">
                         Back
                     </button>    --}}
                         <h1 class="h1upload">Upload Properti</h1>
-
+                        {{-- 
                         <label for="perusahaan">Nama Perusahaan :</label>
-                        <input type="text" id="perusahaan" name="perusahaan" value="{{ $developer->company }}" required>
+                        <input type="text" id="perusahaan" name="perusahaan" value="" required> --}}
 
-                        <label for="properti">Nama Properti :</label>
-                        <input type="text" id="judul" name="title" required>
-
-                        {{-- <label for="lebar">Harga :</label>
-                        <div class="input-group" style="width: 100%;">
-                            <span class="input-group-text">Rp.</span>
-                            <input type="number" style="margin:0;" class="form-control"
-                                aria-label="Amount (to the nearest dollar)">
-                            <span class="input-group-text">.00</span>
-                        </div> --}}
-
+                        <div class="form-group">
+                            <label for="title" class="form-label">Property</label>
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                                name="title" value="{{ old('title') }}">
+                            @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <div class="form-group">
                                 <label class="col-md-3 col-form-label" for="provinsi">Provinsi</label>
@@ -118,10 +117,14 @@
                                 </select>
                             </div>
                         </div>
-                        {{-- <label for="lebar">Tipe Tersedia :</label>
-                        <input type="text" id="jumlah" name="jumlah" required> --}}
-
-
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control @error('address') is-invalid @enderror"
+                                id="address" name="address" value="{{ old('address') }}">
+                            @error('address')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <div class="form-group">
                             <label for="type_id" class="form-label">Type</label>
@@ -147,302 +150,17 @@
                             @enderror
                         </div>
 
-
-
-
-
-
-
-
-                        <br>
-                        <br>
-                        <button style="margin-bottom: 90px;" type="button" class="btn-next"
+                        {{-- <button style="margin-bottom: 90px;" type="button" class="btn-next"
                             onclick="goBack()">Kembali</button>
                         <button style="margin-bottom: 90px;" type="button" class="btn-next"
-                            onclick="nextSection(2)">Berikutnya</button>
-                    </div>
+                            onclick="nextSection(2)">Berikutnya</button> --}}
 
-                    <div class="form-section" id="section2" style="margin-top: -70px;">
-                        <button class="back-button" onclick="previousSection(2)" style="">
-                            Back
-                        </button>
-                        <h1 class="h1uploadimage"
-                            style="margin-top:-70px; 
-                    text-align: center; margin-bottom:50px;">Unggah
-                            Properti</h1>
-                        <div class="left-section">
-                            {{-- <div class="upload-container" style="margin-bottom: 90px;"">
-                            <div class="container-upload">
-                                <div class="wrapper wrapper5">
-                                   <div class="image">
-                                      <img src="" alt="">
-                                   </div>
-                                   <div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                      <div class="icon">
-                                         <i class="fas fa-photo"></i>
-                                      </div>
-                                      <div class="text">
-                                         No file chosen, yet!
-                                      </div>
-                                   </div>
-                                   <div id="cancel-btn">
-                                      <i class="fas fa-times"></i>
-                                   </div>
-                                   <div class="file-name">
-                                      File name here
-                                   </div>
-                                </div>
-                                <button onclick="defaultBtnActive(5)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn5" type="file" hidden>
-                             </div>
-                            <div class="upload-details">
-                                <h3>Unggah Video 360°</h3>
-                                <p>Unggah Video bagian depan dengan kualitas HD dan ukuran file video Maks 10 MB
-                                </p>
-                            </div>
-                        </div> --}}
-
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper6">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(6)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn6" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Properti</h3>
-                                    <p>Unggah Properti dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-
-                            {{-- <div class="upload-container" style="margin-bottom: 90px;">
-                            <div class="container-upload">
-                                <div class="wrapper wrapper7">
-                                   <div class="image">
-                                      <img src="" alt="">
-                                   </div>
-                                   <div class="content" style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                      <div class="icon">
-                                         <i class="fas fa-photo"></i>
-                                      </div>
-                                      <div class="text">
-                                         No file chosen, yet!
-                                      </div>
-                                   </div>
-                                   <div id="cancel-btn">
-                                      <i class="fas fa-times"></i>
-                                   </div>
-                                   <div class="file-name">
-                                      File name here
-                                   </div>
-                                </div>
-                                <button onclick="defaultBtnActive(7)" class="custom-btn" id="custom-btn">Upload</button>
-                                <input id="default-btn7" type="file" hidden>
-                             </div>
-                            <div class="upload-details">
-                                <h3>Unggah Rumah</h3>
-                                <p>Unggah Rumah bagian belakang dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                </p>
-                            </div>
-                        </div> --}}
-
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper8">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(8)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn8" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Video Properti</h3>
-                                    <p>Unggah Denah dengan kualitas HD dan ukuran file video Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper1">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(1)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn1" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Denah</h3>
-                                    <p>Unggah Denah dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="right-section">
-
-
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper2">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(2)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn2" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Fasilitas 1</h3>
-                                    <p>Unggah Fasilitas 1 dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper3">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(3)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn3" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Fasilitas 2</h3>
-                                    <p>Unggah Fasilitas 2 dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="upload-container" style="margin-bottom: 90px;">
-                                <div class="container-upload">
-                                    <div class="wrapper wrapper4">
-                                        <div class="image">
-                                            <img src="" alt="">
-                                        </div>
-                                        <div class="content"
-                                            style="width: 100%; height: 10px; margin-top: -50px; justify-content: center; align-items: center;">
-                                            <div class="icon">
-                                                <i class="fas fa-photo"></i>
-                                            </div>
-                                            <div class="text">
-                                                No file chosen, yet!
-                                            </div>
-                                        </div>
-                                        <div id="cancel-btn">
-                                            <i class="fas fa-times"></i>
-                                        </div>
-                                        <div class="file-name">
-                                            File name here
-                                        </div>
-                                    </div>
-                                    <button onclick="defaultBtnActive(4)" class="custom-btn"
-                                        id="custom-btn">Upload</button>
-                                    <input id="default-btn4" type="file" hidden>
-                                </div>
-                                <div class="upload-details">
-                                    <h3>Unggah Fasilitas 3</h3>
-                                    <p>Unggah Fasilitas 3 dengan kualitas HD dan ukuran file foto Maks 10 MB
-                                    </p>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <br>
-                        <br>
-                        <br>
-                        <button type="button" class="btn-next"
+                        <button style="margin-bottom: 90px;" type="button" class="btn-next"
+                            onclick="goBack()">Kembali</button>
+                        <button type="submit" class="btn-next"
                             style="margin-bottom:90px; margin-top: 0px;">Buat</button>
                     </div>
                 </form>
-
             </div>
 
         </div>

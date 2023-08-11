@@ -66,7 +66,6 @@ class AuthController extends Controller
             'password' => $request->password
         ];
 
-
         if (Auth::attempt($datalogin) && Auth::user()->role == "admin") {
             return redirect('/admin')->with('success', 'Berhasil Login');
         } elseif (Auth::attempt($datalogin) && Auth::user()->role == "developer") {
