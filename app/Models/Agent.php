@@ -13,21 +13,25 @@ class Agent extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    
+
     protected $table = "agents";
     protected $guarded = ['id'];
-    
+
     protected $hidden = [
         'password',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'users_agent', 'agent_id', 'user_id');
+    }
 
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'property_agent', 'property_id', 'agent_id');
-    }   
+    }
 
     public function provinces(): BelongsToMany
     {
@@ -49,12 +53,13 @@ class Agent extends Model
         return $this->belongsToMany(Village::class, 'agent_villages', 'agent_id', 'village_id');
     }
 
-    public function scopefilter($query, array $filters){
+    public function scopefilter($query, array $filters)
+    {
 
-        $query->when($filters['search'] ?? false, function($query, $search){
-            $query->where('name','like','%'.$search.'%')
-            // ->orWhere('description','like','%'.$search.'%')
-            ->orWhere('email','like','%'.$search.'%');
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                // ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('email', 'like', '%' . $search . '%');
         });
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {
@@ -65,5 +70,4 @@ class Agent extends Model
 
         return $query;
     }
-
 }

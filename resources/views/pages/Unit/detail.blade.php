@@ -80,8 +80,20 @@
                     <button class="btn-status" style="">Disewa</button>
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
-                            <img class="img-besar" src="/assets/pages/Home/unit1.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
+                            <img class="img-besar" src="{{ asset('storage/' . $unit->image) }}" alt="shoe image">
+                            {{-- @if ($images && $images['livingroomimg'])
+                                @php
+                                    $imageArray = explode('|', $images['livingroomimg']);
+                                @endphp
+                                @foreach ($imageArray as $image)
+                                    <div class="col-auto">
+                                        <div class="image-container">
+                                            <img src="{{ asset('storage/' . $image) }}" alt="" class="img-thumbnail"
+                                                width="200">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif --}}
                             <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/denah.jpg" alt="shoe image">
@@ -92,7 +104,7 @@
                             <div class="gallery">
 
                                 <div class="image" style="margin-left: 770px; margin-top: 310px;">
-                                    <img src="/assets/pages/Home/unit1.jpg" alt=""
+                                    <img src="{{ asset('storage/' . $unit->image) }}" alt=""
                                         style="border-radius: 10px; filter: grayscale(90%) opacity(2.5); width: 200px; height: 120px;">
                                     <div class="text-overlay">
                                         <p class="text">Lihat Semua</p>
@@ -168,13 +180,13 @@
 
                 <!-- card78 right -->
                 <div class="product-content">
-                    <h2 style="margin-top: 20px;" class="product-title">Rumah Minimalis</h2>
-                    <h5 style="font-family: 'Lato', sans-serif;" class="product-title1"><i
-                            class="fas fa-map-marker-alt"></i> Lokasi Jateng , Kudus</h5>
+                    <h2 style="margin-top: 20px;" class="product-title">{{ $unit->title }}</h2>
                     <div class="product-detail">
                         <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">
                             {{ $unit->description }}</p>
                     </div>
+                    <h5 style="font-family: 'Lato', sans-serif;" class="product-title1"><i
+                            class="fas fa-map-marker-alt"></i> {{ $unit->properties->address }}</h5>
                 </div>
 
 
@@ -230,27 +242,31 @@
             <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:10px;">
                 <p class="developer--EMb" style="font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 500;"
                     id="2:6">Developer:</p>
-                <p class="informasi-properti-LfX" id="2:7">PT Sukaria Property</p>
+                <p class="informasi-properti-LfX" id="2:7">{{ $unit->properties->developers->company }}</p>
             </div>
             <div class="group-14-GJH" id="3:52">
                 <div class="group-4-wfK" id="3:20">
                     <i class="fas fa-bed group-5-TQh" style="color: #000" id="3:29"></i>
-                    <p class=" item-2-BpZ" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="2:14">2
+                    <p class=" item-2-BpZ" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="2:14">
+                        {{ $unit->specifications->bedroom }}
                     </p>
                 </div>
                 <div class="group-6-KQy" id="3:36">
                     <i class="fas fa-bath group-5-TQh" style="color: #000" id="3:29"></i>
-                    <p class=" item-1-arh" style="margin-bottom: -3px; font-family:'Lato', sans-serif;" id="3:18">1
+                    <p class=" item-1-arh" style="margin-bottom: -3px; font-family:'Lato', sans-serif;" id="3:18">
+                        {{ $unit->specifications->bathroom }}
                     </p>
                 </div>
                 <div class="group-7-vQm" id="3:37">
                     <i class="fas fa-arrows-alt group-5-TQh" style="color: #000" id="3:29"></i>
-                    <p class="m1-nhs" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:32">290 m1²
+                    <p class="m1-nhs" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:32">
+                        {{ $unit->specifications->surface_area }} m1²
                     </p>
                 </div>
                 <div class="group-8-iLd" id="3:38">
                     <i class="fas fa-home group-5-TQh" style="color: #000" id="3:29"></i>
-                    <p class="m-QDT" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:31">305 m²
+                    <p class="m-QDT" style="margin-bottom: 0px; font-family:'Lato', sans-serif;" id="3:31">
+                        {{ $unit->specifications->building_area }} m²
                     </p>
                 </div>
             </div>

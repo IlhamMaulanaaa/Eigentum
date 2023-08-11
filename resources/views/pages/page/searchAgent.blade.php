@@ -190,86 +190,31 @@
                         <h6 class="section-title bg-white text-center px-3" style="color: #0C40E8">Teratas</h6>
                         <h1 class="mb-5">Agent Profesional</h1>
                     </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item">
-                            <a href="/agent/dashboard">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/pages/Home/testimoni1-home.svg" alt="">
+                    @foreach ($agents as $agent)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item">
+                                <a href="{{ route('agent.dashboard', $agent->id) }}">
+                                    <div class="overflow-hidden">
+                                        <img class="img-fluid" style="width: 200px; height: 260px;"
+                                            src="{{ asset('storage/' . $agent->face) }}" alt="">
+                                    </div>
+                                </a>
+                                <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
+                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                                </div>
+                                <a href="{{ route('agent.dashboard', $agent->id) }}">
+                                    <div class="text-center p-4">
+                                        @foreach ($agent->users as $user)
+                                            <h5 class="mb-0">{{ $user->name }}</h5>
+                                        @endforeach
+                                        <small style="color: #0c40e8">Agent Rumah</small>
+                                    </div>
+                                </a>
                             </div>
-                            </a>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <a href="/agent/dashboard">
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Jono Bayu</h5>
-                                <small style="color: #0c40e8">Agent Rumah</small>
-                            </div>
-                            </a>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="team-item">
-                            <a href="/agent/dashboard">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/pages/Home/testimoni2-home.svg" alt="">
-                            </div>
-                            </a>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <a href="/agent/dashboard">
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Bambang Bayu</h5>
-                                <small style="color: #0c40e8">Agent Apartemen</small>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="team-item">
-                            <a href="/agent/dashboard">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/pages/Home/testimoni3-home.svg" alt="">
-                            </div>
-                            </a>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <a href="/agent/dashboard">
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Satoso Wijaya</h5>
-                                <small style="color: #0c40e8">Agent Ruko</small>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                        <div class="team-item">
-                            <a href="/agent/dashboard">
-                            <div class="overflow-hidden">
-                                <img class="img-fluid" src="/assets/pages/Home/testimoni-home.svg" alt="">
-                            </div>
-                            </a>
-                            <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                            <a href="/agent/dashboard">
-                            <div class="text-center p-4">
-                                <h5 class="mb-0">Fitri Putri</h5>
-                                <small style="color: #0c40e8">Agent Villa</small>
-                            </div>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -290,69 +235,74 @@
                             <span>{{ $agent->locations->name }}, {{ Str::limit($agent->address) }}</span>
                         </li>
             @endforeach --}}
+                    @foreach ($agents as $agent)
+                        <a href="{{ route('agent.dashboard', $agent->id) }}">
+                            <li class="card">
+                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
+                                        draggable="false"></div>
+                                @foreach ($agent->users as $user)
+                                    <h2>{{ $user->name }}</h2>
+                                @endforeach
+                                <span>Agent Independen</span>
+                            </li>
+                        </a>
+                    @endforeach
+
                     <a href="/agent/dashboard">
                         <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
                                     draggable="false"></div>
-                            <h2>Bambang Jono</h2>
+                            <h2>Bambang Yudoyono</h2>
                             <span>Agent Independen</span>
                         </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                    <li class="card">
-                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card">
+                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     {{-- @foreach ($agents as $agent)
             <li class="card">
@@ -384,45 +334,45 @@
                         </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                draggable="false">
-                        </div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                    draggable="false">
+                            </div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                 </ul>
             </div>
@@ -435,53 +385,53 @@
             <div class="wrapper2">
                 <ul class="carousel13">
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                draggable="false">
-                        </div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                    draggable="false">
+                            </div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                     <a href="/agent/dashboard">
-                    <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                        <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                draggable="false"></div>
-                        <h2>Bambang Yudoyono</h2>
-                        <span>Agent Independen</span>
-                    </li>
+                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
+                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
+                                    draggable="false"></div>
+                            <h2>Bambang Yudoyono</h2>
+                            <span>Agent Independen</span>
+                        </li>
                     </a>
                 </ul>
             </div>

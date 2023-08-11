@@ -475,12 +475,14 @@
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
                                             <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                                <a href="/unit/detail">
-                                                    <div class="position-relative overflow-hidden">
-                                                        <a href="/unit/detail"><img
-                                                                src="{{ asset('storage/' . $unit->image) }}"
-                                                                class="img-thumbnail" alt="" width="360"
-                                                                height="120"></a>
+                                                <div class="position-relative overflow-hidden">
+                                                    {{-- <a href="/unit/detail"> --}}
+                                                    <a href="{{ route('unit.detail', $unit->id) }}">
+                                                        <img src="{{ asset('storage/' . $unit->image) }}"
+                                                            class="img-thumbnail" alt="" width="360"
+                                                            height="120">
+                                                        {{-- </a> --}}
+                                                        {{-- <a href=""></a> --}}
                                                         <form action="{{ route('favorite.add', $unit->id) }}"
                                                             method="POST">
                                                             @csrf
@@ -500,8 +502,8 @@
                                                         </div>
                                                         <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
                                                             style="color: #0C40E8">{{ $unit->title }}</div>
-                                                    </div>
-                                                </a>
+                                                    </a>
+                                                </div>
                                                 <div class="p-0 pb-0">
                                                     <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
                                                     <a class="d-block h6 mb-2" style="color: #000;"

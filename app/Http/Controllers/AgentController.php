@@ -61,10 +61,16 @@ class AgentController extends Controller
                 ->from($pivotTable);
         })->pluck('name', 'id');
         if ($agents) {
-            return view('admin.agent.all', compact('regencies','agents', 'tables'));
+            return view('admin.agent.all', compact('regencies', 'agents', 'tables'));
         }
     }
 
+    public function searchAgent()
+    {
+        $agents = Agent::with('users')->get();
+        return view('pages.page.searchagent', compact('agents'));
+    }
+    
 
     public function createfront()
     {
@@ -87,7 +93,7 @@ class AgentController extends Controller
         return view('admin.agent.create', compact('provinces', 'regencies', 'districts', 'villages'));
     }
 
-    
+
     public function storeFront(Request $request)
     {
         // try {
@@ -97,9 +103,9 @@ class AgentController extends Controller
                 'required',
                 'string',
                 Password::min(8)
-                    // ->mixedCase()
-                    // ->numbers()
-                    // ->symbols(),
+                // ->mixedCase()
+                // ->numbers()
+                // ->symbols(),
             ],
             'name'    => 'required',
             'address'   => 'required',
@@ -191,9 +197,9 @@ class AgentController extends Controller
                 'required',
                 'string',
                 Password::min(8)
-                    // ->mixedCase()
-                    // ->numbers()
-                    // ->symbols(),
+                // ->mixedCase()
+                // ->numbers()
+                // ->symbols(),
             ],
             'name'    => 'required',
             'address'   => 'required',
@@ -281,6 +287,18 @@ class AgentController extends Controller
     {
         return view('admin.agent.detail', compact('agent'));
     }
+    public function detailagent(Agent $agent)
+    {
+        // Assuming you want to get the associated users for the specific agent
+        $users = $agent->users;
+
+        return view('pages.agent.dashboard', compact('agent', 'users'));
+    }
+
+
+
+
+
 
     public function edit(Agent $agent)
     {

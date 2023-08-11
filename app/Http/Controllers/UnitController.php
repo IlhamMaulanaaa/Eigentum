@@ -41,7 +41,7 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
+        return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 
     public function filterFront(Request $request)
@@ -64,7 +64,7 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('pages.page.propertyfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
+        return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 
 
@@ -88,20 +88,20 @@ class UnitController extends Controller
         $specifications = Specification::all();
 
         if ($units) {
-            return view('admin.unit.all', compact('types',"units", "tables", "properties", "statuses", 'regencies', 'specifications'));
+            return view('admin.unit.all', compact('types', "units", "tables", "properties", "statuses", 'regencies', 'specifications'));
         }
     }
 
-    public function storeFront(Request $request , $propertyId){
-        
+    public function storeFront(Request $request, $propertyId)
+    {
+
         $property = Property::findOrfail($propertyId);
         $status = Status::all();
 
         return view('pages.unit.create', compact('property', 'status'));
-
     }
 
-    public function create(Request $request , $propertyId)
+    public function create(Request $request, $propertyId)
     {
         $property = Property::findOrfail($propertyId);
         $status = Status::all();
@@ -109,16 +109,7 @@ class UnitController extends Controller
         return view('admin.unit.create', compact('property', 'status'));
     }
 
-    public function homeunit()
-    {
-        $units = Unit::all();
-        $developer = Developer::all();
 
-        if ($units) {
-            return view('pages.page.home', compact('units', 'developer')); ;
-        }
-        
-    }
 
     public function store(Request $request,  $propertyId)
     {
@@ -228,22 +219,28 @@ class UnitController extends Controller
         }
     }
 
+    public function showFront(Unit $unit, Request $request)
+    {
+        $data = $request->all();
+        $images = Image::where('unit_id', $unit->id)->first();
+
+        return view('pages.unit.detail', compact('unit', 'images'));
+    }
     public function show(Unit $unit, Request $request)
     {
         $data = $request->all();
-
         $images = Image::where('unit_id', $unit->id)->first();
 
         return view('admin.unit.detail', compact('unit', 'images'));
     }
-
-    public function showFront(Unit $unit, Request $request)
+    public function homeunit()
     {
-        $data = $request->all();
+        $units = Unit::all();
+        $developer = Developer::all();
 
-        $images = Image::where('unit_id', $unit->id)->first();
-
-        return view('pages.unit.detail', compact('unit', 'images'));
+        if ($units) {
+            return view('pages.page.home', compact('units', 'developer'));;
+        }
     }
 
 

@@ -116,25 +116,26 @@ Route::group(['prefix' => '/session'], function () {
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
         Route::get('/dashboard/{id}', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
-        Route::get('/detail', function () {
-            return view('pages.Developer.detail');
-        });
     });
+});
+
+Route::get('/detail', function () {
+    return view('pages.Developer.detail');
 });
 Route::get('/dashboarddev', function () {
-    return view('pages.Developer.dashboard');
+    return view('pages.Developer.');
 });
 // agent
-Route::middleware(['auth', 'IsAgent'])->group(function () {
-    Route::group(['prefix' => '/agent'], function () {
-        Route::get('/dashboard', function () {
-            return view('pages.Agent.dashboard');
-        });
-    });
+// Route::middleware(['auth', 'IsAgent'])->group(function () {
+Route::group(['prefix' => '/agent'], function () {
+    Route::get('/dashboard/{agent}', [AgentController::class, 'detailagent'])->name('agent.dashboard');
 });
 
 
-Route::get('/home', [UnitController::class, 'homeunit']);
+// });
+
+
+// Route::get('/home', [UnitController::class, 'homeunit']);
 
 // pages
 Route::group(['prefix' => '/pages'], function () {
@@ -143,9 +144,7 @@ Route::group(['prefix' => '/pages'], function () {
         return view('pages.page.notfound');
     });
 
-    Route::get('/searchagent', function () {
-        return view('pages.page.searchAgent');
-    });
+    Route::get('/searchagent', [AgentController::class, 'searchAgent']);
 
     Route::get('/newproperty', function () {
         return view('pages.page.newProperty');
@@ -205,9 +204,7 @@ Route::group(['prefix' => '/unit'], function () {
     Route::get('/upload', function () {
         return view('pages.unit.create');
     });
-
-
-    Route::get('/detail', [UnitController::class, 'showFront']);
+    Route::get('/{unit}', [UnitController::class, 'showFront'])->name('unit.detail');
 
     Route::get('/edit', function () {
         return view('pages.unit.edit');
