@@ -40,24 +40,40 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        '3' => [
+        'developer' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'developer',
         ],
-        '4' => [
+        'agent' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'agent',
         ],
-        '1' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admin',
         ],
     ],
     
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'developer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Developer::class,
+        ],
+
+        'agent' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Agent::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
         ],
 
     ],

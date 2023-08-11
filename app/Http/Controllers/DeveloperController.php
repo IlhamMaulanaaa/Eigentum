@@ -30,10 +30,11 @@ class DeveloperController extends Controller
         return view('admin.developer.approval', compact('developer'));
     }
 
-    public function dashboard($id)
+    public function dashboard()
     {
-        $developer = Developer::findOrfail($id);
-        return view('pages.Developer.dashboard', compact('developer'));
+        $user =  auth()->user();
+        $developer = $user->developers->first();
+        return view('pages.Developer.dashboard', compact('developer', 'user'));
     }
 
     public function SigninDeveloper()
@@ -354,20 +355,21 @@ class DeveloperController extends Controller
     {
         $developer = Developer::findOrFail($id);
         $user = User::findOrFail($id);
-    
+
         // Assuming each developer has a license property
         $licenseFile = explode("|", $developer->license);
-    
-        return view('admin.developer.detail', compact('developer', 'licenseFile', 'user'));
+
+        return view('admin  .developer.detail', compact('developer', 'licenseFile', 'user'));
     }
-    
-    
 
 
     public function showFront()
     {
-        $developer = Developer::all();
-        return view('pages.page.profile', compact('developer'));
+
+        $user =  auth()->user();
+        $developer = $user->developers->first();
+        $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
+        return view('auth.developer.profile', compact('developer', 'user', 'licenseFile'));
     }
 
     public function edit(Developer $developer)
@@ -375,6 +377,7 @@ class DeveloperController extends Controller
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
         // $fileNames = ['Nomor Induk Berusaha (NIB)', 'Nomor Pokok Wajib Pajak (Npwp)', 'Sertifikat Badan Usaha (SBU)'];
         $provinces = Province::all();
+
         return view('admin.developer.edit', compact('developer', 'licenseFile', 'provinces'));
     }
 
@@ -387,26 +390,27 @@ class DeveloperController extends Controller
                 'password'  => [
                     'nullable',
                     'string',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols(),
+                    // Password::min(8)
+                    //     ->mixedCase()
+                    //     ->numbers()
+                    //     ->symbols(),
                 ],
                 'address'   => 'nullable',
                 'license.*' => 'nullable|file|max:10240',
                 'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
                 'name' => 'nullable',
-                'owner_email' => 'nullable|email',
-                'owner_password' => [
+                'company_email' => 'nullable|email',
+                'company_password' => [
                     'nullable',
                     'string',
-                    Password::min(8)
-                        ->mixedCase()
-                        ->numbers()
-                        ->symbols(),
+                    // Password::min(8)
+                    //     ->mixedCase()
+                    //     ->numbers()
+                    //     ->symbols(),
                 ],
                 'ktp' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'role' => 'string',
             ], [
                 'company.required' => 'Nama Perusahaan tidak boleh kosong',
                 'email.required' => 'Email tidak boleh kosong',
@@ -423,13 +427,14 @@ class DeveloperController extends Controller
                 'telp.required' => 'Nomor telepon tidak boleh kosong',
                 'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
                 'name.required' => 'Nama tidak boleh kosong',
-                'owner_email.required' => 'Email tidak boleh kosong',
-                'owner_email.email' => 'Email harus mengandung @',
-                'owner_password.required' => 'Password tidak boleh kosong',
-                'owner_password.min' => 'Password minimal 8 karakter',
-                'owner_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
-                'owner_password.numbers' => 'Password harus mengandung angka',
-                'owner_password.symbols' => 'Password harus mengandung simbol',
+                'company_email.required' => 'Email tidak boleh kosong',
+                'company_email.email' => 'Email harus mengandung @',
+                'company_email.unique' => 'Email sudah terdaftar',
+                'company_password.required' => 'Password tidak boleh kosong',
+                'company_password.min' => 'Password minimal 8 karakter',
+                'company_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'company_password.numbers' => 'Password harus mengandung angka',
+                'company_password.symbols' => 'Password harus mengandung simbol',
                 'ktp.required' => 'KTP tidak boleh kosong',
                 'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'ktp.max' => 'Ukuran KTP maksimal 10MB',
@@ -440,62 +445,76 @@ class DeveloperController extends Controller
 
             $developer = Developer::findOrfail($id);
 
-            $developer->update([
-                'company'   => $request->company,
-                'email' => $request->email,
-                'password'  => bcrypt($request->password),
-                'address'   => $request->address,
-                'telp'  => $request->telp,
-            ]);
+            $users = User::findOrFail($id);
 
-            $owner = Owner::findOrfail($id);
-
-            $owner->update([
+            $users->update([
                 'name' => $request->name,
-                'owner_email' => $request->owner_email,
-                'owner_password' => bcrypt($request->owner_password),
-                'developer_id' => $developer->id,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'role' => $request->role,
             ]);
 
-            $images = ['ktp', 'face'];
+            $developer = $users->developers->first(); // Mengambil developer pertama terkait dengan pengguna
 
-            foreach ($images as $image) {
-                if ($request->hasFile($image)) {
-                    // Hapus gambar lama jika sudah ada
-                    if ($owner->$image) {
-                        Storage::delete('public/' . $owner->$image);
+            if ($developer) {
+                $developer->update([
+                    'company'   => $request->company,
+                    'company_email' => $request->company_email,
+                    'company_password' => bcrypt($request->company_password),
+                    'address'   => $request->address,
+                    'telp'  => $request->telp,
+                ]);
+
+                $images = ['ktp', 'face'];
+
+                foreach ($images as $image) {
+                    if ($request->hasFile($image)) {
+                        // Hapus gambar lama jika sudah ada
+                        if ($developer->$image) {
+                            Storage::delete('public/' . $developer->$image);
+                        }
+
+                        // Simpan gambar baru
+                        $imageField = $request->file($image);
+                        $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                        $imageField->storeAs('public', $imageName);
+                        $developer->$image = $imageName;
                     }
+                }
 
-                    // Simpan gambar baru
-                    $imageField = $request->file($image);
-                    $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
-                    $imageField->storeAs('public', $imageName);
-                    $owner->$image = $imageName;
+                if ($request->hasFile('license')) {
+                    $licenses = $request->file('license');
+                    foreach ($licenses as $index => $license) {
+                        if ($license->isValid()) {
+                            $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
+                            $license->storeAs('public', $licenseName);
+                            $fileArray = explode('|', $developer->license);
+                            $fileArray[$index] = $licenseName;
+                            $developer->license = implode('|', $fileArray);
+                        }
+                    }
                 }
             }
 
-            if ($request->hasFile('license')) {
-                $licenses = $request->file('license');
-                foreach ($licenses as $index => $license) {
-                    if ($license->isValid()) {
-                        $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
-                        $license->storeAs('public', $licenseName);
-                        $fileArray = explode('|', $developer->license);
-                        $fileArray[$index] = $licenseName;
-                        $developer->license = implode('|', $fileArray);
-                    }
-                }
-            }
 
-            $owner->save();
+
+            $users->developers()->sync($developer->id);
+            $developer->users()->sync($users->id);
             $developer->save();
+            $users->save();
             // $developer->provinces()->sync($request->input('province_id'));
             // $developer->regencies()->sync($request->input('regency_id'));
             // $developer->districts()->sync($request->input('district_id'));
-            // $developer->villages()->sync($request->input('village_id'));
+            // $developer->villages()->sync($request->xinput('village_id'));
 
-            $developer = Developer::where('id', '=', $developer->id)->get();
-            return redirect(route('developer.show', $id));
+            // $developer = Developer::where('id', '=', $developer->id)->get();
+            // return redirect(route('developer.show', $id));
+            return redirect(route('developer.profile'));
+            // if (Auth::user()->role == "admin"){
+            //     return redirect(route('developer.show', $id));
+            // }else{
+            //     // dd($users);
+            // }
         } catch (Exception $e) {
             return $e;
         }

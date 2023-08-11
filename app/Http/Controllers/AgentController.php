@@ -28,7 +28,6 @@ class AgentController extends Controller
         $districts = District::all();
         $villages = Village::all();
 
-
         return view('auth.agent.signup', compact('provinces', 'regencies', 'districts', 'villages'));
     }
     public function updateApproved($id)

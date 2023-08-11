@@ -86,22 +86,23 @@
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
         <style>
-           
             .btn-status {
                 position: relative;
                 top: 70px;
                 left: 20px;
                 width: 80px;
                 padding: 10px 20px;
-                background-color: #0c40e8; /* Warna latar belakang tombol */
-                color: rgb(255, 255, 255); /* Warna teks tombol */
+                background-color: #0c40e8;
+                /* Warna latar belakang tombol */
+                color: rgb(255, 255, 255);
+                /* Warna teks tombol */
                 border: none;
                 border-radius: 4px;
                 font-size: 14px;
                 cursor: pointer;
-                z-index: 12; /* Pastikan tombol berada di atas gambar */
+                z-index: 12;
+                /* Pastikan tombol berada di atas gambar */
             }
-
         </style>
 
     </head>
@@ -206,11 +207,13 @@
 
                 <!-- card78 right -->
                 <div class="product-content">
-                    <h2 style="margin-top: 20px; width:550px;" class="product-title">Perumahan Central Java</h2>
+                    <h2 style="margin-top: 20px; width:550px;" class="product-title">{{ $property->title }}</h2>
                     <h5 style="font-family: 'Lato', sans-serif;" class="product-title1"><i
-                            class="fas fa-map-marker-alt"></i> Lokasi Jateng , Kudus</h5>
+                            class="fas fa-map-marker-alt"></i>
+                        {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</h5>
                     <div class="product-detail">
-                        <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">Hunian properti terletak strategis di Kecamatan Medan Helvetia dengan akses utama ke jalan arteri kota, Jl Gatot Subroto. Kawasan pemukiman dikelilingi fasilitas umum : Pasar Tradisional, Super Grosir Lotte Mart, Sekolah Internasional, Sekolah Konvensional, Rumah Ibadah (Gereja Katolik/Protestan, Mesjid, Vihara & Kuil), 5 menit akses ke 4 Mall 1 Apartment, 10 menit akses ke Jalan Tol yang terhubung ke Bandara, dll.</p>
+                        <p style="color: #000; font-family: 'Inter', sans-serif; font-weight: 500;">
+                            {{ $property->description }}</p>
                     </div>
                 </div>
 
@@ -252,9 +255,9 @@
 
 
                 <div class="cardproperty">
-                    <p class="developer">PT Central Java</p>
+                    <p class="developer">{{ $property->title }}</p>
                     <div class="official">
-                        <p class="official-label">Official Developer</p>
+                        <p class="official-label">{{ $property->developers->users->pluck('name')->first() }}</p>
                     </div>
                     <div class="rent-info">
                         <p class="rent-label">Mulai Dari</p>
@@ -263,149 +266,86 @@
                     <a href="https://web.whatsapp.com/" class="ask-agent">Tanya Agent</a>
                 </div>
 
-                    <div class="cardproperty1">
-                        <div class="tipe">
-                            <i class="fas fa-home property-icon"></i>
-                            <p class="tipe-text">Tipe Tersedia</p>
-                        </div>
-                        <p class="unit-text" >1 Unit</p>
+                <div class="cardproperty1">
+                    <div class="tipe">
+                        <i class="fas fa-home property-icon"></i>
+                        <p class="tipe-text">Tipe Tersedia</p>
                     </div>
+                    <p class="unit-text">1 Unit</p>
+                </div>
 
-                    <div class="cardproperty1" style="margin-left: 170px; margin-top:-143px; height:119px;">
-                        <div class="tipe">
-                            <i class="fas fa-clipboard property-icon"></i>
-                            <p class="tipe-text">Tipe Properti</p>
-                        </div>
-                        <p class="unit-text" >Perumahan</p>
+                <div class="cardproperty1" style="margin-left: 170px; margin-top:-143px; height:119px;">
+                    <div class="tipe">
+                        <i class="fas fa-clipboard property-icon"></i>
+                        <p class="tipe-text">Tipe Properti</p>
                     </div>
+                    <p class="unit-text">Perumahan</p>
+                </div>
+                <a href="{{ route('unit.buat', $property->id) }}" class="btn btn-success">Tambah Unit</a>
             </div>
-
-
-
-
-            
-
-
-            
-            
         </div>
         <div class="jadisatu" style="margin-top: 290px; margin-bottom:90px;">
             <div class="container">
                 <div class="subtitle" style=" font-size:16px; color:#000; margin-left:-70px;">Tipe Unit</div>
-                <div class="subtitle" style=" font-size:24px; color:#000; margin-bottom:20px; margin-left:-70px;">Perumahan Central Java</div>
+                <div class="subtitle" style=" font-size:24px; color:#000; margin-bottom:20px; margin-left:-70px;">
+                    {{ $property->title }}</div>
             </div>
             <div class="slide-container swiper" style="margin-bottom: 0px;">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                            style="max-width:330px; margin: 20px;">
-                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                <div class="position-relative overflow-hidden">
-                                    <a href=""><img class="img-fluid"
-                                            src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                        style="background-color: #0C40E8">Dijual</div>
-                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                        style="color: #0C40E8">Rumah</div>
-                                </div>
-                                    <div style="width: 280px;" class="p-0 pb-0 text-start"> <!-- Menambahkan kelas "text-start" untuk menggeser teks ke kiri -->
-                                        <h5 class="mb-1 mt-3" style="color: #000;">Rp. 810 JT</h5>
-                                        <a class="d-block h6 mb-2" style="color: #000;" href="">Perumahan Central Java</a>
-                                        <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
-                                    </div>
-
-                                <div class="d-flex border-top" style="width: 280px;">
-                                    <small class="flex-fill text-center border-end py-2"
-                                        style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                    <small class="flex-fill text-center border-end py-2"
-                                        style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                    <small class="flex-fill text-center border-end py-2"
-                                        style="color: #000;"><i
-                                            class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                    <small class="flex-fill text-center py-2" style="color: #000; "><i
-                                            class="fa fa-square  me-2"></i>350m²</small>
-                                </div>
-                            </div>
-                            </div>
+                        @foreach ($units as $unit)
                             <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                 style="max-width:330px; margin: 20px;">
+
                                 <div class="property-item rounded overflow-hidden" style="width: 280px;">
                                     <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid"
-                                                src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
+                                        <a href="/unit/detail/{{ $unit->id }}" class=""><img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
+                                            alt="" width="360" height="120"></a>
+                                        <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                            @csrf
+                                            <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
+                                                <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                    class="btnz"><i class="fas fa-heart"></i></button>
+                                            </div>
+                                        </form>
                                         <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                            style="background-color: #0C40E8">Dijual</div>
-                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                            style="color: #0C40E8">Rumah</div>
-                                    </div>
-                                        <div style="width: 280px;" class="p-0 pb-0 text-start"> <!-- Menambahkan kelas "text-start" untuk menggeser teks ke kiri -->
-                                            <h5 class="mb-1 mt-3" style="color: #000;">Rp. 850 JT</h5>
-                                            <a class="d-block h6 mb-2" style="color: #000;" href="">Perumahan Central Java</a>
-                                            <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
+                                            style="background-color: #0C40E8">
+                                            @foreach ($unit->statuses as $status)
+                                                <li>
+                                                    {{ $status->name }}
+                                                </li>
+                                            @endforeach
                                         </div>
-
-                                    <div class="d-flex border-top" style="width: 280px;">
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i
-                                                class="fa fa-ruler-combined  me-2"></i>400m²</small>
+                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                            style="color: #0C40E8">{{ $unit->title }}</div>
+                                    </div>
+                                    <div class="p-0 pb-0">
+                                        <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                        {{ $unit->properties->property }}
+                                        <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                            {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</p>
+                                    </div>
+                                    <div class="d-flex border-top" style="width: 280px; ">
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                                class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
                                         <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                class="fa fa-square  me-2"></i>350m²</small>
+                                                class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                     </div>
                                 </div>
+                                <a href="/unit/detail/{{ $unit->id }}" class=""></a>
                             </div>
-                            <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                style="max-width:330px; margin: 20px;">
-                                <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href=""><img class="img-fluid"
-                                                src="assets/unit/DetailUnit/livingroom.jpg" alt=""></a>
-                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                            style="background-color: #0C40E8">Dijual</div>
-                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                            style="color: #0C40E8">Rumah</div>
-                                    </div>
-                                        <div style="width: 280px;" class="p-0 pb-0 text-start"> <!-- Menambahkan kelas "text-start" untuk menggeser teks ke kiri -->
-                                            <h5 class="mb-1 mt-3" style="color: #000;">Rp. 920 JT</h5>
-                                            <a class="d-block h6 mb-2" style="color: #000;" href="">Perumahan Central Java</a>
-                                            <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>{{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
-                                        </div>
-
-                                    <div class="d-flex border-top" style="width: 280px;">
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i class="fa fa-bath  me-2"></i>2</small>
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i class="fa fa-bed  me-2"></i>3</small>
-                                        <small class="flex-fill text-center border-end py-2"
-                                            style="color: #000;"><i
-                                                class="fa fa-ruler-combined  me-2"></i>400m²</small>
-                                        <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                class="fa fa-square  me-2"></i>350m²</small>
-                                    </div>
-                                </div>
-                            </div>
+                        @endforeach
                     </div>
                 </div>
 
-
             </div>
-            </div>
-        
         </div>
-        
-        
 
 
-       
-
-
-
-
-
-        
     </body>
     <!-- Swiper JS -->
     <script src="js/lib/swiper-bundle.min.js"></script>
@@ -622,206 +562,205 @@
             });
         });
     </script>
-        <!-- Swiper JS -->
-        <script src="js/swiper-bundle.min.js"></script>
-        {{-- <script src="js/unit/detail.js"></script> --}}
+    <!-- Swiper JS -->
+    <script src="js/swiper-bundle.min.js"></script>
+    {{-- <script src="js/unit/detail.js"></script> --}}
 
-        <!-- JavaScript -->
-        {{-- <script src="js/home.js"></script> --}}
-        <script>
-            const imgs = document.querySelectorAll('.img-select a');
-const imgBtns = [...imgs];
-let imgId = 1;
+    <!-- JavaScript -->
+    {{-- <script src="js/home.js"></script> --}}
+    <script>
+        const imgs = document.querySelectorAll('.img-select a');
+        const imgBtns = [...imgs];
+        let imgId = 1;
 
-imgBtns.forEach((imgItem) => {
-    imgItem.addEventListener('click', (event) => {
-        event.preventDefault();
-        imgId = imgItem.dataset.id;
-        slideImage();
-    });
-});
+        imgBtns.forEach((imgItem) => {
+            imgItem.addEventListener('click', (event) => {
+                event.preventDefault();
+                imgId = imgItem.dataset.id;
+                slideImage();
+            });
+        });
 
-function slideImage(){
-    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+        function slideImage() {
+            const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
 
-    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-}
-
-window.addEventListener('resize', slideImage);
-
-
-
-
-
-const gallery = document.querySelectorAll(".image");
-    const previewImg = document.querySelector(".image-box img");
-    const prevBtn = document.querySelector(".slide.prev");
-    const nextBtn = document.querySelector(".slide.next");
-    const currentImg = document.querySelector(".current-img");
-    const totalImg = document.querySelector(".total-img");
-    const previewBox = document.querySelector(".preview-box");
-    const closeIcon = document.querySelector(".icon");
-  
-    let currentIndex = 0;
-  
-    window.onload = () => {
-      totalImg.textContent = gallery.length;
-  
-      gallery[currentIndex].classList.add("active");
-      previewImg.src = gallery[currentIndex].querySelector("img").src;
-      currentImg.textContent = currentIndex + 1;
-  
-      prevBtn.onclick = () => {
-        currentIndex--;
-        if (currentIndex < 0) {
-          currentIndex = gallery.length - 1;
+            document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
         }
-        showImage(currentIndex);
-      };
-  
-      nextBtn.onclick = () => {
-        currentIndex++;
-        if (currentIndex >= gallery.length) {
-          currentIndex = 0;
-        }
-        showImage(currentIndex);
-      };
-  
-      gallery.forEach((image, index) => {
-        image.onclick = () => {
-          showImage(index);
+
+        window.addEventListener('resize', slideImage);
+
+
+
+
+
+        const gallery = document.querySelectorAll(".image");
+        const previewImg = document.querySelector(".image-box img");
+        const prevBtn = document.querySelector(".slide.prev");
+        const nextBtn = document.querySelector(".slide.next");
+        const currentImg = document.querySelector(".current-img");
+        const totalImg = document.querySelector(".total-img");
+        const previewBox = document.querySelector(".preview-box");
+        const closeIcon = document.querySelector(".icon");
+
+        let currentIndex = 0;
+
+        window.onload = () => {
+            totalImg.textContent = gallery.length;
+
+            gallery[currentIndex].classList.add("active");
+            previewImg.src = gallery[currentIndex].querySelector("img").src;
+            currentImg.textContent = currentIndex + 1;
+
+            prevBtn.onclick = () => {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = gallery.length - 1;
+                }
+                showImage(currentIndex);
+            };
+
+            nextBtn.onclick = () => {
+                currentIndex++;
+                if (currentIndex >= gallery.length) {
+                    currentIndex = 0;
+                }
+                showImage(currentIndex);
+            };
+
+            gallery.forEach((image, index) => {
+                image.onclick = () => {
+                    showImage(index);
+                };
+            });
+
+            closeIcon.onclick = () => {
+                previewBox.classList.remove("show");
+            };
         };
-      });
-  
-      closeIcon.onclick = () => {
-        previewBox.classList.remove("show");
-      };
-    };
-  
-    function showImage(index) {
-      gallery.forEach((image) => {
-        image.classList.remove("active");
-      });
-      gallery[index].classList.add("active");
-      previewImg.src = gallery[index].querySelector("img").src;
-      currentImg.textContent = index + 1;
-      previewBox.classList.add("show");
-    }
 
-      var swiper = new Swiper(".slide-content", {
-  slidesPerView: 4,
-  spaceBetween: 25,
-  loop: false,
-  centerSlide: 'false',
-  fade: 'false',
-  grabCursor: 'false',
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: false,
-    dynamicBullets: false,
-  },
+        function showImage(index) {
+            gallery.forEach((image) => {
+                image.classList.remove("active");
+            });
+            gallery[index].classList.add("active");
+            previewImg.src = gallery[index].querySelector("img").src;
+            currentImg.textContent = index + 1;
+            previewBox.classList.add("show");
+        }
 
-  breakpoints:{
-      0: {
-          slidesPerView: 1,
-      },
-      520: {
-          slidesPerView: 2,
-      },
-      950: {
-          slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 4,
-    }
-  },
-});
+        var swiper = new Swiper(".slide-content", {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            loop: false,
+            centerSlide: 'false',
+            fade: 'false',
+            grabCursor: 'false',
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: false,
+                dynamicBullets: false,
+            },
 
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  grabCursor: true,
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+                1200: {
+                    slidesPerView: 4,
+                }
+            },
+        });
 
-const tabsBox = document.querySelector(".tabs-box"),
-allTabs = tabsBox.querySelectorAll(".tab"),
-arrowIcons = document.querySelectorAll(".icon i");
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            grabCursor: true,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
 
-let isDragging = false;
+        const tabsBox = document.querySelector(".tabs-box"),
+            allTabs = tabsBox.querySelectorAll(".tab"),
+            arrowIcons = document.querySelectorAll(".icon i");
 
-const handleIcons = (scrollVal) => {
-  let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-  arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-  arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-}
+        let isDragging = false;
 
-arrowIcons.forEach(icon => {
-  icon.addEventListener("click", () => {
-      // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
-      let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
-      handleIcons(scrollWidth);
-  });
-});
+        const handleIcons = (scrollVal) => {
+            let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+            arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+            arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
+        }
 
-allTabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-      tabsBox.querySelector(".active").classList.remove("active");
-      tab.classList.add("active");
-  });
-});
+        arrowIcons.forEach(icon => {
+            icon.addEventListener("click", () => {
+                // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
+                let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
+                handleIcons(scrollWidth);
+            });
+        });
 
-const dragging14 = (e) => {
-  if(!isDragging) return;
-  tabsBox.classList.add("dragging");
-  tabsBox.scrollLeft -= e.movementX;
-  handleIcons(tabsBox.scrollLeft)
-}
+        allTabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                tabsBox.querySelector(".active").classList.remove("active");
+                tab.classList.add("active");
+            });
+        });
 
-const dragStop14 = () => {
-  isDragging = false;
-  tabsBox.classList.remove("dragging");
-}
+        const dragging14 = (e) => {
+            if (!isDragging) return;
+            tabsBox.classList.add("dragging");
+            tabsBox.scrollLeft -= e.movementX;
+            handleIcons(tabsBox.scrollLeft)
+        }
 
-tabsBox.addEventListener("mousedown", () => isDragging = true);
-tabsBox.addEventListener("mousemove", dragging14);
-document.addEventListener("mouseup", dragStop14);
+        const dragStop14 = () => {
+            isDragging = false;
+            tabsBox.classList.remove("dragging");
+        }
+
+        tabsBox.addEventListener("mousedown", () => isDragging = true);
+        tabsBox.addEventListener("mousemove", dragging14);
+        document.addEventListener("mouseup", dragStop14);
 
 
 
-// const wrapper = document.querySelector(".wrapperteks"),
-// selectBtn = wrapper.querySelector(".select-btn-teks"),
-// options = wrapper.querySelector(".optionsteks");
+        // const wrapper = document.querySelector(".wrapperteks"),
+        // selectBtn = wrapper.querySelector(".select-btn-teks"),
+        // options = wrapper.querySelector(".optionsteks");
 
-// let countries = ["Semua", "Rumah", "Apartemen", "Ruko", "VIlla"];
+        // let countries = ["Semua", "Rumah", "Apartemen", "Ruko", "VIlla"];
 
-// function addCountry(selectedCountry) {
-//     options.innerHTML = "";
-//     countries.forEach(country => {
-//         let isSelected = country == selectedCountry ? "selected" : "";
-//         let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
-//         options.insertAdjacentHTML("beforeend", li);
-//     });
-// }
-// addCountry();
+        // function addCountry(selectedCountry) {
+        //     options.innerHTML = "";
+        //     countries.forEach(country => {
+        //         let isSelected = country == selectedCountry ? "selected" : "";
+        //         let li = `<li onclick="updateName(this)" class="${isSelected}">${country}</li>`;
+        //         options.insertAdjacentHTML("beforeend", li);
+        //     });
+        // }
+        // addCountry();
 
-// function updateName(selectedLi) {
-//     addCountry(selectedLi.innerText);
-//     wrapper.classList.remove("active");
-//     selectBtn.firstElementChild.innerText = selectedLi.innerText;
-// }
+        // function updateName(selectedLi) {
+        //     addCountry(selectedLi.innerText);
+        //     wrapper.classList.remove("active");
+        //     selectBtn.firstElementChild.innerText = selectedLi.innerText;
+        // }
 
 
-// selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
-
-        </script>
+        // selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
+    </script>
 
 
     </html>
