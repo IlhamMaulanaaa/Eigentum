@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\IndoregionController;
 use App\Http\Controllers\FilePreviewController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
+use App\Http\Controllers\ProviderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,9 @@ use App\Http\Controllers\PaymentCallbackController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
@@ -93,7 +98,7 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
             Route::get('/edit', function () {
                 return view('pages.property.edit');
             });
-        }); 
+        });
         Route::group(['prefix' => '/unit'], function () {
             Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.buat');
             Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.upload');
@@ -102,8 +107,6 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
                 return view('pages.unit.edit');
             });
         });
-
-
     });
 });
 // Route::group(['prefix' => '/property'], function () {
@@ -131,6 +134,7 @@ Route::group(['prefix' => '/unit'], function () {
         return view('pages.unit.edit');
     });
 });
+
 
 
 

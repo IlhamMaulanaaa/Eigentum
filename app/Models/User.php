@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Favorite;
@@ -10,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable 
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -23,6 +22,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'provider',
+        'avatar',
+        'provider_id',
+        'provider_token',
     ];
 
     /**
@@ -57,12 +60,13 @@ class User extends Authenticatable
         return $this->belongsToMany(Developer::class, 'users_developer', 'user_id', 'developer_id');
     }
 
-    public function scopefilter($query, array $filters){
+    public function scopefilter($query, array $filters)
+    {
 
-        $query->when($filters['search'] ?? false, function($query, $search){
-            $query->where('name','like','%'.$search.'%')
-            // ->orWhere('description','like','%'.$search.'%')
-            ->orWhere('role','like','%'.$search.'%');
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                // ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('role', 'like', '%' . $search . '%');
         });
     }
 }

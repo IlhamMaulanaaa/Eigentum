@@ -50,14 +50,15 @@
 
                 @if (Auth::check())
                     <div class="profileq" style="cursor: pointer;">
-                        <img src="/storage/houcine-ncib-B4TjXnI0Y2c-unsplash.jpg" alt="">
+                        <img src="{{ Auth()->user()->avatar }}" alt="">
                     </div>
-
                     {{ Auth()->user()->name }}
+
+                    
 
                     <div class="menu-profileq">
                         <h3>
-                            {{ Auth()->user()->email }}
+                            {{ Str::limit(Auth()->user()->email, 18) }}
                             <div>
                                 {{-- sesuai nama role --}}
                                 {{-- {{ session('role') }} --}}

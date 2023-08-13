@@ -5,7 +5,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://apis.google.com/js/api:client.js"></script>
     <title>Eigentum</title>
+    {{-- google login button --}}
+    {{-- <script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function() {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function(googleUser) {
+                    document.getElementById('name').innerText = "Signed in: " +
+                        googleUser.getBasicProfile().getName();
+                },
+                function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script> --}}
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
@@ -429,6 +458,47 @@
             text-decoration: underline;
         }
     </style>
+    {{-- google button login styling --}}
+    <style type="text/css">
+        #customBtn {
+            display: inline-block;
+            background: white;
+            color: #444;
+            width: 190px;
+            border-radius: 5px;
+            border: thin solid #888;
+            box-shadow: 1px 1px 1px grey;
+            white-space: nowrap;
+        }
+
+        #customBtn:hover {
+            cursor: pointer;
+        }
+
+        span.label {
+            font-family: serif;
+            font-weight: normal;
+        }
+
+        span.icon {
+            background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+            width: 42px;
+            height: 42px;
+        }
+
+        span.buttonText {
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 42px;
+            padding-right: 42px;
+            font-size: 14px;
+            font-weight: bold;
+            /* Use the Roboto font that is loaded in the <head> */
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -461,7 +531,21 @@
                             </div>
 
                             <input type="submit" value="Masuk" class="sign-btn" />
-
+                            {{-- <div id="gSignInWrapper">
+                                <span class="label">Sign in with:</span>
+                                <div id="customBtn" class="customGPlusSignIn">
+                                    <span class="icon"></span>
+                                    <span class="buttonText">Google</span>
+                                </div>
+                            </div>
+                            <div id="name"></div>
+                            <script>startApp();</script> --}}
+                            <a href="/auth/google/redirect"
+                                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                                <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg"
+                                    style="width: 20px; height: 20px;" loading="lazy" alt="google logo">
+                                <span>Login with Google</span>
+                            </a>
                             <p class="text">
                                 Lupa password Anda atau Anda login datails?
                                 <a href="/session/auth/user/signin/createL">Dapatkan bantuan</a> masuk
@@ -537,6 +621,7 @@
             </div>
         </div>
     </main>
+
 
     <!-- Javascript file -->
     <script>
