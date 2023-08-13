@@ -13,29 +13,29 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Muhammad Ilham Maulana',
+                'name' => 'eigentum',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin123'),
                 'role'=> 'admin',
                 // 'agent_id' => '1'
             ],
             [
-                'name' => 'Jane Smith',
-                'email' => 'jane@example.com',
+                'name' => 'John Doe',
+                'email' => 'Jhon@gmail.com',
                 'password' => Hash::make('password123'),
                 'role'=> 'user',
                 // 'agent_id' => '1'
             ],
             [
-                'name' => 'ilhammaulana',
-                'email' => 'ilham@example.com',
+                'name' => 'Jmann',
+                'email' => 'Jmann@gmail.com',
                 'password' => Hash::make('password123'),
                 'role'=> 'developer',
                 // 'owner_id' => '1'
             ],
             [
-                'name' => 'eigentum',
-                'email' => 'eigentum@example.com',
+                'name' => 'patrick',
+                'email' => 'patrick@gmail.com',
                 'role'=> 'agent',
                 'password' => Hash::make('password123'),
                 // 'agent_id' => '1'
