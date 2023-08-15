@@ -155,8 +155,8 @@
                     {{-- <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> --}}
                     {{-- <span class="text-dark">{{ auth()->user()->name }}</span> --}}
                 </a>
-                <div class="dropdown-menu dropdown-menu-end">  
-                    <a class="dropdown-item" href="{{route('profile.show')}}"><i class="align-middle me-1"
+                <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="{{ route('profile.show') }}"><i class="align-middle me-1"
                             data-feather="user"></i> Profile</a>
                     <a class="dropdown-item" href="#"><i class="align-middle me-1"
                             data-feather="pie-chart"></i> Analytics</a>
@@ -166,7 +166,7 @@
                     <a class="dropdown-item" href="#"><i class="align-middle me-1"
                             data-feather="help-circle"></i> Help Center</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/session/signout/">Log out</a>
+                    <a class="dropdown-item" href="{{ route('signout.user') }}">Log out</a>
                 </div>
             </li>
         </ul>

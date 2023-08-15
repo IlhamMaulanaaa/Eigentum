@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Agent;
 use App\Models\Favorite;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Developer;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\MustVerifyEmail;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable 
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -25,6 +28,7 @@ class User extends Authenticatable
         'provider',
         'avatar',
         'provider_id',
+        'role',
         'provider_token',
     ];
 

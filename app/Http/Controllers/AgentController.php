@@ -69,7 +69,7 @@ class AgentController extends Controller
         $agents = Agent::with('users')->get();
         return view('pages.page.searchagent', compact('agents'));
     }
-    
+
 
     public function createfront()
     {
@@ -155,7 +155,7 @@ class AgentController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'developer',
+            'role' => $request->role,
         ]);
 
         $user->agents()->attach($agent->id);

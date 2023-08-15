@@ -506,11 +506,11 @@
         <div class="box">
             <div class="inner-box">
                 <div class="forms-wrap">
-                    <form action="/createL" autocomplete="off" class="sign-in-form">
+                    <form action="/createL" method="POST" autocomplete="off" class="sign-in-form">
                         {{-- <div class="logo">
                             <img src="/assets/skins/logo.svg" alt="" />
                         </div> --}}
-
+                        @csrf
                         <div class="heading">
                             <h2>Selamat Datang!!</h2>
                             <h6>belum pumya akun?</h6>
@@ -552,8 +552,8 @@
                             </p>
                         </div>
                     </form>
-                    <form action="index.html" autocomplete="off" class="sign-up-form">
-
+                    <form action="/createR" method="POST" autocomplete="off" class="sign-up-form">
+                        @csrf
                         <div class="heading">
                             <h2>Daftarkan Sekarang!!</h2>
                             <h6>Already have an account?</h6>

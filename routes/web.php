@@ -39,9 +39,8 @@ Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback'])
 
 Route::get('/', [AuthController::class, 'index'])->middleware('guest');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
-Route::post('/register', [AdminController::class, 'register']);
-Route::get('/createL', [AuthController::class, 'login']);
-Route::get('/createR', [AuthController::class, 'register']);
+Route::post('/createL', [AuthController::class, 'login']);
+Route::post('/createR', [AuthController::class, 'register']);
 
 Route::group(['prefix' => '/session'], function () {
     Route::group(['prefix' => '/auth'], function () {
