@@ -8,6 +8,8 @@
     font-family: "Lato", sans-serif;
 }
 
+
+
 body {
     margin: 0px;
     padding: 0px;
@@ -189,7 +191,7 @@ body {
     }
 }
 
-.temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+.text-header-home {
     font-family: "Lato", sans-serif;
     position: absolute;
     margin: auto;
@@ -199,7 +201,7 @@ body {
 }
 
 @media (max-width: 768px) {
-    .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+    .text-header-home {
         top: 190px;
         font-size: 16px;
         max-width: 500px;
@@ -207,14 +209,14 @@ body {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-    .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+    .text-header-home {
         font-size: 18px;
         max-width: 600px;
     }
 }
 
 @media (min-width: 1025px) {
-    .temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu {
+    .text-header-home {
         font-size: 20px;
         max-width: 800px;
     }
@@ -285,38 +287,7 @@ body {
     justify-content: left;
     align-items: center;
 }
-/* Media query untuk ukuran layar yang lebih kecil */
-@media (max-width: 1024px) {
-    .group-11-tab {
-        width: 600px;
-        margin: 0 200px;
-        height: 200px;
-    }
-}
 
-@media (max-width: 768px) {
-    .group-11-tab {
-        width: 420px;
-        margin: 0 100px;
-        height: 190px;
-    }
-}
-
-@media (max-width: 480px) {
-    .group-11-tab {
-        width: 300px;
-        margin: 0 50px;
-        height: 120px;
-    }
-}
-
-@media (max-width: 320px) {
-    .group-11-tab {
-        width: 250px;
-        margin: 0 25px;
-        height: 100px;
-    }
-}
 
 .group-70-tyu {
     align-items: center;
@@ -562,7 +533,6 @@ body {
     display: flex;
     height: auto;
     background: transparent;
-    font-size: 18px;
     font-weight: 400;
     border-radius: 8px;
     align-items: center;
@@ -582,8 +552,7 @@ body {
 
 .select-menu2 .options2 {
     position: absolute;
-    top: 0px;
-    margin-top: 90px;
+    top: 90px;
     left: 0;
     width: 200px;
     padding: 0;
@@ -609,7 +578,7 @@ body {
     height: 55px;
     cursor: pointer;
     padding: 0 16px;
-    border-radius: 0px;
+    border-radius: 0;
     align-items: center;
     background: #fff;
 }
@@ -627,71 +596,8 @@ body {
     font-size: 18px;
     color: #333;
 }
-@media screen and (max-width: 320px) {
-    .sBtn-text2 {
-        font-size: 12px;
-    }
-    .select-menu3,
-    .select-menu2 {
-        width: 100px;
-        margin-top: -15px;
-    }
 
-    .select-menu3 .options3,
-    .select-menu2 .options2 {
-        margin-left: 70px;
-    }
 
-    .option3,
-    .option2 {
-        width: 97px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .sBtn-text2 {
-        font-size: 12px;
-    }
-    .select-menu3,
-    .select-menu2 {
-        width: 120px;
-        margin-top: -20px;
-    }
-
-    .select-menu3 .options3,
-    .select-menu2 .options2 {
-        margin-left: 120px;
-    }
-
-    .option3,
-    .option2 {
-        width: 117px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .select-btn2 {
-        width: 123px;
-    }
-    .sBtn-text2 {
-        font-size: 14px;
-    }
-    .select-menu3,
-    .select-menu2 {
-        width: 140px;
-        margin-top: -25px;
-    }
-
-    .select-menu3 .options3,
-    .select-menu2 .options2 {
-        margin-left: 170px;
-    }
-
-    .option3,
-    .option2 {
-        width: 137px;
-    }
-}
 
 .select-menu4 {
     width: 153px;
@@ -2937,7 +2843,7 @@ body {
 }
 
 .eigentum-2-dYK {
-    background-image: url("/assets/pages/Home/post-home.svg");
+    background-image: url("/assets/pages/Home/bannerhome2.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7915,8 +7821,6 @@ body {
     display: block;
     justify-content: center;
     align-items: center;
-    margin: 70px 0 90px 0;
-    height: 300px;
 }
 #h1Filter {
     margin-top: 390px;
@@ -8021,4 +7925,300 @@ body {
     border-radius: 50%;
     width: 10px;
     height: 10px;
+}
+
+
+
+/* 
+@media (min-width: 769px) and (max-width: 1024px) {
+    .segera-miliki-properti-impianmu-AUF {
+        font-size: 45px;
+    }
+} */
+@media (max-width: 769px) {
+    .segera-miliki-properti-impianmu-AUF {
+        font-size: 25px;
+        margin-top: -30px;
+    }
+    .text-header-home{
+        margin-top: 60px;
+    }
+    .header-jualsewa{
+        margin-top: -500px;
+    }
+    .group-11-tab{
+        border-radius: 20px 20px 20px 20px;
+        height: 100px;
+        width: 500px;
+        margin-top: -270px;
+    }
+    .frame-61-qi7{
+        width: 500px;
+        margin-top: -50px;
+    }
+    .select-btn2{
+        margin-bottom: -20px;
+        margin-left: 0px;
+        font-size: 16px;
+    }
+    .select-btn3 .sBtn-text3{
+        margin-bottom: -20px;
+        font-size: 16px;
+        margin-left: 0px;
+    }
+     .sBtn-text4{
+        margin-top: -5px;
+        margin-left: -20px;
+        font-size: 16px;
+        margin-bottom: -23px;
+    }
+    .search-container{
+        margin-left: -100px;
+    }
+    .search-container{
+        margin-left: -530px;
+        margin-bottom: -50px;
+    }
+    #search-input{
+        width: 350px;
+        border-radius: 10px;
+    }
+    .drop-semuaproperti{
+        margin-right: -10px;
+    }
+    .drop-kamarmandi{
+        margin-right: 25px; margin-bottom:-23px;
+    }
+    .drop-kamartidur{
+        margin-bottom:-20px; margin-right: 15px;
+    }
+    #h1Filter {
+        margin-top: -90px;
+        margin-bottom: 10px;
+        width: 540px;
+        font-size: 24px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+    }
+    #pFilter{
+        width: 400px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin: 0 auto;
+    }
+    #subtexthome{
+        width: 400px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin: 0 auto;
+    }
+    #search-button{
+        border-radius: 10px;
+    }
+
+    .select-menu2 .options2 {
+        width: 170px;
+        top: auto;
+    }
+
+    .select-menu2.active .options2 {
+        top: 40px;
+    }
+
+    .option2 {
+        width: 100%; 
+        height: 30px; 
+        border-radius: 8px;
+        margin: 8px 0;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+    }
+
+    .option2:hover {
+        background: #f2f2f2;
+    }
+
+    .option2 i {
+        font-size: 20px; 
+        margin-right: 8px;
+    }
+
+    .option2 .option2-text {
+        font-size: 16px; 
+    }
+
+    
+
+
+
+    .select-menu3 .options3 {
+        width: 170px;
+        top: auto;
+    }
+
+    .select-menu3.active .options3 {
+        top: 0px;
+        margin-left: 180px;
+    }
+
+    .option3 {
+        width: 100%; 
+        height: 30px; 
+        border-radius: 8px;
+        margin: 8px 0;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        background: #fff;
+    }
+
+    .option3:hover {
+        background: #f2f2f2;
+    }
+
+    .option3 i {
+        font-size: 20px; 
+        margin-right: 8px;
+    }
+
+    .option3 .option3-text {
+        font-size: 16px; 
+    }
+    
+    .filter-kota{
+        height: auto;
+        width: 500px;
+        margin: 5rem 0 0 0;
+        display: block;
+        justify-content: start;
+    }
+
+
+
+    
+    .box{
+        padding: 0;
+        display: flex;
+        align-items: center;
+        width: 250px;
+        height: 70px;
+        margin: 0 0px 0 0px;
+    }
+    .subFilter {
+    display: flex;
+    flex-wrap: wrap; /* Mengatur agar elemen-elemen berbaris pada resolusi lebih kecil */
+    justify-content: space-between; /* Menyebarkan elemen di baris */
+    }
+    #filter2{
+        margin-top: 0;
+    }
+    .imgcardhome{
+        width:280px;
+        height: 190px;
+    }
+    .property-item{
+        margin: 0;
+        padding: 0;
+    }
+    
+    .slide-content{
+        margin-left: 450px;
+    }
+
+    .segera-miliki-properti-impianmu-AUF{
+        margin-top: -130px;
+    }
+    .text-header-home{
+        margin-top: -30px;
+    }
+    
+    .group-74-7F56 {
+    background-color: rgba(34, 34, 34, 0.200000003);
+    background-image: url("/assets/pages/Home/bannerTesting.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    text-align: center;
+    height: 100px;
+    left: 0;
+    padding: 16.5rem 0rem 10.692rem 0rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    margin: auto;
+    }
+
+    .group-77-FDR {
+        flex-shrink: 0;
+        display: block;
+        justify-content: center;
+        align-items: left;
+        text-align: left;
+        margin: 90px 0px 0px 0rem;
+        width: 128rem;
+    }
+    .filter-kota {
+        margin: 50px 0 0 0;
+        display: block;
+        justify-content: start;
+        margin-left: 100px;
+    }
+    .component-106-bsV {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px; /* Adjust the gap between rows */
+    }
+
+    .divui-atomic-card-WzT {
+        width: calc(50% - 10px); /* Two cards in a row with some gap */
+        max-width: 300px; /* Limit the maximum width of the cards */
+    }
+
+    .eigentum-2-dYK{
+        height: 200px;
+        width: 500px;
+        background-image: url("/assets/pages/Home/bannerhome1.svg");
+    }
+
+    
+    .group-146-X7u{
+        margin-bottom: 500px;
+    }
+    .negara-home {
+        flex-basis: calc(50% - 50px);
+        width: auto;
+        height: auto;
+      }
+    .group-144-h6F{
+        width: 300px;
+        margin-left: -0px;
+        padding: 0;
+    }
+    .group-139-nNb,.group-140-18s,
+    .group-141-vHm,.group-142-pfy,
+    .group-143-yqh{
+        padding: auto;
+        margin-right: 50px;
+        width: auto;
+        height: auto;
+    }
+    .group-142-pfy
+    {
+        margin-top: 550px;
+        margin-left: -365px;
+    }
+    .group-143-yqh{
+        margin-top: 480px;
+        margin-left: -370px;
+    }
 }

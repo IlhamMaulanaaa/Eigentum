@@ -148,10 +148,14 @@
         window.onload = autoCloseAlert;
     </script>
     <script>
-        const menuWrap = document.querySelector('.darkLight-searchBoxq');
-        const menuProfile = document.querySelector('.profileq');
-        const menu = document.querySelector('.menu-profileq');
+        document.addEventListener("DOMContentLoaded", function() {
+    const menuProfile = document.querySelector('.profileq');
+    const menu = document.querySelector('.menu-profileq');
+    const body = document.querySelector("body");
+    const nav = document.querySelector("nav");
+    const sidebarOpenq = document.querySelector(".sidebarOpenq");
 
+    if (menuProfile && menu) {
         menuProfile.addEventListener('click', function(event) {
             event.stopPropagation();
             menu.classList.toggle('active');
@@ -164,29 +168,12 @@
         menu.addEventListener('click', function(event) {
             event.stopPropagation();
         });
+    }
 
-        const body = document.querySelector("body"),
-            nav = document.querySelector("nav"),
-            modeToggle = document.querySelector(".dark-lightq"),
-            searchToggle = document.querySelector(".searchToggleq"),
-            sidebarOpenq = document.querySelector(".sidebarOpenq"),
-            siderbarClose = document.querySelector(".siderbarCloseq");
-
-        let getMode = localStorage.getItem("mode");
-        if (getMode && getMode === "dark-mode") {
-            body.classList.add("dark");
-        }
-
-
-
-
-
-
-        //   js code to toggle sidebar
+    if (body && nav && sidebarOpenq) {
         sidebarOpenq.addEventListener("click", () => {
             nav.classList.add("active");
         });
-
 
         body.addEventListener("click", e => {
             let clickedElm = e.target;
@@ -195,21 +182,25 @@
                 nav.classList.remove("active");
             }
         });
+    }
 
+    // Continue with your other code...
 
-        $(document).ready(function() {
-            $(".notifications .icon_wrap").click(function(event) {
-                $(this).parent().toggleClass("active");
-                $(".profileq").removeClass("active");
-                event.stopPropagation();
-            });
-
-            $(document).click(function(event) {
-                if (!$(event.target).closest('.notifications').length) {
-                    $('.notifications').removeClass("active");
-                }
-            });
+    $(document).ready(function() {
+        $(".notifications .icon_wrap").click(function(event) {
+            $(this).parent().toggleClass("active");
+            $(".profileq").removeClass("active");
+            event.stopPropagation();
         });
+
+        $(document).click(function(event) {
+            if (!$(event.target).closest('.notifications').length) {
+                $('.notifications').removeClass("active");
+            }
+        });
+    });
+});
+
     </script>
 </body>
 
