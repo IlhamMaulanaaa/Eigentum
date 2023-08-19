@@ -51,9 +51,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function favorites()
+    public function units()
     {
-        return $this->belongsToMany(Favorite::class);
+        return $this->belongsToMany(Unit::class, 'favorites', 'unit_id', 'user_id');
     }
     public function agents()
     {

@@ -71,71 +71,56 @@
         <div class="slide-container swiper" style="margin-top: 90px;">
             <div class="slide-content">
                 <div class="card-wrapper swiper-wrapper">
-                    
-                    @foreach ($favorite as $fav)
 
-                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s" style="max-width: 330px; margin: 20px;">
-                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                
-                                    <div class="position-relative overflow-hidden">
-                                        <a href="/fav/detail">
-                                            @foreach ($fav->units as  $unit)
-                                            <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail" alt=""
-                                                width="360" height="120">
-                                            @endforeach
-                                        </a>
-                                        <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
+                    @foreach ($favorites as $unit)
+                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                            style="max-width:330px; margin: 20px;">
+                            {{-- <a href="/unit/{{ $unit->id }}" class="stretched-link"></a> --}}
+                            <div class="property-item rounded overflow-hidden" style="width: 290px;">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail" alt=""
+                                        style="width: 280px; height:190px;">
+                                    <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                        @csrf
+                                        <div class="btnsz"
+                                            style="position: absolute; top: 18px; right: 20px; z-index: 100;">
                                             <button type="submit" onclick="Toggle1()" id="btnh1z" class="btnz"><i
-                                                class="fas fa-heart"></i></button>
+                                                    class="fas fa-heart"></i></button>
                                         </div>
-                                    </div>
-                                    <div class="bg-white rounded-top position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                        style="color: #0C40E8">
-                                        @foreach ($fav->units as $unit)
-                                            <div>{{ $unit->title }}</div>
+                                    </form>
+                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                        style="background-color: #0C40E8">
+                                        @foreach ($unit->statuses as $status)
+                                            <li>
+                                                {{ $status->name }}
+                                            </li>
                                         @endforeach
                                     </div>
+                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                        style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
+
+                                </div>
                                 <div class="p-0 pb-0">
-                                    @foreach ($fav->units as $unit)
-                                        <h5 class="mb-1 mt-3" style="color: #000;">
-                                            {{ $unit->price }}
-                                        </h5>
-                                    @endforeach
-                                    @foreach ($fav->units as $unit)
-                                        <a class="d-block h6 mb-2" style="color: #000;" href="/fav->units/detail">
-                                            {{ $unit->properties->property }}
-                                        </a>
-                                    @endforeach
-                                    <p><i class="fa fa-map-marker-alt me-2" style="color: #000;"></i>
-                                        Jawa Tengah, Semarang, Kedurungan
+                                    <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                    <h6 class=" mb-1 mt-3" style="color: #000;">
+                                        {{ $unit->title }}</h6>
+
+                                    <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                        {{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
                                     </p>
                                 </div>
                                 <div class="d-flex border-top" style="width: 280px; ">
-                                    @foreach ($fav->units as $unit)
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
-                                                class="fa fa-bath me-2"></i>
-                                            {{ $unit->specifications->bathroom }}
-                                        </small>
-                                    @endforeach
-                                    @foreach ($fav->units as $unit)
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
-                                                class="fa fa-bed me-2"></i>
-                                            {{ $unit->specifications->bedroom }}
-                                        </small>
-                                    @endforeach
-                                    @foreach ($fav->units as $unit)
-                                        <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
-                                                class="fa fa-ruler-combined me-2"></i>
-                                            {{ $unit->specifications->building_area }}m²
-                                        </small>
-                                    @endforeach
-                                    @foreach ($fav->units as $unit)
-                                        <small class="flex-fill text-center py-2" style="color: #000;"><i class="fa fa-signal me-2"></i>
-                                            {{ $unit->specifications->floor }}m²
-                                        </small>
-                                    @endforeach
+                                    <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                            class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                    <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                            class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                    <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
+                                            class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                    <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                 </div>
                             </div>
+                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
                         </div>
                     @endforeach
 
@@ -143,10 +128,10 @@
 
 
 
-                
-                
 
-                
+
+
+
                     {{-- @endforeach --}}
 
 

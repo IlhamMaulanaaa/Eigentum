@@ -1,41 +1,43 @@
 @extends('admin.layout.main')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
-    <script>
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
+    <!DOCTYPE html>
+    <html lang="en">
 
-        var pusher = new Pusher('89c847f5725f13be7343', {
-            cluster: 'ap1'
-        });
-        var channel = pusher.subscribe('admin-notifications');
-        channel.bind('user-registered', function(data) {
-            // var notification = new Notification(data.message);
-            toastr.success(JSON.stringify(data.name) + ' has registered');
-            // xhr = $.ajax({
-            //     method : 'post',
-            //     url : '/admin/notifications',
-            //     success : function(response){
-            //         // toastr.success(data.name + ' has registered');
-            //         $('.notification-list').html(response);
-            //     }
-            // })
-        });
-    </script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        <script>
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
 
-<body>
+            var pusher = new Pusher('a3e94a0716cd0fa810d5', {
+                cluster: 'ap1'
+            });
+            var channel = pusher.subscribe('admin-notifications');
+            channel.bind('user-registered', function(data) {
+                // var notification = new Notification(data.message);
+                toastr.success(JSON.stringify(data.name) + ' has registered');
+                // xhr = $.ajax({
+                //     method : 'post',
+                //     url : '/admin/notifications',
+                //     success : function(response){
+                //         // toastr.success(data.name + ' has registered');
+                //         $('.notification-list').html(response);
+                //     }
+                // })
+            });
+        </script>
+    </head>
+
+    <body>
         <main class="content p-0">
             <div class="container-fluid p-0">
 
@@ -59,13 +61,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <h1 class="mt-1 mb-3">{{$unitCount}}</h1>
+                                            <h1 class="mt-1 mb-3">{{ $unitCount }}</h1>
                                             <div class="mb-0">
                                                 <span class="text-danger"> <i class="mdi mdi-arrow-bottom-right"></i> -2.25%
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
-                                            <a href="{{route('unit.index')}}" class="stretched-link"></a>
+                                            <a href="{{ route('unit.index') }}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -87,9 +89,9 @@
                                                 <span class="text-muted">Since last week</span>
                                             </div>
                                         </div>
-                                        <a href="{{route('developer.index')}}" class="stretched-link"></a>
+                                        <a href="{{ route('developer.index') }}" class="stretched-link"></a>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="card">
@@ -110,7 +112,7 @@
                                                 </span>
                                                 <span class="text-muted">Since last week</span>
                                             </div>
-                                            <a href="{{route('property.index')}}" class="stretched-link"></a>
+                                            <a href="{{ route('property.index') }}" class="stretched-link"></a>
                                         </div>
                                     </div>
                                     <div class="card">
@@ -344,237 +346,236 @@
                 </div>
             </div>
         </footer>
-        
-    <script src="js/admin/app.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-            var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-            gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-            gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-            // Line chart
-            new Chart(document.getElementById("chartjs-dashboard-line"), {
-                type: "line",
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-                        "Dec"
-                    ],
-                    datasets: [{
-                        label: "Sales ($)",
-                        fill: true,
-                        backgroundColor: gradient,
-                        borderColor: window.theme.primary,
-                        data: [
-                            2115,
-                            1562,
-                            1584,
-                            1892,
-                            1587,
-                            1923,
-                            2566,
-                            2448,
-                            2805,
-                            3438,
-                            2917,
-                            3327
-                        ]
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
+        <script src="js/admin/app.js"></script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
+                var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+                gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+                gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+                // Line chart
+                new Chart(document.getElementById("chartjs-dashboard-line"), {
+                    type: "line",
+                    data: {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
+                            "Dec"
+                        ],
+                        datasets: [{
+                            label: "Sales ($)",
+                            fill: true,
+                            backgroundColor: gradient,
+                            borderColor: window.theme.primary,
+                            data: [
+                                2115,
+                                1562,
+                                1584,
+                                1892,
+                                1587,
+                                1923,
+                                2566,
+                                2448,
+                                2805,
+                                3438,
+                                2917,
+                                3327
+                            ]
+                        }]
                     },
-                    tooltips: {
-                        intersect: false
+                    options: {
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            intersect: false
+                        },
+                        hover: {
+                            intersect: true
+                        },
+                        plugins: {
+                            filler: {
+                                propagate: false
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                reverse: true,
+                                gridLines: {
+                                    color: "rgba(0,0,0,0.0)"
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    stepSize: 1000
+                                },
+                                display: true,
+                                borderDash: [3, 3],
+                                gridLines: {
+                                    color: "rgba(0,0,0,0.0)"
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Pie chart
+                new Chart(document.getElementById("chartjs-dashboard-pie"), {
+                    type: "pie",
+                    data: {
+                        labels: ["Chrome", "Firefox", "IE"],
+                        datasets: [{
+                            data: [4306, 3801, 1689],
+                            backgroundColor: [
+                                window.theme.primary,
+                                window.theme.warning,
+                                window.theme.danger
+                            ],
+                            borderWidth: 5
+                        }]
                     },
-                    hover: {
-                        intersect: true
+                    options: {
+                        responsive: !window.MSInputMethodContext,
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        cutoutPercentage: 75
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Bar chart
+                new Chart(document.getElementById("chartjs-dashboard-bar"), {
+                    type: "bar",
+                    data: {
+                        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
+                            "Dec"
+                        ],
+                        datasets: [{
+                            label: "This year",
+                            backgroundColor: window.theme.primary,
+                            borderColor: window.theme.primary,
+                            hoverBackgroundColor: window.theme.primary,
+                            hoverBorderColor: window.theme.primary,
+                            data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+                            barPercentage: .75,
+                            categoryPercentage: .5
+                        }]
                     },
-                    plugins: {
-                        filler: {
-                            propagate: false
+                    options: {
+                        maintainAspectRatio: false,
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            yAxes: [{
+                                gridLines: {
+                                    display: false
+                                },
+                                stacked: false,
+                                ticks: {
+                                    stepSize: 20
+                                }
+                            }],
+                            xAxes: [{
+                                stacked: false,
+                                gridLines: {
+                                    color: "transparent"
+                                }
+                            }]
+                        }
+                    }
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var markers = [{
+                        coords: [31.230391, 121.473701],
+                        name: "Shanghai"
+                    },
+                    {
+                        coords: [28.704060, 77.102493],
+                        name: "Delhi"
+                    },
+                    {
+                        coords: [6.524379, 3.379206],
+                        name: "Lagos"
+                    },
+                    {
+                        coords: [35.689487, 139.691711],
+                        name: "Tokyo"
+                    },
+                    {
+                        coords: [23.129110, 113.264381],
+                        name: "Guangzhou"
+                    },
+                    {
+                        coords: [40.7127837, -74.0059413],
+                        name: "New York"
+                    },
+                    {
+                        coords: [34.052235, -118.243683],
+                        name: "Los Angeles"
+                    },
+                    {
+                        coords: [41.878113, -87.629799],
+                        name: "Chicago"
+                    },
+                    {
+                        coords: [51.507351, -0.127758],
+                        name: "London"
+                    },
+                    {
+                        coords: [40.416775, -3.703790],
+                        name: "Madrid "
+                    }
+                ];
+                var map = new jsVectorMap({
+                    map: "world",
+                    selector: "#world_map",
+                    zoomButtons: true,
+                    markers: markers,
+                    markerStyle: {
+                        initial: {
+                            r: 9,
+                            strokeWidth: 7,
+                            stokeOpacity: .4,
+                            fill: window.theme.primary
+                        },
+                        hover: {
+                            fill: window.theme.primary,
+                            stroke: window.theme.primary
                         }
                     },
-                    scales: {
-                        xAxes: [{
-                            reverse: true,
-                            gridLines: {
-                                color: "rgba(0,0,0,0.0)"
-                            }
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                stepSize: 1000
-                            },
-                            display: true,
-                            borderDash: [3, 3],
-                            gridLines: {
-                                color: "rgba(0,0,0,0.0)"
-                            }
-                        }]
-                    }
-                }
+                    zoomOnScroll: false
+                });
+                window.addEventListener("resize", () => {
+                    map.updateSize();
+                });
             });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Pie chart
-            new Chart(document.getElementById("chartjs-dashboard-pie"), {
-                type: "pie",
-                data: {
-                    labels: ["Chrome", "Firefox", "IE"],
-                    datasets: [{
-                        data: [4306, 3801, 1689],
-                        backgroundColor: [
-                            window.theme.primary,
-                            window.theme.warning,
-                            window.theme.danger
-                        ],
-                        borderWidth: 5
-                    }]
-                },
-                options: {
-                    responsive: !window.MSInputMethodContext,
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    },
-                    cutoutPercentage: 75
-                }
+        </script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
+                var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
+                document.getElementById("datetimepicker-dashboard").flatpickr({
+                    inline: true,
+                    prevArrow: "<span title=\"Previous month\">&laquo;</span>",
+                    nextArrow: "<span title=\"Next month\">&raquo;</span>",
+                    defaultDate: defaultDate
+                });
             });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Bar chart
-            new Chart(document.getElementById("chartjs-dashboard-bar"), {
-                type: "bar",
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov",
-                        "Dec"
-                    ],
-                    datasets: [{
-                        label: "This year",
-                        backgroundColor: window.theme.primary,
-                        borderColor: window.theme.primary,
-                        hoverBackgroundColor: window.theme.primary,
-                        hoverBorderColor: window.theme.primary,
-                        data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-                        barPercentage: .75,
-                        categoryPercentage: .5
-                    }]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                        yAxes: [{
-                            gridLines: {
-                                display: false
-                            },
-                            stacked: false,
-                            ticks: {
-                                stepSize: 20
-                            }
-                        }],
-                        xAxes: [{
-                            stacked: false,
-                            gridLines: {
-                                color: "transparent"
-                            }
-                        }]
-                    }
-                }
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var markers = [{
-                    coords: [31.230391, 121.473701],
-                    name: "Shanghai"
-                },
-                {
-                    coords: [28.704060, 77.102493],
-                    name: "Delhi"
-                },
-                {
-                    coords: [6.524379, 3.379206],
-                    name: "Lagos"
-                },
-                {
-                    coords: [35.689487, 139.691711],
-                    name: "Tokyo"
-                },
-                {
-                    coords: [23.129110, 113.264381],
-                    name: "Guangzhou"
-                },
-                {
-                    coords: [40.7127837, -74.0059413],
-                    name: "New York"
-                },
-                {
-                    coords: [34.052235, -118.243683],
-                    name: "Los Angeles"
-                },
-                {
-                    coords: [41.878113, -87.629799],
-                    name: "Chicago"
-                },
-                {
-                    coords: [51.507351, -0.127758],
-                    name: "London"
-                },
-                {
-                    coords: [40.416775, -3.703790],
-                    name: "Madrid "
-                }
-            ];
-            var map = new jsVectorMap({
-                map: "world",
-                selector: "#world_map",
-                zoomButtons: true,
-                markers: markers,
-                markerStyle: {
-                    initial: {
-                        r: 9,
-                        strokeWidth: 7,
-                        stokeOpacity: .4,
-                        fill: window.theme.primary
-                    },
-                    hover: {
-                        fill: window.theme.primary,
-                        stroke: window.theme.primary
-                    }
-                },
-                zoomOnScroll: false
-            });
-            window.addEventListener("resize", () => {
-                map.updateSize();
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var date = new Date(Date.now() - 5 * 24 * 60 * 60 * 1000);
-            var defaultDate = date.getUTCFullYear() + "-" + (date.getUTCMonth() + 1) + "-" + date.getUTCDate();
-            document.getElementById("datetimepicker-dashboard").flatpickr({
-                inline: true,
-                prevArrow: "<span title=\"Previous month\">&laquo;</span>",
-                nextArrow: "<span title=\"Next month\">&raquo;</span>",
-                defaultDate: defaultDate
-            });
-        });
-    </script>
+        </script>
 
-</body>
-</html>
+    </body>
 
-
+    </html>
 @endsection

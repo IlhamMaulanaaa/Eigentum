@@ -17,7 +17,14 @@ class SubscribeController extends Controller
         
         return view('admin.subscribe.all', compact('subscribes', 'tables'));
     }
-
+    
+    public function indexFront()
+    {
+        $subscribes = Subscribe::all();
+        $tables = (new Subscribe())->getTable();
+        
+        return view('pages.page.subscribe', compact('subscribes', 'tables'));
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -39,9 +46,7 @@ class SubscribeController extends Controller
      */
     public function show(Subscribe $subscribe)
     {
-        // $subscribe = Subscribe::all();
-
-        // return view('admin.subscribe.detail', compact('subscribe'));
+        return view('pages.page.subdetail', compact('subscribe'));
     }
 
     /**

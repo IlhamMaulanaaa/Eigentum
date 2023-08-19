@@ -13,6 +13,7 @@
     },
     "dependencies": {
         "firebase": "^9.21.0",
-        "pdfjs-dist": "^3.7.107"
+        "pdfjs-dist": "^3.7.107",
+        "toastr": "^2.1.4"
     }
 }

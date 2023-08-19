@@ -17,7 +17,14 @@ class OrderController extends Controller
     {
         $orders = Order::all();
         $tables = (new Order())->getTable();
-        return view('admin.order.all', compact('orders', 'tables' ));
+        return view('admin.order.all', compact('orders', 'tables'));
+    }
+
+    public function indexFront()
+    {
+        $orders = Order::all();
+        $tables = (new Order())->getTable();
+        return view('pages.page.confirmpayment', compact('orders', 'tables'));
     }
 
     /**
@@ -33,30 +40,58 @@ class OrderController extends Controller
      */
     public function store(Request $request, $subsId)
     {
-        try{
+        try {
 
-        $data = $request->all();
+            $data = $request->all();
 
-        $subscribe = Subscribe::findOrfail($subsId);
+            $subscribe = Subscribe::findOrfail($subsId);
 
-        // $request->validate([
-        //     'title' => 'required',
-        //     'price' => 'required',
-        // ]);
+            // $request->validate([
+            //     'title' => 'required',
+            //     'price' => 'required',
+            // ]);
 
-        $order = Order::create([
-            'invoice' => $subscribe->title,
-            'number' => substr($subscribe->id . uniqid(), 0, 16),
-            'total_price' => $subscribe->price,
-            'payment_status' => 1,
-            'user_id' => Auth::user()->id,
-            'subscribe_id' => $subscribe->id, 
-        ]);
+            $order = Order::create([
+                'invoice' => $subscribe->title,
+                'number' => substr($subscribe->id . uniqid(), 0, 16),
+                'total_price' => $subscribe->price,
+                'payment_status' => 1,
+                'user_id' => Auth::user()->id,
+                'subscribe_id' => $subscribe->id,
+            ]);
 
-        return redirect()->route('order.index');
-    } catch (\Exception $e) {
-        return $e;
+            return redirect()->route('order.index');
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
+
+    public function storeFront(Request $request, $subsId)
+    {
+        try {
+
+            $data = $request->all();
+
+            $subscribe = Subscribe::findOrfail($subsId);
+
+            // $request->validate([
+            //     'title' => 'required',
+            //     'price' => 'required',
+            // ]);
+
+            $order = Order::create([
+                'invoice' => $subscribe->title,
+                'number' => substr($subscribe->id . uniqid(), 0, 16),
+                'total_price' => $subscribe->price,
+                'payment_status' => 1,
+                'user_id' => Auth::user()->id,
+                'subscribe_id' => $subscribe->id,
+            ]);
+
+            return redirect()->route('detailorder');;
+        } catch (\Exception $e) {
+            return $e;
+        }
     }
 
     /**
@@ -76,6 +111,22 @@ class OrderController extends Controller
         }
 
         return view('admin.order.detail', compact('order', 'snapToken'));
+    }
+
+    public function showFront(Order $order)
+    {
+        $snapToken = $order->snap_token;
+        if (empty($snapToken)) {
+            // Jika snap token masih NULL, buat token snap dan simpan ke database
+
+            $midtrans = new CreateSnapTokenService($order);
+            $snapToken = $midtrans->getSnapToken();
+
+            $order->snap_token = $snapToken;
+            $order->save();
+        }
+
+        return view('pages.page.order', compact('order', 'snapToken'));
     }
 
     /**

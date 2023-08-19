@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Favorite;
 use App\Models\Unit;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -13,9 +15,13 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        $favorite = Favorite::all();
+
+        $user = Auth::user();
+
+        // Mengambil daftar favorit untuk pengguna
+        $favorites = $user->units;
         // dd($favorite);
-        return view('pages.page.favorite',compact('favorite'));
+        return view('pages.page.favorite', compact('favorites'));
     }
 
     /**
@@ -33,11 +39,11 @@ class FavoriteController extends Controller
     {
         $unit = Unit::find($id);
         $user = auth()->user();
-        
+
         $unit->users()->attach($user->id);
         session()->flash('success', 'unit is Added to Favorite Successfully !');
 
-        return redirect()->route('unit.index');
+        return redirect('/beranda');
     }
 
     /**
@@ -45,7 +51,6 @@ class FavoriteController extends Controller
      */
     public function show(string $id)
     {
-        
     }
 
     /**

@@ -50,10 +50,10 @@ class Unit extends Model
         return $this->belongsToMany(Status::class, 'unit_status', 'unit_id', 'status_id');
     }
 
-    public function favorites()
-{
-    return $this->belongsToMany(Favorite::class);
-}
+    //     public function favorites()
+    // {
+    //     return $this->belongsToMany(Favorite::class, 'favorites', 'user_id', 'unit_id');
+    // }
 
 
 
@@ -92,7 +92,7 @@ class Unit extends Model
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where('title', 'like', '%' . $search . '%')
-                ->orWhere('description','like','%'.$search.'%')
+                ->orWhere('description', 'like', '%' . $search . '%')
                 ->orWhere('price', 'like', '%' . $search . '%');
         });
 
@@ -117,7 +117,7 @@ class Unit extends Model
                 $query->where('id', $statuses);
             });
         });
-        
+
 
         $query->when($filters['types'] ?? false, function ($query, $types) {
             return $query->whereHas('properties.types', function ($query) use ($types) {
@@ -165,6 +165,6 @@ class Unit extends Model
             [$minPrice, $maxPrice] = explode('-', $price_range);
 
             $query->whereBetween('price', [$minPrice, $maxPrice]);
-        });        
+        });
     }
 }

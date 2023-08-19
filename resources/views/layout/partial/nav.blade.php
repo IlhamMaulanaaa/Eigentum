@@ -39,6 +39,7 @@
 
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li><a href="/beranda">Beranda</a></li>
+                    <li><a href="/filterproperti">Properti</a></li>
                     <li><a href="/pages/searchagent">Cari Agen</a></li>
                     <li><a href="/pages/guide">Panduan</a></li>
                     <li><a href="/pages/kpr">KPR</a></li>
@@ -54,7 +55,7 @@
                     </div>
                     {{ Auth()->user()->name }}
 
-                    
+
 
                     <div class="menu-profileq">
                         <h3>
@@ -67,7 +68,7 @@
                         <ul style="margin: 0; padding:0;">
                             <li>
                                 <span class="material-icons icons-size">person</span>
-                                <a href="/developer/profile">Pengaturan Profile user</a>
+                                <a href="/developer/profile">Profile</a>
                             </li>
                             <li>
                                 <span class="material-icons icons-size">monetization_on</span>
@@ -75,16 +76,26 @@
                             </li>
                             <li>
                                 <span class="material-icons icons-size">favorite</span>
-                                <a href="/favorite">yang di sukai</a>
+                                <a href="/favorite">disukai</a>
                             </li>
-                            <li>
-                                <span class="material-icons icons-size">business_center</span>
-                                <a href="/developer/dashboard/">developer</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">business_center</span>
-                                <a href="/admin/dashboard/">Admin</a>
-                            </li>
+                            @if (Auth::user()->role == "agent")
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="/agent/dashboard/">Agent</a>
+                                </li>
+                            @elseif (Auth::user()->role == "developer")
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="/developer/dashboard/">Developer</a>
+                                </li>
+                            @elseif (Auth::user()->role == "admin")
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="/admin/dashboard/">Admin</a>
+                                </li>
+                            @endif
+                            
+                            
                             <li>
                                 <span class="material-icons icons-size">exit_to_app</span>
                                 <a href="/session/auth/user/signout">Logout</a>
@@ -149,58 +160,58 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-    const menuProfile = document.querySelector('.profileq');
-    const menu = document.querySelector('.menu-profileq');
-    const body = document.querySelector("body");
-    const nav = document.querySelector("nav");
-    const sidebarOpenq = document.querySelector(".sidebarOpenq");
+            const menuProfile = document.querySelector('.profileq');
+            const menu = document.querySelector('.menu-profileq');
+            const body = document.querySelector("body");
+            const nav = document.querySelector("nav");
+            const sidebarOpenq = document.querySelector(".sidebarOpenq");
 
-    if (menuProfile && menu) {
-        menuProfile.addEventListener('click', function(event) {
-            event.stopPropagation();
-            menu.classList.toggle('active');
-        });
+            if (menuProfile && menu) {
+                menuProfile.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                    menu.classList.toggle('active');
+                });
 
-        document.addEventListener('click', function() {
-            menu.classList.remove('active');
-        });
+                document.addEventListener('click', function() {
+                    menu.classList.remove('active');
+                });
 
-        menu.addEventListener('click', function(event) {
-            event.stopPropagation();
-        });
-    }
-
-    if (body && nav && sidebarOpenq) {
-        sidebarOpenq.addEventListener("click", () => {
-            nav.classList.add("active");
-        });
-
-        body.addEventListener("click", e => {
-            let clickedElm = e.target;
-
-            if (!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains("menuq")) {
-                nav.classList.remove("active");
+                menu.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
             }
-        });
-    }
 
-    // Continue with your other code...
+            if (body && nav && sidebarOpenq) {
+                sidebarOpenq.addEventListener("click", () => {
+                    nav.classList.add("active");
+                });
 
-    $(document).ready(function() {
-        $(".notifications .icon_wrap").click(function(event) {
-            $(this).parent().toggleClass("active");
-            $(".profileq").removeClass("active");
-            event.stopPropagation();
-        });
+                body.addEventListener("click", e => {
+                    let clickedElm = e.target;
 
-        $(document).click(function(event) {
-            if (!$(event.target).closest('.notifications').length) {
-                $('.notifications').removeClass("active");
+                    if (!clickedElm.classList.contains("sidebarOpenq") && !clickedElm.classList.contains(
+                            "menuq")) {
+                        nav.classList.remove("active");
+                    }
+                });
             }
-        });
-    });
-});
 
+            // Continue with your other code...
+
+            $(document).ready(function() {
+                $(".notifications .icon_wrap").click(function(event) {
+                    $(this).parent().toggleClass("active");
+                    $(".profileq").removeClass("active");
+                    event.stopPropagation();
+                });
+
+                $(document).click(function(event) {
+                    if (!$(event.target).closest('.notifications').length) {
+                        $('.notifications').removeClass("active");
+                    }
+                });
+            });
+        });
     </script>
 </body>
 

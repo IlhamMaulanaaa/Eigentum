@@ -38,7 +38,7 @@ Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::get('/', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
-Route::get('/beranda', [UnitController::class, 'homeunit']);
+Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda');
 Route::post('/createL', [AuthController::class, 'login']);
 Route::post('/createR', [AuthController::class, 'register']);
 
@@ -108,18 +108,7 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
         });
     });
 });
-// Route::group(['prefix' => '/property'], function () {
-//     Route::get('/upload/{developerId}', [PropertyController::class, 'createFront']);
 
-
-//     Route::get('/detail', function () {
-//         return view('pages.property.detail');
-//     });
-
-//     Route::get('/edit', function () {
-//         return view('pages.property.edit');
-//     });
-// });
 // unit
 Route::group(['prefix' => '/unit'], function () {
     Route::get('/upload', function () {
@@ -138,16 +127,13 @@ Route::group(['prefix' => '/unit'], function () {
 
 
 // agent
-// Route::middleware(['auth', 'IsAgent'])->group(function () {
 Route::group(['prefix' => '/agent'], function () {
     Route::get('/dashboard/{agent}', [AgentController::class, 'detailagent'])->name('agent.dashboard');
 });
 
 
-// });
 
 
-// Route::get('/home', [UnitController::class, 'homeunit']);
 
 // pages
 Route::group(['prefix' => '/pages'], function () {
@@ -175,20 +161,23 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/kpr', function () {
         return view('pages.page.kpr');
     });
-    Route::get('/langganan', function () {
-        return view('pages.page.subscribe');
-    });
+    Route::get('/langganan', [SubscribeController::class, 'indexFront']);
+    Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
+    Route::post('/addtoorder/{subsId}', [OrderController::class, 'storeFront'])->name('subscribeid.store'); //masuk sub ke order
+    Route::get('/detailorder/{subsId}', [OrderController::class, 'showFront'])->name('detailorder'); //detail order
+    // Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
+
     Route::get('/notifikasi', function () {
         return view('pages.page.notification');
     });
 });
 
 
-Route::get('/filterproperti', [UnitController::class, 'filter'])->name('filterproperti');;
+Route::get('/filterproperti', [UnitController::class, 'filterFront'])->name('filterproperti');;
 
-Route::get('/konfirmasipembayaran', function () {
-    return view('pages.page.confirmpayment');
-});
+// Route::get('/konfirmasipembayaran', function () {
+//     return view('pages.page.confirmpayment');
+// });
 
 
 
@@ -224,21 +213,6 @@ Route::group(['prefix' => '/unit'], function () {
 
 //  admin
 
-// Route::group(['prefix' => '/admin'], function () {
-//     Route::group(['prefix' => '/session'], function () {
-//         Route::get('/signout', [SessionController::class, 'signout']);
-
-//         Route::group(['prefix' => '/signin'], function () {
-//             Route::get('/', [SessionController::class, 'signin'])->name('login')->middleware('guest');
-//             Route::post('/create', [SessionController::class, 'postSignin']);
-//         });
-
-//         route::group(['prefix' => '/signup'], function () {
-//             Route::get('/', [SessionController::class, 'signup'])->middleware('guest');
-//             Route::post('/create', [SessionController::class, 'postSignup']);
-//         });
-//     });
-// });
 Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 
 
@@ -269,7 +243,7 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::resource('order', OrderController::class);
         Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
 
-        // Route::post('/subscribe/{id}', [SubscribeController::class, 'show'])->name('subscribe.show');
+        // Route::post('/subscribe/{id}', [`SubscribeController::class, 'show'])->name('subscribe.show');
         Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
     });
 
