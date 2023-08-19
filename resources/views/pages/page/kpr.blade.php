@@ -67,63 +67,7 @@
 
 
 
-    <div class="divstyle_ui-section-mortgage-program__w4KnT">
-        <span class="Program-Kredit-Terbaru" style="margin-bottom: 1px;">
-            Program Kredit Terbaru
-        </span>
-        <div class="divstyle_programs__TLWft" style="display: flex; align-items:center; justify-content:center">
-            <div class="npmren row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card h-100 shadow bg-body rounded border-0">
-                        <span class="input-group-text border-0" id="inputGroupPrepend">
-                            <img src="/assets/pages/kpr/Frame 481.png" alt="">
-                        </span>
-                        <div class="card-body border-0"
-                            style="display: flex; flex-direction: column; background-color:#fff;  align-items: center; padding-top: -100px;">
-                            <span class="BNI">BNI</span>
-                            <span class="BNII">BNI</span>
-                            <span class="Bunga">Bunga</span>
-                            <span class="nchan">3.76%</span>
-                            <button class="cuks btn btn-primary pt-2 px-4 " style="background-color: #0C40E8" type="submit">AJUKAN</button>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow bg-body rounded border-0">
-                        <span class="input-group-text border-0" id="inputGroupPrepend">
-                            <img src="/assets/pages/kpr/mandiray.png" alt="">
-                        </span>
-                        <div class="card-body border-0"
-                            style="display: flex; flex-direction: column; background-color:#fff; align-items: center; padding-top: -100px;">
-                            <span class="BNI">Mandiri</span>
-                            <span class="BNII">KPR Bunga Special Secondary</span>
-                            <span class="Bunga">Bunga</span>
-                            <span class="nchan">3.65%</span>
-                            <button class="cuks btn btn-primary pt-2 px-4 "  style="background-color: #0C40E8" type="submit">AJUKAN</button>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 shadow bg-body rounded border-0">
-                        <span class="input-group-text border-0" id="inputGroupPrepend">
-                            <img src="/assets/pages/kpr/Frame 479.png" alt="">
-                        </span>
-                        <div class="card-body border-0"
-                            style="display: flex; flex-direction: column; background-color:#fff; align-items: center; padding-top: -100px;">
-                            <span class="BNI">BTN</span>
-                            <span class="BNII">KPR BTN Platinum Secondary</span>
-                            <span class="Bunga">Bunga</span>
-                            <span class="nchan">1.99%</span>
-                            <button class="cuks btn btn-primary pt-2 px-4 " style="background-color: #0C40E8" type="submit">AJUKAN</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.2/dist/chart.min.js"></script>
 

@@ -43,9 +43,9 @@
     <body>
 
         <!-- Start Header -->
-        <div class="fables-header fables-after-overlay bg-rules">
+        <div class="fables-header fables-after-overlay bg-rules" style="margin-top: 70px;">
             <div class="container">
-                <h2 class="fables-page-title fables-second-border-color wow fadeInLeft" data-wow-duration="1.5s">Panduan KPR
+                <h2 class="fables-page-title fables-second-border-color wow fadeInLeft" data-wow-duration="1.5s">Panduan SP3K
                 </h2>
             </div>
         </div>
@@ -56,13 +56,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <dnv aria-label="breadcrumb">
+                        <div aria-label="breadcrumb">
                             <ol class="fables-breadcrumb breadcrumb px-0 py-3">
                                 <li class="breadcrumb-item"><a href="#" class="fables-second-text-color">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Panduan</li>
                                 <li class="breadcrumb-item active" aria-current="page">Panduan SP3K</li>
                             </ol>
-                        </dnv>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -258,115 +258,7 @@
 
                 </div>
             </div>
-            <div class="row mb-lg-4">
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay=".4s">
-                    <div class="img-contain image-container rotateOut-effect" style="background-color: #0C40E8;">
-                        <img src="assets/custom/images/blog-cat1.jpg" alt="" class="w-100">
-
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay=".8s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat2.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="1.2s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat3.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="1.6s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat4.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="2s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat5.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="2.4s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat6.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="2.8s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat3.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 wow fadeIn" data-wow-delay="3.2s">
-                    <div class="img-contain image-container rotateOut-effect">
-                        <img src="assets/custom/images/blog-cat4.jpg" alt="" class="w-100">
-                        <div class="fables-blog-details-overlay fables-second-color-transparent p-3 d-flex flex-column justify-content-end align-items-center"
-                            style="background-color: rgba(12, 64, 232, 0.5);">
-                            <h2 class="mt-6 border-bottom font-18 semi-font pb-2"><a href="#"
-                                    class="white-color white-color-hover">Lorem ipsum dolor</a></h2>
-                            <p class="font-14 my-2 text-white">
-                                sit amet, consectet
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+            
 
 
 

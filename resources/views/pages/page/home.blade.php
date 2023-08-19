@@ -78,7 +78,7 @@
                             <div class="segera-miliki-properti-impianmu-AUF" data-aos="fade-down" id="4:7167">Segera
                                 Miliki Properti Impianmu
                             </div>
-                            <div class="temukan-pilihan-properti-terbaik-untuk-investasi-atau-tempat-tinggal-di-website-kami-dari-apartemen-hingga-rumah-mewah-rdu"
+                            <div class="text-header-home"
                                 id="4:7168" data-aos="fade-up">Temukan pilihan properti terbaik untuk investasi atau
                                 tempat tinggal di
                                 website kami, dari apartemen hingga rumah mewah.</div>
@@ -86,7 +86,7 @@
                     </div>
 
                     <div class="filter-jualsewa" style="margin-top: 400px;">
-                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                        <form class="header-jualsewa" action="{{ route('filterproperti') }}" method="GET" role="search">
                             <input type="hidden" name="status" id="status" value="">
                             <button type="submit" class="jualsewa" data-status="{{ $status->pluck('id')->first() }}"
                                 onclick="setStatus('dijual')">Dijual</button>
@@ -102,8 +102,10 @@
                                 <div class="frame-61-qi7" id="4:7172">
                                     <div class="select-menu2">
                                         <div class="select-btn2">
-                                            <span class="sBtn-text2" style="cursor: pointer;">Semua Properti</span>
-                                            <i class="bx bx-chevron-down"></i>
+                                            <span class="sBtn-text2" style="cursor: pointer; ">Semua Properti</span>
+                                            <div class="drop-semuaproperti">
+                                                <i class=" bx bx-chevron-down" style=""></i>
+                                            </div>
                                         </div>
                                         <ul class="options2">
                                             <li class="option2">
@@ -131,7 +133,9 @@
                                     <div class="select-menu3">
                                         <div class="select-btn3">
                                             <span class="sBtn-text3" style="cursor: pointer;">Kamar Tidur</span>
-                                            <i class="bx bx-chevron-down"></i>
+                                            <div class="drop-kamartidur">
+                                            <i class="bx bx-chevron-down" ></i>
+                                            </div>
                                         </div>
 
                                         <ul class="options3">
@@ -158,7 +162,9 @@
                                     <div class="select-menu4">
                                         <div class="select-btn4">
                                             <span class="sBtn-text4" style="cursor: pointer;">Kamar Mandi</span>
-                                            <i class="bx bx-chevron-down"></i>
+                                            <div class="drop-kamarmandi">
+                                            <i class="bx bx-chevron-down" ></i>
+                                            </div>
                                         </div>
 
                                         <ul class="options4">
@@ -265,8 +271,8 @@
                     </div>
                     <div class="group-77-FDR" id="4:7198">
                         <div class="rumahBaru">
-                            <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Rumah Terbaru</div>
-                            <p>Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan apartemen bergaya </p>
+                            <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Unit Terbaru</div>
+                            <p id="subtexthome">Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan apartemen bergaya </p>
                         </div>
 
                         <div class="slide-container swiper" style="margin-bottom: 0px;">
@@ -275,12 +281,12 @@
                                     @foreach ($units as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
-                                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
-                                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                            {{-- <a href="/unit/{{ $unit->id }}" class="stretched-link"></a> --}}
+                                            <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                                 <div class="position-relative overflow-hidden">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
-                                                        class="img-thumbnail" alt="" width="360"
-                                                        height="120">
+                                                        class="img-thumbnail" alt="" style="width: 280px; height:190px;"
+                                                        >
                                                     <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
                                                         @csrf
                                                         <div class="btnsz"
@@ -334,13 +340,12 @@
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
                                             <a href="/unit/detail" class="stretched-link"></a>
-                                            <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                            <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                                 <div class="position-relative overflow-hidden">
                                                     {{-- <a href="/unit/detail"> --}}
                                                     <a href="{{ route('unit.detail', $unit->id) }}">
                                                         <img src="{{ asset('storage/' . $unit->image) }}"
-                                                            class="img-thumbnail" alt="" width="360"
-                                                            height="120">
+                                                            class="img-thumbnail" alt=""  style="width: 280px; height:190px;">
                                                         {{-- </a> --}}
                                                         {{-- <a href=""></a> --}}
                                                         <form action="{{ route('favorite.add', $unit->id) }}"
@@ -395,99 +400,141 @@
                 <div class="eigentum-2-dYK" id="4:7201">
                 </div>
 
+                <div class="group-77-FDR" id="4:7198">
+                    <div class="rumahBaru">
+                        <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Properti Terbaru</div>
+                        <p id="subtexthome">Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan apartemen bergaya </p>
+                    </div>
+
+                    <div class="slide-container swiper" style="margin-bottom: 0px;">
+                        <div class="slide-content">
+                            <div class="card-wrapper swiper-wrapper">
+                                @foreach ($units as $unit)
+                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                                        style="max-width:330px; margin: 20px;">
+                                        {{-- <a href="/unit/{{ $unit->id }}" class="stretched-link"></a> --}}
+                                        <div class="property-item rounded overflow-hidden" style="width: 290px;">
+                                            <div class="position-relative overflow-hidden">
+                                                <img src="{{ asset('storage/' . $unit->image) }}"
+                                                    class="img-thumbnail" alt="" style="width: 280px; height:190px;"
+                                                    >
+                                                <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="btnsz"
+                                                        style="position: absolute; top: 18px; right: 20px;">
+                                                        <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                            class="btnz"><i class="fas fa-heart"></i></button>
+                                                    </div>
+                                                </form>
+                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                    style="background-color: #0C40E8">
+                                                    @foreach ($unit->statuses as $status)
+                                                        <li>
+                                                            {{ $status->name }}
+                                                        </li>
+                                                    @endforeach
+                                                </div>
+                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                    style="color: #0C40E8">{{ $unit->title }}</div>
+                                            </div>
+                                            <div class="p-0 pb-0">
+                                                <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                                {{ $unit->properties->property }}
+                                                {{-- <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                                    {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</p> --}}
+                                            </div>
+                                            <div class="d-flex border-top" style="width: 280px; ">
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                        class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="slide-container swiper" style="margin-bottom: 0px;">
+                        <div class="slide-content">
+                            <div class="card-wrapper swiper-wrapper">
+                                @foreach ($units as $unit)
+                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                                        style="max-width:330px; margin: 20px;">
+                                        <a href="/unit/detail" class="stretched-link"></a>
+                                        <div class="property-item rounded overflow-hidden" style="width: 290px;">
+                                            <div class="position-relative overflow-hidden">
+                                                {{-- <a href="/unit/detail"> --}}
+                                                <a href="{{ route('unit.detail', $unit->id) }}">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt=""  style="width: 280px; height:190px;">
+                                                    {{-- </a> --}}
+                                                    {{-- <a href=""></a> --}}
+                                                    <form action="{{ route('favorite.add', $unit->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="btnsz"
+                                                            style="position: absolute; top: 18px; right: 20px;">
+                                                            <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                                class="btnz"><i class="fas fa-heart"></i></button>
+                                                        </div>
+                                                    </form>
+                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                        style="background-color: #0C40E8">
+                                                        @foreach ($unit->statuses as $status)
+                                                            <li>
+                                                                {{ $status->name }}
+                                                            </li>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                        style="color: #0C40E8">{{ $unit->title }}</div>
+                                                </a>
+                                            </div>
+                                            <div class="p-0 pb-0">
+                                                <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                                {{ $unit->properties->property }}
+                                                <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                                    {{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
+                                            </div>
+                                            <div class="d-flex border-top" style="width: 280px; ">
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                                <small class="flex-fill text-center border-end py-2"
+                                                    style="color: #000;"><i
+                                                        class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                        class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="frame-156-pto" id="4:7196">
 
 
-                    <div class="kenapa-eigentum-UH5" id="4:7574">Kenapa Memilih Eigentum?</div>
+                   
                     <div class="frame-154-NUw" id="4:7572">
-                        <div class="group-98-Wb9" id="4:7573">
-                            <div class="component-106-bsV" id="4:7575">
-
-
-
-
-                                <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
-                                    <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
-                                        <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="/assets/pages/Home/search-keunggulan.svg"
-                                                id="I4:7576;138:2203;119:1189" />
-                                        </div>
-                                        <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
-                                            <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
-                                                <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Kemudahan Pencarian properti</div>
-                                                <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Pengguna bisa dengan mudah mencari
-                                                    properti yang diinginkan dengan fitur pencarian yang lengkap</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
-                                    <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
-                                        <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="/assets/pages/Home/pilihan-keunggulan.svg"
-                                                id="I4:7576;138:2203;119:1189" />
-                                        </div>
-                                        <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
-                                            <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
-                                                <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Lebih Banyak Pilihan</div>
-                                                <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">lebih banyak pilihan properti yang bisa
-                                                    dipilih, mulai dari rumah, apartemen, hingga properti komersial.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
-                                    <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
-                                        <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="/assets/pages/Home/informasi-keunggulan.svg"
-                                                id="I4:7576;138:2203;119:1189" />
-                                        </div>
-                                        <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
-                                            <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
-                                                <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Informasi Lengkap</div>
-                                                <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Informasi lengkap tentang properti yang
-                                                    dijual, mulai dari harga, lokasi, ukuran, fasilitas, dan lain
-                                                    sebagainya.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="divui-atomic-card-WzT" id="I4:7576;138:2203;124:15094">
-                                    <div class="group-88-TPu" id="I4:7576;138:2203;124:15147">
-                                        <div class="group-80-pkF" id="I4:7576;138:2203;124:15088">
-                                            <img class="group-55-yNF" src="/assets/pages/Home/waktu-keunggulan.svg"
-                                                id="I4:7576;138:2203;119:1189" />
-                                        </div>
-                                        <div class="group-87-fVy" id="I4:7576;138:2203;124:15146">
-                                            <div class="group-86-cg7" id="I4:7576;138:2203;124:15145">
-                                                <div class="kemudahan-pencarian-properti-N9V"
-                                                    id="I4:7576;138:2203;119:1188">Efisiensi Waktu dan Biaya </div>
-                                                <div class="pengguna-bisa-dengan-mudah-mencari-properti-yang-diinginkan-dengan-fitur-pencarian-yang-lengkap-3mR"
-                                                    id="I4:7576;138:2203;119:1191">Menghemat waktu untuk mencari properti,
-                                                    tidak perlu mengunjungi lokasi properti secara langsung.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
+                        
                         <!-- Testimonial Start -->
-                        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+                        {{-- <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="container py-5">
                                 <div class="text-center">
                                     <h6 class=" text-uppercase" style="color: #000; font-size:24px;">Testimonial</h6>
@@ -558,9 +605,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Testimonial End -->
-                        <div class="frame-139-CN3" id="4:7580">
+                        {{-- <div class="frame-139-CN3" id="4:7580">
                             <div class="frame-136-8Wb" id="4:7581">
                                 <div class="frame-137-Qyu" id="4:7582">
                                     <div class="group-128-LsZ" id="4:7583">
@@ -630,29 +677,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         </section>
                         <div class="group-146-X7u" id="4:7619">
                             <div class="group-145-UJ3" id="4:7620">
                                 <p class="properti-yang-ada-di-provinsi-indonesia-EY7" id="4:7627">Properti Yang Ada Di
                                     Provinsi Indonesia</p>
-
-
-
-                                {{-- <div class="wrapperpulau">
-                                    <ul class="tabs-box">
-                                        <li class="tab active">Rumah</li>
-                                        <li class="tab">Ruko</li>
-                                        <li class="tab">Apartemen</li>
-                                        <li class="tab">Villa</li>
-                                    </ul>
-                                </div> --}}
-
-
-
-
-
                             </div>
                             <div class="group-144-h6F" id="4:7628">
                                 <div class="group-139-nNb" id="4:7629">
