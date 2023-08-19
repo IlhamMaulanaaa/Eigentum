@@ -21,6 +21,13 @@ class AdminController extends Controller
         $admin = auth()->user();
         return view('admin.profile', compact('admin'));
     }
+    public function notifications()
+    {
+        $user = Auth::user();
+        $notifications = $user->unreadNotifications;
+        
+        return view('admin.notification', compact('notifications'));
+    }
     public function register(Request $request)
     {
         Session::flash('name', $request->name);

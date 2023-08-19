@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agent;
+use App\Models\Developer;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,35 +17,57 @@ class UsersTableSeeder extends Seeder
         $users = [
             [
                 'name' => 'eigentum',
-                'email' => 'admin@gmail.com',
-                'password' => Hash::make('admin123'),
-                'role'=> 'admin',
-                // 'agent_id' => '1'
+                'email' => 'admin@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'admin',
             ],
             [
-                'name' => 'John Doe',
-                'email' => 'Jhon@gmail.com',
-                'password' => Hash::make('password123'),
-                'role'=> 'user',
-                // 'agent_id' => '1'
+                'name' => 'user',
+                'email' => 'user@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'user',
             ],
-            [
-                'name' => 'Jmann',
-                'email' => 'Jmann@gmail.com',
-                'password' => Hash::make('password123'),
-                'role'=> 'developer',
-                // 'owner_id' => '1'
-            ],
-            [
-                'name' => 'patrick',
-                'email' => 'patrick@gmail.com',
-                'role'=> 'agent',
-                'password' => Hash::make('password123'),
-                // 'agent_id' => '1'
-            ],
-            // Tambahkan data pengguna lainnya sesuai kebutuhan
         ];
 
         DB::table('users')->insert($users);
+
+        $developer = User::create([
+            'name' => 'Developer',
+            'email' => 'developer@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'developer',
+        ]);
+
+        // Membuat pengguna dengan role agent
+        $agent = User::create([
+            'name' => 'Agent',
+            'email' => 'agent@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'agent',
+        ]);
+
+        // Menyambungkan pengguna dengan pengembang
+        $developerUserIds = [$developer->id];
+        $developer->developers()->attach($developerUserIds);
+
+        // Menyambungkan pengguna dengan pengembang berdasarkan role
+        $developerUserIds = User::where('role', 'developer')->pluck('id');
+        $developers = Developer::pluck('id');
+        foreach ($developerUserIds as $userId) {
+            $user = User::find($userId);
+            $user->developers()->attach($developers);
+        }
+
+        // Menyambungkan pengguna dengan agen
+        $agentUserIds = [$agent->id];
+        $agent->agents()->attach($agentUserIds);
+
+        // Menyambungkan pengguna dengan agen berdasarkan role
+        $agentUserIds = User::where('role', 'agent')->pluck('id');
+        $agents = Agent::pluck('id');
+        foreach ($agentUserIds as $userId) {
+            $user = User::find($userId);
+            $user->agents()->attach($agents);
+        }
     }
 }

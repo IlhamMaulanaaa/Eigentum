@@ -37,7 +37,7 @@ use App\Http\Controllers\ProviderController;
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::get('/', [AuthController::class, 'index'])->middleware('guest');
+Route::get('/', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
 Route::get('/beranda', [UnitController::class, 'homeunit']);
 Route::post('/createL', [AuthController::class, 'login']);
 Route::post('/createR', [AuthController::class, 'register']);
@@ -239,6 +239,7 @@ Route::group(['prefix' => '/unit'], function () {
 //         });
 //     });
 // });
+Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 
 
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
