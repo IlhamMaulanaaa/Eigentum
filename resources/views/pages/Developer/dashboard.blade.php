@@ -89,8 +89,8 @@
                         <span></span>
                     </div>
                     <h2>{{ $user->name }}</h2>
-                    <p style="color: #000">{{$developer->company}}</p>
-                    <p>{{$user->email}}</p>
+                    <p style="color: #000">{{ $developer->company }}</p>
+                    <p>{{ $user->email }}</p>
 
                     <ul class="about" style="">
                         <li><span>3</span> Aktif</li>
@@ -130,24 +130,23 @@
                     <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
                         id="filterable-cards">
                         @foreach ($developer->properties as $property)
-                        
-                        <div class="card p-0" data-name="aktif">
-                            <a href="{{route('property.detail' , $property->id)}}" class="stretched-link"></a>
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title"><a href=""
-                                        style="text-decoration: none; color:#000;">{{$property->title}}</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Disewa</span>
+                            <div class="card p-0" data-name="aktif">
+                                <a href="{{ route('property.detail', $property->id) }}" class="stretched-link"></a>
+                                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
+                                <div class="card-body">
+                                    <h6 class="card-title"><a href=""
+                                            style="text-decoration: none; color:#000;">{{ $property->title }}</a></h6>
+                                    <!-- <p class="card-text"></p> -->
+                                </div>
+                                <span class="label sold">Disewa</span>
 
-                            <div class="labeledit">
-                                <a class="linkedit" href="/property/edit"><i class="fas fa-edit edit-icon"></i></a>
+                                <div class="labeledit">
+                                    <a class="linkedit" href="/property/edit"><i class="fas fa-edit edit-icon"></i></a>
+                                </div>
+                                <div class="labeldelete">
+                                    <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
+                                </div>
                             </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-                        </div>
                         @endforeach
                         {{-- <div class="card p-0" data-name="dijual">
                             <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
@@ -242,7 +241,7 @@
             <a href="/unit/upload">
                 <div class="option">tambah unit</div>
             </a>
-            <a href="{{route('property.buat')}}">
+            <a href="{{ route('property.buat') }}">
                 <div class="option">tambah property</div>
             </a>
         </div>
@@ -254,6 +253,21 @@
                 options.classList.toggle("show");
             });
         </script>
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        <script>
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('89c847f5725f13be7343', {
+                cluster: 'ap1'
+            });
+
+            var channel = pusher.subscribe('my-channel');
+            channel.bind('my-event', function(data) {
+                alert(JSON.stringify(data));
+            });
+        </script>
+
     </body>
 
     </html>

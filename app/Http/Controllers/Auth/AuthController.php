@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\UserRegistered;
 use App\Models\User;
+use App\Event\NewUserRegistered;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +45,7 @@ class AuthController extends Controller
             return redirect('/');
         }
     }
+    
     public function register(Request $request)
     {
         Session::flash('name', $request->name);
@@ -59,12 +62,25 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ];
 
-        User::create($data);
+        $user = User::create([
+            'email' => $request->email,
+            'name' => $request->name,
+            'password' => bcrypt($request->password)
+        ]);
 
         $datalogin = [
             'email' => $request->email,
             'password' => $request->password
         ];
+
+        // $admin = User::where('role', 'admin')->first();
+        // NewUserRegistered::dispatch($user);
+
+        $name = $request->name;
+
+
+        // $admin->notify(new NewUserRegistered($user));
+        event(new UserRegistered($name));
 
         if (Auth::attempt($datalogin) && Auth::user()->role == "admin") {
             return redirect('/admin')->with('success', 'Berhasil Login');

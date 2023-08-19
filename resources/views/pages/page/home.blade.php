@@ -66,6 +66,21 @@
 
         <!-- Template Stylesheet -->
         <link href="css/Lib/testimoni/css/style.css" rel="stylesheet">
+        {{-- <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
+        <script>
+            // Enable pusher logging - don't include this in production
+            Pusher.logToConsole = true;
+
+            var pusher = new Pusher('89c847f5725f13be7343', {
+                cluster: 'ap1'
+            });
+
+            var channel = pusher.subscribe('admin-notifications' + {{ auth()->user()->id }});
+            channel.bind('user-registered', function(data) {
+                var notification = new Notification(data.message);
+            });
+        </script> --}}
         <title>EIgentum</title>
     </head>
 
