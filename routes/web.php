@@ -161,10 +161,12 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/kpr', function () {
         return view('pages.page.kpr');
     });
+
+    
     Route::get('/langganan', [SubscribeController::class, 'indexFront']);
     Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
     Route::post('/addtoorder/{subsId}', [OrderController::class, 'storeFront'])->name('subscribeid.store'); //masuk sub ke order
-    Route::get('/detailorder/{subsId}', [OrderController::class, 'showFront'])->name('detailorder'); //detail order
+    Route::get('/detailorder/{order}', [OrderController::class, 'showFront'])->name('detailorder'); //detail order
     // Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
 
     Route::get('/notifikasi', function () {

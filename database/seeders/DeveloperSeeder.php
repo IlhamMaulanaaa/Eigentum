@@ -94,9 +94,9 @@ class DeveloperSeeder extends Seeder
             // Hubungkan developer dengan village menggunakan attach()
             $developer->villages()->attach($village->id);
 
-            $users = User::inRandomOrder()->first();
+            // $users = User::inRandomOrder()->first();
 
-            $developer->users()->attach($users->id);
+            // $developer->users()->attach($users->id);
 
         }
     }

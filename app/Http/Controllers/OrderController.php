@@ -88,7 +88,7 @@ class OrderController extends Controller
                 'subscribe_id' => $subscribe->id,
             ]);
 
-            return redirect()->route('detailorder');;
+            return redirect('/pages/detailorder/' . $order->id);
         } catch (\Exception $e) {
             return $e;
         }

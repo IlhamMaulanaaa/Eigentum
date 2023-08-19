@@ -18,16 +18,16 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('12345678'),
         // ]);
 
-        User::create([
-            'name' => 'User',
-            'email' => 'ibrahimbtaz@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
-        User::create([
-            'name' => 'Developer',
-            'email' => 'developer@gmail.com',
-            'password' => bcrypt('12345678'),
-        ]);
+        // User::create([
+        //     'name' => 'User',
+        //     'email' => 'ibrahimbtaz@gmail.com',
+        //     'password' => bcrypt('12345678'),
+        // ]);
+        // User::create([
+        //     'name' => 'Developer',
+        //     'email' => 'developer@gmail.com',
+        //     'password' => bcrypt('12345678'),
+        // ]);
 
         $this->call(UsersTableSeeder::class);
         $this->call(CustomerSeeder::class);

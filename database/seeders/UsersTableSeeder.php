@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
 
         // Menyambungkan pengguna dengan pengembang berdasarkan role
         $developerUserIds = User::where('role', 'developer')->pluck('id');
-        $developers = Developer::pluck('id');
+        $developers = Developer::pluck('id')->first();
         foreach ($developerUserIds as $userId) {
             $user = User::find($userId);
             $user->developers()->attach($developers);

@@ -67,6 +67,7 @@
             </div>
         </div>
         <form action="{{ route('subscribeid.store', $subscribe->id) }}" method="post" enctype="multipart/form-data">
+            @csrf
             <section class="order_details section_gap">
                 <div class="container">
                     {{-- <h3 class="title_confirmation">Terima kasih telah melakukan pembelian langganan kami.</h3> --}}
