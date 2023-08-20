@@ -51,7 +51,12 @@
 
                 @if (Auth::check())
                     <div class="profileq" style="cursor: pointer;">
-                        <img src="{{ Auth()->user()->avatar }}" alt="">
+                        @if (auth()->user()->avatar)
+                            <img src="{{ auth()->user()->avatar }}" alt="Profile Picture">
+                        @else
+                            <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}" alt="Default Profile Picture">
+                        @endif
+                        {{-- <img src="{{ Auth()->user()->avatar }}" alt=""> --}}
                     </div>
                     {{ Auth()->user()->name }}
 
@@ -59,8 +64,8 @@
 
                     <div class="menu-profileq">
                         <h3>
-                            
-                            {{ Str::limit(Auth()->user()->developers->pluck('company_email')->first(), 18) }}
+
+                            {{ Str::limit(Auth()->user()->developers->pluck('company_email')->first(),18) }}
                             <div>
                                 {{-- sesuai nama role --}}
                                 {{-- {{ session('role') }} --}}
@@ -71,32 +76,34 @@
                                 <span class="material-icons icons-size">person</span>
                                 <a href="/developer/profile">Profile</a>
                             </li>
-                            <li>
-                                <span class="material-icons icons-size">monetization_on</span>
-                                <a href="/pages/langganan">Langganan</a>
-                            </li>
+                            @if (Auth::user()->role == 'developer')
+                                <li>
+                                    <span class="material-icons icons-size">monetization_on</span>
+                                    <a href="/pages/langganan">Langganan</a>
+                                </li>
+                            @endif
                             <li>
                                 <span class="material-icons icons-size">favorite</span>
                                 <a href="/favorite">disukai</a>
                             </li>
-                            @if (Auth::user()->role == "agent")
+                            @if (Auth::user()->role == 'agent')
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/agent/dashboard/">Agent</a>
                                 </li>
-                            @elseif (Auth::user()->role == "developer")
+                            @elseif (Auth::user()->role == 'developer')
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/developer/dashboard/">Developer</a>
                                 </li>
-                            @elseif (Auth::user()->role == "admin")
+                            @elseif (Auth::user()->role == 'admin')
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/admin/dashboard/">Admin</a>
                                 </li>
                             @endif
-                            
-                            
+
+
                             <li>
                                 <span class="material-icons icons-size">exit_to_app</span>
                                 <a href="/session/auth/user/signout">Logout</a>
