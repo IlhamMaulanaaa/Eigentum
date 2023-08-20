@@ -88,14 +88,17 @@
                         <img src="/assets/agent/detail/bambang.jpg" alt="Bambang" />
                         <span></span>
                     </div>
-                    <h2>{{ $user->name }}</h2>
+                    <h2>{{ auth()->user()->name }}</h2>
                     <p style="color: #000">{{ $developer->company }}</p>
-                    <p>{{ $user->email }}</p>
+                    <p>{{ $developer->company_company }}</p>
 
                     <ul class="about" style="">
                         <li><span>3</span> Aktif</li>
-                        <li><span>3</span> Dijual</li>
-                        <li><span>3</span> Disewa</li>
+                        <li><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}
+
+                            </span> Dijual</li>
+                        <li><span>{{$developer->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count()}}
+                        </span> Disewa</li>
                     </ul>
 
                     <div class="content">
@@ -132,19 +135,25 @@
                         @foreach ($developer->properties as $property)
                             <div class="card p-0" data-name="aktif">
                                 <a href="{{ route('property.detail', $property->id) }}" class="stretched-link"></a>
-                                <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
+                                <img src="{{ asset('storage/' . $property->image) }}" alt="img" />
                                 <div class="card-body">
                                     <h6 class="card-title"><a href=""
                                             style="text-decoration: none; color:#000;">{{ $property->title }}</a></h6>
                                     <!-- <p class="card-text"></p> -->
                                 </div>
-                                <span class="label sold">Disewa</span>
-
-                                <div class="labeledit">
-                                    <a class="linkedit" href="/property/edit"><i class="fas fa-edit edit-icon"></i></a>
+                                {{-- <span class="label sold">Disewa</span> --}}
+                                <div class="labeledit" style="z-index: 100">
+                                    <a class="linkedit" href="{{route('property.eddit', $property->id)}}"><i class="fas fa-edit edit-icon"></i></a>
                                 </div>
-                                <div class="labeldelete">
-                                    <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
+                                <div class="labeldelete" style="z-index: 100">
+                                    <form action="{{ route('property.hapus', $property->id) }}" method="get"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="linkdelete"
+                                            onclick="return confirm('Apakah Anda Yakin {{$property->id}} ')"><i class="fas fa-trash delete-icon"></i></button>
+                                        {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
+                                    </form>
                                 </div>
                             </div>
                         @endforeach

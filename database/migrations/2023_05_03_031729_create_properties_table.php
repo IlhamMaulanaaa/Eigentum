@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string("title");
             $table->text("description");
             $table->string("address");
+            $table->string("image");
             $table->foreignId('developer_id');
             $table->foreignId('type_id');
             $table->softDeletes();

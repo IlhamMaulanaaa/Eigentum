@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use Exception;
 use App\Models\User;
 use App\Models\Owner;
@@ -368,8 +369,13 @@ class DeveloperController extends Controller
 
         $user =  auth()->user();
         $developer = $user->developers->first();
+                            $countDijual = Unit::whereHas('property', function ($query) use ($developer) {
+                                $query->where('developer_id', $developer);
+                            })->whereHas('statuses', function ($query) {
+                                $query->where('name', 'dijual');
+                            })->count();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
-        return view('auth.developer.profile', compact('developer', 'user', 'licenseFile'));
+        return view('auth.developer.profile', compact('developer', 'user', 'licenseFile', 'countDijual'));
     }
 
     public function edit(Developer $developer)

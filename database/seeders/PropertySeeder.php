@@ -8,8 +8,11 @@ use App\Models\Property;
 use App\Models\Province;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class PropertySeeder extends Seeder
 {
@@ -36,6 +39,7 @@ class PropertySeeder extends Seeder
                     'title' => fake()->company(),
                     'description' => fake()->text(225),
                     'address' => fake()->address(),
+                    'image' => $this->getImageUrl('house'),
                     'developer_id' => $developerId,
                     'type_id' => $typeIds[$randomTypeId], 
                 ]);
@@ -104,7 +108,25 @@ class PropertySeeder extends Seeder
 
         
         }
+        
 
         
+    }
+
+    private function getImageUrl($folderName, $width = 400, $height = 300)
+    {
+        $files = File::files(public_path($folderName));
+        $randomImagePath = Arr::random($files);
+    
+        $imagePath = $randomImagePath->getRealPath();
+    
+        $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
+    
+        Storage::delete('public/' . $folderName . '/' . $imageName);
+    
+        Storage::putFileAs('public/' , $imagePath, $imageName);
+    
+    
+        return $imageName;
     }
 }

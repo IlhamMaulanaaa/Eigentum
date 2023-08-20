@@ -119,7 +119,7 @@
                 <div class="product-imgs">
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
-                            <img class="img-besar" src="/assets/pages/Home/unit1.jpg" alt="shoe image">
+                            <img class="img-besar" src="{{ asset('storage/' . $property->image) }}" alt="{{$property->image}}">
                             <img class="img-besar" src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
@@ -143,7 +143,7 @@
                             <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
+                            {{-- <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
                             <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
@@ -184,7 +184,7 @@
                             </div>
                             <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
 
@@ -257,12 +257,17 @@
                 <div class="cardproperty">
                     <p class="developer">{{ $property->title }}</p>
                     <div class="official">
-                        <p class="official-label">{{ $property->developers->users->pluck('name')->first() }}</p>
+                        <p class="official-label">{{ auth()->user()->name }}</p>
                     </div>
                     <div class="rent-info">
-                        <p class="rent-label">Mulai Dari</p>
-                        <p class="rent-price">Rp. 800 JT</p>
+                        <p class="rent-label">Kisaran Harga</p>
+                        <p class="rent-price">{{ $property->price_range }} </p>
                     </div>
+                    @foreach ($property->agents as $agent)
+                        <li>{{ $agent->name }}
+                            {{-- <a href="{{ route('agent.show', $agent->id) }}" class="text-warning">Detail</a> --}}
+                        </li>
+                    @endforeach
                     <a href="https://web.whatsapp.com/" class="ask-agent">Tanya Agent</a>
                 </div>
 
@@ -271,7 +276,7 @@
                         <i class="fas fa-home property-icon"></i>
                         <p class="tipe-text">Tipe Tersedia</p>
                     </div>
-                    <p class="unit-text">1 Unit</p>
+                    <p class="unit-text">{{$property->units->count()}}</p>
                 </div>
 
                 <div class="cardproperty1" style="margin-left: 170px; margin-top:-143px; height:119px;">
@@ -279,7 +284,7 @@
                         <i class="fas fa-clipboard property-icon"></i>
                         <p class="tipe-text">Tipe Properti</p>
                     </div>
-                    <p class="unit-text">Perumahan</p>
+                    <p class="unit-text">{{$property->types->name}}</p>
                 </div>
                 <a href="{{ route('unit.buat', $property->id) }}" class="btn btn-success">Tambah Unit</a>
             </div>

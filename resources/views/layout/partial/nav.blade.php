@@ -59,7 +59,8 @@
 
                     <div class="menu-profileq">
                         <h3>
-                            {{ Str::limit(Auth()->user()->email, 18) }}
+                            
+                            {{ Str::limit(Auth()->user()->developers->pluck('company_email')->first(), 18) }}
                             <div>
                                 {{-- sesuai nama role --}}
                                 {{-- {{ session('role') }} --}}

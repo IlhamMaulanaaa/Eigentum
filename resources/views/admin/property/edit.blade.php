@@ -28,6 +28,19 @@
                                     value="{{ old('address', $property->address) }}" required>
                             </div>
                             <br>
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <label for="images" class="form-label">images</label>
+                                    @if ($property->images)
+                                        <div class="mb-3">
+                                            <img src="{{ asset('storage/' . $property->images) }}"
+                                                alt="{{ $property->images }}" class="img-thumbnail"
+                                                width="120">
+                                        </div>
+                                    @endif
+                                    <input type="file" class="form-control" id="images" name="images">
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="type_id" class="form-label">Type</label>
                                 <select class="form-control" id="type_id" name="type_id">

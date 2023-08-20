@@ -34,9 +34,9 @@ class PropertyController extends Controller
             $query->select('regency_id')
                 ->from($pivotTable);
         })->pluck('name', 'id');
-        
-        if($properties){
-            return view('admin.property.all', compact('properties','tables', 'developers', 'regencies'));
+
+        if ($properties) {
+            return view('admin.property.all', compact('properties', 'tables', 'developers', 'regencies'));
         }
     }
 
@@ -75,6 +75,7 @@ class PropertyController extends Controller
                 'title'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
                 'type_id'   => 'required',
                 // 'province_id' => 'required',
                 // 'regency_id' => 'required',
@@ -86,16 +87,25 @@ class PropertyController extends Controller
             if (!$developer) {
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
             }
+            
+            $imageField = $request->file('image');
+            $imageNames = [];
+            if ($imageField) {
+                $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                $imageNames[] = $imageName;
+                $imageField->storeAs('public', $imageName);
+            }
 
             $property = Property::create([
                 'title'  => $request->title,
                 'description'   => $request->description,
                 'address'   => $request->address,
+                'image' => $$imageNames,
                 'type_id'   => $request->type_id,
                 'developer_id'  => $developer->id,
                 // 'agent_id' => $randomAgentId,
             ]);
-
+            
             $regencyId = $request->regencies_id;
             $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
                 $query->where('regency_id', $regencyId);
@@ -115,23 +125,23 @@ class PropertyController extends Controller
 
             return redirect(route('property.index'));
 
-            if (Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 return redirect(route('property.index'));
-            }else{
+            } else {
                 return redirect(route('developer.dashboard'));
             }
-            
         } catch (Exception $e) {
             return $e;
         }
     }
     public function storeFront(Request $request)
     {
-        try {
+        // try {
             $request->validate([
                 'title'  => 'required',
                 'description'   => 'required',
                 'address'   => 'required',
+                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
                 'type_id'   => 'required',
                 // 'province_id' => 'required',
                 // 'regency_id' => 'required',
@@ -140,15 +150,24 @@ class PropertyController extends Controller
             ]);
 
             // $user = Auth::user();
-                $developer = Auth::user()->developers;
+            $developer = Auth::user()->developers;
 
-                $property = Property::create([
-                    'title' => $request->title,
-                    'description' => $request->description,
-                    'address'   => $request->address,
-                    'type_id'   => $request->type_id,
-                    'developer_id'  => $developer->pluck('id')->first(),
-                ]);
+            $imageField = $request->file('image');
+            $imageNames = [];
+            if ($imageField) {
+                $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                $imageNames[] = $imageName;
+                $imageField->storeAs('public', $imageName);
+            }
+
+            $property = Property::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'address'   => $request->address,
+                'image' => $imageNames[0],
+                'type_id'   => $request->type_id,
+                'developer_id'  => $developer->pluck('id')->first(),
+            ]);
 
 
             $regencyId = $request->regencies_id;
@@ -168,15 +187,14 @@ class PropertyController extends Controller
             $property->districts()->attach($request->districts_id);
             $property->villages()->attach($request->villages_id);
 
-            if (Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 return redirect(route('property.index'));
-            }else{
+            } else {
                 return redirect(route('developer.dashboard'));
             }
-            
-        } catch (Exception $e) {
-            return $e;
-        }
+        // } catch (Exception $e) {
+        //     return $e;
+        // }
     }
 
 
@@ -200,12 +218,21 @@ class PropertyController extends Controller
 
     public function edit(Property $property)
     {
-        return view('admin.property.edit', [
-            'property' => $property,
-            'type' => Type::all(),
-            'developer' => Developer::all(),
-            'agent' => Agent::all(),
-        ]);
+        if (Auth::user()->role == "admin") {
+            return view('admin.property.edit', [
+                'property' => $property,
+                'type' => Type::all(),
+                'developer' => Developer::all(),
+                'agent' => Agent::all(),
+            ]);
+        } else {
+            return view('pages.property.edit', [
+                'property' => $property,
+                'type' => Type::all(),
+                'developer' => Developer::all(),
+                'agent' => Agent::all(),
+            ]);
+        }
     }
 
 
@@ -217,6 +244,7 @@ class PropertyController extends Controller
             'title'  => 'nullable',
             'description'   => 'nullable',
             'address'   => 'nullable',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'type_id'   => 'nullable',
         ]);
 
@@ -229,10 +257,29 @@ class PropertyController extends Controller
             'type_id'   => $request->type_id,
         ]);
 
+        $image = 'image';
+        if ($request->hasFile($image)) {
+            // Hapus gambar lama jika sudah ada
+            if ($property->$image) {
+                Storage::delete('public/' . $property->$image);
+            }
+
+            // Simpan gambar baru
+            $imageField = $request->file($image);
+            $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+            $imageField->storeAs('public', $imageName);
+            $property->$image = $imageName;
+        }
+
         // $property->agents()->sync($request->input('agent_id'));
 
         $property = Property::where('id', '=', $property->id)->get();
-        return redirect(route('property.show', $id));
+        // return redirect(route('property.show', $id));
+        if (Auth::user()->role == "admin") {
+            return redirect(route('property.show', $id));
+        } else {
+            return redirect(route('developer.dashboard'));
+        }
     }
 
 
@@ -258,6 +305,11 @@ class PropertyController extends Controller
         $property->agents()->detach();
         $property->delete();
 
-        return  redirect(route('property.index'));
+        // return  redirect(route('property.index'));
+        if (Auth::user()->role == "developer") {
+            return redirect(route('developer.dashboard'));
+        } else {
+            return redirect(route('property.index'));
+        }
     }
 }

@@ -94,10 +94,11 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
             Route::get('/create', [PropertyController::class, 'createFront'])->name('property.buat');
             Route::post('/store', [PropertyController::class, 'storeFront'])->name('property.upload');
             Route::get('/{property}', [PropertyController::class, 'showFront'])->name('property.detail');
-            Route::get('/edit', function () {
-                return view('pages.property.edit');
-            });
+            Route::get('/edit/{property}', [PropertyController::class, 'edit'])->name('property.eddit');
+            Route::put('/update/{property}', [PropertyController::class, 'update'])->name('property.ngupdate');
+        Route::get('/destroy/{property}', [PropertyController::class, 'destroy'])->name('property.hapus');
         });
+
         Route::group(['prefix' => '/unit'], function () {
             Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.buat');
             Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.upload');
@@ -109,15 +110,13 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     });
 });
 
+
 // unit
 Route::group(['prefix' => '/unit'], function () {
     Route::get('/upload', function () {
         return view('pages.unit.create');
     });
-
-
     Route::get('/{unit}', [UnitController::class, 'showFront']);
-
     Route::get('/edit', function () {
         return view('pages.unit.edit');
     });
@@ -162,7 +161,7 @@ Route::group(['prefix' => '/pages'], function () {
         return view('pages.page.kpr');
     });
 
-    
+    //payment
     Route::get('/langganan', [SubscribeController::class, 'indexFront']);
     Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
     Route::post('/addtoorder/{subsId}', [OrderController::class, 'storeFront'])->name('subscribeid.store'); //masuk sub ke order

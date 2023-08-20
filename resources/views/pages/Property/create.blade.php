@@ -125,7 +125,14 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-
+                        <div class="form-group">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control noscroll @error('image') is-invalid @enderror"
+                                id="image" name="image">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <div class="form-group">
                             <label for="type_id" class="form-label">Type</label>
                             <select class="form-control @error('type_id') is-invalid @enderror" id="type_id"

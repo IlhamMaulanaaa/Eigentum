@@ -89,4 +89,12 @@ class Property extends Model
 
         return $query;
     }
+
+    public function getPriceRangeAttribute()
+    {
+        $lowestPrice = $this->units()->min('price');
+        $highestPrice = $this->units()->max('price');
+
+        return "Rp. " . number_format($lowestPrice, 0, ',', '.') . " - Rp. " . number_format($highestPrice, 0, ',', '.');
+    }
 }
