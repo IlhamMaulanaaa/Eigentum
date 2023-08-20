@@ -12,13 +12,13 @@
                                 <div class="form-group">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        value="{{ $agent->name }}" readonly disabled>
+                                        value="   {{ implode(', ',$agent->users()->pluck('name')->toArray()) }}" readonly disabled>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ $agent->email }}" readonly disabled>
+                                        value="   {{ implode(', ',$agent->users()->pluck('email')->toArray()) }}" readonly disabled>
                                 </div>
                                 <br>
                                 <div class="form-group row col-12">

@@ -59,8 +59,8 @@
                             @foreach ($agents as $key => $agent)
                                 <tr align="center">
                                     <td class="text-start">{{ ++$key }}</td>
-                                    <td class="text-start">{{ $agent->name }}</td>
-                                    <td class="text-start">{{ $agent->email }}</td>
+                                    <td class="text-start"> {{ implode(', ',$agent->users()->pluck('name')->toArray()) }}
+                                    </td>
                                     <td class="text-start">{{ Str::limit($agent->address, 20) }}</td>
                                     <td class="text-start">
                                         {{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</td>

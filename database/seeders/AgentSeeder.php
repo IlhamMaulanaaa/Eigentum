@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use App\Models\User;
+
 
 
 class AgentSeeder extends Seeder
@@ -24,7 +26,8 @@ class AgentSeeder extends Seeder
     {
         Agent::truncate();
 
-        for ($i = 0; $i < 10; $i++) {
+        $agentUserIds = User::where('role', 'agent')->pluck('id');
+        foreach ($agentUserIds as $userId) {
             $agent = Agent::create([
                 // 'name' => fake()->name(),
                 // 'email' => fake()->email(),
@@ -58,6 +61,8 @@ class AgentSeeder extends Seeder
 
         // Hubungkan agent dengan village menggunakan attach()
         $agent->villages()->attach($village->id);
+
+        $agent->users()->attach($userId);
         }
     }
 

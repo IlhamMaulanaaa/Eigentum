@@ -22,8 +22,8 @@ class DeveloperSeeder extends Seeder
     public function run(): void
     {
         Developer::truncate();
-        $numberOfDevelopers = rand(2, 5);
-        for ($i = 0; $i < $numberOfDevelopers; $i++) {
+        $developerUserIds = User::where('role', 'developer')->pluck('id');
+        foreach ($developerUserIds as $userId) {
             $licenseImages = $this->getImageUrls('license', 3);
             $licenseString = implode('|', $licenseImages); // Menggabungkan array nama file gambar menjadi satu string dipisahkan koma
 
@@ -35,40 +35,8 @@ class DeveloperSeeder extends Seeder
                 'license' => $licenseString,
                 'ktp' => $this->getImageUrls('ktp', 1)[0],
                 'face' => $this->getImageUrls('face', 1)[0],
-                'telp' =>fake()->phoneNumber(),
+                'telp' => fake()->phoneNumber(),
             ]);
-            // // Ambil data province secara urut
-            // $provinces = Province::all();
-
-            // // Hubungkan developer dengan province menggunakan sync()
-            // $developer->provinces()->sync($provinces->pluck('id'));
-
-            // // Loop melalui setiap province
-            // foreach ($provinces as $province) {
-            //     // Ambil data regency yang terhubung dengan province tertentu
-            //     $regencies = $province->regencies;
-
-            //     // Hubungkan developer dengan regency menggunakan sync()
-            //     $developer->regencies()->sync($regencies->pluck('id'));
-
-            //     // Loop melalui setiap regency
-            //     foreach ($regencies as $regency) {
-            //         // Ambil data district yang terhubung dengan regency tertentu
-            //         $districts = $regency->districts;
-
-            //         // Hubungkan developer dengan district menggunakan sync()
-            //         $developer->districts()->sync($districts->pluck('id'));
-
-            //         // Loop melalui setiap district
-            //         foreach ($districts as $district) {
-            //             // Ambil data village yang terhubung dengan district tertentu
-            //             $villages = $district->villages;
-
-            //             // Hubungkan developer dengan village menggunakan sync()
-            //             $developer->villages()->sync($villages->pluck('id'));
-            //         }
-            //     }
-            // }
 
             // Ambil satu data province secara acak
             $province = Province::inRandomOrder()->first();
@@ -94,50 +62,47 @@ class DeveloperSeeder extends Seeder
             // Hubungkan developer dengan village menggunakan attach()
             $developer->villages()->attach($village->id);
 
-            // $users = User::inRandomOrder()->first();
-
-            // $developer->users()->attach($users->id);
-
+            $developer->users()->attach($userId);
         }
     }
 
-private function getImageUrls($folderName, $count, $width = 400, $height = 300)
-{
-    $imageUrls = [];
-    
-    for ($i = 0; $i < $count; $i++) {
-        // Ambil gambar dari folder public/$folderName
-        $files = File::files(public_path($folderName));
-        $randomImagePath = Arr::random($files);
-    
-        // Ubah path relatif gambar menjadi path absolut di folder storage
-        $imagePath = $randomImagePath->getRealPath();
-    
-        // Ambil nama file dari path
-        $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
-    
-        // Tambahkan nama file ke dalam array imageUrls
-        $imageUrls[] = $imageName;
+    private function getImageUrls($folderName, $count, $width = 400, $height = 300)
+    {
+        $imageUrls = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            // Ambil gambar dari folder public/$folderName
+            $files = File::files(public_path($folderName));
+            $randomImagePath = Arr::random($files);
+
+            // Ubah path relatif gambar menjadi path absolut di folder storage
+            $imagePath = $randomImagePath->getRealPath();
+
+            // Ambil nama file dari path
+            $imageName = pathinfo($imagePath, PATHINFO_FILENAME) . '.' . $randomImagePath->getExtension();
+
+            // Tambahkan nama file ke dalam array imageUrls
+            $imageUrls[] = $imageName;
+        }
+
+        // Pindahkan semua gambar ke folder storage
+        foreach ($imageUrls as $imageName) {
+            $imagePath = public_path($folderName . '/' . $imageName);
+
+            Storage::delete('public/' . $folderName . '/' . $imageName);
+
+            // Pindahkan gambar ke folder storage
+            Storage::putFileAs('public/', $imagePath, $imageName);
+        }
+
+        return $imageUrls;
     }
 
-    // Pindahkan semua gambar ke folder storage
-    foreach ($imageUrls as $imageName) {
-        $imagePath = public_path($folderName . '/' . $imageName);
-
-        Storage::delete('public/' . $folderName . '/' . $imageName);
-
-        // Pindahkan gambar ke folder storage
-        Storage::putFileAs('public/' , $imagePath, $imageName);
-    }
-    
-    return $imageUrls;
-}
-
-// private function generatePhoneNumber()
-// {
-//     // Buat nomor telepon dengan format yang sesuai, misalnya: +62 812-3456-7890
-//     // Anda juga bisa menggunakan library lain seperti libphonenumber untuk membuat format yang lebih kompleks
-//     return '+62 ' . rand(800, 899) . '-' . rand(1000, 9999) . '-' . rand(1000, 9999);
-// }
+    // private function generatePhoneNumber()
+    // {
+    //     // Buat nomor telepon dengan format yang sesuai, misalnya: +62 812-3456-7890
+    //     // Anda juga bisa menggunakan library lain seperti libphonenumber untuk membuat format yang lebih kompleks
+    //     return '+62 ' . rand(800, 899) . '-' . rand(1000, 9999) . '-' . rand(1000, 9999);
+    // }
 
 }

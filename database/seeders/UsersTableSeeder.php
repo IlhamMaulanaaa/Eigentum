@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'eigentum',
+                'name' => 'admin',
                 'email' => 'admin@example.com',
                 'password' => Hash::make('password'),
                 'role' => 'admin',
@@ -27,47 +27,20 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'role' => 'user',
             ],
+            [
+                'name' => 'Developer',
+                'email' => 'developer@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'developer',
+            ],
+            [
+                'name' => 'Agent',
+                'email' => 'agent@example.com',
+                'password' => Hash::make('password'),
+                'role' => 'agent',
+            ],
         ];
 
         DB::table('users')->insert($users);
-
-        $developer = User::create([
-            'name' => 'Developer',
-            'email' => 'developer@example.com',
-            'password' => Hash::make('password'),
-            'role' => 'developer',
-        ]);
-
-        // Membuat pengguna dengan role agent
-        $agent = User::create([
-            'name' => 'Agent',
-            'email' => 'agent@example.com',
-            'password' => Hash::make('password'),
-            'role' => 'agent',
-        ]);
-
-        // Menyambungkan pengguna dengan pengembang
-        $developerUserIds = [$developer->id];
-        $developer->developers()->attach($developerUserIds);
-
-        // Menyambungkan pengguna dengan pengembang berdasarkan role
-        $developerUserIds = User::where('role', 'developer')->pluck('id');
-        $developers = Developer::pluck('id')->first();
-        foreach ($developerUserIds as $userId) {
-            $user = User::find($userId);
-            $user->developers()->attach($developers);
-        }
-
-        // Menyambungkan pengguna dengan agen
-        $agentUserIds = [$agent->id];
-        $agent->agents()->attach($agentUserIds);
-
-        // Menyambungkan pengguna dengan agen berdasarkan role
-        $agentUserIds = User::where('role', 'agent')->pluck('id');
-        $agents = Agent::pluck('id');
-        foreach ($agentUserIds as $userId) {
-            $user = User::find($userId);
-            $user->agents()->attach($agents);
-        }
     }
 }
