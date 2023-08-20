@@ -25,7 +25,6 @@ class AgentSeeder extends Seeder
     public function run()
     {
         Agent::truncate();
-
         $agentUserIds = User::where('role', 'agent')->pluck('id');
         foreach ($agentUserIds as $userId) {
             $agent = Agent::create([
@@ -63,6 +62,7 @@ class AgentSeeder extends Seeder
         $agent->villages()->attach($village->id);
 
         $agent->users()->attach($userId);
+
         }
     }
 

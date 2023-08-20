@@ -62,7 +62,7 @@ class Developer extends Authenticatable
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'users_developer', 'user_id', 'developer_id');
+        return $this->belongsToMany(User::class, 'users_developer', 'developer_id', 'user_id');
     }
 
     public function provinces(): BelongsToMany

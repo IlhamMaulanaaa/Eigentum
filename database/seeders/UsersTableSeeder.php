@@ -28,13 +28,13 @@ class UsersTableSeeder extends Seeder
                 'role' => 'user',
             ],
             [
-                'name' => 'Developer',
+                'name' => 'developer',
                 'email' => 'developer@example.com',
                 'password' => Hash::make('password'),
                 'role' => 'developer',
             ],
             [
-                'name' => 'Agent',
+                'name' => 'agent',
                 'email' => 'agent@example.com',
                 'password' => Hash::make('password'),
                 'role' => 'agent',

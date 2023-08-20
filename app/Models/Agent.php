@@ -28,8 +28,6 @@ class Agent extends Model
         return $this->belongsToMany(User::class, 'users_agent', 'agent_id', 'user_id');
     }
 
-
-
     public function properties(): BelongsToMany
     {
         return $this->belongsToMany(Property::class, 'property_agent', 'property_id', 'agent_id');
