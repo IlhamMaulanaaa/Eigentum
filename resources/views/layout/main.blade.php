@@ -7,7 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS only -->
-    <title>eigentum</title>
+    @if (Auth::user()->role == 'agent')
+        <title>Eigentum Agent</title>
+    @elseif (Auth::user()->role == 'developer')
+        <title>Eigentum Developer</title>
+    @elseif (Auth::user()->role == 'admin')
+        <title>Eigentum Admin</title>
+    @endif
 
     {{-- <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon"> --}}

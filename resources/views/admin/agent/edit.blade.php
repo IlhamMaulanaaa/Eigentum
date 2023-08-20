@@ -28,13 +28,13 @@
                                 <div class="form-group">
                                     <label for="name" class="form-label">Name</label>
                                     <input class="form-control" id="name" name="name"
-                                        value="{{ old('name', $agent->name) }}" required>
+                                        value="{{ old('name', implode(', ',$agent->users()->pluck('name')->toArray()) ) }}" required>
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <label for="email" class="form-label">Email</label>
                                     <input class="form-control" id="email" name="email"
-                                        value="{{ old('email', $agent->email) }}" required>
+                                        value="{{ old('email', implode(', ',$agent->users()->pluck('email')->toArray()) ) }}" required>
                                 </div>
                                 <br>
                                 <div class="form-group">

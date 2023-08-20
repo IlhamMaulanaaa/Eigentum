@@ -33,20 +33,20 @@
                                     <div class="form-group row col-12">
                                         <div class="form-group col-6">
                                             <label for="email" class="form-label">Company Email</label>
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                                id="email" name="email" value="{{ old('email', $developer->email) }}"
+                                            <input type="company_email" class="form-control @error('company_email') is-invalid @enderror"
+                                                id="company_email" name="company_email" value="{{ old('company_email', $developer->company_email) }}"
                                                 required>
-                                            @error('email')
+                                            @error('company_email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <br>
                                         <div class="form-group col-6">
-                                            <label for="password" class="form-label">Password</label>
-                                            <input type="password"
-                                                class="form-control @error('password') is-invalid @enderror" id="password"
-                                                name="password">
-                                            @error('password')
+                                            <label for="company_password" class="form-label">Company Password</label>
+                                            <input type="company_password"
+                                                class="form-control @error('company_password') is-invalid @enderror" id="company_password"
+                                                name="company_password">
+                                            @error('company_password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -58,28 +58,28 @@
                                     <div class="form-group col-auto">
                                         <label for="name" class="form-label">Owner</label>
                                         <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ old('name', $developer->owners->name) }}" required>
+                                            value="{{ old('name', implode(', ',$developer->users()->pluck('name')->toArray()) ) }}" required>
                                     </div>
                                     <br>
                                     <div class="form-group row col-12">
                                         <br>
                                         <div class="form-group col-6">
-                                            <label for="owner_email" class="form-label">Owner Email</label>
+                                            <label for="email" class="form-label">Owner Email</label>
                                             <input type="text"
-                                                class="form-control @error('owner_email') is-invalid @enderror"
-                                                id="owner_email" name="owner_email"
-                                                value="{{ old('owner_email', $developer->owners->owner_email) }}" required>
-                                            @error('owner_email')
+                                                class="form-control @error('email') is-invalid @enderror"
+                                                id="email" name="email"
+                                                value="{{ old('email', implode(', ',$developer->users()->pluck('email')->toArray()) ) }}" required>
+                                            @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
                                         <br>
                                         <div class="form-group col-6">
-                                            <label for="owner_password" class="form-label">Owner Password</label>
+                                            <label for="password" class="form-label">Owner Password</label>
                                             <input type="password"
-                                                class="form-control noscroll @error('owner_password') is-invalid @enderror"
-                                                id="password" name="owner_password">
-                                            @error('owner_password')
+                                                class="form-control noscroll @error('password') is-invalid @enderror"
+                                                id="password" name="password">
+                                            @error('password')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -91,10 +91,10 @@
                                     <div class="col-auto">
                                         <div class="form-group">
                                             <label for="ktp" class="form-label">Ktp</label>
-                                            @if ($developer->owners->ktp)
+                                            @if ($developer->ktp)
                                                 <div class="mb-3">
-                                                    <img src="{{ asset('storage/' . $developer->owners->ktp) }}"
-                                                        alt="{{ $developer->owners->ktp }}" class="img-thumbnail"
+                                                    <img src="{{ asset('storage/' . $developer->ktp) }}"
+                                                        alt="{{ $developer->ktp }}" class="img-thumbnail"
                                                         width="120">
                                                 </div>
                                             @endif
@@ -104,10 +104,10 @@
                                     <div class="col-auto">
                                         <div class="form-group">
                                             <label for="face" class="form-label">Face</label>
-                                            @if ($developer->owners->face)
+                                            @if ($developer->face)
                                                 <div class="mb-3">
-                                                    <img src="{{ asset('storage/' . $developer->owners->face) }}"
-                                                        alt="{{ $developer->owners->face }}" class="img-thumbnail"
+                                                    <img src="{{ asset('storage/' . $developer->face) }}"
+                                                        alt="{{ $developer->face }}" class="img-thumbnail"
                                                         width="120">
                                                 </div>
                                             @endif

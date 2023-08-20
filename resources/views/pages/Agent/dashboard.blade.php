@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
-        <title>Responsive Profile Page</title>
+        <title></title>
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <!-- CSS -->
@@ -27,21 +27,22 @@
                         <span></span>
                     </div>
 
-                    @if ($users->count() > 0)
-                        @foreach ($users as $user)
-                            <h2>{{ $user->name }}</h2>
-                            <p style="color: #000">{{ $user->email }}</p>
-                        @endforeach
-                    @endif
+                    <h2>{{ auth()->user()->name }}</h2>
+                    <p style="color: #000">{{ auth()->user()->email }}</p>
 
 
                     <ul class="about">
-                        <li><span>73</span>Dijual</li>
-                        <li><span>322</span>Disewa</li>
-                        <li><span>20</span>Klient</li>
+                        <li><span>{{ $agent->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}</span>
+                            Dijual
+                        </li>
+                        <li><span>{{ $agent->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}</span>
+                            Disewa
+                        </li>
+                        {{-- <li><span>20</span>Klient</li> --}}
                     </ul>
 
                     <div class="content">
+                        <p>{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</p>
                         <p>{{ $agent->address }}</p>
 
                         <ul class="abc">
@@ -64,88 +65,40 @@
                         </div>
                     </div>
 
-
                     <!-- <button class="btn-ajukan mb-2 float-end" id="ajukan-button" style="margin-top: -43px; background-color: #0C40E8; color: #fff; cursor: auto;">Ajukan</button> -->
-
-
 
                     <!-- Filterable Images / Cards Section -->
                     <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
                         id="filterable-cards">
-                        <div class="card p-0" data-name="rumah">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Rumah</h6>
-                                <!-- <p class="card-text"></p> -->
+                        @foreach ($agent->properties as $property)
+                            <div class="card p-0" data-name="aktif">
+                                <a href="{{ route('property.show.agent', $property->id) }}" class="stretched-link"></a>
+                                <img src="{{ asset('storage/' . $property->image) }}" alt="img" />
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ $property->title }}</h6>
+                                    <h6>
+                                        {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}
+                                    </h6>
+                                </div>
+                                @if (Auth::user()->role == 'developer')
+                                <div class="labeledit" style="z-index: 100">
+                                    <a class="linkedit" href="{{ route('property.edit.agent', $property->id) }}"><i
+                                            class="fas fa-edit edit-icon"></i></a>
+                                </div>
+                                <div class="labeldelete" style="z-index: 100">
+                                    <form action="{{ route('property.destroy.agent', $property->id) }}" method="get"
+                                        class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="linkdelete"
+                                            onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
+                                                class="fas fa-trash delete-icon"></i></button>
+                                        {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
+                                    </form>
+                                </div>
+                                @endif
                             </div>
-                            <span class="label sold">Tersewa</span>
-                        </div>
-
-
-                        <div class="card p-0" data-name="apartemen">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Apartemen</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Terjual</span>
-                        </div>
-                        <div class="card p-0" data-name="rumah">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Rumah</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Terjual</span>
-                        </div>
-                        <div class="card p-0" data-name="apartemen">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Apartemen</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Tersewa</span>
-                        </div>
-                        <div class="card p-0" data-name="ruko">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Ruko</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Terjual</span>
-                        </div>
-                        <div class="card p-0" data-name="villa">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Villa</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Tersewa</span>
-                        </div>
-                        <div class="card p-0" data-name="ruko">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Ruko</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Terjual</span>
-                        </div>
-                        <div class="card p-0" data-name="rumah">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Rumah</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Tersewa</span>
-                        </div>
-                        <div class="card p-0" data-name="villa">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title">Villa</h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold">Terjual</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 

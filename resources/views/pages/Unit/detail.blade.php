@@ -69,15 +69,17 @@
 
     <body style="background-color: #fff;">
 
-
-
         <div class="card78-wrapper" style="margin-top: 90px;">
 
             <div class="card78">
                 <!-- card78 left -->
-
                 <div class="product-imgs">
-                    <button class="btn-status" style="">Disewa</button>
+
+                    @foreach ($unit->statuses as $status)
+                        <button class="btn-status" style="">{{ $status->name }}</button>
+                    @endforeach
+
+
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
                             <img class="img-besar" src="{{ asset('storage/' . $unit->image) }}" alt="shoe image">
@@ -175,9 +177,6 @@
                     <div class="shadow" style="z-index:10;"></div>
                 </div>
 
-
-
-
                 <!-- card78 right -->
                 <div class="product-content">
                     <h2 style="margin-top: 20px;" class="product-title">{{ $unit->title }}</h2>
@@ -187,9 +186,8 @@
                     </div>
                     <h5 style="font-family: 'Lato', sans-serif;" class="product-title1"><i
                             class="fas fa-map-marker-alt"></i> {{ $unit->properties->address }}</h5>
+                    <h5>{{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}</h5>
                 </div>
-
-
 
                 <div class="img-select" style="width: 1000px; ">
                     <div class="img-item" style="padding-right: 20px;">
@@ -224,21 +222,16 @@
                     </div>
                 </div>
 
-
-
-
             </div>
 
         </div>
         </div>
 
-
-
-
         <div class="group-9-g1K" id="3:42">
             <p class="informasi-properti-hSD"
                 style="font-size: 16px; margin-left:-10px; font-family:'Lato', sans-serif; padding-bottom:10px;"
                 id="2:4">Informasi Properti</p>
+            <p>{{ $unit->properties->title }}</p>
             <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:10px;">
                 <p class="developer--EMb" style="font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 500;"
                     id="2:6">Developer:</p>
@@ -270,16 +263,31 @@
                     </p>
                 </div>
             </div>
-            <div class="group-13-7tZ" id="3:51">
-
+            <div class="group-13-7tZ row" id="3:51">
                 <div class="group-11-jws" id="3:44"
                     style="margin-top: 20px; margin-right:170px; font-family:'Lato', sans-serif;">
                     <p class="bulan-sewa-Vw3" id="3:45"
-                        style="margin-left: -60px; font-family:'Lato', sans-serif; ">1 Bulan Sewa</p>
+                        style="margin-left: -60px; font-family:'Lato', sans-serif; ">
+                        1 Bulan Sewa
+                    </p>
                     <p class="rp-1jt-malam-dnM" id="3:46" style="margin-left: -30px">
                         <span class="rp-1jt-malam-dnM-sub-0"
-                            style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">Rp. 1jt</span>
-                        <span class="rp-1jt-malam-dnM-sub-1"> / Malam</span>
+                            style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
+                            Rp.{{ number_format($pricePerMonth, 2) }}jt
+                        </span>
+                    </p>
+                </div>
+                <div class="group-11-jws" id="3:47"
+                    style="margin-top: 20px; margin-right:170px; font-family:'Lato', sans-serif;">
+                    <p class="bulan-sewa-Vw3" id="3:48"
+                        style="margin-left: -60px; font-family:'Lato', sans-serif; ">
+                        1 Bulan Jual
+                    </p>
+                    <p class="rp-1jt-malam-dnM" id="3:49" style="margin-left: -30px">
+                        <span class="rp-1jt-malam-dnM-sub-0"
+                            style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
+                            Rp.{{ number_format($unit->price, 2) }}jt
+                        </span>
                     </p>
                 </div>
             </div>
@@ -287,11 +295,6 @@
                 <div class="group-12-pM3" id="3:50">Tanya Agent</div>
             </a>
         </div>
-
-
-
-
-
 
     </body>
     <!-- Swiper JS -->

@@ -33,7 +33,7 @@
         <div class="form-container" style="margin-top: 90px; height:auto;">
 
             <div class="left-section">
-                <form id="multi-page-form" method="post" action="{{ route('property.upload') }}"
+                <form id="multi-page-form" method="post" action="{{ route('property.store.developer') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="form-section current" id="section1" style="margin-top: -70px;">
@@ -44,7 +44,6 @@
                         {{-- 
                         <label for="perusahaan">Nama Perusahaan :</label>
                         <input type="text" id="perusahaan" name="perusahaan" value="" required> --}}
-
                         <div class="form-group">
                             <label for="title" class="form-label">Property</label>
                             <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
@@ -119,8 +118,8 @@
                         </div>
                         <div class="form-group">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control @error('address') is-invalid @enderror"
-                                id="address" name="address" value="{{ old('address') }}">
+                            <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
+                                name="address" value="{{ old('address') }}">
                             @error('address')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

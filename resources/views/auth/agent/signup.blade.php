@@ -240,11 +240,11 @@
     <div class="container">
         <header>Registration</header>
         <div class="masuk" style="margin-top: 5px;">
-            <p>Sudah Punya Akun Develop? <a class="linkmasuk" style=" text-decoration: none;"
-                    href="http://127.0.0.1:8000/session/auth/agent/signin">Masuk</a></p>
+            <p>Sudah Punya Akun Agent? <a class="linkmasuk" style=" text-decoration: none;"
+                    href="{{route('login.index')}}">Masuk</a></p>
         </div>
 
-        <form method="post" action="/session/auth/agent/signup/create" enctype="multipart/form-data">
+        <form method="post" action="{{route('agent.store.auth')}}" enctype="multipart/form-data">
             @csrf
 
             <div class="form first">

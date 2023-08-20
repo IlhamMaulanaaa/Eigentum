@@ -41,36 +41,14 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        if (Auth::user()->role == "admin") {
+            return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        } else {
+            return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        }
+        // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 
-    public function filterFront(Request $request)
-    {
-        // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->paginate(10);
-        $units = Unit::all();
-        $property = Property::all();
-        $types = Type::all();
-        $statuses = Status::all();
-        $specification = Specification::all();
-        $pivotTable = (new Property())->regencies()->getTable();
-
-        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
-            $query->select('regency_id')
-                ->from($pivotTable);
-        })->pluck('name', 'id');
-
-        if ($request->wantsJson()) {
-            return response()->json($filteredUnits);
-        }
-
-        return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        if (Auth::user()->role == "admin"){
-            return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
-        }else{
-            return view('pages.page.propertyfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
-        }
-    }
 
     public function index(Request $request)
     {
@@ -94,34 +72,20 @@ class UnitController extends Controller
         }
     }
 
-    public function storeFront(Request $request, $propertyId)
-    {
-
-        $property = Property::findOrfail($propertyId);
-        $status = Status::all();
-
-        return view('pages.unit.create', compact('property', 'status'));
-    }
-
     public function create(Request $request, $propertyId)
     {
         $property = Property::findOrfail($propertyId);
         $status = Status::all();
 
-        if (Auth::user()->role == "admin"){
+        if (Auth::user()->role == "admin") {
             return view('admin.unit.create', compact('property', 'status'));
-        }else{
+        } else {
             return view('pages.unit.create', compact('property', 'status'));
         }
-        
-
-        
     }
-
 
     public function homeunit(Request $request)
     {
-        
         $units = Unit::filter($request->all())->paginate(10);
         $property = Property::all()->pluck('title', 'id');;
         $status = Status::all();
@@ -137,9 +101,8 @@ class UnitController extends Controller
         })->pluck('name', 'id');
 
         if ($units) {
-            return view('pages.page.home', compact('units', 'developer', 'property','status','types','regencies'));
+            return view('pages.page.home', compact('units', 'developer', 'property', 'status', 'types', 'regencies'));
         }
-        
     }
 
     public function store(Request $request,  $propertyId)
@@ -246,58 +209,57 @@ class UnitController extends Controller
 
             // return redirect(route('unit.index'))->with('success', 'Data Created');
 
-            if (Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 return redirect(route('property.index'));
-            }else{
+            } else {
                 return redirect(route('developer.dashboard'));
             }
-            
         } catch (Exception $e) {
             return $e;
         }
     }
 
-
-
-    public function showFront(Unit $unit, Request $request)
-    {
-        $data = $request->all();
-        $images = Image::where('unit_id', $unit->id)->first();
-
-        return view('pages.unit.detail', compact('unit', 'images'));
-    }
-
-    
     public function show(Unit $unit, Request $request)
     {
         $data = $request->all();
         $images = Image::where('unit_id', $unit->id)->first();
+        $propertyPrice = $unit->price; // Harga utama atau harga jual properti
+        $monthsInYear = 24; // Jumlah bulan dalam satu tahun
 
-        return view('admin.unit.detail', compact('unit', 'images'));
+        // Hitung harga per bulan
+        $pricePerMonth = $propertyPrice / $monthsInYear;
+
+        // echo "Harga per bulan: $" . number_format($pricePerMonth, 2);
+
+        if (Auth::user()->role == "admin") {
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } elseif (Auth::user()->role == "developer") {
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } elseif (Auth::user()->role == "agent") {
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } else {
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        }
     }
-    // public function homeunit()
-    // {
-    //     $units = Unit::all();
-    //     $developer = Developer::all();
-
-    //     if ($units) {
-    //         return view('pages.page.home', compact('units', 'developer'));;
-    //     }
-    // }
-
 
     public function edit(Unit $unit)
     {
         $properties = Property::all();
         $statuses = Status::all();
 
-        return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        if (Auth::user()->role == "admin") {
+            return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        } elseif (Auth::user()->role == "developer") {
+            return view('pages.unit.edit', compact('unit', 'statuses', 'properties'));
+        } else {
+            return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        }
     }
 
 
     public function update(Request $request, string $id)
     {
-        try {
+        // try {
             $data = $request->all();
 
             $unit = Unit::findOrfail($id);
@@ -404,10 +366,16 @@ class UnitController extends Controller
 
             $unit->statuses()->sync($request->input('status_id'));
 
-            return redirect(route('unit.show', $id));
-        } catch (Exception $e) {
-            return $e;
-        }
+            // $property = Property::where('id', '=', $properties->id)->get();
+            // return redirect(route('unit.show', $id));
+            if (Auth::user()->role == "admin") {
+                return redirect(route('unit.show', $id));
+            } elseif (Auth::user()->role == "developer") {
+                return redirect(route('property.show.developer', $unit->property_id));
+            }
+        // } catch (Exception $e) {
+        //     return $e;
+        // }
     }
 
     public function destroy(string $id)
@@ -419,6 +387,10 @@ class UnitController extends Controller
         $unit->specifications()->delete();
         $unit->images()->delete();
 
-        return redirect(route('unit.index'))->with('success', 'Data Deleted');
+        if(Auth::user()->role == "admin"){
+            return redirect(route('unit.index'))->with('success', 'Data Deleted');
+        }else{
+            return redirect()->back();
+        }
     }
 }

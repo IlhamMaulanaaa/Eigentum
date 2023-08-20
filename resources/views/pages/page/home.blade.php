@@ -297,7 +297,7 @@
                                     @foreach ($units as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
-                                            {{-- <a href="/unit/{{ $unit->id }}" class="stretched-link"></a> --}}
+                                            <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
                                             <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                                 <div class="position-relative overflow-hidden">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
@@ -346,7 +346,6 @@
                                                             class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                                 </div>
                                             </div>
-                                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -360,7 +359,7 @@
                                     @foreach ($units as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
-
+                                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
                                             <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                                 <div class="position-relative overflow-hidden">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
@@ -409,7 +408,7 @@
                                                             class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                                 </div>
                                             </div>
-                                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
+                                           
                                         </div>
                                     @endforeach
                                 </div>
@@ -491,11 +490,11 @@
                                 @foreach ($units as $unit)
                                     <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                         style="max-width:330px; margin: 20px;">
-                                        <a href="/unit/detail" class="stretched-link"></a>
+                                        <a href="/unit/detail" class="stretched-link">
                                         <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                             <div class="position-relative overflow-hidden">
                                                 {{-- <a href="/unit/detail"> --}}
-                                                <a href="{{ route('unit.detail', $unit->id) }}">
+                                                <a href="{{ route('unit.show.user', $unit->id) }}">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
                                                         class="img-thumbnail" alt=""
                                                         style="width: 280px; height:190px;">

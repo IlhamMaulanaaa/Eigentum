@@ -87,7 +87,7 @@ class PropertyController extends Controller
             if (!$developer) {
                 return redirect()->back()->with('error', 'Developer tidak ditemukan');
             }
-            
+
             $imageField = $request->file('image');
             $imageNames = [];
             if ($imageField) {
@@ -105,7 +105,7 @@ class PropertyController extends Controller
                 'developer_id'  => $developer->id,
                 // 'agent_id' => $randomAgentId,
             ]);
-            
+
             $regencyId = $request->regencies_id;
             $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
                 $query->where('regency_id', $regencyId);
@@ -137,84 +137,76 @@ class PropertyController extends Controller
     public function storeFront(Request $request)
     {
         // try {
-            $request->validate([
-                'title'  => 'required',
-                'description'   => 'required',
-                'address'   => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-                'type_id'   => 'required',
-                // 'province_id' => 'required',
-                // 'regency_id' => 'required',
-                // 'district_id' => 'required',
-                // 'village_id' => 'required',
-            ]);
+        $request->validate([
+            'title'  => 'required',
+            'description'   => 'required',
+            'address'   => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'type_id'   => 'required',
+        ]);
 
-            // $user = Auth::user();
-            $developer = Auth::user()->developers;
+        // $user = Auth::user();
+        $developer = Auth::user()->developers;
 
-            $imageField = $request->file('image');
-            $imageNames = [];
-            if ($imageField) {
-                $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
-                $imageNames[] = $imageName;
-                $imageField->storeAs('public', $imageName);
-            }
+        $imageField = $request->file('image');
+        $imageNames = [];
+        if ($imageField) {
+            $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+            $imageNames[] = $imageName;
+            $imageField->storeAs('public', $imageName);
+        }
 
-            $property = Property::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'address'   => $request->address,
-                'image' => $imageNames[0],
-                'type_id'   => $request->type_id,
-                'developer_id'  => $developer->pluck('id')->first(),
-            ]);
+        $property = Property::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'address'   => $request->address,
+            'image' => $imageNames[0],
+            'type_id'   => $request->type_id,
+            'developer_id'  => $developer->pluck('id')->first(),
+        ]);
 
 
-            $regencyId = $request->regencies_id;
-            $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
-                $query->where('regency_id', $regencyId);
-            })->inRandomOrder()->first();
+        $regencyId = $request->regencies_id;
+        $randomAgent = Agent::whereHas('regencies', function ($query) use ($regencyId) {
+            $query->where('regency_id', $regencyId);
+        })->inRandomOrder()->first();
 
-            if ($randomAgent) {
-                $property->agents()->attach($randomAgent->id);
-            } else {
-                $property->save();
-            }
-
+        if ($randomAgent) {
+            $property->agents()->attach($randomAgent->id);
+        } else {
             $property->save();
-            $property->provinces()->attach($request->provinces_id);
-            $property->regencies()->attach($request->regencies_id);
-            $property->districts()->attach($request->districts_id);
-            $property->villages()->attach($request->villages_id);
+        }
 
-            if (Auth::user()->role == "admin") {
-                return redirect(route('property.index'));
-            } else {
-                return redirect(route('developer.dashboard'));
-            }
+        $property->save();
+        $property->provinces()->attach($request->provinces_id);
+        $property->regencies()->attach($request->regencies_id);
+        $property->districts()->attach($request->districts_id);
+        $property->villages()->attach($request->villages_id);
+
+        if (Auth::user()->role == "admin") {
+            return redirect(route('property.index'));
+        } else {
+            return redirect(route('property.show.developer', $property->id));
+        }
         // } catch (Exception $e) {
         //     return $e;
         // }
     }
 
-
     public function show(Property $property)
     {
-        return view('admin.property.detail', [
-            'property' => $property,
-        ]);
-    }
-
-    public function showFront(Property $property)
-    {
-        // if (Auth::user()->developer->id !== $property->developer_id) {
-        //     return redirect()->route('dashboard')->with('error', 'Anda tidak memiliki akses ke property ini.');
-        // }
-        // $property = Property::where('id', $property->id);
         $units = Unit::where('property_id', $property->id)->get();
-
-        return view('pages.property.detail', compact('property', 'units'));
+        if (Auth::user()->role == "admin") {
+            return view('admin.property.detail', compact('property'));
+        } elseif (Auth::user()->role == "developer") {
+            return view('pages.property.detail', compact('property', 'units'));
+        } elseif (Auth::user()->role == "agent") {
+            return view('pages.property.detail', compact('property', 'units'));
+        } else {
+            return view('pages.property.detail', compact('property', 'units'));
+        }
     }
+
 
     public function edit(Property $property)
     {
@@ -234,8 +226,6 @@ class PropertyController extends Controller
             ]);
         }
     }
-
-
 
     public function update(Request $request, string $id)
     {
@@ -281,9 +271,6 @@ class PropertyController extends Controller
             return redirect(route('developer.dashboard'));
         }
     }
-
-
-
     public function destroy(string $id)
     {
         $property = Property::findOrfail($id);
@@ -306,10 +293,10 @@ class PropertyController extends Controller
         $property->delete();
 
         // return  redirect(route('property.index'));
-        if (Auth::user()->role == "developer") {
-            return redirect(route('developer.dashboard'));
-        } else {
+        if (Auth::user()->role == "admin") {
             return redirect(route('property.index'));
+        } else {
+            return redirect()->back();
         }
     }
 }

@@ -48,13 +48,13 @@
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner</label>
                                     <input type="text" class="form-control" id="owner" name="owner"
-                                        value="{{ $user->name }}" readonly disabled>
+                                        value=" {{ implode(', ',$developer->users()->pluck('name')->toArray()) }}" readonly disabled>
                                 </div>
 
                                 <div class="form-group col-6">
                                     <label for="owner" class="form-label">Owner Email</label>
                                     <input type="owner" class="form-control" id="owner" name="owner"
-                                        value="{{ $user->email }}" readonly disabled>
+                                        value=" {{ implode(', ',$developer->users()->pluck('email')->toArray()) }}" readonly disabled>
                                 </div>
                             </div>
                             <br>
@@ -165,6 +165,9 @@
                                 @csrf
                                 <button type="submit" class="btn btn-primary">Approve</button>
                             </form>
+
+                            {{-- <a type="button" class="btn btn-primary"
+                                    href="{{ route('developer.edit', $developer->id) }}">Edit</a> --}}
                         </div>
                     </div>
                 </div>

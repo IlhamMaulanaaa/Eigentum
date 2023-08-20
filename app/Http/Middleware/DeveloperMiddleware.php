@@ -25,7 +25,7 @@ class DeveloperMiddleware
             } else {
                 return redirect('/beranda')->with('rejected', true);
             }
-            return redirect('/beranda');
+            // return redirect('/beranda');
         }
 
         return redirect('/beranda');

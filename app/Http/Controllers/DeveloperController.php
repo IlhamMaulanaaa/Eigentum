@@ -31,8 +31,8 @@ class DeveloperController extends Controller
         return view('admin.developer.approval', compact('developer'));
     }
 
-    public function dashboard()
-    {
+    public function dashboard() //menampilkan dashboard developer
+    {  
         $user =  auth()->user();
         $developer = $user->developers->first();
         return view('pages.Developer.dashboard', compact('developer', 'user'));
@@ -42,12 +42,14 @@ class DeveloperController extends Controller
     {
         return view('auth.signin');
     }
+
     public function SignupDeveloper()
     {
         $provinces = Province::all();
 
         return view('auth.developer.signup', compact('provinces'));
     }
+
     public function approve($id)
     {
         $developer = Developer::findOrFail($id);
@@ -89,7 +91,6 @@ class DeveloperController extends Controller
         return view('admin.developer.all', compact('developers', 'tables', 'regencies'));
     }
 
-
     public function create()
     {
         $provinces = Province::all();
@@ -109,10 +110,6 @@ class DeveloperController extends Controller
                 'password'  => [
                     'required',
                     'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(), 
                 ],
                 'address'   => 'required',
                 'license.*' => 'required|file|max:10240',
@@ -122,17 +119,9 @@ class DeveloperController extends Controller
                 'company_password' => [
                     'required',
                     'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(), 
                 ],
                 'ktp' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'province_id' => 'required',
-                // 'regency_id' => 'required',
-                // 'district_id' => 'required',
-                // 'village_id' => 'required',
             ], [
                 'company.required' => 'Nama Perusahaan tidak boleh kosong',
                 'email.required' => 'Email tidak boleh kosong',
@@ -164,10 +153,6 @@ class DeveloperController extends Controller
                 'face.required' => 'Foto tidak boleh kosong',
                 'face.file' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'face.max' => 'Ukuran foto maksimal 10MB',
-                // 'province_id.required' => 'Provinsi harus dipilih.',
-                // 'regency_id.required' => 'Kabupaten / Kota harus dipilih.',
-                // 'district_id.required' => 'Kecamatan harus dipilih.',
-                // 'village_id.required' => 'Desa harus dipilih.',
             ]);
 
             $images = ['ktp', 'face'];
@@ -235,10 +220,6 @@ class DeveloperController extends Controller
                 'password'  => [
                     'required',
                     'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(), 
                 ],
                 'address'   => 'required',
                 'license.*' => 'required|file|max:10240',
@@ -248,17 +229,9 @@ class DeveloperController extends Controller
                 'company_password' => [
                     'required',
                     'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(), 
                 ],
                 'ktp' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                // 'province_id' => 'required',
-                // 'regency_id' => 'required',
-                // 'district_id' => 'required',
-                // 'village_id' => 'required',
             ], [
                 'company.required' => 'Nama Perusahaan tidak boleh kosong',
                 'email.required' => 'Email tidak boleh kosong',
@@ -290,10 +263,6 @@ class DeveloperController extends Controller
                 'face.required' => 'Foto tidak boleh kosong',
                 'face.file' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
                 'face.max' => 'Ukuran foto maksimal 10MB',
-                // 'province_id.required' => 'Provinsi harus dipilih.',
-                // 'regency_id.required' => 'Kabupaten / Kota harus dipilih.',
-                // 'district_id.required' => 'Kecamatan harus dipilih.',
-                // 'village_id.required' => 'Desa harus dipilih.',
             ]);
 
             $images = ['ktp', 'face'];
@@ -308,7 +277,6 @@ class DeveloperController extends Controller
                     $imageField->storeAs('public', $imageName);
                 }
             }
-
 
             $files = $request->file('license');
             $fileArray = [];
@@ -337,7 +305,7 @@ class DeveloperController extends Controller
                 'role' => 'developer',
             ]);
 
-            $user->developers()->attach($request->developer_id);
+            $developer->users()->attach($user->id);
 
             $developer->provinces()->attach($request->provinces_id);
             $developer->regencies()->attach($request->regencies_id);
@@ -356,26 +324,16 @@ class DeveloperController extends Controller
     {
         $developer = Developer::findOrFail($id);
         $user = User::findOrFail($id);
-
-        // Assuming each developer has a license property
         $licenseFile = explode("|", $developer->license);
-
         return view('admin.developer.detail', compact('developer', 'licenseFile', 'user'));
     }
 
-
     public function showFront()
     {
-
         $user =  auth()->user();
         $developer = $user->developers->first();
-                            $countDijual = Unit::whereHas('property', function ($query) use ($developer) {
-                                $query->where('developer_id', $developer);
-                            })->whereHas('statuses', function ($query) {
-                                $query->where('name', 'dijual');
-                            })->count();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
-        return view('auth.developer.profile', compact('developer', 'user', 'licenseFile', 'countDijual'));
+        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
     }
 
     public function edit(Developer $developer)
@@ -392,31 +350,18 @@ class DeveloperController extends Controller
         try {
             $request->validate([
                 'company'   => 'nullable',
-                'email' => 'nullable|email',
-                'password'  => [
-                    'nullable',
-                    'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(),
-                ],
-                'address'   => 'nullable',
-                'license.*' => 'nullable|file|max:10240',
-                'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
-                'name' => 'nullable',
                 'company_email' => 'nullable|email',
                 'company_password' => [
                     'nullable',
                     'string',
-                    // Password::min(8)
-                    //     ->mixedCase()
-                    //     ->numbers()
-                    //     ->symbols(),
                 ],
+                'address'   => 'nullable',
+                'license.*' => 'nullable|file|max:10240',
+                'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
                 'ktp' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
                 'face' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
-                'role' => 'string',
+                'name' => 'nullable',
+                'email' => 'nullable|email',
             ], [
                 'company.required' => 'Nama Perusahaan tidak boleh kosong',
                 'email.required' => 'Email tidak boleh kosong',
@@ -450,19 +395,17 @@ class DeveloperController extends Controller
             ]);
 
             $developer = Developer::findOrfail($id);
-
-            $users = User::findOrFail($id);
-
-            $users->update([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-                'role' => $request->role,
-            ]);
-
-            $developer = $users->developers->first(); // Mengambil developer pertama terkait dengan pengguna
+            // $users = User::findOrfail($id);
+            $users = $developer->users->first(); // Mengambil developer pertama terkait dengan pengguna
 
             if ($developer) {
+
+                $users->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                ]);
+
                 $developer->update([
                     'company'   => $request->company,
                     'company_email' => $request->company_email,
@@ -500,22 +443,21 @@ class DeveloperController extends Controller
                         }
                     }
                 }
+
+                $users->developers()->sync($developer);
+                $users->save();
+                $developer->save();
             }
-
-
-
-            $users->developers()->sync($developer->id);
-            $developer->users()->sync($users->id);
-            $developer->save();
-            $users->save();
+            // $developer->users()->sync($users->id);
+            // $developer->save();
             // $developer->provinces()->sync($request->input('province_id'));
             // $developer->regencies()->sync($request->input('regency_id'));
             // $developer->districts()->sync($request->input('district_id'));
             // $developer->villages()->sync($request->xinput('village_id'));
 
             // $developer = Developer::where('id', '=', $developer->id)->get();
-            // return redirect(route('developer.show', $id));
-            return redirect(route('developer.profile'));
+            return redirect(route('developer.show', $id));
+            // return redirect(route('developer.profile'));
             // if (Auth::user()->role == "admin"){
             //     return redirect(route('developer.show', $id));
             // }else{
@@ -526,7 +468,128 @@ class DeveloperController extends Controller
         }
     }
 
+    public function updateFront(Request $request, string $id)
+    {
+        try {
+            $request->validate([
+                'company'   => 'nullable',
+                'company_email' => 'nullable|email',
+                'company_password' => [
+                    'nullable',
+                    'string',
+                ],
+                'address'   => 'nullable',
+                'license.*' => 'nullable|file|max:10240',
+                'telp' => 'nullable|regex:/^[0-9+\-() ]+$/',
+                'ktp' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'face' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:10240',
+                'name' => 'nullable',
+                'email' => 'nullable|email',
+            ], [
+                'company.required' => 'Nama Perusahaan tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'email.email' => 'Email harus mengandung @',
+                'password.required' => 'Password tidak boleh kosong',
+                'password.min' => 'Password minimal 8 karakter',
+                'password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'password.numbers' => 'Password harus mengandung angka',
+                'password.symbols' => 'Password harus mengandung simbol',
+                'address.required' => 'Alamat tidak boleh kosong',
+                'license.*.required' => 'Lisensi tidak boleh kosong',
+                'license.*.file' => 'Lisensi harus berupa file',
+                'license.*.max' => 'Ukuran lisensi maksimal 10MB',
+                'telp.required' => 'Nomor telepon tidak boleh kosong',
+                'telp.regex' => 'Nomor telepon hanya boleh berisi angka, +, -, (, ), dan spasi',
+                'name.required' => 'Nama tidak boleh kosong',
+                'company_email.required' => 'Email tidak boleh kosong',
+                'company_email.email' => 'Email harus mengandung @',
+                'company_email.unique' => 'Email sudah terdaftar',
+                'company_password.required' => 'Password tidak boleh kosong',
+                'company_password.min' => 'Password minimal 8 karakter',
+                'company_password.mixed_case' => 'Password harus mengandung huruf besar dan kecil',
+                'company_password.numbers' => 'Password harus mengandung angka',
+                'company_password.symbols' => 'Password harus mengandung simbol',
+                'ktp.required' => 'KTP tidak boleh kosong',
+                'ktp.file' => 'KTP harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'ktp.max' => 'Ukuran KTP maksimal 10MB',
+                'face.required' => 'Foto tidak boleh kosong',
+                'face.file' => 'Foto harus berupa file dengan format jpg, png, jpeg, gif, svg',
+                'face.max' => 'Ukuran foto maksimal 10MB',
+            ]);
+            // $developer = Developer::findOrfail($id);
 
+            $userDetails = Auth::user();  // To get the logged-in user details
+            $users = User::find($userDetails->id);
+            $developer = $userDetails->developers->first(); // Mengambil developer pertama terkait dengan pengguna
+
+            if ($developer) {
+                $users->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => bcrypt($request->password),
+                ]);
+
+                $developer->update([
+                    'company'   => $request->company,
+                    'company_email' => $request->company_email,
+                    'company_password' => bcrypt($request->company_password),
+                    'address'   => $request->address,
+                    'telp'  => $request->telp,
+                ]);
+
+                $images = ['ktp', 'face'];
+
+                foreach ($images as $image) {
+                    if ($request->hasFile($image)) {
+                        // Hapus gambar lama jika sudah ada
+                        if ($developer->$image) {
+                            Storage::delete('public/' . $developer->$image);
+                        }
+
+                        // Simpan gambar baru
+                        $imageField = $request->file($image);
+                        $imageName = $imageField->getClientOriginalName() . "." . $imageField->getClientOriginalExtension();
+                        $imageField->storeAs('public', $imageName);
+                        $developer->$image = $imageName;
+                    }
+                }
+
+                if ($request->hasFile('license')) {
+                    $licenses = $request->file('license');
+                    foreach ($licenses as $index => $license) {
+                        if ($license->isValid()) {
+                            $licenseName = $license->getClientOriginalName() . '.' . $license->getClientOriginalExtension();
+                            $license->storeAs('public', $licenseName);
+                            $fileArray = explode('|', $developer->license);
+                            $fileArray[$index] = $licenseName;
+                            $developer->license = implode('|', $fileArray);
+                        }
+                    }
+                }
+
+                $developer->users()->sync($users);
+                $developer->save();
+                $users->save();
+            }
+            // $developer->users()->sync($users->id);
+            // $developer->save();
+            // $developer->provinces()->sync($request->input('province_id'));
+            // $developer->regencies()->sync($request->input('regency_id'));
+            // $developer->districts()->sync($request->input('district_id'));
+            // $developer->villages()->sync($request->xinput('village_id'));
+
+            // $developer = Developer::where('id', '=', $developer->id)->get();
+            // return redirect(route('developer.show', $id));
+            return redirect()->back();
+            // if (Auth::user()->role == "admin"){
+            //     return redirect(route('developer.show', $id));
+            // }else{
+            //     // dd($users);
+            // }
+        } catch (Exception $e) {
+            return $e;
+        }
+    }
 
     public function destroy(string $id)
     {

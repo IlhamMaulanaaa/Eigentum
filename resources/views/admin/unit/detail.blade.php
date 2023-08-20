@@ -36,6 +36,11 @@
                                         <input class="form-control" value="{{ $unit->price }}" readonly disabled>
                                     </div>
                                     <br>
+                                    <div class="form-group">
+                                        <label for="" class="form-label">Price Rent</label>
+                                        <input class="form-control" value="{{  number_format($pricePerMonth, 2) }}" readonly disabled>
+                                    </div>
+                                    <br>
                                     <div class="form-group col-auto">
                                         <label for="" class="form-label">Property</label>
                                         <input class="form-control" value="{{ $unit->properties->title }}" readonly

@@ -51,57 +51,103 @@
 
                 @if (Auth::check())
                     <div class="profileq" style="cursor: pointer;">
-                        <img src="{{ Auth()->user()->avatar }}" alt="">
+                        @if (Auth::user()->role == 'agent')
+                            <img src="{{ asset('storage/' .Auth()->user()->agents->pluck('face')->first()) }}" />
+                        @elseif (Auth::user()->role == 'developer')
+                            <img src="{{ asset('storage/' .Auth()->user()->developers->pluck('face')->first()) }}" />
+                        @elseif (Auth::user()->role == 'admin')
+                            <img src="{{ Auth()->user()->avatar }}" alt="">
+                        @else
+                            <img src="{{ Auth()->user()->avatar }}" alt="">
+                        @endif
                     </div>
                     {{ Auth()->user()->name }}
-
-
-
                     <div class="menu-profileq">
                         <h3>
-                            
-                            {{ Str::limit(Auth()->user()->developers->pluck('company_email')->first(), 18) }}
+                            {{ Str::limit(Auth()->user()->email, 18) }}
+                            {{-- {{ Str::limit(Auth()->user()->developers->pluck('company_email')->first(), 18) }} --}}
                             <div>
-                                {{-- sesuai nama role --}}
-                                {{-- {{ session('role') }} --}}
+                                {{ Str::limit(Auth()->user()->role, 18) }}
+                                {{-- {{ Str::limit(Auth()->user()->developers->pluck('company')->first(),18) }} --}}
                             </div>
                         </h3>
-                        <ul style="margin: 0; padding:0;">
-                            <li>
-                                <span class="material-icons icons-size">person</span>
-                                <a href="/developer/profile">Profile</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">monetization_on</span>
-                                <a href="/pages/langganan">Langganan</a>
-                            </li>
-                            <li>
-                                <span class="material-icons icons-size">favorite</span>
-                                <a href="/favorite">disukai</a>
-                            </li>
-                            @if (Auth::user()->role == "agent")
+                        @if (Auth::user()->role == 'agent')
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="{{route('agent.profile')}}">Profile</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">disukai</a>
+                                </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/agent/dashboard/">Agent</a>
                                 </li>
-                            @elseif (Auth::user()->role == "developer")
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="{{route('logout')}}">Logout</a>
+                                </li>
+                            </ul>
+                        @elseif (Auth::user()->role == 'developer')
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="{{route('developer.profile')}}">Profile</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">disukai</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">monetization_on</span>
+                                    <a href="/pages/langganan">Langganan</a>
+                                </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
-                                    <a href="/developer/dashboard/">Developer</a>
+                                    <a href="{{route('developer.dashboard')}}">Developer</a>
                                 </li>
-                            @elseif (Auth::user()->role == "admin")
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="{{route('logout')}}">Logout</a>
+                                </li>
+                            </ul>
+                        @elseif (Auth::user()->role == 'admin')
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    <a href="">Admin</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">disukai</a>
+                                </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/admin/dashboard/">Admin</a>
                                 </li>
-                            @endif
-                            
-                            
-                            <li>
-                                <span class="material-icons icons-size">exit_to_app</span>
-                                <a href="/session/auth/user/signout">Logout</a>
-                            </li>
-                        </ul>
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="{{route('logout')}}">Logout</a>
+                                </li>
+                            </ul>
+                        @else
+                            <ul style="margin: 0; padding:0;">
+                                <li>
+                                    <span class="material-icons icons-size">person</span>
+                                    {{-- <a href="{{route('user.profile')}}">Profile</a> --}}
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">favorite</span>
+                                    <a href="/favorite">disukai</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">exit_to_app</span>
+                                    <a href="{{route('logout')}}">Logout</a>
+                                </li>
+                            </ul>
+                        @endif
                     </div>
                 @elseif (!Auth::check())
                     <a href="/" class="btnq">Masuk</a>

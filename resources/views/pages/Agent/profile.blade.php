@@ -20,10 +20,10 @@
                 <div class="profile-tab-nav border-right">
                     <div class="p-4">
                         <div class="img-circle text-center mb-3">
-                            <img src="{{ asset('storage/' . $developer->face) }}" class="img-thumbnail" alt=""
+                            <img src="{{ asset('storage/' . $agents->face) }}" class="img-thumbnail" alt=""
                                 width="120">
                         </div>
-                        <h4 class="text-center">{{ $user->name }}</h4>
+                        <h4 class="text-center">{{ auth()->user()->name }}</h4>
                     </div>
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <a class="nav-link active" id="account-tab" data-toggle="pill" href="#account" role="tab"
@@ -31,7 +31,7 @@
                             <i class="fa fa-home text-center mr-1"></i>
                             Profile
                         </a>
-                        <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab"
+                        {{-- <a class="nav-link" id="password-tab" data-toggle="pill" href="#password" role="tab"
                             aria-controls="password" aria-selected="false">
                             <i class="fa fa-key text-center mr-1"></i>
                             Kata Sandi
@@ -45,13 +45,13 @@
                             aria-controls="notification" aria-selected="false">
                             <i class="fa fa-bell text-center mr-1"></i>
                             Notifikasi
-                        </a>
+                        </a> --}}
                     </div>
-
                 </div>
                 <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="account" role="tabpanel" aria-labelledby="account-tab">
-                        <form action="{{route('developer.memperbarui', $developer->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('agent.update.agent', $agents->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <h3 class="mb-4">Profil</h3>
@@ -60,24 +60,25 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nama Lengkap</label>
-                                        <input type="text" class="form-control" name="name" value="{{ old('name',$user->name)  }}">
+                                        <input type="text" class="form-control" name="name"
+                                            value="{{ old('name', auth()->user()->name) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="text" class="form-control" name="email" value=" {{ old('email',$user->email)}}">
+                                        <input type="text" class="form-control" name="email"
+                                            value=" {{ old('email', auth()->user()->email) }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-auto">
                                         <div class="form-group">
                                             <label for="ktp" class="form-label">Ktp</label>
-                                            @if ($developer->ktp)
+                                            @if ($agents->ktp)
                                                 <div class="mb-3">
-                                                    <img src="{{ asset('storage/' . $developer->ktp) }}"
-                                                        alt="{{ $developer->ktp }}" class="img-thumbnail"
-                                                        width="120">
+                                                    <img src="{{ asset('storage/' . $agents->ktp) }}"
+                                                        alt="{{ $agents->ktp }}" class="img-thumbnail" width="120">
                                                 </div>
                                             @endif
                                             <input type="file" class="form-control" id="ktp" name="ktp">
@@ -86,11 +87,10 @@
                                     <div class="col-auto">
                                         <div class="form-group">
                                             <label for="face" class="form-label">Face</label>
-                                            @if ($developer->face)
+                                            @if ($agents->face)
                                                 <div class="mb-3">
-                                                    <img src="{{ asset('storage/' . $developer->face) }}"
-                                                        alt="{{ $developer->face }}" class="img-thumbnail"
-                                                        width="120">
+                                                    <img src="{{ asset('storage/' . $agents->face) }}"
+                                                        alt="{{ $agents->face }}" class="img-thumbnail" width="120">
                                                 </div>
                                             @endif
                                             <input type="file" class="form-control" id="face" name="face">
@@ -98,56 +98,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <h5 class="mb-4" style="margin-top: 150px;">Developer</h5>
-                            <div class="row" style="margin-top: -20px;">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Perusahaan</label>
-                                        <input type="text" class="form-control" name="company" value="{{ old('company',$developer->company)  }}">
-                                    </div>
-                                </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Nomor Telephone</label>
-                                        <input type="text" class="form-control"  name="telp" value="{{ old('telp',$developer->telp)  }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="company_email"
-                                            value="{{ old('company_email',$developer->company_email)  }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control" name="company_password"
-                                            value="">
+                                        <input type="text" class="form-control" name="telp"
+                                            value="{{ old('telp', $agents->telp) }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Address</label>
                                         <input type="text" class="form-control" name="address"
-                                            value="{{ old('address',$developer->address)  }}">
+                                            value="{{ old('address', $agents->address) }}">
                                     </div>
-                                </div>
-                                <div class="col-auto">
-                                    @foreach ($licenseFile as $index => $license)
-                                        <div class="file-container my-2">
-                                            <a href="{{ route('pdf.preview', ['file' => $license]) }}"
-                                                target="_blank">Tampilkan
-                                                {{ pathinfo($license, PATHINFO_FILENAME) }}</a>
-                                        </div>
-                                        <input type="file" class="form-control noscroll" id="license"
-                                            name="license[{{ $index }}]" multiple>
-                                    @endforeach
                                 </div>
                                 <br>
 
                             </div>
-                            <div style="margin-top: 270px;">
+                            <br>
+                            <div>
                                 <button type="submit" class="btn btn-primary">Memperbarui</button>
                                 <button class="btn btn-light">Membatalkan</button>
                             </div>
