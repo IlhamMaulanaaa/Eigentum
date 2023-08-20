@@ -188,13 +188,15 @@ Route::group(['prefix' => '/pages'], function () {
     Route::group(['prefix' => '/agent'], function () {
         Route::get('/{agent}', [AgentController::class, 'show'])->name('agent.show.user');
     });
-});
 
-Route::get('/filterproperti', [UnitController::class, 'filter'])->name('filterproperti');;
-Route::get('/favorite', [FavoriteController::class, 'index']);
+    Route::get('/search', [UnitController::class, 'filter'])->name('filterproperti');;
+});
+Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
+
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
-});
+})->name('detailpanduan');
+
 
 //  admin
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {

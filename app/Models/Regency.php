@@ -73,4 +73,9 @@ class Regency extends Model
         return $this->belongsToMany(Agent::class, 'agent_regencies', 'regency_id', 'agent_id');
     }
 
+    public function properties(): BelongsToMany
+    {
+        return $this->belongsToMany(Property::class, 'property_regencies', 'regency_id', 'property_id')->withCount('units');
+    }
+
 }

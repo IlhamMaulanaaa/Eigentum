@@ -122,8 +122,9 @@
                                                 <i class=" bx bx-chevron-down" style=""></i>
                                             </div>
                                         </div>
+                                        
                                         <ul class="options2">
-                                            <li class="option2">
+                                            {{-- <li class="option2">
                                                 <i class="bx bx-building" style="color: #0C40E8;"></i>
                                                 <span class="option2-text">Apartemen</span>
                                             </li>
@@ -142,7 +143,15 @@
                                             <li class="option2">
                                                 <i class="bx bx-grid-alt" style="color: #171515;"></i>
                                                 <span class="option2-text">Semua Properti</span>
-                                            </li>
+                                            </li> --}}
+                                                @foreach ($types as $type)
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}"
+                                                            name="types[]" value="{{ $type->id }}"
+                                                            {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
+                                                        <label class="form-check-label">{{ $type->name }}</label>
+                                                    </div>
+                                                @endforeach
                                         </ul>
                                     </div>
                                     <div class="select-menu3">
@@ -224,7 +233,20 @@
                     </div>
                     <div class="filter-kota">
                         <div class="subFilter">
+                            @foreach ( $regencies as $regencyId => $regency)
                             <div class="box">
+                                {{-- <img src="/assets/pages/home/jakarta.jpg" id="img" alt=""> --}}
+                                <div class="desc-filter-kota">
+                                    <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
+                                    <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
+                                        $query->select('property_id')
+                                            ->from('property_regency')
+                                            ->where('regency_id', $regencyId);
+                                    })->count() }} properti</p>
+                                </div>
+                            </div>
+                            @endforeach
+                            {{-- <div class="box">
                                 <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
                                 <div class="desc-filter-kota">
                                     <p id="namaKota">Jakarta</p>
@@ -251,9 +273,9 @@
                                     <p id="namaKota">Yogyakarta</p>
                                     <p id="descKota">10 properti</p>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="subFilter" id="filter2">
+                        {{-- <div class="subFilter" id="filter2">
                             <div class="box">
                                 <img src="/assets/pages/home/semarang.jpg" id="img" alt="">
                                 <div class="desc-filter-kota">
@@ -282,7 +304,7 @@
                                     <p id="descKota">32 properti</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="group-77-FDR" id="4:7198">
                         <div class="rumahBaru">
@@ -351,15 +373,14 @@
                                 </div>
                             </div>
 
-
                         </div>
                         <div class="slide-container swiper" style="margin-bottom: 0px;">
                             <div class="slide-content">
                                 <div class="card-wrapper swiper-wrapper">
-                                    @foreach ($units as $unit)
+                                    @foreach ($newunits as $unit)
                                         <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
                                             style="max-width:330px; margin: 20px;">
-                                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
+                                            <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
                                             <div class="property-item rounded overflow-hidden" style="width: 290px;">
                                                 <div class="position-relative overflow-hidden">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
@@ -368,7 +389,7 @@
                                                     <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
                                                         @csrf
                                                         <div class="btnsz"
-                                                            style="position: absolute; top: 18px; right: 20px;">
+                                                            style="position: absolute; top: 18px; right: 20px; z-index: 100;">
                                                             <button type="submit" onclick="Toggle1()" id="btnh1z"
                                                                 class="btnz"><i class="fas fa-heart"></i></button>
                                                         </div>
@@ -408,7 +429,6 @@
                                                             class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                                 </div>
                                             </div>
-                                           
                                         </div>
                                     @endforeach
                                 </div>
@@ -431,79 +451,18 @@
                         <div class="slide-content">
                             <div class="card-wrapper swiper-wrapper">
                                 @foreach ($units as $unit)
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        {{-- <a href="/unit/{{ $unit->id }}" class="stretched-link"></a> --}}
-                                        <div class="property-item rounded overflow-hidden" style="width: 290px;">
-                                            <div class="position-relative overflow-hidden">
-                                                <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                    alt="" style="width: 280px; height:190px;">
-                                                <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                                    @csrf
-                                                    <div class="btnsz"
-                                                        style="position: absolute; top: 18px; right: 20px;">
-                                                        <button type="submit" onclick="Toggle1()" id="btnh1z"
-                                                            class="btnz"><i class="fas fa-heart"></i></button>
-                                                    </div>
-                                                </form>
-                                                <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                                    style="background-color: #0C40E8">
-                                                    @foreach ($unit->statuses as $status)
-                                                        <li>
-                                                            {{ $status->name }}
-                                                        </li>
-                                                    @endforeach
-                                                </div>
-                                                <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                    style="color: #0C40E8">{{ $unit->title }}</div>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
-                                                {{ $unit->properties->property }}
-                                                {{-- <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
-                                                    {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</p> --}}
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 280px; ">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="slide-container swiper" style="margin-bottom: 0px;">
-                        <div class="slide-content">
-                            <div class="card-wrapper swiper-wrapper">
-                                @foreach ($units as $unit)
-                                    <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                        style="max-width:330px; margin: 20px;">
-                                        <a href="/unit/detail" class="stretched-link">
-                                        <div class="property-item rounded overflow-hidden" style="width: 290px;">
-                                            <div class="position-relative overflow-hidden">
-                                                {{-- <a href="/unit/detail"> --}}
-                                                <a href="{{ route('unit.show.user', $unit->id) }}">
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                                            style="max-width:330px; margin: 20px;">
+                                            <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
+                                            <div class="property-item rounded overflow-hidden" style="width: 290px;">
+                                                <div class="position-relative overflow-hidden">
                                                     <img src="{{ asset('storage/' . $unit->image) }}"
                                                         class="img-thumbnail" alt=""
                                                         style="width: 280px; height:190px;">
-                                                    {{-- </a> --}}
-                                                    {{-- <a href=""></a> --}}
                                                     <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
                                                         @csrf
                                                         <div class="btnsz"
-                                                            style="position: absolute; top: 18px; right: 20px;">
+                                                            style="position: absolute; top: 18px; right: 20px; z-index: 100;">
                                                             <button type="submit" onclick="Toggle1()" id="btnh1z"
                                                                 class="btnz"><i class="fas fa-heart"></i></button>
                                                         </div>
@@ -517,31 +476,96 @@
                                                         @endforeach
                                                     </div>
                                                     <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
-                                                        style="color: #0C40E8">{{ $unit->title }}</div>
-                                                </a>
-                                            </div>
-                                            <div class="p-0 pb-0">
-                                                <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
-                                                {{ $unit->properties->property }}
-                                                <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
-                                                    {{ Str::limit('Jawa Tengah, Semarang, Kedurungan', 25) }}</p>
-                                            </div>
-                                            <div class="d-flex border-top" style="width: 280px; ">
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
-                                                <small class="flex-fill text-center border-end py-2"
-                                                    style="color: #000;"><i
-                                                        class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
-                                                <small class="flex-fill text-center py-2" style="color: #000;"><i
-                                                        class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                                        style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
+
+                                                </div>
+                                                <div class="p-0 pb-0">
+                                                    <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                                    <h6 class=" mb-1 mt-3" style="color: #000;">
+                                                        {{ $unit->title }}</h6>
+
+                                                    <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                                        {{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex border-top" style="width: 280px; ">
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                                    <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                @endforeach
+                                    @endforeach
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="slide-container swiper" style="margin-bottom: 0px;">
+                        <div class="slide-content">
+                            <div class="card-wrapper swiper-wrapper">
+                                @foreach ($units as $unit)
+                                        <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
+                                            style="max-width:330px; margin: 20px;">
+                                            <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
+                                            <div class="property-item rounded overflow-hidden" style="width: 290px;">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt=""
+                                                        style="width: 280px; height:190px;">
+                                                    <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                        @csrf
+                                                        <div class="btnsz"
+                                                            style="position: absolute; top: 18px; right: 20px; z-index: 100;">
+                                                            <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                                class="btnz"><i class="fas fa-heart"></i></button>
+                                                        </div>
+                                                    </form>
+                                                    <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                        style="background-color: #0C40E8">
+                                                        @foreach ($unit->statuses as $status)
+                                                            <li>
+                                                                {{ $status->name }}
+                                                            </li>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                                        style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
+
+                                                </div>
+                                                <div class="p-0 pb-0">
+                                                    <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
+                                                    <h6 class=" mb-1 mt-3" style="color: #000;">
+                                                        {{ $unit->title }}</h6>
+
+                                                    <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
+                                                        {{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
+                                                    </p>
+                                                </div>
+                                                <div class="d-flex border-top" style="width: 280px; ">
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-bed  me-2"></i>{{ $unit->specifications->bedroom }}</small>
+                                                    <small class="flex-fill text-center border-end py-2"
+                                                        style="color: #000;"><i
+                                                            class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
+                                                    <small class="flex-fill text-center py-2" style="color: #000;"><i
+                                                            class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
                             </div>
                         </div>
                     </div>

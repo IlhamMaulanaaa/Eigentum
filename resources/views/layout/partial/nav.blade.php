@@ -39,7 +39,7 @@
 
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li><a href="/beranda">Beranda</a></li>
-                    <li><a href="/filterproperti">Properti</a></li>
+                    <li><a href="{{route('filterproperti')}}">Properti</a></li>
                     <li><a href="/pages/searchagent">Cari Agen</a></li>
                     <li><a href="/pages/guide">Panduan</a></li>
                     <li><a href="/pages/kpr">KPR</a></li>
@@ -79,7 +79,7 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="/favorite">disukai</a>
+                                    <a href="{{route('favorite.index')}}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
@@ -98,7 +98,7 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="/favorite">disukai</a>
+                                    <a href="{{route('favorite.index')}}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">monetization_on</span>
@@ -121,7 +121,7 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="/favorite">disukai</a>
+                                    <a href="{{route('favorite.index')}}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
@@ -140,7 +140,7 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="/favorite">disukai</a>
+                                    <a href="{{route('favorite.index')}}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
