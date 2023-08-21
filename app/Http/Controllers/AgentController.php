@@ -281,20 +281,13 @@ class AgentController extends Controller
         $agents = $user->agents->first();
         if (Auth::user()->role == 'admin') {
             return view('admin.agent.edit', compact('agent'));
-        } else {
+        } elseif (Auth::user()->role == 'agent') {
             return view('pages.agent.profile', compact('agents'));
+        } else {
+            return view('pages.user.profile', compact('agents', 'user'));
         }
     }
-    public function editFront(Agent $agent)
-    {
-        $user =  auth()->user();
-        $agents = $user->agents->first();
-        if (Auth::user()->role == 'admin') {
-            return view('admin.agent.edit', compact('agent'));
-        } else {
-            return view('pages.agent.profile', compact('agents'));
-        }
-    }
+
 
 
     public function update(Request $request, string $id)

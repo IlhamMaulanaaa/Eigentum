@@ -73,7 +73,7 @@ class Unit extends Model
     public function districts(): BelongsToMany
     {
         return $this->belongsToMany(District::class, 'property_district', 'property_id', 'district_id');
-    }
+    }   
 
     public function villages(): BelongsToMany
     {
@@ -90,21 +90,21 @@ class Unit extends Model
             $query->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%')
                 ->orWhere('description', 'like', '%' . $search . '%')
+                ->orWhere('price', 'like', '%' . $search . '%')
                 ->orwhereHas('statuses', function ($query) use ($search) {
                     $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', $search);
+                        ->orWhere('id', 'like', '%' . $search . '%');
                 })->orWhereHas('properties', function ($query) use ($search) {
                     $query->where('title', 'like', '%' . $search . '%')
-                        ->orWhere('id', $search);
-                })->orWhereHas('regencies', function ($query) use ($search) {
+                        ->orWhere('id','like', '%' . $search . '%');
+                })->orWhereHas('properties.regencies', function ($query) use ($search) {
                     $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', $search);
+                        ->orWhere('id', 'like', '%' . $search . '%');
                 })->orwhereHas('properties.types', function ($query) use ($search) {
                     $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', $search);
+                        ->orWhere('id', 'like', '%' . $search . '%');
                 });    
             });
-            
         });
 
         $query->when($filters['status'] ?? false, function ($query, $statuses) {
@@ -117,6 +117,14 @@ class Unit extends Model
             return $query->whereHas('properties.types', function ($query) use ($types) {
                 $query->where('id', $types);
             });
+        });
+
+        $query->when(isset($filters['min_price']) && is_numeric($filters['min_price']), function ($query) use ($filters) {
+            $query->where('price', '>=', $filters['min_price']);
+        });
+    
+        $query->when(isset($filters['max_price']) && is_numeric($filters['max_price']), function ($query) use ($filters) {
+            $query->where('price', '<=', $filters['max_price']);
         });
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regency_id) {

@@ -88,7 +88,7 @@
                                 <h5 class="text-white mb-0">Agen Berpengalaman</h5>
                                 <h1 class="text-white mb-0" data-toggle="counter-up">{{ $agents->count() }}</h1>
                             </div>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -146,17 +146,8 @@
         <div class="cardagent">
             <div class="wrapper">
                 <ul class="carousel11">
-                    {{-- @foreach ($agents as $agent)
-                        <li class="card">
-                            <div class="img">
-                                <img src="{{ $agent->face }}" alt="img" draggable="false">
-                            </div>
-                            <h2>{{ $agent->name }}</h2>
-                            <span>{{ $agent->locations->name }}, {{ Str::limit($agent->address) }}</span>
-                        </li>
-                    @endforeach --}}
                     @foreach ($agents as $agent)
-                        <a href="{{ route('agent.dashboard', $agent->id) }}">
+                        <a href="{{ route('agent.show.user', $agent->id) }}">
                             <li class="card">
                                 <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
                                         draggable="false"></div>
@@ -167,74 +158,7 @@
                             </li>
                         </a>
                     @endforeach
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card">
-                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    {{-- @foreach ($agents as $agent)
-                    <li class="card">
-                        <div class="img">
-                            <img src="images/img-1.jpg" alt="img" draggable="false">
-                        </div>
-                        <h2>{{ $agent->name }}</h2>
-                        <span>{{ $agent->position }}</span>
-                    </li>
-                    @endforeach --}}
                 </ul>
-
-
             </div>
         </div>
         <!-- End Card Agent -->
@@ -244,55 +168,18 @@
         <div class="cardagent1">
             <div class="wrapper1">
                 <ul class="carousel12">
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                    draggable="false">
-                            </div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card1" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
+                    @foreach ($agents as $agent)
+                        <a href="{{ route('agent.show.user', $agent->id) }}">
+                            <li class="card1">
+                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
+                                        draggable="false"></div>
+                                @foreach ($agent->users as $user)
+                                    <h2>{{ $user->name }}</h2>
+                                @endforeach
+                                <span>Agent Independen</span>
+                            </li>
+                        </a>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -303,55 +190,18 @@
         <div class="cardagent2">
             <div class="wrapper2">
                 <ul class="carousel13">
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni1-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni4-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                    draggable="false">
-                            </div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
-                    <a href="/agent/dashboard">
-                        <li class="card2" style="border: 1px solid #ccc; border-radius: 8px; padding: 10px;">
-                            <div class="img"><img src="/assets/pages/Home/testimoni3-home.svg" alt="img"
-                                    draggable="false"></div>
-                            <h2>Bambang Yudoyono</h2>
-                            <span>Agent Independen</span>
-                        </li>
-                    </a>
+                    @foreach ($agents as $agent)
+                        <a href="{{ route('agent.show.user', $agent->id) }}">
+                            <li class="card2">
+                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
+                                        draggable="false"></div>
+                                @foreach ($agent->users as $user)
+                                    <h2>{{ $user->name }}</h2>
+                                @endforeach
+                                <span>Agent Independen</span>
+                            </li>
+                        </a>
+                    @endforeach
                 </ul>
             </div>
         </div>

@@ -143,12 +143,13 @@
                         @foreach ($developer->properties as $property)
                             <div class="card p-0" data-name="aktif">
                                 <a href="{{ route('property.show.developer', $property->id) }}" class="stretched-link"></a>
-                                <img src="{{ asset('storage/' . $property->image) }}" alt="img" />
+                                <img style="height: 180px;" src="{{ asset('storage/' . $property->image) }}"
+                                    alt="img" />
                                 <div class="card-body">
                                     <h6 class="card-title">
                                         {{ $property->title }}</h6>
                                 </div>
-                                <div class="labeledit" style="z-index: 100" >
+                                <div class="labeledit" style="z-index: 100">
                                     <a class="linkedit" href="{{ route('property.edit.developer', $property->id) }}"><i
                                             class="fas fa-edit edit-icon"></i></a>
                                 </div>

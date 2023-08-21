@@ -269,7 +269,7 @@ body {
     height: 70px;
     position: absolute;
     top: 34rem;
-    width: 1000px;
+    width: 600px;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -7856,8 +7856,8 @@ body {
     border: 2px solid black; /* Pink border */
     outline: none;
     font-size: 16px;
-    width: 250px;
-    margin-left: 30px;
+    width: 440px;
+    margin-left: 10px;
 }
 
 #search-button {

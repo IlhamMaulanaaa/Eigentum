@@ -65,12 +65,12 @@
                                             </select>
                                         </div>
                                         <div class="col-md-2">
-                                            <select name="type_id" id="type_id" class="form-select">
-                                                <option value=""{{ request('type_id') ? '' : 'selected' }}>
+                                            <select name="types" id="types" class="form-select">
+                                                <option value=""{{ request('types') ? '' : 'selected' }}>
                                                     Type</option>
                                                 @foreach ($types as $type)
                                                     <option value="{{ $type->id }}"
-                                                        {{ request('type_id') == $type->id ? 'selected' : '' }}>
+                                                        {{ request('types') == $type->id ? 'selected' : '' }}>
                                                         {{ $type->name }}
                                                     </option>
                                                 @endforeach
