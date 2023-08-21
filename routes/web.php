@@ -145,6 +145,8 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/notfound', function () {
         return view('pages.page.notfound');
     });
+    Route::get('/profile', [AgentController::class, 'editFront'])->name('user.profile');
+
 
     Route::get('/searchagent', [AgentController::class, 'searchAgent']);
 
@@ -229,7 +231,6 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         // Route::post('/subscribe/{id}', [`SubscribeController::class, 'show'])->name('subscribe.show');
         Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
     });
-
 });
 
 Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');

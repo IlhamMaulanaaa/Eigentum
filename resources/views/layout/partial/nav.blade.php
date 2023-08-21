@@ -140,7 +140,7 @@
                             <ul style="margin: 0; padding:0;">
                                 <li>
                                     <span class="material-icons icons-size">person</span>
-                                    {{-- <a href="{{route('user.profile')}}">Profile</a> --}}
+                                    <a href="{{route('user.profile')}}">Profile</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>

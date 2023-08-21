@@ -8,7 +8,6 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/DetailProperty/detailproperty.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
             integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
             crossorigin="anonymous" />
@@ -144,48 +143,6 @@
                             <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
                                     style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
                             </div>
-                            {{-- <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div> --}}
                         </div>
                     </div>
 
@@ -312,50 +269,52 @@
                                                 <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
                                                     alt="" width="360" height="120"></a>
                                         @endif
-                                        {{-- <a href="{{ route('unit.show.developer', $unit->id) }}" class="">
-                                            <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                alt="" width="360" height="120"></a> --}}
-                                        <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                            @csrf
-                                            <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
-                                                <button type="submit" onclick="Toggle1()" id="btnh1z"
-                                                    class="btnz"><i class="fas fa-heart"></i></button>
-                                            </div>
-                                        </form>
-                                        @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                        <div class="labeledit" style="z-index: 100">
-                                            <a class="linkedit" href="{{ route('unit.edit.developer', $unit->id) }}"><i
-                                                    class="fas fa-edit edit-icon"></i></a>
-                                        </div>
-                                        <div class="labeldelete" style="z-index: 100">
-                                            <form action="{{ route('unit.destroy.developer', $unit->id) }}"
-                                                method="get" class="d-inline">
+                                        @if (Auth::user()->role == 'user')
+                                            <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button class="linkdelete"
-                                                    onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
-                                                        class="fas fa-trash delete-icon"></i></button>
-                                                {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
+                                                <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
+                                                    <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                        class="btnz"><i class="fas fa-heart"></i></button>
+                                                </div>
                                             </form>
-                                        </div>
                                         @endif
-                                        <div class=" rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+
+                                        <div class="rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
                                             style="background-color: #0C40E8">
                                             @foreach ($unit->statuses as $status)
-                                                <li>
-                                                    {{ $status->name }}
-                                                </li>
+                                                <li>{{ $status->name }}</li>
                                             @endforeach
                                         </div>
-                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
+                                        <div class="bg-white rounded-top  position-absolute start-500 bottom-0 left-50 mx-4 pt-1 px-3"
                                             style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
                                     </div>
-                                    <div class="p-0 pb-0">
-                                        <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
-                                        {{ $unit->properties->property }}
-                                        <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
-                                            {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</p>
-                                            <p>{{$unit->title}}</p>
+                                    <div class="p-3 pb-0"> <!-- Adjusted padding -->
+                                        <div class="edit-unit-developer d-flex ">
+                                            <h5 class="mb-1 mt-3 d-flex" style="color: #000;">{{ $unit->title }}</h5>
+                                            @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
+                                                <div class="labeledit" style="z-index: 100">
+                                                    <a class="linkedit"
+                                                        href="{{ route('unit.edit.developer', $unit->id) }}"><i
+                                                            class="fas fa-edit edit-icon"></i></a>
+                                                </div>
+                                                <div class="labeldelete" style="z-index: 100">
+                                                    <form action="{{ route('unit.destroy.developer', $unit->id) }}"
+                                                        method="get" class="d-inline">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button class="linkdelete"
+                                                            onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
+                                                                class="fas fa-trash delete-icon"></i></button>
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        </div>
+                                        <p class="mb-0 d-flex">{{ $unit->price }}</p>
+                                        {{-- <p class="mb-1">{{ $unit->properties->property }}</p> --}}
+                                        <!-- Removed extra line -->
+                                        <p class="mb-0"><i class="fa fa-map-marker-alt me-2 d-flex"
+                                                style="color: #000; margin-botom: 10px;">{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</i>
+                                        </p>
                                     </div>
                                     <div class="d-flex border-top" style="width: 280px; ">
                                         <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
@@ -370,6 +329,7 @@
                                 </div>
                             </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>

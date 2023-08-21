@@ -284,6 +284,16 @@ class AgentController extends Controller
             return view('pages.agent.profile', compact('agents'));
         }
     }
+    public function editFront(Agent $agent)
+    {
+        $user =  auth()->user();
+        $agents = $user->agents->first();
+        if (Auth::user()->role == 'admin') {
+            return view('admin.agent.edit', compact('agent'));
+        } else {
+            return view('pages.agent.profile', compact('agents'));
+        }
+    }
 
 
     public function update(Request $request, string $id)
@@ -316,9 +326,9 @@ class AgentController extends Controller
             ]);
 
             $agent = Agent::findOrfail($id);
-            $users = $agent->users->first(); 
+            $users = $agent->users->first();
 
-            if($agent){
+            if ($agent) {
                 $users->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -329,7 +339,7 @@ class AgentController extends Controller
                     'address'   => $request->address,
                     'telp'  => $request->telp,
                 ]);
-    
+
                 $images = ['ktp', 'face'];
                 foreach ($images as $key => $image) {
                     if ($request->hasFile($image)) {
@@ -346,7 +356,7 @@ class AgentController extends Controller
                 $agent->save();
             }
 
-            
+
             return redirect(route('agent.show', $id));
         } catch (Exception $e) {
             return $e;
@@ -387,7 +397,7 @@ class AgentController extends Controller
             $users = User::find($userDetails->id);
             $agent = $users->agents->first();
 
-            if($agent){
+            if ($agent) {
                 $users->update([
                     'name' => $request->name,
                     'email' => $request->email,
@@ -398,7 +408,7 @@ class AgentController extends Controller
                     'address'   => $request->address,
                     'telp'  => $request->telp,
                 ]);
-    
+
                 $images = ['ktp', 'face'];
                 foreach ($images as $key => $image) {
                     if ($request->hasFile($image)) {
@@ -414,7 +424,7 @@ class AgentController extends Controller
                 $users->save();
                 $agent->save();
             }
-            
+
             // $agent = Agent::where('id', '=', $agent->id)->get();
             return redirect()->back();
         } catch (Exception $e) {

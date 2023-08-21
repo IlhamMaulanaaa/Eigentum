@@ -138,7 +138,7 @@
                                     <h6 class="card-title">
                                         {{ $property->title }}</h6>
                                 </div>
-                                <div class="labeledit" style="z-index: 100">
+                                <div class="labeledit" style="z-index: 100" >
                                     <a class="linkedit" href="{{ route('property.edit.developer', $property->id) }}"><i
                                             class="fas fa-edit edit-icon"></i></a>
                                 </div>
