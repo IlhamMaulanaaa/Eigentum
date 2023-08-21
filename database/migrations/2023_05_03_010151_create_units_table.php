@@ -28,6 +28,13 @@ return new class extends Migration
             $table->primary(['unit_id', 'status_id']);
             $table->softDeletes();
         });
+        Schema::create('unit_agents', function (Blueprint $table) {
+            $table->bigInteger('unit_id');
+            $table->bigInteger('agent_id');
+            $table->string('status');
+            $table->primary(['unit_id', 'agent_id']);
+            $table->softDeletes();
+        });
     }
 
     /**

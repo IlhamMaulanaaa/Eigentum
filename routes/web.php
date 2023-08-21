@@ -35,6 +35,13 @@ use Illuminate\Routing\RouteGroup;
 |
 */
 
+
+// Route::middleware(['auth', 'IsAgent:agent'])->group(function () {
+//     Route::get('/unit/{id}/transaction', 'TransactionController@initiateTransaction')->name('transaction.initiate');
+// });
+
+Route::post('/unit/{id}/submit-offer', [AgentController::class,'submitOffer'])->name('offer.submit');
+
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 

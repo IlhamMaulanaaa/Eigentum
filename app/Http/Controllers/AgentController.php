@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
 use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Unit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -286,6 +287,18 @@ class AgentController extends Controller
         } else {
             return view('pages.user.profile', compact('agents', 'user'));
         }
+    }
+
+    public function submitOffer(Request $request, $unitId)
+    {
+        // Logic to submit offer by agent
+        $unit = Unit::findOrFail($unitId);
+        $agent = auth()->user(); // Assuming you have agent authentication
+
+        // Attach agent to the unit with additional data (status) in pivot table
+        $unit->agents()->attach($agent->id, ['status' => 'proses penawaran penawaran']);
+
+        return redirect()->back()->with('success', 'Offer submitted successfully.');
     }
 
 

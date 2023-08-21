@@ -103,7 +103,7 @@ class UnitController extends Controller
         })->pluck('name', 'id', 'regency_id');
 
         if ($units) {
-            return view('pages.page.home', compact('units','newunits', 'developer', 'property', 'status', 'types', 'regencies'));
+            return view('pages.page.home', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
         }
     }
 
@@ -244,6 +244,7 @@ class UnitController extends Controller
         }
     }
 
+    
     public function edit(Unit $unit)
     {
         $properties = Property::all();

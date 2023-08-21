@@ -16,14 +16,15 @@
         <link rel="stylesheet" href="/css/agent/detail.css">
         <script src="/js/agent/detail.js" defer></script>
         <style>
-            .tambah{
+            .tambah {
                 justify-content: flex-end;
                 margin-left: 1700px;
                 margin-bottom: 100px;
                 margin-top: -100px;
             }
-            .sticky-button {    
-                
+
+            .sticky-button {
+
                 bottom: 20px;
                 /* Jarak dari bawah */
                 right: 20px;
@@ -82,9 +83,6 @@
             .option:hover {
                 background-color: #f2f2f2;
             }
-
-
-            
         </style>
 
     </head>
@@ -104,21 +102,25 @@
 
                     <ul class="about" style="">
                         <li class="dashboardli"><span>3</span> Aktif</li>
-                        <li  class="dashboardli" ><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}
+                        <li class="dashboardli">
+                            <span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}
 
-                            </span> Dijual</li>
-                        <li  class="dashboardli" ><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}
-                            </span> Disewa</li>
+                            </span> Dijual
+                        </li>
+                        <li class="dashboardli">
+                            <span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}
+                            </span> Disewa
+                        </li>
                     </ul>
 
                     <div class="content">
                         <p>Pengembangan proyek perumahan, ruko, apartemen, dan villa</p>
 
                         <ul class="about" style="text-align: center; justify-content:center">
-                            <li  class="dashboardli" ><i class="fab fa-twitter"></i></li>
-                            <li  class="dashboardli" ><i class="fab fa-instagram"></i></li>
-                            <li  class="dashboardli" ><i class="fab fa-facebook"></i></li>
-                            <li  class="dashboardli" ><i class="fab fa-whatsapp"></i></li>
+                            <li class="dashboardli"><i class="fab fa-twitter"></i></li>
+                            <li class="dashboardli"><i class="fab fa-instagram"></i></li>
+                            <li class="dashboardli"><i class="fab fa-facebook"></i></li>
+                            <li class="dashboardli"><i class="fab fa-whatsapp"></i></li>
                         </ul>
                     </div>
                 </div>
@@ -131,6 +133,8 @@
                             {{-- <button class="btn mb-2 mx-1" data-filter="pasif">Pasif</button> --}}
                             <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button>
+                            <button class="btn mb-2 mx-1" data-filter="disewa">penawaran</button>
+                            <button class="btn mb-2 mx-1" data-filter="disewa">History</button>
                         </div>
                     </div>
 
@@ -166,8 +170,9 @@
                                 </div>
                             </div>
                         @endforeach
-                        
+
                     </div>
+
                 </div>
 
             </div>
@@ -175,15 +180,15 @@
 
         </div>
         <div class="tambah" style="z-index: 200">
-        <button id="addButton" class="sticky-button">+</button>
-        <div id="options" class="options" style="">
-            <a href="/unit/upload">
-                <div class="option">tambah unit</div>
-            </a>
-            <a href="{{ route('property.create.developer') }}">
-                <div class="option">tambah property</div>
-            </a>
-        </div>
+            <button id="addButton" class="sticky-button">+</button>
+            <div id="options" class="options" style="">
+                <a href="/unit/upload">
+                    <div class="option">tambah unit</div>
+                </a>
+                <a href="{{ route('property.create.developer') }}">
+                    <div class="option">tambah property</div>
+                </a>
+            </div>
         </div>
         <script>
             const addButton = document.getElementById("addButton");
