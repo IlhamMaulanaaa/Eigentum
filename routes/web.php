@@ -206,7 +206,7 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::post('/agents/reject/{id}', [AgentController::class, 'updateRejected'])->name('agent.reject');
         Route::post('/agents/approve/{id}', [AgentController::class, 'updateApproved'])->name('agent.approve');
         Route::get('/', [AdminController::class, 'index']);
-        Route::get("/dashboard", [DashboardController::class, 'index']);
+        Route::get("/dashboard", [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::get('/profile', [AdminController::class, 'show'])->name('profile.show');
 
         Route::resource('customer', CustomerController::class);

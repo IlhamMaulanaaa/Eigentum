@@ -39,7 +39,7 @@
 
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li><a href="/beranda">Beranda</a></li>
-                    <li><a href="{{route('filterproperti')}}">Properti</a></li>
+                    <li><a href="{{ route('filterproperti') }}">Properti</a></li>
                     <li><a href="/pages/searchagent">Cari Agen</a></li>
                     <li><a href="/pages/guide">Panduan</a></li>
                     <li><a href="/pages/kpr">KPR</a></li>
@@ -51,7 +51,7 @@
 
                 @if (Auth::check())
                     <div class="profileq" style="cursor: pointer;">
-                        
+
                         {{-- <img src="{{ Auth()->user()->avatar }}" alt=""> --}}
                         @if (Auth::user()->role == 'agent')
                             <img src="{{ asset('storage/' .Auth()->user()->agents->pluck('face')->first()) }}" />
@@ -60,7 +60,7 @@
                         @elseif (Auth::user()->role == 'admin')
                             <img src="{{ Auth()->user()->avatar }}" alt="">
                         @else
-                        <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}" alt="Default Profile Picture">
+                            <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}" alt="Default Profile Picture">
                         @endif
                     </div>
                     {{ Auth()->user()->name }}
@@ -77,11 +77,11 @@
                             <ul style="margin: 0; padding:0;">
                                 <li>
                                     <span class="material-icons icons-size">person</span>
-                                    <a href="{{route('agent.profile')}}">Profile</a>
+                                    <a href="{{ route('agent.profile') }}">Profile</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="{{route('favorite.index')}}">disukai</a>
+                                    <a href="{{ route('favorite.index') }}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
@@ -89,18 +89,18 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
-                                    <a href="{{route('logout')}}">Logout</a>
+                                    <a href="{{ route('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         @elseif (Auth::user()->role == 'developer')
                             <ul style="margin: 0; padding:0;">
                                 <li>
                                     <span class="material-icons icons-size">person</span>
-                                    <a href="{{route('developer.profile')}}">Profile</a>
+                                    <a href="{{ route('developer.profile') }}">Profile</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="{{route('favorite.index')}}">disukai</a>
+                                    <a href="{{ route('favorite.index') }}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">monetization_on</span>
@@ -108,30 +108,30 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
-                                    <a href="{{route('developer.dashboard')}}">Developer</a>
+                                    <a href="{{ route('developer.dashboard') }}">Developer</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
-                                    <a href="{{route('logout')}}">Logout</a>
+                                    <a href="{{ route('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         @elseif (Auth::user()->role == 'admin')
                             <ul style="margin: 0; padding:0;">
                                 <li>
                                     <span class="material-icons icons-size">person</span>
-                                    <a href="">Admin</a>
+                                    <a href="{{ route('profile.show') }}">Admin</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <span class="material-icons icons-size">favorite</span>
                                     <a href="{{route('favorite.index')}}">disukai</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
-                                    <a href="/admin/dashboard/">Admin</a>
+                                    <a href="{{ route('admin.dashboard') }}">Admin</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
-                                    <a href="{{route('logout')}}">Logout</a>
+                                    <a href="{{ route('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         @else
@@ -142,11 +142,11 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="{{route('favorite.index')}}">disukai</a>
+                                    <a href="{{ route('favorite.index') }}">disukai</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
-                                    <a href="{{route('logout')}}">Logout</a>
+                                    <a href="{{ route('logout') }}">Logout</a>
                                 </li>
                             </ul>
                         @endif
