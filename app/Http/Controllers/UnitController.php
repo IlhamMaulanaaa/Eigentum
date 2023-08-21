@@ -44,7 +44,7 @@ class UnitController extends Controller
         if (Auth::user()->role == "admin") {
             return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         } else {
-            return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+            return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         }
         // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }

@@ -107,7 +107,7 @@
             <div class="row my-4 my-md-5">
                 <div class="col-12 col-md-4 col-lg-3">
                     <div class="fables-store-search mb-4">
-                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                        <form action="{{ route('unit.search.user') }}" method="GET" role="search">
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control" placeholder="Search name.."
                                     aria-label="Search username" aria-describedby="basic-addon2"
@@ -118,16 +118,6 @@
                             <br>
                             <div class="col-md-2">
                                 <label>Status:</label>
-                                {{-- <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="statusDijual" name="status[]" value="Dijual"
-                                        {{ in_array('Dijual', request('status', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label">Dijual</label>
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="statusDisewa" name="status[]" value="Disewa"
-                                        {{ in_array('Disewa', request('status', [])) ? 'checked' : '' }}>
-                                    <label class="form-check-label">Disewa</label>
-                                </div> --}}
                                 @foreach ($statuses as $status)
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="status{{ $status->id }}"
@@ -137,13 +127,6 @@
                                     </div>
                                 @endforeach
                             </div>
-                            {{-- <div class="col-md-4">
-                                <label>Rentang Harga:</label>
-                                <input type="range" class="form-range" id="hargaSlider" name="harga_range"
-                                    min="{{ $minPrice }}" max="{{ $maxPrice }}" value="{{ request('harga_range') }}">
-                                <span id="hargaLabel">Rp {{ request('harga_range', $minPrice) }}</span>
-                            </div>
-                            --}}
                             <div class="col-md-2">
                                 <label>Type</label>
                                 @foreach ($types as $type)
@@ -155,20 +138,8 @@
                                     </div>
                                 @endforeach
                             </div>
-                            {{-- <div class="col-md-2">
-                                <label>Specification</label>
-                                @foreach ($specification as $spec)
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="type{{ $spec->id }}" name="spec[]"
-                                            value="{{ $spec->id }}" {{ in_array($spec->id, request('spec', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ $spec->name }}</label>
-                                    </div>
-                                @endforeach
-                            </div> --}}
-
-
-
                         </form>
+                        
                     </div>
                     {{-- <div class="rage-slider">
                         <h2 class="col-md-12">Filter
@@ -308,6 +279,7 @@
                                 <div class="property-item rounded overflow-hidden"
                                     style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                                     <div class="position-relative overflow-hidden">
+                                        <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
                                         <img class="img-fluid" style="width: 300px; height:180px;"
                                             src="{{ asset('storage/' . $unit->image) }}" alt="">
                                         <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2"

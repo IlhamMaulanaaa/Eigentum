@@ -64,11 +64,12 @@ class AgentController extends Controller
         }
     }
 
-    public function searchAgent()
+    public function filter(Request $request)
     {
-        $agents = Agent::with('users')->get();
+        $agents = Agent::filter($request->all())->paginate(10);
+        // $agents = Agent::with('users')->get();
         $countuser = User::where('role', 'user')->count();
-        return view('pages.page.searchagent', compact('agents', 'countuser'));
+        return view('pages.page.viewagent', compact('agents', 'countuser'));
     }
 
     public function createfront()

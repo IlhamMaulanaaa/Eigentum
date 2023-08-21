@@ -146,7 +146,7 @@ Route::group(['prefix' => '/pages'], function () {
         return view('pages.page.notfound');
     });
 
-    Route::get('/searchagent', [AgentController::class, 'searchAgent']);
+        // Route::get('/searchagent', [AgentController::class, 'filter'])->name('agent.search.user');
 
     Route::get('/newproperty', function () {
         return view('pages.page.newProperty');
@@ -183,14 +183,17 @@ Route::group(['prefix' => '/pages'], function () {
     });
     // unit
     Route::group(['prefix' => '/unit'], function () {
+        Route::get('/', [UnitController::class, 'filter'])->name('unit.search.user');
         Route::get('/{unit}', [UnitController::class, 'show'])->name('unit.show.user');
     });
     Route::group(['prefix' => '/agent'], function () {
+        Route::get('/', [AgentController::class, 'filter'])->name('agent.search.user');
         Route::get('/{agent}', [AgentController::class, 'show'])->name('agent.show.user');
+        // Route::get('/search', [AgentController::class, 'filter'])->name('agent.search.user');
     });
 
-    Route::get('/search', [UnitController::class, 'filter'])->name('filterproperti');;
 });
+
 Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
 
 Route::get('/detailpanduan', function () {
