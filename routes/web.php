@@ -147,7 +147,6 @@ Route::group(['prefix' => '/pages'], function () {
     });
     Route::get('/profile', [AgentController::class, 'edit'])->name('user.profile');
 
-
     // Route::get('/searchagent', [AgentController::class, 'filter'])->name('agent.search.user');
 
     Route::get('/newproperty', function () {

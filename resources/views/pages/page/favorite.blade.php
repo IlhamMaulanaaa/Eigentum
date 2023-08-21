@@ -98,13 +98,11 @@
                                     </div>
                                     <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-4 pt-1 px-3"
                                         style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
-
                                 </div>
                                 <div class="p-0 pb-0">
                                     <h5 class=" mb-1 mt-3" style="color: #000;">{{ $unit->price }}</h5>
                                     <h6 class=" mb-1 mt-3" style="color: #000;">
                                         {{ $unit->title }}</h6>
-
                                     <p><i class="fa fa-map-marker-alt  me-2" style="color: #000;"></i>
                                         {{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
                                     </p>
@@ -120,7 +118,7 @@
                                             class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
                                 </div>
                             </div>
-                            <a href="/unit/{{ $unit->id }}" class="stretched-link"></a>
+                            <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
                         </div>
                     @endforeach
 
