@@ -138,27 +138,27 @@
                                     </div>
                                 @endforeach
                             </div>
-                        </form>
-                        
-                    </div>
-                    {{-- <div class="rage-slider">
-                        <h2 class="col-md-12">Filter
-                            Harga</h2>
-                        <form action="{{ route('unit.filter') }}" method="GET" role="search">
-                            <div class="price-input">
-                                <div class="field" style="margin-right: 10px;">
-                                    <span>Rp.</span>
-                                    <input type="text" placeholder="Min" class="input-min" id="inputMin"
-                                        value="">
+                            <div class="rage-slider">
+                                <label>Price</label>
+                                {{-- <form action="{{ route('unit.search.user') }}" method="GET" role="search"> --}}
+                                <div class="price-input">
+                                    <div class="field">
+                                        <span>Rp.</span>
+                                        <input type="number" placeholder="Min" class="input-min" id="inputMin"
+                                            value="{{ request('min_price') }}">
+                                    </div>
+                                    <div class="field">
+                                        <span></span>
+                                        <input type="number" placeholder="Max" class="input-max" id="inputMax"
+                                            value="{{ request('max_price') }}">
+                                    </div>
                                 </div>
-                                <div class="field">
-                                    <span>Rp.</span>
-                                    <input type="text" placeholder="Max" class="input-max" id="inputMax"
-                                        value="">
-                                </div>
+                                {{-- </form> --}}
                             </div>
                         </form>
-                    </div> --}}
+
+                    </div>
+
                     {{-- <h2 class="col-md-12">Kategori
                         Properti</h2>
                     <ul class="nav fables-forth-text-color fables-forth-before fables-store-left-list">
@@ -279,7 +279,7 @@
                                 <div class="property-item rounded overflow-hidden"
                                     style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
                                     <div class="position-relative overflow-hidden">
-                                        <a href="{{route('unit.show.user', $unit->id)}}" class="stretched-link"></a>
+                                        <a href="{{ route('unit.show.user', $unit->id) }}" class="stretched-link"></a>
                                         <img class="img-fluid" style="width: 300px; height:180px;"
                                             src="{{ asset('storage/' . $unit->image) }}" alt="">
                                         <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2"
@@ -314,9 +314,9 @@
                             </div>
                         @endforeach
                     </div>
-                    {{-- <div aria-label="Page navigation">
-                        {{ $filteredUnits->links() }}
-                    </div> --}}
+                </div>
+                <div aria-label="Page-navigation">
+                    {{ $filteredUnits->links() }}
                 </div>
             </div>
         </div>
@@ -358,13 +358,63 @@
                 });
             });
 
-
             typeCheckboxes.forEach(checkbox => {
                 checkbox.addEventListener('change', function() {
                     this.form.submit(); // Kirim form saat checkbox diubah
                 });
             });
+
+            var inputMin = document.getElementById('inputMin');
+            var inputMax = document.getElementById('inputMax');
+
+            // Fungsi untuk memicu pencarian
+            // function performSearch() {
+            //     var minPrice = inputMin.value;
+            //     var maxPrice = inputMax.value;
+
+            //     // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
+            //     var searchURL = this.form.submit();
+            //     window.location.href = searchURL;
+            // }
+
+            // Menambahkan event listener pada input
+            inputMin.addEventListener('input', function() {
+                this.form.submit();
+            });
+
+            inputMax.addEventListener('input', function() {
+                this.form.submit();
+            });
         </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Menangkap elemen input
+                var inputMin = document.getElementById('inputMin');
+                var inputMax = document.getElementById('inputMax');
+
+                // Fungsi untuk memicu pencarian
+                function performSearch() {
+                    var minPrice = inputMin.value;
+                    var maxPrice = inputMax.value;
+
+                    // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
+                    var searchURL = '{{ route('unit.search.user') }}' + '?min_price=' + minPrice + '&max_price=' +
+                        maxPrice;
+                    window.location.href = searchURL;
+                }
+
+                // Menambahkan event listener pada input
+                inputMin.addEventListener('input', function() {
+                    performSearch();
+                });
+
+                inputMax.addEventListener('input', function() {
+                    performSearch();
+                });
+            });
+        </script>
+
 
 
         <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
