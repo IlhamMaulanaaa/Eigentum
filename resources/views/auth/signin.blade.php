@@ -523,15 +523,12 @@
                             </div>
                             <div id="name"></div>
                             <script>startApp();</script> --}}
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <a class="google-button" href="/auth/google/redirect" role="button">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
-                                            alt="Google sign-in" />
-                                        Login with Google
-                                    </a>
-                                </div>
-                            </div>
+                            <a href="/auth/google/redirect"
+                                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
+                                <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg"
+                                    style="width: 20px; height: 20px;" loading="lazy" alt="google logo">
+                                <span>Login with Google</span>
+                            </a>
                             <p class="text">
                                 Lupa password Anda atau Anda login datails?
                                 <a href="/session/auth/user/signin/createL">Dapatkan bantuan</a> masuk

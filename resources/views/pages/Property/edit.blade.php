@@ -33,7 +33,7 @@
         <div class="form-container" style="margin-top: 90px; height:auto;">
 
             <div class="left-section">
-                <form method="post" action="{{ route('property.ngupdate', $property->id) }}">
+                <form method="post" action="{{ route('property.update.developer', $property->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group">

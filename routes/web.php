@@ -22,6 +22,7 @@ use App\Http\Controllers\FilePreviewController;
 use App\Http\Controllers\SpecificationController;
 use App\Http\Controllers\PaymentCallbackController;
 use App\Http\Controllers\ProviderController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,102 +38,106 @@ use App\Http\Controllers\ProviderController;
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
-Route::get('/', [AuthController::class, 'index'])->middleware('guest')->name('login.index');
-Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda');
-Route::post('/createL', [AuthController::class, 'login']);
-Route::post('/createR', [AuthController::class, 'register']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [AuthController::class, 'index'])->name('login.index');
+    Route::post('/createL', [AuthController::class, 'login']); //post login
+    Route::post('/createR', [AuthController::class, 'register']); //post register
 
-Route::group(['prefix' => '/session'], function () {
-    Route::group(['prefix' => '/auth'], function () {
-        //user
-        Route::group(['prefix' => '/user'], function () {
-            Route::get('/signout', [SessionController::class, 'signoutUser'])->name('signout.user');
-            Route::group(['prefix' => '/signin'], function () {
-                Route::get('/', [SessionController::class, 'signinUser'])->name('signin.user')->middleware('guest');
-                Route::post('/create', [AuthController::class, 'login']);
+    Route::group(['prefix' => '/session'], function () {
+        Route::group(['prefix' => '/auth'], function () {
+            //user
+            Route::group(['prefix' => '/user'], function () {
+                Route::group(['prefix' => '/signin'], function () {
+                    Route::get('/', [SessionController::class, 'signinUser'])->name('signin.user');
+                    Route::post('/create', [AuthController::class, 'login']);
+                });
+                route::group(['prefix' => '/signup'], function () {
+                    Route::get('/', [SessionController::class, 'signupuser'])->name('signup.user');
+                    Route::post('/create', [SessionController::class, 'postSignupUser']);
+                });
             });
-            route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [SessionController::class, 'signupuser'])->name('signup.user')->middleware('guest');
-                Route::post('/create', [SessionController::class, 'postSignupUser']);
+            //developer
+            Route::group(['prefix' => '/developer'], function () {
+                Route::group(['prefix' => '/signin'], function () {
+                    Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
+                    // Route::post('/create', [AuthController::class, 'postSignin']);
+                });
+                Route::group(['prefix' => '/signup'], function () {
+                    Route::get('/', [DeveloperController::class, 'SignupDeveloper']);
+                    Route::post('/create', [DeveloperController::class, 'storeFront']);
+                });
             });
-        });
-        //developerj
-        Route::group(['prefix' => '/developer'], function () {
-            Route::get('/signout', [SessionController::class, 'signoutuser']);
-            Route::group(['prefix' => '/signin'], function () {
-                Route::get('/', [DeveloperController::class, 'SigninDeveloper']);
-                // Route::post('/create', [AuthController::class, 'postSignin']);
-            });
-            Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [DeveloperController::class, 'SignupDeveloper'])->middleware('guest');
-                Route::post('/create', [DeveloperController::class, 'storeFront']);
-            });
-        });
-        //agent
-        Route::group(['prefix' => '/agent'], function () {
-            Route::get('/signout', [SessionController::class, 'signoutuser']);
-            Route::group(['prefix' => '/signin'], function () {
-                Route::get('/', [AgentController::class, 'signinAgent']);
-                Route::post('/create', [AgentController::class, 'postSigninAgent']);
-            });
-            Route::group(['prefix' => '/signup'], function () {
-                Route::get('/', [AgentController::class, 'signup'])->middleware('guest');
-                Route::post('/create', [AgentController::class, 'storeFront']);
+            //agent
+            Route::group(['prefix' => '/agent'], function () {
+                Route::group(['prefix' => '/signin'], function () {
+                    Route::get('/', [AgentController::class, 'signinAgent']);
+                    Route::post('/create', [AgentController::class, 'postSigninAgent']);
+                });
+                Route::group(['prefix' => '/signup'], function () {
+                    Route::get('/', [AgentController::class, 'signup']);
+                    Route::post('/create', [AgentController::class, 'storeFront'])->name('agent.store.auth');
+                });
             });
         });
     });
 });
+
+Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda')->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // developer
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
         Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
-        Route::get('/profile', [DeveloperController::class, 'showFront'])->name('developer.profile');
-        Route::put('/update/{developer}', [DeveloperController::class, 'update'])->name('developer.memperbarui');
+        Route::get('/profile', [DeveloperController::class, 'showFront'])->name('developer.profile')->withoutMiddleware(['IsDeveloper']);
+        Route::put('/update/{developer}', [DeveloperController::class, 'updateFront'])->name('developer.update.developer')->withoutMiddleware(['IsDeveloper']);
 
         Route::group(['prefix' => '/property'], function () {
-            Route::get('/create', [PropertyController::class, 'createFront'])->name('property.buat');
-            Route::post('/store', [PropertyController::class, 'storeFront'])->name('property.upload');
-            Route::get('/{property}', [PropertyController::class, 'showFront'])->name('property.detail');
-            Route::get('/edit/{property}', [PropertyController::class, 'edit'])->name('property.eddit');
-            Route::put('/update/{property}', [PropertyController::class, 'update'])->name('property.ngupdate');
-        Route::get('/destroy/{property}', [PropertyController::class, 'destroy'])->name('property.hapus');
+            Route::get('/create', [PropertyController::class, 'createFront'])->name('property.create.developer');
+            Route::post('/store', [PropertyController::class, 'storeFront'])->name('property.store.developer');
+            Route::get('/{property}', [PropertyController::class, 'show'])->name('property.show.developer');
+            Route::get('/edit/{property}', [PropertyController::class, 'edit'])->name('property.edit.developer');
+            Route::put('/update/{property}', [PropertyController::class, 'update'])->name('property.update.developer');
+            Route::get('/destroy/{property}', [PropertyController::class, 'destroy'])->name('property.destroy.developer');
         });
 
         Route::group(['prefix' => '/unit'], function () {
-            Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.buat');
-            Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.upload');
-            Route::get('/{unit}', [UnitController::class, 'showFront'])->name('unit.detail');
-            Route::get('/edit', function () {
-                return view('pages.unit.edit');
-            });
+            Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.create.developer');
+            Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.store.developer');
+            Route::get('/{unit}', [UnitController::class, 'show'])->name('unit.show.developer');
+            Route::get('/edit/{unit}', [UnitController::class, 'edit'])->name('unit.edit.developer');
+            Route::put('/update/{unit}', [UnitController::class, 'update'])->name('unit.update.developer');
+            Route::get('/destroy/{unit}', [UnitController::class, 'destroy'])->name('unit.destroy.developer');
         });
     });
 });
 
-
-// unit
-Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload', function () {
-        return view('pages.unit.create');
-    });
-    Route::get('/{unit}', [UnitController::class, 'showFront']);
-    Route::get('/edit', function () {
-        return view('pages.unit.edit');
-    });
-});
-
-
-
-
 // agent
-Route::group(['prefix' => '/agent'], function () {
-    Route::get('/dashboard/{agent}', [AgentController::class, 'detailagent'])->name('agent.dashboard');
+Route::middleware(['auth', 'IsAgent'])->group(function () {
+    Route::group(['prefix' => '/agent'], function () {
+        Route::get('/dashboard', [AgentController::class, 'dashboard'])->name('agent.dashboard');
+        Route::get('/profile', [AgentController::class, 'edit'])->name('agent.profile')->withoutMiddleware(['IsAgent']);
+        Route::put('/update/{agent}', [AgentController::class, 'updateFront'])->name('agent.update.agent')->withoutMiddleware(['IsAgent']);
+
+        Route::group(['prefix' => '/property'], function () {
+            Route::get('/create', [PropertyController::class, 'createFront'])->name('property.create.agent');
+            Route::post('/store', [PropertyController::class, 'storeFront'])->name('property.store.agent');
+            Route::get('/{property}', [PropertyController::class, 'show'])->name('property.show.agent');
+            Route::get('/edit/{property}', [PropertyController::class, 'edit'])->name('property.edit.agent');
+            Route::put('/update/{property}', [PropertyController::class, 'update'])->name('property.update.agent');
+            Route::get('/destroy/{property}', [PropertyController::class, 'destroy'])->name('property.destroy.agent');
+        });
+
+        Route::group(['prefix' => '/unit'], function () {
+            Route::get('/create/{propertyId}', [UnitController::class, 'create'])->name('unit.create.agent');
+            Route::post('/store/{propertyId}', [UnitController::class, 'store'])->name('unit.store.agent');
+            Route::get('/{unit}', [UnitController::class, 'show'])->name('unit.show.agent');
+            Route::get('/edit/{unit}', [UnitController::class, 'edit'])->name('unit.edit.agent');
+            Route::put('/update/{unit}', [UnitController::class, 'update'])->name('unit.update.agent');
+            Route::get('/destroy/{unit}', [UnitController::class, 'destroy'])->name('unit.destroy.agent');
+        });
+    });
 });
-
-
-
-
 
 // pages
 Route::group(['prefix' => '/pages'], function () {
@@ -171,52 +176,29 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/notifikasi', function () {
         return view('pages.page.notification');
     });
+
+    // property
+    Route::group(['prefix' => '/property'], function () {
+        Route::get('/{property}', [PropertyController::class, 'show'])->name('property.show.user');
+    });
+    // unit
+    Route::group(['prefix' => '/unit'], function () {
+        Route::get('/{unit}', [UnitController::class, 'show'])->name('unit.show.user');
+    });
+    Route::group(['prefix' => '/agent'], function () {
+        Route::get('/{agent}', [AgentController::class, 'show'])->name('agent.show.user');
+    });
+
+    Route::get('/search', [UnitController::class, 'filter'])->name('filterproperti');;
 });
-
-
-Route::get('/filterproperti', [UnitController::class, 'filterFront'])->name('filterproperti');;
-
-// Route::get('/konfirmasipembayaran', function () {
-//     return view('pages.page.confirmpayment');
-// });
-
-
-
-Route::get('/favorite', [FavoriteController::class, 'index']);
+Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
 
 Route::get('/detailpanduan', function () {
     return view('pages.page.detailguide');
-});
-// property
-Route::group(['prefix' => '/property'], function () {
-    Route::get('/upload/{developerId}', [PropertyController::class, 'createFront']);
+})->name('detailpanduan');
 
-
-    Route::get('/detail', function () {
-        return view('pages.property.detail');
-    });
-
-    Route::get('/edit', function () {
-        return view('pages.property.edit');
-    });
-});
-// unit
-Route::group(['prefix' => '/unit'], function () {
-    Route::get('/upload', function () {
-        return view('pages.unit.create');
-    });
-    Route::get('/{unit}', [UnitController::class, 'showFront'])->name('unit.detail');
-
-    Route::get('/edit', function () {
-        return view('pages.unit.edit');
-    });
-});
 
 //  admin
-
-Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
-
-
 Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
     Route::group(['prefix' => '/admin'], function () {
         Route::post('/developers/reject/{id}', [DeveloperController::class, 'updateRejected'])->name('developer.reject');
@@ -248,9 +230,10 @@ Route::middleware(['auth', 'IsAdmin:admin'])->group(function () {
         Route::get('/search/filter', [UnitController::class, 'filter'])->name('unit.filter');
     });
 
-    Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
 });
 
+Route::get('/pdf-preview/{file}', [FilePreviewController::class, 'show'])->name('pdf.preview');
+Route::get('/admin/notifications', [AdminController::class, 'notifications'])->name('admin.notifications');
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
 Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
 Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');

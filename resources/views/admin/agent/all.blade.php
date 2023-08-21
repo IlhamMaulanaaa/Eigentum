@@ -45,7 +45,7 @@
                         <tr>
                             <th scope="col">Id</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            {{-- <th scope="col">Email</th> --}}
                             <th scope="col">Address</th>
                             <th scope="col">Kota</th>
                             <th scope="col">Face</th>

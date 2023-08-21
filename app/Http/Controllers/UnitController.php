@@ -41,36 +41,14 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        if (Auth::user()->role == "admin") {
+            return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        } else {
+            return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        }
+        // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 
-    public function filterFront(Request $request)
-    {
-        // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->paginate(10);
-        $units = Unit::all();
-        $property = Property::all();
-        $types = Type::all();
-        $statuses = Status::all();
-        $specification = Specification::all();
-        $pivotTable = (new Property())->regencies()->getTable();
-
-        $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
-            $query->select('regency_id')
-                ->from($pivotTable);
-        })->pluck('name', 'id');
-
-        if ($request->wantsJson()) {
-            return response()->json($filteredUnits);
-        }
-
-        return view('pages.page.propertyfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        if (Auth::user()->role == "admin"){
-            return view('admin.searchfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
-        }else{
-            return view('pages.page.propertyfilter', compact('statuses','specification','types','property','units','filteredUnits','regencies'));
-        }
-    }
 
     public function index(Request $request)
     {
@@ -94,35 +72,23 @@ class UnitController extends Controller
         }
     }
 
-    public function storeFront(Request $request, $propertyId)
-    {
-
-        $property = Property::findOrfail($propertyId);
-        $status = Status::all();
-
-        return view('pages.unit.create', compact('property', 'status'));
-    }
-
     public function create(Request $request, $propertyId)
     {
         $property = Property::findOrfail($propertyId);
         $status = Status::all();
 
-        if (Auth::user()->role == "admin"){
+        if (Auth::user()->role == "admin") {
             return view('admin.unit.create', compact('property', 'status'));
-        }else{
+        } else {
             return view('pages.unit.create', compact('property', 'status'));
         }
-        
-
-        
     }
-
 
     public function homeunit(Request $request)
     {
-        
-        $units = Unit::filter($request->all())->paginate(10);
+        $units = Unit::filter($request->all())
+            ->paginate(10);
+        $newunits = Unit::orderBy('created_at', 'desc')->get();
         $property = Property::all()->pluck('title', 'id');;
         $status = Status::all();
         $tables = (new Unit())->getTable();
@@ -134,12 +100,11 @@ class UnitController extends Controller
         $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
             $query->select('regency_id')
                 ->from($pivotTable);
-        })->pluck('name', 'id');
+        })->pluck('name', 'id', 'regency_id');
 
         if ($units) {
-            return view('pages.page.home', compact('units', 'developer', 'property','status','types','regencies'));
+            return view('pages.page.home', compact('units','newunits', 'developer', 'property', 'status', 'types', 'regencies'));
         }
-        
     }
 
     public function store(Request $request,  $propertyId)
@@ -246,168 +211,173 @@ class UnitController extends Controller
 
             // return redirect(route('unit.index'))->with('success', 'Data Created');
 
-            if (Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 return redirect(route('property.index'));
-            }else{
+            } else {
                 return redirect(route('developer.dashboard'));
             }
-            
         } catch (Exception $e) {
             return $e;
         }
     }
 
-
-
-    public function showFront(Unit $unit, Request $request)
-    {
-        $data = $request->all();
-        $images = Image::where('unit_id', $unit->id)->first();
-
-        return view('pages.unit.detail', compact('unit', 'images'));
-    }
-
-    
     public function show(Unit $unit, Request $request)
     {
         $data = $request->all();
         $images = Image::where('unit_id', $unit->id)->first();
+        $propertyPrice = $unit->price; // Harga utama atau harga jual properti
+        $monthsInYear = 24; // Jumlah bulan dalam satu tahun
 
-        return view('admin.unit.detail', compact('unit', 'images'));
+        // Hitung harga per bulan
+        $pricePerMonth = $propertyPrice / $monthsInYear;
+
+        // echo "Harga per bulan: $" . number_format($pricePerMonth, 2);
+
+        if (Auth::user()->role == "admin") {
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } elseif (Auth::user()->role == "developer") {
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } elseif (Auth::user()->role == "agent") {
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } else {
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        }
     }
-    // public function homeunit()
-    // {
-    //     $units = Unit::all();
-    //     $developer = Developer::all();
-
-    //     if ($units) {
-    //         return view('pages.page.home', compact('units', 'developer'));;
-    //     }
-    // }
-
 
     public function edit(Unit $unit)
     {
         $properties = Property::all();
         $statuses = Status::all();
 
-        return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        if (Auth::user()->role == "admin") {
+            return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        } elseif (Auth::user()->role == "developer") {
+            return view('pages.unit.edit', compact('unit', 'statuses', 'properties'));
+        } else {
+            return view('admin.unit.edit', compact('unit', 'statuses', 'properties'));
+        }
     }
 
 
     public function update(Request $request, string $id)
     {
-        try {
-            $data = $request->all();
+        // try {
+        $data = $request->all();
 
-            $unit = Unit::findOrfail($id);
+        $unit = Unit::findOrfail($id);
 
-            $request->validate([
-                'title' => 'required',
-                'description' => 'required',
-                'price' => 'required',
-                'bedroom' => 'required',
-                'bathroom' => 'required',
-                'surface_area' => 'required',
-                'building_area' => 'required',
-                'floor' => 'required',
-                'livingroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-                'bedroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-                'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-                'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-                'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-            ], [
-                'title.required' => 'Nama unit tidak boleh kosong',
-                'description.required' => 'Deskripsi tidak boleh kosong',
-                'price.required' => 'Harga tidak boleh kosong',
-                'bedroom.required' => 'Jumlah kamar tidur tidak boleh kosong',
-                'bathroom.required' => 'Jumlah kamar mandi tidak boleh kosong',
-                'surface_area.required' => 'Luas tanah tidak boleh kosong',
-                'building_area.required' => 'Luas bangunan tidak boleh kosong',
-                'floor.required' => 'Lantai tidak boleh kosong',
-                'livingroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
-                'livingroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
-                'bedroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
-                'bedroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
-                'bathroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
-                'bathroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
-                'kitchenimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
-                'kitchenimg.*.max' => 'Ukuran gambar maksimal 10MB',
-                'etcimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
-                'etcimg.*.max' => 'Ukuran gambar maksimal 10MB',
-            ]);
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'bedroom' => 'required',
+            'bathroom' => 'required',
+            'surface_area' => 'required',
+            'building_area' => 'required',
+            'floor' => 'required',
+            'livingroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'bedroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'bathroomimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'kitchenimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+            'etcimg.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+        ], [
+            'title.required' => 'Nama unit tidak boleh kosong',
+            'description.required' => 'Deskripsi tidak boleh kosong',
+            'price.required' => 'Harga tidak boleh kosong',
+            'bedroom.required' => 'Jumlah kamar tidur tidak boleh kosong',
+            'bathroom.required' => 'Jumlah kamar mandi tidak boleh kosong',
+            'surface_area.required' => 'Luas tanah tidak boleh kosong',
+            'building_area.required' => 'Luas bangunan tidak boleh kosong',
+            'floor.required' => 'Lantai tidak boleh kosong',
+            'livingroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+            'livingroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+            'bedroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+            'bedroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+            'bathroomimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+            'bathroomimg.*.max' => 'Ukuran gambar maksimal 10MB',
+            'kitchenimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+            'kitchenimg.*.max' => 'Ukuran gambar maksimal 10MB',
+            'etcimg.*.image' => 'Gambar harus berupa file jpg, png, jpeg, gif, atau svg',
+            'etcimg.*.max' => 'Ukuran gambar maksimal 10MB',
+        ]);
 
-            if ($request->hasFile('image')) {
-                $imageFieldName = $request->file('image');
-                $imageName = $imageFieldName->getClientOriginalExtension() . "." . $imageFieldName->getClientOriginalExtension();
-                $imageFieldName->storeAs('public', $imageName);
-                $unit->image = $imageName;
-            }
-
-            $unit->update([
-                'title' => $request->title,
-                'description' => $request->description,
-                'price' => $request->price,
-            ]);
-
-            $unit->save();
-
-            $specification = Specification::findOrfail($id);
-
-            $specification->update([
-                'bedroom' => $request->bedroom,
-                'bathroom' => $request->bathroom,
-                'surface_area' => $request->surface_area,
-                'building_area' => $request->building_area,
-                'floor' => $request->floor,
-                'unit_id' => $unit->id,
-            ]);
-
-            $specification->save();
-
-            $image = Image::findOrFail($id);
-            $columns = ['livingroomimg', 'bedroomimg', 'bathroomimg', 'kitchenimg', 'etcimg'];
-
-            foreach ($columns as $column) {
-                $existingImages = explode('|', $image->{$column});
-
-                // Looping untuk mengupdate gambar yang sudah ada
-                foreach ($existingImages as $index => $existingImage) {
-                    if ($request->hasFile($column . '_update.' . $index)) {
-                        if (Storage::exists('public/' . $existingImage)) {
-                            Storage::delete('public/' . $existingImage);
-                        }
-
-                        $uploadedImage = $request->file($column . '_update.' . $index);
-                        $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8) . '.' . $uploadedImage->getClientOriginalExtension();
-                        $uploadedImage->storeAs('public', $imageName);
-                        $existingImages[$index] = $imageName;
-                    }
-                }
-
-                // Menambahkan gambar baru jika ada
-                if ($request->hasFile($column . '_insert')) {
-                    $uploadedImages = $request->file($column . '_insert');
-                    $newImages = [];
-
-                    foreach ($uploadedImages as $uploadedImage) {
-                        $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8) . '.' . $uploadedImage->getClientOriginalExtension();
-                        $uploadedImage->storeAs('public', $imageName);
-                        $existingImages[] = $imageName;
-                    }
-                }
-
-                $image->{$column} = implode('|', $existingImages);
-            }
-
-            $image->save();
-
-            $unit->statuses()->sync($request->input('status_id'));
-
-            return redirect(route('unit.show', $id));
-        } catch (Exception $e) {
-            return $e;
+        if ($request->hasFile('image')) {
+            $imageFieldName = $request->file('image');
+            $imageName = $imageFieldName->getClientOriginalExtension() . "." . $imageFieldName->getClientOriginalExtension();
+            $imageFieldName->storeAs('public', $imageName);
+            $unit->image = $imageName;
         }
+
+        $unit->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'price' => $request->price,
+        ]);
+
+        $unit->save();
+
+        $specification = Specification::findOrfail($id);
+
+        $specification->update([
+            'bedroom' => $request->bedroom,
+            'bathroom' => $request->bathroom,
+            'surface_area' => $request->surface_area,
+            'building_area' => $request->building_area,
+            'floor' => $request->floor,
+            'unit_id' => $unit->id,
+        ]);
+
+        $specification->save();
+
+        $image = Image::findOrFail($id);
+        $columns = ['livingroomimg', 'bedroomimg', 'bathroomimg', 'kitchenimg', 'etcimg'];
+
+        foreach ($columns as $column) {
+            $existingImages = explode('|', $image->{$column});
+
+            // Looping untuk mengupdate gambar yang sudah ada
+            foreach ($existingImages as $index => $existingImage) {
+                if ($request->hasFile($column . '_update.' . $index)) {
+                    if (Storage::exists('public/' . $existingImage)) {
+                        Storage::delete('public/' . $existingImage);
+                    }
+
+                    $uploadedImage = $request->file($column . '_update.' . $index);
+                    $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8) . '.' . $uploadedImage->getClientOriginalExtension();
+                    $uploadedImage->storeAs('public', $imageName);
+                    $existingImages[$index] = $imageName;
+                }
+            }
+
+            // Menambahkan gambar baru jika ada
+            if ($request->hasFile($column . '_insert')) {
+                $uploadedImages = $request->file($column . '_insert');
+                $newImages = [];
+
+                foreach ($uploadedImages as $uploadedImage) {
+                    $imageName = Str::limit($uploadedImage->getClientOriginalName(), 8) . '.' . $uploadedImage->getClientOriginalExtension();
+                    $uploadedImage->storeAs('public', $imageName);
+                    $existingImages[] = $imageName;
+                }
+            }
+
+            $image->{$column} = implode('|', $existingImages);
+        }
+
+        $image->save();
+
+        $unit->statuses()->sync($request->input('status_id'));
+
+        // $property = Property::where('id', '=', $properties->id)->get();
+        // return redirect(route('unit.show', $id));
+        if (Auth::user()->role == "admin") {
+            return redirect(route('unit.show', $id));
+        } elseif (Auth::user()->role == "developer") {
+            return redirect(route('property.show.developer', $unit->property_id));
+        }
+        // } catch (Exception $e) {
+        //     return $e;
+        // }
     }
 
     public function destroy(string $id)
@@ -419,6 +389,10 @@ class UnitController extends Controller
         $unit->specifications()->delete();
         $unit->images()->delete();
 
-        return redirect(route('unit.index'))->with('success', 'Data Deleted');
+        if (Auth::user()->role == "admin") {
+            return redirect(route('unit.index'))->with('success', 'Data Deleted');
+        } else {
+            return redirect()->back();
+        }
     }
 }

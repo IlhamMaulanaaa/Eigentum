@@ -44,19 +44,6 @@
     </head>
 
     <body>
-
-
-
-
-        {{--  --}}
-        <!--  Carousel End -->
-
-
-        
-
-    
-
-
     <!-- Facts Start -->
     <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 200px;">
         
@@ -70,7 +57,8 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Klien Puas</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{$countuser}}
+                            </h1>
                         </div>
                     </div>
                 </div>
@@ -92,7 +80,7 @@
                         </div>
                         <div class="ps-4">
                             <h5 class="text-white mb-0">Agen Berpengalaman</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">12345</h1>
+                            <h1 class="text-white mb-0" data-toggle="counter-up">{{$agents->count()}}</h1>
                         </div>
                     </div>
                 </div>
@@ -121,7 +109,7 @@
                     @foreach ($agents as $agent)
                         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                             <div class="team-item">
-                                <a href="{{ route('agent.dashboard', $agent->id) }}">
+                                <a href="{{ route('agent.show.user', $agent->id) }}">
                                     <div class="overflow-hidden">
                                         <img class="img-fluid" style="width: 200px; height: 260px;"
                                             src="{{ asset('storage/' . $agent->face) }}" alt="">
