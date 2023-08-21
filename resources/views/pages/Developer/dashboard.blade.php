@@ -16,8 +16,14 @@
         <link rel="stylesheet" href="/css/agent/detail.css">
         <script src="/js/agent/detail.js" defer></script>
         <style>
-            .sticky-button {
-                position: fixed;
+            .tambah{
+                justify-content: flex-end;
+                margin-left: 1700px;
+                margin-bottom: 100px;
+                margin-top: -100px;
+            }
+            .sticky-button {    
+                
                 bottom: 20px;
                 /* Jarak dari bawah */
                 right: 20px;
@@ -41,7 +47,7 @@
             }
 
             .options {
-                position: fixed;
+                margin-top: -220px;
                 bottom: 90px;
                 /* Jarak dari bawah */
                 right: 20px;
@@ -53,6 +59,7 @@
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 10px;
+
                 font-size: 24px;
             }
 
@@ -75,6 +82,9 @@
             .option:hover {
                 background-color: #f2f2f2;
             }
+
+
+            
         </style>
 
     </head>
@@ -93,22 +103,22 @@
                     <p>{{ $developer->company_company }}</p>
 
                     <ul class="about" style="">
-                        <li><span>3</span> Aktif</li>
-                        <li><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}
+                        <li class="dashboardli"><span>3</span> Aktif</li>
+                        <li  class="dashboardli" ><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}
 
                             </span> Dijual</li>
-                        <li><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}
+                        <li  class="dashboardli" ><span>{{ $developer->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}
                             </span> Disewa</li>
                     </ul>
 
                     <div class="content">
                         <p>Pengembangan proyek perumahan, ruko, apartemen, dan villa</p>
 
-                        <ul style="text-align: center; justify-content:center">
-                            <li><i class="fab fa-twitter"></i></li>
-                            <li><i class="fab fa-instagram"></i></li>
-                            <li><i class="fab fa-facebook"></i></li>
-                            <li><i class="fab fa-whatsapp"></i></li>
+                        <ul class="about" style="text-align: center; justify-content:center">
+                            <li  class="dashboardli" ><i class="fab fa-twitter"></i></li>
+                            <li  class="dashboardli" ><i class="fab fa-instagram"></i></li>
+                            <li  class="dashboardli" ><i class="fab fa-facebook"></i></li>
+                            <li  class="dashboardli" ><i class="fab fa-whatsapp"></i></li>
                         </ul>
                     </div>
                 </div>
@@ -155,87 +165,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <div class="card p-0" data-name="dijual">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title "><a href=""
-                                        style="text-decoration: none; color:#000;">Rumah</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold ">Dijual</span>
-
-                            <div class="labeledit">
-                                <a class="linkedit" href="/unit/edit"><i class="fas fa-edit edit-icon"></i></a>
-                            </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-
-                        </div>
-                        <div class="card p-0" data-name="dijual">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title"><a href=""
-                                        style="text-decoration: none; color:#000;">Perumahan Central Java</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold ">Disewa</span>
-
-                            <div class="labeledit">
-                                <a class="linkedit" href="/property/edit"><i class="fas fa-edit edit-icon"></i></a>
-                            </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-                        </div>
-                        <div class="card p-0" data-name="disewa">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title"><a href=""
-                                        style="text-decoration: none; color:#000;">Ruko</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold ">Dijual</span>
-
-                            <div class="labeledit">
-                                <a class="linkedit" href="/unit/edit"><i class="fas fa-edit edit-icon"></i></a>
-                            </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-                        </div>
-                        <div class="card p-0" data-name="disewa">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title"><a href=""
-                                        style="text-decoration: none; color:#000;">Perumahan Central Java</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold  " style="">Disewa</span>
-
-                            <div class="labeledit">
-                                <a class="linkedit" href="/property/edit"><i class="fas fa-edit edit-icon"></i></a>
-                            </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-                        </div>
-                        <div class="card p-0" data-name="disewa">
-                            <img src="/assets/pages/home/apartemen1.jpg" alt="img" />
-                            <div class="card-body">
-                                <h6 class="card-title"><a href=""
-                                        style="text-decoration: none; color:#000;">Ruko</a></h6>
-                                <!-- <p class="card-text"></p> -->
-                            </div>
-                            <span class="label sold ">Dijual</span>
-
-                            <div class="labeledit">
-                                <a class="linkedit" href="/unit/edit"><i class="fas fa-edit edit-icon"></i></a>
-                            </div>
-                            <div class="labeldelete">
-                                <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
-                            </div>
-                        </div> --}}
+                        
                     </div>
                 </div>
 
@@ -243,14 +173,16 @@
 
 
         </div>
+        <div class="tambah" style="z-index: 200">
         <button id="addButton" class="sticky-button">+</button>
-        <div id="options" class="options">
+        <div id="options" class="options" style="">
             <a href="/unit/upload">
                 <div class="option">tambah unit</div>
             </a>
             <a href="{{ route('property.create.developer') }}">
                 <div class="option">tambah property</div>
             </a>
+        </div>
         </div>
         <script>
             const addButton = document.getElementById("addButton");

@@ -16,48 +16,48 @@
           <img src="/assets/partial/logowhite.svg" style="margin-top: 5px;" alt="">
         </div>
         <div class="media-iconsww">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a class="abc2" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="abc2" href="#"><i class="fab fa-twitter"></i></a>
+          <a class="abc2" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="abc2" href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a class="abc2" href="#"><i class="fab fa-youtube"></i></a>
         </div>
       </div>
       <div class="link-boxesww">
         <ul class="boxww">
           <li class="link_nameww">Produk</li>
-          <li><a href="#">Apartemen</a></li>
-          <li><a href="#">Rumah</a></li>
-          <li><a href="#">Ruko</a></li>
-          <li><a href="#">Villa</a></li>
+          <li class="abc1"><a class="abc2" href="#">Apartemen</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Rumah</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Ruko</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Villa</a></li>
         </ul>
         <ul class="boxww">
           <li class="link_nameww">Bantuan</li>
-          <li><a href="#">Iklankan Properti Anda</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Panduan Pengguna</a></li>
-          <li><a href="#">Kebijakan Privasi</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Iklankan Properti Anda</a></li>
+          <li class="abc1" ><a class="abc2" href="#">FAQ</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Panduan Pengguna</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Kebijakan Privasi</a></li>
         </ul>
         <ul class="boxww">
           <li class="link_nameww">Apa yang kami lakukan</li>
-          <li><a href="#">Menyediakan informasi akurat</a></li>
-          <li><a href="#">Memudahkan calon pembeli</a></li>
-          <li><a href="#">Mempromosikan properti</a></li>
-          <li><a href="#">Menyediakan layanan panduan</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Menyediakan informasi akurat</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Memudahkan calon pembeli</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Mempromosikan properti</a></li>
+          <li class="abc1" ><a class="abc2" href="#">Menyediakan layanan panduan</a></li>
         </ul>
         <ul class="boxww">
           <li class="link_nameww">Kontak</li>
-          <li><a href="#">eigentumofficial@gmail.com</a></li>
-          <li><a href="#">+62 896-2090-2267</a></li>
+          <li class="abc1" ><a class="abc2" href="#">eigentumofficial@gmail.com</a></li>
+          <li class="abc1" ><a class="abc2" href="#">+62 896-2090-2267</a></li>
         </ul>
       </div>
     </div>
     <div class="bottom-detailsww">
       <div class="bottom_textww">
-        <span class="copyright_textww">Copyright © 2023 <a href="#">Eigentum.</a>All rights reserved</span>
+        <span class="copyright_textww">Copyright © 2023 <a class="abc2" href="#">Eigentum.</a>All rights reserved</span>
         <span class="policy_termsww">
-          <a href="#">Privacy policy</a>
-          <a href="#">Terms & condition</a>
+          <a class="abc2" href="#">Privacy policy</a>
+          <a class="abc2" href="#">Terms & condition</a>
         </span>
       </div>
     </div>

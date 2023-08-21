@@ -41,6 +41,7 @@
         <link href="/css/lib/animate/animate.min.css" rel="stylesheet">
         <link href="/css/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
         <link href="/css/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+        {{-- <link rel="stylesheet" href="/css/agent/detail.css"> --}}
 
         <link rel="stylesheet" href="css/lib/bootstrap.css">
         <link rel="stylesheet" href="css/pages/favorite.css">
@@ -84,6 +85,12 @@
         {{-- <link href="/css/pages/guide.css" rel="stylesheet"> --}}
         <!-- Customized Bootstrap Stylesheet -->
         <link href="/css/Lib/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/css/pages/home.css">
+
+
+
+
+        
         <style>
             .btn-status {
                 position: relative;
@@ -205,7 +212,7 @@
                     </div>
                 </div>
 
-                <div class="cardproperty">
+                <div class="cardproperty" style="margin-top: -250px;">
                     <p class="developer">{{ $property->title }}</p>
                     <div class="official">
                         <p class="official-label">{{ auth()->user()->name }}</p>
@@ -242,12 +249,13 @@
                 @endif
             </div>
         </div>
-        <div class="jadisatu" style="margin-top: 290px; margin-bottom:90px;">
-            <div class="container">
+        <div class="jadisatu" style="margin-top: 330px; margin-bottom:90px;">
+            <div class="container" style="width:1000px;">
                 <div class="subtitle" style=" font-size:16px; color:#000; margin-left:-70px;">Tipe Unit</div>
                 <div class="subtitle" style=" font-size:24px; color:#000; margin-bottom:20px; margin-left:-70px;">
                     {{ $property->title }}</div>
             </div>
+            <div class="container">
             <div class="slide-container swiper" style="margin-bottom: 0px;">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
@@ -288,16 +296,17 @@
                                         <div class="bg-white rounded-top  position-absolute start-500 bottom-0 left-50 mx-4 pt-1 px-3"
                                             style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
                                     </div>
-                                    <div class="p-3 pb-0"> <!-- Adjusted padding -->
+                                    <div class="p-0 pb-0"> <!-- Adjusted padding -->
                                         <div class="edit-unit-developer d-flex ">
-                                            <h5 class="mb-1 mt-3 d-flex" style="color: #000;">{{ $unit->title }}</h5>
+                                            <h5 class="mb-1 mt-3 d-flex" style="margin-left:-70px; color: #000;">{{ $unit->title }}</h5>
+                                            <div class="editdelete">
                                             @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                                <div class="labeledit" style="z-index: 100">
+                                                <div class="labeledit" style="z-index: 100;  margin-right:-460px; margin-top:0px;">
                                                     <a class="linkedit"
                                                         href="{{ route('unit.edit.developer', $unit->id) }}"><i
                                                             class="fas fa-edit edit-icon"></i></a>
                                                 </div>
-                                                <div class="labeldelete" style="z-index: 100">
+                                                <div class="labeldelete" style="z-index: 100; margin-right:-420px; margin-top:-15px;">
                                                     <form action="{{ route('unit.destroy.developer', $unit->id) }}"
                                                         method="get" class="d-inline">
                                                         @csrf
@@ -308,11 +317,12 @@
                                                     </form>
                                                 </div>
                                             @endif
+                                            </div>
                                         </div>
-                                        <p class="mb-0 d-flex">{{ $unit->price }}</p>
+                                        <p class="mb-0 d-flex" style="margin-left:-70px; margin-bottom:16px;">{{ $unit->price }}</p>
                                         {{-- <p class="mb-1">{{ $unit->properties->property }}</p> --}}
                                         <!-- Removed extra line -->
-                                        <p class="mb-0"><i class="fa fa-map-marker-alt me-2 d-flex"
+                                        <p class="mb-0" style="margin-left:-40px; margin-bottom:16px;"><i style="margin-left:-30px; margin-bottom:16px;" class="fa fa-map-marker-alt me-2 d-flex"
                                                 style="color: #000; margin-botom: 10px;">{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</i>
                                         </p>
                                     </div>
@@ -333,6 +343,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
 
     </body>

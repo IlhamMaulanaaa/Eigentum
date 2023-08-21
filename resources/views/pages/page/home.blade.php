@@ -233,78 +233,62 @@
                     </div>
                     <div class="filter-kota">
                         <div class="subFilter">
-                            @foreach ( $regencies as $regencyId => $regency)
-                            <div class="box">
-                                {{-- <img src="/assets/pages/home/jakarta.jpg" id="img" alt=""> --}}
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
-                                    <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
-                                        $query->select('property_id')
-                                            ->from('property_regency')
-                                            ->where('regency_id', $regencyId);
-                                    })->count() }} properti</p>
+                            <div class="filter-kota">
+                                <div class="subFilter">
+                                    @php
+                                        $counter = 0; 
+                                    @endphp
+                                    @foreach ( $regencies as $regencyId => $regency)
+                                        @if ($counter < 4) 
+                                            <div class="box">
+                                                <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
+                                                <div class="desc-filter-kota">
+                                                    <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
+                                                    <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
+                                                        $query->select('property_id')
+                                                            ->from('property_regency')
+                                                            ->where('regency_id', $regencyId);
+                                                    })->count() }} properti</p>
+                                                </div>
+                                            </div>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
-                            @endforeach
-                            {{-- <div class="box">
-                                <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Jakarta</p>
-                                    <p id="descKota">24 properti</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/surabaya.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Surabaya</p>
-                                    <p id="descKota">22 properti</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/bandung.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Bandung</p>
-                                    <p id="descKota">50 properti</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/yogyakarta.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Yogyakarta</p>
-                                    <p id="descKota">10 properti</p>
-                                </div>
-                            </div> --}}
+                            
+                            
                         </div>
-                        {{-- <div class="subFilter" id="filter2">
-                            <div class="box">
-                                <img src="/assets/pages/home/semarang.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Semarang</p>
-                                    <p id="descKota">8 properti</p>
+                        <div class="subFilter" id="filter2">
+                            <div class="filter-kota">
+                                <div class="subFilter">
+                                    @php
+                                        $counter = 0; 
+                                    @endphp
+                                    @foreach ( $regencies as $regencyId => $regency)
+                                        @if ($counter < 4) 
+                                            <div class="box">
+                                                <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
+                                                <div class="desc-filter-kota">
+                                                    <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
+                                                    <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
+                                                        $query->select('property_id')
+                                                            ->from('property_regency')
+                                                            ->where('regency_id', $regencyId);
+                                                    })->count() }} properti</p>
+                                                </div>
+                                            </div>
+                                            @php
+                                                $counter++;
+                                            @endphp
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/surakarta.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Surakarta</p>
-                                    <p id="descKota">43 properti</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/bekasi.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Bekasi</p>
-                                    <p id="descKota">27 properti</p>
-                                </div>
-                            </div>
-                            <div class="box">
-                                <img src="/assets/pages/home/wonosobo.jpg" id="img" alt="">
-                                <div class="desc-filter-kota">
-                                    <p id="namaKota">Wonosobo</p>
-                                    <p id="descKota">32 properti</p>
-                                </div>
-                            </div>
-                        </div> --}}
+                            
+                        </div>
                     </div>
                     <div class="group-77-FDR" id="4:7198">
                         <div class="rumahBaru">

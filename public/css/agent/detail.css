@@ -103,20 +103,20 @@ a {
 }
 
 
-ul {
+.about {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 10px;
 }
 
-ul i {
+.about i {
   font-size: 24px; /* Ubah ukuran ikon sesuai kebutuhan */
   color: #333; /* Warna default ikon */
   transition: color 0.3s, font-size 0.3s;
 }
 
-ul i:hover {
+.about i:hover {
   color: #0074d9; /* Warna hover ikon */
   font-size: 28px; /* Ukuran ikon saat dihover */
 }

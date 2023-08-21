@@ -41,35 +41,6 @@ class UsersTableSeeder extends Seeder
             ],
         ];
 
-        // Insert user
-        for ($i = 0; $i < 10; $i++) {
-            $users[] = [
-                'name' => fake()->firstName,
-                'email' => fake()->unique()->safeEmail,
-                'password' => Hash::make('password'),
-                'role' => 'user',
-            ];
-        }
-        // Insert developers
-        for ($i = 0; $i < 3; $i++) {
-            $users[] = [
-                'name' => fake()->firstName,
-                'email' => fake()->unique()->safeEmail,
-                'password' => Hash::make('password'),
-                'role' => 'developer',
-            ];
-        }
-
-        // Insert agents
-        for ($i = 0; $i < 6; $i++) {
-            $users[] = [
-                'name' => fake()->firstName,
-                'email' => fake()->unique()->safeEmail,
-                'password' => Hash::make('password'),
-                'role' => 'agent',
-            ];
-        }
-
         DB::table('users')->insert($users);
     }
 }
