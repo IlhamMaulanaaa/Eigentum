@@ -7,7 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://apis.google.com/js/api:client.js"></script>
     <title>Eigentum</title>
+    {{-- google login button --}}
+    {{-- <script>
+        var googleUser = {};
+        var startApp = function() {
+            gapi.load('auth2', function() {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
+                });
+                attachSignin(document.getElementById('customBtn'));
+            });
+        };
 
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function(googleUser) {
+                    document.getElementById('name').innerText = "Signed in: " +
+                        googleUser.getBasicProfile().getName();
+                },
+                function(error) {
+                    alert(JSON.stringify(error, undefined, 2));
+                });
+        }
+    </script> --}}
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
@@ -89,6 +116,26 @@
             align-items: center;
         }
 
+        /* .logo img {
+            width: 150px;
+            height: 150px;
+            margin-right: 0.3rem;
+            margin-bottom: -90px;
+        }
+
+        .logo h4 {
+            font-size: 1.5rem;
+            margin-top: -9px;
+            letter-spacing: -0.5px;
+            color: #151111;
+        }
+
+        .heading h2 {
+            font-size: 2.1rem;
+            font-weight: 600;
+            color: #151111;
+        } */
+
         .heading h6 {
             color: #000000;
             font-weight: 400;
@@ -151,14 +198,14 @@
         .sign-btn {
             display: inline-block;
             width: 100%;
-            height: 40px;
+            height: 43px;
             background-color: #151111;
             color: #fff;
             border: none;
             cursor: pointer;
             border-radius: 0.8rem;
             font-size: 0.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             transition: 0.3s;
         }
 
@@ -454,17 +501,16 @@
 
         .google-button {
             display: inline-block;
-            padding: 5px 20px;
+            padding: 6.5px 20px;
             background-color: #fff;
             border: 1px solid #ccc;
             border-radius: 12px;
             box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
             font-size: 16px;
             color: #555;
+            width: 100%;
+            height: 43px;
             text-align: center;
-            width: 260px;
-            height: 40px;
-            margin: 0px, 0px, 0px, 0px, ;
             text-decoration: none;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
@@ -474,6 +520,7 @@
             width: 20px;
             margin-right: 10px;
             vertical-align: middle;
+            justify-content: center;
         }
 
         .google-button:hover {
@@ -504,13 +551,13 @@
                             <div class="input-wrap">
                                 <input name="email" type="text" minlength="4" class="input-field"
                                     autocomplete="off" required />
-                                <label>e-mail</label>
+                                <label>Surel (e-mail)</label>
                             </div>
 
                             <div class="input-wrap">
                                 <input name="password" type="password" minlength="4" class="input-field"
                                     autocomplete="off" required />
-                                <label>Password</label>
+                                <label>kata sandi (Password)</label>
                             </div>
 
                             <input type="submit" value="Masuk" class="sign-btn" />
@@ -523,12 +570,15 @@
                             </div>
                             <div id="name"></div>
                             <script>startApp();</script> --}}
-                            <a href="/auth/google/redirect"
-                                class="px-4 py-2 border flex gap-2 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
-                                <img class="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg"
-                                    style="width: 20px; height: 20px;" loading="lazy" alt="google logo">
-                                <span>Login with Google</span>
-                            </a>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a class="google-button" href="/auth/google/redirect" role="button">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                                            alt="Google sign-in" />
+                                        Login with Google
+                                    </a>
+                                </div>
+                            </div>
                             <p class="text">
                                 Lupa password Anda atau Anda login datails?
                                 <a href="/session/auth/user/signin/createL">Dapatkan bantuan</a> masuk
@@ -586,6 +636,14 @@
                     </div>
 
                     <div class="text-slider">
+                        {{-- <div class="text-wrap">
+                <div class="text-group">
+                  <h2>Create your own courses</h2>
+                  <h2>Customize as you like</h2>
+                  <h2>Invite students to your class</h2>
+                </div>
+              </div> --}}
+
                         <div class="bullets">
                             <span class="active" data-value="1"></span>
                             <span data-value="2"></span>

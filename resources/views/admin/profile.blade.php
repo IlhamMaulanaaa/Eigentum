@@ -19,7 +19,7 @@
                                 <h5>{{ $admin->name }}</h5>
                                 <p>Web Designer</p>
                                 <i class="far fa-edit mb-5"></i>
-                            </div>
+                            </div>`
                             <div class="col-md-8">
                                 <div class="card-body p-4">
                                     <h6>Information</h6>

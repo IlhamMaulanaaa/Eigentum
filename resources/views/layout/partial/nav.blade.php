@@ -59,6 +59,8 @@
                             <img src="{{ asset('storage/' .Auth()->user()->developers->pluck('face')->first()) }}" />
                         @elseif (Auth::user()->role == 'admin')
                             <img src="{{ Auth()->user()->avatar }}" alt="">
+                        @elseif (Auth::user()->role == 'user')
+                            <img src="{{ Auth()->user()->avatar }}" alt="">
                         @else
                             <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}" alt="Default Profile Picture">
                         @endif
