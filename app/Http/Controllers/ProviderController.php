@@ -18,9 +18,6 @@ class ProviderController extends Controller
     {
         try {
             $socialUser = Socialite::driver($provider)->user();
-            // if (User::where('email', $socialUser->getEmail())->exists()) {
-            //     return redirect('/')->withErrors(['email' => 'this email uses diffrent method to login']);
-            // }
 
             $user = User::where([
                 'provider' => $provider,
@@ -37,6 +34,7 @@ class ProviderController extends Controller
                     'email_verified_at' => now(),
                 ]);
             }
+            // dd($user);
             Auth::login($user);
             return redirect('/beranda');
         } catch (\Exception $e) {

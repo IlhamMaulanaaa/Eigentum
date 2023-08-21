@@ -240,7 +240,7 @@ class UnitController extends Controller
         } elseif (Auth::user()->role == "agent") {
             return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         } else {
-            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         }
     }
 

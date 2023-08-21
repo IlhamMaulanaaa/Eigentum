@@ -82,7 +82,7 @@ Route::middleware(['guest'])->group(function () {
     });
 });
 
-Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda')->middleware('auth');
+Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // developer
@@ -145,10 +145,10 @@ Route::group(['prefix' => '/pages'], function () {
     Route::get('/notfound', function () {
         return view('pages.page.notfound');
     });
-    Route::get('/profile', [AgentController::class, 'editFront'])->name('user.profile');
+    Route::get('/profile', [AgentController::class, 'edit'])->name('user.profile');
 
 
-        // Route::get('/searchagent', [AgentController::class, 'filter'])->name('agent.search.user');
+    // Route::get('/searchagent', [AgentController::class, 'filter'])->name('agent.search.user');
 
     Route::get('/newproperty', function () {
         return view('pages.page.newProperty');
@@ -193,7 +193,6 @@ Route::group(['prefix' => '/pages'], function () {
         Route::get('/{agent}', [AgentController::class, 'show'])->name('agent.show.user');
         // Route::get('/search', [AgentController::class, 'filter'])->name('agent.search.user');
     });
-
 });
 
 Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
