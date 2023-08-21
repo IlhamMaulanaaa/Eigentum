@@ -56,6 +56,15 @@ class DeveloperController extends Controller
         return view('admin.developer.approve', compact('developer'));
     }
 
+    public function updateSub($id)
+    {
+        $data = Developer::find($id);
+
+        $data->subscribe = 'already';
+        $data->save();
+
+        return redirect()->route('developer.dashboard');
+    }
     public function updateApproved($id)
     {
         $data = Developer::find($id);

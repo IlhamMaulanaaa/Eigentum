@@ -71,9 +71,7 @@
 
         <section class="order_details section_gap">
             <div class="container">
-                @if ($order->payment_status == 1)
-                    {{-- <button class="btn btn-primary" id="pay-button">Pay Now</button> --}}
-                @else
+                @if ($order->payment_status == 2)
                     <h3 class="title_confirmation">Terima kasih telah melakukan pembelian langganan kami.</h3>
                 @endif
 
@@ -105,7 +103,7 @@
                 </div>
                 <div class="order_details_table">
                     {{-- @foreach ($order as $order) --}}
-                    <form action="{{ route('sub.already', $developer->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="" method="post" enctype="multipart/form-data">
                         @csrf
                         <h2>Detail Pembayaran</h2>
                         <div class="table-responsive">
@@ -168,15 +166,8 @@
                         <div class="form-group text-end">
                             {{-- <a type="button" class="btn btn-primary"
                             href="{{ route('order.edit', $order->id) }}">Edit</a> --}}
-                            @if ($order->payment_status == 1)
-                                <a type="button" class="btn btn-warning" href="{{ route('langganan.index') }}">Back</a>
-                                <button class="btn btn-primary" id="pay-button">Pay Now</button>
-                            @else
-                                {{-- <form action="{{ route('sub.already', $developer->id) }}" method="post"
-                                    enctype="multipart/form-data">
-                                    @csrf --}}
-                                    <button type="submit" class="btn btn-success">Go to Dashboard</button>
-                                {{-- </form> --}}
+                            @if ($order->payment_status == 2)
+                                <a type="button" class="btn btn-success" href="{{ route('sub.already', $developer->id) }}">Go to Dashboard</a>
                                 Payment successful
                             @endif
                         </div>
@@ -192,7 +183,7 @@
             const payButton = document.querySelector('#pay-button');
             payButton.addEventListener('click', function(e) {
                 e.preventDefault();
-                
+
                 snap.pay('{{ $snapToken }}', {
                     // Optional
                     onSuccess: function(result) {

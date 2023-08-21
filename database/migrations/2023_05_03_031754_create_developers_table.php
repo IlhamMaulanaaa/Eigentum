@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("ktp");
             $table->string("face");
             $table->string('status')->default('pending');
+            $table->string('subscribe')->default('pending');
             $table->softDeletes();
             $table->timestamps();
         });
