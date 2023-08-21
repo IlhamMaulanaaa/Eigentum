@@ -28,7 +28,7 @@ class Unit extends Model
     public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');
-    }   
+    }
 
     public function types()
     {
@@ -54,8 +54,6 @@ class Unit extends Model
     // {
     //     return $this->belongsToMany(Favorite::class, 'favorites', 'user_id', 'unit_id');
     // }
-
-
 
     public function users()
     {
@@ -88,36 +86,32 @@ class Unit extends Model
 
     public function scopefilter($query, array $filters)
     {
-
-
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            $query->where('title', 'like', '%' . $search . '%')
+            $query->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%')
                 ->orWhere('description', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%');
+                ->orwhereHas('statuses', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('id', $search);
+                })->orWhereHas('properties', function ($query) use ($search) {
+                    $query->where('title', 'like', '%' . $search . '%')
+                        ->orWhere('id', $search);
+                })->orWhereHas('regencies', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('id', $search);
+                })->orwhereHas('properties.types', function ($query) use ($search) {
+                    $query->where('name', 'like', '%' . $search . '%')
+                        ->orWhere('id', $search);
+                });    
+            });
+            
         });
-
-
-        $query->when($filters['property_id'] ?? false, function ($query, $property_id) {
-            $query->where('property_id', $property_id);
-        });
-
-        // $query->when($filters['status_id'] ?? false, function ($query, $status_id) {
-        //     return $query->whereHas('statuses', function ($query) use ($status_id) {
-        //         $query->where('id', $status_id);
-        //     });
-        // });
-
-        // $query->when(isset($filters['status_id']) && !empty($filters['status_id']), function ($query, $statusIds) {
-        //     $statusIds = explode(',', $statusIds);
-        //     $query->whereIn('status_id', $statusIds);
-        // });
 
         $query->when($filters['status'] ?? false, function ($query, $statuses) {
             $query->whereHas('statuses', function ($query) use ($statuses) {
                 $query->where('id', $statuses);
             });
         });
-
 
         $query->when($filters['types'] ?? false, function ($query, $types) {
             return $query->whereHas('properties.types', function ($query) use ($types) {
@@ -129,6 +123,10 @@ class Unit extends Model
             return $query->whereHas('regencies', function ($query) use ($regency_id) {
                 $query->where('id', $regency_id);
             });
+        });
+
+        $query->when($filters['property_id'] ?? false, function ($query, $property_id) {
+            $query->where('property_id', $property_id);
         });
 
         $query->when($filters['bedroom'] ?? false, function ($query, $bedroom) {

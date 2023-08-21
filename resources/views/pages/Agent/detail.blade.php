@@ -44,7 +44,7 @@
                     <div class="content">
                         <p>{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</p>
                         <p>{{ $agent->address }}</p>
-
+                        <p>{{$agent->telp}}</p>
                         <ul class="abc">
                             <li><i class="fab fa-twitter"></i></li>
                             <i class="fab fa-instagram"></i>

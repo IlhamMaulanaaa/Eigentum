@@ -57,9 +57,16 @@ class Agent extends Model
     {
 
         $query->when($filters['search'] ?? false, function ($query, $search) {
-            $query->where('name', 'like', '%' . $search . '%')
-                // ->orWhere('description','like','%'.$search.'%')
-                ->orWhere('email', 'like', '%' . $search . '%');
+            $query->whereHas('users', function ($query) use ($search) {
+                $query->where('name', 'like', '%' . $search . '%')
+                    ->orWhere('email', 'like', '%' . $search . '%')
+                    ->orWhereHas('agents', function ($query) use ($search) {
+                        $query->where('telp', 'like', '%' . $search . '%')
+                            ->orWhereHas('regencies', function ($query) use ($search) {
+                                $query->where('name', 'like', '%' . $search . '%');
+                            });
+                    });
+            });
         });
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regencyId) {

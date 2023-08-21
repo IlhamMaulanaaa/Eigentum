@@ -16,7 +16,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <select name="regency_id" id="regency" class="form-select">
-                                        <option value=" {{ request('search') ? '' : 'selected' }}">Pilih Regency</option>
+                                        <option value=" {{ request('regency_id') ? '' : 'selected' }}">Pilih Regency</option>
                                         @foreach ($regencies as $id => $name)
                                             <option
                                                 value="{{ $id }}"{{ request('regency_id') == $id ? ' selected' : '' }}>

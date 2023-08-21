@@ -42,9 +42,9 @@
                     </ul>
 
                     <div class="content">
-                        <p>{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</p>
+                        <p>{{ implode(', ', $agent->regencies()->pluck('name')->toArray()) }}</p>
                         <p>{{ $agent->address }}</p>
-
+                        <p>{{ $agent->telp }}</p>
                         <ul class="abc">
                             <li><i class="fab fa-twitter"></i></li>
                             <i class="fab fa-instagram"></i>
@@ -84,7 +84,7 @@
                                 <div class="labeledit" style="z-index: 100">
                                     <a class="linkedit" href="{{ route('property.edit.agent', $property->id) }}"><i
                                             class="fas fa-edit edit-icon"></i></a>
-                                </div>
+                                </div>x
                                 <div class="labeldelete" style="z-index: 100">
                                     <form action="{{ route('property.destroy.agent', $property->id) }}" method="get"
                                         class="d-inline">

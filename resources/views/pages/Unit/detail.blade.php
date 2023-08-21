@@ -235,7 +235,7 @@
             <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:10px;">
                 <p class="developer--EMb" style="font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 500;"
                     id="2:6">Developer:</p>
-                <p class="informasi-properti-LfX" id="2:7">{{ $unit->properties->developers->company }}</p>
+                <p class="informasi-properti-LfX" id="2:7">{{ Str::limit($unit->properties->developers->company, 15) }}</p>
             </div>
             <div class="group-14-GJH" id="3:52">
                 <div class="group-4-wfK" id="3:20">

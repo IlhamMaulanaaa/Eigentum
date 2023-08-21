@@ -58,7 +58,7 @@
                                                     Status</option>
                                                 @foreach ($statuses as $status)
                                                     <option value="{{ $status->id }}"
-                                                        {{ request('status_id') == $status->id ? 'selected' : '' }}>
+                                                        {{ request('status') == $status->id ? 'selected' : '' }}>
                                                         {{ $status->name }}
                                                     </option>
                                                 @endforeach

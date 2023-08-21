@@ -101,7 +101,7 @@
                     </div>
 
                     {{-- <div class="filter-jualsewa" style="margin-top: 400px;">
-                        <form class="header-jualsewa" action="{{ route('filterproperti') }}" method="GET" role="search">
+                        <form class="header-jualsewa" action="{{ route('unit.search.user') }}" method="GET" role="search">
                             <input type="hidden" name="status" id="status" value="">
                             <button type="submit" class="jualsewa" data-status="{{ $status->pluck('id')->first() }}"
                                 onclick="setStatus('dijual')">Dijual</button>
@@ -112,7 +112,7 @@
 
                     <div class="group-11-tab" id="4:7169">
                         <div class="group-10-mPV" id="4:7171">
-                            <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                            <form action="{{ route('unit.search.user') }}" method="GET" role="search">
                                 <!-- Filter Home -->
                                 <div class="frame-61-qi7" id="4:7172">
                                     <div class="select-menu2">
@@ -215,7 +215,7 @@
                                 </div>
                             </form>
                         </div>
-                        <form action="{{ route('filterproperti') }}" method="GET" role="search">
+                        <form action="{{ route('unit.search.user') }}" method="GET" role="search">
                             <div class="search-container">
                                 <input type="text" id="search-input" name="search" placeholder="Search.."
                                     aria-label="Search username" aria-describedby="basic-addon2"

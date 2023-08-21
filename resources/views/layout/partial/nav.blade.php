@@ -39,8 +39,8 @@
 
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li><a href="/beranda">Beranda</a></li>
-                    <li><a href="{{ route('filterproperti') }}">Properti</a></li>
-                    <li><a href="/pages/searchagent">Cari Agen</a></li>
+                    <li><a href="{{route('unit.search.user')}}">Properti</a></li>
+                    <li><a href="{{route('agent.search.user')}}">Cari Agen</a></li>
                     <li><a href="/pages/guide">Panduan</a></li>
                     <li><a href="/pages/kpr">KPR</a></li>
                 </ul>

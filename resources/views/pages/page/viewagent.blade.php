@@ -44,57 +44,65 @@
     </head>
 
     <body>
-    <!-- Facts Start -->
-    <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 200px;">
-        
-        
-        <div class="container py-5 pt-lg-0">
-            <div class="row gx-0">
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
-                    <div class=" shadow d-flex align-items-center justify-content-center p-4" style="height: 150px; background-color: #0C40E8;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-users " style="color: #0C40E8;"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Klien Puas</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">{{$countuser}}
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
-                    <div class=" shadow d-flex align-items-center justify-content-center p-4" style="height: 150px; background-color:#fff;">
-                        <div class=" d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px; background-color: #0C40E8;">
-                            <i class="fa fa-check text-white"></i>
-                        </div>
-                        <div class="ps-4">
-                            <h5 class=" mb-0" style="color: #0C40E8;">Proyek Selesai</h5>
-                            <h1 class="mb-0" data-toggle="counter-up">12345</h1>
+        <!-- Facts Start -->
+        <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 200px;">
+
+
+            <div class="container py-5 pt-lg-0">
+                <div class="row gx-0">
+                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.1s">
+                        <div class=" shadow d-flex align-items-center justify-content-center p-4"
+                            style="height: 150px; background-color: #0C40E8;">
+                            <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-users " style="color: #0C40E8;"></i>
+                            </div>
+                            <div class="ps-4">
+                                <h5 class="text-white mb-0">Klien Puas</h5>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">{{ $countuser }}
+                                </h1>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
-                    <div class=" shadow d-flex align-items-center justify-content-center p-4" style="height: 150px; background-color: #0C40E8;">
-                        <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2" style="width: 60px; height: 60px;">
-                            <i class="fa fa-user-tie " style="color: #0C40E8;"></i>
+                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.3s">
+                        <div class=" shadow d-flex align-items-center justify-content-center p-4"
+                            style="height: 150px; background-color:#fff;">
+                            <div class=" d-flex align-items-center justify-content-center rounded mb-2"
+                                style="width: 60px; height: 60px; background-color: #0C40E8;">
+                                <i class="fa fa-check text-white"></i>
+                            </div>
+                            <div class="ps-4">
+                                <h5 class=" mb-0" style="color: #0C40E8;">Proyek Selesai</h5>
+                                <h1 class="mb-0" data-toggle="counter-up">12345</h1>
+                            </div>
                         </div>
-                        <div class="ps-4">
-                            <h5 class="text-white mb-0">Agen Berpengalaman</h5>
-                            <h1 class="text-white mb-0" data-toggle="counter-up">{{$agents->count()}}</h1>
-                        </div>
+                    </div>
+                    <div class="col-lg-4 wow zoomIn" data-wow-delay="0.6s">
+                        <div class=" shadow d-flex align-items-center justify-content-center p-4"
+                            style="height: 150px; background-color: #0C40E8;">
+                            <div class="bg-white d-flex align-items-center justify-content-center rounded mb-2"
+                                style="width: 60px; height: 60px;">
+                                <i class="fa fa-user-tie " style="color: #0C40E8;"></i>
+                            </div>
+                            <div class="ps-4">
+                                <h5 class="text-white mb-0">Agen Berpengalaman</h5>
+                                <h1 class="text-white mb-0" data-toggle="counter-up">{{ $agents->count() }}</h1>
+                            </div>
+                    </div>
                     </div>
                 </div>
             </div>
+            <form action="{{ route('agent.search.user') }}" method="GET" role="search">
+                <div class="satuinsearch">
+                    <div class="input-box">
+                        <i class="uil uil-search"></i>
+                        <input type="text" name="search" placeholder="Cari Agen" value="{{ request('search') }}" />
+                        <button class="button1" id="searchButton" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="satuinsearch">
-        <div class="input-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Cari Agen" />
-            <button class="button1">Search</button>
-          </div>
-        </div>
-    </div>    
-    <!-- Facts Start -->
+        <!-- Facts Start -->
 
 
         <!-- Agent Populer Start -->
@@ -104,7 +112,7 @@
                 <div class="row g-4">
                     <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                         <h6 class="section-title bg-white text-center px-3" style="color: #0C40E8">Teratas</h6>
-                        <h1  style="font-size:30px;" class="mb-5">Agent Profesional</h1>
+                        <h1 style="font-size:30px;" class="mb-5">Agent Profesional</h1>
                     </div>
                     @foreach ($agents as $agent)
                         <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -120,14 +128,10 @@
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
                                     <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
                                 </div>
-                                <a href="{{ route('agent.dashboard', $agent->id) }}">
-                                    <div class="text-center p-4">
-                                        @foreach ($agent->users as $user)
-                                            <h5 class="mb-0">{{ $user->name }}</h5>
-                                        @endforeach
-                                        <small style="color: #0c40e8">Agent Rumah</small>
-                                    </div>
-                                </a>
+                                @foreach ($agent->users as $user)
+                                    <h5 class="mb-0">{{ $user->name }}</h5>
+                                @endforeach
+                                <small style="color: #0c40e8">Agent Rumah</small>
                             </div>
                         </div>
                     @endforeach
@@ -153,7 +157,7 @@
                     @endforeach --}}
                     @foreach ($agents as $agent)
                         <a href="{{ route('agent.dashboard', $agent->id) }}">
-                            <li class="card" >
+                            <li class="card">
                                 <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
                                         draggable="false"></div>
                                 @foreach ($agent->users as $user)
@@ -163,7 +167,6 @@
                             </li>
                         </a>
                     @endforeach
-
                     <a href="/agent/dashboard">
                         <li class="card">
                             <div class="img"><img src="/assets/pages/Home/testimoni2-home.svg" alt="img"
@@ -220,7 +223,7 @@
                             <span>Agent Independen</span>
                         </li>
                     </a>
-                            {{-- @foreach ($agents as $agent)
+                    {{-- @foreach ($agents as $agent)
                     <li class="card">
                         <div class="img">
                             <img src="images/img-1.jpg" alt="img" draggable="false">
