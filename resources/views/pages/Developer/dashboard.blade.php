@@ -60,7 +60,7 @@
                 align-items: flex-start;
                 padding: 10px;
 
-                font-size: 24px;
+                font-size: 16px;
             }
 
             .options.show {
@@ -141,7 +141,7 @@
                     <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
                         id="filterable-cards">
                         @foreach ($developer->properties as $property)
-                            <div class="card p-0" data-name="aktif">
+                            <div class="card p-0" data-name="dijual">
                                 <a href="{{ route('property.show.developer', $property->id) }}" class="stretched-link"></a>
                                 <img style="height: 180px;" src="{{ asset('storage/' . $property->image) }}"
                                     alt="img" />
@@ -164,6 +164,14 @@
                                         {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
                                     </form>
                                 </div>
+
+
+
+                                <span class="label sold">Terjual</span>
+
+
+
+
                             </div>
                         @endforeach
                         
@@ -175,15 +183,12 @@
 
         </div>
         <div class="tambah" style="z-index: 200">
+            
+        <a href="{{ route('property.create.developer') }}">
         <button id="addButton" class="sticky-button">+</button>
-        <div id="options" class="options" style="">
-            <a href="/unit/upload">
-                <div class="option">tambah unit</div>
-            </a>
-            <a href="{{ route('property.create.developer') }}">
-                <div class="option">tambah property</div>
-            </a>
-        </div>
+        <p style="margin-left: -30px; color:#000; margin-top:10px;">Tambah Properti</p>
+        </a>
+        
         </div>
         <script>
             const addButton = document.getElementById("addButton");
