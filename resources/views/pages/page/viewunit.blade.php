@@ -140,23 +140,20 @@
                             </div>
                             <div class="rage-slider">
                                 <label>Price</label>
-                                {{-- <form action="{{ route('unit.search.user') }}" method="GET" role="search"> --}}
                                 <div class="price-input">
                                     <div class="field">
                                         <span>Rp.</span>
-                                        <input type="number" placeholder="Min" class="input-min" id="inputMin"
+                                        <input type="number" name="min_price" placeholder="Min" class="input-min" id="inputMin"
                                             value="{{ request('min_price') }}">
                                     </div>
                                     <div class="field">
-                                        <span></span>
-                                        <input type="number" placeholder="Max" class="input-max" id="inputMax"
+                                        {{-- <span></span> --}}
+                                        <input type="number" name="max_price" placeholder="Max" class="input-max" id="inputMax"
                                             value="{{ request('max_price') }}">
                                     </div>
                                 </div>
-                                {{-- </form> --}}
                             </div>
                         </form>
-
                     </div>
 
                     {{-- <h2 class="col-md-12">Kategori
@@ -323,7 +320,7 @@
         </div>
         <!-- /End page content -->
 
-        <script>
+        {{-- <script>
             // Fungsi untuk menambahkan format angka dengan tanda titik
             function formatNumberWithCommas(number) {
                 return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -344,7 +341,7 @@
             // Tambahkan event listener untuk event "input"
             inputMin.addEventListener("input", updateValueWithCommas);
             inputMax.addEventListener("input", updateValueWithCommas);
-        </script>
+        </script> --}}
 
         <script>
             // Dapatkan elemen checkbox berdasarkan ID
@@ -363,31 +360,9 @@
                     this.form.submit(); // Kirim form saat checkbox diubah
                 });
             });
-
-            var inputMin = document.getElementById('inputMin');
-            var inputMax = document.getElementById('inputMax');
-
-            // Fungsi untuk memicu pencarian
-            // function performSearch() {
-            //     var minPrice = inputMin.value;
-            //     var maxPrice = inputMax.value;
-
-            //     // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
-            //     var searchURL = this.form.submit();
-            //     window.location.href = searchURL;
-            // }
-
-            // Menambahkan event listener pada input
-            inputMin.addEventListener('input', function() {
-                this.form.submit();
-            });
-
-            inputMax.addEventListener('input', function() {
-                this.form.submit();
-            });
         </script>
 
-        <script>
+        {{-- <script>
             document.addEventListener('DOMContentLoaded', function() {
                 // Menangkap elemen input
                 var inputMin = document.getElementById('inputMin');
@@ -413,7 +388,7 @@
                     performSearch();
                 });
             });
-        </script>
+        </script> --}}
 
 
 
