@@ -102,8 +102,18 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="{{ route('favorite.index') }}">disukai</a>
+                                    <a href="{{ route('favorite.index') }}">Disukai</a>
                                 </li>
+
+
+
+                                <li>
+                                    <span class="material-icons icons-size">history</span>
+                                    <a href="/developer/history">Riwayat</a>
+                                </li>
+
+
+
                                 <li>
                                     <span class="material-icons icons-size">monetization_on</span>
                                     <a href="/pages/langganan">Langganan</a>
