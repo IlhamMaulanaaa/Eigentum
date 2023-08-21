@@ -102,7 +102,7 @@
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>
-                                    <a href="{{ route('favorite.index') }}">disukai</a>
+                                    <a href="{{ route('favorite.index') }}">Disukai</a>
                                 </li>
                                 @if (Auth::user()->developers->pluck('subscribe')->first() == 'already')
                                     <li>
@@ -115,6 +115,18 @@
                                         <a href="{{ route('langganan.index') }}">Developer</a>
                                     </li>
                                 @endif
+                                <li>
+                                    <span class="material-icons icons-size">history</span>
+                                    <a href="/developer/history">Riwayat</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">monetization_on</span>
+                                    <a href="/pages/langganan">Langganan</a>
+                                </li>
+                                <li>
+                                    <span class="material-icons icons-size">business_center</span>
+                                    <a href="{{ route('developer.dashboard') }}">Developer</a>
+                                </li>
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
                                     <a href="{{ route('logout') }}">Logout</a>

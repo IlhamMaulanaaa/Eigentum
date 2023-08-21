@@ -109,6 +109,9 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
             Route::put('/update/{unit}', [UnitController::class, 'update'])->name('unit.update.developer');
             Route::get('/destroy/{unit}', [UnitController::class, 'destroy'])->name('unit.destroy.developer');
         });
+        Route::get('/history', function () {
+            return view('pages.Developer.history');
+        });
     });
 });
 
