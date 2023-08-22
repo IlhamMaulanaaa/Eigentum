@@ -143,13 +143,13 @@
                                 <div class="price-input">
                                     <div class="field">
                                         <span>Rp.</span>
-                                        <input type="number" name="min_price" placeholder="Min" class="input-min" id="inputMin"
-                                            value="{{ request('min_price') }}">
+                                        <input type="number" name="min_price" placeholder="Min" class="input-min"
+                                            id="inputMin" value="{{ request('min_price') }}">
                                     </div>
                                     <div class="field">
                                         {{-- <span></span> --}}
-                                        <input type="number" name="max_price" placeholder="Max" class="input-max" id="inputMax"
-                                            value="{{ request('max_price') }}">
+                                        <input type="number" name="max_price" placeholder="Max" class="input-max"
+                                            id="inputMax" value="{{ request('max_price') }}">
                                     </div>
                                 </div>
                             </div>
