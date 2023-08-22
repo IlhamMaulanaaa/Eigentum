@@ -229,13 +229,12 @@
 
         <div class="group-9-g1K" id="3:42">
             <p class="informasi-properti-hSD"
-                style="font-size: 16px; margin-left:-10px; font-family:'Lato', sans-serif; padding-bottom:10px;"
-                id="2:4">Informasi Properti</p>
-            <p>{{ $unit->properties->title }}</p>
-            <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:10px;">
+                style="font-size: 16px; margin-left:-55px; font-family:'Lato', sans-serif; padding-bottom:10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                id="2:4">{{ $unit->properties->title }}</p>
+            <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:-30px;">
                 <p class="developer--EMb" style="font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 500;"
                     id="2:6">Developer:</p>
-                <p class="informasi-properti-LfX" id="2:7">{{ Str::limit($unit->properties->developers->company, 15) }}</p>
+                <p class="informasi-properti-LfX" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="2:7">{{ Str::limit($unit->properties->developers->company, 15) }}</p>
             </div>
             <div class="group-14-GJH" id="3:52">
                 <div class="group-4-wfK" id="3:20">
@@ -265,25 +264,13 @@
             </div>
             <div class="group-13-7tZ row" id="3:51">
                 <div class="group-11-jws" id="3:44"
-                    style="margin-top: 20px; margin-right:170px; font-family:'Lato', sans-serif;">
-                    <p class="bulan-sewa-Vw3" id="3:45"
-                        style="margin-left: -60px; font-family:'Lato', sans-serif; ">
-                        1 Bulan Sewa
-                    </p>
+                    style="margin-top: 10px; margin-right:-10px; font-family:'Lato', sans-serif;">
                     <p class="rp-1jt-malam-dnM" id="3:46" style="margin-left: -30px">
                         <span class="rp-1jt-malam-dnM-sub-0"
                             style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
-                            Rp.{{ number_format($pricePerMonth, 2) }}jt
+                            Rp.{{ number_format($pricePerMonth, 2) }}jt  -
                         </span>
-                    </p>
-                </div>
-                <div class="group-11-jws" id="3:47"
-                    style="margin-top: 20px; margin-right:170px; font-family:'Lato', sans-serif;">
-                    <p class="bulan-sewa-Vw3" id="3:48"
-                        style="margin-left: -60px; font-family:'Lato', sans-serif; ">
-                        1 Bulan Jual
-                    </p>
-                    <p class="rp-1jt-malam-dnM" id="3:49" style="margin-left: -30px">
+                        
                         <span class="rp-1jt-malam-dnM-sub-0"
                             style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
                             Rp.{{ number_format($unit->price, 2) }}jt
