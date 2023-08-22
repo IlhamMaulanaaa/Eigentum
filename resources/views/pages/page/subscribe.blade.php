@@ -43,9 +43,10 @@
                                 <span>{{ $subscribe->feature_4 }}</span>
                                 <i class="fas fa-times"></i>
                             </div> --}}
-                            <a href="{{ route('subscribe.lihat', $subscribe->id) }}">
-                                <button class="btn-primary">Langganan</button>
-                            </a>
+                            <form action="{{ route('subscribeid.store', $subscribe->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <button type="submit" class="btn-primary">Langganan</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

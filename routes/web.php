@@ -181,7 +181,7 @@ Route::group(['prefix' => '/pages'], function () {
 
     //payment
     Route::get('/langganan', [SubscribeController::class, 'indexFront'])->name('langganan.index'); //list sub
-    Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
+    // Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
     Route::post('/addtoorder/{subsId}', [OrderController::class, 'storeFront'])->name('subscribeid.store'); //masuk sub ke order
     Route::get('/detailorder/{order}', [OrderController::class, 'showFront'])->name('detailorder'); //detail order
     // Route::get('/afterorder/{order}', [OrderController::class, 'show'])->name('afterorder'); //detail order
