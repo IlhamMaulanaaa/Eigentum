@@ -19,12 +19,23 @@ class DeveloperMiddleware
     {
         if (Auth::check() && Auth::user()->role == 'developer') {
             $developerStatus = Auth::user()->developers->first()->status;
+            $developerSub = Auth::user()->developers->first()->subscribe;
 
-            if ($developerStatus === 'approved') {
-                return $next($request);
-            } else {
-                return redirect('/beranda')->with('rejected', true);
+            if ($developerSub === 'already') {
+                if ($developerStatus === 'approved') {
+                    return $next($request);
+                } elseif ($developerStatus === 'rejected') {
+                    return redirect('/beranda')->with('rejected', true);
+                }
+            } elseif ($developerSub === 'pending') {
+                return redirect()->route('langganan.index');
             }
+
+            // if ($developerStatus === 'approved') {
+            //     return $next($request);
+            // } else {
+            //     return redirect('/beranda')->with('rejected', true);
+            // }
             // return redirect('/beranda');
         }
 

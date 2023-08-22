@@ -49,7 +49,8 @@
                             <th scope="col">Owner</th>
                             <th scope="col">Kota</th>
                             <th scope="col">Telephone</th>
-                            <th scope="col">status</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Subscribe</th>
                             <th scope="col"></th>
                             {{-- <th scope="col"></th> --}}
                         </tr>
@@ -76,6 +77,12 @@
                                     @endif
                                     @if ($developer->status == 'rejected')
                                         <td class="text-start text-danger">{{ $developer->status }}</td>
+                                    @endif
+                                    @if ($developer->subscribe == 'pending')
+                                        <td class="text-start text-warning">{{ $developer->subscribe }}</td>
+                                    @endif
+                                    @if ($developer->subscribe == 'already')
+                                        <td class="text-start text-success">{{ $developer->subscribe }}</td>
                                     @endif
 
                                     <td class="text-end">

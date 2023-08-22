@@ -110,11 +110,12 @@ class OrderController extends Controller
             $order->save();
         }
 
-        return view('admin.order.detail', compact('order', 'snapToken'));
+        return view('admin.order.detail', compact('order', 'snapToken' ));
     }
 
     public function showFront(Order $order)
     {
+        $developer = Auth::user()->developers->first();
         $snapToken = $order->snap_token;
         if (empty($snapToken)) {
             // Jika snap token masih NULL, buat token snap dan simpan ke database
@@ -126,7 +127,7 @@ class OrderController extends Controller
             $order->save();
         }
 
-        return view('pages.page.order', compact('order', 'snapToken'));
+        return view('pages.page.order', compact('order', 'snapToken', 'developer'));
     }
 
     /**

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('price');
-            $table->string('feature_1');
-            $table->string('feature_2');
-            $table->string('feature_3');
-            $table->string('feature_4');
+            $table->string('feature');
+            // $table->string('feature_2');
+            // $table->string('feature_3');
+            // $table->string('feature_4');
             $table->timestamps();
         });
     }

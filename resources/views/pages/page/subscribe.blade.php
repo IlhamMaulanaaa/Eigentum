@@ -25,13 +25,13 @@
                                 <span class="decimal">/bln</span>
                             </div>
                         </div>
-                        <div class="info">{{ $subscribe->feature_1 }}</div>
+                        <div class="info">{{ $subscribe->description }}</div>
                         <div class="details">
                             <div class="one">
-                                <span>{{ $subscribe->feature_1 }}</span>
+                                <span>{{ $subscribe->feature }}</span>
                                 <i class="fas fa-check"></i>
                             </div>
-                            <div class="one">
+                            {{-- <div class="one">
                                 <span>{{ $subscribe->feature_2 }}</span>
                                 <i class="fas fa-check"></i>
                             </div>
@@ -42,7 +42,7 @@
                             <div class="one">
                                 <span>{{ $subscribe->feature_4 }}</span>
                                 <i class="fas fa-times"></i>
-                            </div>
+                            </div> --}}
                             <a href="{{ route('subscribe.lihat', $subscribe->id) }}">
                                 <button class="btn-primary">Langganan</button>
                             </a>

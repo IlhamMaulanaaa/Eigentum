@@ -171,11 +171,12 @@ Route::group(['prefix' => '/pages'], function () {
     });
 
     //payment
-    Route::get('/langganan', [SubscribeController::class, 'indexFront']);
+    Route::get('/langganan', [SubscribeController::class, 'indexFront'])->name('langganan.index'); //list sub
     Route::get('/langganan/{subscribe}', [SubscribeController::class, 'show'])->name('subscribe.lihat'); //detail sub
     Route::post('/addtoorder/{subsId}', [OrderController::class, 'storeFront'])->name('subscribeid.store'); //masuk sub ke order
     Route::get('/detailorder/{order}', [OrderController::class, 'showFront'])->name('detailorder'); //detail order
-    // Route::post('/order/{subsId}', [OrderController::class, 'store'])->name('subid.store');
+    // Route::get('/afterorder/{order}', [OrderController::class, 'show'])->name('afterorder'); //detail order
+    Route::post('/already/{developer}', [DeveloperController::class, 'updateSub'])->name('sub.already');
 
     Route::get('/notifikasi', function () {
         return view('pages.page.notification');
@@ -246,6 +247,7 @@ Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.
 Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
 Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
 Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
+Route::post('/payments/finish', [PaymentCallbackController::class, 'finish']);
 
 Route::get('/navbar', function () {
     return view('layout.partial.nav');

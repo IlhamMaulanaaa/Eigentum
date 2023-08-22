@@ -83,6 +83,14 @@
                     <div class="img-display" style="height:450px;">
                         <div class="img-showcase" style="">
                             <img class="img-besar" src="{{ asset('storage/' . $unit->image) }}" alt="shoe image">
+                            @if ($images && $images['etcimg'])
+                                @php
+                                    $imageArray = explode('|', $images['etcimg']);
+                                @endphp
+                                @foreach ($imageArray as $image)
+                                    <img class="img-besar" src="{{ asset('storage/' . $image) }}" alt="shoe image">
+                                @endforeach
+                            @endif
                             {{-- @if ($images && $images['livingroomimg'])
                                 @php
                                     $imageArray = explode('|', $images['livingroomimg']);
@@ -96,9 +104,9 @@
                                     </div>
                                 @endforeach
                             @endif --}}
-                            <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
+                            {{-- <img class="img-besar" src="/assets/unit/detailunit/bathroom.jpg" alt="shoe image">
                             <img class="img-besar" src="/assets/unit/detailunit/bedroom.jpg" alt="shoe image">
-                            <img class="img-besar" src="/assets/unit/detailunit/denah.jpg" alt="shoe image">
+                            <img class="img-besar" src="/assets/unit/detailunit/denah.jpg" alt="shoe image"> --}}
 
                         </div>
 
@@ -112,54 +120,23 @@
                                         <p class="text">Lihat Semua</p>
                                     </div>
                                 </div>
+                            </div>
 
+                            @foreach (['livingroomimg', 'bedroomimg', 'bathroomimg', 'kitchenimg', 'etcimg'] as $imageType)
+                                <div class="image hide">
 
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/livingroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bathroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/bedroom.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/unit/detailunit/denah.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
-                            <div class="image hide"><img src="/assets/pages/Home/unit1.jpg" alt=""
-                                    style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
-                            </div>
+                                    @if ($images && $images[$imageType])
+                                        @php
+                                            $imageArray = explode('|', $images[$imageType]);
+                                        @endphp
+                                        @foreach ($imageArray as $image)
+                                            <img src="{{ asset('storage/' . $image) }}" alt=""
+                                                style="margin-left:770px; border-radius:10px; margin-top:310px; filter: grayscale(90%) opacity(2.5); width: 200px; height:120px;">
+                                        @endforeach
+                                    @endif
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
 
@@ -193,10 +170,27 @@
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="1">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
-                                src="/assets/pages/Home/unit1.jpg" alt="shoe image">
+                                src="{{ asset('storage/' . $unit->image) }}" alt="shoe image">
                         </a>
                     </div>
-                    <div class="img-item" style="padding-right: 20px;">
+                    @if ($images && $images['etcimg'])
+                        @php
+                            $imageArray = explode('|', $images['etcimg']);
+                        @endphp
+                        @foreach ($imageArray as $key => $image)
+                            @php
+                                // Increment the key by 1 to start from 1 instead of 0
+                                $key += 2;
+                            @endphp
+                            <div class="img-item" style="padding-right: 20px;">
+                                <a href="#" data-id="{{ $key }}">
+                                    <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
+                                        src="{{ asset('storage/' . $image) }}" alt="shoe image">
+                                </a>
+                            </div>
+                        @endforeach
+                    @endif
+                    {{-- <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="2">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
                                 src="/assets/unit/detailunit/livingroom.jpg" alt="shoe image">
@@ -219,7 +213,7 @@
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
                                 src="/assets/unit/detailunit/denah.jpg" alt="shoe image">
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
@@ -310,10 +304,6 @@
         }
 
         window.addEventListener('resize', slideImage);
-
-
-
-
 
         const gallery = document.querySelectorAll(".image");
         const previewImg = document.querySelector(".image-box img");

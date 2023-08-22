@@ -47,4 +47,8 @@ class PaymentCallbackController extends Controller
                 ], 403);
         }
     }
+
+    public function finish(){
+        return redirect()->route('afterorder');
+    }
 }

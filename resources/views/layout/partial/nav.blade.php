@@ -39,10 +39,10 @@
 
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li class="navbar"><a href="/beranda">Beranda</a></li>
-                    <li class="navbar" ><a href="{{route('unit.search.user')}}">Properti</a></li>
-                    <li class="navbar" ><a href="{{route('agent.search.user')}}">Cari Agen</a></li>
-                    <li class="navbar" ><a href="/pages/guide">Panduan</a></li>
-                    <li class="navbar" ><a href="/pages/kpr">KPR</a></li>
+                    <li class="navbar"><a href="{{ route('unit.search.user') }}">Properti</a></li>
+                    <li class="navbar"><a href="{{ route('agent.search.user') }}">Cari Agen</a></li>
+                    <li class="navbar"><a href="/pages/guide">Panduan</a></li>
+                    <li class="navbar"><a href="/pages/kpr">KPR</a></li>
                 </ul>
             </div>
 
@@ -77,19 +77,19 @@
                         </h3>
                         @if (Auth::user()->role == 'agent')
                             <ul class="navbar" style="margin: 0; padding:0;">
-                                <li class="navbar" >
+                                <li class="navbar">
                                     <span class="material-icons icons-size">person</span>
                                     <a href="{{ route('agent.profile') }}">Profile</a>
                                 </li>
-                                <li class="navbar" >
+                                <li class="navbar">
                                     <span class="material-icons icons-size">favorite</span>
                                     <a href="{{ route('favorite.index') }}">disukai</a>
                                 </li>
-                                <li class="navbar" >
+                                <li class="navbar">
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="/agent/dashboard/">Agent</a>
                                 </li>
-                                <li class="navbar" >
+                                <li class="navbar">
                                     <span class="material-icons icons-size">exit_to_app</span>
                                     <a href="{{ route('logout') }}">Logout</a>
                                 </li>
@@ -104,24 +104,29 @@
                                     <span class="material-icons icons-size">favorite</span>
                                     <a href="{{ route('favorite.index') }}">Disukai</a>
                                 </li>
-
-
-
+                                @if (Auth::user()->developers->pluck('subscribe')->first() == 'already')
+                                    <li>
+                                        <span class="material-icons icons-size">business_center</span>
+                                        <a href="{{ route('developer.dashboard') }}">Developer</a>
+                                    </li>
+                                @elseif (Auth::user()->developers->pluck('subscribe')->first() == 'pending')
+                                    <li>
+                                        <span class="material-icons icons-size">business_center</span>
+                                        <a href="{{ route('langganan.index') }}">Developer</a>
+                                    </li>
+                                @endif
                                 <li>
                                     <span class="material-icons icons-size">history</span>
                                     <a href="/developer/history">Riwayat</a>
                                 </li>
-
-
-
-                                <li>
+                                {{-- <li>
                                     <span class="material-icons icons-size">monetization_on</span>
                                     <a href="/pages/langganan">Langganan</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="{{ route('developer.dashboard') }}">Developer</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
                                     <a href="{{ route('logout') }}">Logout</a>
@@ -150,7 +155,7 @@
                             <ul style="margin: 0; padding:0;">
                                 <li>
                                     <span class="material-icons icons-size">person</span>
-                                    <a href="{{route('user.profile')}}">Profile</a>
+                                    <a href="{{ route('user.profile') }}">Profile</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">favorite</span>

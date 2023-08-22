@@ -13,42 +13,39 @@ class SubscribeSeeder extends Seeder
      */
     public function run(): void
     {
-        
-        $titles = [
-            'Free',
-            'Extended',
-            'Premium', 
-        ];
+        Subscribe::truncate();
 
-        $descriptions = [
-            'Free',
-            'Extended',
-            'Premium', 
-        ];
+        // $titles = [
+        //     'Extended',
+        //     'Premium', 
+        // ];
 
-        $prices = [
-            0,
-            100000,
-            200000,
-        ];
+        // $descriptions = [
+        //     'Extended',
+        //     'Premium', 
+        // ];
 
-        $features = [
-            'Free',
-            'Extended',
-            'Premium', 
-        ];
+        // $prices = [
+        //     100000,
+        //     200000,
+        // ];
+
+        // $features = [
+        //     'Extended',
+        //     'Premium', 
+        // ];
 
         Subscribe::truncate();
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             Subscribe::create([
-                'title' => $titles[$i],
-                'description' => $descriptions[$i],
-                'price' => $prices[$i],
-                'feature_1' => $features[$i],
-                'feature_2' => $features[$i],
-                'feature_3' => $features[$i],
-                'feature_4' => $features[$i],
+                'title' =>  'Paket Developer',
+                'description'   =>  'Paket ini hanya untuk developer',
+                'price' =>  100000,
+                'feature' => 'Akses Dashboard Developer',
+                // 'feature_2' => 'fitur untuk developer',
+                // 'feature_3' => 'fitur untuk developer',
+                // 'feature_4' => 'fitur untuk developer',
             ]);
         }
     }
