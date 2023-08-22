@@ -74,7 +74,7 @@ class DeveloperController extends Controller
 
         return redirect('admin/developer');
     }
-
+    
 
     public function index()
     {

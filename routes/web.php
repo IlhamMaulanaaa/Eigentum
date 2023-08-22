@@ -41,6 +41,8 @@ use Illuminate\Routing\RouteGroup;
 // });
 
 Route::post('/unit/{id}/submit-offer', [AgentController::class,'submitOffer'])->name('offer.submit');
+Route::post('/developer/accept/{id}', [AgentController::class,'acceptOffer'])->name('accept.unit');
+Route::post('/developer/reject/{id}', [AgentController::class,'rejectOffer'])->name('reject.unit');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);

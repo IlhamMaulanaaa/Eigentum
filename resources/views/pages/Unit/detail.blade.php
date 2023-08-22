@@ -295,13 +295,22 @@
             @if (Auth::user()->role == 'agent')
                 <form action="{{ route('offer.submit', ['id' => $unit->id]) }}" method="POST">
                     @csrf
-                    <button type="submit"
-                        >request</button>
+                    <button type="submit">request</button>
                 </form>
-@else
-<a href="https://web.whatsapp.com/">
-                        <div class="group-12-pM3" id="3:50">Tanya Agent</div>
-                        </a>
+            @elseif (Auth::user()->role == 'developer')
+                <form action="{{ route('reject.unit', ['id' => $unit->id]) }}" method="POST">
+                    @csrf
+                    {{-- <input type="hidden" value="DITOLAK" name="status"> --}}
+                    <button type="submit">reject</button>
+                </form>
+                <form action="{{ route('accept.unit', ['id' => $unit->id]) }}" method="POST">
+                    @csrf
+                    <button type="submit">accept</button>
+                </form>
+            @else
+                <a href="https://web.whatsapp.com/">
+                    <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+                </a>
             @endif
         </div>
 

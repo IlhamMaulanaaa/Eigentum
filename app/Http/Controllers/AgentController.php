@@ -303,6 +303,38 @@ class AgentController extends Controller
 
 
 
+    public function acceptOffer(Request $request, $id)
+    {
+        $unit = Unit::find($id);
+
+        // Update status in the pivot table for the authenticated agent
+        $unit->agents()->sync(
+            [
+                auth()->user()->id => ['status' => 'approved']
+            ],
+            false
+        );
+
+        return redirect()->route('developer.dashboard')->with('success', 'Offer accepted.');
+    }
+
+
+    public function rejectOffer($id)
+    {
+        $unit = Unit::find($id);
+
+        $unit->agents()->sync(
+            [
+                auth()->user()->id => ['status' => 'reject']
+            ],
+            false
+        );
+
+        return redirect()->route('developer.dashboard')->with('success', 'Offer accepted.');
+    }
+
+
+
     public function update(Request $request, string $id)
     {
         try {
