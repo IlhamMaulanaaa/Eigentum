@@ -214,7 +214,7 @@ class UnitController extends Controller
             if (Auth::user()->role == "admin") {
                 return redirect(route('property.index'));
             } else {
-                return redirect(route('developer.dashboard'));
+                return redirect(route('property.show.developer', $propertyId));
             }
         } catch (Exception $e) {
             return $e;
