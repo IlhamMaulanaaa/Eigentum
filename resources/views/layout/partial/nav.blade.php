@@ -119,14 +119,14 @@
                                     <span class="material-icons icons-size">history</span>
                                     <a href="/developer/history">Riwayat</a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <span class="material-icons icons-size">monetization_on</span>
                                     <a href="/pages/langganan">Langganan</a>
                                 </li>
                                 <li>
                                     <span class="material-icons icons-size">business_center</span>
                                     <a href="{{ route('developer.dashboard') }}">Developer</a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <span class="material-icons icons-size">exit_to_app</span>
                                     <a href="{{ route('logout') }}">Logout</a>
