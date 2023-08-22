@@ -166,7 +166,7 @@
                     <h5>{{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}</h5>
                 </div>
 
-                <div class="img-select" style="width: 1000px; ">
+                <div class="img-select" style="width: 1000px; margin-top:-70px;">
                     <div class="img-item" style="padding-right: 20px;">
                         <a href="#" data-id="1">
                             <img style="width: 90px; height:70px; border: 1px solid black; border-radius:8px;"
@@ -179,7 +179,6 @@
                         @endphp
                         @foreach ($imageArray as $key => $image)
                             @php
-                                // Increment the key by 1 to start from 1 instead of 0
                                 $key += 2;
                             @endphp
                             <div class="img-item" style="padding-right: 20px;">
