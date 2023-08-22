@@ -24,7 +24,7 @@ class UnitController extends Controller
     public function filter(Request $request)
     {
         // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->paginate(10);
+        $filteredUnits = Unit::filter($request->all())->get();
         $units = Unit::all();
         $property = Property::all();
         $types = Type::all();

@@ -109,6 +109,8 @@
                 z-index: 12;
                 /* Pastikan tombol berada di atas gambar */
             }
+
+            
         </style>
 
     </head>
@@ -249,11 +251,11 @@
                 @endif
             </div>
         </div>
-        <div class="jadisatu" style="margin-top: 330px; margin-bottom:90px;">
-            <div class="container" style="width:1000px;">
-                <div class="subtitle" style=" font-size:16px; color:#000; margin-left:-70px;">Tipe Unit</div>
-                <div class="subtitle" style=" font-size:24px; color:#000; margin-bottom:20px; margin-left:-70px;">
-                    {{ $property->title }}</div>
+        <div class="group-77-FDR" id="4:7198">
+            <div class="rumahBaru">
+                <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Unit Terbaru</div>
+                <p id="subtexthome">Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan
+                    apartemen bergaya </p>
             </div>
             <div class="container">
             <div class="slide-container swiper" style="margin-bottom: 0px;">
@@ -298,15 +300,15 @@
                                     </div>
                                     <div class="p-0 pb-0"> <!-- Adjusted padding -->
                                         <div class="edit-unit-developer d-flex ">
-                                            <h5 class="mb-1 mt-3 d-flex" style="margin-left:-70px; color: #000;">{{ $unit->title }}</h5>
+                                            <h5 class="mb-1 mt-3 d-flex" style="margin-left:0px; color: #000;">{{ $unit->title }}</h5>
                                             <div class="editdelete">
                                             @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                                <div class="labeledit" style="z-index: 100;  margin-right:-460px; margin-top:0px;">
+                                                <div class="labeledit" style="width:auto; z-index: 100; margin-right:-280px; ">
                                                     <a class="linkedit"
                                                         href="{{ route('unit.edit.developer', $unit->id) }}"><i
                                                             class="fas fa-edit edit-icon"></i></a>
                                                 </div>
-                                                <div class="labeldelete" style="z-index: 100; margin-right:-420px; margin-top:-15px;">
+                                                <div class="labeldelete" style="width:auto; z-index: 100; margin-right:-320px; margin-top:-15px;">
                                                     <form action="{{ route('unit.destroy.developer', $unit->id) }}"
                                                         method="get" class="d-inline">
                                                         @csrf
@@ -319,10 +321,10 @@
                                             @endif
                                             </div>
                                         </div>
-                                        <p class="mb-0 d-flex" style="margin-left:-70px; margin-bottom:16px;">{{ $unit->price }}</p>
+                                        <p class="mb-0 d-flex" style="margin-left:0px; margin-bottom:16px;">{{ $unit->price }}</p>
                                         {{-- <p class="mb-1">{{ $unit->properties->property }}</p> --}}
                                         <!-- Removed extra line -->
-                                        <p class="mb-0" style="margin-left:-40px; margin-bottom:16px;"><i style="margin-left:-30px; margin-bottom:16px;" class="fa fa-map-marker-alt me-2 d-flex"
+                                        <p class="mb-0" style="margin-left:15px; margin-bottom:16px;"><i style="margin-left:-30px; margin-bottom:16px;" class="fa fa-map-marker-alt me-2 d-flex"
                                                 style="color: #000; margin-botom: 10px;">{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</i>
                                         </p>
                                     </div>

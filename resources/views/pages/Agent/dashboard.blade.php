@@ -97,6 +97,11 @@
                                     </form>
                                 </div>
                                 @endif
+
+
+
+                                
+                                <span class="label sold">Terjual</span>
                             </div>
                         @endforeach
                     </div>

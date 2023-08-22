@@ -22,7 +22,7 @@ class DeveloperSeeder extends Seeder
     public function run(): void
     {
         Developer::truncate();
-        $developerUserIds = User::where('role', 'developer')->pluck('id');
+        $developerUserIds = User::where('role', 'developer')->pluck('id');  
         foreach ($developerUserIds as $userId) {
             $licenseImages = $this->getImageUrls('license', 3);
             $licenseString = implode('|', $licenseImages); // Menggabungkan array nama file gambar menjadi satu string dipisahkan koma

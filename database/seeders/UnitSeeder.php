@@ -7,6 +7,7 @@ use App\Models\Property;
 use App\Models\Specification;
 use App\Models\Status;
 use App\Models\Unit;
+use App\Models\UnitStatus;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\File;
@@ -24,6 +25,7 @@ class UnitSeeder extends Seeder
         Unit::truncate();
         Image::truncate();
         Specification::truncate();
+        UnitStatus::truncate();
 
         $propertyIds = Property::pluck('id')->toArray();
 
@@ -54,7 +56,7 @@ class UnitSeeder extends Seeder
                 $unit = Unit::create([
                     'title' => 'Unit ' . ($i + 1),
                     'description' => $descriptions[array_rand($descriptions)],
-                    'price' => fake()->randomFloat(7, 10, 10000),
+                    'price' => mt_rand(100, 999),
                     'image' => $this->getImageUrl('house'),
                     'property_id' => $propertyId,
                 ]);
@@ -98,8 +100,8 @@ class UnitSeeder extends Seeder
                 Specification::create([
                     'bedroom' => fake()->randomNumber(1,5),
                     'bathroom' => fake()->randomNumber(1,5),
-                    'surface_area' => fake()->randomNumber(1,5),
-                    'building_area' => fake()->randomNumber(1,5),
+                    'surface_area' => fake()->randomNumber(1,999),
+                    'building_area' => fake()->randomNumber(1,999),
                     'floor' => fake()->randomNumber(1,5),
                     'unit_id' => $unit->id,
                 ]);
