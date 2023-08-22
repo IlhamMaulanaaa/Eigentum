@@ -146,7 +146,7 @@
         <div class="cardagent">
             <div class="wrapper">
                 <ul class="carousel11">
-                    @foreach ($agents as $agent)
+                    @foreach ($agentsall as $agent)
                         <a href="{{ route('agent.show.user', $agent->id) }}">
                             <li class="card">
                                 <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
@@ -168,7 +168,7 @@
         <div class="cardagent1">
             <div class="wrapper1">
                 <ul class="carousel12">
-                    @foreach ($agents as $agent)
+                    @foreach ($agentsall as $agent)
                         <a href="{{ route('agent.show.user', $agent->id) }}">
                             <li class="card1">
                                 <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
