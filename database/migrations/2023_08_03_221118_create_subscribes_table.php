@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('subscribes', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->integer('price');
-            $table->string('feature');
-            // $table->string('feature_2');
-            // $table->string('feature_3');
-            // $table->string('feature_4');
+            $table->string('feature_1');
+            $table->string('feature_2');
+            $table->string('feature_3');
+            $table->string('feature_4');
             $table->timestamps();
         });
     }

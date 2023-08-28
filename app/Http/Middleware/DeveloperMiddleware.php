@@ -31,14 +31,7 @@ class DeveloperMiddleware
                 return redirect()->route('langganan.index');
             }
 
-            // if ($developerStatus === 'approved') {
-            //     return $next($request);
-            // } else {
-            //     return redirect('/beranda')->with('rejected', true);
-            // }
-            // return redirect('/beranda');
+            return redirect('/beranda');
         }
-
-        return redirect('/beranda');
     }
 }
