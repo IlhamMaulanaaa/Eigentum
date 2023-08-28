@@ -257,7 +257,6 @@
                 <p id="subtexthome">Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan
                     apartemen bergaya </p>
             </div>
-            <div class="container">
             <div class="slide-container swiper" style="margin-bottom: 0px;">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
@@ -343,7 +342,6 @@
                         @endforeach
 
                     </div>
-                </div>
             </div>
         </div>
         </div>

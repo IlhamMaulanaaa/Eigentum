@@ -261,7 +261,7 @@
                         </p>
                     </div>
                     <div class="filter-kota">
-                        <div class="subFilter">
+                        <div class="subFilter" style="margin-top: 50px;">
                             <div class="filter-kota">
                                 <div class="subFilter">
                                     @php
@@ -270,7 +270,7 @@
                                     @foreach ( $regencies as $regencyId => $regency)
                                         @if ($counter < 4) 
                                             <div class="box">
-                                                <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
+                                                <img src="/assets/pages/home/kota.jpg" id="img" alt="">
                                                 <div class="desc-filter-kota">
                                                     <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
                                                     <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
@@ -299,7 +299,7 @@
                                     @foreach ( $regencies as $regencyId => $regency)
                                         @if ($counter < 4) 
                                             <div class="box">
-                                                <img src="/assets/pages/home/jakarta.jpg" id="img" alt="">
+                                                <img src="/assets/pages/home/kota.jpg" id="img" alt="">
                                                 <div class="desc-filter-kota">
                                                     <p id="namaKota">{{ str_replace('KABUPATEN ', '', $regency) }}</p>
                                                     <p id="descKota">{{ \App\Models\Unit::whereIn('property_id', function ($query) use ($regencyId) {
