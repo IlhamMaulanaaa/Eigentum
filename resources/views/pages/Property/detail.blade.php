@@ -90,7 +90,7 @@
 
 
 
-        
+
         <style>
             .btn-status {
                 position: relative;
@@ -109,8 +109,6 @@
                 z-index: 12;
                 /* Pastikan tombol berada di atas gambar */
             }
-
-            
         </style>
 
     </head>
@@ -228,13 +226,19 @@
                             {{-- <a href="{{ route('agent.show', $agent->id) }}" class="text-warning">Detail</a> --}}
                         </li>
                     @endforeach
-                    <a href="https://web.whatsapp.com/" class="ask-agent">Tanya Agent</a>
+                    <a href="https://web.whatsapp.com/" class="ask-agent">
+                        @foreach ($property->agents as $agent)
+                            <li>{{ $agent->name }}
+                                <a href="{{ route('agent.show', $agent->id) }}" class="text-warning">Detail</a>
+                            </li>
+                        @endforeach
+                    </a>
                 </div>
 
                 <div class="cardproperty1">
                     <div class="tipe">
                         <i class="fas fa-home property-icon"></i>
-                        <p class="tipe-text">Tipe Tersedia</p>
+                        <p class="tipe-text">Unit Tersedia</p>
                     </div>
                     <p class="unit-text">{{ $property->units->count() }}</p>
                 </div>
@@ -252,82 +256,111 @@
             </div>
         </div>
         <div class="group-77-FDR" id="4:7198">
-            <div class="rumahBaru">
-                <div class="daftar-rumah-baru-ALP" id="4:7200">Daftar Unit Terbaru</div>
+            <div class="rumahBaru" style="margin: 0px 150px 0px 0px ;">
+                <div class="daftar-rumah-baru-ALP" id="4:7200" style="margin: auto;">List unit dari properti
+                    {{ $property->title }}</div>
                 <p id="subtexthome">Jelajahi koleksi properti eksklusif kami, termasuk villa mewah dan
                     apartemen bergaya </p>
             </div>
-            <div class="slide-container swiper" style="margin-bottom: 0px;">
+            <div class="slide-container swiper" style="margin-right: -2900px; align-item:center;">
                 <div class="slide-content">
                     <div class="card-wrapper swiper-wrapper">
-                        @foreach ($units as $unit)
-                            <div class="col-lg-4 col-md-2 wow swiper-slide" data-wow-delay="0.1s"
-                                style="max-width:330px; margin: 20px;">
-                                <div class="property-item rounded overflow-hidden" style="width: 280px;">
-                                    <div class="position-relative overflow-hidden">
-                                        @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                            <a href="{{ route('unit.show.developer', $unit->id) }}" class="">
-                                                <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                    alt="" width="360" height="120"></a>
-                                        @elseif (Auth::user()->role == 'agent' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                            <a href="{{ route('unit.show.agent', $unit->id) }}" class="">
-                                                <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                    alt="" width="360" height="120"></a>
-                                        @else
-                                            <a href="{{ route('unit.show.user', $unit->id) }}" class="">
-                                                <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                    alt="" width="360" height="120"></a>
-                                        @endif
-                                        @if (Auth::user()->role == 'user')
-                                            <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                                @csrf
-                                                <div class="btnsz" style="position: absolute; top: 18px; right: 20px;">
-                                                    <button type="submit" onclick="Toggle1()" id="btnh1z"
-                                                        class="btnz"><i class="fas fa-heart"></i></button>
-                                                </div>
-                                            </form>
-                                        @endif
+                        <div class="row " style="margin: 0px 0px 0px 440px ;">
 
-                                        <div class="rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
-                                            style="background-color: #0C40E8">
-                                            @foreach ($unit->statuses as $status)
-                                                <li>{{ $status->name }}</li>
-                                            @endforeach
-                                        </div>
-                                        <div class="bg-white rounded-top  position-absolute start-500 bottom-0 left-50 mx-4 pt-1 px-3"
-                                            style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
-                                    </div>
-                                    <div class="p-0 pb-0"> <!-- Adjusted padding -->
-                                        <div class="edit-unit-developer d-flex ">
-                                            <h5 class="mb-1 mt-3 d-flex" style="margin-left:0px; color: #000;">{{ $unit->title }}</h5>
-                                            <div class="editdelete">
+                            @foreach ($units as $unit)
+                                <div class="col-lg-3 col-md-4 col-sm-6 mb-4 wow swiper-slide" data-wow-delay="0.1s"
+                                    style="max-width:330px; margin: 20px;">
+                                    <div class="property-item rounded overflow-hidden" style="width: 280px;">
+                                        <div class="position-relative overflow-hidden">
                                             @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
-                                                <div class="labeledit" style="width:auto; z-index: 100; margin-right:-280px; ">
-                                                    <a class="linkedit"
-                                                        href="{{ route('unit.edit.developer', $unit->id) }}"><i
-                                                            class="fas fa-edit edit-icon"></i></a>
-                                                </div>
-                                                <div class="labeldelete" style="width:auto; z-index: 100; margin-right:-320px; margin-top:-15px;">
+                                                <a href="{{ route('unit.show.developer', $unit->id) }}" class="">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt="" width="360"
+                                                        height="120px" style="height: 180px;"></a>
+                                            @elseif (Auth::user()->role == 'agent' && Auth::user()->id == $property->developers->users->pluck('id')->first())
+                                                <a href="{{ route('unit.show.agent', $unit->id) }}" class="">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt="" width="360"
+                                                        height="120"></a>
+                                            @else
+                                                <a href="{{ route('unit.show.user', $unit->id) }}" class="">
+                                                    <img src="{{ asset('storage/' . $unit->image) }}"
+                                                        class="img-thumbnail" alt="" width="360"
+                                                        height="120"></a>
+                                            @endif
+                                            @if (Auth::user()->role == 'user')
+                                                <form action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                    @csrf
+                                                    <div class="btnsz"
+                                                        style="position: absolute; top: 18px; right: 20px;">
+                                                        <button type="submit" onclick="Toggle1()" id="btnh1z"
+                                                            class="btnz"><i class="fas fa-heart"></i></button>
+                                                    </div>
+                                                </form>
+                                            @endif
+
+                                            {{-- <div class="rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3"
+                                                style="background-color: #0C40E8">
+                                                @foreach ($unit->statuses as $status)
+                                                    <li>{{ $status->name }}</li>
+                                                @endforeach
+                                            </div> --}}
+                                            <div class="bg-white rounded-top d-flex position-absolute start-500 bottom-0 left-50 mx-4 pt-1 "
+                                                style="color: #0C40E8; margin-right: 4px; padding-left: 10px;padding-right: 10px;">
+                                                {{ $unit->properties->types->name }}
+                                                <p>
+                                                    @foreach ($unit->statuses as $status)
+                                                        <li style="margin-left:10px; color:#000; font-weight:700;">
+                                                            {{ $status->name }}</li>
+                                                    @endforeach
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="p-0 pb-0 mb-3"> <!-- Adjusted padding -->
+                                            <h5 class="mb-1 mt-3 d-flex  text-start"
+                                                style=" margin-left:0px;  color: #000;">
+                                                {{ Str::limit($unit->title, 22) }}</h5>
+                                            <div class="edit-unit-developer d-flex ">
+                                                {{-- @foreach ($units->agents as $agent)
+                                                @endforeach --}}
+                                                <p class="mb-0 d-flex text-start"
+                                                    style="width: 260px; margin-left:0px; margin-bottom:16px;">
+                                                    {{ $unit->price }}</p>
+                                                {{-- @foreach ($property->units as $unit)
+                                                    @foreach ($unit->agents as $status)
+                                                        <li
+                                                            style="height:25px; border-radius: 15px; width:80px; background-color:yellow; margin-top: 0px; color:#000;">
+                                                            {{ $status->status_unit }}</li>
+                                                    @endforeach
+                                                @endforeach --}}
+                                            </div>
+                                            <p class="mb-0 d-flex text-start " style=" margin-bottom:32px; width: 260px;">
+                                                <i style="margin: 3px 10px 0px 0px ;"
+                                                    class="fa fa-map-marker-alt  "></i>{{ Str::limit(implode(', ',$property->regencies()->pluck('name')->toArray()),20) }}
+                                            </p>
+                                        </div>
+                                        @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
+                                            <div class="action d-flex .align-items-center">
+                                                <div class="labeldelete">
                                                     <form action="{{ route('unit.destroy.developer', $unit->id) }}"
                                                         method="get" class="d-inline">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button class="linkdelete"
+                                                        <button class="linkdelete  bg-danger"
+                                                            style="border:none;background-color: white; width: 130px; margin-right: 1px;"
                                                             onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
-                                                                class="fas fa-trash delete-icon"></i></button>
+                                                                class="fas fa-trash delete-icon"
+                                                                style="color: white;"></i></button>
                                                     </form>
                                                 </div>
-                                            @endif
+                                                <div class="labeledit bg-primary" style="width: 130px; margin-left: 1px;">
+                                                    <a class="linkedit"
+                                                        href="{{ route('unit.edit.developer', $unit->id) }}"><i
+                                                            class="fas fa-edit" style="color: #fff;"></i></a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <p class="mb-0 d-flex" style="margin-left:0px; margin-bottom:16px;">{{ $unit->price }}</p>
-                                        {{-- <p class="mb-1">{{ $unit->properties->property }}</p> --}}
-                                        <!-- Removed extra line -->
-                                        <p class="mb-0" style="margin-left:15px; margin-bottom:16px;"><i style="margin-left:-30px; margin-bottom:16px;" class="fa fa-map-marker-alt me-2 d-flex"
-                                                style="color: #000; margin-botom: 10px;">{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</i>
-                                        </p>
-                                    </div>
-                                    <div class="d-flex border-top" style="width: 280px; ">
+                                        @endif
+                                        {{-- <div class="d-flex border-top" style="width: 280px; ">
                                         <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
                                                 class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>
                                         <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
@@ -336,14 +369,15 @@
                                                 class="fa fa-ruler-combined  me-2"></i>{{ $unit->specifications->building_area }}m²</small>
                                         <small class="flex-fill text-center py-2" style="color: #000;"><i
                                                 class="fa fa-signal  me-2"></i>{{ $unit->specifications->floor }}m²</small>
+                                    </div> --}}
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
 
+                        </div>
                     </div>
+                </div>
             </div>
-        </div>
         </div>
 
     </body>

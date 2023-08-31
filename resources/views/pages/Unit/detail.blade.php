@@ -227,7 +227,8 @@
             <div class="auto-group-gquh-9b3" id="ChrW4N6ZdKqVk7fRtmGqUh" style="margin-left:-30px;">
                 <p class="developer--EMb" style="font-size: 20px; font-family: 'Lato', sans-serif; font-weight: 500;"
                     id="2:6">Developer:</p>
-                <p class="informasi-properti-LfX" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" id="2:7">{{ Str::limit($unit->properties->developers->company, 15) }}</p>
+                <p class="informasi-properti-LfX" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+                    id="2:7">{{ Str::limit($unit->properties->developers->company, 15) }}</p>
             </div>
             <div class="group-14-GJH" id="3:52">
                 <div class="group-4-wfK" id="3:20">
@@ -261,9 +262,9 @@
                     <p class="rp-1jt-malam-dnM" id="3:46" style="margin-left: -30px">
                         <span class="rp-1jt-malam-dnM-sub-0"
                             style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
-                            Rp.{{ number_format($pricePerMonth, 2) }}jt  -
+                            Rp.{{ number_format($pricePerMonth, 2) }}jt -
                         </span>
-                        
+
                         <span class="rp-1jt-malam-dnM-sub-0"
                             style="font-weight: 600; font-family:'Lato', sans-serif; margin-right:3px;">
                             Rp.{{ number_format($unit->price, 2) }}jt
@@ -271,26 +272,32 @@
                     </p>
                 </div>
             </div>
-            @if (Auth::user()->role == 'agent')
-                <form action="{{ route('offer.submit', ['id' => $unit->id]) }}" method="POST">
-                    @csrf
-                    <button type="submit">request</button>
-                </form>
-            @elseif (Auth::user()->role == 'developer')
-                <form action="{{ route('reject.unit', ['id' => $unit->id]) }}" method="POST">
-                    @csrf
-                    {{-- <input type="hidden" value="DITOLAK" name="status"> --}}
-                    <button type="submit">reject</button>
-                </form>
-                <form action="{{ route('accept.unit', ['id' => $unit->id]) }}" method="POST">
-                    @csrf
-                    <button type="submit">accept</button>
-                </form>
+            @if (auth()->check())
+                @if (Auth::user()->role == 'agent')
+                    <form action="{{ route('offer.submit', ['id' => $unit->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit">request</button>
+                    </form>
+                @elseif (Auth::user()->role == 'developer') 
+                    <form action="{{ route('reject.unit', ['id' => $unit->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit">reject</button>
+                    </form>
+                    <form action="{{ route('accept.unit', ['id' => $unit->id]) }}" method="POST">
+                        @csrf
+                        <button type="submit">accept</button>
+                    </form>
+                @else
+                    <a href="https://web.whatsapp.com/">
+                        <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+                    </a>
+                @endif
             @else
                 <a href="https://web.whatsapp.com/">
                     <div class="group-12-pM3" id="3:50">Tanya Agent</div>
                 </a>
             @endif
+
         </div>
 
     </body>
