@@ -265,3 +265,11 @@ Route::get('/navbar', function () {
 Route::get('/footer', function () {
     return view('layout.partial.footer');
 });
+
+Route::get('/hom', function () {
+    return view('pages.page.home1');
+});
+
+Route::get('/unitdetail', function () {
+    return view('pages.unit.detail1');
+});
