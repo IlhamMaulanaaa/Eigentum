@@ -232,19 +232,18 @@ class UnitController extends Controller
         $pricePerMonth = $propertyPrice / $monthsInYear;
 
         // echo "Harga per bulan: $" . number_format($pricePerMonth, 2);
-
-        if (Auth::user()->role == "admin") {
+        if (!Auth::check()) {
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+        } elseif (Auth::user()->role == "admin") {
             return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         } elseif (Auth::user()->role == "developer") {
             return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         } elseif (Auth::user()->role == "agent") {
             return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
-        } else {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         }
     }
 
-    
+
     public function edit(Unit $unit)
     {
         $properties = Property::all();

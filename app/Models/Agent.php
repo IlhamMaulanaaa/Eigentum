@@ -29,7 +29,7 @@ class Agent extends Model
     }
     public function units()
     {
-        return $this->belongsToMany(Unit::class, 'unit_agents', 'unit_id', 'agent_id');
+        return $this->belongsToMany(Unit::class, 'unit_agents', 'agent_id', 'unit_id');
     }
 
     public function properties(): BelongsToMany

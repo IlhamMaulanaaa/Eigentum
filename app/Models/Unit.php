@@ -27,7 +27,7 @@ class Unit extends Model
 
     public function agents()
     {
-        return $this->belongsToMany(Agent::class, 'unit_agents', 'unit_id', 'agent_id');
+        return $this->belongsToMany(Agent::class, 'unit_agents',  'agent_id', 'unit_id');
     }
     public function properties(): BelongsTo
     {
@@ -77,7 +77,7 @@ class Unit extends Model
     public function districts(): BelongsToMany
     {
         return $this->belongsToMany(District::class, 'property_district', 'property_id', 'district_id');
-    }   
+    }
 
     public function villages(): BelongsToMany
     {
@@ -93,21 +93,21 @@ class Unit extends Model
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where(function ($query) use ($search) {
                 $query->where('title', 'like', '%' . $search . '%')
-                ->orWhere('description', 'like', '%' . $search . '%')
-                ->orWhere('price', 'like', '%' . $search . '%')
-                ->orwhereHas('statuses', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', 'like', '%' . $search . '%');
-                })->orWhereHas('properties', function ($query) use ($search) {
-                    $query->where('title', 'like', '%' . $search . '%')
-                        ->orWhere('id','like', '%' . $search . '%');
-                })->orWhereHas('properties.regencies', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', 'like', '%' . $search . '%');
-                })->orwhereHas('properties.types', function ($query) use ($search) {
-                    $query->where('name', 'like', '%' . $search . '%')
-                        ->orWhere('id', 'like', '%' . $search . '%');
-                });    
+                    ->orWhere('description', 'like', '%' . $search . '%')
+                    ->orWhere('price', 'like', '%' . $search . '%')
+                    ->orwhereHas('statuses', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('id', 'like', '%' . $search . '%');
+                    })->orWhereHas('properties', function ($query) use ($search) {
+                        $query->where('title', 'like', '%' . $search . '%')
+                            ->orWhere('id', 'like', '%' . $search . '%');
+                    })->orWhereHas('properties.regencies', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('id', 'like', '%' . $search . '%');
+                    })->orwhereHas('properties.types', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('id', 'like', '%' . $search . '%');
+                    });
             });
         });
 
@@ -128,7 +128,7 @@ class Unit extends Model
                 $query->where('price', '>=', $filters['min_price']);
             });
         });
-    
+
         $query->when(isset($filters['max_price']) && is_numeric($filters['max_price']), function ($query) use ($filters) {
             $query->where(function ($query) use ($filters) {
                 $query->where('price', '<=', $filters['max_price']);

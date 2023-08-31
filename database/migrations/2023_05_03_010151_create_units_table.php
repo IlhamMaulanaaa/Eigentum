@@ -31,7 +31,7 @@ return new class extends Migration
         Schema::create('unit_agents', function (Blueprint $table) {
             $table->bigInteger('unit_id');
             $table->bigInteger('agent_id');
-            $table->string('status');
+            $table->string('status_unit');
             $table->primary(['unit_id', 'agent_id']);
             $table->softDeletes();
         });
