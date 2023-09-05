@@ -26,7 +26,7 @@ class PropertyController extends Controller
     {
         $properties = Property::filter(request(['search', 'developer_id', 'regency_id']))->paginate(10);
         $tables = (new Property())->getTable();
-        $developers = Developer::all()->pluck('company', 'id');;;
+        $developers = Developer::all()->pluck('company', 'id');
         $pivotTable = (new Property())->regencies()->getTable();
 
         // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot

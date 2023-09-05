@@ -45,7 +45,7 @@
 
     <body>
         <!-- Facts Start -->
-        <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 200px;">
+        <div class="container-fluid facts py-5 pt-lg-0" style="margin-top: 120px;">
 
 
             <div class="container py-5 pt-lg-0">
@@ -93,8 +93,14 @@
                 </div>
             </div>
             <form action="{{ route('agent.search.user') }}" method="GET" role="search">
-                <div class="satuinsearch">
-                    <div class="input-box">
+                <div class="satuinsearch row">
+
+                    <div class="input-box col-md-6" style="border-radius: 15px;">
+                        <i class="uil uil-search"></i>
+                        <input type="text" name="search" placeholder="Cari Agen" value="{{ request('search') }}" />
+                        <button class="button1" id="searchButton" type="submit">Search</button>
+                    </div>
+                    <div class="input-box col-md-6" style="border-radius: 15px;">
                         <i class="uil uil-search"></i>
                         <input type="text" name="search" placeholder="Cari Agen" value="{{ request('search') }}" />
                         <button class="button1" id="searchButton" type="submit">Search</button>
@@ -106,106 +112,36 @@
 
 
         <!-- Agent Populer Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-
-                <div class="row g-4">
-                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                        <h6 class="section-title bg-white text-center px-3" style="color: #0C40E8">Teratas</h6>
-                        <h1 style="font-size:30px;" class="mb-5">Agent Profesional</h1>
-                    </div>
-                    @foreach ($agents as $agent)
-                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                            <div class="team-item">
-                                <a href="{{ route('agent.show.user', $agent->id) }}">
-                                    <div class="overflow-hidden">
-                                        <img class="img-fluid" style="width: 200px; height: 260px;"
-                                            src="{{ asset('storage/' . $agent->face) }}" alt="">
-                                    </div>
-                                </a>
-                                <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                    <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
-                                </div>
+        <div class="container mt-5">
+            <div class="row">
+                @foreach ($agents as $agent)
+                    <div class="col-md-5 mb-4 mx-5">
+                        <div class="row p-2 bg-white border rounded">
+                            <div class="col-md-4 mt-1">
+                                <img class="img-fluid img-responsive rounded product-image"
+                                    style="height: 160px; width: 130px;" src="{{ asset('storage/' . $agent->face) }}">
+                            </div>
+                            <div class="col-md-8 mt-1">
                                 @foreach ($agent->users as $user)
-                                    <h5 class="mb-0">{{ $user->name }}</h5>
+                                    <h5 style="font-weight: 900; font-size: 20px;">{{ $user->name }}</h5>
                                 @endforeach
-                                <small style="color: #0c40e8">Agent Rumah</small>
+                                <h6 style="font-size: 14px;">
+                                    {{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</h6>
+                                <p class="text-justify text-truncate para mb-0" style="font-size: 14px;">
+                                    {{ Str::limit($agent->address, 60) }}<br><br>
+                                </p>
+                                <a href="{{ route('agent.show.user', $agent->id) }}">
+                                    <button class="btn btn-primary btn-sm col-md-12" type="button">Details</button>
+                                </a>
                             </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
         </div>
-        <!-- Agent End -->
 
 
-        <!-- Card Agent -->
-        <h1 class="subtitle-agent">Agent Terpercaya</h1>
-        <div class="cardagent">
-            <div class="wrapper">
-                <ul class="carousel11">
-                    @foreach ($agentsall as $agent)
-                        <a href="{{ route('agent.show.user', $agent->id) }}">
-                            <li class="card">
-                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
-                                        draggable="false"></div>
-                                @foreach ($agent->users as $user)
-                                    <h2>{{ $user->name }}</h2>
-                                @endforeach
-                                <span>Agent Independen</span>
-                            </li>
-                        </a>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        <!-- End Card Agent -->
 
-        <!-- Card Agent -->
-        <h1 class="subtitle-agent1">Agent Terbaik</h1>
-        <div class="cardagent1">
-            <div class="wrapper1">
-                <ul class="carousel12">
-                    @foreach ($agentsall as $agent)
-                        <a href="{{ route('agent.show.user', $agent->id) }}">
-                            <li class="card1">
-                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
-                                        draggable="false"></div>
-                                @foreach ($agent->users as $user)
-                                    <h2>{{ $user->name }}</h2>
-                                @endforeach
-                                <span>Agent Independen</span>
-                            </li>
-                        </a>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        <!-- End Card Agent -->
-
-        <!-- Card Agent -->
-        <h1 class="subtitle-agent2">Agent Berpengalaman</h1>
-        <div class="cardagent2">
-            <div class="wrapper2">
-                <ul class="carousel13">
-                    @foreach ($agents as $agent)
-                        <a href="{{ route('agent.show.user', $agent->id) }}">
-                            <li class="card2">
-                                <div class="img"><img src="{{ asset('storage/' . $agent->face) }}" alt="img"
-                                        draggable="false"></div>
-                                @foreach ($agent->users as $user)
-                                    <h2>{{ $user->name }}</h2>
-                                @endforeach
-                                <span>Agent Independen</span>
-                            </li>
-                        </a>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-        <!-- End Card Agent -->
 
 
         <!-- Back to Top -->

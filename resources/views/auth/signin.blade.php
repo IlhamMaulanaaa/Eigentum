@@ -537,6 +537,7 @@
             <div class="inner-box">
                 <div class="forms-wrap">
                     <form action="/createL" method="POST" autocomplete="off" class="sign-in-form">
+                        @csrf
                         {{-- <div class="logo">
                             <img src="/assets/skins/logo.svg" alt="" />
                         </div> --}}

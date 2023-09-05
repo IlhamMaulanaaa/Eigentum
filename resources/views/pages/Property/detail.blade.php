@@ -324,15 +324,15 @@
                                                 {{-- @foreach ($units->agents as $agent)
                                                 @endforeach --}}
                                                 <p class="mb-0 d-flex text-start"
-                                                    style="width: 260px; margin-left:0px; margin-bottom:16px;">
+                                                    style="width: 180px; margin-left:0px; margin-bottom:16px;">
                                                     {{ $unit->price }}</p>
-                                                {{-- @foreach ($property->units as $unit)
-                                                    @foreach ($unit->agents as $status)
+                                                @foreach ($property->units as $unit)
+                                                    @foreach ($unit->agents as $agent)
                                                         <li
                                                             style="height:25px; border-radius: 15px; width:80px; background-color:yellow; margin-top: 0px; color:#000;">
-                                                            {{ $status->status_unit }}</li>
+                                                            {{ $agent->units-> }}</li>
                                                     @endforeach
-                                                @endforeach --}}
+                                                @endforeach
                                             </div>
                                             <p class="mb-0 d-flex text-start " style=" margin-bottom:32px; width: 260px;">
                                                 <i style="margin: 3px 10px 0px 0px ;"

@@ -71,7 +71,7 @@ class AgentController extends Controller
         $agentsall = Agent::all();
         $agentspro = Agent::orderBy('created_at', 'desc')->take(5)->get();
         $countuser = User::where('role', 'user')->count();
-        return view('pages.page.viewagent', compact('agents', 'countuser','agentspro', 'agentsall'));
+        return view('pages.page.viewagent', compact('agents', 'countuser', 'agentspro', 'agentsall'));
     }
 
     public function createfront()
@@ -264,8 +264,10 @@ class AgentController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             return view('admin.agent.detail', compact('agent'));
-        } else {
+        } elseif(Auth::user()->role == 'developer') {
             return view('pages.agent.detail', compact('agent'));
+        } else {
+            return view('pages.user.detail', compact('agent'));
         }
     }
     public function dashboard(Agent $agent)
@@ -297,7 +299,7 @@ class AgentController extends Controller
         $agent = auth()->user(); // Assuming you have agent authentication
 
         // Attach agent to the unit with additional data (status) in pivot table
-        $unit->agents()->attach($agent->id, ['status' => 'proses penawaran penawaran']);
+        $unit->agents()->attach($agent->id, ['status_unit' => 'proses penawaran penawaran']);
 
         return redirect()->back()->with('success', 'Offer submitted successfully.');
     }
@@ -311,7 +313,7 @@ class AgentController extends Controller
         // Update status in the pivot table for the authenticated agent
         $unit->agents()->sync(
             [
-                auth()->user()->id => ['status' => 'approved']
+                auth()->user()->id => ['status_unit' => 'approved']
             ],
             false
         );
@@ -326,7 +328,7 @@ class AgentController extends Controller
 
         $unit->agents()->sync(
             [
-                auth()->user()->id => ['status' => 'reject']
+                auth()->user()->id => ['status_unit' => 'reject']
             ],
             false
         );

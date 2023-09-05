@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Subscribe;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SubscribeController extends Controller
 {
@@ -14,16 +15,19 @@ class SubscribeController extends Controller
     {
         $subscribes = Subscribe::all();
         $tables = (new Subscribe())->getTable();
-        
+
         return view('admin.subscribe.all', compact('subscribes', 'tables'));
     }
-    
+
     public function indexFront()
     {
         $subscribes = Subscribe::all();
         $tables = (new Subscribe())->getTable();
-        
-        return view('pages.page.subscribe', compact('subscribes', 'tables'));
+        if (Auth::check() && Auth::user()->role == "developer") {
+            return view('pages.page.subscribe', compact('subscribes', 'tables'));
+        } else {
+            return Redirect()->back();
+        }
     }
     /**
      * Show the form for creating a new resource.

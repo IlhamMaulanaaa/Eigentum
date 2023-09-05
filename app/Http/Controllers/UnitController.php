@@ -223,6 +223,7 @@ class UnitController extends Controller
 
     public function show(Unit $unit, Request $request)
     {
+        $developer = Developer::first();
         $data = $request->all();
         $images = Image::where('unit_id', $unit->id)->first();
         $propertyPrice = $unit->price; // Harga utama atau harga jual properti
@@ -237,7 +238,7 @@ class UnitController extends Controller
         } elseif (Auth::user()->role == "admin") {
             return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         } elseif (Auth::user()->role == "developer") {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'developer'));
         } elseif (Auth::user()->role == "agent") {
             return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         }
