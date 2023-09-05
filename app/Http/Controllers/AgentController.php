@@ -51,13 +51,13 @@ class AgentController extends Controller
     }
     public function index()
     {
-        $agents = Agent::filter(request(['search', 'regency_id']))->paginate(5);
+        $agents = Agent::filter(request(['search', 'province_id']))->paginate(5);
         $tables = (new Agent())->getTable();
         $pivotTable = (new Agent())->regencies()->getTable();
 
         // Mendapatkan regencies yang terhubung deng  an developer melalui tabel pivot
         $regencies = Regency::whereIn('id', function ($query) use ($pivotTable) {
-            $query->select('regency_id')
+            $query->select('province_id')
                 ->from($pivotTable);
         })->pluck('name', 'id');
         if ($agents) {
@@ -264,7 +264,7 @@ class AgentController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             return view('admin.agent.detail', compact('agent'));
-        } elseif(Auth::user()->role == 'developer') {
+        } elseif (Auth::user()->role == 'developer') {
             return view('pages.agent.detail', compact('agent'));
         } else {
             return view('pages.user.detail', compact('agent'));
