@@ -93,18 +93,18 @@
                 </div>
             </div>
             <form action="{{ route('agent.search.user') }}" method="GET" role="search">
-                <div class="satuinsearch row">
+                <div class="satuinsearch row ">
 
-                    <div class="input-box col-md-6" style="border-radius: 15px;">
+                    <div class="input-box d-flex justify-content-end align-items-center"
+                        style="border-radius: 30px; width: 500px; max-width: 2000px; left:325px;">
                         <i class="uil uil-search"></i>
                         <input type="text" name="search" placeholder="Cari Agen" value="{{ request('search') }}" />
-                        <button class="button1" id="searchButton" type="submit">Search</button>
+                        <button class="button1"
+                            style="border-radius: 30px; height:50px; padding-left:40px; margin-right:-12px;"
+                            id="searchButton" type="submit"><i class="fa-solid fa-magnifying-glass"
+                                style="color: #ffffff; margin-right:40px;"></i></button>
                     </div>
-                    <div class="input-box col-md-6" style="border-radius: 15px;">
-                        <i class="uil uil-search"></i>
-                        <input type="text" name="search" placeholder="Cari Agen" value="{{ request('search') }}" />
-                        <button class="button1" id="searchButton" type="submit">Search</button>
-                    </div>
+
                 </div>
             </form>
         </div>
@@ -113,7 +113,7 @@
 
         <!-- Agent Populer Start -->
         <div class="container mt-5">
-            <div class="row">
+            <div class="row" style="margin-top:-50px;">
                 @foreach ($agents as $agent)
                     <div class="col-md-5 mb-4 mx-5">
                         <div class="row p-2 bg-white border rounded">
