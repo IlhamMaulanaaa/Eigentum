@@ -49,8 +49,12 @@
 }
 
 .nav-barq .notif_nav .notifications .icon_wrap{
-  font-size: 28px;
+  margin-top: 3px;
+  color: #000;
+  font-weight: 400;
+  font-size: 20px;
 }
+
 
 .nav-barq .notif_nav .profile,
 .nav-barq .notif_nav .notifications{

@@ -265,3 +265,51 @@ Route::get('/navbar', function () {
 Route::get('/footer', function () {
     return view('layout.partial.footer');
 });
+
+Route::get('/hom', function () {
+    return view('pages.page.home1');
+});
+
+Route::get('/unitdetail', function () {
+    return view('pages.unit.detail1');
+});
+
+Route::get('/filtermen', function () {
+    return view('pages.page.filterpage1');
+});
+
+Route::get('/faporite', function () {
+    return view('pages.page.favorite1');
+});
+
+Route::get('/histori', function () {
+    return view('pages.page.history');
+});
+
+Route::get('/propil', function () {
+    return view('pages.page.profile1');
+});
+
+Route::get('/guide', function () {
+    return view('pages.page.guide1');
+});
+
+Route::get('/proodev', function () {
+    return view('pages.developer.profile1');
+});
+
+Route::get('/usel', function () {
+    return view('pages.user.profile1');
+});
+
+Route::get('/cre', function () {
+    return view('pages.unit.create1');
+});
+
+Route::get('/creproperti', function () {
+    return view('pages.property.create1');
+});
+
+Route::get('/detproperti', function () {
+    return view('pages.property.detail');
+});

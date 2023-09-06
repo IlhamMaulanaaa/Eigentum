@@ -49,6 +49,23 @@
 
             <div class="darkLight-searchBoxq">
 
+
+                <div class="searchBox">
+                    <div class="searchToggle">
+                     <i class='bx bx-x cancel'></i>
+                     <i class='bx bx-search search'></i>
+                    </div>
+                    <div class="search-field">
+                        <form action="{{ route('unit.search.user') }}" method="GET" role="search">
+                         <input id="searchnav" type="text" name="search" placeholder="Search.."
+                         aria-label="Search username" aria-describedby="basic-addon2"
+                         value="{{ request('search') }}">
+                         <i class='bx bx-search' type="submit"></i>
+                        </form>
+                    </div>
+                </div>
+
+
                 @if (Auth::check())
                     <div class="profileq" style="cursor: pointer;">
 
@@ -168,9 +185,11 @@
                             </ul>
                         @endif
                     </div>
+
                 @elseif (!Auth::check())
                     <a href="/" class="btnq">Masuk</a>
                 @endif
+                
 
             </div>
         </div>
@@ -278,6 +297,30 @@
                 });
             });
         });
+    </script>
+    <script>
+        const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      searchToggle = document.querySelector(".searchToggle"),
+      sidebarOpen = document.querySelector(".sidebarOpen"),
+      siderbarClose = document.querySelector(".siderbarClose");
+      
+// js code to toggle search box
+        searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+      });
+ 
+      
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+        nav.classList.remove("active");
+    }
+});
     </script>
 </body>
 

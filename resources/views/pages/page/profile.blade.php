@@ -15,7 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="css/pages/profile.css">
 </head>
 <body>
-		<div class="" style="margin-top: 90px">
+		<div class="container" style="margin-top: 90px">
 			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
