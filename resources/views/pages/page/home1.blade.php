@@ -66,7 +66,7 @@
 
                                         <span class="content-span-1 u-c-white">Agen Properti</span>
 
-                                        <span class="content-span-2 u-c-white">Bimbingan Ahli dari Para Profesional</span>
+                                        <span class="content-span-2 u-c-white">Agen Terpercaya dalam Mencari Properti Ideal</span>
 
                                         <span class="content-span-3 u-c-white">Dapatkan panduan dan nasihat terbaik dari tim agen properti kami yang berpengalaman.</span>
 
@@ -83,13 +83,13 @@
                                 <div class="col-12">
                                     <div class="slider-content slider-content--animation">
 
-                                        <span class="content-span-1 u-c-secondary">Panduan Properti</span>
+                                        <span class="content-span-1 u-c-white">Panduan Properti</span>
 
-                                        <span class="content-span-2 u-c-secondary">Jelajahi Panduan tentang Properti</span>
+                                        <span class="content-span-2 u-c-white">Jelajahi Panduan tentang Properti</span>
 
-                                        <span class="content-span-3 u-c-secondary">Dengan panduan kami, Anda akan memahami bagaimana mencari dan menilai properti yang sesuai dengan kebutuhan dan gaya hidup Anda.</span>
+                                        <span class="content-span-3 u-c-white">Dengan panduan kami, Anda akan memahami bagaimana mencari dan menilai properti yang sesuai dengan kebutuhan dan gaya hidup Anda.</span>
 
-                                        <span class="content-span-4 u-c-secondary">Mulai Belajar Mengenai Properti</span>
+                                        <span class="content-span-4 u-c-white">Mulai Belajar Mengenai Properti</span>
 
                                         <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">Lihat Sekarang</a></div>
                                 </div>
@@ -172,28 +172,28 @@
                                 <a class="collection" href="shop-side-version-2.html">
                                     <div class="aspect aspect--bg-grey aspect--square">
 
-                                        <img class="aspect__img collection__img" src="" alt=""></div>
+                                        <img class="aspect__img collection__img" src="/assets/pages/banner/apartemen1.jpg" alt=""></div>
                                 </a></div>
                             <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
                                 <a class="collection" href="shop-side-version-2.html">
                                     <div class="aspect aspect--bg-grey aspect--1286-890">
 
-                                        <img class="aspect__img collection__img" src="" alt=""></div>
+                                        <img class="aspect__img collection__img" src="/assets/pages/banner/home2.jpg" alt=""></div>
                                 </a></div>
                             <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
                                 <a class="collection" href="shop-side-version-2.html">
                                     <div class="aspect aspect--bg-grey aspect--1286-890">
 
-                                        <img class="aspect__img collection__img" src="" alt=""></div>
+                                        <img class="aspect__img collection__img" src="/assets/pages/banner/ruko1.jpg" alt=""></div>
                                 </a></div>
                             <div class="col-lg-5 col-md-5 u-s-m-b-30">
 
                                 <a class="collection" href="shop-side-version-2.html">
                                     <div class="aspect aspect--bg-grey aspect--square">
 
-                                        <img class="aspect__img collection__img" src="" alt=""></div>
+                                        <img class="aspect__img collection__img" src="/assets/pages/banner/villa1.jpg" alt=""></div>
                                 </a></div>
                         </div>
                     </div>
@@ -254,7 +254,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product2.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             
@@ -288,7 +288,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product3.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             
@@ -322,7 +322,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product4.jpg" alt=""></a>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             
@@ -399,7 +399,7 @@
 
                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                <img class="aspect__img" src="images/product/electronic/product13.jpg" alt=""></a>
+                                                <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                             <div class="product-o__action-wrap">
                                                 <ul class="product-o__action-list">
                                                     
@@ -433,7 +433,7 @@
 
                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                <img class="aspect__img" src="images/product/electronic/product14.jpg" alt=""></a>
+                                                <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                             <div class="product-o__action-wrap">
                                                 <ul class="product-o__action-list">
                                                     
@@ -487,14 +487,14 @@
 
                                         <span class="u-c-white">Jadilah</span>
 
-                                        <span class="u-c-secondary">Developer</span></div>
+                                        <span class="u-c-white">Developer</span></div>
                                     <div class="banner-bg__text-2">
 
-                                        <span class="u-c-secondary">Kami Memiliki</span>
+                                        <span class="u-c-white">Kami Memiliki</span>
 
                                         <span class="u-c-white">Diskon Terbaik Untuk Anda!</span></div>
 
-                                    <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Merencanakan strategi pemasaran untuk properti yang akan dijual.</span>
+                                    <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan strategi pemasaran untuk properti yang akan dijual.</span>
 
                                     <a class="banner-bg__shop-now btn--e-secondary" href="shop-side-version-2.html">Daftar Sekarang</a>
                                 </div>
@@ -539,7 +539,7 @@
 
                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                <img class="aspect__img" src="images/product/electronic/product13.jpg" alt=""></a>
+                                                <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                             <div class="product-o__action-wrap">
                                                 <ul class="product-o__action-list">
                                                     
@@ -573,7 +573,7 @@
 
                                             <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
-                                                <img class="aspect__img" src="images/product/electronic/product14.jpg" alt=""></a>
+                                                <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
                                             <div class="product-o__action-wrap">
                                                 <ul class="product-o__action-list">
                                                     
@@ -632,7 +632,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product23.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -652,7 +652,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product24.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -681,7 +681,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product23.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -701,7 +701,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product24.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -730,7 +730,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product23.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -750,7 +750,7 @@
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link" href="product-detail.html">
 
-                                                        <img class="aspect__img" src="images/product/electronic/product24.jpg" alt=""></a></div>
+                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a></div>
                                                 <div class="product-l__info-wrap">
 
                                                     <span class="product-l__category">
@@ -814,57 +814,57 @@
                                 <div class="testimonial">
                                     <div class="testimonial__img-wrap">
 
-                                        <img class="testimonial__img" src="images/about/test-1.jpg" alt=""></div>
+                                        <img class="testimonial__img" src="/assets/pages/testimoni/testimoni1.jpg" alt=""></div>
                                     <div class="testimonial__content-wrap">
 
                                         <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                         <blockquote class="testimonial__block-quote">
-                                            <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                            <p>"Saya mengakui Eigentum adalah platform yang sangat bagus untuk menemukan properti."</p>
                                         </blockquote>
 
-                                        <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                                        <span class="testimonial__author">Ramadhan Syarif / Customer</span>
                                     </div>
                                 </div>
                                 <div class="testimonial">
                                     <div class="testimonial__img-wrap">
 
-                                        <img class="testimonial__img" src="images/about/test-2.jpg" alt=""></div>
+                                        <img class="testimonial__img" src="/assets/pages/testimoni/testimoni2.jpg" alt=""></div>
                                     <div class="testimonial__content-wrap">
 
                                         <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                         <blockquote class="testimonial__block-quote">
-                                            <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                            <p>"Saya percaya Eigentum adalah tempat yang luar biasa untuk menemukan properti."</p>
                                         </blockquote>
 
-                                        <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                                        <span class="testimonial__author">Bambang Narjo / Customer</span>
                                     </div>
                                 </div>
                                 <div class="testimonial">
                                     <div class="testimonial__img-wrap">
 
-                                        <img class="testimonial__img" src="images/about/test-3.jpg" alt=""></div>
+                                        <img class="testimonial__img" src="/assets/pages/testimoni/testimoni3.jpg" alt=""></div>
                                     <div class="testimonial__content-wrap">
 
                                         <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                         <blockquote class="testimonial__block-quote">
-                                            <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                            <p>"Saya yakin Eigentum adalah solusi terbaik untuk menemukan properti yang Anda cari."</p>
                                         </blockquote>
 
-                                        <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                                        <span class="testimonial__author">Jono Tarjo / Customer</span>
                                     </div>
                                 </div>
                                 <div class="testimonial">
                                     <div class="testimonial__img-wrap">
 
-                                        <img class="testimonial__img" src="images/about/test-4.jpg" alt=""></div>
+                                        <img class="testimonial__img" src="/assets/pages/testimoni/testimoni4.jpg" alt=""></div>
                                     <div class="testimonial__content-wrap">
 
                                         <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
                                         <blockquote class="testimonial__block-quote">
-                                            <p>"Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean."</p>
+                                            <p>"Menurut saya, Eigentum adalah opsi yang luar biasa untuk mencari properti yang tepat"</p>
                                         </blockquote>
 
-                                        <span class="testimonial__author">John D. / DVNTR Inc.</span>
+                                        <span class="testimonial__author">David / Customer</span>
                                     </div>
                                 </div>
                             </div>
@@ -904,32 +904,47 @@
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b1.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/jakarta1.jpg" alt="Jakarta">
+                                        <div class="image-caption">Jakarta</div>
+                                    </a>
+                                    </div>
                                 <div class="brand-slide">
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b2.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/surabaya.jpg" alt="">
+                                        <div class="image-caption">Surabaya</div>
+                                    </a></div>
                                 <div class="brand-slide">
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b3.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/bandung.jpg" alt="">
+                                        <div class="image-caption">Bandung</div></a></div>
                                 <div class="brand-slide">
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b4.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/jogja.jpg" alt="">
+                                        <div class="image-caption">Yogyakarta</div></a></div>
                                 <div class="brand-slide">
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b5.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/jogja.jpg" alt="">
+                                        <div class="image-caption">Yogyakarta</div></a></div>
+                                        <div class="brand-slide">
+
+                                    <a href="shop-side-version-2.html">
+
+                                        <img src="/assets/pages/fix/jogja.jpg" alt="">
+                                        <div class="image-caption">Yogyakarta</div></a></div>
                                 <div class="brand-slide">
 
                                     <a href="shop-side-version-2.html">
 
-                                        <img src="images/brand/b6.png" alt=""></a></div>
+                                        <img src="/assets/pages/fix/surabaya.jpg" alt=""></a></div>
+                                        <div class="image-caption">Surabaya</div></a></div>
                             </div>
                         </div>
                         <!--====== End - Brand Slider ======-->
