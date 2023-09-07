@@ -282,74 +282,7 @@
                                                     </span>
                                             </div>
                                         </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
-                                            <div class="product-o product-o--hover-on product-o--radius">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Tambahkan Ke Favorite"><i class="fas fa-heart"></i></a></li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Lihat lebih detail"><i class="fas fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-                                                
-
-                                                <span class="product-o__price">Rp. 900.000.000
-
-                                                    </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item sportgadget">
-                                            <div class="product-o product-o--hover-on product-o--radius">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                                        <img class="aspect__img" src="/assets/pages/home/kota.jpg" alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Tambahkan Ke Favorite"><i class="fas fa-heart"></i></a></li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top" title="Lihat lebih detail"><i class="fas fa-eye"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-                                                
-
-                                                <span class="product-o__price">Rp. 900.000.000
-
-                                                    </span>
-                                            </div>
-                                        </div>
+                                        
                                         
                                         
                                     </div>

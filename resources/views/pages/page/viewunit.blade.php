@@ -2,83 +2,30 @@
 
 @section('content')
     <!DOCTYPE html>
-    <html lang="en">
+    <html class="no-js" lang="en">
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Fables">
-        <meta name="author" content="Enterprise Development">
-        <link rel="shortcut icon" href="/css/Lib/assets/custom/images/shortcut.png">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="images/favicon.png" rel="shortcut icon">
 
-        <title>Eigentum</title>
+        <!--====== Google Font ======-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-        <!-- animate.css-->
-        <link href="/css/Lib/assets/vendor/animate.css-master/animate.min.css" rel="stylesheet">
-        <!-- Load Screen -->
-        <link href="/css/Lib/assets/vendor/loadscreen/css/spinkit.css" rel="stylesheet">
-        <!-- GOOGLE FONT -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
-            rel="stylesheet">
-        <!-- Font Awesome 5 -->
-        <link href="/css/Lib/assets/vendor/fontawesome/css/fontawesome-all.min.css" rel="stylesheet">
-        <!-- Fables Icons -->
-        <link href="/css/Lib/assets/custom/css/fables-icons.css" rel="stylesheet">
-        <!-- Bootstrap CSS -->
-        <link href="/css/Lib/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/Lib/assets/vendor/bootstrap/css/bootstrap-4-navbar.css" rel="stylesheet">
-        <!-- portfolio filter gallery -->
-        <link href="/css/Lib/assets/vendor/portfolio-filter-gallery/portfolio-filter-gallery.css" rel="stylesheet">
-        <!-- FANCY BOX -->
-        <link href="/css/Lib/assets/vendor/fancybox-master/jquery.fancybox.min.css" rel="stylesheet">
-        <!-- RANGE SLIDER -->
-        <link href="/css/Lib/assets/vendor/range-slider/range-slider.css" rel="stylesheet">
-        <!-- OWL CAROUSEL  -->
-        <link href="/css/Lib/assets/vendor/owlcarousel/owl.carousel.min.css" rel="stylesheet">
-        <link href="/css/Lib/assets/vendor/owlcarousel/owl.theme.default.min.css" rel="stylesheet">
-        <!-- FABLES CUSTOM CSS FILE -->
-        <link href="/css/Lib/assets/custom/css/custom.css" rel="stylesheet">
-        <!-- FABLES CUSTOM CSS RESPONSIVE FILE -->
-        <link href="/css/Lib/assets/custom/css/custom-responsive.css" rel="stylesheet">
+        <!--====== Vendor Css ======-->
+        <link rel="stylesheet" href="/css/Lib/fix/css/vendor.css">
 
+        <!--====== Utility-Spacing ======-->
+        <link rel="stylesheet" href="/css/Lib/fix/css/utility.css">
 
-
-
-
-
-
-        <!-- Google Web Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap"
-            rel="stylesheet">
-
-        <!-- Icon Font Stylesheet -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-
-        <!-- CSS -->
-        <link rel="stylesheet" href="/css/pages/home.css">
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-        <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
-            rel="stylesheet">
-
-
+        <!--====== App ======-->
+        <link href="/css/Lib/fix/css/app.css" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="config">
         <!-- Start Header -->
         <div class="fables-header fables-after-overlay">
             <div class="container">

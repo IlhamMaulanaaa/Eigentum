@@ -44,7 +44,7 @@ class UnitController extends Controller
         if (Auth::user()->role == "admin") {
             return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         } else {
-            return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+            return view('pages.page.filterpage1', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         }
         // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
@@ -103,7 +103,8 @@ class UnitController extends Controller
         })->pluck('name', 'id', 'regency_id');
 
         if ($units) {
-            return view('pages.page.home', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
+            return view('pages.page.home1', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
+            // return view('pages.page.home', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
         }
     }
 
@@ -238,9 +239,9 @@ class UnitController extends Controller
         } elseif (Auth::user()->role == "admin") {
             return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
         } elseif (Auth::user()->role == "developer") {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'developer'));
+            return view('pages.unit.detail1', compact('unit', 'images', 'pricePerMonth', 'developer'));
         } elseif (Auth::user()->role == "agent") {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+            return view('pages.unit.detail1', compact('unit', 'images', 'pricePerMonth'));
         }
     }
 

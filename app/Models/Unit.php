@@ -101,6 +101,9 @@ class Unit extends Model
                     })->orWhereHas('properties', function ($query) use ($search) {
                         $query->where('title', 'like', '%' . $search . '%')
                             ->orWhere('id', 'like', '%' . $search . '%');
+                    })->orWhereHas('properties.provinces', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%')
+                            ->orWhere('id', 'like', '%' . $search . '%');
                     })->orWhereHas('properties.regencies', function ($query) use ($search) {
                         $query->where('name', 'like', '%' . $search . '%')
                             ->orWhere('id', 'like', '%' . $search . '%');

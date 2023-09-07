@@ -32,10 +32,10 @@ class DeveloperController extends Controller
     }
 
     public function dashboard() //menampilkan dashboard developer
-    {  
+    {
         $user =  auth()->user();
         $developer = $user->developers->first();
-        return view('pages.Developer.dashboard', compact('developer', 'user'));
+        return view('pages.page.profile1', compact('developer', 'user'));
     }
 
     public function SigninDeveloper()
@@ -83,7 +83,7 @@ class DeveloperController extends Controller
 
         return redirect('admin/developer');
     }
-    
+
 
     public function index()
     {

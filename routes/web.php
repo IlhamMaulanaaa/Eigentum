@@ -197,7 +197,7 @@ Route::group(['prefix' => '/pages'], function () {
     });
     // unit
     Route::group(['prefix' => '/unit'], function () {
-        Route::get('/', [UnitController::class, 'filter'])->name('unit.search.user');
+        Route::get('/search', [UnitController::class, 'filter'])->name('unit.search.user');
         Route::get('/{unit}', [UnitController::class, 'show'])->name('unit.show.user');
     });
     Route::group(['prefix' => '/agent'], function () {
