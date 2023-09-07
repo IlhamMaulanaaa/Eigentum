@@ -632,6 +632,49 @@
                 });
             });
         </script>
+
+        <script>
+            document.addEventListener('blur', function() {
+                // Menangkap elemen input
+                var inputMin = document.getElementById('inputMin');
+                var inputMax = document.getElementById('inputMax');
+
+                // Fungsi untuk memicu pencarian
+                function performSearch() {
+                    var minPrice = inputMin.value;
+                    var maxPrice = inputMax.value;
+
+                    // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
+                    var searchURL = '{{ route('unit.search.user') }}' + '?min_price=' + minPrice + '&max_price=' +
+                        maxPrice;
+                    window.location.href = searchURL;
+                }
+
+                // Menambahkan event listener pada input
+                inputMin.addEventListener('blur', function() {
+                    performSearch();
+                });
+
+                inputMax.addEventListener('blur', function() {
+                    performSearch();
+                });
+            });
+        </script>
+
+
+
+        <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+        <script src="/css/Lib/assets/vendor/jquery-circle-progress/circle-progress.min.js"></script>
+        <script src="/css/Lib/assets/vendor/popper/popper.min.js"></script>
+        <script src="/css/Lib/assets/vendor/WOW-master/dist/wow.min.js"></script>
+        <script src="/css/Lib/assets/vendor/loadscreen/js/ju-loading-screen.js"></script>
+        <script src="/css/Lib/assets/vendor/range-slider/range-slider.js"></script>
+        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap-4-navbar.js"></script>
+        <script src="/css/Lib/assets/vendor/timeline/jquery.timelify.js"></script>
+        <script src="/css/Lib/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+        <script src="/css/Lib/assets/custom/js/custom.js"></script>
+
     </body>
 
     </html>

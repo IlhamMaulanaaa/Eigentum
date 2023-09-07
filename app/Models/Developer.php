@@ -54,10 +54,10 @@ class Developer extends Authenticatable
     public function properties(): HasMany
     {
         return $this->hasMany(Property::class, 'developer_id');
-     }
+    }
     public function units(): HasMany
     {
-        return $this->hasMany(Property::class);
+        return $this->hasMany(Unit::class);
     }
 
     public function users()

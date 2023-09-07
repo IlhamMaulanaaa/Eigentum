@@ -41,11 +41,14 @@ class UnitController extends Controller
             return response()->json($filteredUnits);
         }
 
-        if (Auth::user()->role == "admin") {
-            return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        } else {
+        if (!Auth::check()) {
             return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        }
+        } elseif (Auth::user()->role == "admin") {
+            return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        } else 
+        {
+            return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+        }  
         // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 

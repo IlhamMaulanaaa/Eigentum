@@ -18,6 +18,7 @@ class Unit extends Model
 
     protected $table = 'units';
     protected $guarded = ['id'];
+    protected $columns = ['*'];
 
     protected $hidden = [
         'created_at',

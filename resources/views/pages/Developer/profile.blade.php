@@ -568,8 +568,9 @@
 
                                                     <div class="row">
                                                         <div class="col-lg-12">
-                                                            <form class="dash-edit-p">
-
+                                                            <form class="dash-edit-p"
+                                                                action="{{ route('developer.update.developer', $developer->id) }}"
+                                                                method="post" enctype="multipart/form-data">
                                                                 <div class="gl-inline">
                                                                     <div class="u-s-m-b-30">
 
@@ -577,8 +578,11 @@
                                                                             for="face">FOTO</label>
 
 
-                                                                        <img src="" alt=""
-                                                                            style="width: 100px; height:100px;">
+                                                                        @if ($developer->face)
+                                                                            <img src="{{ asset('storage/' . $developer->face) }}"
+                                                                                alt="{{ $developer->face }}"
+                                                                                style="width: 100px; height:100px;">
+                                                                        @endif
 
                                                                         <input type="file" id="face"
                                                                             name="face">
@@ -588,9 +592,11 @@
 
                                                                         <label class="gl-label" for="ktp">KTP</label>
 
-                                                                        <img src="" alt=""
-                                                                            style="width: 100px; height:100px;">
-
+                                                                        @if ($developer->ktp)
+                                                                            <img src="{{ asset('storage/' . $developer->ktp) }}"
+                                                                                alt="{{ $developer->ktp }}"
+                                                                                style="width: 100px; height:100px;">
+                                                                        @endif
                                                                         <input type="file" id="ktp"
                                                                             name="ktp">
 
@@ -605,16 +611,16 @@
                                                                         <label class="gl-label"
                                                                             for="reg-fname">PERUSAHAAN</label>
 
-                                                                        {{-- <input class="input-text input-text--primary-style" type="text" name="company"
-                                                                            value="{{ old('company', $developer->company) }}"> --}}
+                                                                        <input class="input-text input-text--primary-style" type="text" name="company"
+                                                                            value="{{ old('company', $developer->company) }}">
                                                                     </div>
                                                                     <div class="u-s-m-b-30">
 
                                                                         <label class="gl-label" for="reg-lname">NOMOR
                                                                             TELEPHONE</label>
 
-                                                                        {{-- <input class="input-text input-text--primary-style" type="text" name="telp"
-                                                                            value="{{ old('telp', $developer->telp) }}"> --}}
+                                                                        <input class="input-text input-text--primary-style" type="text" name="telp"
+                                                                            value="{{ old('telp', $developer->telp) }}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="gl-inline">
@@ -623,16 +629,16 @@
                                                                         <label class="gl-label"
                                                                             for="reg-fname">EMAIL</label>
 
-                                                                        {{-- <input class="input-text input-text--primary-style" type="text" name="company_email"
-                                                                            value="{{ old('company_email', $developer->company_email) }}"> --}}
+                                                                        <input class="input-text input-text--primary-style" type="text" name="company_email"
+                                                                            value="{{ old('company_email', $developer->company_email) }}">
                                                                     </div>
                                                                     <div class="u-s-m-b-30">
 
                                                                         <label class="gl-label"
                                                                             for="reg-lname">ALAMAT</label>
 
-                                                                        {{-- <input class="input-text input-text--primary-style" type="text" name="address"
-                                                                            value="{{ old('address', $developer->address) }}"> --}}
+                                                                        <input class="input-text input-text--primary-style" type="text" name="address"
+                                                                            value="{{ old('address', $developer->address) }}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="gl-inline">
@@ -674,16 +680,22 @@
 
 
                                                                 <div class="gl-inline">
-                                                                    <div class="u-s-m-b-30">
+                                                                    @foreach ($licenseFile as $index => $license)
+                                                                    
+                                                                       <div class="col-12">
+                                                                            <div class="file-container my-2">
+                                                                                <a href="{{ route('pdf.preview', ['file' => $license]) }}"
+                                                                                    target="_blank">Tampilkan
+                                                                                    {{ Str::limit(pathinfo($license, PATHINFO_FILENAME), 20, '...') }}</a>
+                                                                            </div>
+                                                                            <input type="file"
+                                                                                class="form-control noscroll" id="license"
+                                                                                name="license[{{ $index }}]" multiple>
+                                                                       </div>
+                                                                    @endforeach
+                                                                    
 
-                                                                        <label class="gl-label" for="reg-fname">NOMOR
-                                                                            POKOK WAJIB PAJAK</label>
-
-                                                                        <img src="" alt=""
-                                                                            style="width: 100px; height: 100px;">
-                                                                    </div>
-
-                                                                    <div class="u-s-m-b-30">
+                                                                    {{-- <div class="u-s-m-b-30">
 
                                                                         <label class="gl-label" for="reg-fname">SERTIFIKAT
                                                                             BADAN USAHA</label>
@@ -699,7 +711,7 @@
 
                                                                         <img src="" alt=""
                                                                             style="width: 100px; height: 100px;">
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
 
                                                                 <button class="btn btn--e-brand-b-2"

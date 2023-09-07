@@ -35,7 +35,8 @@ class DeveloperController extends Controller
     {
         $user =  auth()->user();
         $developer = $user->developers->first();
-        return view('pages.developer.profile', compact('developer', 'user'));
+        $licenseFile = explode("|", $developer->license);
+        return view('pages.developer.profile', compact('developer', 'user' , 'licenseFile'));
     }
 
     public function SigninDeveloper()
@@ -342,7 +343,8 @@ class DeveloperController extends Controller
         $user =  auth()->user();
         $developer = $user->developers->first();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
-        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
+        return view('pages.page.profile1', compact('developer', 'user', 'licenseFile',));
+        // return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
     }
 
     public function edit(Developer $developer)
@@ -458,11 +460,11 @@ class DeveloperController extends Controller
                 $developer->save();
             }
             // $developer->users()->sync($users->id);
-            // $developer->save();
-            // $developer->provinces()->sync($request->input('province_id'));
-            // $developer->regencies()->sync($request->input('regency_id'));
-            // $developer->districts()->sync($request->input('district_id'));
-            // $developer->villages()->sync($request->xinput('village_id'));
+            $developer->provinces()->sync($request->input('province_id'));
+            $developer->regencies()->sync($request->input('regency_id'));
+            $developer->districts()->sync($request->input('district_id'));
+            $developer->villages()->sync($request->input('village_id'));
+            $developer->save();
 
             // $developer = Developer::where('id', '=', $developer->id)->get();
             return redirect(route('developer.show', $id));

@@ -71,7 +71,7 @@
                     <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
                         id="filterable-cards">
                         @foreach ($agent->properties as $property)
-                            <div class="card p-0" data-name="aktif">
+                            <div class="card p-0" data-name="rumah">
                                 <a href="{{ route('property.show.agent', $property->id) }}" class="stretched-link"></a>
                                 <img src="{{ asset('storage/' . $property->image) }}" alt="img" />
                                 <div class="card-body">

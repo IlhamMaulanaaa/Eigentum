@@ -36,7 +36,7 @@
                     <span class="logoq"><img class="nav navLogoq" src="/assets/skins/logo.svg" alt=""></span>
                     <i class='bx bx-x siderbarCloseq'></i>
                 </div>
-
+  
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li class="navbar"><a href="/beranda">Beranda</a></li>
                     <li class="navbar"><a href="{{ route('unit.search.user') }}">Properti</a></li>
@@ -187,7 +187,7 @@
                     </div>
 
                 @elseif (!Auth::check())
-                    <a href="/" class="btnq">Masuk</a>
+                    <a href="{{ route('login.index') }}" class="btnq">Masuk</a>
                 @endif
                 
 

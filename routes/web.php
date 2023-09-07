@@ -48,7 +48,7 @@ Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect'])
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('/', [AuthController::class, 'index'])->name('login.index');
+    Route::get('/login', [AuthController::class, 'index'])->name('login.index');
     Route::post('/createL', [AuthController::class, 'login']); //post login
     Route::post('/createR', [AuthController::class, 'register']); //post register
 
@@ -91,13 +91,16 @@ Route::middleware(['guest'])->group(function () {
     });
 });
 
-Route::get('/beranda', [UnitController::class, 'homeunit'])->name('beranda');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 // developer
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
-        Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
+        Route::get('/', [UnitController::class, 'homeunit'])->name('beranda');
+        // Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
+        Route::get('/dashboard', function () {
+            return view('pages.page.profile1');
+        })->name('developer.dashboard');
         Route::get('/profile', [DeveloperController::class, 'showFront'])->name('developer.profile')->withoutMiddleware(['IsDeveloper']);
         Route::put('/update/{developer}', [DeveloperController::class, 'updateFront'])->name('developer.update.developer')->withoutMiddleware(['IsDeveloper']);
 

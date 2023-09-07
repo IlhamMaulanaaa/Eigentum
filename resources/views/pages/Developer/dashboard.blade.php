@@ -136,7 +136,7 @@
                             {{-- <button class="btn mb-2 mx-1" data-filter="aktif">Aktif</button> --}}
                             {{-- <button class="btn mb-2 mx-1" data-filter="pasif">Pasif</button> --}}
                             <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button>
-                            <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button>
+                            <button class="btn mb-2 mx-1" data-filter="Disewa">DIsewa</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">penawaran</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">History</button>
                         </div>
@@ -172,25 +172,32 @@
                                         {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
                                     </form>
                                 </div>
-
-
-
                                 <span class="label sold">Terjual</span>
-
-
-
-
                             </div>
                         @endforeach
-
                     </div>
-
                 </div>
 
             </div>
 
 
         </div>
+        <div class="tambah" style="z-index: 200">
+
+            <a href="{{ route('property.create.developer') }}">
+                <button id="addButton" class="sticky-button">+</button>
+                <p style="margin-left: -30px; color:#000; margin-top:10px;">Tambah Properti</p>
+            </a>
+
+        </div>
+        <script>
+            const addButton = document.getElementById("addButton");
+            const options = document.getElementById("options");
+
+            addButton.addEventListener("click", function() {
+                options.classList.toggle("show");
+            });
+        </script>
         <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
         <script>
             // Enable pusher logging - don't include this in production
