@@ -70,6 +70,9 @@ class Agent extends Model
                     ->orWhereHas('regencies', function ($query) use ($search) {
                         $query->where('name', 'like', '%' . $search . '%');
                     })
+                    ->orWhereHas('provinces', function ($query) use ($search) {
+                        $query->where('name', 'like', '%' . $search . '%');
+                    })
                     ->orWhereHas('properties', function ($query) use ($search) {
                         $query->where('title', 'like', '%' . $search . '%');
                     });

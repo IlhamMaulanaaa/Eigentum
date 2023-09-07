@@ -35,7 +35,7 @@ class DeveloperController extends Controller
     {
         $user =  auth()->user();
         $developer = $user->developers->first();
-        return view('pages.page.profile1', compact('developer', 'user'));
+        return view('pages.developer.profile', compact('developer', 'user'));
     }
 
     public function SigninDeveloper()

@@ -121,6 +121,25 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
         Route::get('/history', function () {
             return view('pages.Developer.history');
         });
+
+
+        Route::get('/css/Lib/fix/css/{filename}', function ($filename) {
+            $file = public_path("css/Lib/fix/css/{$filename}");
+            if (file_exists($file)) {
+                return response()->file($file);
+            } else {
+                return response('File not found', 404);
+            }
+        })->where('filename', '.*\.css');
+
+        Route::get('/js/Lib/fix/js/{filename}', function ($filename) {
+            $file = public_path("js/Lib/fix/js/{$filename}");
+            if (file_exists($file)) {
+                return response()->file($file);
+            } else {
+                return response('File not found', 404);
+            }
+        })->where('filename', '.*\.js');
     });
 });
 
@@ -264,52 +283,4 @@ Route::get('/navbar', function () {
 
 Route::get('/footer', function () {
     return view('layout.partial.footer');
-});
-
-Route::get('/hom', function () {
-    return view('pages.page.home1');
-});
-
-Route::get('/unitdetail', function () {
-    return view('pages.unit.detail1');
-});
-
-Route::get('/filtermen', function () {
-    return view('pages.page.filterpage1');
-});
-
-Route::get('/faporite', function () {
-    return view('pages.page.favorite1');
-});
-
-Route::get('/histori', function () {
-    return view('pages.page.history');
-});
-
-Route::get('/propil', function () {
-    return view('pages.page.profile1');
-});
-
-Route::get('/guide', function () {
-    return view('pages.page.guide1');
-});
-
-Route::get('/proodev', function () {
-    return view('pages.developer.profile1');
-});
-
-Route::get('/usel', function () {
-    return view('pages.user.profile1');
-});
-
-Route::get('/cre', function () {
-    return view('pages.unit.create1');
-});
-
-Route::get('/creproperti', function () {
-    return view('pages.property.create1');
-});
-
-Route::get('/detproperti', function () {
-    return view('pages.property.detail');
 });

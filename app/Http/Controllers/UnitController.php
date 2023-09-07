@@ -44,7 +44,7 @@ class UnitController extends Controller
         if (Auth::user()->role == "admin") {
             return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         } else {
-            return view('pages.page.filterpage1', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
+            return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         }
         // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
@@ -103,7 +103,7 @@ class UnitController extends Controller
         })->pluck('name', 'id', 'regency_id');
 
         if ($units) {
-            return view('pages.page.home1', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
+            return view('pages.page.home', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
             // return view('pages.page.home', compact('units', 'newunits', 'developer', 'property', 'status', 'types', 'regencies'));
         }
     }
@@ -229,19 +229,19 @@ class UnitController extends Controller
         $images = Image::where('unit_id', $unit->id)->first();
         $propertyPrice = $unit->price; // Harga utama atau harga jual properti
         $monthsInYear = 24; // Jumlah bulan dalam satu tahun
-
+        $property = Property::where('id', '=', $unit->property_id)->get();
         // Hitung harga per bulan
         $pricePerMonth = $propertyPrice / $monthsInYear;
-
+        $units = Unit::all();
         // echo "Harga per bulan: $" . number_format($pricePerMonth, 2);
         if (!Auth::check()) {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth','units'));
         } elseif (Auth::user()->role == "admin") {
-            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth'));
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth','units'));
         } elseif (Auth::user()->role == "developer") {
-            return view('pages.unit.detail1', compact('unit', 'images', 'pricePerMonth', 'developer'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'developer','units'));
         } elseif (Auth::user()->role == "agent") {
-            return view('pages.unit.detail1', compact('unit', 'images', 'pricePerMonth'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'units'));
         }
     }
 

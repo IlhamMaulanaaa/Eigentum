@@ -16,280 +16,604 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
         <!--====== Vendor Css ======-->
-        <link rel="stylesheet" href="/css/Lib/fix/css/vendor.css">
+        <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/vendor.css') }}">
 
         <!--====== Utility-Spacing ======-->
-        <link rel="stylesheet" href="/css/Lib/fix/css/utility.css">
+        <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/utility.css') }}">
 
         <!--====== App ======-->
-        <link href="/css/Lib/fix/css/app.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/app.css') }}">
     </head>
 
     <body class="config">
-        <!-- Start Header -->
-        <div class="fables-header fables-after-overlay">
-            <div class="container">
-                <h2 class="fables-page-title fables-second-border-color">Filter Unit</h2>
-            </div>
-        </div>
-        <!-- /End Header -->
 
-        <!-- Start Breadcrumbs -->
-        <div class="fables-light-gary-background">
-            <div class="container">
-                <div aria-label="breadcrumb">
-                    <ol class="fables-breadcrumb breadcrumb px-0 py-3">
-                        <li class="breadcrumb-item"><a href="/beranda" class="fables-second-text-color"
-                                style="text-decoration: none;">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none;">Filter
-                            Unit</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-        <!-- /End Breadcrumbs -->
 
-        <!-- Start page content -->
-        <div class="container">
-            <div class="row my-4 my-md-5">
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="fables-store-search mb-4">
-                        <form action="{{ route('unit.search.user') }}" method="GET" role="search">
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Search name.."
-                                    aria-label="Search username" aria-describedby="basic-addon2"
-                                    value="{{ request('search') }}">
-                                <button class="btn btn-outline-secondary" id="searchButton"
-                                    type="submit">Search</button>
-                            </div>
-                            <br>
-                            <div class="col-md-2">
-                                <label>Status:</label>
-                                @foreach ($statuses as $status)
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="status{{ $status->id }}"
-                                            name="status[]" value="{{ $status->id }}"
-                                            {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ $status->name }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="col-md-2">
-                                <label>Type</label>
-                                @foreach ($types as $type)
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="type{{ $type->id }}"
-                                            name="types[]" value="{{ $type->id }}"
-                                            {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
-                                        <label class="form-check-label">{{ $type->name }}</label>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <div class="rage-slider">
-                                <label>Price</label>
-                                <div class="price-input">
-                                    <div class="field">
-                                        <span>Rp.</span>
-                                        <input type="number" name="min_price" placeholder="Min" class="input-min"
-                                            id="inputMin" value="{{ request('min_price') }}">
-                                    </div>
-                                    <div class="field">
-                                        {{-- <span></span> --}}
-                                        <input type="number" name="max_price" placeholder="Max" class="input-max"
-                                            id="inputMax" value="{{ request('max_price') }}">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+        <div id="app">
 
-                    {{-- <h2 class="col-md-12">Kategori
-                        Properti</h2>
-                    <ul class="nav fables-forth-text-color fables-forth-before fables-store-left-list">
-                        <li><input type="checkbox" id="Rumah">
-                            <label style="margin-left: 5px;" for="rumah">Rumah</label>
-                        </li>
-                        <li><input type="checkbox" id="ruko">
-                            <label style="margin-left: 5px;" for="ruko">Ruko</label>
-                        </li>
-                        <li><input type="checkbox" id="villa"><label style="margin-left: 5px;"
-                                for="villa">Villa</label></li>
-                    </ul>
-                    <label style="margin-left: 40px;" for="kamarTidur">Kamar Tidur</label>
 
-                    <label style="margin-left: 45px;" for="kamarmandi">Kamar Mandi</label>
-                    <div class="col-12 col-lg-4">
-                        <form class="form-container" style="margin-left: 0px;">
-                            <div class="form-group mb-0">
-                                <select id="kamarTidur" class="form-control rounded-0">
-                                    <option value="" selected>Kamar Tidur</option>
-                                    <option value="harga-terendah">1</option>
-                                    <option value="harga-tertinggi" selected>2</option>
-                                    <option value="luas-terkecil">3</option>
-                                    <option value="luas-terbesar">4</option>
-                                </select>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <div class="form-group mb-0">
-                                <select id="kamarMandi" class="form-control rounded-0">
-                                    <option value="" selected>Kamar Mandi</option>
-                                    <option value="harga-terendah" selected>1</option>
-                                    <option value="harga-tertinggi">2</option>
-                                    <option value="luas-terkecil">3</option>
-                                    <option value="luas-terbesar">4</option>
-                                </select>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                        </form>
-                    </div> --}}
-                    {{-- <button type="submit"
-                        class="btn btn-block fables-second-background-color rounded-0 white-color white-color-hover p-2 font-15 "
-                        style="color: #000; margin-bottom: 0;">Filter</button> --}}
 
-                    {{-- <h2 class="font-16 semi-font fables-forth-text-color fables-light-gary-background  p-3 my-4">Top
-                        Properti</h2>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit7.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 280 JT</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit1.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 350 JT</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit2.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 280 JT</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit3.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 350 JT</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit4.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 280 JT</p>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-4 pr-0">
-                            <a href="#"><img src="/assets/pages/Home/unit5.jpg" alt="" class="w-100"></a>
-                        </div>
-                        <div class="col-8">
-                            <a href="#"
-                                class="fables-main-text-color font-14 semi-font fables-second-hover-color store-card-text"
-                                style="text-decoration: none;">Perumahan Inti Sari</a>
-                            <p class="font-weight-bold fables-second-text-color ">Rp. 350 JT</p>
-                        </div>
-                    </div> --}}
-                </div>
+            <!--====== App Content ======-->
+            <div class="app-content">
 
-                <div class="col-12 col-md-8 col-lg-9">
-                    <div class="row">
-                        @foreach ($filteredUnits as $unit)
-                            <div class="col-12 col-sm-6 col-lg-3 fables-product-block" style="margin-bottom: 20px;">
-                                <div class="property-item rounded overflow-hidden"
-                                    style="margin-right: 0; width: 240px; border: 1px solid #c0c0c0;">
-                                    <div class="position-relative overflow-hidden">
-                                        <a href="{{ route('unit.show.user', $unit->id) }}" class="stretched-link"></a>
-                                        <img class="img-fluid" style="width: 300px; height:180px;"
-                                            src="{{ asset('storage/' . $unit->image) }}" alt="">
-                                        <div class=" rounded text-white position-absolute start-0 top-0 m-3 py-1 px-2"
-                                            style="background-color: #0C40E8">
-                                            @foreach ($unit->statuses as $status)
-                                                <li>
-                                                    {{ $status->name }}
-                                                </li>
-                                            @endforeach
+                <!--====== Section 1 ======-->
+                <div class="u-s-p-y-90">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="shop-p">
+                                    <div class="shop-p__toolbar u-s-m-b-30">
+
+                                        <div class="shop-p__tool-style">
+                                            <div class="tool-style__group u-s-m-b-8">
+
+                                                <span class="js-shop-filter-target" data-side="#side-filter">Filters</span>
+
+                                                <span class="js-shop-grid-target is-active">Grid</span>
+
+                                                <span class="js-shop-list-target">List</span>
+                                            </div>
                                         </div>
-                                        <div class="bg-white rounded-top  position-absolute start-0 bottom-0 mx-3 pt-1 px-2"
-                                            style="color: #0C40E8">{{ $unit->properties->types->name }}</div>
                                     </div>
-                                    <div class="p-0 pb-0" style="margin-left: 10px;">
-                                        <h5 class="mb-1 mt-3">Rp. {{ $unit->price }}</h5>
-                                        <p>{{ $unit->title }}</p>
-                                        <p><i
-                                                class="fa fa-map-marker-alt me-2"></i>{{ implode(', ',$unit->properties->regencies()->pluck('name')->toArray()) }}
-                                        </p>
+                                    <div class="shop-p__collection">
+                                        <div class="row is-grid-active">
+                                            @foreach ($filteredUnits as $unit)
+                                                <a href="{{ route('unit.show.user', $unit->id) }}" class="stretched-link">
+                                                    <div class="col-lg-3 col-md-4 col-sm-6">
+                                                        <div class="product-m">
+                                                            <div class="product-m__thumb">
+
+                                                                <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                                    href="{{ route('unit.show.user', $unit->id) }}">
+
+                                                                    <img class="aspect__img"
+                                                                        src="{{ asset('storage/' . $unit->image) }}"
+                                                                        alt=""></a>
+
+                                                                <div class="product-m__add-cart">
+
+                                                                    <a class="btn--e-brand" data-modal="modal"
+                                                                        data-modal-id="#add-to-cart">Lihat Selengkapnya</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-m__content">
+                                                                <div class="product-m__category">
+
+                                                                    <a
+                                                                        href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a>
+                                                                </div>
+                                                                <div class="product-m__name">
+
+                                                                    <a
+                                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a>
+                                                                </div>
+
+                                                                <div class="product-m__price">Rp.
+                                                                    {{ number_format($unit->price, 2) }}jt</div>
+                                                                <div class="product-m__hover">
+                                                                    <div class="product-m__preview-description">
+
+                                                                        <span>{{ $unit->description }}</span>
+                                                                    </div>
+                                                                    <div class="product-m__wishlist">
+
+                                                                        <a class="far fa-heart" href="#"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            title="Add to Wishlist"></a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            @endforeach
+
+
+                                        </div>
                                     </div>
-                                    <div class="d-flex border-top" style="width: 240px;">
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-bath me-2"></i>{{ $unit->specifications->bathroom }}</small>
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-bed me-2"></i>{{ $unit->specifications->bedroom }}</small>
-                                        <small class="flex-fill text-center border-end py-2"><i
-                                                class="fa fa-ruler-combined me-2"></i>{{ $unit->specifications->surface_area }}</small>
-                                        <small class="flex-fill text-center py-2"><i
-                                                class="fa fa-square me-2"></i>{{ $unit->specifications->building_area }}</small>
+                                    <div class="u-s-p-y-60">
+
+                                        <!--====== Pagination ======-->
+                                        <ul class="shop-p__pagination">
+                                            <li class="is-active">
+
+                                                <a href="shop-grid-full.html">1</a>
+                                            </li>
+                                            <li>
+
+                                                <a href="shop-grid-full.html">2</a>
+                                            </li>
+                                            <li>
+
+                                                <a href="shop-grid-full.html">3</a>
+                                            </li>
+                                            <li>
+
+                                                <a href="shop-grid-full.html">4</a>
+                                            </li>
+                                            <li>
+
+                                                <a class="fas fa-angle-right" href="shop-grid-full.html"></a>
+                                            </li>
+                                        </ul>
+                                        <!--====== End - Pagination ======-->
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
                 </div>
-                {{-- <div aria-label="Page-navigation">
-                    {{ $filteredUnits->links() }}
-                </div> --}}
+                <!--====== End - Section 1 ======-->
             </div>
+            <!--====== End - App Content ======-->
+
+
+
+            <!--====== Side Filters ======-->
+            <div class="shop-a" id="side-filter">
+                <div class="shop-a__wrap">
+                    <div class="shop-a__inner gl-scroll">
+                        <form action="{{ route('unit.search.user') }}" method="GET" role="search">
+                            <div class="shop-w-master">
+                                <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
+
+                                    <span>FILTERS</span>
+                                </h1>
+                                <div class="shop-w-master__sidebar">
+
+                                    <div class="u-s-m-b-30">
+                                        <div class="blog-w">
+                                            <form class="blog-search-form">
+
+                                                <label for="post-search"></label>
+
+                                                <input class="input-text input-text--primary-style" type="text"
+                                                    id="post-search" placeholder="Search">
+
+                                                <button class="btn btn--icon fas fa-search" type="submit"></button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">STATUS</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-shipping"
+                                                    data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-shipping">
+
+                                                @foreach ($statuses as $status)
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input"
+                                                            id="status{{ $status->id }}" name="status[]"
+                                                            value="{{ $status->id }}"
+                                                            {{ in_array($status->id, request('status', [])) ? 'checked' : '' }}>
+                                                        <label class="form-check-label">{{ $status->name }}</label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">HARGA</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-price"
+                                                    data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-price">
+                                                <form class="shop-w__form-p">
+                                                    <div class="shop-w__form-p-wrap">
+
+
+
+
+                                                        <div>
+                                                            <label for="price-min"></label>
+
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="number"name="min_price" id="price-min"
+                                                                placeholder="Min"value="{{ request('min_price') }}">
+                                                        </div>
+                                                        <div>
+
+                                                            <label for="price-max"></label>
+
+                                                            <input class="input-text input-text--primary-style"
+                                                                type="number" id="price-max"name="max_price"
+                                                                placeholder=" Max"value="{{ request('max_price') }}">
+                                                        </div>
+                                                        <div>
+
+                                                            <button
+                                                                class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
+                                                                type="submit"></button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="u-s-m-b-30">
+                                        <div class="shop-w">
+                                            <div class="shop-w__intro-wrap">
+                                                <h1 class="shop-w__h">TIPE</h1>
+
+                                                <span class="fas fa-minus shop-w__toggle" data-target="#s-shipping"
+                                                    data-toggle="collapse"></span>
+                                            </div>
+                                            <div class="shop-w__wrap collapse show" id="s-shipping">
+
+                                                <ul class="shop-w__list gl-scroll">
+                                                    @foreach ($types as $type)
+                                                        <div class="check-box__state check-box__state--primary">
+                                                            <input type="checkbox" class="form-check-input"
+                                                                id="type{{ $type->id }} small" name="types[]"
+                                                                value="{{ $type->id }}"
+                                                                {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
+                                                            <label class="check-box__label">{{ $type->name }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Side Filters ======-->
+
+
+            <!--====== Modal Section ======-->
+
+
+            <!--====== Quick Look Modal ======-->
+            <div class="modal fade" id="quick-look">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content modal--shadow">
+
+                        <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-5">
+
+                                    <!--====== Product Breadcrumb ======-->
+                                    <div class="pd-breadcrumb u-s-m-b-30">
+                                        <ul class="pd-breadcrumb__list">
+                                            <li class="has-separator">
+
+                                                <a href="index.hml">Home</a>
+                                            </li>
+                                            <li class="has-separator">
+
+                                                <a href="shop-side-version-2.html">Electronics</a>
+                                            </li>
+                                            <li class="has-separator">
+
+                                                <a href="shop-side-version-2.html">DSLR Cameras</a>
+                                            </li>
+                                            <li class="is-marked">
+
+                                                <a href="shop-side-version-2.html">Nikon Cameras</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--====== End - Product Breadcrumb ======-->
+
+
+                                    <!--====== Product Detail ======-->
+                                    <div class="pd u-s-m-b-30">
+                                        <div class="pd-wrap">
+                                            <div id="js-product-detail-modal">
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-1.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-2.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-3.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-4.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-5.jpg"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-t-15">
+                                            <div id="js-product-detail-modal-thumbnail">
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-1.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-2.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-3.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-4.jpg"
+                                                        alt="">
+                                                </div>
+                                                <div>
+
+                                                    <img class="u-img-fluid" src="images/product/product-d-5.jpg"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--====== End - Product Detail ======-->
+                                </div>
+                                <div class="col-lg-7">
+
+                                    <!--====== Product Right Side Details ======-->
+                                    <div class="pd-detail">
+                                        <div>
+
+                                            <span class="pd-detail__name">Nikon Camera 4k Lens Zoom Pro</span>
+                                        </div>
+                                        <div>
+                                            <div class="pd-detail__inline">
+
+                                                <span class="pd-detail__price">$6.99</span>
+
+                                                <span class="pd-detail__discount">(76% OFF)</span><del
+                                                    class="pd-detail__del">$28.97</del>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <div class="pd-detail__rating gl-rating-style"><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+
+                                                <span class="pd-detail__review u-s-m-l-4">
+
+                                                    <a href="{{ route('unit.show.user', $unit->id) }}">23
+                                                        Reviews</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <div class="pd-detail__inline">
+
+                                                <span class="pd-detail__stock">200 in stock</span>
+
+                                                <span class="pd-detail__left">Only 2 left</span>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+
+                                            <span class="pd-detail__preview-desc">Deskripsi Properti Anda disini Deskripsi
+                                                Properti Anda disini Deskripsi Properti Anda disini Deskripsi Properti Anda
+                                                disini Deskripsi Properti Anda disini Deskripsi Properti Anda
+                                                disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda disiniDeskripsi
+                                                Properti Anda disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda
+                                                disini</span>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <div class="pd-detail__inline">
+
+                                                <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
+
+                                                    <a href="signin.html">Add to Wishlist</a>
+
+                                                    <span class="pd-detail__click-count">(222)</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <div class="pd-detail__inline">
+
+                                                <span class="pd-detail__click-wrap"><i
+                                                        class="far fa-envelope u-s-m-r-6"></i>
+
+                                                    <a href="signin.html">Email me When the price drops</a>
+
+                                                    <span class="pd-detail__click-count">(20)</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <ul class="pd-social-list">
+                                                <li>
+
+                                                    <a class="s-fb--color-hover" href="#"><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                </li>
+                                                <li>
+
+                                                    <a class="s-tw--color-hover" href="#"><i
+                                                            class="fab fa-twitter"></i></a>
+                                                </li>
+                                                <li>
+
+                                                    <a class="s-insta--color-hover" href="#"><i
+                                                            class="fab fa-instagram"></i></a>
+                                                </li>
+                                                <li>
+
+                                                    <a class="s-wa--color-hover" href="#"><i
+                                                            class="fab fa-whatsapp"></i></a>
+                                                </li>
+                                                <li>
+
+                                                    <a class="s-gplus--color-hover" href="#"><i
+                                                            class="fab fa-google-plus-g"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+                                            <form class="pd-detail__form">
+                                                <div class="pd-detail-inline-2">
+                                                    <div class="u-s-m-b-15">
+
+                                                        <!--====== Input Counter ======-->
+                                                        <div class="input-counter">
+
+                                                            <span class="input-counter__minus fas fa-minus"></span>
+
+                                                            <input
+                                                                class="input-counter__text input-counter--text-primary-style"
+                                                                type="text" value="1" data-min="1"
+                                                                data-max="1000">
+
+                                                            <span class="input-counter__plus fas fa-plus"></span>
+                                                        </div>
+                                                        <!--====== End - Input Counter ======-->
+                                                    </div>
+                                                    <div class="u-s-m-b-15">
+
+                                                        <button class="btn btn--e-brand-b-2" type="submit">Lihat
+                                                            Selengkapnya</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="u-s-m-b-15">
+
+                                            <span class="pd-detail__label u-s-m-b-8">Product Policy:</span>
+                                            <ul class="pd-detail__policy-list">
+                                                <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                                    <span>Buyer Protection.</span>
+                                                </li>
+                                                <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                                    <span>Full Refund if you don't receive your order.</span>
+                                                </li>
+                                                <li><i class="fas fa-check-circle u-s-m-r-8"></i>
+
+                                                    <span>Returns accepted if product not as described.</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--====== End - Product Right Side Details ======-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Quick Look Modal ======-->
+
+
+            <!--====== Lihat Selengkapnya Modal ======-->
+            <div class="modal fade" id="add-to-cart">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content modal-radius modal-shadow">
+
+                        <button class="btn dismiss-button fas fa-times" type="button" data-dismiss="modal"></button>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="success u-s-m-b-30">
+                                        <div class="success__text-wrap"><i class="fas fa-check"></i>
+
+                                            <span>Item is added successfully!</span>
+                                        </div>
+                                        <div class="success__img-wrap">
+
+                                            <img class="u-img-fluid" src="images/product/electronic/product1.jpg"
+                                                alt="">
+                                        </div>
+                                        <div class="success__info-wrap">
+
+                                            <span class="success__name">Beats Bomb Wireless Headphone</span>
+
+                                            <span class="success__quantity">Quantity: 1</span>
+
+                                            <span class="success__price">$170.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-12">
+                                    <div class="s-option">
+
+                                        <span class="s-option__text">1 item (s) in your cart</span>
+                                        <div class="s-option__link-box">
+
+                                            <a class="s-option__link btn--e-white-brand-shadow"
+                                                data-dismiss="modal">CONTINUE SHOPPING</a>
+
+                                            <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW
+                                                CART</a>
+
+                                            <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO
+                                                CHECKOUT</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--====== End - Lihat Selengkapnya Modal ======-->
+            <!--====== End - Modal Section ======-->
         </div>
-        </div>
-        <!-- /End page content -->
 
-        {{-- <script>
-            // Fungsi untuk menambahkan format angka dengan tanda titik
-            function formatNumberWithCommas(number) {
-                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            }
+        <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+        <script>
+            window.ga = function() {
+                ga.q.push(arguments)
+            };
+            ga.q = [];
+            ga.l = +new Date;
+            ga('create', 'UA-XXXXX-Y', 'auto');
+            ga('send', 'pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
-            // Ambil elemen input dengan id "inputMin" dan "inputMax"
-            const inputMin = document.getElementById("inputMin");
-            const inputMax = document.getElementById("inputMax");
+        <!--====== Vendor Js ======-->
+        <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
 
-            // Fungsi untuk mengatur nilai input dengan format angka tanda titik saat user mengetik
-            function updateValueWithCommas(event) {
-                const input = event.target;
-                const valueWithoutCommas = input.value.replace(/\./g, ""); // Hilangkan tanda titik dari nilai saat ini
-                const formattedValue = formatNumberWithCommas(valueWithoutCommas);
-                input.value = formattedValue;
-            }
+        <!--====== jQuery Shopnav plugin ======-->
+        <script src="{{ asset('css/Lib/fix/js/jquery.shopnav.js') }}"></script>
 
-            // Tambahkan event listener untuk event "input"
-            inputMin.addEventListener("input", updateValueWithCommas);
-            inputMax.addEventListener("input", updateValueWithCommas);
-        </script> --}}
+        <!--====== App ======-->
+        <script src="{{ asset('css/Lib/fix/js/app.js') }}"></script>
 
+        <!--====== Noscript ======-->
+        <noscript>
+            <div class="app-setting">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="app-setting__wrap">
+                                <h1 class="app-setting__h1">JavaScript dinonaktifkan di browser Anda.</h1>
+
+                                <span class="app-setting__text">Aktifkan JavaScript di browser Anda atau tingkatkan ke
+                                    browser yang mendukung JavaScript.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </noscript>
         <script>
             // Dapatkan elemen checkbox berdasarkan ID
             const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
@@ -308,49 +632,6 @@
                 });
             });
         </script>
-
-        {{-- <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Menangkap elemen input
-                var inputMin = document.getElementById('inputMin');
-                var inputMax = document.getElementById('inputMax');
-
-                // Fungsi untuk memicu pencarian
-                function performSearch() {
-                    var minPrice = inputMin.value;
-                    var maxPrice = inputMax.value;
-
-                    // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
-                    var searchURL = '{{ route('unit.search.user') }}' + '?min_price=' + minPrice + '&max_price=' +
-                        maxPrice;
-                    window.location.href = searchURL;
-                }
-
-                // Menambahkan event listener pada input
-                inputMin.addEventListener('input', function() {
-                    performSearch();
-                });
-
-                inputMax.addEventListener('input', function() {
-                    performSearch();
-                });
-            });
-        </script> --}}
-
-
-
-        <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-        <script src="/css/Lib/assets/vendor/jquery-circle-progress/circle-progress.min.js"></script>
-        <script src="/css/Lib/assets/vendor/popper/popper.min.js"></script>
-        <script src="/css/Lib/assets/vendor/WOW-master/dist/wow.min.js"></script>
-        <script src="/css/Lib/assets/vendor/loadscreen/js/ju-loading-screen.js"></script>
-        <script src="/css/Lib/assets/vendor/range-slider/range-slider.js"></script>
-        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap-4-navbar.js"></script>
-        <script src="/css/Lib/assets/vendor/timeline/jquery.timelify.js"></script>
-        <script src="/css/Lib/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
-        <script src="/css/Lib/assets/custom/js/custom.js"></script>
-
     </body>
 
     </html>
