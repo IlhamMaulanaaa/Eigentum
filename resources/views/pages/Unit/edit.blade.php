@@ -1,421 +1,432 @@
 @extends('layout.main')
+
 @section('content')
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/unit/upload/upload.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
 
-        <link rel="stylesheet" type="text/css"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/pages/profile.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-        <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    </head>
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style.css">
 
-    <body>
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
+    <title>Responsive Regisration Form </title>
+    <style>
+        /* ===== Google Font Import - Poppins ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
-        <div class="form-container" style="margin-top: 90px; height:auto;">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-            <div class="left-section">
-               <form method="post" action="{{ route('unit.update.developer', $unit->id) }}" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
-                  <div class="form-group">
-                      <div class="form-group">
-                          <label for="" class="form-label">Unit</label>
-                          <input type="text" class="form-control" id="title" name="title"
-                              value="{{ old('title', $unit->title) }}" required>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                          <label for="" class="form-label">Description</label>
-                          <input type="text" class="form-control" id="description"
-                              name="description"value="{{ old('description', $unit->description) }}" required>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                          <label for="" class="form-label">Price</label>
-                          <input type="number" class="form-control" id="price"
-                              name="price"value="{{ old('price', $unit->price) }}" required>
-                      </div>
-                      <br>
-                      <div class="form-group">
-                          <label for="" class="form-label">Status</label>
-                          @foreach ($statuses as $statusItem)
-                              <div class="form-check">
-                                  <input class="form-check-input @error('status_id') is-invalid @enderror"
-                                      type="checkbox" name="status_id[]" value="{{ $statusItem->id }}"
-                                      id="status_{{ $statusItem->id }}"
-                                      {{ in_array($statusItem->id, old('status_id', $unit->statuses->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                  <label class="form-check-label"
-                                      for="status_{{ $statusItem->id }}">{{ $statusItem->name }}</label>
-                              </div>
-                          @endforeach
-                      </div>
-                      <br>
-                      <div class="col">
-                          <div class="form-group">
-                              <label for="image" class="form-label">Base</label>
-                              @if ($unit->image)
-                                  <div class="mb-3">
-                                      <img src="{{ asset('storage/' . $unit->image) }}"
-                                          alt="{{ $unit->image }}" class="img-thumbnail" width="360">
-                                  </div>
-                              @endif
-                              <input type="file" class="form-control" id="image" name="image">
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div class="form-group">
-                      <div class="form-group mb-4">
-                          <label for="livingroomimg" class="form-label">Living room</label>
-                          <div class="form-group row g-2">
-                              <div class="col-auto">
-                                  @php
-                                      $livingroomImgs = is_string($unit->images->livingroomimg) ? explode('|', $unit->images->livingroomimg) : [];
-                                  @endphp
-                                  @foreach ($livingroomImgs as $index => $livingroomImg)
-                                      <div class="image-container my-2">
-                                          <img src="{{ asset('storage/' . $livingroomImg) }}"
-                                              alt="{{ $livingroomImg }}" class="img-thumbnail"
-                                              width="200">
-                                      </div>
-                                      <input type="file" class="form-control noscroll"
-                                          id="livingroomimg_update{{ $index }}"
-                                          name="livingroomimg_update[{{ $index }}]" multiple>
-                                  @endforeach
-                              </div>
-                              <div class="livingroomimg row g-2">
-                                  <div class="col-auto">
-                                      <input type="file" class="form-control noscroll"
-                                          id="livingroomimg_insert" name="livingroomimg_insert[]" multiple>
-                                  </div>
-                                  <div class="input-group-btn col-auto">
-                                      <button class="btn btn-success btn-livingroomimg"
-                                          type="button">Add</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+        .tutup {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
 
+        .container {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 30px;
+            margin: 0 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
 
-                      <div class="form-group mb-4">
-                          <label for="bedroomimg" class="form-label">Bedroom</label>
-                          <div class="form-group row g-2">
-                              <div class="col-auto">
-                                  @php
-                                      $bedroomImgs = is_string($unit->images->bedroomimg) ? explode('|', $unit->images->bedroomimg) : [];
-                                  @endphp
-                                  @foreach ($bedroomImgs as $index => $bedroomImg)
-                                      <div class="image-container my-2">
-                                          <img src="{{ asset('storage/' . $bedroomImg) }}"
-                                              alt="{{ $bedroomImg }}" class="img-thumbnail" width="200">
-                                      </div>
-                                      <input type="file" class="form-control noscroll"
-                                          id="bedroomimg_update{{ $index }}"
-                                          name="bedroomimg_update[{{ $index }}]" multiple>
-                                  @endforeach
-                              </div>
-                              <div class="bedroomimg row g-2">
-                                  <div class="col-auto">
-                                      <input type="file" class="form-control noscroll"
-                                          id="bedroomimg_insert" name="bedroomimg_insert[]" multiple>
-                                  </div>
-                                  <div class="input-group-btn col-auto">
-                                      <button class="btn btn-success btn-bedroomimg"
-                                          type="button">Add</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+        .container header {
+            position: relative;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+        }
 
-                      <div class="form-group mb-4">
-                          <label for="bathroomimg" class="form-label">Bathroom</label>
-                          <div class="form-group row g-2">
-                              <div class="col-auto">
-                                  @php
-                                      $bathroomImgs = is_string($unit->images->bathroomimg) ? explode('|', $unit->images->bathroomimg) : [];
-                                  @endphp
-                                  @foreach ($bathroomImgs as $index => $bathroomImg)
-                                      <div class="image-container my-2">
-                                          <img src="{{ asset('storage/' . $bathroomImg) }}"
-                                              alt="{{ $bathroomImg }}" class="img-thumbnail"
-                                              width="200">
-                                      </div>
-                                      <input type="file" class="form-control noscroll"
-                                          id="bathroomimg_update{{ $index }}"
-                                          name="bathroomimg_update[{{ $index }}]" multiple>
-                                  @endforeach
-                              </div>
-                              <div class="bathroomimg row g-2">
-                                  <div class="col-auto">
-                                      <input type="file" class="form-control noscroll"
-                                          id="bathroomimg_insert" name="bathroomimg_insert[]" multiple>
-                                  </div>
-                                  <div class="input-group-btn col-auto">
-                                      <button class="btn btn-success btn-bathroomimg"
-                                          type="button">Add</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+        .container header::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            width: 27px;
+            border-radius: 8px;
+            background-color: #0c40e8;
+        }
 
-                      <div class="form-group mb-4">
-                          <label for="kitchenimg" class="form-label">Kitchen</label>
-                          <div class="form-group row g-2">
-                              <div class="col-auto">
-                                  @php
-                                      $kitchenImgs = is_string($unit->images->kitchenimg) ? explode('|', $unit->images->kitchenimg) : [];
-                                  @endphp
-                                  @foreach ($kitchenImgs as $index => $kitchenImg)
-                                      <div class="image-container my-2">
-                                          <img src="{{ asset('storage/' . $kitchenImg) }}"
-                                              alt="{{ $kitchenImg }}" class="img-thumbnail"
-                                              width="200">
-                                      </div>
-                                      <input type="file" class="form-control noscroll"
-                                          id="kitchenimg_update{{ $index }}"
-                                          name="kitchenimg_update[{{ $index }}]" multiple>
-                                  @endforeach
-                              </div>
-                              <div class="kitchenimg row g-2">
-                                  <div class="col-auto">
-                                      <input type="file" class="form-control noscroll"
-                                          id="kitchenimg_insert" name="kitchenimg_insert[]" multiple>
-                                  </div>
-                                  <div class="input-group-btn col-auto">
-                                      <button class="btn btn-success btn-kitchenimg"
-                                          type="button">Add</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                      
-                      <div class="form-group mb-4">
-                          <label for="etcimg" class="form-label">Etc</label>
-                          <div class="form-group row g-2">
-                              <div class="col-auto">
-                                  @php
-                                      $etcImgs = is_string($unit->images->etcimg) ? explode('|', $unit->images->etcimg) : [];
-                                  @endphp
-                                  @foreach ($etcImgs as $index => $etcImg)
-                                      <div class="image-container my-2">
-                                          <img src="{{ asset('storage/' . $etcImg) }}"
-                                              alt="{{ $etcImg }}" class="img-thumbnail"
-                                              width="200">
-                                      </div>
-                                      <input type="file" class="form-control noscroll"
-                                          id="etcimg_update{{ $index }}"
-                                          name="etcimg_update[{{ $index }}]" multiple>
-                                  @endforeach
-                              </div>
-                              <div class="etcimg row g-2">
-                                  <div class="col-auto">
-                                      <input type="file" class="form-control noscroll"
-                                          id="etcimg_insert" name="etcimg_insert[]" multiple>
-                                  </div>
-                                  <div class="input-group-btn col-auto">
-                                      <button class="btn btn-success btn-etcimg" type="button">Add</button>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div class="form-group row">
-                      <div class="form-group col-auto mb-2">
-                          <label for="" class="form-label">Bedroom</label>
-                          <input class="form-control" id="bedroom" name="bedroom"
-                              value="{{ $unit->specifications->bedroom }}">
-                      </div>
-                      <div class="form-group col-auto mb-2">
-                          <label for="" class="form-label">Bathroom</label>
-                          <input class="form-control" id="bathroom" name="bathroom"
-                              value="{{ $unit->specifications->bathroom }}">
-                      </div>
-                      <div class="form-group col-auto mb-2">
-                          <label for="" class="form-label">Surface area</label>
-                          <input class="form-control" id="surface_area" name="surface_area"
-                              value="{{ $unit->specifications->surface_area }}">
-                      </div>
-                      <div class="form-group col-auto mb-2">
-                          <label for="" class="form-label">Building area</label>
-                          <input class="form-control" id="building_area" name="building_area"
-                              value="{{ $unit->specifications->building_area }}">
-                      </div>
-                      <div class="form-group col-auto mb-2">
-                          <label for="" class="form-label">Floor</label>
-                          <input class="form-control" id="floor" name="floor"
-                              value="{{ $unit->specifications->floor }}">
-                      </div>
-                  </div>
-                  <br>
-                  <div class="float-end">
-                      <a type="button" class="btn btn-warning"
-                          href="{{ route('unit.show', $unit->id) }}">Back</a>
-                      <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
-              </form>
+        .container form {
+            position: relative;
+            margin-top: 16px;
+            min-height: 490px;
+            background-color: #fff;
+            overflow: hidden;
+        }
 
+        .container form .form {
+            position: absolute;
+            background-color: #fff;
+            transition: 0.3s ease;
+        }
+
+        .container form .form.second {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(100%);
+        }
+
+        form.secActive .form.second {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+
+        form.secActive .form.first {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-100%);
+        }
+
+        .container form .title {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .container form .fields {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        form .fields .input-field {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+
+        .input-field label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #2e2e2e;
+        }
+
+        .input-field input,
+        select {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
+
+        .input-field input :focus,
+        .input-field select:focus {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+        }
+
+        .input-field select,
+        .input-field input[type="date"] {
+            color: #707070;
+        }
+
+        .input-field input[type="date"]:valid {
+            color: #333;
+        }
+
+        .container form button,
+        .backBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0;
+            background-color: #0c40e8;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+
+        .container form .btnText {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        form button:hover {
+            background-color: #265df2;
+        }
+
+        form button i,
+        form .backBtn i {
+            margin: 0 6px;
+        }
+
+        form .backBtn i {
+            transform: rotate(180deg);
+        }
+
+        form .buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        form .buttons button,
+        .backBtn {
+            margin-right: 14px;
+        }
+
+        @media (max-width: 750px) {
+            .container form {
+                overflow-y: scroll;
+            }
+
+            .container form::-webkit-scrollbar {
+                display: none;
+            }
+
+            form .fields .input-field {
+                width: calc(100% / 2 - 15px);
+            }
+        }
+
+        @media (max-width: 550px) {
+            form .fields .input-field {
+                width: 100%;
+            }
+        }
+
+        .masuk p {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #151111;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .masuk a {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #151111;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+        
+    </style>
+</head>
+
+<body>
+    
+<div class="tutup">
+    <div class="container">
+        <header>Upload Unit</header>
+        <div class="masuk" style="margin-top: 5px;">
+            <p>Ingin membatalkan perubahan? <a class="linkmasuk" style=" text-decoration: none;"
+                    href="">Kembali</a></p>
+        </div>
+
+        <form >
+            <div class="form first" id="tab1">
+                <div class="details personal">
+                    <div class="fields">
+                        <div class="input-field">
+                            <label for="title" class="form-label">Unit</label>
+                            <input class="form-control ">
+                            {{-- @error('title')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+
+                        <div class="input-field">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control "></textarea>
+                            {{-- @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+
+                        <div class="input-field">
+                            <label for="price" class="form-label">Harga</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        <div class="input-field">
+                            <label for="status_id" class="form-label">Status</label>
+                            <div style="height: 30px;">
+                                <input type="checkbox" id="dijual" name="status" value="dijual">
+                                <label for="dijual" style="text-align: center; justify-content:center; align-items:center; display: flex; margin-top: -36px; margin-left: -100px">Dijual</label>
+                            </div>
+                            <div style="height: 50px;">
+                                <input type="checkbox" id="dijual" name="status" value="dijual">
+                                <label for="dijual" style="text-align: center; justify-content:center; align-items:center; display: flex; margin-top: -36px; margin-left: -93px">Disewa</label>
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <label for="nib" class="form-label">Unit</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_nib"
+                                name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="npwp" class="form-label">Ruang Tamu</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror"
+                                id="license_npwp" name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="sbu" class="form-label">Kamar Tidur</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_sbu"
+                                name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="sbu" class="form-label">Kamar Mandi</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_sbu"
+                                name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="sbu" class="form-label">Dapur</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_sbu"
+                                name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="sbu" class="form-label">Etc..</label>
+                            <input style="padding-top: 8px;" type="file"
+                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_sbu"
+                                name="license[]" multiple>
+                            
+                        </div>
+                        <div class="input-field">
+                            <label for="price" class="form-label">Kamar Tidur</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        <div class="input-field">
+                            <label for="price" class="form-label">Kamar Mandi</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        <div class="input-field">
+                            <label for="price" class="form-label">Luas Tanah</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        <div class="input-field">
+                            <label for="price" class="form-label">Luas Bangunan</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        <div class="input-field">
+                            <label for="price" class="form-label">Lantai</label>
+                            <input type="number" class="form-control }">
+                            {{-- @error('price')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror --}}
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="details ID" style="margin-top: -20px;">
+                    <button class="nextBtn" type="submit">
+                        <span class="btnText">Submit</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
             </div>
 
-        </div>
-        <script>
-            function defaultBtnActive(wrapperNumber) {
-                const wrapper = document.querySelector(".wrapper" + wrapperNumber);
-                const fileName = wrapper.querySelector(".file-name");
-                const defaultBtn = document.querySelector("#default-btn" + wrapperNumber);
-                const customBtn = wrapper.querySelector(".custom-btn");
-                const MembatalkanBtn = wrapper.querySelector("#Membatalkan-btn i");
-                const img = wrapper.querySelector("img");
-                let regExp = /[0-9a-zA-Z\^\&\'\@\{\}\[\]\,\$\=\!\-\#\(\)\.\%\+\~\_ ]+$/;
 
-                defaultBtn.click();
-
-                defaultBtn.addEventListener("change", function() {
-                    const file = this.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function() {
-                            const result = reader.result;
-                            img.src = result;
-                            wrapper.classList.add("active");
-                        };
-                        MembatalkanBtn.addEventListener("click", function() {
-                            img.src = "";
-                            wrapper.classList.remove("active");
-                        });
-                        reader.readAsDataURL(file);
-                    }
-                    if (this.value) {
-                        let valueStore = this.value.match(regExp);
-                        fileName.textContent = valueStore;
-                    }
-                });
-            }
+           
+        </form>
+    </div>
+</div>
 
 
-            function goBack() {
-                window.history.back();
-            }
-            // Function to show the next section and hide the current section
-            function nextSection(nextIndex) {
-                const currentSection = document.getElementById(`section${nextIndex - 1}`);
-                const nextSection = document.getElementById(`section${nextIndex}`);
-
-                if (currentSection && nextSection) {
-                    currentSection.classList.remove('current');
-                    nextSection.classList.add('current');
+    
+    {{-- <script>
+        $(document).ready(function() {
+            $('.form-control, .form-select, .form-control, .form-check-input').on('focus', function() {
+                $(this).removeClass('is-invalid');
+                $(this).next('.invalid-feedback').remove();
+                if ($(this).hasClass('form-check-input')) {
+                    $(this).closest('.form-check').find('.invalid-feedback').remove();
                 }
-            }
-
-            // Function to show the previous section and hide the current section
-            function previousSection(previousIndex) {
-                const currentSection = document.getElementById(`section${previousIndex}`);
-                const previousSection = document.getElementById(`section${previousIndex - 1}`);
-
-                if (currentSection && previousSection) {
-                    currentSection.classList.remove('current');
-                    previousSection.classList.add('current');
-                }
-            }
-        </script>
-        <script>
-            function handleImageUpload(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        var uploadedImage = input.parentNode.querySelector('img');
-                        uploadedImage.setAttribute('src', e.target.result);
-                        uploadedImage.style.display = 'block';
-                    }
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                var uploadInputs = document.querySelectorAll('input[type="file"]');
-                Array.prototype.forEach.call(uploadInputs, function(input) {
-                    input.addEventListener('change', function() {
-                        handleImageUpload(this);
-                    });
-                });
             });
-            $('.btn-livingroomimg').on('click', function() {
-                btnsuccess('.livingroomimg');
+        });
+    </script> --}}
+
+    
+    <script>
+        let currentTab = 1;
+    
+        function showTab(tabNumber) {
+            const tabs = document.querySelectorAll('.form');
+            tabs.forEach(tab => {
+                tab.style.display = 'none';
             });
+            document.getElementById(`tab${tabNumber}`).style.display = 'block';
+        }
+    
+        function nextTab() {
+            currentTab++;
+            showTab(currentTab);
+        }
+    
+        function prevTab() {
+            currentTab--;
+            showTab(currentTab);
+        }
+    
+        showTab(currentTab);
+    </script>
+    
+    
 
-            $('.btn-bedroomimg').on('click', function() {
-                btnsuccess('.bedroomimg');
-            });
+</body>
 
-            $('.btn-bathroomimg').on('click', function() {
-                btnsuccess('.bathroomimg');
-            });
+</html>
 
-            $('.btn-kitchenimg').on('click', function() {
-                btnsuccess('.kitchenimg');
-            });
-
-            $('.btn-etcimg').on('click', function() {
-                btnsuccess('.etcimg');
-            });
-
-            function btnsuccess(elementClass) {
-                var html =
-                    '<div class="remove"><label for="' + elementClass.substr(1) +
-                    '">Upload Opsional 1:</label><div class="upload-container"><label class="upload-icon" for="' + elementClass
-                    .substr(1) + '"><i class="fas fa-upload"></i><input type="file" id="' + elementClass.substr(1) +
-                    '" name="' + elementClass.substr(1) +
-                    '[]" multiple style="display:none;"></label><div class="upload-details"><h3>Unggah Gambar</h3><p>Pilih gambar untuk diunggah</p><button class="btn btn-danger btn-' +
-                    elementClass.substr(1) + 'img" type="button">Remove</button></div></div></div>';
-                $(elementClass).append(html);
-            }
-
-            $("body").on("click", ".btn-danger", function() {
-                $(this).parents(".remove").remove();
-            });
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-        </script>
-
-    </body>
-
-    </html>
 @endsection

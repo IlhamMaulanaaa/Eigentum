@@ -1,85 +1,378 @@
 @extends('layout.main')
 
 @section('content')
-    <!DOCTYPE html>
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    </head>
 
-    <body>
-        <section class="vh-10" style="background-color: #f4f5f7;">
-            <div class="container py-5 h-100">
-                <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 120px;">
-                    <div class="col col-lg-6 mb-4 mb-lg-0">
-                        <div class="card mb-5" style="border-radius: .5rem;">
-                            <div class="row g-0">
-                                <div class="col-md-4 gradient-custom text-center text-white"
-                                    style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                                    @if (Auth::user()->role == 'user')
-                                        @if (Auth::user()->avatar)
-                                            <img src="{{ Auth::user()->avatar }}" alt="Avatar" class="img-fluid my-5"
-                                                style="width: 80px;" />
-                                        @else
-                                            <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}"
-                                                alt="Default Profile Picture">
-                                        @endif
-                                    @else
-                                        <img src="{{ asset('/assets/nav/defaultPhotoProfile.jpg') }}"
-                                            alt="Default Profile Picture">
-                                    @endif
-                                    <h5 class="text-danger">{{ $user->name }}</h5> <!-- Adding text-danger class -->
-                                    <p class="text-danger">Web Designer</p> <!-- Adding text-danger class -->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <meta name="LIHATport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="images/favicon.png" rel="shortcut icon">
 
-                                </div>
-                            </div>
+    <!--====== Google Font ======-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
-                            <div class="col-md-8">
-                                <div class="card-body p-4">
-                                    <h6>Information</h6>
-                                    <hr class="mt-0 mb-4">
-                                    <div class="row pt-1">
-                                        <div class="col-6 mb-3">
-                                            <h6>Email</h6>
-                                            <p class="text-muted">{{ $user->email }}</p>
-                                        </div>
-                                        <div class="col-6 mb-3">
-                                            <h6>Phone</h6>
-                                            <p class="text-muted">123 456 789</p>
-                                        </div>
-                                    </div>
-                                    <h6>Projects</h6>
-                                    <hr class="mt-0 mb-4">
-                                    <div class="row pt-1">
-                                        <div class="col-6 mb-3">
-                                            <h6>Role</h6>
-                                            <p class="text-muted">{{ $user->role }}</p>
-                                        </div>
-                                        {{-- <div class="col-6 mb-3">
-                       <h6>Most Viewed</h6>
-                       <p class="text-muted">Dolor sit amet</p>
-                     </div> --}}
-                                    </div>
-                                    <div class="d-flex justify-content-start">
-                                        <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
-                                        <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
-                                        <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
-                                    </div>
-                                </div>
+    <!--====== Vendor Css ======-->
+    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/vendor.css') }}">
+
+    <!--====== Utility-Spacing ======-->
+    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/utility.css') }}">
+
+    <!--====== App ======-->
+    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/app.css') }}">
+</head>
+<body class="config">
+    
+    <div id="app">
+
+
+        <!--====== App Content ======-->
+        <div class="app-content">
+
+            <!--====== Section 1 ======-->
+            <div class="u-s-p-t-100">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
+
+                                        <a href="index.html">Home</a></li>
+                                    <li class="is-marked">
+
+                                        <a href="dashboard.html">Akun Saya</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-        </section>
-    </body>
 
-    </html>
+
+            <div class="u-s-p-y-60">
+
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-12">
+                                    <div class="dash__box dash__box--bg-white dash__box--shadow u-s-m-b-30">
+                                        <div class="dash__pad-1">
+                                            <span class="dash__text u-s-m-b-16">Halo, Supajono</span>
+                                            <ul class="dash__f-list">
+                                                <li>
+                                                    <a class="dash-active tab-link" data-tab="account" href="javascript:void(0);" onclick="openTab('account')">Kelola Akun Saya</a>
+                                                </li>
+                                                <li>
+                                                    <a class="tab-link" data-tab="profilepribadi" href="javascript:void(0);" onclick="openTab('profilepribadi')">Profile Pribadi</a>
+                                                </li>
+                                                <li>
+                                                    <a class="tab-link" data-tab="riwayat" href="javascript:void(0);" onclick="openTab('riwayat')">Riwayat</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="dash__box dash__box--bg-white dash__box--shadow dash__box--w">
+                                        <div class="dash__pad-1">
+                                            <ul class="dash__w-list">
+                                                <li>
+                                                    <div class="dash__w-wrap">
+
+                                                        <span class="dash__w-icon dash__w-icon-style-2"><i class="fas fa-clipboard-list"></i></span>
+
+                                                        <span class="dash__w-text">0</span>
+
+                                                        <span class="dash__w-name">Dipesan</span></div>
+                                                </li>
+                                                <li>
+                                                    <div class="dash__w-wrap">
+
+                                                        <span class="dash__w-icon dash__w-icon-style-3"><i class="fas fa-check-circle"></i></span>
+
+                                                        <span class="dash__w-text">0</span>
+
+                                                        <span class="dash__w-name">Aktif</span></div>
+                                                </li>
+                                                <li>
+                                                    <div class="dash__w-wrap">
+
+                                                        <span class="dash__w-icon dash__w-icon-style-1"><i class="fas fa-times"></i></span>
+
+                                                        <span class="dash__w-text">0</span>
+
+                                                        <span class="dash__w-name">Dibatalkan</span></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9 col-md-12">
+                                    <div id="account" class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                        <div class="dash__pad-2">
+                                            <h1 class="dash__h1 u-s-m-b-14">Kelola Akun Saya</h1>
+                                            <span class="dash__text u-s-m-b-30">Dari Dasbor Ini, Anda dapat melihat cuplikan aktivitas akun terkini dan memperbarui informasi akun Anda. Pilih tautan di bawah ini untuk melihat atau mengedit informasi.</span>
+                                            <div class="row">
+                                                <div class="col-lg-4 u-s-m-b-30">
+                                                    <div class="dash__box dash__box--bg-grey dash__box--shadow-2 u-h-100">
+                                                        <div class="dash__pad-3">
+                                                            <h2 class="dash__h2 u-s-m-b-8">PROFILE PRIBADI</h2>
+                                                            <div class="dash__link dash__link--secondary u-s-m-b-8">
+                                                                <a  data-tab="profilepribadi" href="javascript:void(0);" onclick="openTab('profilepribadi')">Edit</a>
+                                                            </div>
+                                                            <span class="dash__text">Suparjono</span>
+                                                            <span class="dash__text">suparjono90@gmail.com</span>
+                                                            <div class="dash__link dash__link--secondary u-s-m-t-8">
+                                                                <a data-modal="modal" data-modal-id="#dash-newsletter">Telah Berlangganan</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div  id="riwayat" class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                            <div class="dash__pad-2">
+                                                <h1 class="dash__h1 u-s-m-b-14">Riwayat</h1>
+    
+                                                <span class="dash__text u-s-m-b-30">Di sini Anda dapat melihat semua riwayat di website ini.</span>
+                                                <form class="m-order u-s-m-b-30">
+                                                    <div class="m-order__select-wrapper">
+    
+                                                        <label class="u-s-m-r-8" for="my-order-sort">Lihat:</label><select class="select-box select-box--primary-style" id="my-order-sort">
+                                                            <option selected>Hari Ini</option>
+                                                            <option>3 Hari Terakhir</option>
+                                                            <option>1 Minggu Terakhir</option>
+                                                            <option>1 Bulan Terakhir</option>
+                                                            <option>Semua Riwayat</option>
+                                                        </select></div>
+                                                </form>
+                                                <div class="m-order__list">
+                                                    <div class="m-order__get">
+                                                        <div class="manage-o__header u-s-m-b-30">
+                                                            <div class="dash-l-r">
+                                                                <div>
+                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order #305423126</div>
+                                                                    <div class="manage-o__text u-c-silver">Tanggal 1 Oct 2023 09:08:37 - 31 Oct 2023 09:08:37</div>
+                                                                </div>
+                                                                <div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="manage-o__description">
+                                                            <div class="description__container">
+                                                                <div class="description__img-wrap">
+    
+                                                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
+                                                                <div class="description-title">Rumah Minimalis</div>
+                                                            </div>
+                                                            <div class="description__info-wrap">
+                                                                <div>
+    
+                                                                    <span class="manage-o__badge badge--processing">Disewa</span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">1</span></span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Total:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">Rp. 900.000.000</span></span></div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="m-order__get">
+                                                        <div class="manage-o__header u-s-m-b-30">
+                                                            <div class="dash-l-r">
+                                                                <div>
+                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order #305423126</div>
+                                                                    <div class="manage-o__text u-c-silver">Tanggal 12 Oct 2023 09:08:37</div>
+                                                                </div>
+                                                                <div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="manage-o__description">
+                                                            <div class="description__container">
+                                                                <div class="description__img-wrap">
+    
+                                                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
+                                                                <div class="description-title">Rumah Minimalis</div>
+                                                            </div>
+                                                            <div class="description__info-wrap">
+                                                                <div>
+    
+                                                                    <span class="manage-o__badge badge--shipped">Dijual</span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">1</span></span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Total:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">Rp. 2.900.000.000</span></span></div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="m-order__get">
+                                                        <div class="manage-o__header u-s-m-b-30">
+                                                            <div class="dash-l-r">
+                                                                <div>
+                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order #305423126</div>
+                                                                    <div class="manage-o__text u-c-silver">Tanggal 12 Oct 2023 09:08:37</div>
+                                                                </div>
+                                                                <div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="manage-o__description">
+                                                            <div class="description__container">
+                                                                <div class="description__img-wrap">
+    
+                                                                    <img class="u-img-fluid" src="images/product/electronic/product3.jpg" alt=""></div>
+                                                                <div class="description-title">Rumah Minimalis</div>
+                                                            </div>
+                                                            <div class="description__info-wrap">
+                                                                <div>
+    
+                                                                    <span class="manage-o__badge badge--delivered">Dibatalkan</span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">1</span></span></div>
+                                                                <div>
+    
+                                                                    <span class="manage-o__text-2 u-c-silver">Total:
+    
+                                                                        <span class="manage-o__text-2 u-c-secondary">Rp. 2.900.000.000</span></span></div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div id="profilepribadi" class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white">
+                                                <div class="dash__pad-2">
+                                                    <h1 class="dash__h1 u-s-m-b-14">Edit Profile Pribadi</h1>
+        
+                                                    <span class="dash__text u-s-m-b-30">Looks like you haven't update your profile</span>
+                                                    <div class="dash__link dash__link--secondary u-s-m-b-30">
+        
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <form class="dash-edit-p">
+
+
+                                                                <div class="gl-inline">
+                                                                    <div class="u-s-m-b-30">
+        
+                                                                        <label class="gl-label" for="reg-fname">NAMA</label>
+        
+                                                                        <input class="input-text input-text--primary-style" type="text" id="reg-fname" ></div>
+                                                                    <div class="u-s-m-b-30">
+        
+                                                                        <label class="gl-label" for="reg-lname">EMAIL</label>
+        
+                                                                        <input class="input-text input-text--primary-style" type="text" id="reg-lname" ></div>
+                                                                </div>
+        
+                                                                <button class="btn btn--e-brand-b-2" type="submit">SIMPAN</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
+        </div>
+        <!--====== End - App Content ======-->
+
+    </div>
+    <!--====== End - Main App ======-->
+
+
+    <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+    <script>
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+    <!--====== Vendor Js ======-->
+    <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
+
+    <!--====== jQuery Shopnav plugin ======-->
+    <script src="{{ asset('css/Lib/fix/js/jquery.shopnav.js') }}"></script>
+
+    <!--====== App ======-->
+    <script src="{{ asset('css/Lib/fix/js/app.js') }}"></script>
+
+    <!--====== Noscript ======-->
+    <noscript>
+        <div class="app-setting">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="app-setting__wrap">
+                            <h1 class="app-setting__h1">JavaScript dinonaktifkan di browser Anda.</h1>
+
+                            <span class="app-setting__text">Aktifkan JavaScript di browser Anda atau tingkatkan ke browser yang mendukung JavaScript.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </noscript>
+    <script>
+        function openTab(tabId) {
+        // Ambil semua tab-link
+        var tabLinks = document.querySelectorAll('.tab-link');
+        
+        // Sembunyikan semua tab-content dan nonaktifkan semua tab-link
+        tabLinks.forEach(function (tabLink) {
+            var tabContentId = tabLink.getAttribute('data-tab');
+            var tabContent = document.getElementById(tabContentId);
+            tabContent.style.display = 'none';
+            tabLink.classList.remove('dash-active');
+        });
+        
+        // Tampilkan tab yang dipilih dan aktifkan tab-link yang sesuai
+        var selectedTab = document.getElementById(tabId);
+        selectedTab.style.display = 'block';
+        var selectedTabLink = document.querySelector('.tab-link[data-tab="' + tabId + '"]');
+        selectedTabLink.classList.add('dash-active');
+    }
+
+    // Inisialisasi tab pertama saat halaman dimuat
+    openTab('account');
+    </script>
+</body>
+</html>
+
 @endsection
