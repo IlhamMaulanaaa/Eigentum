@@ -323,7 +323,7 @@ class DeveloperController extends Controller
             $developer->villages()->attach($request->villages_id);
 
             $developer = Developer::where('id', '=', $developer->id)->get();
-
+            Auth::login($user);
             return redirect('/');
         } catch (Exception $e) {
             return $e;

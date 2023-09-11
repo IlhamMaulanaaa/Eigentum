@@ -171,7 +171,7 @@ class AgentController extends Controller
 
             $agent = Agent::where('id', '=', $agent->id)->get();
 
-
+            Auth::login($user);
             return redirect('/');
         } catch (Exception $e) {
             return $e;

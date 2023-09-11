@@ -89,9 +89,9 @@ class AuthController extends Controller
         } elseif (Auth::attempt($datalogin) && Auth::user()->role == "agent") {
             return redirect('/agent/dashboard')->with('success', 'Berhasil Login');
         } elseif (Auth::attempt($datalogin) && Auth::user()->role == "user") {
-            return redirect('/beranda')->with('success', 'Berhasil Login');
+            return redirect(route('beranda'))->with('success', 'Berhasil Login');
         } else {
-            return redirect('/beranda');
+            return redirect(back());
         }
     }
 

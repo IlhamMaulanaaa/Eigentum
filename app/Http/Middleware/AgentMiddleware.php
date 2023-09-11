@@ -21,10 +21,10 @@ class AgentMiddleware
 
             if ($agentStatus === 'approved') {
                 return $next($request);
-            }else {
-                return redirect('/beranda')->with('rejected', true);
+            } else {
+                return redirect(route('beranda'))->with('rejected', true);
             }
-        } 
-        return redirect('/beranda');
+        }
+        return redirect(route('beranda'));
     }
 }
