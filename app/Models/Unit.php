@@ -26,7 +26,7 @@ class Unit extends Model
         'deleted_at',
     ];
 
-    public function agents()
+    public function agents(): BelongsToMany
     {
         return $this->belongsToMany(Agent::class, 'unit_agents',  'unit_id', 'agent_id');
     }

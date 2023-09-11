@@ -299,42 +299,53 @@ class AgentController extends Controller
         $agent = auth()->user(); // Assuming you have agent authentication
 
         // Attach agent to the unit with additional data (status) in pivot table
-        $unit->agents()->attach($agent->id, ['status_unit' => 'proses penawaran penawaran']);
+        $unit->agents()->attach($agent->id, ['status_unit' => 'proses penawaran', 'agent_id' => $agent->id]);
+
+        // Set the unit status to 'proses penawaran'
+        $unit->update(['status_unit' => 'proses penawaran']);
 
         return redirect()->back()->with('success', 'Offer submitted successfully.');
     }
 
-
-
-    public function acceptOffer(Request $request, $id)
+    public function acceptOffer(Request $request, $unitId)
     {
-        $unit = Unit::find($id);
+        $unit = Unit::find($unitId);
 
-        // Update status in the pivot table for the authenticated agent
-        $unit->agents()->sync(
-            [
-                auth()->user()->id => ['status_unit' => 'approved']
-            ],
-            false
-        );
+        if ($unit) {
+            // Update status in the pivot table for the unit using the agent_id
+            $agent = auth()->user();
+            $unit->agents()->updateExistingPivot($agent->id, ['status_unit' => 'approved']);
 
-        return redirect()->route('developer.dashboard')->with('success', 'Offer accepted.');
+            // Set the unit status to 'approved'
+            $unit->update(['status_unit' => 'approved']);
+
+            return redirect()->route('developer.dashboard')->with('success', 'Offer accepted.');
+        } else {
+            return redirect()->back()->with('error', 'Unit not found.');
+        }
     }
 
-
-    public function rejectOffer($id)
+    public function rejectOffer(Request $request, $unitId)
     {
-        $unit = Unit::find($id);
+        $unit = Unit::find($unitId);
 
-        $unit->agents()->sync(
-            [
-                auth()->user()->id => ['status_unit' => 'reject']
-            ],
-            false
-        );
+        if ($unit) {
+            // Update status in the pivot table for the unit using the agent_id
+            $agent = auth()->user();
+            $result = $unit->agents()->updateExistingPivot($agent->id, ['status_unit' => 'rejected']);
 
-        return redirect()->route('developer.dashboard')->with('success', 'Offer accepted.');
+            // Set the unit status to 'rejected'
+            $unit->update(['status_unit' => 'rejected']);
+
+            // dd($result);
+            // Tambahkan pernyataan ini untuk menginspeksi hasil dari updateExistingPivot
+
+            return redirect()->route('developer.dashboard')->with('success', 'Offer rejected.');
+        } else {
+            return redirect()->back()->with('error', 'Unit not found.');
+        }
     }
+
 
 
 

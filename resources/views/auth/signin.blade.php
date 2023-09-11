@@ -541,7 +541,6 @@
                         {{-- <div class="logo">
                             <img src="/assets/skins/logo.svg" alt="" />
                         </div> --}}
-                        @csrf
                         <div class="heading">
                             <h2>Selamat Datang!!</h2>
                             <h6>belum pumya akun?</h6>

@@ -40,9 +40,9 @@ use Illuminate\Routing\RouteGroup;
 //     Route::get('/unit/{id}/transaction', 'TransactionController@initiateTransaction')->name('transaction.initiate');
 // });
 
-Route::post('/unit/{id}/submit-offer', [AgentController::class,'submitOffer'])->name('offer.submit');
-Route::post('/developer/accept/{id}', [AgentController::class,'acceptOffer'])->name('accept.unit');
-Route::post('/developer/reject/{id}', [AgentController::class,'rejectOffer'])->name('reject.unit');
+Route::post('/unit/{unitId}/submit-offer', [AgentController::class, 'submitOffer'])->name('offer.submit');
+Route::post('/developer/accept/{unitId}', [AgentController::class, 'acceptOffer'])->name('accept.unit');
+Route::post('/developer/reject/{unitId}', [AgentController::class, 'rejectOffer'])->name('reject.unit');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
@@ -92,15 +92,15 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/', [UnitController::class, 'homeunit'])->name('beranda');
 
 // developer
 Route::middleware(['auth', 'IsDeveloper'])->group(function () {
     Route::group(['prefix' => '/developer'], function () {
-        Route::get('/', [UnitController::class, 'homeunit'])->name('beranda');
-        // Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
-        Route::get('/dashboard', function () {
-            return view('pages.page.profile1');
-        })->name('developer.dashboard');
+        Route::get('/dashboard', [DeveloperController::class, 'dashboard'])->name('developer.dashboard');
+        // Route::get('/dashboard', function () {
+        //     return view('pages.page.profile1');
+        // })->name('developer.dashboard');
         Route::get('/profile', [DeveloperController::class, 'showFront'])->name('developer.profile')->withoutMiddleware(['IsDeveloper']);
         Route::put('/update/{developer}', [DeveloperController::class, 'updateFront'])->name('developer.update.developer')->withoutMiddleware(['IsDeveloper']);
 

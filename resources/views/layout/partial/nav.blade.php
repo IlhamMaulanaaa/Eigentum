@@ -38,7 +38,7 @@
                 </div>
   
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
-                    <li class="navbar"><a href="/beranda">Beranda</a></li>
+                    <li class="navbar"><a href="{{ route('beranda') }}">Beranda</a></li>
                     <li class="navbar"><a href="{{ route('unit.search.user') }}">Properti</a></li>
                     <li class="navbar"><a href="{{ route('agent.search.user') }}">Cari Agen</a></li>
                     <li class="navbar"><a href="/pages/guide">Panduan</a></li>

@@ -144,10 +144,45 @@
                                             <form class="pd-detail__form">
                                                 <div class="pd-detail-inline-2">
                                                     <div class="u-s-m-b-15">
-                                                        <a href="/https://web.whatsapp.com/">
-                                                            <button class="btn btn--e-brand-b-2">Tanyakan
-                                                                Agen</button>
-                                                        </a>
+                                                        @switch(Auth::user()->role)
+                                                            @case('agent')
+                                                                <form action="{{ route('accept.unit', ['unitId' => $unit->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button hidden type="submit">request</button>
+                                                                </form>
+                                                                <form action="{{ route('offer.submit', ['unitId' => $unit->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit">request</button>
+                                                                </form>
+                                                            @break
+
+                                                            @case('developer')
+                                                                <form action="{{ route('reject.unit', ['unitId' => $unit->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button hidden type="submit">reject</button>
+                                                                </form>
+                                                                <form action="{{ route('reject.unit', ['unitId' => $unit->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit">reject</button>
+                                                                </form>
+                                                                <form action="{{ route('accept.unit', ['unitId' => $unit->id]) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    <button type="submit">accept</button>
+                                                                </form>
+                                                            @break
+
+                                                            @default
+                                                                <a href="https://web.whatsapp.com/">
+                                                                    <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+                                                                </a>
+                                                        @endswitch
+
+
                                                     </div>
                                                 </div>
                                             </form>
