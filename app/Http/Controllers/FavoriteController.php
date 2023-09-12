@@ -43,7 +43,8 @@ class FavoriteController extends Controller
         $unit->users()->attach($user->id);
         session()->flash('success', 'unit is Added to Favorite Successfully !');
 
-        return redirect('/beranda');
+        return redirect('/favorite');
+        // return "/pages.page.favorite";
     }
 
     /**
@@ -79,6 +80,17 @@ class FavoriteController extends Controller
         $unit->users()->detach();
         session()->flash('success', 'unit is Remove to Favorite Successfully !');
 
-        return redirect()->route('wishlist');
+        return redirect('/favorite');
+    }
+
+
+    public function destroyall()
+    {
+        $user = auth()->user();
+        $unit = Favorite::where('unit_id' , $user->id);
+       
+        $unit->delete();
+
+        return redirect('/favorite');
     }
 }

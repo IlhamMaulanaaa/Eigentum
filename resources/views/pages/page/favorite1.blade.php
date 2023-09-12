@@ -17,13 +17,13 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
     <!--====== Vendor Css ======-->
-    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/vendor.css') }}">
+    <link rel="stylesheet" href="css/Lib/fix/css/vendor.css">
 
     <!--====== Utility-Spacing ======-->
-    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/utility.css') }}">
+    <link rel="stylesheet" href="css/Lib/fix/css/utility.css">
 
     <!--====== App ======-->
-    <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/app.css') }}">
+    <link rel="stylesheet" href="css/Lib/fix/css/app.css">
 </head>
 <body class="config">
     
@@ -81,47 +81,109 @@
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
 
-                            <!--====== Wishlist Product ======-->
-                            @foreach ($favorites as $unit)
+                                <!--====== Wishlist Product ======-->
                                 <div class="w-r u-s-m-b-30">
                                     <div class="w-r__container">
                                         <div class="w-r__wrap-1">
                                             <div class="w-r__img-wrap">
-                                                <img class="u-img-fluid" src="{{ asset('storage/' . $unit->image) }}" alt=""></div>
+
+                                                <img class="u-img-fluid" src="/assets/pages/home/kota.jpg" alt=""></div>
                                             <div class="w-r__info">
 
                                                 <span class="w-r__name">
-                                                    <a href="product-detail.html">{{ $unit->title }}</a></span>
+
+                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
+
                                                 <span class="w-r__category">
-                                                    <a href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
-                                                    
-                                                <span class="w-r__price">
-                                                    {{ $unit->price }}
-                                                </span></div>
-                                            </div>
+
+                                                    <a href="shop-side-version-2.html">Rumah</a></span>
+
+                                                <span class="w-r__price">Rp. 900.000.000
+
+                                                    </span></div>
+                                        </div>
                                         <div class="w-r__wrap-2">
 
                                             
 
-                                            <a class="w-r__link btn--e-transparent-platinum-b-2" href="{{route('unit.show.user', $unit->id)}}">LIHAT</a>
+                                            <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">LIHAT</a>
 
-                                            <a class="w-r__link btn--e-transparent-platinum-b-10" href="{{route('favorite.remove', $unit->id)}}">HAPUS</a></div>
+                                            <a class="w-r__link btn--e-transparent-platinum-b-10" href="#">HAPUS</a></div>
                                     </div>
                                 </div>
-                            @endforeach
-
-
-
-                                
-
                                 <!--====== End - Wishlist Product ======-->
 
+
+                                <!--====== Wishlist Product ======-->
+                                <div class="w-r u-s-m-b-30">
+                                    <div class="w-r__container">
+                                        <div class="w-r__wrap-1">
+                                            <div class="w-r__img-wrap">
+
+                                                <img class="u-img-fluid" src="/assets/pages/home/kota.jpg" alt=""></div>
+                                            <div class="w-r__info">
+
+                                                <span class="w-r__name">
+
+                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
+
+                                                <span class="w-r__category">
+
+                                                    <a href="shop-side-version-2.html">Rumah</a></span>
+
+                                                <span class="w-r__price">Rp. 900.000.000
+
+                                                    </span></div>
+                                        </div>
+                                        <div class="w-r__wrap-2">
+
+                                            
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">LIHAT</a>
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-10" href="#">HAPUS</a></div>
+                                    </div>
+                                </div>
+                                <!--====== End - Wishlist Product ======-->
+
+
+                                <!--====== Wishlist Product ======-->
+                                <div class="w-r u-s-m-b-30">
+                                    <div class="w-r__container">
+                                        <div class="w-r__wrap-1">
+                                            <div class="w-r__img-wrap">
+
+                                                <img class="u-img-fluid" src="/assets/pages/home/kota.jpg" alt=""></div>
+                                            <div class="w-r__info">
+
+                                                <span class="w-r__name">
+
+                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
+
+                                                <span class="w-r__category">
+
+                                                    <a href="shop-side-version-2.html">Rumah</a></span>
+
+                                                <span class="w-r__price">Rp. 900.000.000
+
+                                                    </span></div>
+                                        </div>
+                                        <div class="w-r__wrap-2">
+
+                                            
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-2" href="product-detail.html">LIHAT</a>
+
+                                            <a class="w-r__link btn--e-transparent-platinum-b-10" href="#">HAPUS</a></div>
+                                    </div>
+                                </div>
+                                <!--====== End - Wishlist Product ======-->
                             </div>
-                            <div class="col-lg-12" style="justify-content: center; align-items: center; display: flex; margin-bottom: 140px; ">
+                            <div class="col-lg-12" style="justify-content: center; align-items: center; display: flex; ">
                                 <div class="route-box">
                                     <div class="route-box__g">
 
-                                        <a class="route-box__link" href="{{route('favorite.removeall')}}"><i class="fas fa-trash" style="margin-right: 10px;"></i>
+                                        <a class="route-box__link" href="wishlist.html"><i class="fas fa-trash" style="margin-right: 10px;"></i>
 
                                             <span>CLEAR WISHLIST</span></a></div>
                                 </div>
@@ -153,13 +215,13 @@
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
     <!--====== Vendor Js ======-->
-    <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
+    <script src="css/Lib/fix/js/vendor.js"></script>
 
     <!--====== jQuery Shopnav plugin ======-->
-    <script src="{{ asset('css/Lib/fix/js/jquery.shopnav.js') }}"></script>
+    <script src="css/Lib/fix/js/jquery.shopnav.js"></script>
 
     <!--====== App ======-->
-    <script src="{{ asset('css/Lib/fix/js/app.js') }}"></script>
+    <script src="css/Lib/fix/js/app.js"></script>
 
     <!--====== Noscript ======-->
     <noscript>

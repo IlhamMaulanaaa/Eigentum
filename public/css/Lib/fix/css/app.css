@@ -1019,7 +1019,7 @@ input::-ms-clear {
   margin: 0;
   padding: 0;
   list-style: none; }
-  .product-o__action-list > li {
+  .product-o__action-list .favdet > li {
     margin: 0 4px 6px;
     opacity: 0;
     -webkit-transform: translateY(50%);
