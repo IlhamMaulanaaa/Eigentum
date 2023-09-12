@@ -36,7 +36,7 @@ class DeveloperController extends Controller
         $user =  auth()->user();
         $developer = $user->developers->first();
         $licenseFile = explode("|", $developer->license);
-        return view('pages.developer.profile', compact('developer', 'user' , 'licenseFile'));
+        return view('pages.developer.dashboard', compact('developer', 'user' , 'licenseFile'));
     }
 
     public function SigninDeveloper()
@@ -343,8 +343,8 @@ class DeveloperController extends Controller
         $user =  auth()->user();
         $developer = $user->developers->first();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
-        return view('pages.page.profile1', compact('developer', 'user', 'licenseFile',));
-        // return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
+        // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
+        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
     }
 
     public function edit(Developer $developer)

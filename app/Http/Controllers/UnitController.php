@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Regency;
-use App\Models\Type;
 use Exception;
+use App\Models\Type;
 use App\Models\Unit;
 use App\Models\Image;
 use App\Models\Status;
+use App\Models\Regency;
 use App\Models\Property;
 use App\Models\Developer;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\Specification;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -24,7 +25,7 @@ class UnitController extends Controller
     public function filter(Request $request)
     {
         // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->get();
+        $filteredUnits = Unit::filter($request->all())->paginate(10);
         $units = Unit::all();
         $property = Property::all();
         $types = Type::all();
@@ -45,10 +46,9 @@ class UnitController extends Controller
             return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
         } elseif (Auth::user()->role == "admin") {
             return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        } else 
-        {
+        } else {
             return view('pages.page.viewunit', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
-        }  
+        }
         // return view('admin.searchfilter', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'regencies'));
     }
 
@@ -89,8 +89,7 @@ class UnitController extends Controller
 
     public function homeunit(Request $request)
     {
-        $units = Unit::filter($request->all())
-            ->paginate(10);
+        $units = Unit::filter($request->all())->get();
         $newunits = Unit::orderBy('created_at', 'desc')->get();
         $property = Property::all()->pluck('title', 'id');;
         $status = Status::all();
@@ -238,11 +237,11 @@ class UnitController extends Controller
         $units = Unit::all();
         // echo "Harga per bulan: $" . number_format($pricePerMonth, 2);
         if (!Auth::check()) {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth','units'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'units'));
         } elseif (Auth::user()->role == "admin") {
-            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth','units'));
+            return view('admin.unit.detail', compact('unit', 'images', 'pricePerMonth', 'units'));
         } elseif (Auth::user()->role == "developer") {
-            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'developer','units'));
+            return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'developer', 'units'));
         } elseif (Auth::user()->role == "agent") {
             return view('pages.unit.detail', compact('unit', 'images', 'pricePerMonth', 'units'));
         }

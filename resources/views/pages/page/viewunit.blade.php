@@ -105,6 +105,8 @@
                                                         </div>
                                                     </div>
                                                 </a>
+
+                                                {{$unit->links()}}
                                             @endforeach
 
 
@@ -116,7 +118,7 @@
                                         <ul class="shop-p__pagination">
                                             <li class="is-active">
 
-                                                <a href="shop-grid-full.html">1</a>
+                                                {{-- <a href="shop-grid-full.html">{{$units->links()}}</a> --}}
                                             </li>
                                             <li>
 
@@ -162,15 +164,15 @@
 
                                     <div class="u-s-m-b-30">
                                         <div class="blog-w">
-                                            <form class="blog-search-form">
+                                            {{-- <form class="blog-search-form" action="{{ route('unit.search.user') }}" method="GET" role="search"> --}}
 
                                                 <label for="post-search"></label>
 
                                                 <input class="input-text input-text--primary-style" type="text"
-                                                    id="post-search" placeholder="Search">
+                                                    id="post-search" placeholder="Search" value="{{ request('search') }}">
 
                                                 <button class="btn btn--icon fas fa-search" type="submit"></button>
-                                            </form>
+                                            {{-- </form> --}}
                                         </div>
                                     </div>
 
@@ -207,10 +209,6 @@
                                             <div class="shop-w__wrap collapse show" id="s-price">
                                                 <form class="shop-w__form-p">
                                                     <div class="shop-w__form-p-wrap">
-
-
-
-
                                                         <div>
                                                             <label for="price-min"></label>
 

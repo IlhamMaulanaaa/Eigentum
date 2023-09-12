@@ -57,7 +57,7 @@
 
                                                 <span class="u-c-brand">Rp. 100 Juta</span></span>
 
-                                            <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">Lihat
+                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
 
                                             <span class="content-span-4 u-c-white">Mulai Perjalanan Properti Anda</span>
 
-                                            <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">Lihat
+                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
 
                                             <span class="content-span-4 u-c-white">Mulai Belajar Mengenai Properti</span>
 
-                                            <a class="shop-now-link btn--e-brand" href="shop-side-version-2.html">Lihat
+                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -190,7 +190,7 @@
                             <div class="row">
                                 <div class="col-lg-5 col-md-5 u-s-m-b-30">
 
-                                    <a class="collection" href="shop-side-version-2.html">
+                                    <a class="collection" href="#">
                                         <div class="aspect aspect--bg-grey aspect--square">
 
                                             <img class="aspect__img collection__img"
@@ -200,7 +200,7 @@
                                 </div>
                                 <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
-                                    <a class="collection" href="shop-side-version-2.html">
+                                    <a class="collection" href="#">
                                         <div class="aspect aspect--bg-grey aspect--1286-890">
 
                                             <img class="aspect__img collection__img" src="/assets/pages/banner/home2.jpg"
@@ -210,7 +210,7 @@
                                 </div>
                                 <div class="col-lg-7 col-md-7 u-s-m-b-30">
 
-                                    <a class="collection" href="shop-side-version-2.html">
+                                    <a class="collection" href="#">
                                         <div class="aspect aspect--bg-grey aspect--1286-890">
 
                                             <img class="aspect__img collection__img" src="/assets/pages/banner/ruko1.jpg"
@@ -220,7 +220,7 @@
                                 </div>
                                 <div class="col-lg-5 col-md-5 u-s-m-b-30">
 
-                                    <a class="collection" href="shop-side-version-2.html">
+                                    <a class="collection" href="#">
                                         <div class="aspect aspect--bg-grey aspect--square">
 
                                             <img class="aspect__img collection__img" src="/assets/pages/banner/villa1.jpg"
@@ -268,38 +268,24 @@
                                             <button class="btn filter__btn filter__btn--style-1 js-checked" type="button"
                                                 data-filter="*">ALL</button>
                                         </div>
-                                        <div class="filter__category-wrapper">
+                                        @foreach ($types as $type)
+                                            <div class="filter__category-wrapper">
 
-                                            <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".apartemen">APARTEMEN</button>
-                                        </div>
-                                        <div class="filter__category-wrapper">
-
-                                            <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".rumah">RUMAH</button>
-                                        </div>
-                                        <div class="filter__category-wrapper">
-
-                                            <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".ruko">RUKO</button>
-                                        </div>
-                                        <div class="filter__category-wrapper">
-
-                                            <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".villa">VILLA</button>
-                                        </div>
+                                                <button class="btn filter__btn filter__btn--style-1" type="button"
+                                                    data-filter=".{{ $type->name }}">{{ $type->name }}</button>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="filter__grid-wrapper u-s-m-t-30">
                                         <div class="row">
 
-                                            @foreach ($newunits->take(8) as $unit)
+                                            @foreach ($units as $unit)
                                                 <div
-                                                    class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item rumah">
+                                                    class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $unit->properties->types->name }}">
                                                     <div class="product-o product-o--hover-on product-o--radius">
                                                         <div class="product-o__wrap">
-
                                                             <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                                href="product-detail.html">
+                                                                href="{{ route('unit.show.user', $unit->id) }}">
 
                                                                 <img class="aspect__img"
                                                                     src="{{ asset('storage/' . $unit->image) }}"
@@ -307,20 +293,22 @@
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
                                                                     <li>
-                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                                                        @csrf
+                                                                        <form
+                                                                            action="{{ route('favorite.add', $unit->id) }}"
+                                                                            method="POST">
+                                                                            @csrf
 
-                                                                                <button data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top" 
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
-                                                                            
-                                                                    </form>
+                                                                            <button data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
+
+                                                                        </form>
                                                                     </li>
                                                                     <li>
 
-                                                                        <a href="" data-tooltip="tooltip"
-                                                                            data-placement="top"
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                            data-tooltip="tooltip" data-placement="top"
                                                                             title="Lihat lebih detail"><i
                                                                                 class="fas fa-eye"></i></a>
                                                                     </li>
@@ -330,20 +318,23 @@
 
                                                         <span class="product-o__category">
 
-                                                            <a href="shop-side-version-2.html">
+                                                            <a href="#">
                                                                 {{ $unit->properties->types->name }} </a></span>
+                                                        {{-- kalo bisa kubuat nama type nanti bisa dipencet --}}
 
                                                         <span class="product-o__name">
 
-                                                            <a href="product-detail.html">{{ $unit->title }}</a></span>
+                                                            <a
+                                                                href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
 
                                                         <span class="product-o__price">Rp. {{ $unit->price }}</span>
                                                     </div>
+
+                                                    <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                        class="stretched-link"></a>
                                                 </div>
                                             @endforeach
-
-
 
                                         </div>
                                     </div>
@@ -395,7 +386,7 @@
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
+                                                        href="{{ route('unit.show.user', $unit->id) }}">
 
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
@@ -405,14 +396,15 @@
 
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
+                                                                <a href="#" data-tooltip="tooltip"
                                                                     data-placement="top" title="Tambahkan Ke Favorite"><i
                                                                         class="fas fa-heart"></i></a>
                                                             </li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Lihat lebih detail"><i
+                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Lihat lebih detail"><i
                                                                         class="fas fa-eye"></i></a>
                                                             </li>
                                                         </ul>
@@ -421,12 +413,12 @@
 
                                                 <span class="product-o__category">
 
-                                                    <a
-                                                        href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
+                                                    <a href="#">{{ $unit->properties->types->name }}</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">{{ $unit->title }}</a></span>
+                                                    <a
+                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
 
                                                 <span class="product-o__price">Rp. {{ $unit->price }}</span>
@@ -471,8 +463,7 @@
                                         <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan
                                             strategi pemasaran untuk properti yang akan dijual.</span>
 
-                                        <a class="banner-bg__shop-now btn--e-secondary"
-                                            href="shop-side-version-2.html">Daftar Sekarang</a>
+                                        <a class="banner-bg__shop-now btn--e-secondary" href="#">Daftar Sekarang</a>
                                     </div>
                                 </div>
                             </div>
@@ -518,7 +509,7 @@
                                                 <div class="product-o__wrap">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
+                                                        href="{{ route('unit.show.user', $unit->id) }}">
 
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
@@ -528,13 +519,13 @@
 
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
+                                                                <a href="#" data-tooltip="tooltip"
                                                                     data-placement="top" title="Tambahkan Ke Favorite"><i
                                                                         class="fas fa-heart"></i></a>
                                                             </li>
                                                             <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
+                                                                <a href="#" data-tooltip="tooltip"
                                                                     data-placement="top" title="Lihat lebih detail"><i
                                                                         class="fas fa-eye"></i></a>
                                                             </li>
@@ -544,12 +535,12 @@
 
                                                 <span class="product-o__category">
 
-                                                    <a
-                                                        href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
+                                                    <a href="#">{{ $unit->properties->types->name }}</a></span>
 
                                                 <span class="product-o__name">
 
-                                                    <a href="product-detail.html">{{ $unit->title }}</a></span>
+                                                    <a
+                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
 
                                                 <span class="product-o__price">Rp. {{ $unit->price }}</span>
@@ -588,7 +579,7 @@
                                                             <div class="product-l__img-wrap">
 
                                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                                    href="product-detail.html">
+                                                                    href="{{ route('unit.show.user', $unit->id) }}">
 
                                                                     <img class="aspect__img"
                                                                         src="{{ asset('storage/' . $unit->image) }}"
@@ -599,12 +590,12 @@
                                                                 <span class="product-l__category">
 
                                                                     <a
-                                                                        href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
+                                                                        href="#">{{ $unit->properties->types->name }}</a></span>
 
                                                                 <span class="product-l__name">
 
                                                                     <a
-                                                                        href="product-detail.html">{{ $unit->title }}</a></span>
+                                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
                                                                 <span class="product-l__price">
                                                                     Rp. {{ $unit->price }}</span>
@@ -630,7 +621,7 @@
                                                             <div class="product-l__img-wrap">
 
                                                                 <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                                    href="product-detail.html">
+                                                                    href="{{ route('unit.show.user', $unit->id) }}">
 
                                                                     <img class="aspect__img"
                                                                         src="{{ asset('storage/' . $unit->image) }}"
@@ -641,12 +632,12 @@
                                                                 <span class="product-l__category">
 
                                                                     <a
-                                                                        href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
+                                                                        href="#">{{ $unit->properties->types->name }}</a></span>
 
                                                                 <span class="product-l__name">
 
                                                                     <a
-                                                                        href="product-detail.html">{{ $unit->title }}</a></span>
+                                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
                                                                 <span class="product-l__price">
                                                                     Rp. {{ $unit->price }}</span>
@@ -683,12 +674,12 @@
                                                                     <span class="product-l__category">
 
                                                                         <a
-                                                                            href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a></span>
+                                                                            href="#">{{ $unit->properties->types->name }}</a></span>
 
                                                                     <span class="product-l__name">
 
                                                                         <a
-                                                                            href="product-detail.html">{{ $unit->title }}</a></span>
+                                                                            href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
                                                                     <span class="product-l__price">
                                                                         Rp. {{ $unit->price }}</span>
@@ -852,7 +843,7 @@
                                 <div class="owl-carousel" id="brand-slider" data-item="5">
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/jakarta1.jpg" alt="Jakarta">
                                             <div class="image-caption">Jakarta</div>
@@ -860,7 +851,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/surabaya.jpg" alt="">
                                             <div class="image-caption">Surabaya</div>
@@ -868,7 +859,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/bandung.jpg" alt="">
                                             <div class="image-caption">Bandung</div>
@@ -876,7 +867,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/jogja.jpg" alt="">
                                             <div class="image-caption">Yogyakarta</div>
@@ -884,7 +875,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/jogja.jpg" alt="">
                                             <div class="image-caption">Yogyakarta</div>
@@ -892,7 +883,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/jogja.jpg" alt="">
                                             <div class="image-caption">Yogyakarta</div>
@@ -900,7 +891,7 @@
                                     </div>
                                     <div class="brand-slide">
 
-                                        <a href="shop-side-version-2.html">
+                                        <a href="#">
 
                                             <img src="/assets/pages/fix/jogja.jpg" alt="">
                                             <div class="image-caption">Yogyakarta</div>
