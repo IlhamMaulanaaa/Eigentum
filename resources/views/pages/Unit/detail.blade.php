@@ -144,7 +144,7 @@
                                             <form class="pd-detail__form">
                                                 <div class="pd-detail-inline-2">
                                                     <div class="u-s-m-b-15">
-                                                        @switch(Auth::user()->role)
+                                                        {{-- @switch(Auth::user()->role)
                                                             @case('agent')
                                                                 <form action="{{ route('accept.unit', ['unitId' => $unit->id]) }}"
                                                                     method="POST">
@@ -167,20 +167,23 @@
                                                                 <form action="{{ route('reject.unit', ['unitId' => $unit->id]) }}"
                                                                     method="POST">
                                                                     @csrf
+                                                                    <input type="hidden" value="accepted" name="status_unit">
+
                                                                     <button type="submit">reject</button>
                                                                 </form>
                                                                 <form action="{{ route('accept.unit', ['unitId' => $unit->id]) }}"
                                                                     method="POST">
                                                                     @csrf
+                                                                    <input type="hidden" value="accepted" name="accepted">
                                                                     <button type="submit">accept</button>
                                                                 </form>
                                                             @break
 
-                                                            @default
+                                                            @default --}}
                                                                 <a href="https://web.whatsapp.com/">
-                                                                    <div class="group-12-pM3" id="3:50">Tanya Agent</div>
+                                                                    <div class="group-12-pM3 btn btn-primary" id="3:50">Tanya Agent</div>
                                                                 </a>
-                                                        @endswitch
+                                                        {{-- @endswitch --}}
 
 
                                                     </div>

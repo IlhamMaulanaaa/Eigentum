@@ -317,6 +317,7 @@ class UnitController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'price' => $request->price,
+            'statuscode' => $request->statuscode,
         ]);
 
         $unit->save();

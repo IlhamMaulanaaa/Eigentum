@@ -26,10 +26,10 @@ class Unit extends Model
         'deleted_at',
     ];
 
-    public function agents(): BelongsToMany
-    {
-        return $this->belongsToMany(Agent::class, 'unit_agents',  'unit_id', 'agent_id');
-    }
+    // public function agents(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Agent::class, 'unit_agents')->withPivot('status_unit');
+    // }
     public function properties(): BelongsTo
     {
         return $this->belongsTo(Property::class, 'property_id');

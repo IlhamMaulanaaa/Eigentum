@@ -123,10 +123,6 @@
                             <li class="dashboardli"><i class="fab fa-whatsapp"></i></li>
                         </ul>
                     </div>
-                    <a href="{{ route('property.create.developer') }}">
-                        <div class="btnAddProperty btn btn-primary border border-success col-md-10 mt-2">Tambah Property
-                        </div>
-                    </a>
                 </div>
                 <div class="right__col">
                     <!-- Images Filter Buttons Section -->
@@ -136,7 +132,7 @@
                             {{-- <button class="btn mb-2 mx-1" data-filter="aktif">Aktif</button> --}}
                             {{-- <button class="btn mb-2 mx-1" data-filter="pasif">Pasif</button> --}}
                             <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button>
-                            <button class="btn mb-2 mx-1" data-filter="Disewa">DIsewa</button>
+                            <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">penawaran</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">History</button>
                         </div>
@@ -148,8 +144,8 @@
                     <!-- Filterable Images / Cards Section -->
                     <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
                         id="filterable-cards">
-                        @foreach ($developer->units as $property)
-                            <div class="card p-0" data-name="disewa">
+                        @foreach ($developer->properties as $property)
+                            <div class="card p-0" data-name="dijual">
                                 <a href="{{ route('property.show.developer', $property->id) }}" class="stretched-link"></a>
                                 <img style="height: 180px;" src="{{ asset('storage/' . $property->image) }}"
                                     alt="img" />
@@ -172,10 +168,19 @@
                                         {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
                                     </form>
                                 </div>
+
+
+
                                 <span class="label sold">Terjual</span>
+
+
+
+
                             </div>
                         @endforeach
+
                     </div>
+
                 </div>
 
             </div>
@@ -183,12 +188,12 @@
 
         </div>
         <div class="tambah" style="z-index: 200">
-
-            <a href="{{ route('property.create.developer') }}">
-                <button id="addButton" class="sticky-button">+</button>
-                <p style="margin-left: -30px; color:#000; margin-top:10px;">Tambah Properti</p>
-            </a>
-
+            
+        <a href="{{ route('property.create.developer') }}">
+        <button id="addButton" class="sticky-button">+</button>
+        <p style="margin-left: -30px; color:#000; margin-top:10px;">Tambah Properti</p>
+        </a>
+        
         </div>
         <script>
             const addButton = document.getElementById("addButton");

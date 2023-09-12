@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
-            $table->decimal("price",7,2);
+            $table->decimal("price", 7, 2);
             $table->string("image");
+            $table->string('statuscode')->nullable();
             $table->foreignId('property_id');
             $table->softDeletes();
             $table->timestamps();
@@ -28,13 +29,13 @@ return new class extends Migration
             $table->primary(['unit_id', 'status_id']);
             $table->softDeletes();
         });
-        Schema::create('unit_agents', function (Blueprint $table) {
-            $table->bigInteger('unit_id');
-            $table->bigInteger('agent_id');
-            $table->string('status_unit');
-            $table->primary(['unit_id', 'agent_id']);
-            $table->softDeletes();
-        });
+        // Schema::create('unit_agents', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->foreignId('unit_id');
+        //     $table->foreignId('agent_id');
+        //     $table->string('status_unit');
+        //     $table->softDeletes();
+        // });
     }
 
     /**
