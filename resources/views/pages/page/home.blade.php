@@ -270,7 +270,6 @@
                                         </div>
                                         @foreach ($types as $type)
                                             <div class="filter__category-wrapper">
-
                                                 <button class="btn filter__btn filter__btn--style-1" type="button"
                                                     data-filter=".{{ $type->name }}">{{ $type->name }}</button>
                                             </div>
