@@ -271,22 +271,22 @@
                                         <div class="filter__category-wrapper">
 
                                             <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".headphone">APARTEMEN</button>
+                                                data-filter=".apartemen">APARTEMEN</button>
                                         </div>
                                         <div class="filter__category-wrapper">
 
                                             <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".smartphone">RUMAH</button>
+                                                data-filter=".rumah">RUMAH</button>
                                         </div>
                                         <div class="filter__category-wrapper">
 
                                             <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".sportgadget">RUKO</button>
+                                                data-filter=".ruko">RUKO</button>
                                         </div>
                                         <div class="filter__category-wrapper">
 
                                             <button class="btn filter__btn filter__btn--style-1" type="button"
-                                                data-filter=".dslr">VILLA</button>
+                                                data-filter=".villa">VILLA</button>
                                         </div>
                                     </div>
                                     <div class="filter__grid-wrapper u-s-m-t-30">
@@ -294,7 +294,7 @@
 
                                             @foreach ($newunits->take(8) as $unit)
                                                 <div
-                                                    class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item headphone">
+                                                    class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item rumah">
                                                     <div class="product-o product-o--hover-on product-o--radius">
                                                         <div class="product-o__wrap">
 
@@ -306,17 +306,20 @@
                                                                     alt=""></a>
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
-
                                                                     <li>
+                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                                        @csrf
 
-                                                                        <a href="signin.html" data-tooltip="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Tambahkan Ke Favorite"><i
-                                                                                class="fas fa-heart"></i></a>
+                                                                                <button data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top" 
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+                                                                            
+                                                                    </form>
                                                                     </li>
                                                                     <li>
 
-                                                                        <a href="signin.html" data-tooltip="tooltip"
+                                                                        <a href="" data-tooltip="tooltip"
                                                                             data-placement="top"
                                                                             title="Lihat lebih detail"><i
                                                                                 class="fas fa-eye"></i></a>
@@ -899,9 +902,18 @@
 
                                         <a href="shop-side-version-2.html">
 
-                                            <img src="/assets/pages/fix/surabaya.jpg" alt=""></a>
+                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
+                                            <div class="image-caption">Yogyakarta</div>
+                                        </a>
                                     </div>
-                                    <div class="image-caption">Surabaya</div></a>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
+                                            <div class="image-caption">Yogyakarta</div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

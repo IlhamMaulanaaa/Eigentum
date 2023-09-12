@@ -19,8 +19,7 @@ class TypeSeeder extends Seeder
             'Housing',
             'Apartement',
             'Ruko',
-            'Villa',
-            'Rusun',
+            'Villa'
         ];
 
         foreach ($types as $type) {

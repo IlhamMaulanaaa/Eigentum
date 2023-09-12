@@ -276,7 +276,8 @@ Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('ge
 Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');
 
 Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
-Route::delete('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
+Route::get('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
+Route::get('favorite-removeall', [FavoriteController::class, 'destroyall'])->name('favorite.removeall');
 Route::post('/payments/midtrans-notification', [PaymentCallbackController::class, 'receive']);
 Route::post('/payments/finish', [PaymentCallbackController::class, 'finish']);
 
