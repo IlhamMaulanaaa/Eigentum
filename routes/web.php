@@ -121,9 +121,7 @@ Route::middleware(['auth', 'IsDeveloper'])->group(function () {
             Route::put('/update/{unit}', [UnitController::class, 'update'])->name('unit.update.developer');
             Route::get('/destroy/{unit}', [UnitController::class, 'destroy'])->name('unit.destroy.developer');
         });
-        Route::get('/history', function () {
-            return view('pages.Developer.history');
-        });
+        Route::get('/history',[DeveloperController::class, 'history']);
 
 
         Route::get('/css/Lib/fix/css/{filename}', function ($filename) {

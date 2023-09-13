@@ -195,6 +195,11 @@
         </div>
         @if (session('rejected'))
             <div class="alert alert-danger text-center smooth-alert">
+                perbarui data anda, data ditolak
+            </div>
+        @endif
+        @if (session('pending'))
+            <div class="alert alert-danger text-center smooth-alert">
                 Akun Anda masih ditangguhkan. Mohon tunggu selama 24 jam.
             </div>
         @endif
