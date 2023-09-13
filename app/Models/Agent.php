@@ -27,10 +27,10 @@ class Agent extends Model
     {
         return $this->belongsToMany(User::class, 'users_agent', 'agent_id', 'user_id');
     }
-    public function units(): BelongsToMany
-    {
-        return $this->belongsToMany(Unit::class, 'unit_agents', 'unit_id', 'agent_id', 'status_unit');
-    }
+    // public function units(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Unit::class, 'unit_agents')->withPivot('status_unit');
+    // }
 
     public function properties(): BelongsToMany
     {
@@ -76,12 +76,12 @@ class Agent extends Model
                     ->orWhereHas('properties', function ($query) use ($search) {
                         $query->where('title', 'like', '%' . $search . '%');
                     });
-                    // ->orWhereHas('provinces', function ($query) use ($search) {
-                    //     $query->where('name', 'like', '%' . $search . '%');
-                    // })
-                    // ->orWhereHas('properties', function ($query) use ($search) {
-                    //     $query->where('title', 'like', '%' . $search . '%');
-                    // });
+                // ->orWhereHas('provinces', function ($query) use ($search) {
+                //     $query->where('name', 'like', '%' . $search . '%');
+                // })
+                // ->orWhereHas('properties', function ($query) use ($search) {
+                //     $query->where('title', 'like', '%' . $search . '%');
+                // });
             });
         });
 

@@ -58,6 +58,7 @@ class UnitSeeder extends Seeder
                     'description' => $descriptions[array_rand($descriptions)],
                     'price' => mt_rand(100, 999),
                     'image' => $this->getImageUrl('house'),
+                    'statuscode' => 'tersedia',
                     'property_id' => $propertyId,
                 ]);
 

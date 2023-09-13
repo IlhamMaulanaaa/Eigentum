@@ -1,179 +1,113 @@
-@extends('admin.layout.main')
+@extends('layout.main')
 
 @section('content')
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-        <style>
-            /* Pastikan parent container memiliki lebar yang sesuai */
-            .file-container {
-                max-width: 100%;
-                height: auto;
-                overflow: hidden;
-            }
-        </style>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" />
+        <title></title>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/agent/detail.css">
+        <script src="/js/agent/detail.js" defer></script>
     </head>
 
     <body>
+        <div class="header__wrapper2">
+            <div class="img_detailagent"></div>
+            <div class="cols__container">
+                <div class="left__col">
+                    <div class="img__container">
+                        <img src="{{ asset('storage/' . $agent->face) }}" />
+                        <span></span>
+                    </div>
 
-    </body>
-    <div class="container">
-        <div class="row">
-            <div class="col-ad-12">
-                <h3 class="text-dark">Detail Developer</h3>
-                <br>
-                <div class="card bg-light">
-                    <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
-
-                            <div class="form-group col-auto row">
-                                <div class="form-group col-6">
-                                    <label for="company" class="form-label">Company</label>
-                                    <input type="text" class="form-control" id="company" name="company"
-                                        value="{{ $developer->company }}" readonly disabled>
-                                </div>
-                                <div class="form-group col-6">
-                                    <label for="email" class="form-label">Company Email</label>
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        value="{{ $developer->company_email }}" readonly disabled>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group col-auto row">
-                                <div class="form-group col-6">
-                                    <label for="owner" class="form-label">Owner</label>
-                                    <input type="text" class="form-control" id="owner" name="owner"
-                                        value=" {{ implode(', ',$developer->users()->pluck('name')->toArray()) }}" readonly disabled>
-                                </div>
-
-                                <div class="form-group col-6">
-                                    <label for="owner" class="form-label">Owner Email</label>
-                                    <input type="owner" class="form-control" id="owner" name="owner"
-                                        value=" {{ implode(', ',$developer->users()->pluck('email')->toArray()) }}" readonly disabled>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="form-group row">
-                                <div class="form-group col-auto">
-                                    <label for="ktp" class="form-label">Ktp</label>
-                                    <div class="image-text-wrapper">
-                                        <img src="{{ asset('storage/' . $developer->ktp) }}" class="img-thumbnail"
-                                            alt="" width="120">
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-auto">
-                                    <label for="face" class="form-label">Face</label>
-                                    <div class="image-text-wrapper">
-                                        <img src="{{ asset('storage/' . $developer->face) }}" class="img-thumbnail"
-                                            alt="" width="120">
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-
-                            <div class="form-group row col-12">
-                                <div class="form-group col-auto mb-3">
-                                    <label for="Provinces" class="form-label">Provinsi</label>
-                                    <input type="text" class="form-control" id="Provinces" name="Provinces"
-                                        value="{{ implode(', ',$developer->provinces()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
-                                </div>
-                                <div class="form-group col-auto mb-3">
-                                    <label for="Regencies" class="form-label">Kota</label>
-                                    <input type="text" class="form-control" id="Regencies" name="Regencies"
-                                        value="{{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
-                                </div>
-                                <div class="form-group col-auto mb-3">
-                                    <label for="District" class="form-label">Kecamatan</label>
-                                    <input type="text" class="form-control" id="District" name="District"
-                                        value="{{ implode(', ',$developer->districts()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
-                                </div>
-                                <div class="form-group col-auto mb-3">
-                                    <label for="Village" class="form-label">Desa</label>
-                                    <input type="text" class="form-control" id="Village" name="Village"
-                                        value="{{ implode(', ',$developer->villages()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control noscroll" id="address" name="address"
-                                    value="{{ $developer->address }}" readonly disabled>
-                            </div><br>
-                            <div class="form-group">
-                                <label for="license" class="form-label">License</label>
-                                @foreach ($licenseFile as $index => $file)
-                                    <div class="col-auto">
-                                        <div class="file-container">
-                                            {{-- <embed src="{{ asset('storage/' . $file) }}" type="application/pdf"
-                                                width="40%" height="40%"/> --}}
-                                            <a href="{{ route('pdf.preview', ['file' => $file]) }}"
-                                                target="_blank">Tampilkan {{ pathinfo($file, PATHINFO_FILENAME) }}</a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-                                <label for="telp" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="telp" name="telp"
-                                    value="{{ $developer->telp }}" readonly disabled>
-                            </div>
-                            <br>
-
-                            <div class="form-group">
-                                <label for="properties" class="form-label">Property</label>
-                                <ul>
-                                    @foreach ($developer->properties as $property)
-                                        <li>
-                                            {{ $property->title }}
-                                            <a href="{{ route('property.show', $property->id) }}"
-                                                class="text-warning">Detail</a>
-                                            <a href="{{ route('property.edit', $property->id) }}">Edit</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-
-                                <a href="{{ route('propertyid.create', $developer->id) }}" class="btn btn-success">Tambah
-                                    Property</a>
-                            </div>
-                            <br>
+                    <h2>{{ implode(', ',$agent->users()->pluck('name')->toArray()) }}</h2>
+                    <p style="color: #000">{{ implode(', ',$agent->users()->pluck('email')->toArray()) }}</p>
 
 
+                    <ul class="about">
+                        <li><span>{{ $agent->properties->flatMap->units->flatMap->statuses->where('name', 'Dijual')->count() }}</span>
+                            Dijual
+                        </li>
+                        <li><span>{{ $agent->properties->flatMap->units->flatMap->statuses->where('name', 'Disewa')->count() }}</span>
+                            Disewa
+                        </li>
+                        {{-- <li><span>20</span>Klient</li> --}}
+                    </ul>
 
-                        </form>
-                        <div class="form-group text-end">
-                            <a type="button" class="btn btn-warning" href="{{ route('developer.index') }}">Back</a>
+                    <div class="content">
+                        <p>{{ implode(', ',$agent->regencies()->pluck('name')->toArray()) }}</p>
+                        <p>{{ $agent->address }}</p>
 
-                            <form action="{{ url('admin/developers/reject', $developer->id) }}" method="POST"
-                                class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Reject</button>
-                            </form>
-
-                            <form action="{{ url('admin/developers/approve', $developer->id) }}" method="POST"
-                                class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-primary">Approve</button>
-                            </form>
-
-                            {{-- <a type="button" class="btn btn-primary"
-                                    href="{{ route('developer.edit', $developer->id) }}">Edit</a> --}}
-                        </div>
+                        <ul class="abc">
+                            <li><i class="fab fa-twitter"></i></li>
+                            <i class="fab fa-instagram"></i>
+                            <i class="fab fa-facebook"></i>
+                            <i class="fab fa-whatsapp"></i>
+                        </ul>
                     </div>
                 </div>
+                <div class="right__col">
+                    <!-- Images Filter Buttons Section -->
+                    <div class=" row mt-5">
+                        <div class="col-12" id="filter-buttons">
+                            <button class="btn mb-2 me-1 active" data-filter="all">Semuanya</button>
+                            <button class="btn mb-2 mx-1" data-filter="apartemen">Apartemen</button>
+                            <button class="btn mb-2 mx-1" data-filter="rumah">Rumah</button>
+                            <button class="btn mb-2 mx-1" data-filter="ruko">Ruko</button>
+                            <button class="btn mb-2 mx-1" data-filter="villa">Villa</button>
+                        </div>
+                    </div>
+
+                    <!-- <button class="btn-ajukan mb-2 float-end" id="ajukan-button" style="margin-top: -43px; background-color: #0C40E8; color: #fff; cursor: auto;">Ajukan</button> -->
+
+                    <!-- Filterable Images / Cards Section -->
+                    <div class="card-detailagent row px-2 mt-4 gap-3" style="width: 770px; margin-bottom: 60px;"
+                        id="filterable-cards">
+                        @foreach ($agent->properties as $property)
+                            <div class="card p-0" data-name="aktif">
+                                <a href="{{ route('property.show.user', $property->id) }}" class="stretched-link"></a>
+                                <img src="{{ asset('storage/' . $property->image) }}" alt="img" />
+                                <div class="card-body">
+                                    <h6 class="card-title">{{ $property->title }}</h6>
+                                    <h6>
+                                        {{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}
+                                    </h6>
+                                </div>
+                                @if (Auth::user()->role == $property->developers->users->where('role', 'developer')->first())
+                                    <div class="labeledit" style="z-index: 100">
+                                        <a class="linkedit" href="{{ route('property.edit.developer', $property->id) }}"><i
+                                                class="fas fa-edit edit-icon"></i></a>
+                                    </div>
+                                    <div class="labeldelete" style="z-index: 100">
+                                        <form action="{{ route('property.destroy.developer', $property->id) }}"
+                                            method="get" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="linkdelete"
+                                                onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
+                                                    class="fas fa-trash delete-icon"></i></button>
+                                            {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
+                                        </form>
+                                    </div>
+                                @endif
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
+
         </div>
-    </div>
+        </div>
+
+    </body>
 
     </html>
 @endsection

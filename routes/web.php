@@ -40,9 +40,9 @@ use Illuminate\Routing\RouteGroup;
 //     Route::get('/unit/{id}/transaction', 'TransactionController@initiateTransaction')->name('transaction.initiate');
 // });
 
-Route::post('/unit/{unitId}/submit-offer', [AgentController::class, 'submitOffer'])->name('offer.submit');
-Route::post('/developer/accept/{unitId}', [AgentController::class, 'acceptOffer'])->name('accept.unit');
-Route::post('/developer/reject/{unitId}', [AgentController::class, 'rejectOffer'])->name('reject.unit');
+// Route::post('/unit/{unitId}/submit-offer', [AgentController::class, 'submitOffer'])->name('offer.submit');
+// Route::post('/developer/accept/{unitId}', [AgentController::class, 'acceptOffer'])->name('accept.unit');
+// Route::post('/developer/reject/{unitId}', [AgentController::class, 'rejectOffer'])->name('reject.unit');
 
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
