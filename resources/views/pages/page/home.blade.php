@@ -310,7 +310,7 @@
                                                                     <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
                                                                         @csrf
 
-                                                                                <button data-tooltip="tooltip" type="submit"
+                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
                                                                                     data-placement="top" 
                                                                                     title="Tambahkan Ke Favorite">
                                                                                     <i class="fas fa-heart"></i></button>
@@ -319,7 +319,7 @@
                                                                     </li>
                                                                     <li>
 
-                                                                        <a href="" data-tooltip="tooltip"
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
                                                                             data-placement="top"
                                                                             title="Lihat lebih detail"><i
                                                                                 class="fas fa-eye"></i></a>
@@ -400,23 +400,28 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
+                                                            <div class="product-o__action-wrap">
+                                                                <ul class="product-o__action-list">
+                                                                    <li>
+                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                                        @csrf
 
-                                                            <li>
+                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top" 
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+                                                                            
+                                                                    </form>
+                                                                    </li>
+                                                                    <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Lihat lebih detail"><i
-                                                                        class="fas fa-eye"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Lihat lebih detail"><i
+                                                                                class="fas fa-eye"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -452,7 +457,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="banner-bg__countdown">
-                                        <div class="countdown countdown--style-banner" data-countdown="2023/09/1"></div>
+                                        <div class="countdown countdown--style-banner" data-countdown="2023/09/15"></div>
                                     </div>
                                     <div class="banner-bg__wrap">
                                         <div class="banner-bg__text-1">
@@ -465,7 +470,7 @@
 
                                             <span class="u-c-white">Kami Memiliki</span>
 
-                                            <span class="u-c-white">Diskon Terbaik Untuk Anda!</span>
+                                            <span class="u-c-white">Layanan Terbaik Untuk Anda!</span>
                                         </div>
 
                                         <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan
@@ -523,23 +528,28 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
+                                                            <div class="product-o__action-wrap">
+                                                                <ul class="product-o__action-list">
+                                                                    <li>
+                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                                        @csrf
 
-                                                            <li>
+                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top" 
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+                                                                            
+                                                                    </form>
+                                                                    </li>
+                                                                    <li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Lihat lebih detail"><i
-                                                                        class="fas fa-eye"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Lihat lebih detail"><i
+                                                                                class="fas fa-eye"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -837,7 +847,7 @@
                                     <div class="section__text-wrap">
                                         <h1 class="section__heading u-c-secondary u-s-m-b-12">TEMUKAN KOTA ANDA</h1>
 
-                                        <span class="section__span u-c-silver">CARI KOTA YANG TERDAFTAR DISINI</span>
+                                        <span class="section__span u-c-silver">CARI KOTA YANG AKAN TERDAFTAR DISINI</span>
                                     </div>
                                 </div>
                             </div>
@@ -886,32 +896,80 @@
 
                                         <a href="shop-side-version-2.html">
 
-                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
-                                            <div class="image-caption">Yogyakarta</div>
+                                            <img src="/assets/pages/fix/bogor.jpg" alt="">
+                                            <div class="image-caption">Bogor</div>
                                         </a>
                                     </div>
                                     <div class="brand-slide">
 
                                         <a href="shop-side-version-2.html">
 
-                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
-                                            <div class="image-caption">Yogyakarta</div>
+                                            <img src="/assets/pages/fix/lombok.jpg" alt="">
+                                            <div class="image-caption">Lombok</div>
                                         </a>
                                     </div>
                                     <div class="brand-slide">
 
                                         <a href="shop-side-version-2.html">
 
-                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
-                                            <div class="image-caption">Yogyakarta</div>
+                                            <img src="/assets/pages/fix/malang.jpg" alt="">
+                                            <div class="image-caption">Malang</div>
                                         </a>
                                     </div>
                                     <div class="brand-slide">
 
                                         <a href="shop-side-version-2.html">
 
-                                            <img src="/assets/pages/fix/jogja.jpg" alt="">
-                                            <div class="image-caption">Yogyakarta</div>
+                                            <img src="/assets/pages/fix/batam.jpg" alt="">
+                                            <div class="image-caption">Batam</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/jambi.jpg" alt="">
+                                            <div class="image-caption">Jambi</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/kudus.jpg" alt="">
+                                            <div class="image-caption">Kudus</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/makassar.jpg" alt="">
+                                            <div class="image-caption">Makassar</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/pati.jpg" alt="">
+                                            <div class="image-caption">Pati</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/pekanbaru.jpg" alt="">
+                                            <div class="image-caption">Pekanbaru</div>
+                                        </a>
+                                    </div>
+                                    <div class="brand-slide">
+
+                                        <a href="shop-side-version-2.html">
+
+                                            <img src="/assets/pages/fix/purbalingga.jpg" alt="">
+                                            <div class="image-caption">Purbalingga</div>
                                         </a>
                                     </div>
                                 </div>
