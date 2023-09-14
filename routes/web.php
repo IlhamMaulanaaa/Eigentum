@@ -286,3 +286,7 @@ Route::get('/navbar', function () {
 Route::get('/footer', function () {
     return view('layout.partial.footer');
 });
+
+Route::get('/detpro', function () {
+    return view('pages.property.detail1');
+});

@@ -302,7 +302,7 @@
                                                                                     title="Tambahkan Ke Favorite">
                                                                                     <i class="fas fa-heart"></i></button>
                                                                             
-                                                                    </form>
+                                                                        </form>
                                                                     </li>
                                                                     <li>
 

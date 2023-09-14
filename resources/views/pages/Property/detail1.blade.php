@@ -44,11 +44,11 @@
                                     <ul class="pd-breadcrumb__list">
                                         <li class="has-separator">
 
-                                            <a href="index.hml">Home</a>
+                                            <a href="/">Home</a>
                                         </li>
                                         <li class="is-marked">
 
-                                            <a href="">Detail</a>
+                                            <a href="#">Detail</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -57,68 +57,13 @@
 
                                 <!--====== Product Detail Zoom ======-->
                                 <div class="pd u-s-m-b-30">
-                                    <div class="slider-fouc pd-wrap">
                                         <div id="pd-o-initiate">
-                                            <div class="pd-o-img-wrap" data-src="images/product/product-d-1.jpg">
+                                            <div>
 
-                                                <img class="u-img-fluid" src="images/product/product-d-1.jpg"
-                                                    data-zoom-image="images/product/product-d-1.jpg" alt="">
+                                                <img class="u-img-fluid"  src="{{ asset('storage/' . $property->image) }}" alt="{{ $property->image }}">
                                             </div>
-                                            <div class="pd-o-img-wrap" data-src="images/product/product-d-2.jpg">
-
-                                                <img class="u-img-fluid" src="images/product/product-d-2.jpg"
-                                                    data-zoom-image="images/product/product-d-2.jpg" alt="">
-                                            </div>
-                                            <div class="pd-o-img-wrap" data-src="images/product/product-d-3.jpg">
-
-                                                <img class="u-img-fluid" src="images/product/product-d-3.jpg"
-                                                    data-zoom-image="images/product/product-d-3.jpg" alt="">
-                                            </div>
-                                            <div class="pd-o-img-wrap" data-src="images/product/product-d-4.jpg">
-
-                                                <img class="u-img-fluid" src="images/product/product-d-4.jpg"
-                                                    data-zoom-image="images/product/product-d-4.jpg" alt="">
-                                            </div>
-                                            <div class="pd-o-img-wrap" data-src="images/product/product-d-5.jpg">
-
-                                                <img class="u-img-fluid" src="images/product/product-d-5.jpg"
-                                                    data-zoom-image="images/product/product-d-5.jpg" alt="">
-                                            </div>
+                                            
                                         </div>
-
-                                        <span class="pd-text">Klik untuk zoom lebih besar</span>
-                                    </div>
-                                    <div class="u-s-m-t-15">
-                                        <div class="slider-fouc">
-                                            <div id="pd-o-thumbnail">
-                                                <div>
-
-                                                    <img class="u-img-fluid" src="images/product/product-d-1.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div>
-
-                                                    <img class="u-img-fluid" src="images/product/product-d-2.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div>
-
-                                                    <img class="u-img-fluid" src="images/product/product-d-3.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div>
-
-                                                    <img class="u-img-fluid" src="images/product/product-d-4.jpg"
-                                                        alt="">
-                                                </div>
-                                                <div>
-
-                                                    <img class="u-img-fluid" src="images/product/product-d-5.jpg"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!--====== End - Product Detail Zoom ======-->
                             </div>
@@ -128,49 +73,23 @@
                                 <div class="pd-detail">
                                     <div>
 
-                                        <span class="pd-detail__name">Rumah Minimalis</span>
+                                        <span class="pd-detail__name">{{ $property->title }}</span>
                                     </div>
                                     <div>
                                         <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__price">Rp. 900.000.000</span>
+                                            <span class="pd-detail__name1">Mulai Dari :</span>
+                                            <span class="pd-detail__price">{{ $property->price_range }}</span>
                                         </div>
                                         <div class="u-s-m-b-15">
                                             <div class="pd-detail__inline">
 
-                                                <span class="pd-detail__stock">Rumah</span>
+                                                <span class="pd-detail__stock">{{ $property->types->name }}</span>
 
-                                                <span class="pd-detail__left">Dijual</span>
-                                                <span class="pd-detail__left">Disewa</span>
                                             </div>
                                         </div>
                                         <div class="u-s-m-b-15">
 
-                                            <span class="pd-detail__preview-desc">Deskripsi Properti Anda disini Deskripsi
-                                                Properti Anda disini Deskripsi Properti Anda disini Deskripsi Properti Anda
-                                                disini Deskripsi Properti Anda disini Deskripsi Properti Anda
-                                                disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda disiniDeskripsi
-                                                Properti Anda disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda
-                                                disini</span>
-                                        </div>
-                                        <div class="u-s-m-b-15">
-                                            <div class="pd-detail__inline">
-
-                                                <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
-
-                                                    <a href="signin.html">Tambahkan Ke Favorite</a>
-                                            </div>
-                                        </div>
-                                        <div class="u-s-m-b-15">
-                                            <form class="pd-detail__form">
-                                                <div class="pd-detail-inline-2">
-                                                    <div class="u-s-m-b-15">
-
-                                                        <button class="btn btn--e-brand-b-2" type="submit">Tanyakan
-                                                            Agen</button>
-                                                    </div>
-                                                </div>
-                                            </form>
+                                            <span class="pd-detail__preview-desc">{{ $property->description }}</span>
                                         </div>
                                         <div class="u-s-m-b-15">
 
@@ -208,7 +127,15 @@
                                                 <li class="nav-item">
 
                                                     <a class="nav-link active" data-toggle="tab"
-                                                        href="#pd-desc">DESCRIPTION</a>
+                                                        href="#pd-desc">DESKRIPSI</a>
+                                                </li>
+                                                <li class="nav-item" style="z-index: 5;">
+                                                    @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
+                                                    <a class="nav-link"
+                                                        href="{{ route('unit.create.developer', $property->id) }}">
+                                                        <i class="fas fa-plus"></i> TAMBAH UNIT
+                                                    </a>
+                                                    @endif
                                                 </li>
                                             </ul>
                                         </div>
@@ -218,12 +145,7 @@
                                             <div class="tab-pane fade show active" id="pd-desc">
                                                 <div class="pd-tab__desc">
                                                     <div class="u-s-m-b-15">
-                                                        <p>Deskripsi Properti Anda disini Deskripsi Properti Anda disini
-                                                            Deskripsi Properti Anda disini Deskripsi Properti Anda disini
-                                                            Deskripsi Properti Anda disini Deskripsi Properti Anda
-                                                            disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda
-                                                            disiniDeskripsi Properti Anda disiniDeskripsi Properti Anda
-                                                            disiniDeskripsi Properti Anda disini</p>
+                                                        <p>{{ $property->description }}</p>
                                                     </div>
                                                     <!-- <div class="u-s-m-b-30"><iframe src="https://www.youtube.com/embed/qKqSBm07KZk" allowfullscreen></iframe></div> -->
                                                     <div class="u-s-m-b-30">
@@ -250,40 +172,24 @@
                                                             <table>
                                                                 <tbody>
                                                                     <tr>
+                                                                        <td>Nama Pemilik</td>
+                                                                        <td>{{ auth()->user()->name }}</td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td>Tipe Properti</td>
-                                                                        <td>Apartemen</td>
+                                                                        <td>{{ $property->types->name }}</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Lokasi</td>
-                                                                        <td>Jakarta Selatan</td>
+                                                                        <td>{{ implode(', ',$property->regencies()->pluck('name')->toArray()) }}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Luas Bangunan</td>
-                                                                        <td>75 m²</td>
+                                                                        <td>Unit Tersedia</td>
+                                                                        <td>{{ $property->units->count() }}</td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Luas Tanah</td>
-                                                                        <td>84 m²</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Kamar Tidur</td>
-                                                                        <td>2</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Kamar Mandi</td>
-                                                                        <td>2</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Fasilitas</td>
-                                                                        <td>Kolam Renang, Gym</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Tahun Dibangun</td>
-                                                                        <td>2020</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>Harga</td>
-                                                                        <td>Rp 900.000.000</td>
+                                                                        <td>Harga Mulai :</td>
+                                                                        <td>{{ $property->price_range }}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -309,9 +215,9 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="section__text-wrap">
-                                            <h1 class="section__heading u-c-secondary u-s-m-b-12">PROPERTI SERUPA</h1>
+                                            <h1 class="section__heading u-c-secondary u-s-m-b-12">List Unit dari Properti {{ $property->title }}</h1>
 
-                                            <span class="section__span u-c-grey">PROPERTI YANG DILIHAT CUSTOMER</span>
+                                            <span class="section__span u-c-grey">DAFTAR UNIT</span>
                                         </div>
                                     </div>
                                 </div>
@@ -325,330 +231,77 @@
                             <div class="container">
                                 <div class="slider-fouc">
                                     <div class="owl-carousel product-slider" data-item="4">
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
+                                        
+                                        @foreach ($units as $unit)
+                                            <div class="u-s-m-b-30">
+                                                <div class="product-o product-o--hover-on">
+                                                    <div class="product-o__wrap">
 
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
+                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
+                                                            href="{{ route('unit.show.user', $unit->id) }}">
 
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product1.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
+                                                            <img class="aspect__img"
+                                                                src="{{ asset('storage/' . $unit->image) }}"
+                                                                alt=""></a>
+                                                                <div class="product-o__action-wrap">
+                                                                    <ul class="product-o__action-list">
+                                                                        <li>
+                                                                        <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                                            @csrf
 
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
+                                                                                    <button class="btnfav" style="cursor: pointer, color: #000;, text-color: #000" data-tooltip="tooltip" type="submit"
+                                                                                        data-placement="top" 
+                                                                                        title="Tambahkan Ke Favorite">
+                                                                                        <i class="fas fa-heart"></i></button>
+                                                                                
+                                                                        </form>
+                                                                        </li>
+                                                                        <li>
 
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
+                                                                            <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
+                                                                                data-placement="top"
+                                                                                title="Lihat lebih detail"><i
+                                                                                    class="fas fa-eye"></i></a>
+                                                                        </li>
 
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
+                                                                        
+                                                                        @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
+                                                                            <li>
+                                                                                <form action="{{ route('unit.destroy.developer', $unit->id) }}" method="get" class="d-inline">
+                                                                                    @csrf
+                                                                                    @method('DELETE')
+                                                                                    <button class="btnfav" data-modal="modal" data-modal-id="#add-to-cart" 
+                                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                                    title="Hapus Unit" onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')">
+                                                                                    <i class="fas fa-trash-alt"></i></button>
+                                                                                </form>
+                                                                            </li>
+                                                                            <li>
+                                                                                <a data-modal="modal" href="{{ route('unit.edit.developer', $unit->id) }}" data-modal-id="#quick-look"
+                                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                                            title="Edit Unit">
+                                                                                            <i class="fas fa-edit"></i></a>
+                                                                                
+                                                                            </li>
+                                                                        @endif
+                                                                    </ul>
+                                                                </div>
                                                     </div>
+
+                                                    <span class="product-o__category">
+
+                                                        <a href="#">{{ $unit->properties->types->name }}</a></span>
+
+                                                    <span class="product-o__name">
+
+                                                        <a
+                                                            href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
+
+
+                                                    <span class="product-o__price">Rp. {{ $unit->price }}</span>
                                                 </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
                                             </div>
-                                        </div>
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
-
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product2.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
-                                            </div>
-                                        </div>
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
-
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product3.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
-                                            </div>
-                                        </div>
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
-
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product23.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
-                                            </div>
-                                        </div>
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
-
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product26.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
-                                            </div>
-                                        </div>
-                                        <div class="u-s-m-b-30">
-                                            <div class="product-o product-o--hover-on">
-                                                <div class="product-o__wrap">
-
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="product-detail.html">
-
-                                                        <img class="aspect__img"
-                                                            src="images/product/electronic/product30.jpg"
-                                                            alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Quick View"><i
-                                                                        class="fas fa-search-plus"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Add to Cart"><i
-                                                                        class="fas fa-plus-circle"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="signin.html" data-tooltip="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Email me When the price drops"><i
-                                                                        class="fas fa-envelope"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="shop-side-version-2.html">Rumah</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a href="product-detail.html">Rumah Minimalis</a></span>
-
-                                                <span class="product-o__price">Rp. 1.300.000.000</span>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

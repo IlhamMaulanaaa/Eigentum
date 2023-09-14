@@ -131,9 +131,9 @@
                             <button class="btn mb-2 me-1 active" data-filter="all">Semua</button>
                             {{-- <button class="btn mb-2 mx-1" data-filter="aktif">Aktif</button> --}}
                             {{-- <button class="btn mb-2 mx-1" data-filter="pasif">Pasif</button> --}}
-                            <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button>
-                            <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button>
-                            <button class="btn mb-2 mx-1" data-filter="disewa">penawaran</button>
+                            {{-- <button class="btn mb-2 mx-1" data-filter="dijual">Dijual</button> --}}
+                            {{-- <button class="btn mb-2 mx-1" data-filter="disewa">DIsewa</button> --}}
+                            <button class="btn mb-2 mx-1" data-filter="disewa">Penawaran</button>
                             <button class="btn mb-2 mx-1" data-filter="disewa">History</button>
                         </div>
                     </div>
@@ -153,7 +153,7 @@
                                     <h6 class="card-title">
                                         {{ $property->title }}</h6>
                                 </div>
-                                <div class="labeledit" style="z-index: 100">
+                                {{-- <div class="labeledit" style="z-index: 100">
                                     <a class="linkedit" href="{{ route('property.edit.developer', $property->id) }}"><i
                                             class="fas fa-edit edit-icon"></i></a>
                                 </div>
@@ -165,13 +165,13 @@
                                         <button class="linkdelete"
                                             onclick="return confirm('Apakah Anda Yakin {{ $property->id }} ')"><i
                                                 class="fas fa-trash delete-icon"></i></button>
-                                        {{-- <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a> --}}
+                                        <a class="linkdelete" href=""><i class="fas fa-trash delete-icon"></i></a>
                                     </form>
-                                </div>
+                                </div> --}}
 
 
 
-                                <span class="label sold">Terjual</span>
+                                {{-- <span class="label sold">Terjual</span> --}}
 
 
 
