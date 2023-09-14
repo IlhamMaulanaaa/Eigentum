@@ -57,7 +57,8 @@
 
                                                 <span class="u-c-brand">Rp. 100 Juta</span></span>
 
-                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
+                                            <a class="shop-now-link btn--e-brand"
+                                                href="{{ route('unit.search.user') }}">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -80,7 +81,8 @@
 
                                             <span class="content-span-4 u-c-white">Mulai Perjalanan Properti Anda</span>
 
-                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
+                                            <a class="shop-now-link btn--e-brand"
+                                                href="{{ route('unit.search.user') }}">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -103,7 +105,8 @@
 
                                             <span class="content-span-4 u-c-white">Mulai Belajar Mengenai Properti</span>
 
-                                            <a class="shop-now-link btn--e-brand" href="#">Lihat
+                                            <a class="shop-now-link btn--e-brand"
+                                                href="{{ route('unit.search.user') }}">Lihat
                                                 Sekarang</a>
                                         </div>
                                     </div>
@@ -292,22 +295,40 @@
                                                             <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
                                                                     <li>
-                                                                        <form
-                                                                            action="{{ route('favorite.add', $unit->id) }}"
-                                                                            method="POST">
-                                                                            @csrf
+                                                                        @if (Auth::check())
+                                                                            <form
+                                                                                action="{{ route('favorite.add', $unit->id) }}"
+                                                                                method="POST">
+                                                                                @csrf
 
-                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top" 
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
                                                                                     title="Tambahkan Ke Favorite">
                                                                                     <i class="fas fa-heart"></i></button>
-                                                                            
-                                                                    </form>
+
+                                                                            </form>
+                                                                        @elseif (!Auth::check())
+                                                                            <form action="{{ route('login.index') }}"
+                                                                                method="get">
+                                                                                @csrf
+
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+
+                                                                            </form>
+                                                                        @endif
+
                                                                     </li>
                                                                     <li>
 
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
-                                                                            data-placement="top"
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                            data-tooltip="tooltip" data-placement="top"
                                                                             title="Lihat lebih detail"><i
                                                                                 class="fas fa-eye"></i></a>
                                                                     </li>
@@ -390,28 +411,30 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                            <div class="product-o__action-wrap">
-                                                                <ul class="product-o__action-list">
-                                                                    <li>
-                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                                                        @csrf
+                                                    <div class="product-o__action-wrap">
+                                                        <ul class="product-o__action-list">
+                                                            <li>
+                                                                <form action="{{ route('favorite.add', $unit->id) }}"
+                                                                    method="POST">
+                                                                    @csrf
 
-                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top" 
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
-                                                                            
-                                                                    </form>
-                                                                    </li>
-                                                                    <li>
+                                                                    <button class="btnfav" style="cursor: pointer"
+                                                                        data-tooltip="tooltip" type="submit"
+                                                                        data-placement="top"
+                                                                        title="Tambahkan Ke Favorite">
+                                                                        <i class="fas fa-heart"></i></button>
 
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
-                                                                            data-placement="top"
-                                                                            title="Lihat lebih detail"><i
-                                                                                class="fas fa-eye"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                                </form>
+                                                            </li>
+                                                            <li>
+
+                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Lihat lebih detail"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -517,28 +540,50 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                            <div class="product-o__action-wrap">
-                                                                <ul class="product-o__action-list">
-                                                                    <li>
-                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
+                                                    <div class="product-o__action-wrap">
+                                                        <ul class="product-o__action-list">
+                                                            <li>
+                                                                @if (Auth::check())
+                                                                    <form action="{{ route('favorite.add', $unit->id) }}"
+                                                                        method="POST" class="favorite-form" 
+                                                                        {{--  --}}
+                                                                        data-unit-id="{{ $unit->id }}"
+                                                                        <!-- Add a data attribute to store the unit ID -->
+                                                                        >
+                                                                        @csrf
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="button" <!--
+                                                                            Change the button type to "button" to prevent
+                                                                            form submission -->
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite"
+                                                                            >
+                                                                            <i class="fas fa-heart"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                @elseif (!Auth::check())
+                                                                    <form action="{{ route('login.index') }}"
+                                                                        method="get">
                                                                         @csrf
 
-                                                                                <button class="btnfav" style="cursor: pointer" data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top" 
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
-                                                                            
-                                                                    </form>
-                                                                    </li>
-                                                                    <li>
-
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
                                                                             data-placement="top"
-                                                                            title="Lihat lebih detail"><i
-                                                                                class="fas fa-eye"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
+
+                                                                    </form>
+                                                                @endif
+                                                            </li>
+                                                            <li>
+
+                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Lihat lebih detail"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -850,8 +895,7 @@
                             <div class="slider-fouc">
                                 <div class="owl-carousel" id="brand-slider" data-item="5">
                                     <div class="brand-slide">
-
-                                        <a href="#">
+                                        <a href="">
 
                                             <img src="/assets/pages/fix/jakarta1.jpg" alt="Jakarta">
                                             <div class="image-caption">Jakarta</div>
@@ -991,6 +1035,9 @@
         </script>
         <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
+        {{-- jquery for favorite reload --}}
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
         <!--====== Vendor Js ======-->
         <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
 
@@ -1017,6 +1064,31 @@
                 </div>
             </div>
         </noscript>
+        <script>
+            $(document).ready(function() {
+                $('.favorite-form').on('click', '.btnfav', function(e) {
+                    e.preventDefault(); // Prevent the default form submission
+
+                    var form = $(this).closest('form');
+                    var unitId = form.data('unit-id');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: form.attr('action'),
+                        data: form.serialize(),
+                        success: function(response) {
+                            // Handle success (e.g., show a success message)
+                            alert('Item added to favorites successfully!');
+                        },
+                        error: function(error) {
+                            // Handle errors (e.g., show an error message)
+                            alert('An error occurred while adding to favorites.');
+                        }
+                    });
+                });
+            });
+        </script>
+
     </body>
 
     </html>

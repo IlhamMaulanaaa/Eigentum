@@ -391,8 +391,8 @@
 
                                                 <span class="pd-detail__review u-s-m-l-4">
 
-                                                    <a href="{{ route('unit.show.user', $unit->id) }}">23
-                                                        Reviews</a></span>
+                                                    {{-- <a href="{{ route('unit.show.user', $unit->id) }}">23
+                                                        Reviews</a></span> --}}
                                             </div>
                                         </div>
                                         <div class="u-s-m-b-15">

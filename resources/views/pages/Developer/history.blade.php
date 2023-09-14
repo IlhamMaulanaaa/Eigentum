@@ -49,7 +49,10 @@
                                         <p class="user_activity" style="margin-bottom: 10px;">
                                             <strong style="margin-right: 5px;">Rp. {{ $unit->price }}</strong>
                                         </p>
-                                        <p class="time">1 jam yang lalu</p>
+                                        <p class="time">
+                                            {{-- Calculate the time difference and format it --}}
+                                            {{ \Carbon\Carbon::parse($unit->updated_at)->diffForHumans() }}
+                                        </p>
                                         <p class="seen">
                                             @foreach ($unit->statuses as $status)
                                                 {{ $status->name }}
