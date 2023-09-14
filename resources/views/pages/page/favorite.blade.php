@@ -87,7 +87,7 @@
                                     <div class="w-r__container">
                                         <div class="w-r__wrap-1">
                                             <div class="w-r__img-wrap">
-                                                <img class="u-img-fluid" src="{{ asset('storage/' . $unit->image) }}" alt=""></div>
+                                                <img class="u-img-fluid" src="{{ asset('storage/' . $unit->image) }}" style="width: 120px; height:120px;" alt=""></div>
                                             <div class="w-r__info">
 
                                                 <span class="w-r__name">

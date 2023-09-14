@@ -1009,36 +1009,65 @@ input::-ms-clear {
           transform: translateY(-50%) scale(0.8);
   transition: all 0.2s ease 0s; }
 
-.product-o__action-list {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none; }
-  .product-o__action-list .favdet > li {
-    margin: 0 4px 6px;
-    opacity: 0;
-    -webkit-transform: translateY(50%);
-            transform: translateY(50%);
-    transition: all 0.3s ease 0.1s; }
-    .product-o__action-list > li > a {
-      display: block;
-      width: 35px;
-      text-align: center;
-      border-radius: 50%;
-      height: 35px;
-      line-height: 35px;
-      background-color: rgba(255, 255, 255, 0.25);
-      color: #ffffff;
-      font-size: 12px;
-      transition: all 0.3s ease 0s; }
-      .product-o__action-list > li > a:hover {
-        background-color: #333333;
-        color: #ffffff; }
+  .product-o__action-list {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+    .product-o__action-list > li {
+      margin: 0 4px 6px;
+      opacity: 0;
+      -webkit-transform: translateY(50%);
+              transform: translateY(50%);
+      transition: all 0.3s ease 0.1s; }
+      .product-o__action-list > li > a {
+        display: block;
+        width: 35px;
+        text-align: center;
+        border-radius: 50%;
+        height: 35px;
+        line-height: 35px;
+        background-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        font-size: 12px;
+        transition: all 0.3s ease 0s; }
+        .product-o__action-list > li > a:hover {
+          background-color: #333333;
+          color: #ffffff; }
+
+
+          
+
+        .product-o__action-list li {
+      margin: 0 4px 6px;
+      opacity: 0;
+      -webkit-transform: translateY(50%);
+              transform: translateY(50%);
+      transition: all 0.3s ease 0.1s; }
+      .product-o__action-list li .btnfav {
+        display: block;
+        width: 35px;
+        text-align: center;
+        border-radius: 50%;
+        height: 35px;
+        line-height: 35px;
+        background-color: rgba(255, 255, 255, 0.25);
+        color: #ffffff;
+        font-size: 12px;
+        transition: all 0.3s ease 0s; }
+        .product-o__action-list li .btnfav:hover {
+          background-color: #333333;
+          color: #ffffff; }
+
+
+
+
+  
 
 .product-o__category {
   display: block;

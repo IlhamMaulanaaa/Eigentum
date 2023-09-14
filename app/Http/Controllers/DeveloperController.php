@@ -2,18 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Unit;
 use Exception;
+use App\Models\Type;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Owner;
+use App\Models\Status;
 use App\Models\Regency;
 use App\Models\Village;
 use App\Models\District;
+use App\Models\Property;
 use App\Models\Province;
 use App\Models\Developer;
 use Illuminate\Support\Str;
 use App\Helper\ApiFormatter;
 use Illuminate\Http\Request;
+use App\Models\Specification;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -24,6 +29,29 @@ use Illuminate\Validation\Rules\Password;
 class DeveloperController extends Controller
 {
 
+    public function history(Request $request)
+    {
+        $user = auth()->user();
+    
+        // Ambil semua properti yang dimiliki oleh developer yang saat ini masuk
+        $developerProperties = $user->developers->first()->properties;
+    
+        // Ambil semua unit yang terjual yang terkait dengan properti-properti developer
+        $filteredUnits = Unit::whereIn('property_id', $developerProperties->pluck('id'))
+            ->where('statuscode', 'terjual')
+            ->paginate(10);
+    
+        $units = Unit::all();
+        $property = Property::all();
+        $types = Type::all();
+        $statuses = Status::all();
+        $specification = Specification::all();
+        $pivotTable = (new Property())->regencies()->getTable();
+    
+        return view('pages.developer.history', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'developerProperties'));
+    }
+    
+
     public function approval()
     {
         $developer = Developer::all();
@@ -31,12 +59,21 @@ class DeveloperController extends Controller
         return view('admin.developer.approval', compact('developer'));
     }
 
+    public function showFront()
+    {
+        $user =  auth()->user();
+        $developer = $user->developers->first();
+        $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
+        // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
+        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
+    }
+
     public function dashboard() //menampilkan dashboard developer
     {
         $user =  auth()->user();
         $developer = $user->developers->first();
         $licenseFile = explode("|", $developer->license);
-        return view('pages.developer.dashboard', compact('developer', 'user' , 'licenseFile'));
+        return view('pages.developer.dashboard', compact('developer', 'user', 'licenseFile'));
     }
 
     public function SigninDeveloper()
@@ -337,18 +374,18 @@ class DeveloperController extends Controller
         return view('admin.developer.detail', compact('developer', 'licenseFile', 'user'));
     }
 
-    public function showFront()
-    {
-        $user =  auth()->user();
-        $developer = $user->developers->first();
-        $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
-        $provinces = Province::all();
-        $regencies = Regency::all();
-        $districts = District::all();
-        $villages = Village::all();
-        // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
-        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile','provinces','regencies','districts','villages'));
-    }
+    // public function showFront()
+    // {
+    //     $user =  auth()->user();
+    //     $developer = $user->developers->first();
+    //     $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
+    //     $provinces = Province::all();
+    //     $regencies = Regency::all();
+    //     $districts = District::all();
+    //     $villages = Village::all();
+    //     // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
+    //     return view('pages.developer.profile', compact('developer', 'user', 'licenseFile','provinces','regencies','districts','villages'));
+    // }
 
     public function edit(Developer $developer)
     {

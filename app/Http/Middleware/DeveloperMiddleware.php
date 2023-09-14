@@ -28,7 +28,7 @@ class DeveloperMiddleware
                     return redirect('/beranda')->with('rejected', true);
                 }
             } elseif ($developerSub === 'pending') {
-                return redirect()->route('langganan.index');
+                return redirect()->route('langganan.index')->with('pending', true);
             }
 
             return redirect('/beranda');
