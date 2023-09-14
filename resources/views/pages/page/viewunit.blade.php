@@ -109,34 +109,49 @@
                                                 {{-- {{$unit->links()}} --}}
                                             @endforeach
 
-
                                         </div>
                                     </div>
-                                    <div class="u-s-p-y-60">
+                                    <div class="u-s-p-y-60 pagination">
 
                                         <!--====== Pagination ======-->
-                                        <ul class="shop-p__pagination">
-                                            <li class="is-active">
-
-                                                {{-- <a href="shop-grid-full.html">{{$units->links()}}</a> --}}
+                                        <ul class="pagination shop-p__pagination">
+                                            @php
+                                                $filteredUnitsPagination = $filteredUnits->appends(request()->query());
+                                            @endphp
+                                            <li
+                                                class="page-item{{ $filteredUnitsPagination->onFirstPage() ? ' disabled' : '' }}">
+                                                <a class="page-link"
+                                                    href="{{ $filteredUnitsPagination->previousPageUrl() }}"
+                                                    rel="prev">Previous</a>
                                             </li>
-                                            <li>
 
-                                                <a href="shop-grid-full.html">2</a>
-                                            </li>
-                                            <li>
+                                            {{-- Pagination Links --}}
+                                            @php
+                                                $numPagesToShow = 5;
+                                                $half = floor($numPagesToShow / 2);
+                                                $start = max($filteredUnitsPagination->currentPage() - $half, 1);
+                                                $end = min($start + $numPagesToShow - 1, $filteredUnitsPagination->lastPage());
+                                            @endphp
 
-                                                <a href="shop-grid-full.html">3</a>
-                                            </li>
-                                            <li>
+                                            @for ($page = $start; $page <= $end; $page++)
+                                                <li
+                                                    class="page-item{{ $page == $filteredUnitsPagination->currentPage() ? ' active' : '' }}">
+                                                    <a class="page-link"
+                                                        href="{{ $filteredUnitsPagination->url($page) }}">{{ $page }}</a>
+                                                </li>
+                                            @endfor
 
-                                                <a href="shop-grid-full.html">4</a>
+                                            {{-- Next Page Link --}}
+                                            <li
+                                                class="page-item{{ !$filteredUnitsPagination->hasMorePages() ? ' disabled' : '' }}">
+                                                <a class="page-link"
+                                                    href="{{ $filteredUnitsPagination->nextPageUrl() }}"
+                                                    rel="next">Next</a>
                                             </li>
-                                            <li>
 
-                                                <a class="fas fa-angle-right" href="shop-grid-full.html"></a>
-                                            </li>
+
                                         </ul>
+                                        {{-- {{$filteredUnits->links()}} --}}
                                         <!--====== End - Pagination ======-->
                                     </div>
                                 </div>
@@ -166,12 +181,12 @@
                                         <div class="blog-w">
                                             {{-- <form class="blog-search-form" action="{{ route('unit.search.user') }}" method="GET" role="search"> --}}
 
-                                                <label for="post-search"></label>
+                                            <label for="post-search"></label>
 
-                                                <input class="input-text input-text--primary-style" type="text"
-                                                    id="post-search" placeholder="Search" value="{{ request('search') }}">
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                id="post-search" placeholder="Search" value="{{ request('search') }}">
 
-                                                <button class="btn btn--icon fas fa-search" type="submit"></button>
+                                            <button class="btn btn--icon fas fa-search" type="submit"></button>
                                             {{-- </form> --}}
                                         </div>
                                     </div>
