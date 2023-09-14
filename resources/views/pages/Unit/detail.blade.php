@@ -180,9 +180,11 @@
                                                             @break
 
                                                             @default --}}
-                                                                <a href="https://web.whatsapp.com/">
-                                                                    <div class="group-12-pM3 btn btn-primary" id="3:50">Tanya Agent</div>
-                                                                </a>
+                                                        <button href="https://web.whatsapp.com/"
+                                                            style="background-color: blue; border-radius:10px; color: white; border:none;">
+                                                            <div class="group-12-pM3 btn btn-primary" id="3:50">Tanya
+                                                                Agent</div>
+                                                        </button>
                                                         {{-- @endswitch --}}
 
 
@@ -228,11 +230,11 @@
                                                     <a class="nav-link active" data-toggle="tab"
                                                         href="#pd-desc">DESCRIPTION</a>
                                                 </li>
-                                                <li class="nav-item">
+                                                {{-- <li class="nav-item">
                                                     <a class="nav-link" data-toggle="tab" href="#pd-desc">
                                                         <i class="fas fa-plus"></i> TAMBAH UNIT
                                                     </a>
-                                                </li>
+                                                </li> --}}
 
                                             </ul>
                                         </div>

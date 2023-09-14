@@ -43,11 +43,11 @@
                                     <ul class="breadcrumb__list">
                                         <li class="has-separator">
 
-                                            <a href="index.html">Home</a>
+                                            <a href="{{ route('beranda') }}">Home</a>
                                         </li>
                                         <li class="is-marked">
 
-                                            <a href="dashboard.html">Akun Saya</a>
+                                            <a href="#">Akun Saya</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -85,15 +85,15 @@
                                                             href="javascript:void(0);"
                                                             onclick="openTab('profileowner')">Profile Owner</a>
                                                     </li> --}}
-                                                    
-                                                    
+
+
                                                     {{-- <li>
                                                         <a class="tab-link" data-tab="orders" href="javascript:void(0);"
                                                             onclick="openTab('orders')">Daftar Pesanan</a>
                                                     </li> --}}
 
 
-                                                    
+
                                                     <li>
                                                         <a class="tab-link" data-tab="riwayat" href="javascript:void(0);"
                                                             onclick="openTab('riwayat')">Riwayat</a>
@@ -188,7 +188,7 @@
                                                                 <div class="dash__link dash__link--secondary u-s-m-b-8">
                                                                     <a data-tab="profiledeveloper"
                                                                         href="javascript:void(0);"
-                                                                        onclick="openTab('profileowner')">Edit</a>
+                                                                        onclick="openTab('profiledeveloper')">Edit</a>
                                                                 </div>
                                                                 <span class="dash__text">{{ auth()->user()->name }}</span>
                                                                 <span class="dash__text">{{ auth()->user()->email }}</span>
@@ -227,50 +227,54 @@
                                                                 @method('PUT')
                                                                 <div class="gl-inline">
                                                                     <div class="u-s-m-b-30">
-    
-                                                                        <label class="gl-label" for="face">FOTO</label>
-    
+
+                                                                        <label class="gl-label"
+                                                                            for="face">FOTO</label>
+
                                                                         @if ($developer->face)
                                                                             <img src="{{ asset('storage/' . $developer->face) }}"
                                                                                 alt="{{ $developer->face }}"
                                                                                 style="width: 100px; height:100px;">
                                                                         @endif
-    
-                                                                        <input type="file" id="face" name="face">
+
+                                                                        <input type="file" id="face"
+                                                                            name="face">
                                                                     </div>
-    
+
                                                                     <div class="u-s-m-b-30">
-    
+
                                                                         <label class="gl-label" for="ktp">KTP</label>
-    
+
                                                                         @if ($developer->ktp)
                                                                             <img src="{{ asset('storage/' . $developer->ktp) }}"
                                                                                 alt="{{ $developer->ktp }}"
                                                                                 style="width: 100px; height:100px;">
                                                                         @endif
-                                                                        <input type="file" id="ktp" name="ktp">
-    
+                                                                        <input type="file" id="ktp"
+                                                                            name="ktp">
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="gl-inline">
                                                                     <div class="u-s-m-b-30">
-    
-                                                                        <label class="gl-label" for="reg-fname">NAMA *</label>
-    
+
+                                                                        <label class="gl-label" for="reg-fname">NAMA
+                                                                            *</label>
+
                                                                         <input class="input-text input-text--primary-style"
                                                                             type="text" name="name"
                                                                             value="{{ old('name', auth()->user()->name) }}">
                                                                     </div>
                                                                     <div class="u-s-m-b-30">
-    
+
                                                                         <label class="gl-label" for="reg-lname">EMAIL
                                                                             *</label>
-    
+
                                                                         <input class="input-text input-text--primary-style"
                                                                             type="text" name="email"
                                                                             value="{{ old('email', auth()->user()->email) }}">
                                                                     </div>
-    
+
                                                                 </div>
                                                                 <div class="gl-inline">
                                                                     <div class="u-s-m-b-30">
@@ -317,7 +321,10 @@
                                                                         <div class="gl-dob"><select
                                                                                 class="select-box select-box--primary-style"
                                                                                 name="provinces_id" id="provinsi">
-                                                                                <option value="{{ implode(', ',$developer->provinces()->pluck('id')->toArray()) }}">{{ implode(', ',$developer->provinces()->pluck('name')->toArray()) }}</option>
+                                                                                <option
+                                                                                    value="{{ implode(', ',$developer->provinces()->pluck('id')->toArray()) }}">
+                                                                                    {{ implode(', ',$developer->provinces()->pluck('name')->toArray()) }}
+                                                                                </option>
                                                                                 {{-- @foreach ($provinces as $item)
                                                                                     <option value="{{ $item->id }}"
                                                                                         {{ old('provinces_id') == $item->id }}>
@@ -330,7 +337,11 @@
                                                                             </select><select
                                                                                 class="select-box select-box--primary-style"
                                                                                 name="regencies_id" id="kota">
-                                                                                <option value="{{ implode(', ',$developer->regencies()->pluck('id')->toArray()) }}" selected>{{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}</option>
+                                                                                <option
+                                                                                    value="{{ implode(', ',$developer->regencies()->pluck('id')->toArray()) }}"
+                                                                                    selected>
+                                                                                    {{ implode(', ',$developer->regencies()->pluck('name')->toArray()) }}
+                                                                                </option>
                                                                                 @if (old('provinces_id'))
                                                                                     @foreach ($regencies as $item)
                                                                                         <option
@@ -347,7 +358,11 @@
                                                                             <select
                                                                                 class="select-box select-box--primary-style"
                                                                                 name="districts_id" id="kecamatan">
-                                                                                <option value="{{ implode(', ',$developer->districts()->pluck('id')->toArray()) }}" selected>{{ implode(', ',$developer->districts()->pluck('name')->toArray()) }}</option>
+                                                                                <option
+                                                                                    value="{{ implode(', ',$developer->districts()->pluck('id')->toArray()) }}"
+                                                                                    selected>
+                                                                                    {{ implode(', ',$developer->districts()->pluck('name')->toArray()) }}
+                                                                                </option>
                                                                                 @if (old('regencies_id'))
                                                                                     @foreach ($districts as $item)
                                                                                         <option
@@ -364,7 +379,11 @@
                                                                             <select
                                                                                 class="select-box select-box--primary-style"
                                                                                 name="villages_id" id="desa">
-                                                                                <option value="{{ implode(', ',$developer->villages()->pluck('id')->toArray()) }}" selected>{{ implode(', ',$developer->villages()->pluck('name')->toArray()) }}</option>
+                                                                                <option
+                                                                                    value="{{ implode(', ',$developer->villages()->pluck('id')->toArray()) }}"
+                                                                                    selected>
+                                                                                    {{ implode(', ',$developer->villages()->pluck('name')->toArray()) }}
+                                                                                </option>
                                                                                 @if (old('districts_id'))
                                                                                     @foreach ($villages as $item)
                                                                                         <option
@@ -472,7 +491,7 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-                                        
+
                                         <div id="riwayat"
                                             class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
                                             <div class="dash__pad-2">
@@ -497,57 +516,64 @@
                                                 <div class="m-order__list">
 
                                                     @foreach ($developerProperties as $property)
-                                                    @foreach ($property->units as $unit)
-                                                        @if ($unit->statuscode == 'terjual')
-                                                            <div class="m-order__get">
-                                                                <div class="manage-o__header u-s-m-b-30">
-                                                                    <div class="dash-l-r">
-                                                                        <div>
-                                                                            <div class="manage-o__text-2 u-c-secondary">Id Order
-                                                                                #305423126</div>
-                                                                            
+                                                        @foreach ($property->units as $unit)
+                                                            @if ($unit->statuscode == 'terjual')
+                                                                <div class="m-order__get">
+                                                                    <div class="manage-o__header u-s-m-b-30">
+                                                                        <div class="dash-l-r">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="manage-o__text-2 u-c-secondary">
+                                                                                    {{ \Carbon\Carbon::parse($unit->updated_at)->diffForHumans() }}
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div>
+                                                                            </div>
                                                                         </div>
-                                                                        <div>
+                                                                    </div>
+                                                                    <div class="manage-o__description">
+                                                                        <div class="description__container">
+                                                                            <div class="description__img-wrap">
+
+                                                                                <img class="u-img-fluid"
+                                                                                    style="height: 100px; width: 110px; "
+                                                                                    src="{{ asset('storage/' . $unit->image) }}"
+                                                                                    alt="">
+                                                                            </div>
+                                                                            <div class="description-title">
+                                                                                {{ $unit->title }}</div>
                                                                         </div>
+                                                                        <div class="description__info-wrap">
+                                                                            <div>
+
+                                                                                <span
+                                                                                    class="manage-o__badge badge--processing">
+                                                                                    @foreach ($unit->statuses as $status)
+                                                                                        {{ $status->name }}
+                                                                                    @endforeach
+                                                                                </span>
+                                                                            </div>
+                                                                            <div>
+
+                                                                                <span
+                                                                                    class="manage-o__text-2 u-c-silver">{{ $property->title }}</span>
+                                                                            </div>
+                                                                            <div>
+
+                                                                                <span
+                                                                                    class="manage-o__text-2 u-c-silver">Total:
+
+                                                                                    <span
+                                                                                        class="manage-o__text-2 u-c-secondary">Rp.
+                                                                                        {{ $unit->price }}</span></span>
+                                                                            </div>
+                                                                        </div>
+
                                                                     </div>
                                                                 </div>
-                                                                <div class="manage-o__description">
-                                                                    <div class="description__container">
-                                                                        <div class="description__img-wrap">
-
-                                                                            <img class="u-img-fluid"
-                                                                                src="images/product/electronic/product3.jpg"
-                                                                                alt="">
-                                                                        </div>
-                                                                        <div class="description-title">{{ $unit->title }}</div>
-                                                                    </div>
-                                                                    <div class="description__info-wrap">
-                                                                        <div>
-
-                                                                            <span
-                                                                                class="manage-o__badge badge--processing">
-                                                                                @foreach ($unit->statuses as $status)
-                                                                                    {{ $status->name }}
-                                                                                @endforeach
-                                                                            </span>
-                                                                        </div>
-                                                                        <div>
-
-                                                                            <span class="manage-o__text-2 u-c-silver">{{ $property->title }}</span>
-                                                                        </div>
-                                                                        <div>
-
-                                                                            <span class="manage-o__text-2 u-c-silver">Total:
-
-                                                                                <span class="manage-o__text-2 u-c-secondary">Rp.
-                                                                                    {{ $unit->price }}</span></span>
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        @endif
-                                                    @endforeach
+                                                            @endif
+                                                        @endforeach
                                                     @endforeach
 
 

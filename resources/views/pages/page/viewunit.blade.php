@@ -99,10 +99,12 @@
                                                                             action="{{ route('favorite.add', $unit->id) }}"
                                                                             method="POST">
 
-                                                                            <button class="btnfavfil" style="cursor: pointer" data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top" 
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                            <button class="btnfavfil"
+                                                                                style="cursor: pointer"
+                                                                                data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
 
                                                                         </form>
                                                                     </div>
@@ -149,8 +151,7 @@
                                             {{-- Next Page Link --}}
                                             <li
                                                 class="page-item{{ !$filteredUnitsPagination->hasMorePages() ? ' disabled' : '' }}">
-                                                <a class="page-link"
-                                                    href="{{ $filteredUnitsPagination->nextPageUrl() }}"
+                                                <a class="page-link" href="{{ $filteredUnitsPagination->nextPageUrl() }}"
                                                     rel="next">Next</a>
                                             </li>
 
@@ -189,7 +190,8 @@
                                             <label for="post-search"></label>
 
                                             <input class="input-text input-text--primary-style" type="text"
-                                                id="post-search" placeholder="Search" name="search" value="{{ request('search') }}">
+                                                id="post-search" placeholder="Search" name="search"
+                                                value="{{ request('search') }}">
 
                                             <button class="btn btn--icon fas fa-search" type="submit"></button>
                                             {{-- </form> --}}
@@ -290,9 +292,7 @@
 
             <!--====== Modal Section ======-->
 
-<<<<<<< HEAD
-x
-=======
+
 
             <!--====== Quick Look Modal ======-->
             <div class="modal fade" id="quick-look">
@@ -594,7 +594,6 @@ x
             </div> --}}
             <!--====== End - Lihat Selengkapnya Modal ======-->
             <!--====== End - Modal Section ======-->
->>>>>>> e90e8ab14d01da8bc646389416138f8c68b73119
         </div>
 
         <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
