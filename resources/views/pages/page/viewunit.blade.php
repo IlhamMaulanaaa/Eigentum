@@ -105,9 +105,8 @@
                                                         </div>
                                                     </div>
                                                 </a>
-
-                                                {{-- {{$unit->links()}} --}}
                                             @endforeach
+                                            {{-- {{ $filteredUnits->links() }} --}}
 
 
                                         </div>
@@ -166,12 +165,12 @@
                                         <div class="blog-w">
                                             {{-- <form class="blog-search-form" action="{{ route('unit.search.user') }}" method="GET" role="search"> --}}
 
-                                                <label for="post-search"></label>
+                                            <label for="post-search"></label>
 
-                                                <input class="input-text input-text--primary-style" type="text"
-                                                    id="post-search" placeholder="Search" value="{{ request('search') }}">
+                                            <input class="input-text input-text--primary-style" type="text"
+                                                id="post-search" placeholder="Search" value="{{ request('search') }}">
 
-                                                <button class="btn btn--icon fas fa-search" type="submit"></button>
+                                            <button class="btn btn--icon fas fa-search" type="submit"></button>
                                             {{-- </form> --}}
                                         </div>
                                     </div>

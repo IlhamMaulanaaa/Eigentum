@@ -337,7 +337,7 @@
                                                 @if ($unit->statuscode == 'terjual')
                                                     <li class="col-md-8 justify-content-end"
                                                         style="height:25px; border-radius: 15px; width:80px; background-color:#70f770; margin-top: -28px; color:#fff;">
-                                                        {{ Str::limit($unit->statuscode999999999999999999999999999999999999999999999999999999999999999999999999, 7) }}
+                                                        {{ Str::limit($unit->statuscode, 7) }}
                                                     </li>
                                                 @elseif ($unit->statuscode == 'proses pembayaran')
                                                     <li class="col-md-8 justify-content-end"
