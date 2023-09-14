@@ -233,7 +233,7 @@ class PropertyController extends Controller
         $request->validate([
             'title'  => 'nullable',
             'description'   => 'nullable',
-            'address'   => 'nullable',
+            // 'address'   => 'nullable',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'type_id'   => 'nullable',
         ]);
@@ -243,7 +243,7 @@ class PropertyController extends Controller
         $property->update([
             'title'  => $request->title,
             'description'   => $request->description,
-            'address'   => $request->address,
+            // 'address'   => $request->address,
             'type_id'   => $request->type_id,
         ]);
 
