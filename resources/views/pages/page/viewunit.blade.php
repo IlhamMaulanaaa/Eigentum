@@ -95,10 +95,16 @@
                                                                         <span>{{ $unit->description }}</span>
                                                                     </div>
                                                                     <div class="product-m__wishlist">
+                                                                        <form
+                                                                            action="{{ route('favorite.add', $unit->id) }}"
+                                                                            method="POST">
 
-                                                                        <a class="far fa-heart" href="#"
-                                                                            data-tooltip="tooltip" data-placement="top"
-                                                                            title="Add to Wishlist"></a>
+                                                                            <button class="btnfavfil" style="cursor: pointer" data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top" 
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+
+                                                                        </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -284,6 +290,9 @@
 
             <!--====== Modal Section ======-->
 
+<<<<<<< HEAD
+x
+=======
 
             <!--====== Quick Look Modal ======-->
             <div class="modal fade" id="quick-look">
@@ -585,6 +594,7 @@
             </div> --}}
             <!--====== End - Lihat Selengkapnya Modal ======-->
             <!--====== End - Modal Section ======-->
+>>>>>>> e90e8ab14d01da8bc646389416138f8c68b73119
         </div>
 
         <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->

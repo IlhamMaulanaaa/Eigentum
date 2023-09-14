@@ -85,10 +85,15 @@
                                                             href="javascript:void(0);"
                                                             onclick="openTab('profileowner')">Profile Owner</a>
                                                     </li> --}}
-                                                    <li>
+                                                    
+                                                    
+                                                    {{-- <li>
                                                         <a class="tab-link" data-tab="orders" href="javascript:void(0);"
                                                             onclick="openTab('orders')">Daftar Pesanan</a>
-                                                    </li>
+                                                    </li> --}}
+
+
+                                                    
                                                     <li>
                                                         <a class="tab-link" data-tab="riwayat" href="javascript:void(0);"
                                                             onclick="openTab('riwayat')">Riwayat</a>
@@ -313,11 +318,11 @@
                                                                                 class="select-box select-box--primary-style"
                                                                                 name="provinces_id" id="provinsi">
                                                                                 <option value="{{ implode(', ',$developer->provinces()->pluck('id')->toArray()) }}">{{ implode(', ',$developer->provinces()->pluck('name')->toArray()) }}</option>
-                                                                                @foreach ($provinces as $item)
+                                                                                {{-- @foreach ($provinces as $item)
                                                                                     <option value="{{ $item->id }}"
                                                                                         {{ old('provinces_id') == $item->id }}>
                                                                                         {{ $item->name }}</option>
-                                                                                @endforeach
+                                                                                @endforeach --}}
                                                                                 @error('province_id')
                                                                                     <div class="invalid-feedback">
                                                                                         {{ $message }}</div>
@@ -467,7 +472,92 @@
                                                 </div>
                                             </div>
                                         </div> --}}
-                                        <div id="orders"
+                                        
+                                        <div id="riwayat"
+                                            class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                            <div class="dash__pad-2">
+                                                <h1 class="dash__h1 u-s-m-b-14">Riwayat</h1>
+
+                                                <span class="dash__text u-s-m-b-30">Di sini Anda dapat melihat semua
+                                                    riwayat di website ini.</span>
+                                                <form class="m-order u-s-m-b-30">
+                                                    <div class="m-order__select-wrapper">
+
+                                                        <label class="u-s-m-r-8" for="my-order-sort">Lihat:</label><select
+                                                            class="select-box select-box--primary-style"
+                                                            id="my-order-sort">
+                                                            <option selected>Hari Ini</option>
+                                                            <option>3 Hari Terakhir</option>
+                                                            <option>1 Minggu Terakhir</option>
+                                                            <option>1 Bulan Terakhir</option>
+                                                            <option>Semua Riwayat</option>
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                                <div class="m-order__list">
+
+                                                    @foreach ($developerProperties as $property)
+                                                    @foreach ($property->units as $unit)
+                                                        @if ($unit->statuscode == 'terjual')
+                                                            <div class="m-order__get">
+                                                                <div class="manage-o__header u-s-m-b-30">
+                                                                    <div class="dash-l-r">
+                                                                        <div>
+                                                                            <div class="manage-o__text-2 u-c-secondary">Id Order
+                                                                                #305423126</div>
+                                                                            
+                                                                        </div>
+                                                                        <div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="manage-o__description">
+                                                                    <div class="description__container">
+                                                                        <div class="description__img-wrap">
+
+                                                                            <img class="u-img-fluid"
+                                                                                src="images/product/electronic/product3.jpg"
+                                                                                alt="">
+                                                                        </div>
+                                                                        <div class="description-title">{{ $unit->title }}</div>
+                                                                    </div>
+                                                                    <div class="description__info-wrap">
+                                                                        <div>
+
+                                                                            <span
+                                                                                class="manage-o__badge badge--processing">
+                                                                                @foreach ($unit->statuses as $status)
+                                                                                    {{ $status->name }}
+                                                                                @endforeach
+                                                                            </span>
+                                                                        </div>
+                                                                        <div>
+
+                                                                            <span class="manage-o__text-2 u-c-silver">{{ $property->title }}</span>
+                                                                        </div>
+                                                                        <div>
+
+                                                                            <span class="manage-o__text-2 u-c-silver">Total:
+
+                                                                                <span class="manage-o__text-2 u-c-secondary">Rp.
+                                                                                    {{ $unit->price }}</span></span>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                    @endforeach
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        {{-- <div id="orders"
                                             class="dash__box dash__box--shadow dash__box--bg-white dash__box--radius"
                                             style="display: none;">
                                             <h2 class="dash__h2 u-s-p-xy-20">Daftar Pesanan</h2>
@@ -566,173 +656,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </div>
-                                        <div id="riwayat"
-                                            class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
-                                            <div class="dash__pad-2">
-                                                <h1 class="dash__h1 u-s-m-b-14">Riwayat</h1>
-
-                                                <span class="dash__text u-s-m-b-30">Di sini Anda dapat melihat semua
-                                                    riwayat di website ini.</span>
-                                                <form class="m-order u-s-m-b-30">
-                                                    <div class="m-order__select-wrapper">
-
-                                                        <label class="u-s-m-r-8" for="my-order-sort">Lihat:</label><select
-                                                            class="select-box select-box--primary-style"
-                                                            id="my-order-sort">
-                                                            <option selected>Hari Ini</option>
-                                                            <option>3 Hari Terakhir</option>
-                                                            <option>1 Minggu Terakhir</option>
-                                                            <option>1 Bulan Terakhir</option>
-                                                            <option>Semua Riwayat</option>
-                                                        </select>
-                                                    </div>
-                                                </form>
-                                                <div class="m-order__list">
-                                                    <div class="m-order__get">
-                                                        <div class="manage-o__header u-s-m-b-30">
-                                                            <div class="dash-l-r">
-                                                                <div>
-                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order
-                                                                        #305423126</div>
-                                                                    <div class="manage-o__text u-c-silver">Tanggal 1 Oct
-                                                                        2023 09:08:37 - 31 Oct 2023 09:08:37</div>
-                                                                </div>
-                                                                <div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="manage-o__description">
-                                                            <div class="description__container">
-                                                                <div class="description__img-wrap">
-
-                                                                    <img class="u-img-fluid"
-                                                                        src="images/product/electronic/product3.jpg"
-                                                                        alt="">
-                                                                </div>
-                                                                <div class="description-title">Rumah Minimalis</div>
-                                                            </div>
-                                                            <div class="description__info-wrap">
-                                                                <div>
-
-                                                                    <span
-                                                                        class="manage-o__badge badge--processing">Disewa</span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
-
-                                                                        <span
-                                                                            class="manage-o__text-2 u-c-secondary">1</span></span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Total:
-
-                                                                        <span class="manage-o__text-2 u-c-secondary">Rp.
-                                                                            900.000.000</span></span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-order__get">
-                                                        <div class="manage-o__header u-s-m-b-30">
-                                                            <div class="dash-l-r">
-                                                                <div>
-                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order
-                                                                        #305423126</div>
-                                                                    <div class="manage-o__text u-c-silver">Tanggal 12 Oct
-                                                                        2023 09:08:37</div>
-                                                                </div>
-                                                                <div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="manage-o__description">
-                                                            <div class="description__container">
-                                                                <div class="description__img-wrap">
-
-                                                                    <img class="u-img-fluid"
-                                                                        src="images/product/electronic/product3.jpg"
-                                                                        alt="">
-                                                                </div>
-                                                                <div class="description-title">Rumah Minimalis</div>
-                                                            </div>
-                                                            <div class="description__info-wrap">
-                                                                <div>
-
-                                                                    <span
-                                                                        class="manage-o__badge badge--shipped">Dijual</span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
-
-                                                                        <span
-                                                                            class="manage-o__text-2 u-c-secondary">1</span></span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Total:
-
-                                                                        <span class="manage-o__text-2 u-c-secondary">Rp.
-                                                                            2.900.000.000</span></span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="m-order__get">
-                                                        <div class="manage-o__header u-s-m-b-30">
-                                                            <div class="dash-l-r">
-                                                                <div>
-                                                                    <div class="manage-o__text-2 u-c-secondary">Id Order
-                                                                        #305423126</div>
-                                                                    <div class="manage-o__text u-c-silver">Tanggal 12 Oct
-                                                                        2023 09:08:37</div>
-                                                                </div>
-                                                                <div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="manage-o__description">
-                                                            <div class="description__container">
-                                                                <div class="description__img-wrap">
-
-                                                                    <img class="u-img-fluid"
-                                                                        src="images/product/electronic/product3.jpg"
-                                                                        alt="">
-                                                                </div>
-                                                                <div class="description-title">Rumah Minimalis</div>
-                                                            </div>
-                                                            <div class="description__info-wrap">
-                                                                <div>
-
-                                                                    <span
-                                                                        class="manage-o__badge badge--delivered">Dibatalkan</span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Quantity:
-
-                                                                        <span
-                                                                            class="manage-o__text-2 u-c-secondary">1</span></span>
-                                                                </div>
-                                                                <div>
-
-                                                                    <span class="manage-o__text-2 u-c-silver">Total:
-
-                                                                        <span class="manage-o__text-2 u-c-secondary">Rp.
-                                                                            2.900.000.000</span></span>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

@@ -5221,12 +5221,22 @@ input::-ms-clear {
     visibility: hidden; }
   .is-grid-active .product-m__wishlist {
     text-align: right; }
-    .is-grid-active .product-m__wishlist a {
+    .is-grid-active .product-m__wishlist .btnfavfil {
       font-size: 16px;
       color: #000;
       transition: color 110ms ease-in-out; }
-      .is-grid-active .product-m__wishlist a:hover {
+      .is-grid-active .product-m__wishlist .btnfavfil:hover {
         color: #0c40e8; }
+  
+        .btnfavfil {
+          background-color: transparent;
+          border: 0;
+          padding: 0;
+          outline: none;
+          cursor: pointer;
+        }
+
+
   .is-grid-active .product-m__preview-description {
     margin-bottom: 8px;
     font-size: 12px;

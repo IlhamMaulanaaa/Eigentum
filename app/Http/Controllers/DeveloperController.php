@@ -48,7 +48,7 @@ class DeveloperController extends Controller
         $specification = Specification::all();
         $pivotTable = (new Property())->regencies()->getTable();
     
-        return view('pages.developer.history', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'developerProperties'));
+        return view('pages.developer.profile', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'developerProperties'));
     }
     
 
@@ -62,10 +62,11 @@ class DeveloperController extends Controller
     public function showFront()
     {
         $user =  auth()->user();
+        $developerProperties = $user->developers->first()->properties;
         $developer = $user->developers->first();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
         // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
-        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
+        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile', 'developerProperties'));
     }
 
     public function dashboard() //menampilkan dashboard developer
