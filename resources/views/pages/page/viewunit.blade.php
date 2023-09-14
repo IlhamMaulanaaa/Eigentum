@@ -69,11 +69,11 @@
                                                                         src="{{ asset('storage/' . $unit->image) }}"
                                                                         alt=""></a>
 
-                                                                <div class="product-m__add-cart">
+                                                                {{-- <div class="product-m__add-cart">
 
                                                                     <a class="btn--e-brand" data-modal="modal"
                                                                         data-modal-id="#add-to-cart">Lihat Selengkapnya</a>
-                                                                </div>
+                                                                </div> --}}
                                                             </div>
                                                             <div class="product-m__content">
                                                                 <div class="product-m__category">
@@ -184,7 +184,7 @@
                                             <label for="post-search"></label>
 
                                             <input class="input-text input-text--primary-style" type="text"
-                                                id="post-search" placeholder="Search" value="{{ request('search') }}">
+                                                id="post-search" placeholder="Search" name="search" value="{{ request('search') }}">
 
                                             <button class="btn btn--icon fas fa-search" type="submit"></button>
                                             {{-- </form> --}}
@@ -407,8 +407,8 @@
 
                                                 <span class="pd-detail__review u-s-m-l-4">
 
-                                                    <a href="{{ route('unit.show.user', $unit->id) }}">23
-                                                        Reviews</a></span>
+                                                    {{-- <a href="{{ route('unit.show.user', $unit->id) }}">23
+                                                        Reviews</a></span> --}}
                                             </div>
                                         </div>
                                         <div class="u-s-m-b-15">
@@ -535,7 +535,7 @@
 
 
             <!--====== Lihat Selengkapnya Modal ======-->
-            <div class="modal fade" id="add-to-cart">
+            {{-- <div class="modal fade" id="add-to-cart">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content modal-radius modal-shadow">
 
@@ -575,8 +575,7 @@
                                             <a class="s-option__link btn--e-white-brand-shadow" href="cart.html">VIEW
                                                 CART</a>
 
-                                            <a class="s-option__link btn--e-brand-shadow" href="checkout.html">PROCEED TO
-                                                CHECKOUT</a>
+                                            <a class="s-option__link btn--e-brand-shadow" href="checkout.html">VIEW DETAIL</a>
                                         </div>
                                     </div>
                                 </div>
@@ -584,7 +583,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!--====== End - Lihat Selengkapnya Modal ======-->
             <!--====== End - Modal Section ======-->
         </div>

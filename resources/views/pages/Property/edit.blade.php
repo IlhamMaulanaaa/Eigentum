@@ -241,7 +241,7 @@
 </head>
 
 <body>
-<div class="tutup">
+<div class="tutup"> 
     <div class="container">
         <header>Upload Properti</header>
         <div class="masuk" style="margin-top: 5px;">
@@ -249,40 +249,51 @@
                     href="">Kembali</a></p>
         </div>
 
-        <form >
+        <form method="post" action="{{ route('property.update.developer', $property->id) }}">
+            @csrf
+            @method('PUT')
             <div class="form first" id="tab1">
                 <div class="details personal">
                     <div class="fields">
                         <div class="input-field">
                             <label for="title" class="form-label">Nama Properti</label>
-                            <input class="form-control ">
-                            {{-- @error('title')
+                            <input class="form-control" id="title" name="title"
+                            value="{{ old('title', $property->title) }}" required>                            {{-- @error('title')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror --}}
                         </div>
 
                         <div class="input-field">
                             <label for="description" class="form-label">Deskripsi</label>
-                            <textarea class="form-control "></textarea>
+                            <textarea class="form-control" id="description" name="description" required>{{ old('description', $property->description) }}</textarea>
                             {{-- @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror --}}
                         </div>
                         <div class="input-field">
                             <label for="status_id" class="form-label">Tipe Properti</label>
-                            <select required>
-                                <option disabled selected>Pilih Tipe</option>
-                                <option>Apartemen</option>
-                                <option>Rumah</option>
-                                <option>Ruko</option>
-                                <option>Villa</option>
+                            <select class="form-control" id="type_id" name="type_id">
+                                @foreach ($type as $type)
+                                    @if (old('type_id', $property->type_id == $type->id))
+                                        <option name="type_id" value="{{ $type->id }}" selected>
+                                            {{ $type->name }}
+                                        </option>
+                                    @endif
+                                    <option name="type_id" value="{{ $type->id }}">{{ $type->name }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="input-field">
                             <label for="nib" class="form-label">Image</label>
-                            <input style="padding-top: 8px;" type="file"
-                                class="form-control noscroll @error('license') is-invalid @enderror" id="license_nib"
-                                name="license[]" multiple>
+                            @if ($property->images)
+                            <div class="mb-3">
+                                <img src="{{ asset('storage/' . $property->images) }}"
+                                    alt="{{ $property->images }}" class="img-thumbnail"
+                                    width="120">
+                            </div>
+                        @endif
+                        <input type="file" class="form-control" id="images" name="images">
                             
                         </div>
                         
@@ -297,8 +308,6 @@
                 </div>
             </div>
 
-
-           
         </form>
     </div>
 </div>
