@@ -93,7 +93,7 @@ class UnitController extends Controller
     {
         $units = Unit::filter($request->all())->get();
         $newunits = Unit::orderBy('created_at', 'desc')->get();
-        $property = Property::all()->pluck('title', 'id');;
+        $property = Property::all();
         $status = Status::all();
         $tables = (new Unit())->getTable();
         $types = Type::all();

@@ -354,6 +354,18 @@
                                                     class="fa fa-map-marker-alt  "></i>{{ Str::limit(implode(', ',$property->regencies()->pluck('name')->toArray()),20) }}
                                             </p>
                                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
                                         @if (Auth::user()->role == 'developer' && Auth::user()->id == $property->developers->users->pluck('id')->first())
                                             <div class="action d-flex .align-items-center">
                                                 <div class="labeldelete">
@@ -375,6 +387,18 @@
                                                 </div>
                                             </div>
                                         @endif
+
+
+
+
+
+
+
+
+
+
+
+                                        
                                         {{-- <div class="d-flex border-top" style="width: 280px; ">
                                         <small class="flex-fill text-center border-end py-2" style="color: #000;"><i
                                                 class="fa fa-bath  me-2"></i>{{ $unit->specifications->bathroom }}</small>

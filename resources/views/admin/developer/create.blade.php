@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="col-md-3 col-form-label" for="desa">Desa</label>
-                                            <select class="form-select " name="villages_id" id="desa"
+                                            <select class="form-select" name="villages_id" id="desa"
                                                 data-placeholder="Pilih Desa" required>
                                                 <option></option>
                                                 @if (old('districts_id'))

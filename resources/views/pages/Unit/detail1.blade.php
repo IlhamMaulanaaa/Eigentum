@@ -93,27 +93,27 @@
                                             <div id="pd-o-thumbnail">
                                                 <div>
 
-                                                    <img class="u-img-fluid" src="/assets/pages/home/kota.jpg"
+                                                    <img class="u-img-fluid1" src="/assets/pages/banner/apartemen1.jpg"
                                                         alt="">
                                                 </div>
                                                 <div>
 
-                                                    <img class="u-img-fluid" src="/assets/pages/home/kota.jpg"
+                                                    <img class="u-img-fluid1" src="/assets/pages/banner/apartemen1.jpg"
                                                         alt="">
                                                 </div>
                                                 <div>
 
-                                                    <img class="u-img-fluid" src="/assets/pages/home/kota.jpg"
+                                                    <img class="u-img-fluid1" src="/assets/pages/banner/apartemen1.jpg"
                                                         alt="">
                                                 </div>
                                                 <div>
 
-                                                    <img class="u-img-fluid" src="/assets/pages/home/kota.jpg"
+                                                    <img class="u-img-fluid1" src="/assets/pages/banner/apartemen1.jpg"
                                                         alt="">
                                                 </div>
                                                 <div>
 
-                                                    <img class="u-img-fluid" src="/assets/pages/home/kota.jpg"
+                                                    <img class="u-img-fluid1" src="/assets/pages/banner/apartemen1.jpg"
                                                         alt="">
                                                 </div>
                                             </div>
