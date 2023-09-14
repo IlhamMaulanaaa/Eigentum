@@ -329,7 +329,6 @@ class DeveloperController extends Controller
             return $e;
         }
     }
-
     public function show($id)
     {
         $developer = Developer::findOrFail($id);
@@ -343,8 +342,12 @@ class DeveloperController extends Controller
         $user =  auth()->user();
         $developer = $user->developers->first();
         $licenseFile = is_string($developer->license) ? explode('|', $developer->license) : [];
+        $provinces = Province::all();
+        $regencies = Regency::all();
+        $districts = District::all();
+        $villages = Village::all();
         // return view('pages.page.profile', compact('developer', 'user', 'licenseFile',));
-        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile',));
+        return view('pages.developer.profile', compact('developer', 'user', 'licenseFile','provinces','regencies','districts','villages'));
     }
 
     public function edit(Developer $developer)
@@ -578,16 +581,16 @@ class DeveloperController extends Controller
                     }
                 }
 
+                $developer->provinces()->sync($request->input('provinces_id'));
+                $developer->regencies()->sync($request->input('regencies_id'));
+                $developer->districts()->sync($request->input('districts_id'));
+                $developer->villages()->sync($request->input('villages_id'));
                 $developer->users()->sync($users);
                 $developer->save();
                 $users->save();
             }
             // $developer->users()->sync($users->id);
             // $developer->save();
-            // $developer->provinces()->sync($request->input('province_id'));
-            // $developer->regencies()->sync($request->input('regency_id'));
-            // $developer->districts()->sync($request->input('district_id'));
-            // $developer->villages()->sync($request->xinput('village_id'));
 
             // $developer = Developer::where('id', '=', $developer->id)->get();
             // return redirect(route('developer.show', $id));

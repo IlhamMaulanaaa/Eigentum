@@ -25,7 +25,7 @@ class UnitController extends Controller
     public function filter(Request $request)
     {
         // Proses filter dan ambil hasil sesuai parameter
-        $filteredUnits = Unit::filter($request->all())->paginate(10);
+        $filteredUnits = Unit::filter($request->all())->paginate(5);
         $units = Unit::all();
         $property = Property::all();
         $types = Type::all();
@@ -91,7 +91,7 @@ class UnitController extends Controller
     {
         $units = Unit::filter($request->all())->get();
         $newunits = Unit::orderBy('created_at', 'desc')->get();
-        $property = Property::all()->pluck('title', 'id');;
+        $property = Property::all();
         $status = Status::all();
         $tables = (new Unit())->getTable();
         $types = Type::all();

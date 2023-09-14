@@ -379,29 +379,19 @@
                             <div class="slider-fouc">
                                 <div class="owl-carousel product-slider" data-item="4">
 
-                                    @foreach ($newunits as $unit)
+                                    @foreach ($property as $property)
                                         <div class="u-s-m-b-30">
                                             <div class="product-o product-o--hover-on">
                                                 <div class="product-o__wrap">
-
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                                        href="{{ route('unit.show.user', $unit->id) }}">
-
+                                                        href="{{ route('property.show.user', $property->id) }}">
                                                         <img class="aspect__img"
-                                                            src="{{ asset('storage/' . $unit->image) }}"
+                                                            src="{{ asset('storage/' . $property->image) }}"
                                                             alt=""></a>
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
-
                                                             <li>
-
-                                                                <a href="#" data-tooltip="tooltip"
-                                                                    data-placement="top" title="Tambahkan Ke Favorite"><i
-                                                                        class="fas fa-heart"></i></a>
-                                                            </li>
-                                                            <li>
-
-                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                <a href="{{ route('property.show.user', $property->id) }}"
                                                                     data-tooltip="tooltip" data-placement="top"
                                                                     title="Lihat lebih detail"><i
                                                                         class="fas fa-eye"></i></a>
@@ -409,18 +399,12 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-
                                                 <span class="product-o__category">
-
-                                                    <a href="#">{{ $unit->properties->types->name }}</a></span>
-
+                                                    <a href="#">{{ $property->types->name }}</a></span>
                                                 <span class="product-o__name">
-
                                                     <a
-                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
-
-
-                                                <span class="product-o__price">Rp. {{ $unit->price }}</span>
+                                                        href="{{ route('property.show.user', $property->id) }}">{{ $property->title }}</a></span>
+                                                <span class="product-o__price">{{ $property->price_range }}</span>
                                             </div>
                                         </div>
                                     @endforeach
@@ -437,38 +421,81 @@
                 <!--====== Section 5 ======-->
                 <div class="banner-bg">
 
-                    <!--====== Section Content ======-->
-                    <div class="section__content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="banner-bg__countdown">
-                                        <div class="countdown countdown--style-banner" data-countdown="2023/09/1"></div>
-                                    </div>
-                                    <div class="banner-bg__wrap">
-                                        <div class="banner-bg__text-1">
-
-                                            <span class="u-c-white">Jadilah</span>
-
-                                            <span class="u-c-white">Developer</span>
+                    @if (!Auth::user())
+                        <!--====== Section Content ======-->
+                        <div class="section__content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="banner-bg__countdown">
+                                            <div class="countdown countdown--style-banner" data-countdown="2023/09/1">
+                                            </div>
                                         </div>
-                                        <div class="banner-bg__text-2">
+                                        <div class="banner-bg__wrap">
+                                            <div class="banner-bg__text-1">
 
-                                            <span class="u-c-white">Kami Memiliki</span>
+                                                <span class="u-c-white">Jadilah</span>
 
-                                            <span class="u-c-white">Diskon Terbaik Untuk Anda!</span>
+                                                <span class="u-c-white">Developer</span>
+                                            </div>
+                                            <div class="banner-bg__text-2">
+
+                                                <span class="u-c-white">Kami Memiliki</span>
+
+                                                <span class="u-c-white">Diskon Terbaik Untuk Anda!</span>
+                                            </div>
+
+                                            <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan
+                                                strategi pemasaran untuk properti yang akan dijual.</span>
+
+                                            <a class="banner-bg__shop-now btn--e-secondary" href="#">Daftar
+                                                Sekarang</a>
                                         </div>
-
-                                        <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan
-                                            strategi pemasaran untuk properti yang akan dijual.</span>
-
-                                        <a class="banner-bg__shop-now btn--e-secondary" href="#">Daftar Sekarang</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!--====== End - Section Content ======-->
+                        <!--====== End - Section Content ======-->
+                    @elseif (Auth::user()->developers->pluck('subscribe')->first() == 'already')
+                        <!--====== Section Content ======-->
+                        <div class="section__content">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        {{-- <div class="banner-bg__countdown">
+                                            <div class="countdown countdown--style-banner" data-countdown="2023/09/1">
+                                            </div>
+                                        </div> --}}
+                                        <div class="banner-bg__wrap">
+                                            <div class="banner-bg__text-1">
+
+                                                <span class="u-c-white">Sekarang</span>
+                                                <span class="u-c-white">Anda</span>
+
+                                                <span class="u-c-white">Developer</span>
+                                            </div>
+                                            <div class="banner-bg__text-2">
+
+                                                <span class="u-c-white">Nikmati</span>
+
+                                                <span class="u-c-white">Fitur</span>
+                                                <span class="u-c-white">Developer</span>
+                                            </div>
+
+                                            <span class="banner-bg__text-block banner-bg__text-3 u-c-white">Merencanakan
+                                                strategi pemasaran untuk properti yang akan dijual.</span>
+
+                                            {{-- <a class="banner-bg__shop-now btn--e-secondary" href="#">Daftar
+                                                Sekarang</a> --}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--====== End - Section Content ======-->
+                    @else
+                    @endif
+
                 </div>
                 <!--====== End - Section 5 ======-->
 
