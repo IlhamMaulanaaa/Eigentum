@@ -197,7 +197,7 @@ class PropertyController extends Controller
     {
         $units = Unit::where('property_id', $property->id)->get();
         if (Auth::user()->role == "admin") {
-            return view('admin.property.detail1', compact('property'));
+            return view('admin.property.detail', compact('property'));
         } elseif (Auth::user()->role == "developer") {
             return view('pages.property.detail1', compact('property', 'units'));
         } elseif (Auth::user()->role == "agent") {

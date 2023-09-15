@@ -17,8 +17,7 @@
                             <br>
                             <div class="form-group">
                                 <label for="" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description" readonly disabled
-                                    value="">{{ $property->description }}</textarea>
+                                <textarea class="form-control" id="description" name="description" readonly disabled value="">{{ $property->description }}</textarea>
                             </div>
                             <br>
                             <div class="form-group row col-12">
@@ -43,8 +42,8 @@
                                 <div class="form-group col-auto mb-3">
                                     <label for="Village" class="form-label">Desa</label>
                                     <input type="text" class="form-control" id="Village" name="Village"
-                                        value="{{ implode(', ',$property->villages()->pluck('name')->toArray()) }}"
-                                        readonly disabled>
+                                        value="{{ implode(', ',$property->villages()->pluck('name')->toArray()) }}" readonly
+                                        disabled>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -83,24 +82,25 @@
                                         <li>
                                             {{ $unit->title }}
                                             <a href="{{ route('unit.show', $unit->id) }}" class="text-warning">Detail</a>
-                                            <a href="{{route('unit.edit', $unit->id)}}">Edit</a>
+                                            {{-- <a href="{{ route('unit.edit', $unit->id) }}">Edit</a> --}}
                                         </li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('unitid.create', $property->id) }}" class="btn btn-success">Tambah Unit</a>
+                                {{-- <a href="{{ route('unitid.create', $property->id) }}" class="btn btn-success">Tambah
+                                    Unit</a> --}}
                             </div>
                             <br>
                             <div class="form-group text-end">
                                 <a type="button" class="btn btn-warning" href="{{ route('property.index') }}">Back</a>
-                                <form action="{{ route('property.destroy', $property->id) }}" method="get"
+                                {{-- <form action="{{ route('property.destroy', $property->id) }}" method="get"
                                     class="d-inline">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger"
                                         onclick="return confirm('Apakah Anda Yakin')">Delete</button>
-                                </form>
-                                <a type="button" class="btn btn-primary"
-                                    href="{{ route('property.edit', $property->id) }}">Edit</a>
+                                </form> --}}
+                                {{-- <a type="button" class="btn btn-primary"
+                                    href="{{ route('property.edit', $property->id) }}">Edit</a> --}}
                             </div>
                         </form>
                     </div>

@@ -36,7 +36,7 @@ class ProviderController extends Controller
             }
             // dd($user);
             Auth::login($user);
-            return redirect('/beranda');
+            return redirect('/');
         } catch (\Exception $e) {
             return $e;
         }

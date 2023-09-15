@@ -38,7 +38,8 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="" class="form-label">Price Rent</label>
-                                        <input class="form-control" value="{{  number_format($pricePerMonth, 2) }}" readonly disabled>
+                                        <input class="form-control" value="{{ number_format($pricePerMonth, 2) }}" readonly
+                                            disabled>
                                     </div>
                                     <br>
                                     <div class="form-group col-auto">
@@ -68,7 +69,7 @@
                                         <label for="" class="form-label">Image</label>
                                         <div class="image-text-wrapper">
                                             <img src="{{ asset('storage/' . $unit->image) }}" class="img-thumbnail"
-                                                alt="" width="360">
+                                                alt="" width="360" style="height: 200px;">
                                         </div>
                                     </div>
                                 </div>
@@ -86,7 +87,8 @@
                                                         <div class="col-auto">
                                                             <div class="image-container">
                                                                 <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                                    class="img-thumbnail" width="200">
+                                                                    class="img-thumbnail" width="200"
+                                                                    style="height: 200px;">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -106,7 +108,8 @@
                                                         <div class="col-auto">
                                                             <div class="image-container">
                                                                 <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                                    class="img-thumbnail" width="200">
+                                                                    class="img-thumbnail" width="200"
+                                                                    style="height: 200px;">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -126,7 +129,8 @@
                                                         <div class="col-auto">
                                                             <div class="image-container">
                                                                 <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                                    class="img-thumbnail" width="200">
+                                                                    class="img-thumbnail" width="200"
+                                                                    style="height: 200px;">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -145,8 +149,9 @@
                                                     @foreach ($imageArray as $image)
                                                         <div class="col-auto">
                                                             <div class="image-container">
-                                                                <img src="{{ asset('storage/' . $image) }}" alt=""
-                                                                    class="img-thumbnail" width="200">
+                                                                <img src="{{ asset('storage/' . $image) }}"
+                                                                    alt="" class="img-thumbnail" width="200"
+                                                                    style="height: 200px;">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -166,7 +171,8 @@
                                                         <div class="col-auto">
                                                             <div class="image-container">
                                                                 <img src="{{ asset('storage/' . $image) }}"
-                                                                    alt="" class="img-thumbnail" width="200">
+                                                                    alt="" class="img-thumbnail" width="200"
+                                                                    style="height: 200px;">
                                                             </div>
                                                         </div>
                                                     @endforeach
@@ -206,7 +212,7 @@
                                 <br>
                                 <div class="form-group text-end">
                                     <a type="button" class="btn btn-warning" href="{{ route('unit.index') }}">Back</a>
-                                    <form action="{{ route('unit.destroy', $unit->id) }}" method="post"
+                                    {{-- <form action="{{ route('unit.destroy', $unit->id) }}" method="post"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
@@ -220,7 +226,7 @@
                                             onclick="return confirm('Apakah Anda Yakin')">Favorite</button>
                                     </form>
                                     <a type="button" class="btn btn-primary"
-                                        href="{{ route('unit.edit', $unit->id) }}">Edit</a>
+                                        href="{{ route('unit.edit', $unit->id) }}">Edit</a> --}}
                                 </div>
                             </form>
                         </div>
