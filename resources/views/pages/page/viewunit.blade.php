@@ -80,6 +80,9 @@
 
                                                                     <a
                                                                         href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a>
+                                                                    
+                                                                    <a
+                                                                        href="shop-side-version-2.html">{{ $unit->statuses->pluck('name')->implode(' ') }}</a>
                                                                 </div>
                                                                 <div class="product-m__name">
 
@@ -269,12 +272,12 @@
 
                                                 <ul class="shop-w__list gl-scroll">
                                                     @foreach ($types as $type)
-                                                        <div class="check-box__state check-box__state--primary">
+                                                        <div class="form-check">
                                                             <input type="checkbox" class="form-check-input"
-                                                                id="type{{ $type->id }} small" name="types[]"
+                                                                id="types{{ $type->id }}" name="types[]"
                                                                 value="{{ $type->id }}"
                                                                 {{ in_array($type->id, request('types', [])) ? 'checked' : '' }}>
-                                                            <label class="check-box__label">{{ $type->name }}</label>
+                                                            <label class="form-check-label">{{ $type->name }}</label>
                                                         </div>
                                                     @endforeach
                                                 </ul>
