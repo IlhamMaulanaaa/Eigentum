@@ -281,7 +281,7 @@
                                     <div class="filter__grid-wrapper u-s-m-t-30">
                                         <div class="row">
 
-                                            @foreach ($units as $unit)
+                                            @foreach ($units->take(12) as $unit)
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $unit->properties->types->name }}">
                                                     <div class="product-o product-o--hover-on product-o--radius">
@@ -358,6 +358,52 @@
 
                                         </div>
                                     </div>
+                                    <div class="u-s-p-y-60 pagination">
+
+                                        <!--====== Pagination ======-->
+                                        <ul class="pagination shop-p__pagination">
+                                            
+                                            <li
+                                                class="page-item">
+                                                <a class="page-link"
+                                                    href=""
+                                                    rel="prev">Previous</a>
+                                            </li>
+
+                                            {{-- Pagination Links --}}
+                                            
+
+                                           
+                                                <li
+                                                    class="page-item">
+                                                    <a class="page-link"
+                                                        href="">1</a>
+                                                </li>
+
+                                                <li
+                                                    class="page-item">
+                                                    <a class="page-link"
+                                                        href="">2</a>
+                                                </li>
+
+                                                <li
+                                                    class="page-item">
+                                                    <a class="page-link"
+                                                        href="">3</a>
+                                                </li>
+
+                                            {{-- Next Page Link --}}
+                                            <li
+                                                class="page-item">
+                                                <a class="page-link" href=""
+                                                    rel="next">Next</a>
+                                            </li>
+
+
+                                        </ul>
+                                        {{-- {{$filteredUnits->links()}} --}}
+                                        <!--====== End - Pagination ======-->
+                                    </div>
                                 </div>
 
                             </div>
@@ -409,39 +455,49 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $property->image) }}"
                                                             alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-                                                                <a href="{{ route('property.show.user', $property->id) }}"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Lihat lebih detail"><i
-                                                                        class="fas fa-eye"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                            {{-- <div class="product-o__action-wrap">
+                                                            <div class="product-o__action-wrap">
                                                                 <ul class="product-o__action-list">
                                                                     <li>
-                                                                    <form  action="{{ route('favorite.add', $unit->id) }}" method="POST">
-                                                                        @csrf
+                                                                        @if (Auth::check())
+                                                                            <form
+                                                                                action="{{ route('favorite.add', $unit->id) }}"
+                                                                                method="POST">
+                                                                                @csrf
 
-                                                                    <button class="btnfav" style="cursor: pointer"
-                                                                        data-tooltip="tooltip" type="submit"
-                                                                        data-placement="top"
-                                                                        title="Tambahkan Ke Favorite">
-                                                                        <i class="fas fa-heart"></i></button>
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
 
-                                                                </form>
-                                                            </li>
-                                                            <li>
+                                                                            </form>
+                                                                        @elseif (!Auth::check())
+                                                                            <form action="{{ route('login.index') }}"
+                                                                                method="get">
+                                                                                @csrf
 
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
-                                                                            data-placement="top"
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+
+                                                                            </form>
+                                                                        @endif
+
+                                                                    </li>
+                                                                    <li>
+
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                            data-tooltip="tooltip" data-placement="top"
                                                                             title="Lihat lebih detail"><i
                                                                                 class="fas fa-eye"></i></a>
                                                                     </li>
                                                                 </ul>
-                                                            </div> --}}
+                                                            </div>
+                                                            
                                                 </div>
                                                 <span class="product-o__category">
                                                     <a href="#">{{ $property->types->name }}</a></span>
@@ -584,50 +640,48 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                    <div class="product-o__action-wrap">
-                                                        <ul class="product-o__action-list">
-                                                            <li>
-                                                                @if (Auth::check())
-                                                                    <form action="{{ route('favorite.add', $unit->id) }}"
-                                                                        method="POST" class="favorite-form" 
-                                                                        {{--  --}}
-                                                                        data-unit-id="{{ $unit->id }}"
-                                                                        <!-- Add a data attribute to store the unit ID -->
-                                                                        >
-                                                                        @csrf
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="button" <!--
-                                                                            Change the button type to "button" to prevent
-                                                                            form submission -->
-                                                                            data-placement="top"
-                                                                            title="Tambahkan Ke Favorite"
-                                                                            >
-                                                                            <i class="fas fa-heart"></i>
-                                                                        </button>
-                                                                    </form>
-                                                                @elseif (!Auth::check())
-                                                                    <form action="{{ route('login.index') }}"
-                                                                        method="get">
-                                                                        @csrf
+                                                            <div class="product-o__action-wrap">
+                                                                <ul class="product-o__action-list">
+                                                                    <li>
+                                                                        @if (Auth::check())
+                                                                            <form
+                                                                                action="{{ route('favorite.add', $unit->id) }}"
+                                                                                method="POST">
+                                                                                @csrf
 
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="submit"
-                                                                            data-placement="top"
-                                                                            title="Tambahkan Ke Favorite">
-                                                                            <i class="fas fa-heart"></i></button>
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
 
-                                                                    </form>
-                                                                @endif
-                                                            </li>
-                                                            <li>
+                                                                            </form>
+                                                                        @elseif (!Auth::check())
+                                                                            <form action="{{ route('login.index') }}"
+                                                                                method="get">
+                                                                                @csrf
 
-                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Lihat lebih detail"><i
-                                                                        class="fas fa-eye"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                                                <button class="btnfav"
+                                                                                    style="cursor: pointer"
+                                                                                    data-tooltip="tooltip" type="submit"
+                                                                                    data-placement="top"
+                                                                                    title="Tambahkan Ke Favorite">
+                                                                                    <i class="fas fa-heart"></i></button>
+
+                                                                            </form>
+                                                                        @endif
+
+                                                                    </li>
+                                                                    <li>
+
+                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                            data-tooltip="tooltip" data-placement="top"
+                                                                            title="Lihat lebih detail"><i
+                                                                                class="fas fa-eye"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -916,7 +970,7 @@
 
 
                 <!--====== Section 12 ======-->
-                <div class="u-s-p-b-60">
+                {{-- <div class="u-s-p-b-60">
 
                     <div class="section__intro u-s-m-b-46">
                         <div class="container">
@@ -1054,7 +1108,7 @@
                         </div>
                         <!--====== End - Brand Slider ======-->
                     </div>
-                </div>
+                </div> --}}
                 <!--====== End - Section Content ======-->
             </div>
             <!--====== End - Section 12 ======-->

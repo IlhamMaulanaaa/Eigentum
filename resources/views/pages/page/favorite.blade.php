@@ -44,7 +44,7 @@
                                 <ul class="breadcrumb__list">
                                     <li class="has-separator">
 
-                                        <a href="index.html">Home</a></li>
+                                        <a href="/">Home</a></li>
                                     <li class="is-marked">
 
                                         <a href="wishlist.html">Favorit</a></li>
