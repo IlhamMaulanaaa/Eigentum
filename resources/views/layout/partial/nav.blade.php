@@ -36,7 +36,7 @@
                     <span class="logoq"><img class="nav navLogoq" src="/assets/skins/logo.svg" alt=""></span>
                     <i class='bx bx-x siderbarCloseq'></i>
                 </div>
-  
+
                 <ul class="nav-linksq" style="margin: 0; padding:0;">
                     <li class="navbar"><a href="{{ route('beranda') }}">Beranda</a></li>
                     <li class="navbar"><a href="{{ route('unit.search.user') }}">Properti</a></li>
@@ -52,15 +52,15 @@
 
                 <div class="searchBox">
                     <div class="searchToggle">
-                     <i class='bx bx-x cancel'></i>
-                     <i class='bx bx-search search'></i>
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
                     </div>
                     <div class="search-field">
                         <form action="{{ route('unit.search.user') }}" method="GET" role="search">
-                         <input id="searchnav" type="text" name="search" placeholder="Search.."
-                         aria-label="Search username" aria-describedby="basic-addon2"
-                         value="{{ request('search') }}">
-                         <i class='bx bx-search' type="submit"></i>
+                            <input id="searchnav" type="text" name="search" placeholder="Search.."
+                                aria-label="Search username" aria-describedby="basic-addon2"
+                                value="{{ request('search') }}">
+                            <i class='bx bx-search' type="submit"></i>
                         </form>
                     </div>
                 </div>
@@ -185,24 +185,36 @@
                             </ul>
                         @endif
                     </div>
-
                 @elseif (!Auth::check())
                     <a href="{{ route('login.index') }}" class="btnq">Masuk</a>
                 @endif
-                
+
 
             </div>
         </div>
         @if (session('rejected'))
-            <div class="alert alert-danger text-center smooth-alert">
+            <div class="alert alert-danger text-center smooth-alert"style="width: 100%; ;">
                 perbarui data anda, data ditolak
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                    onclick="hideAlert();">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
         @if (session('pending'))
-            <div class="alert alert-danger text-center smooth-alert">
-                Akun Anda masih ditangguhkan. Mohon tunggu selama 24 jam.
+            <div class="alert alert-danger text-center smooth-alert" style="width: 100%; text-align: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="flex-grow: 1;">
+                        Akun Anda masih ditangguhkan. Mohon tunggu selama 24 jam.
+                    </div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                        onclick="hideAlert();">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
         @endif
+
 
     </nav>
     <script>
@@ -212,7 +224,7 @@
             if (alertElement) {
                 alertElement.classList.add('smooth-alert');
                 setTimeout(function() {
-                    alertElement.style.transform = 'translateY(0)';
+                    alertElement.style.transform = 'translateY(-20px)';
                     alertElement.style.opacity = '1';
                 }, 100); // Waktu dalam milidetik (0.1 detik dalam contoh ini)
             }
@@ -222,10 +234,10 @@
         function hideAlert() {
             var alertElement = document.querySelector('.alert');
             if (alertElement) {
-                alertElement.style.transform = 'translateY(-100%)';
+                alertElement.style.transform = 'translateY(-80%)';
                 alertElement.style.opacity = '0';
                 setTimeout(function() {
-                    alertElement.style.width = '300px';
+                    alertElement.style.width = '100%';
                     alertElement.remove();
                 }, 500); // Waktu dalam milidetik (0.5 detik dalam contoh ini)
             }
@@ -234,15 +246,6 @@
         // Fungsi untuk mengatur timer penutupan otomatis
         function autoCloseAlert() {
             showAlert(); // Tampilkan alert dengan animasi turun dari atas
-            setTimeout(function() {
-                var alertElement = document.querySelector('.alert');
-                if (alertElement) {
-                    alertElement.style.width = '100%'; // Lebarkan alert
-                    setTimeout(function() {
-                        hideAlert(); // Sembunyikan alert dengan animasi mengecil dan naik
-                    }, 2000); // Waktu dalam milidetik (2 detik dalam contoh ini)
-                }
-            }, 4000); // Waktu dalam milidetik (4 detik dalam contoh ini)
         }
 
         // Panggil fungsi autoCloseAlert saat halaman dimuat
@@ -305,27 +308,27 @@
     </script>
     <script>
         const body = document.querySelector("body"),
-      nav = document.querySelector("nav"),
-      searchToggle = document.querySelector(".searchToggle"),
-      sidebarOpen = document.querySelector(".sidebarOpen"),
-      siderbarClose = document.querySelector(".siderbarClose");
-      
-// js code to toggle search box
-        searchToggle.addEventListener("click" , () =>{
-        searchToggle.classList.toggle("active");
-      });
- 
-      
-//   js code to toggle sidebar
-sidebarOpen.addEventListener("click" , () =>{
-    nav.classList.add("active");
-});
-body.addEventListener("click" , e =>{
-    let clickedElm = e.target;
-    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
-        nav.classList.remove("active");
-    }
-});
+            nav = document.querySelector("nav"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+
+        // js code to toggle search box
+        searchToggle.addEventListener("click", () => {
+            searchToggle.classList.toggle("active");
+        });
+
+
+        //   js code to toggle sidebar
+        sidebarOpen.addEventListener("click", () => {
+            nav.classList.add("active");
+        });
+        body.addEventListener("click", e => {
+            let clickedElm = e.target;
+            if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                nav.classList.remove("active");
+            }
+        });
     </script>
 </body>
 

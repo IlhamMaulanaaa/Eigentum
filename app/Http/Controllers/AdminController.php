@@ -54,7 +54,7 @@ class AdminController extends Controller
 
         if (Auth::attempt($datalogin)) {
             // return redirect('pasien/all')->with('success', Auth::user()->name . ' Berhasil Register');
-            return redirect('/beranda')->with('success', Auth::user()->name . ' Berhasil Register');
+            return redirect(route('beranda'))->with('success', Auth::user()->name . ' Berhasil Register');
         } else {
             return redirect('/session/signupuser/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }

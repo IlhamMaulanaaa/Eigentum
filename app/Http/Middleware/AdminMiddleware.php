@@ -19,8 +19,8 @@ class AdminMiddleware
         if (Auth::check() && Auth::user()->role == $roles) {
             return $next($request);
         } else {
-            return redirect('/beranda');
+            return redirect(route('beranda'));
         }
-        return redirect('/beranda');
+        return redirect(route('beranda'));
     }
 }

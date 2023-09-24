@@ -40,12 +40,12 @@ class AuthController extends Controller
         } elseif (Auth::attempt($credentials) && Auth::user()->role == "agent") {
             return redirect('/agent/dashboard')->with('success', 'Berhasil Login');
         } elseif (Auth::attempt($credentials) && Auth::user()->role == "user") {
-            return redirect('/beranda')->with('success', 'Berhasil Login');
+            return redirect(route('beranda'))->with('success', 'Berhasil Login');
         } else {
             return redirect('/');
         }
     }
-    
+
     public function register(Request $request)
     {
         Session::flash('name', $request->name);

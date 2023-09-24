@@ -25,13 +25,13 @@ class DeveloperMiddleware
                 if ($developerStatus === 'approved') {
                     return $next($request);
                 } elseif ($developerStatus === 'rejected') {
-                    return redirect('/beranda')->with('rejected', true);
+                    return redirect(route('beranda'))->with('rejected', true);
                 }
             } elseif ($developerSub === 'pending') {
                 return redirect()->route('langganan.index')->with('pending', true);
             }
 
-            return redirect('/beranda');
+            return redirect(route('beranda'));
         }
     }
 }

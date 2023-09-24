@@ -96,7 +96,7 @@ class SessionController extends Controller
             return redirect('/session/signup/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
-    
+
     // belongs to the front end
     // login, register, logout user 
 
@@ -118,7 +118,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($infologin)) {
             // return redirect('pasien/all')->with('success', 'Berhasil Login');
-            return redirect('/beranda')->with('success', 'Berhasil Login');
+            return redirect(route('beranda'))->with('success', 'Berhasil Login');
         } else {
             return redirect('/session/auth/signin/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
@@ -149,7 +149,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($datalogin)) {
             // return redirect('pasien/all')->with('success', Auth::user()->name . ' Berhasil Register');
-            return redirect('/beranda')->with('success', Auth::user()->name . ' Berhasil Register');
+            return redirect(route('beranda'))->with('success', Auth::user()->name . ' Berhasil Register');
         } else {
             return redirect('/session/signupuser/')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
@@ -158,7 +158,7 @@ class SessionController extends Controller
     {
         auth()->logout();
 
-        return redirect('/beranda');
+        return redirect(route('beranda'));
     }
     // this is the endpoints
 }

@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col-sm-6 text-black">
                     <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
-                        <a id="loginback" href="/beranda">Back</a>
+                        <a id="loginback" href=route('beranda')>Back</a>
                         <form action="/session/auth/user/signup/create" method="POST">
                             @csrf
                             <img class="mb-4" src="/assets/login/logo_1.png" alt="">

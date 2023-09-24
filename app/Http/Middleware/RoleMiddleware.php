@@ -17,7 +17,7 @@ class RoleMiddleware
     public function handle($request, Closure $next, $roles)
     {
         // if (!Auth::check() || !in_array(Auth::user()->role, $roles)) {
-        //     return redirect('/beranda')->withErrors('Unauthorized.');
+        //     return redirect(route('beranda'))->withErrors('Unauthorized.');
         // }
 
         // return $next($request);
@@ -26,7 +26,7 @@ class RoleMiddleware
             return $next($request);
         }
 
-        return redirect('/beranda');
+        return redirect(route('beranda'));
 
 
         // ->to(route('login'));
@@ -45,7 +45,7 @@ class RoleMiddleware
         //     } elseif ($role === 'user') {
         //         // Jika peran adalah "user", lakukan sesuatu
         //         // Contoh: Redirect ke halaman beranda untuk pengguna
-        //         return redirect('/beranda');
+        //         return redirect(route('beranda'));
         //     } else {
         //         // Peran lainnya...
         //     }

@@ -252,7 +252,7 @@ class DeveloperController extends Controller
             $developer->villages()->attach($request->villages_id);
 
             $developer = Developer::where('id', '=', $developer->id)->get();
-
+            Auth::login($user);
             return redirect(route('developer.index'));
         } catch (Exception $e) {
             return $e;
@@ -698,9 +698,9 @@ class DeveloperController extends Controller
         ];
 
         if (Auth::guard('developer')->attempt($infologin)) {
-            return redirect('/beranda');
+            return redirect(route('beranda'));
         } else {
-            return redirect('/beranda')->withErrors('Username atau Password yang dimasukkan tidak valid !!');
+            return redirect(route('beranda'))->withErrors('Username atau Password yang dimasukkan tidak valid !!');
         }
     }
 }

@@ -172,6 +172,7 @@ class AgentController extends Controller
 
             $agent = Agent::where('id', '=', $agent->id)->get();
 
+            Auth::login($user);
 
             return redirect('/');
         } catch (Exception $e) {
@@ -253,7 +254,7 @@ class AgentController extends Controller
 
         $agent = Agent::where('id', '=', $agent->id)->get();
 
-
+        Auth::login($user);
         return redirect(route('agent.index'));
         // } catch (Exception $e) {
         //     return $e;
@@ -373,21 +374,21 @@ class AgentController extends Controller
     // {
     //     // Dapatkan unit berdasarkan ID
     //     $unit = Unit::find($unitId);
-    
+
     //     // Periksa apakah unit ditemukan
     //     if (!$unit) {
     //         return redirect()->back()->with('error', 'Unit not found.');
     //     }
-    
+
     //     // Update tabel pivot unit_agents dengan menggunakan updateExistingPivot
     //     $developerId = auth()->user()->id; // Ambil ID pengguna yang sedang masuk
     //     $newStatus = 'reject'; // Status baru yang ingin Anda set
-    
+
     //     $unit->agents()->updateExistingPivot($developerId, ['status_unit' => $newStatus]);
-    
+
     //     return redirect()->route('developer.dashboard')->with('success', 'Offer rejected.');
     // }
-    
+
 
 
 

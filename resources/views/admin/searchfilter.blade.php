@@ -92,7 +92,7 @@
             <div class="container">
                 <div aria-label="breadcrumb">
                     <ol class="fables-breadcrumb breadcrumb px-0 py-3">
-                        <li class="breadcrumb-item"><a href="/beranda" class="fables-second-text-color"
+                        <li class="breadcrumb-item"><a href=route('beranda') class="fables-second-text-color"
                                 style="text-decoration: none;">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page" style="text-decoration: none;">Filter
                             Unit</li>
