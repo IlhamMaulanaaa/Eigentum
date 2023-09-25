@@ -39,8 +39,12 @@ class FavoriteController extends Controller
     {
         $unit = Unit::find($id);
         $user = auth()->user();
+        $check = Favorite::where('user_id' , $user->id)->where('unit_id' , $unit->id)->first();
+        if($check){
+            $unit->users()->attach($user->id);
+            
+        }
 
-        $unit->users()->attach($user->id);
         session()->flash('success', 'unit is Added to Favorite Successfully !');
 
         return redirect('/favorite');

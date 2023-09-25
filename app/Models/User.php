@@ -9,6 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -73,4 +74,10 @@ class User extends Authenticatable
                 ->orWhere('role', 'like', '%' . $search . '%');
         });
     }
+    public function favorites()
+    {
+        return $this->HasFactory(Favorite::class);
+    }
+
+    
 }

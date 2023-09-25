@@ -91,7 +91,7 @@ class UnitController extends Controller
 
     public function homeunit(Request $request)
     {
-        $units = Unit::filter($request->all())->get();
+        $units = Unit::filter($request->all())->paginate(12);
         $newunits = Unit::orderBy('created_at', 'desc')->get();
         $property = Property::all();
         $status = Status::all();

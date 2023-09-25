@@ -281,7 +281,7 @@
                                     <div class="filter__grid-wrapper u-s-m-t-30">
                                         <div class="row">
 
-                                            @foreach ($units->take(12) as $unit)
+                                            @foreach ($units as $unit)
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $unit->properties->types->name }}">
                                                     <div class="product-o product-o--hover-on product-o--radius">
@@ -362,40 +362,36 @@
 
                                         <!--====== Pagination ======-->
                                         <ul class="pagination shop-p__pagination">
-                                            
+                                            @php
+                                                $filteredUnitsPagination = $units->appends(request()->query());
+                                            @endphp
                                             <li
-                                                class="page-item">
+                                                class="page-item{{ $filteredUnitsPagination->onFirstPage() ? ' disabled' : '' }}">
                                                 <a class="page-link"
-                                                    href=""
+                                                    href="{{ $filteredUnitsPagination->previousPageUrl() }}"
                                                     rel="prev">Previous</a>
                                             </li>
 
                                             {{-- Pagination Links --}}
-                                            
+                                            @php
+                                                $numPagesToShow = 5;
+                                                $half = floor($numPagesToShow / 2);
+                                                $start = max($filteredUnitsPagination->currentPage() - $half, 1);
+                                                $end = min($start + $numPagesToShow - 1, $filteredUnitsPagination->lastPage());
+                                            @endphp
 
-                                           
+                                            @for ($page = $start; $page <= $end; $page++)
                                                 <li
-                                                    class="page-item">
+                                                    class="page-item{{ $page == $filteredUnitsPagination->currentPage() ? ' active' : '' }}">
                                                     <a class="page-link"
-                                                        href="">1</a>
+                                                        href="{{ $filteredUnitsPagination->url($page) }}">{{ $page }}</a>
                                                 </li>
-
-                                                <li
-                                                    class="page-item">
-                                                    <a class="page-link"
-                                                        href="">2</a>
-                                                </li>
-
-                                                <li
-                                                    class="page-item">
-                                                    <a class="page-link"
-                                                        href="">3</a>
-                                                </li>
+                                            @endfor
 
                                             {{-- Next Page Link --}}
                                             <li
-                                                class="page-item">
-                                                <a class="page-link" href=""
+                                                class="page-item{{ !$filteredUnitsPagination->hasMorePages() ? ' disabled' : '' }}">
+                                                <a class="page-link" href="{{ $filteredUnitsPagination->nextPageUrl() }}"
                                                     rel="next">Next</a>
                                             </li>
 
