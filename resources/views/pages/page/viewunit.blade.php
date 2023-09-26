@@ -80,7 +80,7 @@
 
                                                                     <a
                                                                         href="shop-side-version-2.html">{{ $unit->properties->types->name }}</a>
-                                                                    
+
                                                                     <a
                                                                         href="shop-side-version-2.html">{{ $unit->statuses->pluck('name')->implode(' ') }}</a>
                                                                 </div>
@@ -101,6 +101,7 @@
                                                                         <form
                                                                             action="{{ route('favorite.add', $unit->id) }}"
                                                                             method="POST">
+                                                                            @csrf
 
                                                                             <button class="btnfavfil"
                                                                                 style="cursor: pointer"
@@ -298,104 +299,104 @@
 
 
 
-        <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
-        <script>
-            window.ga = function() {
-                ga.q.push(arguments)
-            };
-            ga.q = [];
-            ga.l = +new Date;
-            ga('create', 'UA-XXXXX-Y', 'auto');
-            ga('send', 'pageview')
-        </script>
-        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+            <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
+            <script>
+                window.ga = function() {
+                    ga.q.push(arguments)
+                };
+                ga.q = [];
+                ga.l = +new Date;
+                ga('create', 'UA-XXXXX-Y', 'auto');
+                ga('send', 'pageview')
+            </script>
+            <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 
-        <!--====== Vendor Js ======-->
-        <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
+            <!--====== Vendor Js ======-->
+            <script src="{{ asset('css/Lib/fix/js/vendor.js') }}"></script>
 
-        <!--====== jQuery Shopnav plugin ======-->
-        <script src="{{ asset('css/Lib/fix/js/jquery.shopnav.js') }}"></script>
+            <!--====== jQuery Shopnav plugin ======-->
+            <script src="{{ asset('css/Lib/fix/js/jquery.shopnav.js') }}"></script>
 
-        <!--====== App ======-->
-        <script src="{{ asset('css/Lib/fix/js/app.js') }}"></script>
+            <!--====== App ======-->
+            <script src="{{ asset('css/Lib/fix/js/app.js') }}"></script>
 
-        <!--====== Noscript ======-->
-        <noscript>
-            <div class="app-setting">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="app-setting__wrap">
-                                <h1 class="app-setting__h1">JavaScript dinonaktifkan di browser Anda.</h1>
+            <!--====== Noscript ======-->
+            <noscript>
+                <div class="app-setting">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="app-setting__wrap">
+                                    <h1 class="app-setting__h1">JavaScript dinonaktifkan di browser Anda.</h1>
 
-                                <span class="app-setting__text">Aktifkan JavaScript di browser Anda atau tingkatkan ke
-                                    browser yang mendukung JavaScript.</span>
+                                    <span class="app-setting__text">Aktifkan JavaScript di browser Anda atau tingkatkan ke
+                                        browser yang mendukung JavaScript.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </noscript>
-        <script>
-            // Dapatkan elemen checkbox berdasarkan ID
-            const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
-            const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
+            </noscript>
+            <script>
+                // Dapatkan elemen checkbox berdasarkan ID
+                const statusCheckboxes = document.querySelectorAll('input[name="status[]"]');
+                const typeCheckboxes = document.querySelectorAll('input[name="types[]"]');
 
 
-            statusCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    this.form.submit(); // Kirim form saat checkbox diubah
-                });
-            });
-
-            typeCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    this.form.submit(); // Kirim form saat checkbox diubah
-                });
-            });
-        </script>
-
-        <script>
-            document.addEventListener('blur', function() {
-                // Menangkap elemen input
-                var inputMin = document.getElementById('inputMin');
-                var inputMax = document.getElementById('inputMax');
-
-                // Fungsi untuk memicu pencarian
-                function performSearch() {
-                    var minPrice = inputMin.value;
-                    var maxPrice = inputMax.value;
-
-                    // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
-                    var searchURL = '{{ route('unit.search.user') }}' + '?min_price=' + minPrice + '&max_price=' +
-                        maxPrice;
-                    window.location.href = searchURL;
-                }
-
-                // Menambahkan event listener pada input
-                inputMin.addEventListener('blur', function() {
-                    performSearch();
+                statusCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        this.form.submit(); // Kirim form saat checkbox diubah
+                    });
                 });
 
-                inputMax.addEventListener('blur', function() {
-                    performSearch();
+                typeCheckboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', function() {
+                        this.form.submit(); // Kirim form saat checkbox diubah
+                    });
                 });
-            });
-        </script>
+            </script>
+
+            <script>
+                document.addEventListener('blur', function() {
+                    // Menangkap elemen input
+                    var inputMin = document.getElementById('inputMin');
+                    var inputMax = document.getElementById('inputMax');
+
+                    // Fungsi untuk memicu pencarian
+                    function performSearch() {
+                        var minPrice = inputMin.value;
+                        var maxPrice = inputMax.value;
+
+                        // Lakukan redirect atau AJAX request ke URL pencarian dengan parameter min_price dan max_price
+                        var searchURL = '{{ route('unit.search.user') }}' + '?min_price=' + minPrice + '&max_price=' +
+                            maxPrice;
+                        window.location.href = searchURL;
+                    }
+
+                    // Menambahkan event listener pada input
+                    inputMin.addEventListener('blur', function() {
+                        performSearch();
+                    });
+
+                    inputMax.addEventListener('blur', function() {
+                        performSearch();
+                    });
+                });
+            </script>
 
 
 
-        <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-        <script src="/css/Lib/assets/vendor/jquery-circle-progress/circle-progress.min.js"></script>
-        <script src="/css/Lib/assets/vendor/popper/popper.min.js"></script>
-        <script src="/css/Lib/assets/vendor/WOW-master/dist/wow.min.js"></script>
-        <script src="/css/Lib/assets/vendor/loadscreen/js/ju-loading-screen.js"></script>
-        <script src="/css/Lib/assets/vendor/range-slider/range-slider.js"></script>
-        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap-4-navbar.js"></script>
-        <script src="/css/Lib/assets/vendor/timeline/jquery.timelify.js"></script>
-        <script src="/css/Lib/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
-        <script src="/css/Lib/assets/custom/js/custom.js"></script>
+            <script src="/css/Lib/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+            <script src="/css/Lib/assets/vendor/jquery-circle-progress/circle-progress.min.js"></script>
+            <script src="/css/Lib/assets/vendor/popper/popper.min.js"></script>
+            <script src="/css/Lib/assets/vendor/WOW-master/dist/wow.min.js"></script>
+            <script src="/css/Lib/assets/vendor/loadscreen/js/ju-loading-screen.js"></script>
+            <script src="/css/Lib/assets/vendor/range-slider/range-slider.js"></script>
+            <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <script src="/css/Lib/assets/vendor/bootstrap/js/bootstrap-4-navbar.js"></script>
+            <script src="/css/Lib/assets/vendor/timeline/jquery.timelify.js"></script>
+            <script src="/css/Lib/assets/vendor/owlcarousel/owl.carousel.min.js"></script>
+            <script src="/css/Lib/assets/custom/js/custom.js"></script>
 
     </body>
 

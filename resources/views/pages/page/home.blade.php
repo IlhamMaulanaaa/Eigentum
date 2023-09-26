@@ -323,31 +323,18 @@
 
                                                                             </form>
                                                                         @elseif (!Auth::check())
-                                                                            <form action="{{ route('login.index') }}"
-                                                                                method="get">
-                                                                                @csrf
+                                                                        <form action="{{ route('login.index') }}"
+                                                                        method="get">
+                                                                        @csrf
 
-                                                                                @if (Auth()->user()->units->contains($unit))
-                                                                                    <button class="btnfav"
-                                                                                        style="cursor: pointer; color:red;"
-                                                                                        data-tooltip="tooltip"
-                                                                                        type="submit"
-                                                                                        data-placement="top"
-                                                                                        title="Tambahkan Ke Favorite">
-                                                                                        <i
-                                                                                            class="fas fa-heart"></i></button>
-                                                                                @else
-                                                                                    <button class="btnfav"
-                                                                                        style="cursor: pointer"
-                                                                                        data-tooltip="tooltip"
-                                                                                        type="submit"
-                                                                                        data-placement="top"
-                                                                                        title="Tambahkan Ke Favorite">
-                                                                                        <i
-                                                                                            class="fas fa-heart"></i></button>
-                                                                                @endif
+                                                                        <button class="btnfav"
+                                                                            style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
 
-                                                                            </form>
+                                                                    </form>
                                                                         @endif
 
                                                                     </li>
@@ -710,26 +697,18 @@
 
                                                                     </form>
                                                                 @elseif (!Auth::check())
-                                                                    <form action="{{ route('login.index') }}"
-                                                                        method="get">
-                                                                        @csrf
+                                                                <form action="{{ route('login.index') }}"
+                                                                method="get">
+                                                                @csrf
 
-                                                                        < @if (Auth()->user()->units->contains($unit))
-                                                                            <button class="btnfav"
-                                                                                style="cursor: pointer; color:red;"
-                                                                                data-tooltip="tooltip" type="submit"
-                                                                                data-placement="top"
-                                                                                title="Tambahkan Ke Favorite">
-                                                                                <i class="fas fa-heart"></i></button>
-                                                                        @else
-                                                                            <button class="btnfav" style="cursor: pointer"
-                                                                                data-tooltip="tooltip" type="submit"
-                                                                                data-placement="top"
-                                                                                title="Tambahkan Ke Favorite">
-                                                                                <i class="fas fa-heart"></i></button>
-                                                                @endif
+                                                                <button class="btnfav"
+                                                                    style="cursor: pointer"
+                                                                    data-tooltip="tooltip" type="submit"
+                                                                    data-placement="top"
+                                                                    title="Tambahkan Ke Favorite">
+                                                                    <i class="fas fa-heart"></i></button>
 
-                                                                </form>
+                                                            </form>
                                     @endif
 
                                     </li>
