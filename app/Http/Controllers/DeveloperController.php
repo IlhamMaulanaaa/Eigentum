@@ -32,25 +32,25 @@ class DeveloperController extends Controller
     public function history(Request $request)
     {
         $user = auth()->user();
-    
+
         // Ambil semua properti yang dimiliki oleh developer yang saat ini masuk
         $developerProperties = $user->developers->first()->properties;
-    
+
         // Ambil semua unit yang terjual yang terkait dengan properti-properti developer
         $filteredUnits = Unit::whereIn('property_id', $developerProperties->pluck('id'))
             ->where('statuscode', 'terjual')
-            ->paginate(10);
-    
+            ->paginate(16);
+
         $units = Unit::all();
         $property = Property::all();
         $types = Type::all();
         $statuses = Status::all();
         $specification = Specification::all();
         $pivotTable = (new Property())->regencies()->getTable();
-    
+
         return view('pages.developer.profile', compact('statuses', 'specification', 'types', 'property', 'units', 'filteredUnits', 'developerProperties'));
     }
-    
+
 
     public function approval()
     {

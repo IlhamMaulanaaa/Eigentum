@@ -361,20 +361,20 @@
                                     <div class="u-s-p-y-60 pagination">
 
                                         <!--====== Pagination ======-->
-                                        <ul class="pagination shop-p__pagination">
+                                        {{-- <ul class="pagination shop-p__pagination">
                                             
                                             <li
                                                 class="page-item">
                                                 <a class="page-link"
                                                     href=""
                                                     rel="prev">Previous</a>
-                                            </li>
+                                            </li> --}}
 
-                                            {{-- Pagination Links --}}
-                                            
+                                        {{-- Pagination Links --}}
 
-                                           
-                                                <li
+
+
+                                        {{-- <li
                                                     class="page-item">
                                                     <a class="page-link"
                                                         href="">1</a>
@@ -390,17 +390,17 @@
                                                     class="page-item">
                                                     <a class="page-link"
                                                         href="">3</a>
-                                                </li>
+                                                </li> --}}
 
-                                            {{-- Next Page Link --}}
-                                            <li
+                                        {{-- Next Page Link --}}
+                                        {{-- <li
                                                 class="page-item">
                                                 <a class="page-link" href=""
                                                     rel="next">Next</a>
                                             </li>
 
 
-                                        </ul>
+                                        </ul> --}}
                                         {{-- {{$filteredUnits->links()}} --}}
                                         <!--====== End - Pagination ======-->
                                     </div>
@@ -455,49 +455,46 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $property->image) }}"
                                                             alt=""></a>
-                                                            <div class="product-o__action-wrap">
-                                                                <ul class="product-o__action-list">
-                                                                    <li>
-                                                                        @if (Auth::check())
-                                                                            <form
-                                                                                action="{{ route('favorite.add', $unit->id) }}"
-                                                                                method="POST">
-                                                                                @csrf
+                                                    <div class="product-o__action-wrap">
+                                                        <ul class="product-o__action-list">
+                                                            <li>
+                                                                @if (Auth::check())
+                                                                    <form action="{{ route('favorite.add', $unit->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
 
-                                                                            </form>
-                                                                        @elseif (!Auth::check())
-                                                                            <form action="{{ route('login.index') }}"
-                                                                                method="get">
-                                                                                @csrf
+                                                                    </form>
+                                                                @elseif (!Auth::check())
+                                                                    <form action="{{ route('login.index') }}"
+                                                                        method="get">
+                                                                        @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
 
-                                                                            </form>
-                                                                        @endif
+                                                                    </form>
+                                                                @endif
 
-                                                                    </li>
-                                                                    <li>
+                                                            </li>
+                                                            <li>
 
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
-                                                                            data-tooltip="tooltip" data-placement="top"
-                                                                            title="Lihat lebih detail"><i
-                                                                                class="fas fa-eye"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            
+                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Lihat lebih detail"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
                                                 <span class="product-o__category">
                                                     <a href="#">{{ $property->types->name }}</a></span>
@@ -640,48 +637,45 @@
                                                         <img class="aspect__img"
                                                             src="{{ asset('storage/' . $unit->image) }}"
                                                             alt=""></a>
-                                                            <div class="product-o__action-wrap">
-                                                                <ul class="product-o__action-list">
-                                                                    <li>
-                                                                        @if (Auth::check())
-                                                                            <form
-                                                                                action="{{ route('favorite.add', $unit->id) }}"
-                                                                                method="POST">
-                                                                                @csrf
+                                                    <div class="product-o__action-wrap">
+                                                        <ul class="product-o__action-list">
+                                                            <li>
+                                                                @if (Auth::check())
+                                                                    <form action="{{ route('favorite.add', $unit->id) }}"
+                                                                        method="POST">
+                                                                        @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
 
-                                                                            </form>
-                                                                        @elseif (!Auth::check())
-                                                                            <form action="{{ route('login.index') }}"
-                                                                                method="get">
-                                                                                @csrf
+                                                                    </form>
+                                                                @elseif (!Auth::check())
+                                                                    <form action="{{ route('login.index') }}"
+                                                                        method="get">
+                                                                        @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                        <button class="btnfav" style="cursor: pointer"
+                                                                            data-tooltip="tooltip" type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i class="fas fa-heart"></i></button>
 
-                                                                            </form>
-                                                                        @endif
+                                                                    </form>
+                                                                @endif
 
-                                                                    </li>
-                                                                    <li>
+                                                            </li>
+                                                            <li>
 
-                                                                        <a href="{{ route('unit.show.user', $unit->id) }}"
-                                                                            data-tooltip="tooltip" data-placement="top"
-                                                                            title="Lihat lebih detail"><i
-                                                                                class="fas fa-eye"></i></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
+                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
+                                                                    data-tooltip="tooltip" data-placement="top"
+                                                                    title="Lihat lebih detail"><i
+                                                                        class="fas fa-eye"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
 
                                                 <span class="product-o__category">
@@ -1119,6 +1113,8 @@
 
         </div>
         <!--====== End - Main App ======-->
+
+
 
 
         <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->

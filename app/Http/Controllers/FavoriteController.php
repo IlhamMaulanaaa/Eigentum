@@ -40,12 +40,30 @@ class FavoriteController extends Controller
         $unit = Unit::find($id);
         $user = auth()->user();
 
-        $unit->users()->attach($user->id);
-        session()->flash('success', 'unit is Added to Favorite Successfully !');
+        if (!$unit) {
+            // Handle the case where the unit does not exist in the database
+            session()->flash('error', 'Unit not found!');
+            return redirect('/favorite');
+        }
 
-        return redirect('/favorite');
-        // return "/pages.page.favorite";
+        if ($user->units->contains($unit)) {
+            // Unit is already in favorites, remove it
+            $user->units()->detach($unit->id);
+            session()->flash('success', 'Unit removed from favorites!');
+            return redirect()->back();
+        } else {
+            // Unit is not in favorites, add it
+            $user->units()->attach($unit->id);
+            session()->flash('success', 'Unit added to favorites!');
+            return redirect('/favorite');
+        }
     }
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -87,8 +105,8 @@ class FavoriteController extends Controller
     public function destroyall()
     {
         $user = auth()->user();
-        $unit = Favorite::where('unit_id' , $user->id);
-       
+        $unit = Favorite::where('unit_id', $user->id);
+
         $unit->delete();
 
         return redirect('/favorite');

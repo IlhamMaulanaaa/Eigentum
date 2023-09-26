@@ -24,7 +24,7 @@ class PropertyController extends Controller
 
     public function index()
     {
-        $properties = Property::filter(request(['search', 'developer_id', 'regency_id']))->paginate(10);
+        $properties = Property::filter(request(['search', 'developer_id', 'regency_id']))->paginate(16);
         $tables = (new Property())->getTable();
         $developers = Developer::all()->pluck('company', 'id');
         $pivotTable = (new Property())->regencies()->getTable();

@@ -68,7 +68,7 @@ class AgentController extends Controller
 
     public function filter(Request $request)
     {
-        $agents = Agent::filter($request->all())->paginate(10);
+        $agents = Agent::filter($request->all())->paginate(16);
         $agentsall = Agent::all();
         $agentspro = Agent::orderBy('created_at', 'desc')->take(5)->get();
         $countuser = User::where('role', 'user')->count();

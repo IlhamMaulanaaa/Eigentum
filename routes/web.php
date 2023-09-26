@@ -272,7 +272,6 @@ Route::get('/admin/notifications', [AdminController::class, 'notifications'])->n
 Route::get('regency', [IndoregionController::class, 'getregency'])->name('get.regency');
 Route::get('districts', [IndoregionController::class, 'getdistricts'])->name('get.districts');
 Route::get('villages', [IndoregionController::class, 'getvillages'])->name('get.villages');
-
 Route::post('favorite-add/{id}', [FavoriteController::class, 'store'])->name('favorite.add');
 Route::get('favorite-remove/{id}', [FavoriteController::class, 'destroy'])->name('favorite.remove');
 Route::get('favorite-removeall', [FavoriteController::class, 'destroyall'])->name('favorite.removeall');

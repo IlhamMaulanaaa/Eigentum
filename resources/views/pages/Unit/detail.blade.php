@@ -121,7 +121,7 @@
                                         <div class="u-s-m-b-15">
                                             <div class="pd-detail__inline">
 
-                                                <span class="pd-detail__stock">{{ $unit->properties->types->name }}</span>
+                                                {{-- <span class="pd-detail__stock">{{ $unit->properties->types->name }}</span> --}}
 
                                                 @foreach ($unit->statuses as $status)
                                                     <h2 class="btn-status" style="">{{ $status->name }}</h2>

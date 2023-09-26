@@ -27,7 +27,7 @@ class UnitController extends Controller
         // Proses filter dan ambil hasil sesuai parameter
         $filteredUnits = Unit::filter($request->all())
             ->where('statuscode', 'tersedia')
-            ->paginate(10);
+            ->paginate(16);
         $units = Unit::all();
         $property = Property::all();
         $types = Type::all();
@@ -57,7 +57,7 @@ class UnitController extends Controller
 
     public function index(Request $request)
     {
-        $units = Unit::filter($request->all())->paginate(10);
+        $units = Unit::filter($request->all())->paginate(16);
         $properties = Property::all()->pluck('title', 'id');;
         $statuses = Status::all();
         $tables = (new Unit())->getTable();
