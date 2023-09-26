@@ -39,6 +39,10 @@ class FavoriteController extends Controller
     {
         $unit = Unit::find($id);
         $user = auth()->user();
+        $check = Favorite::where('user_id', $user->id)->where('unit_id', $unit->id)->first();
+        if ($check) {
+            $unit->users()->attach($user->id);
+        }
 
         if (!$unit) {
             // Handle the case where the unit does not exist in the database
@@ -55,7 +59,7 @@ class FavoriteController extends Controller
             // Unit is not in favorites, add it
             $user->units()->attach($unit->id);
             session()->flash('success', 'Unit added to favorites!');
-            return redirect('/favorite');
+            return redirect()->back();
         }
     }
 

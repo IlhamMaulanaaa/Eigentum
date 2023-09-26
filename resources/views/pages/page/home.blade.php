@@ -281,7 +281,7 @@
                                     <div class="filter__grid-wrapper u-s-m-t-30">
                                         <div class="row">
 
-                                            @foreach ($units->take(12) as $unit)
+                                            @foreach ($units as $unit)
                                                 <div
                                                     class="col-xl-3 col-lg-4 col-md-6 col-sm-6 u-s-m-b-30 filter__item {{ $unit->properties->types->name }}">
                                                     <div class="product-o product-o--hover-on product-o--radius">
@@ -301,12 +301,25 @@
                                                                                 method="POST">
                                                                                 @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                                @if (Auth()->user()->units->contains($unit))
+                                                                                    <button class="btnfav"
+                                                                                        style="cursor: pointer; color:red;"
+                                                                                        data-tooltip="tooltip"
+                                                                                        type="submit"
+                                                                                        data-placement="top"
+                                                                                        title="Tambahkan Ke Favorite">
+                                                                                        <i
+                                                                                            class="fas fa-heart"></i></button>
+                                                                                @else
+                                                                                    <button class="btnfav"
+                                                                                        style="cursor: pointer"
+                                                                                        data-tooltip="tooltip"
+                                                                                        type="submit"
+                                                                                        data-placement="top"
+                                                                                        title="Tambahkan Ke Favorite">
+                                                                                        <i
+                                                                                            class="fas fa-heart"></i></button>
+                                                                                @endif
 
                                                                             </form>
                                                                         @elseif (!Auth::check())
@@ -314,12 +327,25 @@
                                                                                 method="get">
                                                                                 @csrf
 
-                                                                                <button class="btnfav"
-                                                                                    style="cursor: pointer"
-                                                                                    data-tooltip="tooltip" type="submit"
-                                                                                    data-placement="top"
-                                                                                    title="Tambahkan Ke Favorite">
-                                                                                    <i class="fas fa-heart"></i></button>
+                                                                                @if (Auth()->user()->units->contains($unit))
+                                                                                    <button class="btnfav"
+                                                                                        style="cursor: pointer; color:red;"
+                                                                                        data-tooltip="tooltip"
+                                                                                        type="submit"
+                                                                                        data-placement="top"
+                                                                                        title="Tambahkan Ke Favorite">
+                                                                                        <i
+                                                                                            class="fas fa-heart"></i></button>
+                                                                                @else
+                                                                                    <button class="btnfav"
+                                                                                        style="cursor: pointer"
+                                                                                        data-tooltip="tooltip"
+                                                                                        type="submit"
+                                                                                        data-placement="top"
+                                                                                        title="Tambahkan Ke Favorite">
+                                                                                        <i
+                                                                                            class="fas fa-heart"></i></button>
+                                                                                @endif
 
                                                                             </form>
                                                                         @endif
@@ -358,52 +384,46 @@
 
                                         </div>
                                     </div>
-                                    <div class="u-s-p-y-60 pagination">
+                                    {{-- <div class="u-s-p-y-60 pagination">
 
                                         <!--====== Pagination ======-->
-                                        {{-- <ul class="pagination shop-p__pagination">
-                                            
-                                            <li
-                                                class="page-item">
+                                        <ul class="pagination shop-p__pagination">
+
+                                            {{-- <li
+                                                class="page-item{{ $filteredUnitsPagination->onFirstPage() ? ' disabled' : '' }}">
                                                 <a class="page-link"
-                                                    href=""
+                                                    href="{{ $filteredUnitsPagination->previousPageUrl() }}"
                                                     rel="prev">Previous</a>
                                             </li> --}}
 
-                                        {{-- Pagination Links --}}
+                                    {{-- Pagination Links --}}
 
+                                    {{-- 
+                                            <li class="page-item">
+                                                {{-- <a class="page-link"
+                                                        href="{{ $filteredUnitsPagination->url($page) }}">{{ $page }}</a> --}}
+                                    {{-- 
+                                                    </li>
 
+                                            <li class="page-item">
+                                                <a class="page-link" href="">2</a>
+                                            </li>
 
-                                        {{-- <li
-                                                    class="page-item">
-                                                    <a class="page-link"
-                                                        href="">1</a>
-                                                </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="">3</a>
+                                            </li>
 
-                                                <li
-                                                    class="page-item">
-                                                    <a class="page-link"
-                                                        href="">2</a>
-                                                </li>
+                                            {{-- Next Page Link --}}
 
-                                                <li
-                                                    class="page-item">
-                                                    <a class="page-link"
-                                                        href="">3</a>
-                                                </li> --}}
-
-                                        {{-- Next Page Link --}}
-                                        {{-- <li
-                                                class="page-item">
-                                                <a class="page-link" href=""
-                                                    rel="next">Next</a>
+                                    {{--                                   <li class="page-item">
+                                                <a class="page-link" href="" rel="next">Next</a>
                                             </li>
 
 
-                                        </ul> --}}
+                                        </ul>
                                         {{-- {{$filteredUnits->links()}} --}}
-                                        <!--====== End - Pagination ======-->
-                                    </div>
+                                    <!--====== End - Pagination ======-->
+                                    {{--                      </div> --}}
                                 </div>
 
                             </div>
@@ -458,16 +478,30 @@
                                                     <div class="product-o__action-wrap">
                                                         <ul class="product-o__action-list">
                                                             <li>
-                                                                @if (Auth::check())
+                                                                {{-- @if (Auth::check())
                                                                     <form action="{{ route('favorite.add', $unit->id) }}"
                                                                         method="POST">
                                                                         @csrf
 
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="submit"
+                                                                        @if (Auth()->user()->units->contains($unit))
+                                                                        <button class="btnfav"
+                                                                            style="cursor: pointer; color:red;"
+                                                                            data-tooltip="tooltip"
+                                                                            type="submit"
                                                                             data-placement="top"
                                                                             title="Tambahkan Ke Favorite">
-                                                                            <i class="fas fa-heart"></i></button>
+                                                                            <i
+                                                                                class="fas fa-heart"></i></button>
+                                                                    @else
+                                                                        <button class="btnfav"
+                                                                            style="cursor: pointer"
+                                                                            data-tooltip="tooltip"
+                                                                            type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i
+                                                                                class="fas fa-heart"></i></button>
+                                                                    @endif
 
                                                                     </form>
                                                                 @elseif (!Auth::check())
@@ -475,14 +509,28 @@
                                                                         method="get">
                                                                         @csrf
 
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="submit"
+                                                                        @if (Auth()->user()->units->contains($unit))
+                                                                        <button class="btnfav"
+                                                                            style="cursor: pointer; color:red;"
+                                                                            data-tooltip="tooltip"
+                                                                            type="submit"
                                                                             data-placement="top"
                                                                             title="Tambahkan Ke Favorite">
-                                                                            <i class="fas fa-heart"></i></button>
+                                                                            <i
+                                                                                class="fas fa-heart"></i></button>
+                                                                    @else
+                                                                        <button class="btnfav"
+                                                                            style="cursor: pointer"
+                                                                            data-tooltip="tooltip"
+                                                                            type="submit"
+                                                                            data-placement="top"
+                                                                            title="Tambahkan Ke Favorite">
+                                                                            <i
+                                                                                class="fas fa-heart"></i></button>
+                                                                    @endif
 
                                                                     </form>
-                                                                @endif
+                                                                @endif --}}
 
                                                             </li>
                                                             <li>
@@ -645,11 +693,20 @@
                                                                         method="POST">
                                                                         @csrf
 
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="submit"
-                                                                            data-placement="top"
-                                                                            title="Tambahkan Ke Favorite">
-                                                                            <i class="fas fa-heart"></i></button>
+                                                                        @if (Auth()->user()->units->contains($unit))
+                                                                            <button class="btnfav"
+                                                                                style="cursor: pointer; color:red;"
+                                                                                data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
+                                                                        @else
+                                                                            <button class="btnfav" style="cursor: pointer"
+                                                                                data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
+                                                                        @endif
 
                                                                     </form>
                                                                 @elseif (!Auth::check())
@@ -657,314 +714,316 @@
                                                                         method="get">
                                                                         @csrf
 
-                                                                        <button class="btnfav" style="cursor: pointer"
-                                                                            data-tooltip="tooltip" type="submit"
-                                                                            data-placement="top"
-                                                                            title="Tambahkan Ke Favorite">
-                                                                            <i class="fas fa-heart"></i></button>
-
-                                                                    </form>
+                                                                        < @if (Auth()->user()->units->contains($unit))
+                                                                            <button class="btnfav"
+                                                                                style="cursor: pointer; color:red;"
+                                                                                data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
+                                                                        @else
+                                                                            <button class="btnfav" style="cursor: pointer"
+                                                                                data-tooltip="tooltip" type="submit"
+                                                                                data-placement="top"
+                                                                                title="Tambahkan Ke Favorite">
+                                                                                <i class="fas fa-heart"></i></button>
                                                                 @endif
 
-                                                            </li>
-                                                            <li>
+                                                                </form>
+                                    @endif
 
-                                                                <a href="{{ route('unit.show.user', $unit->id) }}"
-                                                                    data-tooltip="tooltip" data-placement="top"
-                                                                    title="Lihat lebih detail"><i
-                                                                        class="fas fa-eye"></i></a>
-                                                            </li>
-                                                        </ul>
+                                    </li>
+                                    <li>
+
+                                        <a href="{{ route('unit.show.user', $unit->id) }}" data-tooltip="tooltip"
+                                            data-placement="top" title="Lihat lebih detail"><i
+                                                class="fas fa-eye"></i></a>
+                                    </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <span class="product-o__category">
+
+                                <a href="#">{{ $unit->properties->types->name }}</a></span>
+
+                            <span class="product-o__name">
+
+                                <a href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
+
+
+                            <span class="product-o__price">Rp. {{ $unit->price }}</span>
+                        </div>
+                    </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--====== End - Section Content ======-->
+        </div>
+        <!--====== End - Section 6 ======-->
+
+
+
+
+
+        <!--====== Section 8 ======-->
+        <div class="u-s-p-b-60">
+
+            <!--====== Section Content ======-->
+            <div class="section__content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
+                            <div class="column-product">
+
+                                <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK SPECIAL</span>
+                                <ul class="column-product__list">
+                                    @foreach ($newunits as $unit)
+                                        @if ($unit->id === 1 || $unit->id === 2)
+                                            <li class="column-product__item">
+                                                <div class="product-l">
+                                                    <div class="product-l__img-wrap">
+
+                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                            href="{{ route('unit.show.user', $unit->id) }}">
+
+                                                            <img class="aspect__img"
+                                                                src="{{ asset('storage/' . $unit->image) }}"
+                                                                alt=""></a>
+                                                    </div>
+                                                    <div class="product-l__info-wrap">
+
+                                                        <span class="product-l__category">
+
+                                                            <a
+                                                                href="#">{{ $unit->properties->types->name }}</a></span>
+
+                                                        <span class="product-l__name">
+
+                                                            <a
+                                                                href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
+
+                                                        <span class="product-l__price">
+                                                            Rp. {{ $unit->price }}</span>
                                                     </div>
                                                 </div>
-
-                                                <span class="product-o__category">
-
-                                                    <a href="#">{{ $unit->properties->types->name }}</a></span>
-
-                                                <span class="product-o__name">
-
-                                                    <a
-                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
-
-
-                                                <span class="product-o__price">Rp. {{ $unit->price }}</span>
-                                            </div>
-                                        </div>
+                                            </li>
+                                        @endif
                                     @endforeach
 
-                                </div>
+                                </ul>
                             </div>
                         </div>
-                    </div>
-                    <!--====== End - Section Content ======-->
-                </div>
-                <!--====== End - Section 6 ======-->
+                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
+                            <div class="column-product">
 
+                                <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK PILIHAN</span>
+                                <ul class="column-product__list">
 
+                                    @foreach ($newunits as $unit)
+                                        @if ($unit->id === 3 || $unit->id === 4)
+                                            <li class="column-product__item">
+                                                <div class="product-l">
+                                                    <div class="product-l__img-wrap">
 
+                                                        <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                            href="{{ route('unit.show.user', $unit->id) }}">
 
+                                                            <img class="aspect__img"
+                                                                src="{{ asset('storage/' . $unit->image) }}"
+                                                                alt=""></a>
+                                                    </div>
+                                                    <div class="product-l__info-wrap">
 
-                <!--====== Section 8 ======-->
-                <div class="u-s-p-b-60">
+                                                        <span class="product-l__category">
 
-                    <!--====== Section Content ======-->
-                    <div class="section__content">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div class="column-product">
+                                                            <a
+                                                                href="#">{{ $unit->properties->types->name }}</a></span>
 
-                                        <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK SPECIAL</span>
-                                        <ul class="column-product__list">
-                                            @foreach ($newunits as $unit)
-                                                @if ($unit->id === 1 || $unit->id === 2)
-                                                    <li class="column-product__item">
-                                                        <div class="product-l">
-                                                            <div class="product-l__img-wrap">
+                                                        <span class="product-l__name">
 
-                                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                                    href="{{ route('unit.show.user', $unit->id) }}">
+                                                            <a
+                                                                href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
-                                                                    <img class="aspect__img"
-                                                                        src="{{ asset('storage/' . $unit->image) }}"
-                                                                        alt=""></a>
-                                                            </div>
-                                                            <div class="product-l__info-wrap">
+                                                        <span class="product-l__price">
+                                                            Rp. {{ $unit->price }}</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
+                            <div class="column-product">
 
-                                                                <span class="product-l__category">
+                                <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK FLASH</span>
+                                <ul class="column-product__list">
+                                    @foreach ($newunits as $unit)
+                                        @if ($unit->id === 5 || $unit->id === 6)
+                                            <a href="{{ route('unit.show.user', $unit->id) }}" class="stretched-link">
+                                                <li class="column-product__item">
+                                                    <div class="product-l">
+                                                        <div class="product-l__img-wrap">
 
-                                                                    <a
-                                                                        href="#">{{ $unit->properties->types->name }}</a></span>
+                                                            <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
+                                                                href="{{ route('unit.show.user', $unit->id) }}">
 
-                                                                <span class="product-l__name">
-
-                                                                    <a
-                                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
-
-                                                                <span class="product-l__price">
-                                                                    Rp. {{ $unit->price }}</span>
-                                                            </div>
+                                                                <img class="aspect__img"
+                                                                    src="{{ asset('storage/' . $unit->image) }}"
+                                                                    alt=""></a>
                                                         </div>
-                                                    </li>
-                                                @endif
-                                            @endforeach
+                                                        <div class="product-l__info-wrap">
 
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div class="column-product">
+                                                            <span class="product-l__category">
 
-                                        <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK PILIHAN</span>
-                                        <ul class="column-product__list">
+                                                                <a
+                                                                    href="#">{{ $unit->properties->types->name }}</a></span>
 
-                                            @foreach ($newunits as $unit)
-                                                @if ($unit->id === 3 || $unit->id === 4)
-                                                    <li class="column-product__item">
-                                                        <div class="product-l">
-                                                            <div class="product-l__img-wrap">
+                                                            <span class="product-l__name">
 
-                                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                                    href="{{ route('unit.show.user', $unit->id) }}">
+                                                                <a
+                                                                    href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
 
-                                                                    <img class="aspect__img"
-                                                                        src="{{ asset('storage/' . $unit->image) }}"
-                                                                        alt=""></a>
-                                                            </div>
-                                                            <div class="product-l__info-wrap">
-
-                                                                <span class="product-l__category">
-
-                                                                    <a
-                                                                        href="#">{{ $unit->properties->types->name }}</a></span>
-
-                                                                <span class="product-l__name">
-
-                                                                    <a
-                                                                        href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
-
-                                                                <span class="product-l__price">
-                                                                    Rp. {{ $unit->price }}</span>
-                                                            </div>
+                                                            <span class="product-l__price">
+                                                                Rp. {{ $unit->price }}</span>
                                                         </div>
-                                                    </li>
-                                                @endif
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                                    <div class="column-product">
+                                                    </div>
+                                                </li>
+                                            </a>
+                                        @endif
+                                    @endforeach
 
-                                        <span class="column-product__title u-c-secondary u-s-m-b-25">PRODUK FLASH</span>
-                                        <ul class="column-product__list">
-                                            @foreach ($newunits as $unit)
-                                                @if ($unit->id === 5 || $unit->id === 6)
-                                                    <a href="{{ route('unit.show.user', $unit->id) }}"
-                                                        class="stretched-link">
-                                                        <li class="column-product__item">
-                                                            <div class="product-l">
-                                                                <div class="product-l__img-wrap">
-
-                                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                                        href="{{ route('unit.show.user', $unit->id) }}">
-
-                                                                        <img class="aspect__img"
-                                                                            src="{{ asset('storage/' . $unit->image) }}"
-                                                                            alt=""></a>
-                                                                </div>
-                                                                <div class="product-l__info-wrap">
-
-                                                                    <span class="product-l__category">
-
-                                                                        <a
-                                                                            href="#">{{ $unit->properties->types->name }}</a></span>
-
-                                                                    <span class="product-l__name">
-
-                                                                        <a
-                                                                            href="{{ route('unit.show.user', $unit->id) }}">{{ $unit->title }}</a></span>
-
-                                                                    <span class="product-l__price">
-                                                                        Rp. {{ $unit->price }}</span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </a>
-                                                @endif
-                                            @endforeach
-
-                                        </ul>
-                                    </div>
-                                </div>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <!--====== End - Section Content ======-->
                 </div>
-                <!--====== End - Section 8 ======-->
+            </div>
+            <!--====== End - Section Content ======-->
+        </div>
+        <!--====== End - Section 8 ======-->
 
 
-                <!--====== Section 9 ======-->
+        <!--====== Section 9 ======-->
 
-                <!--====== End - Section 9 ======-->
-
-
+        <!--====== End - Section 9 ======-->
 
 
 
-                <!--====== Section 11 ======-->
-                <div class="u-s-p-b-90 u-s-m-b-30">
 
-                    <!--====== Section Intro ======-->
-                    <div class="section__intro u-s-m-b-46">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="section__text-wrap">
-                                        <h1 class="section__heading u-c-secondary u-s-m-b-12">TESTIMONI KLIEN</h1>
 
-                                        <span class="section__span u-c-silver">WHAT OUR CLIENTS SAY</span>
-                                    </div>
-                                </div>
+        <!--====== Section 11 ======-->
+        <div class="u-s-p-b-90 u-s-m-b-30">
+
+            <!--====== Section Intro ======-->
+            <div class="section__intro u-s-m-b-46">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section__text-wrap">
+                                <h1 class="section__heading u-c-secondary u-s-m-b-12">TESTIMONI KLIEN</h1>
+
+                                <span class="section__span u-c-silver">WHAT OUR CLIENTS SAY</span>
                             </div>
                         </div>
                     </div>
-                    <!--====== End - Section Intro ======-->
-
-
-                    <!--====== Section Content ======-->
-                    <div class="section__content">
-                        <div class="container">
-
-                            <!--====== Testimonial Slider ======-->
-                            <div class="slider-fouc">
-                                <div class="owl-carousel" id="testimonial-slider">
-                                    <div class="testimonial">
-                                        <div class="testimonial__img-wrap">
-
-                                            <img class="testimonial__img" src="/assets/pages/testimoni/testimoni1.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="testimonial__content-wrap">
-
-                                            <span class="testimonial__double-quote"><i
-                                                    class="fas fa-quote-right"></i></span>
-                                            <blockquote class="testimonial__block-quote">
-                                                <p>"Saya mengakui Eigentum adalah platform yang sangat bagus untuk menemukan
-                                                    properti."</p>
-                                            </blockquote>
-
-                                            <span class="testimonial__author">Ramadhan Syarif / Customer</span>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <div class="testimonial__img-wrap">
-
-                                            <img class="testimonial__img" src="/assets/pages/testimoni/testimoni2.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="testimonial__content-wrap">
-
-                                            <span class="testimonial__double-quote"><i
-                                                    class="fas fa-quote-right"></i></span>
-                                            <blockquote class="testimonial__block-quote">
-                                                <p>"Saya percaya Eigentum adalah tempat yang luar biasa untuk menemukan
-                                                    properti."</p>
-                                            </blockquote>
-
-                                            <span class="testimonial__author">Bambang Narjo / Customer</span>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <div class="testimonial__img-wrap">
-
-                                            <img class="testimonial__img" src="/assets/pages/testimoni/testimoni3.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="testimonial__content-wrap">
-
-                                            <span class="testimonial__double-quote"><i
-                                                    class="fas fa-quote-right"></i></span>
-                                            <blockquote class="testimonial__block-quote">
-                                                <p>"Saya yakin Eigentum adalah solusi terbaik untuk menemukan properti yang
-                                                    Anda cari."</p>
-                                            </blockquote>
-
-                                            <span class="testimonial__author">Jono Tarjo / Customer</span>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial">
-                                        <div class="testimonial__img-wrap">
-
-                                            <img class="testimonial__img" src="/assets/pages/testimoni/testimoni4.jpg"
-                                                alt="">
-                                        </div>
-                                        <div class="testimonial__content-wrap">
-
-                                            <span class="testimonial__double-quote"><i
-                                                    class="fas fa-quote-right"></i></span>
-                                            <blockquote class="testimonial__block-quote">
-                                                <p>"Menurut saya, Eigentum adalah opsi yang luar biasa untuk mencari
-                                                    properti yang tepat"</p>
-                                            </blockquote>
-
-                                            <span class="testimonial__author">David / Customer</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--====== End - Testimonial Slider ======-->
-                        </div>
-                    </div>
-                    <!--====== End - Section Content ======-->
                 </div>
-                <!--====== End - Section 11 ======-->
+            </div>
+            <!--====== End - Section Intro ======-->
 
 
-                <!--====== Section 12 ======-->
-                {{-- <div class="u-s-p-b-60">
+            <!--====== Section Content ======-->
+            <div class="section__content">
+                <div class="container">
+
+                    <!--====== Testimonial Slider ======-->
+                    <div class="slider-fouc">
+                        <div class="owl-carousel" id="testimonial-slider">
+                            <div class="testimonial">
+                                <div class="testimonial__img-wrap">
+
+                                    <img class="testimonial__img" src="/assets/pages/testimoni/testimoni1.jpg"
+                                        alt="">
+                                </div>
+                                <div class="testimonial__content-wrap">
+
+                                    <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                    <blockquote class="testimonial__block-quote">
+                                        <p>"Saya mengakui Eigentum adalah platform yang sangat bagus untuk menemukan
+                                            properti."</p>
+                                    </blockquote>
+
+                                    <span class="testimonial__author">Ramadhan Syarif / Customer</span>
+                                </div>
+                            </div>
+                            <div class="testimonial">
+                                <div class="testimonial__img-wrap">
+
+                                    <img class="testimonial__img" src="/assets/pages/testimoni/testimoni2.jpg"
+                                        alt="">
+                                </div>
+                                <div class="testimonial__content-wrap">
+
+                                    <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                    <blockquote class="testimonial__block-quote">
+                                        <p>"Saya percaya Eigentum adalah tempat yang luar biasa untuk menemukan
+                                            properti."</p>
+                                    </blockquote>
+
+                                    <span class="testimonial__author">Bambang Narjo / Customer</span>
+                                </div>
+                            </div>
+                            <div class="testimonial">
+                                <div class="testimonial__img-wrap">
+
+                                    <img class="testimonial__img" src="/assets/pages/testimoni/testimoni3.jpg"
+                                        alt="">
+                                </div>
+                                <div class="testimonial__content-wrap">
+
+                                    <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                    <blockquote class="testimonial__block-quote">
+                                        <p>"Saya yakin Eigentum adalah solusi terbaik untuk menemukan properti yang
+                                            Anda cari."</p>
+                                    </blockquote>
+
+                                    <span class="testimonial__author">Jono Tarjo / Customer</span>
+                                </div>
+                            </div>
+                            <div class="testimonial">
+                                <div class="testimonial__img-wrap">
+
+                                    <img class="testimonial__img" src="/assets/pages/testimoni/testimoni4.jpg"
+                                        alt="">
+                                </div>
+                                <div class="testimonial__content-wrap">
+
+                                    <span class="testimonial__double-quote"><i class="fas fa-quote-right"></i></span>
+                                    <blockquote class="testimonial__block-quote">
+                                        <p>"Menurut saya, Eigentum adalah opsi yang luar biasa untuk mencari
+                                            properti yang tepat"</p>
+                                    </blockquote>
+
+                                    <span class="testimonial__author">David / Customer</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--====== End - Testimonial Slider ======-->
+                </div>
+            </div>
+            <!--====== End - Section Content ======-->
+        </div>
+        <!--====== End - Section 11 ======-->
+
+
+        <!--====== Section 12 ======-->
+        {{-- <div class="u-s-p-b-60">
 
                     <div class="section__intro u-s-m-b-46">
                         <div class="container">
@@ -1103,9 +1162,9 @@
                         <!--====== End - Brand Slider ======-->
                     </div>
                 </div> --}}
-                <!--====== End - Section Content ======-->
-            </div>
-            <!--====== End - Section 12 ======-->
+        <!--====== End - Section Content ======-->
+        </div>
+        <!--====== End - Section 12 ======-->
         </div>
         <!--====== End - App Content ======-->
 
