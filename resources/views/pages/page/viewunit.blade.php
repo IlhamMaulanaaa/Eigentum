@@ -23,6 +23,7 @@
 
         <!--====== App ======-->
         <link rel="stylesheet" href="{{ asset('css/Lib/fix/css/app.css') }}">
+
     </head>
 
     <body class="config">
@@ -233,31 +234,16 @@
                                                     data-toggle="collapse"></span>
                                             </div>
                                             <div class="shop-w__wrap collapse show" id="s-price">
-                                                <form class="shop-w__form-p">
-                                                    <div class="shop-w__form-p-wrap">
-                                                        <div>
-                                                            <label for="price-min"></label>
-
-                                                            <input class="input-text input-text--primary-style"
-                                                                type="number"name="min_price" id="price-min"
-                                                                placeholder="Min"value="{{ request('min_price') }}">
-                                                        </div>
-                                                        <div>
-
-                                                            <label for="price-max"></label>
-
-                                                            <input class="input-text input-text--primary-style"
-                                                                type="number" id="price-max"name="max_price"
-                                                                placeholder=" Max"value="{{ request('max_price') }}">
-                                                        </div>
-                                                        <div>
-
-                                                            <button
-                                                                class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
-                                                                type="submit"></button>
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                <div class="range-slider col-md-10">
+                                                    <input class="range-slider__range" type="range" name="min_price"
+                                                        value="{{ request('min_price', 0) }}" min="0"
+                                                        max="1000">
+                                                    <span class="range-slider__value">0</span>
+                                                    <input class="range-slider__range" type="range" name="max_price"
+                                                        value="{{ request('max_price', 1000) }}" min="0"
+                                                        max="1000">
+                                                    <span class="range-slider__value">1000</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -293,6 +279,49 @@
             </div>
             <!--====== End - Side Filters ======-->
 
+            <script>
+                var slider = document.querySelector('.range-slider');
+                var minPrice = document.querySelector('.range-slider__range:first-of-type');
+                var maxPrice = document.querySelector('.range-slider__range:last-of-type');
+                var minValue = document.querySelector('.range-slider__value:first-of-type');
+                var maxValue = document.querySelector('.range-slider__value:last-of-type');
+
+                // Set the initial values of the slider and the input fields
+                minValue.textContent = minPrice.value;
+                maxValue.textContent = maxPrice.value;
+
+                // Update the input fields when the slider is moved
+                slider.addEventListener('input', function() {
+                    minValue.textContent = minPrice.value;
+                    maxValue.textContent = maxPrice.value;
+                });
+
+                // Filter the units based on the price range
+                function filterUnits() {
+                    var units = document.querySelectorAll('.unit');
+                    var min = parseInt(minPrice.value);
+                    var max = parseInt(maxPrice.value);
+
+                    units.forEach(function(unit) {
+                        var price = parseInt(unit.querySelector('.unit__price').textContent);
+
+                        if (price >= min && price <= max) {
+                            unit.style.display = 'block';
+                        } else {
+                            unit.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Add an event listener to the slider and the input fields
+                minPrice.addEventListener('input', filterUnits);
+                maxPrice.addEventListener('input', filterUnits);
+
+                // Add an event listener to the slider that listens for the mouseup event
+                slider.addEventListener('mouseup', function() {
+                    filterUnits();
+                });
+            </script>
 
             <!--====== Modal Section ======-->
 
@@ -356,7 +385,7 @@
                 });
             </script>
 
-            <script>
+            {{-- <script>
                 document.addEventListener('blur', function() {
                     // Menangkap elemen input
                     var inputMin = document.getElementById('inputMin');
@@ -382,7 +411,7 @@
                         performSearch();
                     });
                 });
-            </script>
+            </script> --}}
 
 
 

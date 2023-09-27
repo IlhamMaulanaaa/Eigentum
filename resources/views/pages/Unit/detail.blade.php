@@ -110,35 +110,39 @@
                                 <!--====== Product Right Side Details ======-->
                                 <div class="pd-detail">
                                     <div>
-
-                                        <span class="pd-detail__name">{{ $unit->title }}</span>
-                                    </div>
-                                    <div>
-                                        <div class="pd-detail__inline">
-
-                                            <span class="pd-detail__price">Rp.{{ number_format($unit->price, 2) }}jt</span>
-                                        </div>
                                         <div class="u-s-m-b-15">
                                             <div class="pd-detail__inline">
 
                                                 {{-- <span class="pd-detail__stock">{{ $unit->properties->types->name }}</span> --}}
 
                                                 @foreach ($unit->statuses as $status)
-                                                    <h2 class="btn-status" style="">{{ $status->name }}</h2>
+                                                    <h2 class="btn-status"
+                                                        style="font-size:18px; display:inline-block;margin-top:42px; ">
+                                                        {{ $status->name }}</h2>
                                                 @endforeach
                                             </div>
                                         </div>
+                                        <span
+                                            class="pd-detail__name"style="font-size:32px; margin-top: -30px;">{{ $unit->title }}</span>
+                                    </div>
+                                    <div>
+                                        <div class="pd-detail__inline">
+
+                                            <span class="pd-detail__price"
+                                                style="font-size: 24px;">Rp.{{ number_format($unit->price, 2) }}jt</span>
+                                        </div>
+
                                         <div class="u-s-m-b-15">
 
                                             <span class="pd-detail__preview-desc">{{ $unit->description }}</span>
                                         </div>
                                         <div class="u-s-m-b-15">
-                                            <div class="pd-detail__inline">
+                                            {{-- <div class="pd-detail__inline">
 
                                                 <span class="pd-detail__click-wrap"><i class="far fa-heart u-s-m-r-6"></i>
 
                                                     <a href="signin.html">Tambahkan Ke Favorite</a>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="u-s-m-b-15">
                                             <form class="pd-detail__form">

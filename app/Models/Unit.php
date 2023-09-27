@@ -127,17 +127,6 @@ class Unit extends Model
             });
         });
 
-        $query->when(isset($filters['min_price']) && is_numeric($filters['min_price']), function ($query) use ($filters) {
-            $query->where(function ($query) use ($filters) {
-                $query->where('price', '>=', $filters['min_price']);
-            });
-        });
-
-        $query->when(isset($filters['max_price']) && is_numeric($filters['max_price']), function ($query) use ($filters) {
-            $query->where(function ($query) use ($filters) {
-                $query->where('price', '<=', $filters['max_price']);
-            });
-        });
 
         $query->when($filters['regency_id'] ?? false, function ($query, $regency_id) {
             return $query->whereHas('regencies', function ($query) use ($regency_id) {
@@ -176,6 +165,17 @@ class Unit extends Model
         $query->when($filters['floor'] ?? false, function ($query, $floor) {
             $query->whereHas('specifications', function ($query) use ($floor) {
                 $query->where('floor', $floor);
+            });
+        });
+        $query->when(isset($filters['min_price']) && is_numeric($filters['min_price']), function ($query) use ($filters) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('price', '>=', $filters['min_price']);
+            });
+        });
+
+        $query->when(isset($filters['max_price']) && is_numeric($filters['max_price']), function ($query) use ($filters) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('price', '<=', $filters['max_price']);
             });
         });
 
