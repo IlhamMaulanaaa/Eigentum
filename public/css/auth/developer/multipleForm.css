@@ -1,0 +1,30 @@
+
+.form-section {
+    display: none;
+    width: 1000px;
+}
+
+.form-section.current {
+    display: block;
+}
+.btn-next {
+    background-color: #0c40e8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    width: auto;
+}
+.left-section {
+    float: left;
+    width: 50%;
+}
+
+.right-section {
+    float: right;
+    width: 50%;
+}

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
+    
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'id_ID',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        // Provider Lain
+        // AzisHapidin\IndoRegion\IndoRegionServiceProvider::class,
+        // Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Package Service Providers...

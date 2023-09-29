@@ -40,35 +40,42 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'developer' => [
+            'driver' => 'session',
+            'provider' => 'developer',
+        ],
+        'agent' => [
+            'driver' => 'session',
+            'provider' => 'agent',
+        ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
     ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | User Providers
-    |--------------------------------------------------------------------------
-    |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
-    |
-    | Supported: "database", "eloquent"
-    |
-    */
-
+    
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'developer' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Developer::class,
+        ],
+
+        'agent' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Agent::class,
+        ],
+
+        'admin' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
     ],
 
     /*
@@ -97,6 +104,25 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'developer' => [
+            'provider' => 'developer',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'agent' => [
+            'provider' => 'agent',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'admin' => [
+            'provider' => 'admin',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*
@@ -111,5 +137,10 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    'roles' => [
+        'admin' => 'admin',
+        'user' => 'user',
+    ],
 
 ];

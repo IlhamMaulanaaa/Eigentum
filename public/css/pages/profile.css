@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+body {
+	background: #f9f9f9;
+	font-family: "Roboto", sans-serif;
+}
+
+.shadow {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+.container{
+	width: 100%;
+}
+
+.profile-tab-nav {
+	min-width: 250px;
+}
+
+.tab-content {
+	flex: 1;
+	height: 1450px;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.nav-pills a.nav-link {
+	padding: 15px 20px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 0;
+	color: #333;
+}
+.nav-pills a.nav-link i {
+	width: 20px;
+}
+
+.img-circle img {
+	height: 100px;
+	width: 100px;
+	border-radius: 100%;
+	border: 5px solid #fff;
+}
+
+.container-upload{
+	display: grid;
+	place-items: center;
+	text-align: center;
+  }
+  .container-upload{
+	height: 10px;
+	width: 150px;
+	position: relative;
+  }
+  .container-upload .wrapper{
+	position: relative;
+	height: 100px;
+	width: 100%;
+	border-radius: 10px;
+	background: #fff;
+	border: 2px dashed #c2cdda;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+  }
+  .wrapper.active{
+	border: none;
+  }
+  .wrapper .image {
+	position: absolute;
+	height: 100px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+  }
+  .wrapper img{
+	height: 100px;
+	width: 100%;
+	object-fit: cover;
+	max-width: 100%;
+	max-height: 100%;
+  }
+  .wrapper .icon{
+	font-size: 30px;
+	color: #0026ff;
+  }
+  .wrapper .text{
+	font-size: 14px;
+	font-weight: 500;
+	color: #5B5B7B;
+  }
+  .wrapper #cancel-btn i{
+	position: absolute;
+	font-size: 18px;
+	width: 100%;
+	height: auto;
+	right: -60px;
+	top: 5px;
+	color: #ff0000;
+	cursor: pointer;
+	display: none;
+  }
+  .wrapper.active:hover #cancel-btn i{
+	display: block;
+  }
+  .wrapper #cancel-btn i:hover{
+	color: #e74c3c;
+  }
+  .wrapper .file-name{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding: 3px 0;
+	height: 30px;
+	font-size: 14px;
+	color: #fff;
+	display: none;
+	background: linear-gradient(135deg,#3a8ffe 0%,#0026ff 100%);
+  }
+  .wrapper.active:hover .file-name{
+	display: block;
+  }
+  .container-upload #custom-btn{
+	margin-top: 10px;
+	display: block;
+	width: 100%;
+	height: 35px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	background: linear-gradient(135deg,#3a8ffe 0%,#0026ff 100%);
+  }

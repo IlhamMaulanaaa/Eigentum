@@ -1,0 +1,57 @@
+/********** Template CSS **********/
+:root {
+    --primary: #0c40e8;
+    --secondary: #0c40e8;
+    --light: #F8F2F0;
+    --dark: #060315;
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+
+
+
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item {
+    position: relative;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+    animation: pulse 1s ease-out .5s;
+}
+
+.testimonial-carousel .owl-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    border: 5px solid var(--light);
+    border-radius: 15px;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--light);
+    border-color: var(--primary);
+}
